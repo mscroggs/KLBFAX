@@ -35,6 +35,11 @@ while True:
             system("python /home/pi/player/off.py;sudo shutdown -r now")
             print("Restarting")
             break
+        if name == "0026360488":
+            from os import system
+            system("cd /home/pi/ceefax;git pull")
+            print("Restarting")
+            break
         if isfile("/home/pi/cards/"+name):
             with open("/home/pi/cards/"+name) as f:
                 i=0
