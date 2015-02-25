@@ -1,0 +1,1 @@
+PATH = "/path/to/ceefax"
