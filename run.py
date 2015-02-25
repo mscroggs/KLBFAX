@@ -38,7 +38,10 @@ while True:
         elif name == "0026360488":
             from os import system
             print("Pulling newest version.")
-            system("cd /home/pi/ceefax;git pull")
+            try:
+                system("cd /home/pi/ceefax;git pull")
+            except:
+                pass
             break
         else:
             if isfile("/home/pi/cards/"+name):
