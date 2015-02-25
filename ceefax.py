@@ -4,7 +4,8 @@
 from os import listdir
 from random import choice
 from os.path import isfile, join
-root = "/home/pi/ceefax/pages"
+from global_vars import PATH 
+root = join(PATH,"pages")
 onlyfiles = [ f for f in listdir(root) if isfile(join(root,f)) and "_" not in f and "pyc" not in f]
 
 load_me=choice(onlyfiles).split(".")[0]
