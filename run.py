@@ -42,7 +42,6 @@ while True:
                 system("cd /home/pi/ceefax;git pull")
             except:
                 pass
-            break
         else:
             if isfile("/home/pi/cards/"+name):
                 with open("/home/pi/cards/"+name) as f:
