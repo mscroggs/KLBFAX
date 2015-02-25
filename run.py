@@ -57,12 +57,12 @@ while True:
                 name = "Jigsaw"
             page = [greeting+" "+name+"!"]
             display("???",page)
-        else:
-            try:
-                reload(ceefax)
-            except:
-                pass
-            number = ceefax.load_me
-            page = ceefax.page.split("\n")
-            tag = ceefax.tag
-            display(number,page,tag)
+    else:
+        try:
+            reload(ceefax)
+        except:
+            pass
+        number = ceefax.load_me
+        page = ceefax.page.split("\n")
+        tag = ceefax.tag
+        display(number,page,tag)
