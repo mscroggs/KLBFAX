@@ -15,6 +15,10 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
 """)+"""
 KLBFAX is under construction. Check regularly for updates.
 
+The source code of KLBFAX is available at https://github.com/mscroggs/KLBFAX. If
+you would like to add features/pages to KLBFAX, ask Scroggs to add you to the
+repository.
+
 Press A on the SNES controller to add a cup of tea.
 
 INDEX
