@@ -24,5 +24,6 @@ Press A on the SNES controller to add a cup of tea.
 INDEX
 """+Foreground.MAGENTA+"100"+Foreground.DEFAULT+""" Index                        """+Foreground.MAGENTA+"888"+Foreground.DEFAULT+""" Subtitles
 """+Foreground.MAGENTA+"150"+Foreground.DEFAULT+""" Events
+"""+Foreground.MAGENTA+"200"+Foreground.DEFAULT+""" Letters
 """+Foreground.MAGENTA+"401"+Foreground.DEFAULT+""" Weather
 """
