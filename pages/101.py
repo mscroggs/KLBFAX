@@ -8,12 +8,14 @@ page = """VOTES
 4|
 3|
 2|    x
-1|    x      """)+"""
-   O  B  T  T
-   L  E  O  O
-   L  L  M  M
-   Y  G  1  2
-      I
+1|    x        x""")+"""
+   O  B  T  T  C
+   L  E  O  O  R
+   L  L  M  M  A
+   Y  G  1  2  Z
+      I        Y
       N
-
-"""
+               N
+               I
+               C
+               O"""
