@@ -32,14 +32,17 @@ onlyfiles = [f for f in listdir(pages_dir)
 
 load_me = choice(onlyfiles).split(".")[0]
 
-module = getattr(__import__("pages", fromlist=[load_me]), load_me)
-reload(module)
-
-# page = getattr(__import__("pages."+load_me, fromlist=["page"]), "page")
-page = module.page
-
 try:
-    # tag = getattr(__import__("pages."+load_me, fromlist=["tag"]), "tag")
-    tag = module.tag
+    module = getattr(__import__("pages", fromlist=[load_me]), load_me)
+    reload(module)
+
+    page = module.page
+
+    try:
+        tag = module.tag
+    except:
+        tag = "KLBFAX: The world at your fingertips"
 except:
-    tag = "KLBFAX: The world at your fingertips"
+    load_me = "???"
+    page = ""
+    tag = "ERROR LOADING PAGE"
