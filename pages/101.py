@@ -1,8 +1,8 @@
 from colours import colour_print
 
-page = colour_print("""VOTES
+page = """VOTES
 
-7|
+"""+colour_print("""7|
 6|
 5|
 4|
