@@ -1,7 +1,7 @@
 #width:79
 #height: 30
 
-from colours import Foreground,Background,colour_print
+from colours import Foreground,Background,Style,colour_print
 
 page="""
 TEST PAGE
