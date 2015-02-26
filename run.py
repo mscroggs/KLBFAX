@@ -29,9 +29,10 @@ tag = ceefax.tag
 display(number, page, tag)
 
 while True:
-    i, o, e = select.select([sys.stdin], [], [], 30)
+    REFRESH_RATE_SECS = 30
+    input_fd, _, _ = select.select([sys.stdin], [], [], REFRESH_RATE_SECS)
 
-    if (i):
+    if (input_fd):
         name = sys.stdin.readline().strip()
         if name == "00488a0488":
             from os import system
