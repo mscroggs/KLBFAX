@@ -1,5 +1,6 @@
 import gmail
 from os.path import join,expanduser
+from colours import Foreground,Background
 
 details = []
 with open(join(expanduser("~"),".klb/gmail")) as f:
@@ -30,7 +31,7 @@ for mail in unread:
     else:
         print mail.body
         letters=mail.body+"""
-from """+mail.fr+"""
+"""+Foreground.YELLOW+"""from """+mail.fr+Foreground.DEFAULT+"""
 
 """+letters
         mail.read()
@@ -44,6 +45,6 @@ letters = """
 with open(join(expanduser("~"),".klb/emails"),"w") as f:
     f.write(letters)
         
-page = """LETTERS
+page = Foreground.RED+"""LETTERS"""+Foreground.DEFAULT+"""
 """+letters
 tag = "Email klbscroggsbot@gmail.com and your letter will appear here"
