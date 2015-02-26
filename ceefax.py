@@ -43,6 +43,7 @@ try:
     except:
         tag = "KLBFAX: The world at your fingertips"
 except:
+    page = (load_me+"""
+""")*10
     load_me = "???"
-    page = ""
     tag = "ERROR LOADING PAGE"
