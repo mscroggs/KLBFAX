@@ -12,3 +12,5 @@ for i in range(0,len(Foreground.list)):
 for j in range(0,len(Background.list)):
     page+=Background.list[j]+Background.delist[j]+Background.DEFAULT+"""
 """
+
+page+=Foreground.FLASHING+"Flashing Text"+Foreground.DEFAULT

@@ -1,5 +1,5 @@
 class Foreground:
-    DEFAULT = "\033[39m"
+    DEFAULT = "\033[0m"
     BLACK   = "\033[30m"
     RED     = "\033[31m"
     GREEN   = "\033[32m"
@@ -16,11 +16,12 @@ class Foreground:
     LBLUE   = "\033[94m"
     LMAGENTA= "\033[95m"
     LCYAN   = "\033[96m"
+    FLASHING= "\033[5m"
     list = [DEFAULT,BLACK,RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN,WHITE]
     delist = ["DEFAULT","BLACK","RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE"]
 
 class Background:
-    DEFAULT = "\033[49m"
+    DEFAULT = "\033[0m"
     BLACK   = "\033[40m"
     RED     = "\033[41m"
     GREEN   = "\033[42m"
