@@ -9,8 +9,10 @@ TEST PAGE
 for i in range(0,len(Foreground.list)):
     page+=Foreground.list[i]+Foreground.delist[i]+Foreground.DEFAULT+"""
 """
-for j in range(0,len(Background.list)):
-    page+=Background.list[j]+Background.delist[j]+Background.DEFAULT+"""
+for i in range(0,len(Background.list)):
+    page+=Background.list[i]+Background.delist[i]+Background.DEFAULT+"""
+"""
+for i in range(0,len(Style.list)):
+    page+=Style.list[i]+Style.delist[i]+Style.DEFAULT+"""
 """
 
-page+=Foreground.FLASHING+"Flashing Text"+Foreground.DEFAULT

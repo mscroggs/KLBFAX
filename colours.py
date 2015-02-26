@@ -16,9 +16,18 @@ class Foreground:
     LBLUE   = "\033[94m"
     LMAGENTA= "\033[95m"
     LCYAN   = "\033[96m"
-    FLASHING= "\033[5m"
     list = [DEFAULT,BLACK,RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN,WHITE]
     delist = ["DEFAULT","BLACK","RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE"]
+
+class Style:
+    DEFAULT  = "\033[0m"
+    BOLD     = "\033[1m"
+    FAINT    = "\033[2m"
+    STANDOUT = "\033[3m"
+    UNDERLINE= "\033[4m"
+    BLINK    = "\033[5m"
+    list = [DEFAULT,BOLD,FAINT,STANDOUT,UNDERLINE,BLINK]
+    delist = ["DEFAULT","BOLD","FAINT","STANDOUT","UNDERLINE","BLINK"]
 
 class Background:
     DEFAULT = "\033[0m"
