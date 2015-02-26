@@ -42,7 +42,7 @@ while True:
             from os import system
             print("Pulling newest version.")
             try:
-                system("cd /home/pi/ceefax;git stash;git pull")
+                system("cd /home/pi/ceefax;git pull")
             except:
                 pass
         else:
