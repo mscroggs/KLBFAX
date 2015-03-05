@@ -23,20 +23,24 @@ for mail in unread:
         with open('/var/www/klb/events','a') as f:
             for line in lines:
                 if line!="EVENT":
-                    while len(line)>79:
-                        f.write(line[:79]+"""
-""")
-                        line=line[79:]
                     f.write(line+"""
 """)
         mail.read()
       except:
         pass
     else:
-        print mail.body
-        letters=mail.body+"""
-"""+Foreground.YELLOW+"""from """+mail.fr+Foreground.DEFAULT+"""
+        for line in lines:
+            newletter = ""
+            while len(line)>79:
+                newletter += line[:79]+"""
+"""
+                line=line[79:]
+            newletter+=line+"""
+"""
 
+        letters=newletter+"""
+"""+Foreground.YELLOW+"""from """+mail.fr+Foreground.DEFAULT+"""
+----------------------------------------
 """+letters
         mail.read()
 
