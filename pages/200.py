@@ -23,6 +23,10 @@ for mail in unread:
         with open('/var/www/klb/events','a') as f:
             for line in lines:
                 if line!="EVENT":
+                    while len(line)>79:
+                        f.write(line[:79]+"""
+""")
+                        line=line[79:]
                     f.write(line+"""
 """)
         mail.read()
