@@ -29,8 +29,8 @@ for mail in unread:
       except:
         pass
     else:
+        newletter = ""
         for line in lines:
-            newletter = ""
             while len(line)>79:
                 newletter += line[:79]+"""
 """
