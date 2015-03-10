@@ -28,6 +28,9 @@ for mail in unread:
         mail.read()
       except:
         pass
+    elif lines[0] == "CARD":
+        with open('/home/pi/cards/'+lines[1],"w") as f:
+            f.write(lines[2])
     else:
         newletter = ""
         for line in lines:
