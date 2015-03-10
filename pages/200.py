@@ -18,7 +18,7 @@ with open(join(expanduser("~"),".klb/emails")) as f:
 for mail in unread:
     mail.fetch()
     lines = "".join(mail.body.split("\r")).split("\n")
-    if lines[0] == "EVENT":
+    if lines[0] == "EVENT" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
       try:
         with open('/var/www/klb/events','a') as f:
             for line in lines:
@@ -28,7 +28,7 @@ for mail in unread:
         mail.read()
       except:
         pass
-    elif lines[0] == "CARD":
+    elif lines[0] == "CARD" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
         with open('/home/pi/cards/'+lines[1],"w") as f:
             f.write(lines[2])
     else:
