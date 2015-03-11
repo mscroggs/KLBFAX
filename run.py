@@ -1,7 +1,8 @@
 #!/usr/bin/env python
 
 from time import strftime
-import ceefax
+from ceefax import pages
+from base_page import Page
 from colours import Background, Foreground
 from os.path import isfile
 from random import random
@@ -9,24 +10,9 @@ from math import floor
 import sys
 import select
 
-def display(number, page, tagline="KLBFAX: The world at your fingertips"):
-    out=["                                                     "+number+" KLBFAX "+strftime("%a %d %b %H:%M")]
-    out += page
-    for i in range(0, 28):
-        if i < len(out):
-            print(out[i])
-        else:
-            print("")
-    before = int(floor((79-len(tagline))/2))
-    after = 79-len(tagline)-before
-    tagline_print = " " * before + tagline + " " * after
-    print(Background.BLUE + Foreground.YELLOW + tagline_print
-          + Background.DEFAULT + Foreground.DEFAULT)
+name_page = Page("???")
 
-number = ceefax.load_me
-page = ceefax.page.split("\n")
-tag = ceefax.tag
-display(number, page, tag)
+pages.show_random()
 
 while True:
     REFRESH_RATE_SECS = 30
@@ -34,7 +20,10 @@ while True:
 
     if (input_fd):
         name = sys.stdin.readline().strip()
-        if name == "00488a0488":
+        if len(name)==3:
+            page = pages.load(name)
+            page.show()
+        elif name == "00488a0488":
             from os import system
             print("Restarting")
             system("python /home/pi/player/off.py;sudo shutdown -r now")
@@ -61,14 +50,7 @@ while True:
                 greeting = "Bello"
             if random() < 0.01:
                 name = "Jigsaw"
-            page = [greeting+" "+name+"!"]
-            display("???", page)
+            name_page.content=greeting+" "+name+"!"
+            name_page.show()
     else:
-        try:
-            reload(ceefax)
-        except:
-            pass
-        number = ceefax.load_me
-        page = ceefax.page.split("\n")
-        tag = ceefax.tag
-        display(number, page, tag)
+        pages.show_random()

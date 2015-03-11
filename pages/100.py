@@ -1,8 +1,11 @@
 #width:79
 #height: 30
 
-from colours import Foreground,Background,colour_print
-page=colour_print("""
+from base_page import Page
+
+index_page=Page("100")
+
+index_page.content=index_page.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxxxxxxx  x  x         x    xx         x     x
 xxxxxxxxxxxxxxxx    xx xxxxxxx x  x  x xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxxxxx
@@ -22,8 +25,8 @@ repository.
 Press A on the SNES controller to add a cup of tea.
 
 INDEX
-"""+Foreground.MAGENTA+"100"+Foreground.DEFAULT+""" Index                        """+Foreground.MAGENTA+"888"+Foreground.DEFAULT+""" Subtitles
-"""+Foreground.MAGENTA+"150"+Foreground.DEFAULT+""" Events
-"""+Foreground.MAGENTA+"200"+Foreground.DEFAULT+""" Letters
-"""+Foreground.MAGENTA+"401"+Foreground.DEFAULT+""" Weather
+"""+index_page.Foreground.MAGENTA+"100"+index_page.Foreground.DEFAULT+""" Index                        """+index_page.Foreground.MAGENTA+"888"+index_page.Foreground.DEFAULT+""" Subtitles
+"""+index_page.Foreground.MAGENTA+"150"+index_page.Foreground.DEFAULT+""" Events
+"""+index_page.Foreground.MAGENTA+"200"+index_page.Foreground.DEFAULT+""" Letters
+"""+index_page.Foreground.MAGENTA+"401"+index_page.Foreground.DEFAULT+""" Weather
 """
