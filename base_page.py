@@ -22,7 +22,7 @@ class Page:
  #       return colour_print_non_obj(text,background,foreground)
 
     def show(self):
-        print("                                                     "+self.number+" KLBFAX "+strftime("%a %d %b %H:%M"))
+        print(" " * 53 +self.number+" KLBFAX "+strftime("%a %d %b %H:%M"))
         out = self.content.split("\n")
         for i in range(0,27):
             if i<len(out):
