@@ -32,13 +32,11 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
     
     for date in sorted(events):
         event = events[date]
-        page+=date+"""
-    """
+        page+=date+"\n"
         i = 0
         col = self.colours.Foreground.WHITE
         for info in event:
-            page+="  "+col+info+self.colours.Foreground.DEFAULT+"""
-    """
+            page+="  "+col+info+self.colours.Foreground.DEFAULT+"\n"
             if col == self.colours.Foreground.WHITE:
                 if i>=2:
                     col = self.colours.Foreground.YELLOW
@@ -47,8 +45,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                 col = self.colours.Foreground.GREEN
             elif col == self.colours.Foreground.GREEN:
                 col = self.colours.Foreground.YELLOW
-        page+="""
-    """
+        page+="\n"
     self.content = page
 
 
