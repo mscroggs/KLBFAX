@@ -27,7 +27,7 @@ if not os.path.exists(pages_dir):
         raise ConfigError("The pages folder doesn't exist" +
                           "and cannot be created: " + pages_dir)
 
-onlyfiles = [f for f in listdir(pages_dir)
+only_page_files = [f for f in listdir(pages_dir)
              if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
 try:
@@ -35,7 +35,7 @@ try:
 except NameError:
     pages = PageFactory()
 
-for f in onlyfiles:
+for f in only_page_files:
     load_me = f.split(".")[0]
     module = getattr(__import__("pages", fromlist=[load_me]), load_me)
     reload(module)
