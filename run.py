@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 from time import strftime
-from ceefax import pages
+import ceefax
 from base_page import Page
 from colours import Background, Foreground
 from os.path import isfile
@@ -12,16 +12,22 @@ import select
 
 name_page = Page("???")
 
-pages.show_random()
+ceefax.pages.show_random()
+
+loops_done = 0
 
 while True:
+    loops_done+=1
+    if loops_done % 10 == 0:
+        reload(ceefax)
+
     REFRESH_RATE_SECS = 30
     input_fd, _, _ = select.select([sys.stdin], [], [], REFRESH_RATE_SECS)
 
     if (input_fd):
         name = sys.stdin.readline().strip()
         if len(name)==3:
-            page = pages.load(name)
+            page = ceefax.pages.load(name)
             page.show()
         elif name == "00488a0488":
             from os import system
@@ -53,4 +59,4 @@ while True:
             name_page.content=greeting+" "+name+"!"
             name_page.show()
     else:
-        pages.show_random()
+        ceefax.pages.show_random()
