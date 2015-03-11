@@ -5,7 +5,7 @@ from base_page import Page
 
 index_page=Page("100")
 
-index_page.content=index_page.colour_print("""
+index_page.content=index_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxxxxxxx  x  x         x    xx         x     x
 xxxxxxxxxxxxxxxx    xx xxxxxxx x  x  x xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxxxxx
@@ -25,8 +25,8 @@ repository.
 Press A on the SNES controller to add a cup of tea.
 
 INDEX
-"""+index_page.Foreground.MAGENTA+"100"+index_page.Foreground.DEFAULT+""" Index                        """+index_page.Foreground.MAGENTA+"888"+index_page.Foreground.DEFAULT+""" Subtitles
-"""+index_page.Foreground.MAGENTA+"150"+index_page.Foreground.DEFAULT+""" Events
-"""+index_page.Foreground.MAGENTA+"200"+index_page.Foreground.DEFAULT+""" Letters
-"""+index_page.Foreground.MAGENTA+"401"+index_page.Foreground.DEFAULT+""" Weather
+"""+index_page.colours.Foreground.MAGENTA+"100"+index_page.colours.Foreground.DEFAULT+""" Index                        """+index_page.colours.Foreground.MAGENTA+"888"+index_page.colours.Foreground.DEFAULT+""" Subtitles
+"""+index_page.colours.Foreground.MAGENTA+"150"+index_page.colours.Foreground.DEFAULT+""" Events
+"""+index_page.colours.Foreground.MAGENTA+"200"+index_page.colours.Foreground.DEFAULT+""" Letters
+"""+index_page.colours.Foreground.MAGENTA+"401"+index_page.colours.Foreground.DEFAULT+""" Weather
 """

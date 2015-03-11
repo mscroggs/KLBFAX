@@ -5,12 +5,12 @@ from math import floor
 def empty_f(self):
     pass
 
-from colours import colour_print as colour_print_non_obj
+#from colours import colour_print as colour_print_non_obj
 
 class Page:
-    from colours import Foreground,Background,Style
-
     def __init__(self,number,generate_content=empty_f):
+        import colours
+        self.colours = colours
         self.generate_content=generate_content
         self.content = ""
         self.isEnabled = True
@@ -18,8 +18,8 @@ class Page:
         self.number = str(number)
         self.loaded = False
 
-    def colour_print(self,text,background=Background.BLUE,foreground=Foreground.YELLOW):
-        return colour_print_non_obj(text,background,foreground)
+ #   def colour_print(self,text,background=Background.BLUE,foreground=Foreground.YELLOW):
+ #       return colour_print_non_obj(text,background,foreground)
 
     def show(self):
         print("                                                     "+self.number+" KLBFAX "+strftime("%a %d %b %H:%M"))
@@ -32,8 +32,8 @@ class Page:
         before = int(floor((79-len(self.tagline))/2))
         after = 79-len(self.tagline)-before
         tagline_print = " " * before + self.tagline + " " * after
-        print(self.Background.BLUE + self.Foreground.YELLOW + tagline_print
-              + self.Background.DEFAULT + self.Foreground.DEFAULT)
+        print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW + tagline_print
+              + self.colours.Background.DEFAULT + self.colours.Foreground.DEFAULT)
 
     def reload(self):
         try:
@@ -41,6 +41,7 @@ class Page:
             self.loaded = True
         except:
             self.loaded = False
+
 
 class PageFactory:
     def __init__(self):

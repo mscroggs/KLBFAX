@@ -4,14 +4,14 @@
 from base_page import Page
 
 def f(self):
-    page=self.colour_print("""
+    page=self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx      xx  xx  xx      xx   xx  xx      xx      xxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx  xxxxxx  xx  xx  xxxxxx    x  xxxx  xxxx  xxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx    xxxx  xx  xx    xxxx  x    xxxx  xxxx      xxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx  xxxxxxx    xxx  xxxxxx  xx   xxxx  xxxxxxxx  xxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx      xxxx  xxxx      xx  xxx  xxxx  xxxx      xxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx""",self.Background.RED,self.Foreground.BLUE)+"""
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx""",self.colours.Background.RED,self.colours.Foreground.BLUE)+"""
 """
 
 
@@ -35,18 +35,18 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         page+=date+"""
     """
         i = 0
-        col = self.Foreground.WHITE
+        col = self.colours.Foreground.WHITE
         for info in event:
-            page+="  "+col+info+self.Foreground.DEFAULT+"""
+            page+="  "+col+info+self.colours.Foreground.DEFAULT+"""
     """
-            if col == self.Foreground.WHITE:
+            if col == self.colours.Foreground.WHITE:
                 if i>=2:
-                    col = self.Foreground.YELLOW
+                    col = self.colours.Foreground.YELLOW
                 i+=1
-            elif col == self.Foreground.YELLOW:
-                col = self.Foreground.GREEN
-            elif col == self.Foreground.GREEN:
-                col = self.Foreground.YELLOW
+            elif col == self.colours.Foreground.YELLOW:
+                col = self.colours.Foreground.GREEN
+            elif col == self.colours.Foreground.GREEN:
+                col = self.colours.Foreground.YELLOW
         page+="""
     """
     self.content = page

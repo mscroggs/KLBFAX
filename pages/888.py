@@ -5,7 +5,7 @@ from base_page import Page
 
 sub_page = Page("888")
 
-sub_page.content=sub_page.colour_print("""
+sub_page.content=sub_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxx      xx  xx  xx     xxx      xx  xx      xx  xxxxxx      xx      xxxxxxx
 xxxxxxx  xxxxxx  xx  xx  xx  xxxx  xxxx  xxxx  xxxx  xxxxxx  xxxxxx  xxxxxxxxxxx

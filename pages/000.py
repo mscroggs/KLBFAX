@@ -7,13 +7,13 @@ test_page = Page("000")
 test_page.content="""
 TEST PAGE
 """
-for i in range(0,len(test_page.Foreground.list)):
-    test_page.content+=test_page.Foreground.list[i]+test_page.Foreground.delist[i]+test_page.Foreground.DEFAULT+"""
+for i in range(0,len(test_page.colours.Foreground.list)):
+    test_page.content+=test_page.colours.Foreground.list[i]+test_page.colours.Foreground.delist[i]+test_page.colours.Foreground.DEFAULT+"""
 """
-for i in range(0,len(test_page.Background.list)):
-    test_page.content+=test_page.Background.list[i]+test_page.Background.delist[i]+test_page.Background.DEFAULT+"""
+for i in range(0,len(test_page.colours.Background.list)):
+    test_page.content+=test_page.colours.Background.list[i]+test_page.colours.Background.delist[i]+test_page.colours.Background.DEFAULT+"""
 """
-for i in range(0,len(test_page.Style.list)):
-    test_page.content+=test_page.Style.list[i]+test_page.Style.delist[i]+test_page.Style.DEFAULT+"""
+for i in range(0,len(test_page.colours.Style.list)):
+    test_page.content+=test_page.colours.Style.list[i]+test_page.colours.Style.delist[i]+test_page.colours.Style.DEFAULT+"""
 """
 

@@ -43,7 +43,7 @@ def f(self):
                     line=line[79:]
                 newletter+=line+"\n"
     
-            letters=newletter+"\n"+self.Foreground.YELLOW+"from "+mail.fr+self.Foreground.DEFAULT+"----------------------------------------\n"+letters
+            letters=newletter+"\n"+self.colours.Foreground.YELLOW+"from "+mail.fr+self.colours.Foreground.DEFAULT+"----------------------------------------\n"+letters
             mail.read()
     
     letters = letters.split("\n")
@@ -53,10 +53,10 @@ def f(self):
     
     with open(join(expanduser("~"),".klb/emails"),"w") as f:
         f.write(letters)
-            
-    page = self.Foreground.RED+"LETTERS"+self.Foreground.DEFAULT+"\n"+letters
+
+    page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"+letters
     self.content = page
 
 letters_page = Page("200",f)
 
-letters_page.tag = "Email klbscroggsbot@gmail.com and your letter will appear here"
+letters_page.tagline = "Email klbscroggsbot@gmail.com and your letter will appear here"
