@@ -13,7 +13,7 @@ class Page:
         self.colours = colours
         self.generate_content=generate_content
         self.content = ""
-        self.isEnabled = True
+        self.is_enabled = True
         self.tagline = "KLBFAX: The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
@@ -48,14 +48,14 @@ class PageFactory:
         self.pages={}
         self.fail_page = Page("---")
         self.fail_page.loaded = False
-        self.fail_page.isEnabled = False
+        self.fail_page.is_enabled = False
 
     def add(self,page):
         self.pages[page.number]=page
 
     def show_random(self):
         page = self.fail_page
-        while not page.loaded or not page.isEnabled:
+        while not page.loaded or not page.is_enabled:
             page = choice(self.pages.items())[1]
             page.reload()
         page.show()

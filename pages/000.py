@@ -3,6 +3,7 @@
 
 from base_page import Page
 test_page = Page("000")
+test_page.is_enabled = False
 
 test_page.content="""
 TEST PAGE
