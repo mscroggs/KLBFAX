@@ -6,5 +6,5 @@ Look at the files in that folder for examples.
 
 ## Running
 ```shell
-./run.sh
+./run.py
 ```
