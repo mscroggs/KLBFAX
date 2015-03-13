@@ -14,7 +14,7 @@ xxxxxxxxx  xx   xx  xxxxxx  xxxxxx  xx  xx  xx  xxxxxx  xxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxx     xxxx    xxxx  xxxxxx  xx     xxx    xxxx      xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxx  xx  xxx  xxxxxx  xxxxxx  xx  xxxxxx  xxxxxxxxxx  xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxx  xxx  xx      xx      xx  xx  xxxxxx      xx      xxxxxxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx""",recipe_page.colours.Background.DEFAULT,recipe_page.colours.Foreground.BLUE)+"""
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx""",recipe_page.colours.Background.RED,recipe_page.colours.Foreground.BLUE)+"""
 
 BAD-TEMPERED CAKE (A.K.A. Tiffin)
 
