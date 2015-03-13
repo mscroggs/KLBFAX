@@ -35,9 +35,10 @@ try:
 except NameError:
     pageFactory = PageFactory()
 
-for f in only_page_files:
-    load_me = f.split(".")[0]
-    module = getattr(__import__("pages", fromlist=[load_me]), load_me)
+for page_file in only_page_files:
+    page_file_no_ext = os.path.splitext(page_file)[0]
+    module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                     page_file_no_ext)
     reload(module)
     for object in dir(module):
         obj = getattr(module, object)

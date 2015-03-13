@@ -1,9 +1,11 @@
 #width:79
 #height: 30
 
+import os
 from page import Page
 
-index_page=Page("100")
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+index_page = Page(page_number)
 
 index_page.content=index_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
