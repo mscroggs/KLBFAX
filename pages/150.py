@@ -50,3 +50,4 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 events_page = Page(page_number, f)
+events_page.title = "Events"

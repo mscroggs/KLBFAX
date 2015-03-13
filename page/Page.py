@@ -16,6 +16,7 @@ class Page:
         self.tagline = "KLBFAX: The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
+        self.title = ""
 
     def show(self):
         print(" " * 53 + self.number + " KLBFAX " + strftime("%a %d %b %H:%M"))

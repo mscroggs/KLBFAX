@@ -62,3 +62,4 @@ page_number = os.path.splitext(os.path.basename(__file__))[0]
 letters_page = Page(page_number, f)
 
 letters_page.tagline = "Email klbscroggsbot@gmail.com and your letter will appear here"
+letters_page.title = "Letters"

@@ -43,3 +43,4 @@ Last Ligntning      """+weather_data[116]+" "+weather_data[115]+"""
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 weather_page = Page(page_number, f)
+weather_page.title = "Weather"

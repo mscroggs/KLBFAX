@@ -1,8 +1,14 @@
 import random
 from page import Page
 
+def get_page_factory():
+    if not isinstance(PageFactory._instance,PageFactory):
+        PageFactory._instance = PageFactory()
+    return PageFactory._instance
+
 
 class PageFactory:
+    _instance = None
     def __init__(self):
         self.pages = {}
         self.fail_page = Page("---")

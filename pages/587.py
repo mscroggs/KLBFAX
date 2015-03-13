@@ -6,7 +6,7 @@ from page import Page
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 recipe_page = Page(page_number)
-
+recipe_page.title = "Recipe"
 recipe_page.content=recipe_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxx      xxx      xx      xx  xx     xxx      xx      xxxxxxxxxxxxxxxxxxxx

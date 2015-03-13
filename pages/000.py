@@ -3,6 +3,7 @@ from page import Page
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 test_page = Page(page_number)
+test_page.title = "Test Page"
 test_page.is_enabled = False
 
 test_page.content="""
