@@ -6,6 +6,7 @@ from os.path import isfile
 import os
 from page import PageFactory, Page
 
+
 class ConfigError(Exception):
     pass
 
@@ -27,21 +28,21 @@ if not os.path.exists(pages_dir):
                           "and cannot be created: " + pages_dir)
 
 only_page_files = [f for f in listdir(pages_dir)
-             if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
+                   if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
 try:
-    isinstance(pages,PageFactory)
+    isinstance(pageFactory, PageFactory)
 except NameError:
-    pages = PageFactory()
+    pageFactory = PageFactory()
 
 for f in only_page_files:
     load_me = f.split(".")[0]
     module = getattr(__import__("pages", fromlist=[load_me]), load_me)
     reload(module)
     for object in dir(module):
-        obj = getattr(module,object)
-        if isinstance(obj,Page):
+        obj = getattr(module, object)
+        if isinstance(obj, Page):
             try:
-                pages.add(obj)
+                pageFactory.add(obj)
             except:
                 pass
