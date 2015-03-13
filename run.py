@@ -9,7 +9,7 @@ import select
 
 name_page = Page("???")
 
-ceefax.pages.show_random()
+ceefax.pageFactory.show_random()
 
 loops_done = 0
 
@@ -24,7 +24,7 @@ while True:
     if (input_fd):
         name = sys.stdin.readline().strip()
         if len(name) == 3:
-            page = ceefax.pages.load(name)
+            page = ceefax.pageFactory.load(name)
             page.show()
         elif name == "00488a0488":
             from os import system
@@ -56,4 +56,4 @@ while True:
             name_page.content=greeting+" "+name+"!"
             name_page.show()
     else:
-        ceefax.pages.show_random()
+        ceefax.pageFactory.show_random()

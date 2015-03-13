@@ -1,9 +1,11 @@
 #width:79
 #height: 30
 
+import os
 from page import Page
 
-recipe_page=Page("587")
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+recipe_page = Page(page_number)
 
 recipe_page.content=recipe_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

@@ -1,9 +1,11 @@
 #width:79
 #height: 30
 
+import os
 from page import Page
 
-sub_page = Page("888")
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+sub_page = Page(page_number)
 
 sub_page.content=sub_page.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx

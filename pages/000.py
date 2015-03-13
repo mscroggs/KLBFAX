@@ -1,8 +1,8 @@
-#width:79
-#height: 30
-
+import os
 from page import Page
-test_page = Page("000")
+
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+test_page = Page(page_number)
 test_page.is_enabled = False
 
 test_page.content="""
@@ -17,4 +17,3 @@ for i in range(0,len(test_page.colours.Background.list)):
 for i in range(0,len(test_page.colours.Style.list)):
     test_page.content+=test_page.colours.Style.list[i]+test_page.colours.Style.delist[i]+test_page.colours.Style.DEFAULT+"""
 """
-

@@ -1,14 +1,14 @@
 #width:79
 #height: 30
 
+import os
 from page import Page
 
 
 def f(self):
 
     import urllib2
-    import re
-    
+
     response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
     weather_data = response.read().split(" ")
     tag = "Live data from CASA - "+weather_data[29]+":"+weather_data[30]+":"+weather_data[31]
@@ -37,8 +37,9 @@ Soil Temperature    """+weather_data[13]+u"\u00B0"+"""C
 Current Weather     """+weather_data[49]+"""
 Cloud Height        """+weather_data[73]+"""m
 Last Ligntning      """+weather_data[116]+" "+weather_data[115]+"""
-""" 
+"""
     self.content = page
     self.tagline = tag
 
-weather_page = Page("401",f)
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+weather_page = Page(page_number, f)

@@ -1,3 +1,4 @@
+import os
 from page import Page
 
 def f(self):
@@ -9,15 +10,15 @@ def f(self):
     with open(join(expanduser("~"),".klb/gmail")) as f:
         for line in f.readlines():
             details.append(line.strip("\n"))
-    
+
     g = gmail.login(details[0],details[1])
-    
-    
+
+
     unread = g.inbox().mail(unread=True)
-    
+
     with open(join(expanduser("~"),".klb/emails")) as f:
         letters = f.read()
-    
+
     for mail in unread:
         mail.fetch()
         lines = "".join(mail.body.split("\r")).split("\n")
@@ -42,21 +43,22 @@ def f(self):
                     newletter += line[:79]+"\n"
                     line=line[79:]
                 newletter+=line+"\n"
-    
+
             letters=newletter+"\n"+self.colours.Foreground.YELLOW+"from "+mail.fr+self.colours.Foreground.DEFAULT+"----------------------------------------\n"+letters
             mail.read()
-    
+
     letters = letters.split("\n")
     if len(letters)>100:
         letters = letters[:100]
     letters = "\n".join(letters)
-    
+
     with open(join(expanduser("~"),".klb/emails"),"w") as f:
         f.write(letters)
 
     page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"+letters
     self.content = page
 
-letters_page = Page("200",f)
+page_number = os.path.splitext(os.path.basename(__file__))[0]
+letters_page = Page(page_number, f)
 
 letters_page.tagline = "Email klbscroggsbot@gmail.com and your letter will appear here"
