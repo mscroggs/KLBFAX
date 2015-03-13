@@ -19,7 +19,7 @@ class PageFactory:
             page.reload()
         page.show()
 
-    def load(self, number):
+    def get_reloaded_page(self, number):
         if number not in self.pages:
             return self.fail_page
         if not self.pages[number]:
