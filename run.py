@@ -23,7 +23,7 @@ while True:
 
     if (input_fd):
         name = sys.stdin.readline().strip()
-        if len(name) == 3:
+        if ceefax.pageFactory.page_exists(name):
             page = ceefax.pageFactory.load(name)
             page.show()
         elif name == "00488a0488":

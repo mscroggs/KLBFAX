@@ -31,3 +31,9 @@ class PageFactory:
 
     def get_enabled_pages(self):
         return [page for page in self.pages.values() if page.is_enabled]
+
+    def page_exists(self, page_num):
+        if page_num in self.pages:
+            return True
+
+        return False
