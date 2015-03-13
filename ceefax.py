@@ -30,10 +30,7 @@ if not os.path.exists(pages_dir):
 only_page_files = [f for f in listdir(pages_dir)
                    if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
-try:
-    isinstance(pageFactory, PageFactory)
-except NameError:
-    pageFactory = PageFactory()
+pageFactory = PageFactory()
 
 for page_file in only_page_files:
     page_file_no_ext = os.path.splitext(page_file)[0]
