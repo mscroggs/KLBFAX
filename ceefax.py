@@ -2,10 +2,9 @@
 # height: 30
 
 from os import listdir
-from random import choice
 from os.path import isfile
 import os
-from base_page import PageFactory,Page
+from page import PageFactory, Page
 
 class ConfigError(Exception):
     pass

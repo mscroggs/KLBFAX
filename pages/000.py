@@ -1,7 +1,7 @@
 #width:79
 #height: 30
 
-from base_page import Page
+from page import Page
 test_page = Page("000")
 test_page.is_enabled = False
 

@@ -1,7 +1,7 @@
 #width:79
 #height: 30
 
-from base_page import Page
+from page import Page
 
 index_page=Page("100")
 

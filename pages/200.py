@@ -1,4 +1,4 @@
-from base_page import Page
+from page import Page
 
 def f(self):
 
