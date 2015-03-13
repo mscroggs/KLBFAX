@@ -14,8 +14,8 @@ class PageFactory:
 
     def show_random(self):
         page = self.fail_page
-        while not page.loaded or not page.is_enabled:
-            page = random.choice(self.pages.items())[1]
+        while not page.loaded:
+            page = random.choice(self.get_enabled_pages())
             page.reload()
         page.show()
 
@@ -28,3 +28,6 @@ class PageFactory:
         if not self.pages[number].loaded:
             return self.fail_page
         return self.pages[number]
+
+    def get_enabled_pages(self):
+        return [page for page in self.pages.values() if page.is_enabled]
