@@ -1,0 +1,2 @@
+class LetterNotDefined(Exception):
+    pass

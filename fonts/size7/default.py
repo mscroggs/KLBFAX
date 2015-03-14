@@ -1,13 +1,12 @@
-import fonts.Letter
-
-class LetterNotDefined(Exception):
-    pass
+from fonts.Letter import Letter
+from fonts.exceptions import LetterNotDefined
 
 alphabet = {}
 
+
 def _add(letter, string):
     global alphabet
-    alphabet[letter] = string.strip()
+    alphabet[letter] = Letter(string.strip())
 
 _add("S", """
 xxxxxxxx
@@ -28,6 +27,7 @@ x  xx  x
 x      x
 xxxxxxxx
 """)
+
 
 def get_letter(char):
     try:

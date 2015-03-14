@@ -37,5 +37,6 @@ class Page(object):
             self.generate_content()
             self.loaded = True
         except Exception as e:
-            logging.warning(e)
+            logging.warning("Page " + self.title + " could not be reloaded")
+            logging.exception(e)
             self.loaded = False

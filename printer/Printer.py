@@ -1,4 +1,6 @@
 import fonts.size7.default
+import fonts.exceptions
+
 
 class Printer(object):
     def __init__(self):
@@ -8,7 +10,10 @@ class Printer(object):
         self.font = font
 
     def text_to_ascii(self, text):
-        return font.get_letter("A")
+        try:
+            return self.font.get_letter("A")
+        except fonts.exceptions.LetterNotDefined:
+            return text
 
 instance = Printer()
 instance.set_font(fonts.size7.default)
