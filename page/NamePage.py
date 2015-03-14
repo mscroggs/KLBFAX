@@ -10,7 +10,6 @@ class NamePage(Page):
         self.reload()
 
     def generate_content(self):
-        print "here"
         name = self.name
         greeting = "Hello"
 
