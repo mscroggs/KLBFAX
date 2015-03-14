@@ -1,6 +1,6 @@
 from random import random
-
 from page import Page
+from printer import Printer
 
 
 class NamePage(Page):
@@ -11,7 +11,8 @@ class NamePage(Page):
 
     def generate_content(self):
         name = self.name
-        greeting = "Hello"
+        # greeting = "Hello"
+        greeting = Printer.instance
 
         if random() < 0.01:
             greeting = "Bello"

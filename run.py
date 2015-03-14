@@ -5,7 +5,9 @@ from os.path import isfile
 import sys
 import select
 import page
+import log_setup
 
+log_setup.read_from_file()
 ceefax.pageFactory.show_random()
 
 loops_done = 0

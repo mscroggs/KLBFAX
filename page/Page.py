@@ -1,5 +1,6 @@
 from time import strftime
 from math import floor
+import logging
 
 
 class Page(object):
@@ -35,5 +36,6 @@ class Page(object):
         try:
             self.generate_content()
             self.loaded = True
-        except:
+        except Exception as e:
+            logging.warning(e)
             self.loaded = False
