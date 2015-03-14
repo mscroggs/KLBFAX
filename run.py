@@ -1,13 +1,10 @@
 #!/usr/bin/env python
 
 import ceefax
-from page import Page
 from os.path import isfile
-from random import random
 import sys
 import select
-
-name_page = Page("???")
+import page
 
 ceefax.pageFactory.show_random()
 
@@ -24,8 +21,7 @@ while True:
     if (input_fd):
         name = sys.stdin.readline().strip()
         if ceefax.pageFactory.page_exists(name):
-            page = ceefax.pageFactory.get_reloaded_page(name)
-            page.show()
+            ceefax.pageFactory.get_reloaded_page(name).show()
         elif name == "00488a0488":
             from os import system
             print("Restarting")
@@ -48,12 +44,7 @@ while True:
                             if i == 0:
                                 name = line
                             i += 1
-            greeting = "Hello"
-            if random() < 0.01:
-                greeting = "Bello"
-            if random() < 0.01:
-                name = "Jigsaw"
-            name_page.content=greeting+" "+name+"!"
-            name_page.show()
+
+            page.NamePage(name).show()
     else:
         ceefax.pageFactory.show_random()
