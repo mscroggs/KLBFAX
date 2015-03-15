@@ -13,7 +13,7 @@ class NamePage(Page):
     def generate_content(self):
         name = self.name
 
-        greeting = printer.instance.text_to_ascii("as")
+        greeting = printer.instance.text_to_ascii("asu")
         self.content = colours.colour_print(greeting)
 
         if random() < 0.01:
