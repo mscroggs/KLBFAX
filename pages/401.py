@@ -1,5 +1,7 @@
 import os
 from page import Page
+from printer import instance as printer
+from colours import colour_print
 
 
 class WeatherPage(Page):
@@ -13,14 +15,8 @@ class WeatherPage(Page):
         response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
         weather_data = response.read().split(" ")
         tag = "Live data from CASA - " + weather_data[29] + ":" + weather_data[30] + ":" + weather_data[31]
-        page = self.colours.colour_print("""
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-xxxxxxx  xxxx  xx      xxxx   xxxx      xx  xx  xx      xx     xxxxxxxxxxxxxxxxx
-xxxxxxx  xxxx  xx  xxxxxxx xxx xxxxx  xxxx  xx  xx  xxxxxx  xx  xxxxxxxxxxxxxxxx
-xxxxxxx  x  x  xx    xxxx       xxxx  xxxx      xx    xxxx    xxxxxxxxxxxxxxxxxx
-xxxxxxx        xx  xxxxxx  xxx  xxxx  xxxx  xx  xx  xxxxxx  x  xxxxxxxxxxxxxxxxx
-xxxxxxxx  xx  xxx      xx  xxx  xxxx  xxxx  xx  xx      xx  xx  xxxxxxxxxxxxxxxx
-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx""", self.colours.Background.CYAN, self.colours.Foreground.MAGENTA) + """
+        page = colour_print(printer.text_to_ascii("weather", padding={"left": 6}),
+                            self.colours.Background.CYAN, self.colours.Foreground.MAGENTA) + """
 
     Average Wind Speed  """ + weather_data[1] + """kts
     Gusts               """ + weather_data[2] + """kts

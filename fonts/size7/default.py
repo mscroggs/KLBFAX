@@ -1,12 +1,15 @@
 from fonts.LetterBlock import LetterBlock
 from fonts.exceptions import LetterNotDefined
 
+SIZE = 7
 alphabet = {}
 
 
 def _add(letter, string):
     global alphabet
-    alphabet[letter] = LetterBlock(string.strip())
+    letter_str = string.strip()
+    assert len(letter_str.split("\n")) == SIZE
+    alphabet[letter] = LetterBlock(letter_str)
 
 _add("|", """
 x
@@ -19,13 +22,13 @@ x
 """)
 
 _add("A", """
-xxxxxxxx
-xxx  xxx
-xx    xx
-xxxxxxxx
-xx    xx
-x      x
-xxxxxxxx
+xxxxxxxxx
+xxx   xxx
+xx xxx xx
+x       x
+x  xxx  x
+x  xxx  x
+xxxxxxxxx
 """)
 
 _add("C", """
@@ -35,6 +38,17 @@ x  xxxxx
 x  xxxxx
 x  xxxxx
 x      x
+xxxxxxxx
+""")
+
+
+_add("H", """
+xxxxxxxx
+x  xx  x
+x  xx  x
+x      x
+x  xx  x
+x  xx  x
 xxxxxxxx
 """)
 
@@ -78,6 +92,16 @@ x      x
 xxxxxxxx
 """)
 
+_add("T", """
+xxxxxxxx
+x      x
+xxx  xxx
+xxx  xxx
+xxx  xxx
+xxx  xxx
+xxxxxxxx
+""")
+
 _add("U", """
 xxxxxxxx
 x  xx  x
@@ -97,6 +121,17 @@ x  xx  xx
 x  xxx  x
 xxxxxxxxx
 """)
+
+_add("W", """
+xxxxxxxxxx
+x  xxxx  x
+x  xxxx  x
+x  x  x  x
+x        x
+xx  xx  xx
+xxxxxxxxxx
+""")
+
 
 def get_letter(char):
     try:
