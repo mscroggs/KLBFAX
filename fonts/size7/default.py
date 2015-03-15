@@ -31,6 +31,16 @@ x  xxx  x
 xxxxxxxxx
 """)
 
+_add("B", """
+xxxxxxxx
+x     xx
+x  xx  x
+x    xxx
+x  xx  x
+x     xx
+xxxxxxxx
+""")
+
 _add("C", """
 xxxxxxxx
 x      x
@@ -41,6 +51,15 @@ x      x
 xxxxxxxx
 """)
 
+_add("E", """
+xxxxxxxx
+x      x
+x  xxxxx
+x    xxx
+x  xxxxx
+x      x
+xxxxxxxx
+""")
 
 _add("H", """
 xxxxxxxx
@@ -62,11 +81,11 @@ x  x
 xxxx
 """)
 
-_add("E", """
+_add("L", """
 xxxxxxxx
-x      x
 x  xxxxx
-x    xxx
+x  xxxxx
+x  xxxxx
 x  xxxxx
 x      x
 xxxxxxxx
@@ -120,6 +139,16 @@ x     xxx
 x  xx  xx
 x  xxx  x
 xxxxxxxxx
+""")
+
+_add("S", """
+xxxxxxxx
+x      x
+x  xxxxx
+x      x
+xxxxx  x
+x      x
+xxxxxxxx
 """)
 
 _add("W", """
