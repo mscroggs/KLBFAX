@@ -16,7 +16,7 @@ def process_printing_options(function):
         result = function(self, text)
 
         if padding_enabled:
-            right_shift = screen.WIDTH - result.get_length()
+            right_shift = screen.WIDTH - len(result)
             if right_shift > 0:
                 result += function(self, filler * right_shift)
 

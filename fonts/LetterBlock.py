@@ -8,7 +8,7 @@ class LetterBlock:
     def __str__(self):
         return self._str
 
-    def get_length(self):
+    def __len__(self):
         return len(self._str.split("\n")[0])
 
 
