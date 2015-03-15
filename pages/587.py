@@ -1,15 +1,15 @@
 import os
 from page import Page
 import colours
-import printer
+from printer import instance as printer
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 recipe_page = Page(page_number)
 recipe_page.title = "Recipes"
 recipe_page.content = (colours.colour_print(
-                printer.instance.text_to_ascii("|" * 8 + "recipes" + "|" * 19),
-                colours.Background.RED,
-                colours.Foreground.BLUE) + "\n\n" +
+    printer.text_to_ascii("recipes", padding={"left": 8}),
+    colours.Background.RED,
+    colours.Foreground.BLUE) + "\n\n" +
 """BAD-TEMPERED CAKE (A.K.A. Tiffin)
 
   1/2 lb    Rich tea and/or digestive biscuits
