@@ -1,5 +1,6 @@
 import fonts.size7.default
 import fonts.exceptions
+import screen
 from fonts.LetterBlock import LetterBlock
 
 
@@ -15,7 +16,7 @@ def process_printing_options(function):
         result = function(self, text)
 
         if padding_enabled:
-            right_shift = 80 - result.get_length()
+            right_shift = screen.WIDTH - result.get_length()
             if right_shift > 0:
                 result += function(self, filler * right_shift)
 
