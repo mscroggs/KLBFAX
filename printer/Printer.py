@@ -1,5 +1,6 @@
 import fonts.size7.default
 import fonts.exceptions
+from fonts.LetterBlock import LetterBlock
 
 
 class Printer(object):
@@ -11,7 +12,7 @@ class Printer(object):
 
     def text_to_ascii(self, text):
         try:
-            return self.font.get_letter("A")
+            return str(reduce(LetterBlock.__add__, map(self.font.get_letter, text)))
         except fonts.exceptions.LetterNotDefined:
             return text
 

@@ -1,1 +1,1 @@
-from .Letter import Letter
+from .LetterBlock import LetterBlock

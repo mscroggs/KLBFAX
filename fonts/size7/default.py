@@ -1,4 +1,4 @@
-from fonts.Letter import Letter
+from fonts.LetterBlock import LetterBlock
 from fonts.exceptions import LetterNotDefined
 
 alphabet = {}
@@ -6,7 +6,17 @@ alphabet = {}
 
 def _add(letter, string):
     global alphabet
-    alphabet[letter] = Letter(string.strip())
+    alphabet[letter] = LetterBlock(string.strip())
+
+_add("A", """
+xxxxxxxx
+xxx  xxx
+xx    xx
+xxxxxxxx
+xx    xx
+x      x
+xxxxxxxx
+""")
 
 _add("S", """
 xxxxxxxx

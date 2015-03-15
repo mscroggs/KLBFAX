@@ -1,7 +1,7 @@
 from random import random
 from page import Page
 import printer
-
+import colours
 
 class NamePage(Page):
     def __init__(self, name):
@@ -12,12 +12,13 @@ class NamePage(Page):
 
     def generate_content(self):
         name = self.name
-        # greeting = "Hello"
-        greeting = printer.instance.text_to_ascii("Hello")
+
+        greeting = printer.instance.text_to_ascii("as")
+        self.content = colours.colour_print(greeting)
 
         if random() < 0.01:
             greeting = "Bello"
         if random() < 0.01:
             name = "Jigsaw"
 
-        self.content = greeting + " " + name + "!"
+        self.content += name + "!"
