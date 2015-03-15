@@ -16,7 +16,7 @@ class NamePage(Page):
     def generate_content(self):
         name = self.name
 
-        greeting = "Hello"
+        greeting = "Hi"
 
         if random() < 0.01:
             greeting = "Bello"
@@ -24,6 +24,5 @@ class NamePage(Page):
             name = "Jigsaw"
 
         self.content = colour_print(printer.text_to_ascii(greeting))
-        self.content += "\n  "
+        self.content += "\n\n"
         self.content += colour_print(printer.text_to_ascii(name + "!"))
-
