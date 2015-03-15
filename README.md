@@ -6,7 +6,7 @@ Look at the files in that folder for examples.
 
 ## Dependencies
 ```shell
-pip install -r dependencies.txt
+pip install -r requirements.txt
 ```
 
 ## Running in production
