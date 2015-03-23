@@ -51,12 +51,42 @@ x      x
 xxxxxxxx
 """)
 
+_add("D", """
+xxxxxxxx
+x     xx
+x  xx  x
+x  xx  x
+x  xx  x
+x     xx
+xxxxxxxx
+""")
+
 _add("E", """
 xxxxxxxx
 x      x
 x  xxxxx
 x    xxx
 x  xxxxx
+x      x
+xxxxxxxx
+""")
+
+_add("F", """
+xxxxxxxx
+x      x
+x  xxxxx
+x    xxx
+x  xxxxx
+x  xxxxx
+xxxxxxxx
+""")
+
+_add("G", """
+xxxxxxxx
+x      x
+x  xxxxx
+x  x   x
+x  xx  x
 x      x
 xxxxxxxx
 """)
@@ -79,6 +109,16 @@ x  x
 x  x
 x  x
 xxxx
+""")
+
+_add("J", """
+xxxxxx
+xxx  x
+xxx  x
+xxx  x
+xxx  x
+x    x
+xxxxxx
 """)
 
 _add("L", """
