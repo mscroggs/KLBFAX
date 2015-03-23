@@ -9,6 +9,6 @@ def read_from_file():
     else:
         config_file = "production.yaml"
 
-    with open(os.path.join('log_confs', config_file), 'rt') as f:
+    with open(os.path.join(os.path.dirname(os.path.realpath(__file__)),os.path.join('log_confs', config_file)), 'rt') as f:
         config = yaml.load(f.read())
         logging.config.dictConfig(config)
