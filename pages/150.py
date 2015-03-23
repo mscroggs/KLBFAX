@@ -7,7 +7,7 @@ class EventPage(Page):
         super(EventPage, self).__init__(page_num)
         self.title = "Events"
 
-def generate_content(self):
+    def generate_content(self):
         page = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxx      xx  xx  xx      xx   xx  xx      xx      xxxxxxxxxxxxxxxxxxxxxxx
