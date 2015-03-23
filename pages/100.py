@@ -32,6 +32,7 @@ INDEX
         i = 0
         print PageFactory().pages
         for num, page in PageFactory().pages.items():
+          if page.is_enabled:
             content += self.colours.Foreground.MAGENTA
             content += num
             content += self.colours.Foreground.DEFAULT
