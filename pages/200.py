@@ -1,5 +1,6 @@
 import os
 from page import Page
+from random import choice
 
 class LetterPage(Page):
     def __init__(self, page_num):
@@ -41,7 +42,7 @@ class LetterPage(Page):
                     f.write(lines[2])
                 mail.read()
             else:
-                newletter = ""
+                newletter = choice(self.colours.Background.list)
                 for line in lines:
                     if line!="":
                         while len(line)>79:
@@ -49,7 +50,7 @@ class LetterPage(Page):
                             line=line[79:]
                         newletter+=line+"\n"
 
-                letters=newletter+"\n"+self.colours.Foreground.YELLOW+"from "+mail.fr+self.colours.Foreground.DEFAULT+"----------------------------------------\n"+letters
+                letters=newletter+"\n"+self.colours.Foreground.YELLOW+"from "+mail.fr+"\n"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+letters
                 mail.read()
 
         letters = letters.split("\n")
