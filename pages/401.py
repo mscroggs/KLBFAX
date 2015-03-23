@@ -33,7 +33,7 @@ class WeatherPage(Page):
     Soil Temperature    """ + weather_data[13] + u"\u00B0" + """C
     Current Weather     """ + weather_data[49] + """
     Cloud Height        """ + weather_data[73] + """m
-    Last Ligntning      """ + weather_data[116] + " " + weather_data[115]+"""
+    Last Lightning      """ + weather_data[116] + " " + weather_data[115]+"""
     """
         self.content = page
         self.tagline = tag
