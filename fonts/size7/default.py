@@ -121,6 +121,16 @@ x    x
 xxxxxx
 """)
 
+_add("K", """
+xxxxxxxx
+x  xx  x
+x  x  xx
+x    xxx
+x  x  xx
+x  xx  x
+xxxxxxxx
+""")
+
 _add("L", """
 xxxxxxxx
 x  xxxxx
@@ -139,6 +149,16 @@ x     xx
 x  xxxxx
 x  xxxxx
 xxxxxxxx
+""")
+
+_add("R", """
+xxxxxxxxx
+x      xx
+x  xx   x
+x     xxx
+x  xx  xx
+x  xxx  x
+xxxxxxxxx
 """)
 
 _add("S", """
@@ -167,26 +187,6 @@ x  xx  x
 x  xx  x
 x  xx  x
 x  xx  x
-x      x
-xxxxxxxx
-""")
-
-_add("R", """
-xxxxxxxxx
-x      xx
-x  xx   x
-x     xxx
-x  xx  xx
-x  xxx  x
-xxxxxxxxx
-""")
-
-_add("S", """
-xxxxxxxx
-x      x
-x  xxxxx
-x      x
-xxxxx  x
 x      x
 xxxxxxxx
 """)
