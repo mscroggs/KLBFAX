@@ -42,7 +42,7 @@ class LetterPage(Page):
                     f.write(lines[2])
                 mail.read()
             else:
-                newletter = choice(self.colours.Background.list)
+                newletter = choice(self.colours.Background.non_boring)
                 for line in lines:
                     if line!="":
                         while len(line)>79:

@@ -48,6 +48,7 @@ class Background:
     LCYAN   = "\033[106m"
     WHITE   = "\033[107m"
     list = [DEFAULT,BLACK,RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN,WHITE]
+    non_boring = [RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN]
     delist = ["DEFAULT","BLACK","RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE"]
 
 def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW):
