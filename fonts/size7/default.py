@@ -211,6 +211,16 @@ x  x
 xxxx
 """)
 
+_add("1", """
+xxxx
+x  x
+x  x
+x  x
+x  x
+x  x
+xxxx
+""")
+
 
 def get_letter(char):
     try:
