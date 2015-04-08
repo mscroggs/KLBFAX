@@ -41,6 +41,5 @@ while True:
                 with open("/home/pi/cards/"+name) as f:
                     name = f.read().strip("\n")
             page.NamePage(name).show()
-            print(name)
     else:
         ceefax.pageFactory.show_random()
