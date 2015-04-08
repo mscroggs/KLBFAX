@@ -24,7 +24,7 @@ class TrainPage(Page):
         for train in trains[2:]:
             train = strip_tags(train).lstrip()
             train = train.split("\n")
-            if train[4].lstrip()!="Terminates here" and int(train[5].lstrip())>int(strftime("%H%M")):
+            if train[4].lstrip()!="Terminates here" and int(train[5].lstrip())>int(self.now().strftime("%H%M")):
                 new = train[5].lstrip()+" "+train[4].lstrip()
                 new += " "*(65-len(new))+train[3].lstrip()+"\n"
                 content += new

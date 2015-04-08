@@ -1,6 +1,8 @@
 from time import strftime
 from math import floor
+from datetime import datetime
 import logging
+import pytz
 
 
 class Page(object):
@@ -13,12 +15,16 @@ class Page(object):
         self.number = str(number)
         self.loaded = False
         self.title = ""
+        self.timezone = pytz.timezone('Europe/London') 
+
+    def now(self):
+        return self.timezone.localize(datetime.now())
 
     def generate_content(self):
         pass
 
     def show(self):
-        print(" " * 53 + self.number + " KLBFAX " + strftime("%a %d %b %H:%M"))
+        print(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M"))
         out = self.content.split("\n")
         for i in range(0, 27):
             if i < len(out):
