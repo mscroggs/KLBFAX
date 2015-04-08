@@ -3,7 +3,35 @@ from page import Page
 from colours import colour_print
 from printer import instance as printer
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-tv_page = Page(page_number)
-tv_page.title = "TV Listings"
-tv_page.content = colour_print(printer.text_to_ascii("BBC1"))+"\n"+"06:00 The Belgin Breakfast Show\n"+"09:00 Animal Hospital\n"+"09:30 Bargain Hunt\n"+        "10:00 Look Around You\n"+        "10:30 The Hexagons\n"+        "11:00 "+tv_page.colours.Foreground.BLUE+"FILM "+tv_page.colours.Foreground.DEFAULT+"Blackball \n"+        "13:00 BBC News at One\n"+        "13:30 Regional News\n"+        "13:45 Neighbours\n"+       "14:20 Diagnosis Murder\n"+        "15:00 "+tv_page.colours.Foreground.BLUE+"CBBC "+tv_page.colours.Foreground.DEFAULT+"Playdays \n"        "23:00 Pages from CEEFAX"
+class TVPage(Page):
+    def __init__(self, page_num, channel, feed):
+        super(TVPage, self).__init__(page_num)
+        self.title = "TV: "+channel
+        self.channel = channel
+        self.feed = feed
+
+    def generate_content(self):
+        import urllib2
+        from xml.etree import ElementTree
+        content = colour_print(printer.text_to_ascii(self.channel))+"\n"
+        response = urllib2.urlopen(self.feed)
+        xml = response.read()
+        e = ElementTree.fromstring(xml)
+        for prog in e.findall('programme'):
+            content += prog.find('start').text+" "+prog.find('title').text+"\n"
+        self.content = content
+
+tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml")
+tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml")
+tv3 = TVPage("603","BBC3","http://bleb.org/tv/data/listings/1/bbc3.xml")
+tv4 = TVPage("604","BBC4","http://bleb.org/tv/data/listings/1/bbc4.xml")
+tv5 = TVPage("605","BBC News 24","http://bleb.org/tv/data/listings/1/bbc_news24.xml")
+tv6 = TVPage("606","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml")
+tv7 = TVPage("607","Channel 4","http://bleb.org/tv/data/listings/1/ch4.xml")
+tv8 = TVPage("608","Challenge","http://bleb.org/tv/data/listings/1/challenge.xml")
+tv9 = TVPage("609","Dave","http://bleb.org/tv/data/listings/1/dave.xml")
+tv10 = TVPage("610","five","http://bleb.org/tv/data/listings/1/five.xml")
+tv11 = TVPage("611","more4","http://bleb.org/tv/data/listings/1/more4.xml")
+tv12 = TVPage("612","Film Four","http://bleb.org/tv/data/listings/1/film_four.xml")
+tv13 = TVPage("613","s4c","http://bleb.org/tv/data/listings/1/s4c.xml")
+tv14 = TVPage("614","QVC","http://bleb.org/tv/data/listings/1/qvc.xml")

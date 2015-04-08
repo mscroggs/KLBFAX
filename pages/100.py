@@ -1,6 +1,6 @@
 import os
 from page import Page, PageFactory
-
+from random import shuffle
 
 class IndexPage(Page):
     def __init__(self, page_num):
@@ -21,16 +21,14 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
 """)+"""
 KLBFAX is under construction. Check regularly for updates.
 
-The source code of KLBFAX is available at https://github.com/mscroggs/KLBFAX. If
-you would like to add features/pages to KLBFAX, ask Scroggs to add you to the
-repository.
-
-Press A on the SNES controller to add a cup of tea.
+Contribute at https://github.com/mscroggs/KLBFAX.
 
 INDEX
 """
         i = 0
-        for num, page in PageFactory().pages.items():
+        items = PageFactory().pages.items()
+        shuffle(items)
+        for num, page in items:
           if page.is_enabled:
             content += self.colours.Foreground.MAGENTA
             content += num

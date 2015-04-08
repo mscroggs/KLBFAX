@@ -18,7 +18,7 @@ class TrainPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii("TRAINS"))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" from Euston"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
         content += self.colours.Foreground.GREEN+"\nTime Destination"+" "*49+"Platform\n"+self.colours.Foreground.DEFAULT
-        response = urllib2.urlopen("http://www.opentraintimes.com/location/EUSTON/?passenger=on&show_call=on&show_stp=on&show_var=on&show_wtt=on&utf8=%E2%9C%93")
+        response = urllib2.urlopen("http://www.opentraintimes.com/location/euston/"+self.now().strftime("%Y-%m-%d/%H:%M")+"?passenger=on&show_call=on&show_stp=on&show_var=on&show_wtt=on&utf8=%E2%9C%93")
         html = response.read()
         trains = html.split("<table")[1].split("</table>")[0].split("<tr>")
         for train in trains[2:]:
