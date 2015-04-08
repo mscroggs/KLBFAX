@@ -22,7 +22,7 @@ class NamePage(Page):
             greeting = "Bello"
         if random() < 0.01:
             name = "Jigsaw"
-        if random() < 0.01:
+        if random() < 0.1:
             letters = ["#","a","b","c","d","e","f","g","h","i","j","k","1","2","3","4","0"]
             name[randint(0,len(name)-1)]=choice(letters)
 

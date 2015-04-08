@@ -39,14 +39,8 @@ while True:
         else:
             if isfile("/home/pi/cards/"+name):
                 with open("/home/pi/cards/"+name) as f:
-                    i = 0
-                    for line in f.readlines():
-                        line = line.strip("\n")
-                        if line != "":
-                            if i == 0:
-                                name = line
-                            i += 1
-
+                    name = f.read().strip("\n")
             page.NamePage(name).show()
+            print(name)
     else:
         ceefax.pageFactory.show_random()
