@@ -11,7 +11,7 @@ def strip_tags(string):
 class TrainPage(Page):
     def __init__(self, page_num):
         super(TrainPage, self).__init__(page_num)
-        self.title = "Letters"
+        self.title = "Trains"
         self.tagline = "Live trains from Euston. Data from opentraintimes.com."
 
     def generate_content(self):
