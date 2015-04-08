@@ -18,7 +18,7 @@ class Page(object):
         self.timezone = pytz.timezone('Europe/London') 
 
     def now(self):
-        return self.timezone.localize(datetime.now())
+        return pytz.utc.localize(datetime.now()).astimezone(self.timezone)
 
     def generate_content(self):
         pass
