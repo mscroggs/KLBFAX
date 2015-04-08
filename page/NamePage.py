@@ -4,7 +4,7 @@ from printer import instance as printer
 import colours
 
 def colour_print(text):
-    return colours.colour_print(text, colours.Background.WHITE, colours.Foreground.BLACK)
+    return colours.colour_print(text, colours.Background.RED, colours.Foreground.BLACK)
 
 class NamePage(Page):
     def __init__(self, name):

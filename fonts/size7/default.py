@@ -141,6 +141,16 @@ x      x
 xxxxxxxx
 """)
 
+_add("M", """
+xxxxxxxxxxxx
+x   xxxx   x
+x    xx    x
+x  x    x  x
+x  xx  xx  x
+x  xxxxxx  x
+xxxxxxxxxxxx
+""")
+
 _add("N", """
 xxxxxxxxx
 x   xx  x
@@ -148,6 +158,16 @@ x    x  x
 x  x    x
 x  xx   x
 x  xxx  x
+xxxxxxxxx
+""")
+
+_add("O", """
+xxxxxxxxx
+x       x
+x  xxx  x
+x  xxx  x
+x  xxx  x
+x       x
 xxxxxxxxx
 """)
 
@@ -159,6 +179,16 @@ x     xx
 x  xxxxx
 x  xxxxx
 xxxxxxxx
+""")
+
+_add("Q", """
+xxxxxxxxxx
+x       xx
+x  xxx  xx
+x  x    xx
+x  xx   xx
+x        x
+xxxxxxx  x
 """)
 
 _add("R", """
@@ -201,6 +231,16 @@ x      x
 xxxxxxxx
 """)
 
+_add("U", """
+xxxxxxxx
+x  xx  x
+x  xx  x
+x  xx  x
+xx    xx
+xxx  xxx
+xxxxxxxx
+""")
+
 _add("W", """
 xxxxxxxxxx
 x  xxxx  x
@@ -229,6 +269,36 @@ x  x
 x  x
 x  x
 xxxx
+""")
+
+_add("2", """
+xxxxxxxx
+x      x
+xxxxx  x
+x      x
+x  xxxxx
+x      x
+xxxxxxxx
+""")
+
+_add("3", """
+xxxxxxxx
+x      x
+xxxxx  x
+x      x
+xxxxx  x
+x      x
+xxxxxxxx
+""")
+
+_add("4", """
+xxxxxxxx
+x  xx  x
+x  xx  x
+x      x
+xxxxx  x
+xxxxx  x
+xxxxxxxx
 """)
 
 
