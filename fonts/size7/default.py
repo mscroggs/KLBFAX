@@ -21,6 +21,16 @@ x
 x
 """)
 
+_add(" ","""
+xxxxxx
+xxxxxx
+xxxxxx
+xxxxxx
+xxxxxx
+xxxxxx
+xxxxxx
+""")
+
 _add("A", """
 xxxxxxxxx
 xxx   xxx
@@ -231,7 +241,7 @@ x      x
 xxxxxxxx
 """)
 
-_add("U", """
+_add("V", """
 xxxxxxxx
 x  xx  x
 x  xx  x
