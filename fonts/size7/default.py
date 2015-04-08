@@ -141,6 +141,16 @@ x      x
 xxxxxxxx
 """)
 
+_add("N", """
+xxxxxxxxx
+x   xx  x
+x    x  x
+x  x    x
+x  xx   x
+x  xxx  x
+xxxxxxxxx
+""")
+
 _add("P", """
 xxxxxxxx
 x     xx
