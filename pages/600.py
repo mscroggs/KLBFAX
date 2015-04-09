@@ -18,7 +18,7 @@ class TVPage(Page):
         xml = response.read()
         e = ElementTree.fromstring(xml)
         for prog in e.findall('programme'):
-            if int(prog.find('end').text)>int(self.now().strftime("%H%M")):
+            if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")):
                 content += prog.find('start').text+" "+prog.find('title').text+"\n"
         self.content = content
 
