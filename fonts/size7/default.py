@@ -21,6 +21,16 @@ x
 x
 """)
 
+_add("/", """
+xxxxxxx
+xxxxx x
+xxxx xx
+xxx xxx
+xx xxxx
+x xxxxx
+xxxxxxx
+""")
+
 _add(" ","""
 xxxx
 xxxx
