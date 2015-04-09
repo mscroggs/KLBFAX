@@ -42,11 +42,14 @@ class Printer(object):
     def text_to_ascii(self, text, **options):
         text_to_print = str(self.text_to_letterblock(text, **options))
         output = []
+        hit_sides = False
         for line in text_to_print.split("\n"):
             if len(line) > screen.WIDTH:
                 output.append(line[:screen.WIDTH])
+                hit_sides = True
             else:
                 output.append(line)
+        if hit_sides: output.append("") 
         return "\n".join(output)
 
 instance = Printer()
