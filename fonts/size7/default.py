@@ -21,6 +21,16 @@ x
 x
 """)
 
+_add("!", """
+xxxx
+x  x
+x  x
+x  x
+xxxx
+x  x
+xxxx
+""")
+
 _add("/", """
 xxxxxxx
 xxxxx x
@@ -271,14 +281,34 @@ xx  xx  xx
 xxxxxxxxxx
 """)
 
-_add("!", """
-xxxx
-x  x
-x  x
-x  x
-xxxx
-x  x
-xxxx
+_add("X", """
+xxxxxxxxx
+x  xxx  x
+xx  x  xx
+xxx   xxx
+xx  x  xx
+x  xxx  x
+xxxxxxxxx
+""")
+
+_add("Y", """
+xxxxxxxxxx
+x  xxxx  x
+xx  xx  xx
+xxx    xxx
+xxxx  xxxx
+xxxx  xxxx
+xxxxxxxxxx
+""")
+
+_add("Z", """
+xxxxxxxx
+x      x
+xxxx  xx
+xxx  xxx
+xx  xxxx
+x      x
+xxxxxxxx
 """)
 
 _add("1", """
@@ -318,6 +348,66 @@ x  xx  x
 x      x
 xxxxx  x
 xxxxx  x
+xxxxxxxx
+""")
+
+_add("5", """
+xxxxxxxx
+x      x
+x  xxxxx
+x      x
+xxxxx  x
+x      x
+xxxxxxxx
+""")
+
+_add("6", """
+xxxxxxxx
+x      x
+x  xxxxx
+x      x
+x  xx  x
+x      x
+xxxxxxxx
+""")
+
+_add("7", """
+xxxxxxxx
+x      x
+xxxxx  x
+xxxxx  x
+xxxxx  x
+xxxxx  x
+xxxxxxxx
+""")
+
+_add("8", """
+xxxxxxxx
+x      x
+x  xx  x
+x      x
+x  xx  x
+x      x
+xxxxxxxx
+""")
+
+_add("9", """
+xxxxxxxx
+x      x
+x  xx  x
+x      x
+xxxxx  x
+x      x
+xxxxxxxx
+""")
+
+_add("0", """
+xxxxxxxx
+x      x
+x  xx  x
+x  xx  x
+x  xx  x
+x      x
 xxxxxxxx
 """)
 
