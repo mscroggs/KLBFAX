@@ -40,8 +40,14 @@ class Printer(object):
             return text
 
     def text_to_ascii(self, text, **options):
-        return str(self.text_to_letterblock(text, **options))
-
+        text_to_print = str(self.text_to_letterblock(text, **options))
+        output = ""
+        for line in text_to_print.split("\n"):
+            if len(line) > screen.WIDTH:
+                output += line[:screen.WIDTH] + "\n"
+            else:
+                output += line + "\n"
+        return output
 
 instance = Printer()
 instance.set_font(fonts.size7.default)
