@@ -31,11 +31,10 @@ class TVPage(Page):
             ["Sport","Maths"],["Sportsday","Mathsday"],
             ["Jamie","Pietro"],
             ["Agents of S.H.I.E.L.D.","Mathematicians of U.C.L.K.L.B"],
-            ["With Me","With Adam Townsend"],
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
-            ["Have I","Has Scroggs"],["I","Scroggs"],["Me","Scroggs"],
+            ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
             ["You","Belgin"],
             ["He","Adam"],["Him","Adam"],
             ["She","Anna"],["Her","Anna"],
@@ -48,12 +47,20 @@ class TVPage(Page):
             ["8 out of 10","0.8"],
             ["Movie","chalkdust"],["Film","chalkdust"],["Family","chalkdust"],
             ["Castle","Mathematics Mezzanine"],
+            ["Mrs Brown","Rafael"],
+            ["Alan Carr","Olly Southwick"],
+            ["Casualty","Causality"],
+            ["Match","Maths"],
+            ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
+            ["Wallace","Crazy Nico"],
+            ["Politics","Mathematics"],
             ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
         for swap in swaps:
             content = (" "+swap[1]+" ").join(re.split("(?i) "+swap[0]+" ",content))
             content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
             content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
+            content = (" "+swap[1]+":").join(re.split("(?i) "+swap[0]+":",content))
             content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
             content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
