@@ -26,8 +26,9 @@ class Style:
     STANDOUT = "\033[3m"
     UNDERLINE= "\033[4m"
     BLINK    = "\033[5m"
-    list = [DEFAULT,BOLD,FAINT,STANDOUT,UNDERLINE,BLINK]
-    delist = ["DEFAULT","BOLD","FAINT","STANDOUT","UNDERLINE","BLINK"]
+    STRIKE    = "\033[9m"
+    list = [DEFAULT,BOLD,FAINT,STANDOUT,UNDERLINE,BLINK,STRIKE]
+    delist = ["DEFAULT","BOLD","FAINT","STANDOUT","UNDERLINE","BLINK","STRIKE"]
 
 class Background:
     DEFAULT = "\033[0m"

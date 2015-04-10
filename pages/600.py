@@ -21,8 +21,15 @@ class TVPage(Page):
         for prog in e.findall('programme'):
             if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
                 content += prog.find('start').text+" "+prog.find('title').text+"\n"
-        content = "(Belgin) Breakfast".join(content.split("Breakfast"))
-        content = "The(re's Only) One (Olly) Show".join(content.split("The One Show"))
+        content = "Belgin Breakfast".join(content.split("Breakfast"))
+        content = "The Olly Show".join(content.split("The One Show"))
+        content = "Pietro".join(content.split("Jamie"))
+        content = "ith Adam Townsend".join(content.split("ith Me"))
+        content = "KLB".join(content.split("USA"))
+        content = "KLB".join(content.split("BBC"))
+        content = "News, presented by Sam Brown\n".join(content.split("News\n"))
+        content = "KLB".join(content.split("A&E"))
+        content = (self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda").join(content.split("Stacey"))
         self.content = content
 
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
