@@ -15,11 +15,10 @@ class NamePage(Page):
 
     def generate_content(self):
         name = self.name
+        greetings = ["Hi","Hello","Bonjour","Bello"]
 
-        greeting = "Hi"
-
-        if random() < 0.01:
-            greeting = "Bello"
+        greeting = choice(greetings)
+    
         if random() < 0.01:
             name = "Jigsaw"
         if random() < 0.1:
