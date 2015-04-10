@@ -25,26 +25,36 @@ class TVPage(Page):
         content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
         swaps = [
             ["Breakfast","Belgin Breakfast"],
+            ["Not",u"\u00AC"],
             ["The One Show","The Olly Show"],
             ["Wright","Mart Wright"],
+            ["Sport","Maths"],["Sportsday","Mathsday"],
             ["Jamie","Pietro"],
+            ["Agents of S.H.I.E.L.D.","Mathematicians of U.C.L.K.L.B"],
             ["With Me","With Adam Townsend"],
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
-            ["I","Scroggs"],["Me","Scroggs"],
+            ["Have I","Has Scroggs"],["I","Scroggs"],["Me","Scroggs"],
             ["You","Belgin"],
             ["He","Adam"],["Him","Adam"],
             ["She","Anna"],["Her","Anna"],
             ["It","Scroggsbot"],
             ["We","The WestEnders"],["Us","The WestEnders"],
             ["They","The EastEnders"],["Them","The EastEnders"],
-            ["News","News, presented by Sam Brown"],
+            ["Man","Olly"],["Men","Ollys"],
+            ["News","News (presented by Sam Brown)"],
+            ["Mother","Supervisor"],["Father","Supervisor"],
+            ["8 out of 10","0.8"],
+            ["Movie","chalkdust"],["Film","chalkdust"],["Family","chalkdust"],
+            ["Castle","Mathematics Mezzanine"],
             ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
         for swap in swaps:
             content = (" "+swap[1]+" ").join(re.split("(?i) "+swap[0]+" ",content))
             content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
+            content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
+            content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
             content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
 
