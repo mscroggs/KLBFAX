@@ -19,9 +19,7 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                        x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
 """)+"""
-KLBFAX is under construction. Check regularly for updates.
-
-Contribute at https://github.com/mscroggs/KLBFAX.
+KLBFAX currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
 
 INDEX
 """
