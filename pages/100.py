@@ -34,7 +34,7 @@ INDEX
             content += " "
             content += page.title
             if i == 0:
-                content += " "*(29-len(page.title))
+                content += " "*(33-len(page.title))
                 i = 1
             else:
                 content += "\n"
