@@ -1,5 +1,6 @@
 import random
 from page import Page
+from time import strftime
 
 def get_page_factory():
     if not isinstance(PageFactory._instance,PageFactory):
@@ -21,7 +22,7 @@ class PageFactory:
     def show_random(self):
         page = self.fail_page
         while not page.loaded:
-            page = random.choice(self.get_enabled_pages())
+            page = random.choice(self.get_enabled_pages(strftime("%M")[1]))
             page.reload()
         page.show()
 
@@ -35,8 +36,12 @@ class PageFactory:
             return self.fail_page
         return self.pages[number]
 
-    def get_enabled_pages(self):
-        return [page for page in self.pages.values() if page.is_enabled]
+    def get_enabled_pages(self,starting="0"):
+        output = [page for page in self.pages.values() if page.is_enabled and page.number[0]==starting]
+        if len(output)>0:
+            return output
+        else:
+            return [page for page in self.pages.values() if page.is_enabled]
 
     def page_exists(self, page_num):
         if page_num in self.pages:
