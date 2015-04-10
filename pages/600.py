@@ -22,15 +22,20 @@ class TVPage(Page):
             if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
                 content += self.colours.Foreground.GREEN+prog.find('start').text+self.colours.Foreground.DEFAULT+" "+prog.find('title').text+"\n"
         content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
-        content = "Belgin Breakfast".join(content.split("Breakfast"))
-        content = "The Olly Show".join(content.split("The One Show"))
-        content = "Pietro".join(content.split("Jamie"))
-        content = "ith Adam Townsend".join(content.split("ith Me"))
-        content = "KLB".join(content.split("USA"))
-        content = "KLB".join(content.split("BBC"))
-        content = "News, presented by Sam Brown\n".join(content.split("News\n"))
-        content = "KLB".join(content.split("A&E"))
-        content = (self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda").join(content.split("Stacey"))
+        swaps = [
+            ["Breakfast","Belgin Breakfast"],
+            ["The One Show","The Olly Show"],
+            ["Wright","Mart Wright"],
+            ["Jamie","Pietro"],
+            ["ith Me","ith Adam Townsend"],
+            ["USA","KLB"],
+            ["BBC","KLB"],
+            ["A&E","KLB"],
+            ["News\n","News, presented by Sam Brown"],
+            ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda").join(content.split("Stacey")]
+        ]
+        for swap in swaps:
+            content = swap[1].join(content.split(swap[0]))
         self.content = content
 
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
