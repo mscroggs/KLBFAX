@@ -11,6 +11,7 @@ def get_page_factory():
 class PageFactory:
     _instance = None
     def __init__(self):
+        self.i = 0
         self.pages = {}
         self.fail_page = Page("---")
         self.fail_page.loaded = False
@@ -22,7 +23,8 @@ class PageFactory:
     def show_random(self):
         page = self.fail_page
         while not page.loaded:
-            page = random.choice(self.get_enabled_pages(strftime("%M")[1]))
+            page = random.choice(self.get_enabled_pages(str(self.i)))
+            self.i += 1
             page.reload()
         page.show()
 
