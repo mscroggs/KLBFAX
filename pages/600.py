@@ -44,6 +44,7 @@ class TVPage(Page):
         ]
         for swap in swaps:
             content = (" "+swap[1]+" ").join(re.split("(?i) "+swap[0]+" ",content))
+            content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
             content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
 
