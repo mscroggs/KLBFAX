@@ -1,4 +1,5 @@
 import os
+import re
 from page import Page
 from colours import colour_print
 from printer import instance as printer
@@ -14,7 +15,7 @@ class TVPage(Page):
     def generate_content(self):
         import urllib2
         from xml.etree import ElementTree
-        content = colour_print(printer.text_to_ascii(self.channel)+" "+self.day)+"\n"
+        content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
         response = urllib2.urlopen(self.feed)
         xml = response.read()
         e = ElementTree.fromstring(xml)
@@ -27,15 +28,23 @@ class TVPage(Page):
             ["The One Show","The Olly Show"],
             ["Wright","Mart Wright"],
             ["Jamie","Pietro"],
-            ["ith Me","ith Adam Townsend"],
+            ["With Me","With Adam Townsend"],
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
-            ["News\n","News, presented by Sam Brown\n"],
+            ["I","Scroggs"],["Me","Scroggs"],
+            ["You","Belgin"],
+            ["He","Adam"],["Him","Adam"],
+            ["She","Anna"],["Her","Anna"],
+            ["It","Scroggsbot"],
+            ["We","The WestEnders"],["Us","The WestEnders"],
+            ["They","The EastEnders"],["Them","The EastEnders"],
+            ["News","News, presented by Sam Brown"],
             ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
         for swap in swaps:
-            content = swap[1].join(content.split(swap[0]))
+            content = (" "+swap[1]+" ").join(re.split("(?i) "+swap[0]+" ",content))
+            content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
 
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")

@@ -22,7 +22,9 @@ while True:
 
     if (input_fd):
         name = sys.stdin.readline().strip()
-        if ceefax.pageFactory.page_exists(name):
+        if len(name)<=3:
+            while len(name)<3:
+                name = "0"+name
             ceefax.pageFactory.get_reloaded_page(name).show()
         elif name == "00488a0488":
             from os import system

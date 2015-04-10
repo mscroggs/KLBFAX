@@ -24,19 +24,24 @@ class Page(object):
         pass
 
     def show(self):
-        print(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M"))
-        out = self.content.split("\n")
-        for i in range(0, 27):
-            if i < len(out):
-                print(out[i])
-            else:
-                print("")
-        before = int(floor((79-len(self.tagline))/2))
-        after = 79-len(self.tagline)-before
-        tagline_print = " " * before + self.tagline + " " * after
-        print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
-              + tagline_print + self.colours.Background.DEFAULT
-              + self.colours.Foreground.DEFAULT)
+        if self.loaded:
+            print(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M"))
+            out = self.content.split("\n")
+            for i in range(0, 27):
+                if i < len(out):
+                    print(out[i])
+                else:
+                    print("")
+            before = int(floor((79-len(self.tagline))/2))
+            after = 79-len(self.tagline)-before
+            tagline_print = " " * before + self.tagline + " " * after
+            print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
+                  + tagline_print + self.colours.Background.DEFAULT
+                  + self.colours.Foreground.DEFAULT)
+        else:
+            index_page = getattr(__import__("pages", fromlist=["100"]),"100").index_page
+            index_page.reload()
+            index_page.show()
 
     def reload(self):
         try:

@@ -39,7 +39,7 @@ class Printer(object):
         except fonts.exceptions.LetterNotDefined:
             return text
 
-    def text_to_ascii(self, text, **options):
+    def text_to_ascii(self, text, fill=True, **options):
         text_to_print = str(self.text_to_letterblock(text, **options))
         output = []
         hit_sides = False
@@ -47,8 +47,10 @@ class Printer(object):
             if len(line) > screen.WIDTH:
                 output.append(line[:screen.WIDTH])
                 hit_sides = True
-            else:
+            elif fill:
                 output.append(line+"x"*(screen.WIDTH-len(line)))
+            else:
+                output.append(line)
         if hit_sides: output.append("") 
         return "\n".join(output)
 
