@@ -25,6 +25,7 @@ class PageFactory:
         while not page.loaded:
             page = random.choice(self.get_enabled_pages(str(self.i)))
             self.i += 1
+            self.i %= 10
             page.reload()
         page.show()
 
