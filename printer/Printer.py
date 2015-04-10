@@ -48,7 +48,7 @@ class Printer(object):
                 output.append(line[:screen.WIDTH])
                 hit_sides = True
             else:
-                output.append(line)
+                output.append(line+"x"*(screen.WIDTH-len(line)))
         if hit_sides: output.append("") 
         return "\n".join(output)
 
