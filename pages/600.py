@@ -32,7 +32,7 @@ class TVPage(Page):
             ["BBC","KLB"],
             ["A&E","KLB"],
             ["News\n","News, presented by Sam Brown"],
-            ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda").join(content.split("Stacey")]
+            ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
         for swap in swaps:
             content = swap[1].join(content.split(swap[0]))
