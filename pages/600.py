@@ -31,7 +31,7 @@ class TVPage(Page):
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
-            ["News\n","News, presented by Sam Brown"],
+            ["News\n","News, presented by Sam Brown\n"],
             ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
         for swap in swaps:
