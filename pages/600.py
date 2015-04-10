@@ -20,7 +20,8 @@ class TVPage(Page):
         e = ElementTree.fromstring(xml)
         for prog in e.findall('programme'):
             if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
-                content += prog.find('start').text+" "+prog.find('title').text+"\n"
+                content += self.colours.Foreground.GREEN+prog.find('start').text+self.colours.Foreground.DEFAULT+" "+prog.find('title').text+"\n"
+        content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
         content = "Belgin Breakfast".join(content.split("Breakfast"))
         content = "The Olly Show".join(content.split("The One Show"))
         content = "Pietro".join(content.split("Jamie"))
