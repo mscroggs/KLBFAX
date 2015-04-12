@@ -29,7 +29,7 @@ class Page(object):
             out = self.content.split("\n")
             for i in range(0, 27):
                 if i < len(out):
-                    print(out[i])
+                    print(out[i].encode('utf-8'))
                 else:
                     print("")
             before = int(floor((79-len(self.tagline))/2))
