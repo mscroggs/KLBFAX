@@ -20,7 +20,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 """
         events={}
         cur=""
-        with open(join(expanduser("~"),'.klb/events'))) as f:
+        with open(join(expanduser("~"),'.klb/events')) as f:
             for line in f.readlines():
                 line = line.strip("\n")
                 if line != "":
