@@ -30,7 +30,7 @@ class LetterPage(Page):
             lines = "".join(mail.body.split("\r")).split("\n")
             if lines[0] == "EVENT" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
                 try:
-                    with open('/var/www/klb/events','a') as f:
+                    with open(join(expanduser("~"),'.klb/events'),'a') as f:
                         for line in lines:
                             if line!="EVENT":
                                 f.write(line+"\n")
