@@ -43,6 +43,7 @@ class TVPage(Page):
             ["They","The EastEnders"],["Them","The EastEnders"],
             ["Man","Olly"],["Men","Ollys"],
             ["News","News (presented by Sam Brown)"],
+            ["Newyddion","Newyddion (a gyflwynwyd gan Sam Brown)"],
             ["Mother","Supervisor"],["Father","Supervisor"],
             ["8 out of 10","0.8"],
             ["Movie","chalkdust"],["Film","chalkdust"],["Family","chalkdust"],
