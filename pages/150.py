@@ -1,4 +1,5 @@
 import os
+from os.path import join,expanduser
 from page import Page
 
 
@@ -19,7 +20,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 """
         events={}
         cur=""
-        with open("/var/www/klb/events") as f:
+        with open(join(expanduser("~"),'.klb/events')) as f:
             for line in f.readlines():
                 line = line.strip("\n")
                 if line != "":
