@@ -28,5 +28,5 @@ class NamePage(Page):
 
         self.content = colour_print(printer.text_to_ascii(greeting))
         self.content += "\n\n"
-        if large: self.content += colour_print(printer.text_to_ascii(name + "!"))
+        if self.large: self.content += colour_print(printer.text_to_ascii(name + "!"))
         else: self.content += name
