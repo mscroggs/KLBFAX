@@ -31,6 +31,7 @@ class ChalkPage(Page):
 
         response = urllib2.urlopen("https://twitter.com/chalkdustmag")
         html = unescape(response.read().decode("utf-8"))
+        html = " ".join(html.split("\n"))
         tweets = html.split('<div class="ProfileTweet-contents">')
         for tweet in tweets[1:]:
             tweet = tweet.split('<p class="ProfileTweet-text js-tweet-text u-dir"')[1]
