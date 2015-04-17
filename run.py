@@ -42,7 +42,10 @@ while True:
             if isfile("/home/pi/cards/"+name):
                 with open("/home/pi/cards/"+name) as f:
                     name = f.read().strip("\n")
-            name_page = page.NamePage(name)
+                name_page = page.NamePage(name)
+            else:
+                name_page = page.NamePage(name,False)
             name_page.show()
+                
     else:
         ceefax.pageFactory.show_random()

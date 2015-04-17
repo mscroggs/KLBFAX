@@ -7,10 +7,11 @@ def colour_print(text):
     return colours.colour_print(text, colours.Background.RED, colours.Foreground.BLACK)
 
 class NamePage(Page):
-    def __init__(self, name):
+    def __init__(self, name,large=True):
         super(NamePage, self).__init__("???")
         self.name = name
         self.title = "Greeting"
+        self.large = large
         self.reload()
 
     def generate_content(self):
@@ -27,4 +28,5 @@ class NamePage(Page):
 
         self.content = colour_print(printer.text_to_ascii(greeting))
         self.content += "\n\n"
-        self.content += colour_print(printer.text_to_ascii(name + "!"))
+        if large: self.content += colour_print(printer.text_to_ascii(name + "!"))
+        else: self.content += name
