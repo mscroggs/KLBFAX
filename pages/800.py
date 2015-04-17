@@ -12,8 +12,8 @@ def strip_tags(string):
 class BusPage(Page):
     def __init__(self, page_num, bus_num, station, code):
         super(BusPage, self).__init__(page_num)
-        self.title = station+" Buses"
-        self.tagline = "Live buses from "+code+". Data from TfL."
+        self.title = station+" ("+code+") Buses"
+        self.tagline = "Live buses from "+station+" ("+code+"). Data from TfL."
         self.station = station
         self.code = code
         self.bus_num = bus_num
