@@ -8,9 +8,11 @@ class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):
         super(TVPage, self).__init__(page_num)
         self.title = day+"'s TV: "+channel
+        self.in_index = False
         self.channel = channel
         self.feed = feed
         self.day = day
+        pages.append([page_num,channel+" ("+day+")"])
 
     def generate_content(self):
         import urllib2
@@ -65,7 +67,7 @@ class TVPage(Page):
             content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
             content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
-
+pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")
 tv3 = TVPage("603","BBC3","http://bleb.org/tv/data/listings/0/bbc3.xml","Today")
@@ -94,3 +96,15 @@ tv25 = TVPage("625","more4","http://bleb.org/tv/data/listings/1/more4.xml","Tomo
 tv26 = TVPage("626","Film Four","http://bleb.org/tv/data/listings/1/film_four.xml","Tomorrow")
 tv27 = TVPage("627","s4c","http://bleb.org/tv/data/listings/1/s4c.xml","Tomorrow")
 tv28 = TVPage("628","QVC","http://bleb.org/tv/data/listings/1/qvc.xml","Tomorrow")
+
+tv_page = Page("600")
+tv_page.content = colour_print(printer.text_to_ascii("TV Index"))+"\n"
+tv_page.title = "TV Index"
+i=0
+for page in pages:
+    tv_page.content+=tv_page.colours.Foreground.RED+page[0]+tv_page.colours.Foreground.DEFAULT+" "+page[1]
+    if i==1:
+        tv_page.content += "\n"
+    else:
+        tv_page.content += " "*(38-len(page[0]+page[1]))
+    i = 1-i

@@ -25,9 +25,9 @@ INDEX
 """
         i = 0
         items = PageFactory().pages.items()
-        shuffle(items)
+        items.sort()
         for num, page in items:
-          if page.is_enabled:
+          if page.is_enabled and page.in_index:
             content += self.colours.Foreground.MAGENTA
             content += num
             content += self.colours.Foreground.DEFAULT

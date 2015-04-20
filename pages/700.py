@@ -12,9 +12,11 @@ class TrainPage(Page):
     def __init__(self, page_num, station, code):
         super(TrainPage, self).__init__(page_num)
         self.title = station+" Trains"
+        self.in_index = False
         self.tagline = "Live trains from "+code+". Data from opentraintimes.com."
         self.station = station
         self.code = code
+        pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
         import urllib2
@@ -38,6 +40,7 @@ class TrainPage(Page):
              pass
         self.content = content
 
+pages=[]
 train01 = TrainPage("701","London Blackfriars","BFR")
 train02 = TrainPage("702","London Bridge","LBG")
 train03 = TrainPage("703","London Cannon Street","CST")
@@ -67,3 +70,15 @@ train27 = TrainPage("727","Wembley Stadium","WCX")
 train28 = TrainPage("728","Kilmarnock","KMK")
 train29 = TrainPage("729","Moreton-in-Marsh","MIM")
 train30 = TrainPage("730","Ealing Broadway","EAL")
+
+tv_page = Page("700")
+tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
+tv_page.title = "Trains Index"
+i=0
+for page in pages:
+    tv_page.content+=tv_page.colours.Foreground.RED+page[0]+tv_page.colours.Foreground.DEFAULT+" "+page[1]
+    if i==1:
+        tv_page.content += "\n"
+    else:
+        tv_page.content += " "*(38-len(page[0]+page[1]))
+    i = 1-i

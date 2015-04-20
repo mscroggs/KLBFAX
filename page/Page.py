@@ -3,6 +3,15 @@ from math import floor
 from datetime import datetime
 import logging
 import pytz
+from random import random,randint,choice
+import colours
+
+def random_error(string):
+    if random()<0.03:
+        chars = ["A","5","h","i","#","@","{","9","."]
+        pos = randint(0,len(string))
+        string = string[:pos]+choice(colours.Foreground.list)+string[pos]+colours.Foreground.DEFAULT+string[pos+1:]
+    return string
 
 
 class Page(object):
@@ -11,6 +20,7 @@ class Page(object):
         self.colours = colours
         self.content = ""
         self.is_enabled = True
+        self.in_index = True
         self.tagline = "KLBFAX: The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
@@ -25,11 +35,11 @@ class Page(object):
 
     def show(self):
         if self.loaded:
-            print(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M"))
+            print(random_error(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M")))
             out = self.content.split("\n")
             for i in range(0, 27):
                 if i < len(out):
-                    print(out[i].encode('utf-8'))
+                    print(random_error(out[i].encode('utf-8')))
                 else:
                     print("")
             before = int(floor((79-len(self.tagline))/2))

@@ -14,9 +14,11 @@ class BusPage(Page):
         super(BusPage, self).__init__(page_num)
         self.title = station+" ("+code+") Buses"
         self.tagline = "Live buses from "+station+" ("+code+"). Data from TfL."
+        self.in_index = False
         self.station = station
         self.code = code
         self.bus_num = bus_num
+        pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
         import urllib2
@@ -34,6 +36,7 @@ class BusPage(Page):
             content += bus['destination']
         self.content = content
 
+pages=[]
 bus01 = BusPage("801","57596","Gower Street / UCH","N")
 bus02 = BusPage("802","50975","Euston Square Station","P")
 bus03 = BusPage("803","51664","Euston Station","H")
@@ -48,3 +51,15 @@ bus11 = BusPage("811","72926","Upper Woburn Place","M")
 bus12 = BusPage("812","72238","Jubilee Road","PD")
 bus13 = BusPage("813","58812","Jubilee Road","J")
 bus14 = BusPage("814","55027","Wembley Park Station","O")
+
+tv_page = Page("800")
+tv_page.content = colour_print(printer.text_to_ascii("Buses Index"))+"\n"
+tv_page.title = "Buses Index"
+i=0
+for page in pages:
+    tv_page.content+=tv_page.colours.Foreground.RED+page[0]+tv_page.colours.Foreground.DEFAULT+" "+page[1]
+    if i==1:
+        tv_page.content += "\n"
+    else:
+        tv_page.content += " "*(38-len(page[0]+page[1]))
+    i = 1-i
