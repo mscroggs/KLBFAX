@@ -32,7 +32,7 @@ class TVPage(Page):
             ["Wright","Mart Wright"],
             ["Sport","Maths"],["Sportsday","Mathsday"],
             ["Jamie","Pietro"],
-            ["Agents of S.H.I.E.L.D.","Mathematicians of U.C.L.K.L.B"],
+            ["Agents of S\.H\.I\.E\.L\.D\.","Mathematicians of U.C.L.K.L.B"],
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
@@ -59,13 +59,15 @@ class TVPage(Page):
             ["Politics","Mathematics"],
             ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
         ]
+        punc = [" ","\?","!",":","'",'"',"\n"]
         for swap in swaps:
-            content = (" "+swap[1]+" ").join(re.split("(?i) "+swap[0]+" ",content))
-            content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
-            content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
-            content = (" "+swap[1]+":").join(re.split("(?i) "+swap[0]+":",content))
-            content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
-            content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
+            for p in punc:
+                content = (" "+swap[1]+p).join(re.split("(?i) "+swap[0]+p,content))
+#            content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
+ #           content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
+  #          content = (" "+swap[1]+":").join(re.split("(?i) "+swap[0]+":",content))
+   #         content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
+    #        content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
         self.content = content
 pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
