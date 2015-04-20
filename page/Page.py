@@ -8,9 +8,12 @@ import colours
 
 def random_error(string):
     if random()<0.03:
+      try:
         chars = ["A","5","h","i","#","@","{","9","."]
         pos = randint(0,len(string)-2)
         string = string[:pos]+choice(colours.Foreground.list)+string[pos]+colours.Foreground.DEFAULT+string[pos+1:]
+      except:
+        pass
     return string
 
 
