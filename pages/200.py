@@ -15,6 +15,7 @@ class LetterPage(Page):
         details = []
         with open(join(expanduser("~"),".klb/gmail")) as f:
             for line in f.readlines():
+                line = line.decode("utf-8")
                 details.append(line.strip("\n"))
 
         g = gmail.login(details[0],details[1])
