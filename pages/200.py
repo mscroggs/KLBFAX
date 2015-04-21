@@ -15,7 +15,6 @@ class LetterPage(Page):
         details = []
         with open(join(expanduser("~"),".klb/gmail")) as f:
             for line in f.readlines():
-                line = line.decode("utf-8")
                 details.append(line.strip("\n"))
 
         g = gmail.login(details[0],details[1])
@@ -63,7 +62,7 @@ class LetterPage(Page):
             f.write(letters)
 
         page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"+letters
-        self.content = page
+        self.content = page.decode('utf-8')
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 
