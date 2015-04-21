@@ -62,7 +62,7 @@ class LetterPage(Page):
             f.write(letters)
 
         page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"+letters
-        self.content = page.decode('utf-8')
+        self.content = page.decode('latin-1')
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 
