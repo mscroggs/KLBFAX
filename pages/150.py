@@ -22,6 +22,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         cur=""
         with open(join(expanduser("~"),'.klb/events')) as f:
             for line in f.readlines():
+                line = line.decode("utf-8")
                 line = line.strip("\n")
                 if line != "":
                     if line[0] == "#":
