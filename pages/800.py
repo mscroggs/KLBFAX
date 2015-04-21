@@ -24,13 +24,15 @@ class BusPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii("BUSES",fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" from "+self.station+" ("+self.code+")"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
 
-        content += self.colours.Foreground.BLUE+"\nTime  Num Destination"+self.colours.Foreground.DEFAULT
+        content += self.colours.Foreground.BLUE+"\nTime   Num Destination"+self.colours.Foreground.DEFAULT
         response = urllib2.urlopen("http://countdown.tfl.gov.uk/stopBoard/"+self.bus_num)
         j = response.read()
         bus_times = json.loads(j)
         for bus in bus_times['arrivals']:
             content += "\n"
-            content += self.colours.Foreground.GREEN+bus['scheduledTime']+self.colours.Foreground.DEFAULT
+            wait = bus['estimatedWait']
+            content += self.colours.Foreground.GREEN+wait+self.colours.Foreground.DEFAULT
+            content += " "*(6-len(wait))
             content += " "+self.colours.Foreground.RED+bus['routeId']+self.colours.Foreground.DEFAULT
             content += " "*(4-len(bus['routeId']))
             content += bus['destination']
