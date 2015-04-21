@@ -20,8 +20,9 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
 """)+"""
 KLBFAX currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
+The temperature graphs drawn by KLBScroggsBot can be viewed on Twitter: @klbscroggsbot.
 
-INDEX
+"""+self.colour.Foreground.GREEN+"INDEX"+self.colour.Foreground.DEFAULT+"""
 """
         i = 0
         items = PageFactory().pages.items()
