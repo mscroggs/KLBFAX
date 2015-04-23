@@ -26,6 +26,8 @@ while True:
             while len(name)<3:
                 name = "0"+name
             ceefax.pageFactory.get_reloaded_page(name).show()
+        elif name == "....":
+            break
         elif name == "00488a0488":
             from os import system
             print("Restarting")
