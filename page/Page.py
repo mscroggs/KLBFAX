@@ -2,6 +2,7 @@ from time import strftime
 from math import floor
 from datetime import datetime
 import logging
+import screen
 import pytz
 from random import random,randint,choice
 import colours
@@ -45,8 +46,8 @@ class Page(object):
                     print(random_error(out[i].encode('utf-8')))
                 else:
                     print("")
-            before = int(floor((79-len(self.tagline))/2))
-            after = 79-len(self.tagline)-before
+            before = int(floor((screen.WIDTH-len(self.tagline))/2))
+            after = screen.WIDTH-len(self.tagline)-before
             tagline_print = " " * before + self.tagline + " " * after
             print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
                   + tagline_print + self.colours.Background.DEFAULT
