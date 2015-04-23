@@ -19,7 +19,14 @@ class TubePage(Page):
         # Loop through the lines and print the status of each one
         for line in lines:
             content += "\n"
-            content += choice(self.colours.Foreground.list)+line+self.colours.Foreground.DEFAULT + " "*(21-len(line)) + current_status.get_status(line).description
+            content += line+" "*(21-len(line))
+            desc = current_status.get_status(line).description
+            if desc == "Good Service":
+                content += self.colours.Foreground.GREEN
+            else:
+                content += self.colours.Foreground.RED
+            content += current_status.get_status(line).description
+            content += self.colours.Foreground.DEFAULT
 
         self.content = content
 
