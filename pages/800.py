@@ -3,6 +3,7 @@ import json
 from re import sub
 from page import Page
 from colours import colour_print
+from colours import Foreground
 from printer import instance as printer
 from time import strftime
 
@@ -24,7 +25,7 @@ class BusPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii("BUSES",fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" from "+self.station+" ("+self.code+")"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
 
-        content += self.colours.Foreground.BLUE+"\nTime   Num Destination"+self.colours.Foreground.DEFAULT
+        content += self.colours.Foreground.GREEN+"\nTime   Num Destination"+self.colours.Foreground.DEFAULT
         response = urllib2.urlopen("http://countdown.tfl.gov.uk/stopBoard/"+self.bus_num)
         j = response.read()
         bus_times = json.loads(j)
