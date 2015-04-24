@@ -16,7 +16,9 @@ class NamePage(Page):
 
     def generate_content(self):
         name = self.name
-        greetings = ["Hi","Hello","Bonjour","Bello","Merhaba"]
+        greetings = ["Hi","Hello","Bonjour","Bello","Merhaba",
+                     "nuqneH","Hola","Salut","Hallo","Hey",
+                     "Yo","Dia dhuit","Salve","Ciao",u"\u4eca\u65e5\u306f"]
 
         greeting = choice(greetings)
         if "Rafael" in name:
