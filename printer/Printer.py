@@ -40,7 +40,10 @@ class Printer(object):
             return text
 
     def text_to_ascii(self, text, fill=True, **options):
-        text_to_print = str(self.text_to_letterblock(text, **options))
+        try:
+            text_to_print = str(self.text_to_letterblock(text, **options))
+        except:
+            text_to_print = text
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):
