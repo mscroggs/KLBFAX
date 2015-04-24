@@ -57,7 +57,7 @@ class TVPage(Page):
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
-            ["Stacey",(self.colours.Style.STRIKE+"Stacey"+self.colours.Style.DEFAULT+" Huda")]
+            ["Stacey","Huda"]
         ]
         punc = [" ","\?","!",":","'",'"',"\n"]
         for swap in swaps:
