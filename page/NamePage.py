@@ -19,6 +19,8 @@ class NamePage(Page):
         greetings = ["Hi","Hello","Bonjour","Bello"]
 
         greeting = choice(greetings)
+        if "Rafael" in name:
+            greeting = "Feo"
     
         if random() < 0.01:
             name = "Jigsaw"
