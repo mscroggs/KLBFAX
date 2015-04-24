@@ -54,6 +54,7 @@ bus11 = BusPage("811","72926","Upper Woburn Place","M")
 bus12 = BusPage("812","72238","Jubilee Road","PD")
 bus13 = BusPage("813","58812","Jubilee Road","J")
 bus14 = BusPage("814","55027","Wembley Park Station","O")
+bus15 = BusPage("815","59287",Foreground.GREEN+"Euston Square Station"+Foreground.DEFAULT,"Q")
 
 tv_page = Page("800")
 tv_page.content = colour_print(printer.text_to_ascii("Buses Index"))+"\n"
