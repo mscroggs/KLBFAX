@@ -53,7 +53,7 @@ class PageFactory:
 
     def get_enabled_pages(self,starting="0"):
         if starting == "0":
-            return ["200"]
+            return [self.pages["200"]]
         output = [page for page in self.pages.values() if page.is_enabled and page.number[0]==starting]
         if len(output)>0:
             return output
