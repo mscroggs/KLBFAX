@@ -34,11 +34,11 @@ class PageFactory:
         items.sort()
         for page_num,page in items:
             p = ""
+            if not page.is_enabled: p += page.colours.Foreground.RED
             p += (page_num+" ")
             p += (page.title)
-            p += (" "*(45-len(page.title)))
-            if page.is_enabled: p += ("Enabled")
-            else:               p += ("Disabled")
+            #p += (" "*(45-len(page.title)))
+            if not page.is_enabled: p += page.colours.Foreground.DEFAULT
             print(p)
 
     def get_reloaded_page(self, number):

@@ -7,10 +7,6 @@ import os
 from page import PageFactory, Page
 
 
-class ConfigError(Exception):
-    pass
-
-
 def is_page_file(f):
     if "_" in f:
         return False
@@ -20,13 +16,6 @@ def is_page_file(f):
 
 
 pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../pages")
-if not os.path.exists(pages_dir):
-    try:
-        os.makedirs(pages_dir)
-    except OSError:
-        raise ConfigError("The pages folder doesn't exist" +
-                          "and cannot be created: " + pages_dir)
-
 only_page_files = [f for f in listdir(pages_dir)
                    if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
