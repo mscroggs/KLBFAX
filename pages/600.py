@@ -41,7 +41,7 @@ class TVPage(Page):
             ["He","Adam"],["Him","Adam"],
             ["She","Anna"],["Her","Anna"],
             ["It","Scroggsbot"],
-            ["We","The WestEnders"],["Us","The WestEnders"],
+            ["We","The West Wingers"],["Us","The West Wingers"],
             ["They","The EastEnders"],["Them","The EastEnders"],
             ["Man","Olly"],["Men","Ollys"],
             ["News","News (presented by Sam Brown)"],
@@ -57,7 +57,8 @@ class TVPage(Page):
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
-            ["Stacey","Huda"]
+            ["Stacey","Huda"],
+            ["Bruce","Rafael"]
         ]
         punc = [" ","\?","!",":","'",'"',"\n"]
         for swap in swaps:
