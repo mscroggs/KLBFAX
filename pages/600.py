@@ -36,6 +36,7 @@ class TVPage(Page):
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
+            ["World","KLB"],
             ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
             ["You","Belgin"],
             ["He","Adam"],["Him","Adam"],
@@ -58,6 +59,7 @@ class TVPage(Page):
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
             ["Stacey","Huda"],
+            ["Deal","Soheni"],
             ["Bruce","Rafael"]
         ]
         punc = [" ","\?","!",":","'",'"',"\n"]
