@@ -50,7 +50,7 @@ class LetterPage(Page):
                             line=line[79:]
                         newletter+=line+"\n"
 
-                letters=newletter+"\n"+self.colours.Foreground.YELLOW+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
+                letters=newletter+"\n"+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
                 mail.read()
 
         letters = letters.split("\n")
