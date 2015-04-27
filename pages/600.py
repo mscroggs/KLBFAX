@@ -37,6 +37,8 @@ class TVPage(Page):
             ["BBC","KLB"],
             ["A&E","KLB"],
             ["World","KLB"],
+            ["Home","KLB"],
+            ["Homes","KLBs"],
             ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
             ["You","Belgin"],
             ["He","Adam"],["Him","Adam"],
