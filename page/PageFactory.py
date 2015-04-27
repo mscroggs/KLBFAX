@@ -29,6 +29,18 @@ class PageFactory:
             page.reload()
         page.show()
 
+    def print_all(self):
+        items = self.pages.items()
+        items.sort()
+        for page_num,page in items:
+            p = ""
+            p += (page_num+" ")
+            p += (page.title)
+            p += (" "*(45-len(page.title)))
+            if page.is_enabled: p += ("Enabled")
+            else:               p += ("Disabled")
+            print(p)
+
     def get_reloaded_page(self, number):
         if number not in self.pages:
             return self.fail_page
