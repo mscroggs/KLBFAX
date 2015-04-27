@@ -58,6 +58,7 @@ class TVPage(Page):
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
+            ["Political","Mathematical"],
             ["Stacey","Huda"],
             ["Deal","Soheni"],
             ["Bruce","Rafael"]
