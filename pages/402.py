@@ -12,7 +12,7 @@ content = colour_print(
 awards = [
           ["Moo Cow Awards",{"Adam Townsend":2,"Matthew Scroggs":1}],
           ["Tea Maker Awards",{"Matthew Scroggs":1}],
-          ["Honorary Fire Marshall",{"Rafael \"Bruce\" Prieto Curiel":1}]
+          ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}]
          ]
 
 for award in awards:
