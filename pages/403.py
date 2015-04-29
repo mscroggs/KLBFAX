@@ -16,7 +16,7 @@ class PointsPage(Page):
         content = self.colours.colour_print(printer.text_to_ascii("house points"))
         content += "\n"
 
-        sorted_pts = sorted(data.items(),key=operator.getter(1))
+        sorted_pts = sorted(data.items(),key=operator.itemgetter(1))
         for house,points in enumerate(sorted_pts):
             content += "\n"
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
