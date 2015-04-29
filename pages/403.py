@@ -17,7 +17,6 @@ class PointsPage(Page):
 
         sorted_pts = sorted(data.items(),key=data.get,reverse=True)
         for house,points in sorted_pts:
-            points = data[house]
             content += "\n"
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
             content += " "*(20-len(house))
