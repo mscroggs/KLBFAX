@@ -1,3 +1,4 @@
+import os
 from page import Page
 from printer import instance as printer
 
