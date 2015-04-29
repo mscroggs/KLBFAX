@@ -20,7 +20,7 @@ class PointsPage(Page):
         for house,points in sorted_pts:
             content += "\n"
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
-            content += " "*(20-len(house))
+            content += " "*(15-len(house))
             content += self.colours.Foreground.GREEN + str(points) + self.colours.Foreground.DEFAULT
 
         self.content = content
