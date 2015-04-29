@@ -43,7 +43,7 @@ class SecretPage(Page):
         with open('/home/pi/.klb/points','w') as f:
             data = json.dump(f)
 
-        content = self.colours.colour_print(printer.text_to_ascii("secret page")
+        content = self.colours.colour_print(printer.text_to_ascii("secret page"))
         content += "\n\n"
         content += "You have found the secret page!\n\n"
         content += "Ten points to Hufflepuff!!!"
