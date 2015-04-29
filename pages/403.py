@@ -12,7 +12,7 @@ class PointsPage(Page):
         with open('/home/pi/.klb/points') as f:
             data = json.load(f)
 
-        content = self.colours.colour_print(printer.text_to_ascii("recipes"))
+        content = self.colours.colour_print(printer.text_to_ascii("house points"))
         content += "\n"
         for house,points in data.items():
             content += "\n"
