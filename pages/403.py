@@ -14,7 +14,7 @@ class PointsPage(Page):
             data = json.load(f)
 
         content = self.colours.colour_print(printer.text_to_ascii("house points"))
-        content += "\n"
+        content += "\nWhat do points mean?\n"
 
         sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
         for house,points in sorted_pts:
