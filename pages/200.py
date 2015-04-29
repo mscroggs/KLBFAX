@@ -1,4 +1,5 @@
 import os
+import json
 from page import Page
 from random import choice
 
@@ -40,6 +41,16 @@ class LetterPage(Page):
             elif lines[0] == "CARD" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
                 with open('/home/pi/cards/'+lines[1],"w") as f:
                     f.write(lines[2])
+                mail.read()
+            elif lines[0] == "POINTS" and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
+                with open('/home/pi/.klb/points') as f:
+                    data = json.load(f)
+                if lines[1] in data:
+                    data[lines[1]]+=int(lines[2])
+                else:
+                    data[lines[1]]=int(lines[2])
+                with open('/home/pi/.klb/points','w') as f:
+                    data = json.dump(f)
                 mail.read()
             else:
                 newletter = choice(self.colours.Background.non_boring)
