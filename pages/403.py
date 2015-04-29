@@ -9,13 +9,14 @@ class PointsPage(Page):
 
     def generate_content(self):
         import json
+        from operator import itemgetter
         with open('/home/pi/.klb/points') as f:
             data = json.load(f)
 
         content = self.colours.colour_print(printer.text_to_ascii("house points"))
         content += "\n"
 
-        sorted_pts = sorted(data.items(),key=data.get,reverse=True)
+        sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
         for house,points in sorted_pts:
             content += "\n"
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
