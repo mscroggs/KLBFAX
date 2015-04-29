@@ -50,7 +50,7 @@ class LetterPage(Page):
                 else:
                     data[lines[1]]=int(lines[2])
                 with open('/home/pi/.klb/points','w') as f:
-                    data = json.dump(f)
+                    json.dump(data,f)
                 mail.read()
             else:
                 newletter = choice(self.colours.Background.non_boring)

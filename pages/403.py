@@ -9,7 +9,6 @@ class PointsPage(Page):
 
     def generate_content(self):
         import json
-
         with open('/home/pi/.klb/points') as f:
             data = json.load(f)
 
@@ -43,7 +42,7 @@ class SecretPage(Page):
         else:
             data[house]=10
         with open('/home/pi/.klb/points','w') as f:
-            data = json.dump(f)
+            json.dump(data,f)
 
         content = self.colours.colour_print(printer.text_to_ascii("secret page"))
         content += "\n\n"
