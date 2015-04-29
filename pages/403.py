@@ -29,6 +29,7 @@ class SecretPage(Page):
     def __init__(self, page_num):
         super(SecretPage, self).__init__(page_num)
         self.title = "Secret Page"
+        self.is_enabled = False
 
     def generate_content(self):
         import json
