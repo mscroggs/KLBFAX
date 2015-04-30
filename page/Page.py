@@ -53,9 +53,10 @@ class Page(object):
                   + tagline_print + self.colours.Background.DEFAULT
                   + self.colours.Foreground.DEFAULT)
         else:
-            index_page = getattr(__import__("pages", fromlist=["100"]),"100").index_page
-            index_page.reload()
-            index_page.show()
+            from page import FailPage
+            fail_page = FailPage()
+            fail_page.reload()
+            fail_page.show()
 
     def reload(self):
         try:
