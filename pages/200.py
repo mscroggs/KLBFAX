@@ -53,10 +53,8 @@ class LetterPage(Page):
                     json.dump(data,f)
                 mail.read()
 
-                import sys
-                sys.path.append('/home/pi/.klb')
-                from twitter import twitter
-                twitter.update_status(status=lines[2]+" points to "+lines[1]+"!")
+                from twitter import update_status
+                update_status(status=lines[2]+" points to "+lines[1]+"!")
 
             else:
                 newletter = choice(self.colours.Background.non_boring)

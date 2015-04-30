@@ -35,6 +35,7 @@ class SecretPage(Page):
         self.is_enabled = False
 
     def generate_content(self):
+        from twitter import update_status
         import json
 
         with open('/home/pi/.klb/points') as f:
@@ -51,10 +52,7 @@ class SecretPage(Page):
         content += "\n\n"
         content += "You have found the secret page!\n\n"
         content += "Ten points to Hufflepuff!!!"
-        import sys
-        sys.path.append('/home/pi/.klb')
-        from twitter import twitter
-        twitter.update_status(status="10 points to Hufflepuff!")
+        update_status(status="10 points to Hufflepuff!")
 
         self.content = content
 

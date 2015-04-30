@@ -85,7 +85,5 @@ class FailPage(Page):
 
         with open('/home/pi/.klb/points','w') as f:
             json.dump(data,f)
-        import sys
-        sys.path.append('/home/pi/.klb')
-        from twitter import twitter
-        twitter.update_status(status="2 points to Slytherin!")
+        from twitter import update_status
+        update_status(status="2 points to Slytherin!")
