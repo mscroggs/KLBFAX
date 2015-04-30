@@ -1,5 +1,5 @@
 import random
-from page import Page,FailPage
+from page import Page
 from time import strftime
 
 def get_page_factory():
@@ -14,6 +14,7 @@ class PageFactory:
         self.i = 0
         self.pages = {}
         self.fail_page = Page("---")
+        self.fail_page.content = "This page does not exist.\nTry the index on page 100."
         self.fail_page.loaded = False
         self.fail_page.is_enabled = False
 

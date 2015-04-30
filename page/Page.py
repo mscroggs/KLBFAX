@@ -38,7 +38,8 @@ class Page(object):
         pass
 
     def show(self):
-        if self.loaded:
+        from page import FailPage
+        if self.loaded or isinstance(self,FailPage) or self.number=="---":
             print(random_error(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M")))
             out = self.content.split("\n")
             for i in range(0, 27):
@@ -53,7 +54,6 @@ class Page(object):
                   + tagline_print + self.colours.Background.DEFAULT
                   + self.colours.Foreground.DEFAULT)
         else:
-            from page import FailPage
             fail_page = FailPage()
             fail_page.reload()
             fail_page.show()
