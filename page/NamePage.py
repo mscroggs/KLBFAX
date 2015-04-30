@@ -15,6 +15,7 @@ class NamePage(Page):
         self.reload()
 
     def generate_content(self):
+        extra = ""
         name = self.name
         greetings = ["Hi","Hello","Bonjour","Bello","Merhaba",
                      "nuqneH","Hola","Salut","Hallo","Hey",
@@ -26,6 +27,20 @@ class NamePage(Page):
         #greeting = greetings[-1]
         if "Rafael" in name:
             greeting = "Muy Feo"
+            from twitter import update_status
+            import json
+
+            with open('/home/pi/.klb/points') as f:
+                data = json.load(f)
+            house = "Gryffindor"
+            if house in data:
+                data[house]-=1
+            else:
+                data[house]=-1
+            with open('/home/pi/.klb/points','w') as f:
+                json.dump(data,f)
+            update_status("-1 points to Gryffindor!")
+            extra = "\n\n-1 points to Gryffindor!"
 
         if random() < 0.01:
             name = "Jigsaw"
@@ -34,3 +49,4 @@ class NamePage(Page):
         self.content += "\n\n"
         if self.large: self.content += colour_print(printer.text_to_ascii(name + "!"))
         else: self.content += name
+        self.content += extra
