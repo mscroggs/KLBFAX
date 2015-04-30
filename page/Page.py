@@ -88,4 +88,4 @@ class FailPage(Page):
         import sys
         sys.path.append('/home/pi/.klb')
         from twitter import twitter
-        twitter.update_status("2 points to Slytherin!")
+        twitter.update_status(status="2 points to Slytherin!")
