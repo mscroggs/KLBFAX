@@ -75,15 +75,5 @@ class FailPage(Page):
 
     def generate_content(self):
         import json
-        with open('/home/pi/.klb/points') as f:
-            data = json.load(f)
-        house = "Slytherin"
-        if house in data:
-            data[house]+=2
-        else:
-            data[house]=2
-
-        with open('/home/pi/.klb/points','w') as f:
-            json.dump(data,f)
-        from twitter import update_status
-        update_status(status="2 points to Slytherin!")
+        from points import add_points 
+        add_points("Slytherin",2)

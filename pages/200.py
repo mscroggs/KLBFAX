@@ -43,14 +43,8 @@ class LetterPage(Page):
                     f.write(lines[2])
                 mail.read()
             elif lines[0] == "POINTS" and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
-                with open('/home/pi/.klb/points') as f:
-                    data = json.load(f)
-                if lines[1] in data:
-                    data[lines[1]]+=int(lines[2])
-                else:
-                    data[lines[1]]=int(lines[2])
-                with open('/home/pi/.klb/points','w') as f:
-                    json.dump(data,f)
+                from points import add_points
+                add_points(lines[1],int(lines[2]))
                 mail.read()
 
                 from twitter import update_status

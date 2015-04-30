@@ -27,19 +27,9 @@ class NamePage(Page):
         #greeting = greetings[-1]
         if "Rafael" in name:
             greeting = "Muy Feo"
-            from twitter import update_status
-            import json
+            from points import add_points 
+            add_points("Gryffindor",-1)
 
-            with open('/home/pi/.klb/points') as f:
-                data = json.load(f)
-            house = "Gryffindor"
-            if house in data:
-                data[house]-=1
-            else:
-                data[house]=-1
-            with open('/home/pi/.klb/points','w') as f:
-                json.dump(data,f)
-            update_status("-1 points to Gryffindor!")
             extra = "\n\n-1 points to Gryffindor!"
 
         if random() < 0.01:

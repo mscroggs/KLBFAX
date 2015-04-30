@@ -35,24 +35,13 @@ class SecretPage(Page):
         self.is_enabled = False
 
     def generate_content(self):
-        from twitter import update_status
-        import json
-
-        with open('/home/pi/.klb/points') as f:
-            data = json.load(f)
-        house = "Hufflepuff"
-        if house in data:
-            data[house]+=10
-        else:
-            data[house]=10
-        with open('/home/pi/.klb/points','w') as f:
-            json.dump(data,f)
+        from points import add_points
+        add_points("Hufflepuff",10)
 
         content = self.colours.colour_print(printer.text_to_ascii("secret page"))
         content += "\n\n"
         content += "You have found the secret page!\n\n"
         content += "Ten points to Hufflepuff!!!"
-        update_status(status="10 points to Hufflepuff!")
 
         self.content = content
 
