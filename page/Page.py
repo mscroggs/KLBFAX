@@ -85,7 +85,6 @@ class FailPage(Page):
 
         with open('/home/pi/.klb/points','w') as f:
             json.dump(data,f)
-        mail.read()
         import sys
         sys.path.append('/home/pi/.klb')
         from twitter import twitter
