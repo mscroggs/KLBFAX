@@ -9,8 +9,7 @@ class TubePage(Page):
         self.title = "Tube Line Status"
 
     def generate_content(self):
-        import i_dont_be_real
-        import tubestatus
+        import tubestatusgg
         content = colour_print(printer.text_to_ascii("Tube Lines"))
 
         # Create a new status object for retrieving data
