@@ -49,14 +49,15 @@ class LetterPage(Page):
                     data[lines[1]]+=int(lines[2])
                 else:
                     data[lines[1]]=int(lines[2])
+                with open('/home/pi/.klb/points','w') as f:
+                    json.dump(data,f)
+                mail.read()
+
                 import sys
                 sys.path.append('/home/pi/.klb')
                 from twitter import twitter
                 twitter.update_status(status=lines[2]+" points to "+lines[1]+"!")
 
-                with open('/home/pi/.klb/points','w') as f:
-                    json.dump(data,f)
-                mail.read()
             else:
                 newletter = choice(self.colours.Background.non_boring)
                 for line in lines:

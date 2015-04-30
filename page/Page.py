@@ -65,3 +65,27 @@ class Page(object):
             logging.warning("Page " + self.title + " could not be reloaded")
             logging.exception(e)
             self.loaded = False
+
+class FailPage(Page):
+    def __init__(self):
+        super(FailPage,self).__init__("---")
+        self.content = "Page failed to load...\n\n2 points to Slytherin!"
+        self.is_enabled = False
+
+    def generate_content(self):
+        import json
+        with open('/home/pi/.klb/points') as f:
+            data = json.load(f)
+        house = "Slytherin"
+        if house in data:
+            data[house]+=2
+        else:
+            data[house]=2
+
+        with open('/home/pi/.klb/points','w') as f:
+            json.dump(data,f)
+        mail.read()
+        import sys
+        sys.path.append('/home/pi/.klb')
+        from twitter import twitter
+        twitter.update_status("2 points to Slytherin!")

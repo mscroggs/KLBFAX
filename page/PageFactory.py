@@ -1,5 +1,5 @@
 import random
-from page import Page
+from page import Page,FailPage
 from time import strftime
 
 def get_page_factory():
@@ -13,9 +13,7 @@ class PageFactory:
     def __init__(self):
         self.i = 0
         self.pages = {}
-        self.fail_page = Page("---")
-        self.fail_page.loaded = False
-        self.fail_page.is_enabled = False
+        self.FailPage()
 
     def add(self, page):
         self.pages[page.number] = page
