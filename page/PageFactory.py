@@ -13,7 +13,9 @@ class PageFactory:
     def __init__(self):
         self.i = 0
         self.pages = {}
-        self.fail_page = FailPage()
+        self.fail_page = Page("---")
+        self.fail_page.loaded = False
+        self.fail_page.is_enabled = False
 
     def add(self, page):
         self.pages[page.number] = page
