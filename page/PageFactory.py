@@ -13,7 +13,7 @@ class PageFactory:
     def __init__(self):
         self.i = 0
         self.pages = {}
-        self.FailPage()
+        self.fail_page = FailPage()
 
     def add(self, page):
         self.pages[page.number] = page
