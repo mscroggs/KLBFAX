@@ -42,7 +42,7 @@ class LetterPage(Page):
                 with open('/home/pi/cards/'+lines[1],"w") as f:
                     f.write(lines[2])
                 mail.read()
-            elif lines[0] == "POINTS" and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
+            elif lines[0].split("=")[0] == "POINTS" and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
                 from points import add_points
                 length = 1
                 points_to_give = 0
