@@ -6,10 +6,12 @@ import sys
 import select
 import page
 import log_setup
-
+from random import choice
 from points import add_points
-add_points("Ravenclaw",1)
-print("1 point to Ravenclaw!")
+
+house = random.choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff"])
+add_points(house,1)
+print("1 point to "+house+"!")
 
 log_setup.read_from_file()
 ceefax.pageFactory.show_random()

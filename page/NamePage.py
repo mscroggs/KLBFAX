@@ -27,10 +27,10 @@ class NamePage(Page):
         greeting = choice(greetings)
         #greeting = greetings[-1]
         if "Rafael" in name:
-            greeting = "Muy Feo"
-            add_points("Gryffindor",-1)
-
-            extra = "\n\n-1 points to Gryffindor!"
+            if random()<0.6:
+                greeting = "Muy Feo"
+                add_points("Gryffindor",-1)
+                extra = "\n\n-1 points to Gryffindor!"
 
         if random() < 0.01:
             name = "Jigsaw"
