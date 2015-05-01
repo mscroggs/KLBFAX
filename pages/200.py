@@ -44,7 +44,15 @@ class LetterPage(Page):
                 mail.read()
             elif lines[0] == "POINTS" and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
                 from points import add_points
-                add_points(lines[1],int(lines[2]))
+                length = 0
+                points_to_give = 0
+                while True:
+                    try:
+                        points_to_give = int(lines[2][:length]
+                        length += 1
+                    except:
+                        break
+                add_points(lines[1],points_to_give)
                 mail.read()
 
                 from twitter import update_status
