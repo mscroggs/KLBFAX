@@ -22,393 +22,393 @@ x
 """)
 
 _add("!", """
-xxxx
-x  x
-x  x
-x  x
-xxxx
-x  x
-xxxx
+xxx
+  x
+  x
+  x
+xxx
+  x
+xxx
 """)
 
 _add("/", """
-xxxxxxx
-xxxxx x
-xxxx xx
-xxx xxx
-xx xxxx
-x xxxxx
-xxxxxxx
+xxxxxx
+xxxx x
+xxx xx
+xx xxx
+x xxxx
+ xxxxx
+xxxxxx
 """)
 
 _add(" ","""
-xxxx
-xxxx
-xxxx
-xxxx
-xxxx
-xxxx
-xxxx
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
+xxx
 """)
 
 _add("A", """
-xxxxxxxxx
-xxx   xxx
-xx xxx xx
-x       x
-x  xxx  x
-x  xxx  x
-xxxxxxxxx
+xxxxxxxx
+xx   xxx
+x xxx xx
+       x
+  xxx  x
+  xxx  x
+xxxxxxxx
 """)
 
 _add("B", """
-xxxxxxxx
-x     xx
-x  xx  x
-x    xxx
-x  xx  x
-x     xx
-xxxxxxxx
+xxxxxxx
+     xx
+  xx  x
+    xxx
+  xx  x
+     xx
+xxxxxxx
 """)
 
 _add("C", """
-xxxxxxxx
-x      x
-x  xxxxx
-x  xxxxx
-x  xxxxx
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+  xxxxx
+  xxxxx
+      x
+xxxxxxx
 """)
 
 _add("D", """
-xxxxxxxx
-x     xx
-x  xx  x
-x  xx  x
-x  xx  x
-x     xx
-xxxxxxxx
+xxxxxxx
+     xx
+  xx  x
+  xx  x
+  xx  x
+     xx
+xxxxxxx
 """)
 
 _add("E", """
-xxxxxxxx
-x      x
-x  xxxxx
-x    xxx
-x  xxxxx
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+    xxx
+  xxxxx
+      x
+xxxxxxx
 """)
 
 _add("F", """
-xxxxxxxx
-x      x
-x  xxxxx
-x    xxx
-x  xxxxx
-x  xxxxx
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+    xxx
+  xxxxx
+  xxxxx
+xxxxxxx
 """)
 
 _add("G", """
-xxxxxxxx
-x      x
-x  xxxxx
-x  x   x
-x  xx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+  x   x
+  xx  x
+      x
+xxxxxxx
 """)
 
 _add("H", """
-xxxxxxxx
-x  xx  x
-x  xx  x
-x      x
-x  xx  x
-x  xx  x
-xxxxxxxx
+xxxxxxx
+  xx  x
+  xx  x
+      x
+  xx  x
+  xx  x
+xxxxxxx
 """)
 
 _add("I", """
-xxxx
-x  x
-x  x
-x  x
-x  x
-x  x
-xxxx
+xxx
+  x
+  x
+  x
+  x
+  x
+xxx
 """)
 
 _add("J", """
-xxxxxx
-xxx  x
-xxx  x
-xxx  x
-xxx  x
-x    x
-xxxxxx
+xxxxx
+xx  x
+xx  x
+xx  x
+xx  x
+    x
+xxxxx
 """)
 
 _add("K", """
-xxxxxxxx
-x  xx  x
-x  x  xx
-x    xxx
-x  x  xx
-x  xx  x
-xxxxxxxx
+xxxxxxx
+  xx  x
+  x  xx
+    xxx
+  x  xx
+  xx  x
+xxxxxxx
 """)
 
 _add("L", """
-xxxxxxxx
-x  xxxxx
-x  xxxxx
-x  xxxxx
-x  xxxxx
-x      x
-xxxxxxxx
+xxxxxxx
+  xxxxx
+  xxxxx
+  xxxxx
+  xxxxx
+      x
+xxxxxxx
 """)
 
 _add("M", """
-xxxxxxxxxxxx
-x   xxxx   x
-x    xx    x
-x  x    x  x
-x  xx  xx  x
-x  xxxxxx  x
-xxxxxxxxxxxx
+xxxxxxxxxxx
+   xxxx   x
+    xx    x
+  x    x  x
+  xx  xx  x
+  xxxxxx  x
+xxxxxxxxxxx
 """)
 
 _add("N", """
-xxxxxxxxx
-x   xx  x
-x    x  x
-x  x    x
-x  xx   x
-x  xxx  x
-xxxxxxxxx
+xxxxxxxx
+   xx  x
+    x  x
+  x    x
+  xx   x
+  xxx  x
+xxxxxxxx
 """)
 
 _add("O", """
-xxxxxxxxx
-x       x
-x  xxx  x
-x  xxx  x
-x  xxx  x
-x       x
-xxxxxxxxx
+xxxxxxxx
+       x
+  xxx  x
+  xxx  x
+  xxx  x
+       x
+xxxxxxxx
 """)
 
 _add("P", """
-xxxxxxxx
-x     xx
-x  xx  x
-x     xx
-x  xxxxx
-x  xxxxx
-xxxxxxxx
+xxxxxxx
+     xx
+  xx  x
+     xx
+  xxxxx
+  xxxxx
+xxxxxxx
 """)
 
 _add("Q", """
-xxxxxxxxxx
-x       xx
-x  xxx  xx
-x  x    xx
-x  xx   xx
-x        x
-xxxxxxx  x
+xxxxxxxxx
+       xx
+  xxx  xx
+  x    xx
+  xx   xx
+        x
+xxxxxx  x
 """)
 
 _add("R", """
-xxxxxxxxx
-x      xx
-x  xx   x
-x     xxx
-x  xx  xx
-x  xxx  x
-xxxxxxxxx
+xxxxxxxx
+      xx
+  xx   x
+     xxx
+  xx  xx
+  xxx  x
+xxxxxxxx
 """)
 
 _add("S", """
-xxxxxxxx
-x      x
-x  xxxxx
-x      x
-xxxxx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+      x
+xxxx  x
+      x
+xxxxxxx
 """)
 
 _add("T", """
-xxxxxxxx
-x      x
-xxx  xxx
-xxx  xxx
-xxx  xxx
-xxx  xxx
-xxxxxxxx
+xxxxxxx
+      x
+xx  xxx
+xx  xxx
+xx  xxx
+xx  xxx
+xxxxxxx
 """)
 
 _add("U", """
-xxxxxxxx
-x  xx  x
-x  xx  x
-x  xx  x
-x  xx  x
-x      x
-xxxxxxxx
+xxxxxxx
+  xx  x
+  xx  x
+  xx  x
+  xx  x
+      x
+xxxxxxx
 """)
 
 _add("V", """
-xxxxxxxx
-x  xx  x
-x  xx  x
-x  xx  x
-xx    xx
-xxx  xxx
-xxxxxxxx
+xxxxxxx
+  xx  x
+  xx  x
+  xx  x
+x    xx
+xx  xxx
+xxxxxxx
 """)
 
 _add("W", """
-xxxxxxxxxx
-x  xxxx  x
-x  xxxx  x
-x  x  x  x
-x        x
-xx  xx  xx
-xxxxxxxxxx
+xxxxxxxxx
+  xxxx  x
+  xxxx  x
+  x  x  x
+        x
+x  xx  xx
+xxxxxxxxx
 """)
 
 _add("X", """
-xxxxxxxxx
-x  xxx  x
-xx  x  xx
-xxx   xxx
-xx  x  xx
-x  xxx  x
-xxxxxxxxx
+xxxxxxxx
+  xxx  x
+x  x  xx
+xx   xxx
+x  x  xx
+  xxx  x
+xxxxxxxx
 """)
 
 _add("Y", """
-xxxxxxxxxx
-x  xxxx  x
-xx  xx  xx
-xxx    xxx
-xxxx  xxxx
-xxxx  xxxx
-xxxxxxxxxx
+xxxxxxxxx
+  xxxx  x
+x  xx  xx
+xx    xxx
+xxx  xxxx
+xxx  xxxx
+xxxxxxxxx
 """)
 
 _add("Z", """
-xxxxxxxx
-x      x
-xxxx  xx
-xxx  xxx
-xx  xxxx
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+xxx  xx
+xx  xxx
+x  xxxx
+      x
+xxxxxxx
 """)
 
 _add("1", """
-xxxx
-x  x
-x  x
-x  x
-x  x
-x  x
-xxxx
+xxx
+  x
+  x
+  x
+  x
+  x
+xxx
 """)
 
 _add("2", """
-xxxxxxxx
-x      x
-xxxxx  x
-x      x
-x  xxxxx
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+xxxx  x
+      x
+  xxxxx
+      x
+xxxxxxx
 """)
 
 _add("3", """
-xxxxxxxx
-x      x
-xxxxx  x
-x      x
-xxxxx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+xxxx  x
+      x
+xxxx  x
+      x
+xxxxxxx
 """)
 
 _add("4", """
-xxxxxxxx
-x  xx  x
-x  xx  x
-x      x
-xxxxx  x
-xxxxx  x
-xxxxxxxx
+xxxxxxx
+  xx  x
+  xx  x
+      x
+xxxx  x
+xxxx  x
+xxxxxxx
 """)
 
 _add("5", """
-xxxxxxxx
-x      x
-x  xxxxx
-x      x
-xxxxx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+      x
+xxxx  x
+      x
+xxxxxxx
 """)
 
 _add("6", """
-xxxxxxxx
-x      x
-x  xxxxx
-x      x
-x  xx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xxxxx
+      x
+  xx  x
+      x
+xxxxxxx
 """)
 
 _add("7", """
-xxxxxxxx
-x      x
-xxxxx  x
-xxxxx  x
-xxxxx  x
-xxxxx  x
-xxxxxxxx
+xxxxxxx
+      x
+xxxx  x
+xxxx  x
+xxxx  x
+xxxx  x
+xxxxxxx
 """)
 
 _add("8", """
-xxxxxxxx
-x      x
-x  xx  x
-x      x
-x  xx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xx  x
+      x
+  xx  x
+      x
+xxxxxxx
 """)
 
 _add("9", """
-xxxxxxxx
-x      x
-x  xx  x
-x      x
-xxxxx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xx  x
+      x
+xxxx  x
+      x
+xxxxxxx
 """)
 
 _add("0", """
-xxxxxxxx
-x      x
-x  xx  x
-x  xx  x
-x  xx  x
-x      x
-xxxxxxxx
+xxxxxxx
+      x
+  xx  x
+  xx  x
+  xx  x
+      x
+xxxxxxx
 """)
 
 
