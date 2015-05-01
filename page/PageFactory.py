@@ -11,12 +11,14 @@ def get_page_factory():
 class PageFactory:
     _instance = None
     def __init__(self):
+        from page import FailPage
         self.i = 0
         self.pages = {}
-        self.fail_page = Page("---")
-        self.fail_page.content = "This page does not exist.\nTry the index on page 100."
-        self.fail_page.loaded = False
-        self.fail_page.is_enabled = False
+        self.fail_page = FailPage()
+        self.fake_page = Page("---")
+        self.fake_page.content = "This page does not exist.\nTry the index on page 100."
+        self.fake_page.loaded = False
+        self.fake_page.is_enabled = False
 
     def add(self, page):
         self.pages[page.number] = page
@@ -44,7 +46,7 @@ class PageFactory:
 
     def get_reloaded_page(self, number):
         if number not in self.pages:
-            return self.fail_page
+            return self.fake_page
         if not self.pages[number]:
             return self.fail_page
         self.pages[number].reload()
