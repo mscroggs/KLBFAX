@@ -46,7 +46,7 @@ class LetterPage(Page):
                 from points import add_points
                 length = 1
                 points_to_give = 0
-                while True:
+                while length<=len(lines[2]):
                     try:
                         points_to_give = int(lines[2][:length])
                         length += 1
