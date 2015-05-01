@@ -56,7 +56,7 @@ class LetterPage(Page):
                 mail.read()
 
                 from twitter import update_status
-                update_status(status=lines[2]+" points to "+lines[1]+"!")
+                update_status(status=str(points_to_give)+" points to "+lines[1].split("=")[0]+"!")
 
             else:
                 newletter = choice(self.colours.Background.non_boring)
