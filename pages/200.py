@@ -48,7 +48,7 @@ class LetterPage(Page):
                 points_to_give = 0
                 while True:
                     try:
-                        points_to_give = int(lines[2][:length]
+                        points_to_give = int(lines[2][:length])
                         length += 1
                     except:
                         break
