@@ -9,7 +9,7 @@ import log_setup
 from random import choice
 from points import add_points
 
-house = random.choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff"])
+house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff"])
 add_points(house,1)
 print("1 point to "+house+"!")
 
