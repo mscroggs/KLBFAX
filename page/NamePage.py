@@ -2,6 +2,7 @@ from random import random,randint,choice
 from page import Page
 from printer import instance as printer
 import colours
+from points import add_points 
 
 def colour_print(text):
     return colours.colour_print(text, colours.Background.RED, colours.Foreground.BLACK)
@@ -27,13 +28,15 @@ class NamePage(Page):
         #greeting = greetings[-1]
         if "Rafael" in name:
             greeting = "Muy Feo"
-            from points import add_points 
             add_points("Gryffindor",-1)
 
             extra = "\n\n-1 points to Gryffindor!"
 
         if random() < 0.01:
             name = "Jigsaw"
+            add_points("Slytherin",10)
+
+            extra = "10 points to Slytherin!"
 
         self.content = colour_print(printer.text_to_ascii(greeting))
         self.content += "\n\n"

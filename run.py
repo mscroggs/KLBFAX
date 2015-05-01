@@ -7,6 +7,10 @@ import select
 import page
 import log_setup
 
+from points import add_points
+add_points("Ravenclaw",1)
+print("1 point to Ravenclaw!")
+
 log_setup.read_from_file()
 ceefax.pageFactory.show_random()
 
