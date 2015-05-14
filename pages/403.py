@@ -20,8 +20,12 @@ class PointsPage(Page):
         else:                    h = "0"
         if "Slytherin" in data:  s = str(data["Slytherin"])
         else:                    s = "0"
+        if "Squib" in data:     sq = str(data["Squib"])
+        else:                   sq = "0"
         if "Ravenclaw" in data:  r = str(data["Ravenclaw"])
         else:                    r = "0"
+        if "Durmstrang" in data: d = str(data["Durmstrang"])
+        else:                    d = "0"
 
         content = self.colours.colour_print(printer.text_to_ascii("house points"))
         content += "\nWhat do points mean?\n"
@@ -32,7 +36,10 @@ class PointsPage(Page):
                             self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
                         (printer.text_to_ascii(s,False)+"\nSlytherin",
                             self.colours.Style.BLINK,
-                            self.colours.Foreground.GREEN)
+                            self.colours.Foreground.GREEN),
+                        (printer.text_to_ascii(sq,False)+"\nSquib",
+                            self.colours.Background.BLUE,
+                            self.colours.Foreground.MAGENTA)
                     ],"   ","   ")
         content += "\n"
         content += self.colours.colour_print_join([
@@ -41,7 +48,10 @@ class PointsPage(Page):
                             self.colours.Foreground.WHITE+self.colours.Style.BOLD),
                         (printer.text_to_ascii(h,False)+"\nHufflepuff",
                             self.colours.Style.BLINK,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD)
+                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii(d,False)+"\nDurmstrang",
+                            self.colours.Background.GREEN,
+                            self.colours.Foreground.RED)
                     ],"   ","   ")
         content += "\n"
         sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
