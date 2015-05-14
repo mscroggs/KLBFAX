@@ -37,7 +37,7 @@ class PointsPage(Page):
         content += "\n"
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(r,False)+"\nRavenclaw",
-                            self.colours.Background.CYAN,
+                            self.colours.Background.WHITE,
                             self.colours.Foreground.BLUE+self.colours.Style.BOLD),
                         (printer.text_to_ascii(h,False)+"\nHufflepuff",
                             self.colours.Style.BLINK,
