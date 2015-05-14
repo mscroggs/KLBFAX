@@ -21,6 +21,16 @@ x
 x
 """)
 
+_add("-", """
+xxxxx
+xxxxx
+xxxxx
+x   x
+xxxxx
+xxxxx
+xxxxx
+""")
+
 _add("!", """
 xxx
   x
