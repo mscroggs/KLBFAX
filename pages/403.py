@@ -29,19 +29,19 @@ class PointsPage(Page):
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(g,False)+"\nGryffindor",
                             self.colours.Background.RED,
-                            self.colours.Foreground.YELLOW),
-                        (printer.text_to_ascii(r,False)+"\nRavenclaw",
+                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii(s,False)+"\nSlytherin",
                             self.colours.Background.GREEN,
-                            self.colours.Foreground.MAGENTA)
+                            self.colours.Foreground.MAGENTA+self.colours.Style.BOLD)
                     ],"   ","   ")
         content += "\n"
         content += self.colours.colour_print_join([
-                        (printer.text_to_ascii(s,False)+"\nSlytherin",
+                        (printer.text_to_ascii(r,False)+"\nRavenclaw",
                             self.colours.Background.CYAN,
-                            self.colours.Foreground.BLUE),
+                            self.colours.Foreground.BLUE+self.colours.Style.BOLD),
                         (printer.text_to_ascii(h,False)+"\nHufflepuff",
                             self.colours.Style.BLINK,
-                            self.colours.Foreground.YELLOW)
+                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD)
                     ],"   ","   ")
         content += "\n"
         sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
