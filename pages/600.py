@@ -63,6 +63,7 @@ class TVPage(Page):
             ["Political","Mathematical"],
             ["Stacey","Huda"],
             ["Deal","Soheni"],
+            ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
         punc = [" ","\?","!",":","'",'"',"\n"]
