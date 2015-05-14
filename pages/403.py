@@ -31,8 +31,8 @@ class PointsPage(Page):
                             self.colours.Background.RED,
                             self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
                         (printer.text_to_ascii(s,False)+"\nSlytherin",
-                            self.colours.Background.GREEN,
-                            self.colours.Foreground.MAGENTA+self.colours.Style.BOLD)
+                            self.colours.Style.BOLD,
+                            self.colours.Foreground.GREEN+self.colours.Style.BOLD)
                     ],"   ","   ")
         content += "\n"
         content += self.colours.colour_print_join([
