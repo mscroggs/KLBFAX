@@ -28,8 +28,8 @@ class PointsPage(Page):
 
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(g,False)+"\nGryffindor",
-                            self.colours.Background.YELLOW,
-                            self.colours.Foreground.RED+self.colours.Style.BOLD),
+                            self.colours.Background.RED,
+                            self.colours.Foreground.WHITE),
                         (printer.text_to_ascii(s,False)+"\nSlytherin",
                             self.colours.Style.BLINK,
                             self.colours.Foreground.GREEN)
