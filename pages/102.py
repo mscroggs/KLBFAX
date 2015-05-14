@@ -36,7 +36,9 @@ class XMenPage(Page):
                             content += "\n  "+self.colours.Foreground.GREEN
                             content += str(y) + "-" + "0"*(2-len(str(m))) + str(m) + "-" + "0"*(2-len(str(d))) + str(d)
                             content += self.colours.Foreground.DEFAULT + "\n"
-                    content += title+"\n"
+                    content += self.colours.Foreground.RED
+                    content += (self.colours.Foreground.DEFAULT+" ").join(title.split(" "))
+                    content += "\n"
     
         self.content = content
 xmenpage = XMenPage("102")
