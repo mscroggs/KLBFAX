@@ -1,13 +1,17 @@
 #!/usr/bin/env python
 
 import ceefax
-from os.path import isfile
+from os.path import isfile,expanduser,join,isdir
+from os import mkdir
 import sys
 import select
 import page
 import log_setup
 from random import choice
 from points import add_points
+
+if not isdir(join(expanduser('~'),'.klb')):
+    mkdir(join(expanduser('~'),'.klb'))
 
 house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff"])
 add_points(house,1)

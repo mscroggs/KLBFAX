@@ -57,3 +57,23 @@ def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW):
     text = (u"\u2588").join(text.split("x"))
     text += Foreground.DEFAULT+Background.DEFAULT
     return(text)
+
+def colour_print_join(list,joiner="",pre=""):
+    length = 0
+    for item in list:
+        length = max(length,len(item[0].split("\n")))
+    lines = [pre]*length
+
+    for item in list:
+        splitted = item[0].split("\n")
+        length2 = 0
+        for thing in splitted:
+            length2 = max(length2,len(thing))
+        for i in range(length):
+            lines[i] += item[1]+item[2]
+            if i<len(splitted):
+                lines[i] += (u"\u2588").join(splitted[i].split("x")) + " "*(length2 - len(splitted[i]))
+            else:
+                lines[i] += " "*length2
+            lines[i] += Foreground.DEFAULT+Background.DEFAULT+joiner
+    return "\n".join(lines)

@@ -41,7 +41,7 @@ class Printer(object):
 
     def text_to_ascii(self, text, fill=True, **options):
         try:
-            text_to_print = str(self.text_to_letterblock(text, **options))
+            text_to_print = str(self.text_to_letterblock("|"+text, **options))
         except:
             text_to_print = text
         output = []

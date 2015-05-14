@@ -1,4 +1,5 @@
 import os
+from os.path import join,expanduser
 from page import Page
 from printer import instance as printer
 
@@ -10,18 +11,50 @@ class PointsPage(Page):
     def generate_content(self):
         import json
         from operator import itemgetter
-        with open('/home/pi/.klb/points') as f:
+        with open(join(expanduser('~'),'.klb/points')) as f:
             data = json.load(f)
+
+        if "Gryffindor" in data: g = str(data["Gryffindor"])
+        else:                    g = "0"
+        if "Hufflepuff" in data: h = str(data["Hufflepuff"])
+        else:                    h = "0"
+        if "Slytherin" in data:  s = str(data["Slytherin"])
+        else:                    s = "0"
+        if "Ravenclaw" in data:  r = str(data["Ravenclaw"])
+        else:                    r = "0"
 
         content = self.colours.colour_print(printer.text_to_ascii("house points"))
         content += "\nWhat do points mean?\n"
 
+        content += self.colours.colour_print_join([
+                        (printer.text_to_ascii(g,False)+"\nGryffindor",
+                            self.colours.Background.RED,
+                            self.colours.Foreground.YELLOW),
+                        (printer.text_to_ascii(r,False)+"\nRavenclaw",
+                            self.colours.Background.GREEN,
+                            self.colours.Foreground.MAGENTA)
+                    ],"   ","   ")
+        content += "\n"
+        content += self.colours.colour_print_join([
+                        (printer.text_to_ascii(s,False)+"\nSlytherin",
+                            self.colours.Background.CYAN,
+                            self.colours.Foreground.BLUE),
+                        (printer.text_to_ascii(h,False)+"\nHufflepuff",
+                            self.colours.Style.BLINK,
+                            self.colours.Foreground.YELLOW)
+                    ],"   ","   ")
+        content += "\n"
         sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
+
+        content += "Full List\n"
+        i=0
         for house,points in sorted_pts:
-            content += "\n"
+            i+=1
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
-            content += " "*(15-len(house))
+            content += " "
             content += self.colours.Foreground.GREEN + str(points) + self.colours.Foreground.DEFAULT
+            if i%4==0:  content += "\n"
+            else:       content += "  "
 
         self.content = content
 
