@@ -10,8 +10,9 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["Moo Cow Awards",{"Adam Townsend":3,"Matthew Scroggs":1,"Belgin Seymenoglu":1}],
+          ["Moo Cow Awards",{"Adam Townsend":3,"Matthew Scroggs":1,"Belgin Seymenoglu":1,"Matthew Wright":1}],
           ["Tea Maker Awards",{"Matthew Scroggs":1,"Matthew Wright":1}],
+          ["CelebriTEA",{"Matthew Wright":1}],
           ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}]
          ]
 
