@@ -13,7 +13,8 @@ awards = [
           ["Moo Cow Awards",{"Adam Townsend":3,"Matthew Scroggs":1,"Belgin Seymenoglu":3,"Matthew Wright":1}],
           ["Tea Maker Awards",{"Matthew Scroggs":1,"Matthew Wright":1,"Pietro Servini":1}],
           ["CelebriTEA",{"Matthew Wright":1}],
-          ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}]
+          ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
+          ["Double Nought and Crosses",{"Belgin Seymenoglu":1}]
          ]
 
 for award in awards:
