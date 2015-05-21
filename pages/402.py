@@ -14,7 +14,7 @@ awards = [
           ["Tea Maker Awards",{"Matthew Scroggs":1,"Matthew Wright":1,"Pietro Servini":1}],
           ["CelebriTEA",{"Matthew Wright":1}],
           ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
-          ["Double Nought and Crosses",{"Belgin Seymenoglu":1}]
+          ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}]
          ]
 
 for award in awards:
