@@ -48,9 +48,9 @@ class LetterPage(Page):
                 points_to_give = 0
                 while length<=len(lines[2]):
                     try:
-                        if lines[2][:length]!="-"
-                        points_to_give = int(lines[2][:length])
-                        length += 1
+                        if lines[2][:length]!="-":
+                            points_to_give = int(lines[2][:length])
+                            length += 1
                     except:
                         break
                 add_points(lines[1].split("=")[0],points_to_give)
