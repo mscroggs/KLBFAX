@@ -50,7 +50,7 @@ class LetterPage(Page):
                     try:
                         if lines[2][:length]!="-":
                             points_to_give = int(lines[2][:length])
-                            length += 1
+                        length += 1
                     except:
                         break
                 add_points(lines[1].split("=")[0],points_to_give)
