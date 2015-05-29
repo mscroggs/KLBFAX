@@ -57,6 +57,8 @@ while True:
                     name = f.read().split("\n")[0]
                     time = now.now().strftime("%H")
                     extra = time
+                    for i in range(100):
+                        print time
                     if time in ["08","16"]:
                       try:
                         house = f.read().split("\n")[0]
