@@ -144,7 +144,7 @@ xxxxxxx
 _add("I", """
 xxx
   x
-  x
+xxx
   x
   x
   x
