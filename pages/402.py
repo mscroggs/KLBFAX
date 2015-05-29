@@ -1,5 +1,6 @@
 import os
 from page import Page
+from random import choice
 from colours import colour_print
 from printer import instance as printer
 
@@ -25,6 +26,7 @@ for award in awards:
     for person,number in award[1].items():
         content += person + (" "*(max_len-len(person)))
         content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
-        content += sub_page.colours.Foreground.GREEN+(u"\u263A"*number)+sub_page.colours.Foreground.DEFAULT
+        for i in range(number):
+            content += choice(sub_page.colours.Foreground.list)+u"\u263A"+sub_page.colours.Foreground.DEFAULT
         content += "\n"
 sub_page.content = content
