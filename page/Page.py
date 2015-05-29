@@ -3,9 +3,9 @@ from math import floor
 from datetime import datetime
 import logging
 import screen
-import pytz
 from random import random,randint,choice
 import colours
+import now
 
 def random_error(string):
     """if random()<0.03:
@@ -29,10 +29,9 @@ class Page(object):
         self.number = str(number)
         self.loaded = False
         self.title = ""
-        self.timezone = pytz.timezone('Europe/London') 
 
     def now(self):
-        return pytz.utc.localize(datetime.now()).astimezone(self.timezone)
+        return now.now()
 
     def generate_content(self):
         pass

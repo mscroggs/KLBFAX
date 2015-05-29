@@ -9,6 +9,7 @@ import page
 import log_setup
 from random import choice
 from points import add_points
+import now
 
 if not isdir(join(expanduser('~'),'.klb')):
     mkdir(join(expanduser('~'),'.klb'))
@@ -53,8 +54,19 @@ while True:
         else:
             if isfile("/home/pi/cards/"+name):
                 with open("/home/pi/cards/"+name) as f:
-                    name = f.read().strip("\n")
+                    name = f.read().split("\n")[0]
+                    time = now.now().strftime("%H")
+                    if time in ["08","16"]:
+                      try:
+                        house = f.read().split("\n")[0]
+                        if time == "08": t_points = 20
+                        else: t_points = 10
+                        add_points(house,t_points)
+                        extra = str(t_points) + " points to " + house + "!"
+                      except:
+                        extra = "Could not add points. Please ask Scroggs about this"
                 name_page = page.NamePage(name)
+                name_page.extra = extra
             else:
                 name_page = page.NamePage(name,False)
             name_page.show()

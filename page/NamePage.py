@@ -13,6 +13,7 @@ class NamePage(Page):
         self.name = name
         self.title = "Greeting"
         self.large = large
+        self.extra = ""
         self.reload()
 
     def generate_content(self):
@@ -36,8 +37,8 @@ class NamePage(Page):
             name = "Jigsaw"
             add_points("Slytherin",10)
 
-            extra = "10 points to Slytherin!"
-
+            extra = "\n\n10 points to Slytherin!"
+        extra += "\n\n"+self.extra
         self.content = colour_print(printer.text_to_ascii(greeting))
         self.content += "\n\n"
         if self.large: self.content += colour_print(printer.text_to_ascii(name + "!"))
