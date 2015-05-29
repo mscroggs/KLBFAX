@@ -18,7 +18,7 @@ class PointsPage(Page):
         else:                    g = "0"
         if "Hufflepuff" in data: h = str(data["Hufflepuff"])
         else:                    h = "0"
-        if "Slytherin" in data:  s = str(data["Slytherin"])
+        if "Slytherin" in data:  s = str(data["Slytherin"])+"i"
         else:                    s = "0"
         if "Squib" in data:     sq = str(data["Squib"])
         else:                   sq = "0"
