@@ -62,7 +62,9 @@ while True:
                     except:
                         house = None
                         extra = "Error finding your house. Please report to Scroggs."
-                if house is not None:
+                if house is not None and "used" not in lines:
+                    with open("/home/pi/cards/"+name,"a") as f:
+                        f.write("\nused")
                     time = now.now().strftime("%H")
                     if time in ["08","09"]:
                         if time == "08": t_points = 20
