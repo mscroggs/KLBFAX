@@ -56,6 +56,7 @@ while True:
                 with open("/home/pi/cards/"+name) as f:
                     name = f.read().split("\n")[0]
                     time = now.now().strftime("%H")
+                    extra = time
                     if time in ["08","16"]:
                       try:
                         house = f.read().split("\n")[0]
