@@ -8,12 +8,12 @@ def colour_print(text):
     return colours.colour_print(text, colours.Background.RED, colours.Foreground.BLACK)
 
 class NamePage(Page):
-    def __init__(self, name,large=True):
+    def __init__(self, name,large=True,extra=""):
         super(NamePage, self).__init__("???")
         self.name = name
         self.title = "Greeting"
         self.large = large
-        self.extra = ""
+        self.extra = extra
         self.reload()
 
     def generate_content(self):

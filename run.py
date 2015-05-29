@@ -54,24 +54,24 @@ while True:
         else:
             if isfile("/home/pi/cards/"+name):
                 with open("/home/pi/cards/"+name) as f:
-                    name = f.read().split("\n")[0]
+                    lines = f.readlines()
+                    name = lines[0].strip("\n")
+                    try:
+                        house = lines[1].strip("\n")
+                        extra = ""
+                    except:
+                        house = None
+                        extra = "Error finding your house. Please report to Scroggs."
+                if house is not None:
                     time = now.now().strftime("%H")
-                    extra = time
-                    for i in range(100):
-                        print time
-                    if time in ["08","16"]:
-                      try:
-                        house = f.read().split("\n")[0]
+                    if time in ["08","09"]:
                         if time == "08": t_points = 20
                         else: t_points = 10
                         add_points(house,t_points)
                         extra = str(t_points) + " points to " + house + "!"
-                      except:
-                        extra = "Could not add points. Please ask Scroggs about this"
-                name_page = page.NamePage(name)
-                name_page.extra = extra
+                name_page = page.NamePage(name,extra=extra)
             else:
-                name_page = page.NamePage(name,False)
+                name_page = page.NamePage(name,large=False)
             name_page.show()
                 
     else:
