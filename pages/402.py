@@ -23,6 +23,8 @@ for award in awards:
     for person in award[1]:
         max_len = max(max_len,len(person))
     for person,number in award[1].items():
-        content += person + (" "*(max_len-len(person))) + sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT+colour_print("x"*number,foreground=sub_page.colours.Foreground.GREEN)+"\n"
-
+        content += person + (" "*(max_len-len(person)))
+        content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
+        content += sub_page.colours.Foreground.GREEN+(u"\u263A"*number)+sub_page.colours.Foreground.DEFAULT
+        content += "\n"
 sub_page.content = content
