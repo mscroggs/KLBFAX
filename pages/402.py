@@ -27,8 +27,7 @@ for award in awards:
         content += person + (" "*(max_len-len(person)))
         content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
         for i in range(number):
-            content += choice(sub_page.colours.Foreground.list)
-            content += choice(sub_page.colours.Background.list)
+            content += choice(sub_page.colours.Foreground.non_boring)
             content += u"\u263A"+sub_page.colours.Foreground.DEFAULT
         content += "\n"
 sub_page.content = content
