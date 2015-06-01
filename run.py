@@ -53,6 +53,7 @@ while True:
                 pass
         else:
             if isfile("/home/pi/cards/"+name):
+                oldname = name
                 with open("/home/pi/cards/"+name) as f:
                     lines = f.readlines()
                     name = lines[0].strip("\n")
@@ -63,7 +64,7 @@ while True:
                         house = None
                         extra = "Error finding your house. Please report to Scroggs."
                 if house is not None and "used" not in lines:
-                    with open("/home/pi/cards/"+name,"a") as f:
+                    with open("/home/pi/cards/"+oldname,"a") as f:
                         f.write("\nused")
                     time = now.now().strftime("%H")
                     if time in ["08","09"]:
