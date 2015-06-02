@@ -40,7 +40,7 @@ class LetterPage(Page):
                     pass
             elif lines[0] == "CARD" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
                 with open('/home/pi/cards/'+lines[1],"w") as f:
-                    f.write(lines[2])
+                    f.write("\n".join(lines[2:]))
                 mail.read()
             elif "POINTS" in lines[0].upper() and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
                 from points import add_points
