@@ -84,7 +84,7 @@ class SecretPage(Page):
         content = self.colours.colour_print(printer.text_to_ascii("secret page"))
         content += "\n\n"
         content += "You have found the secret page!\n\n"
-        content += "Ten points to Hufflepuff!!!"
+        content += "Ten points to Hufflepuff!!!\n\n"
         content += self.colours.colour_print(printer.text_to_ascii("go puffs!"))
 
         self.content = content
