@@ -17,7 +17,7 @@ class Foreground:
     LMAGENTA= "\033[95m"
     LCYAN   = "\033[96m"
     list = [DEFAULT,BLACK,RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN,WHITE]
-    non_boring = [RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN]
+    non_boring = [RED,GREEN,YELLOW,MAGENTA,CYAN]
     delist = ["DEFAULT","BLACK","RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE"]
 
 class Style:
