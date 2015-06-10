@@ -40,7 +40,7 @@ class PointsPage(Page):
                         (printer.text_to_ascii(sq,False)+"\nSquib",
                             self.colours.Background.BLUE,
                             self.colours.Foreground.MAGENTA)
-                    ],"   ","   ")
+                    ]," "," ")
         content += "\n"
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(r,False)+"\nRavenclaw",
@@ -52,7 +52,7 @@ class PointsPage(Page):
                         (printer.text_to_ascii(d,False)+"\nDurmstrang",
                             self.colours.Background.GREEN,
                             self.colours.Foreground.RED)
-                    ],"   ","   ")
+                    ]," "," ")
         content += "\n"
         sorted_pts = sorted(data.items(),key=itemgetter(1),reverse=True)
 
