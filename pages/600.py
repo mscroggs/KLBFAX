@@ -64,6 +64,7 @@ class TVPage(Page):
             ["Political","Mathematical"],
             ["Stacey","Huda"],
             ["Deal","Soheni"],
+            ["The Tribe",self.colours.Background.RED+self.colours.Foreground.BLACK+"The Tribe"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT],
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
