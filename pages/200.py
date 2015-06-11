@@ -7,6 +7,7 @@ class LetterPage(Page):
     def __init__(self, page_num,n):
         super(LetterPage, self).__init__(page_num)
         self.title = "Letters"
+        self.in_index = False
         self.n = n
         self.tagline = "Email klbscroggsbot@gmail.com and your letter will appear here"
 
@@ -72,10 +73,8 @@ class LetterPage(Page):
                 mail.read()
 
         letters = letters.split("\n")
-        print letters
         if len(letters)>1000:
             letters = letters[:1000]
-        print letters
         with open(join(expanduser("~"),".klb/emails"),"w") as f:
             f.write("\n".join(letters))
         letters = letters[24*(self.n-1):24*self.n]
@@ -89,6 +88,8 @@ class LetterPage(Page):
         self.content = page.decode('latin-1')
 
 letters_page1 = LetterPage("200",1)
+letters_page1.in_index = True
+letters_page1.index_num = "200-220"
 letters_page2 = LetterPage("201",2)
 letters_page3 = LetterPage("202",3)
 letters_page4 = LetterPage("203",4)

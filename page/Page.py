@@ -25,6 +25,7 @@ class Page(object):
         self.content = ""
         self.is_enabled = True
         self.in_index = True
+        self.index_num = None
         self.tagline = "KLBFAX: The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False

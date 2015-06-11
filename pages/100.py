@@ -30,12 +30,17 @@ Temperature graphs can be viewed on Twitter: @klbscroggsbot.
         for num, page in items:
           if page.is_enabled and page.in_index:
             content += self.colours.Foreground.MAGENTA
-            content += num
+            if page.index_num is None:
+                content += num
+                num_len = len(num)
+            else:
+                content += page.index_num
+                num_len = len(page.index_num)
             content += self.colours.Foreground.DEFAULT
             content += " "
             content += page.title
             if i == 0:
-                content += " "*(33-len(page.title))
+                content += " "*(36-len(page.title)-num_len)
                 i = 1
             else:
                 content += "\n"
