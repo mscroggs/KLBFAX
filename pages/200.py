@@ -4,9 +4,12 @@ from page import Page
 from random import choice
 
 class LetterPage(Page):
-    def __init__(self, page_num):
+    def __init__(self, page_num,n):
         super(LetterPage, self).__init__(page_num)
         self.title = "Letters"
+        self.n = n
+        self.tagline = "Email klbscroggsbot@gmail.com and your letter will appear here"
+
 
     def generate_content(self):
 
@@ -68,19 +71,34 @@ class LetterPage(Page):
                 letters=newletter+"\n"+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
                 mail.read()
 
-        letters = letters.split("\n")
-        if len(letters)>100:
-            letters = letters[:100]
+        letters = letters.split("\n")[26*self.n-1:27*self.n-1]
         letters = "\n".join(letters)
 
         with open(join(expanduser("~"),".klb/emails"),"w") as f:
             f.write(letters)
 
-        page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"+letters
+        page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"
+        page += letters+"\n"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
+        page += "The letters continue on page "+str(200+self.n)
         self.content = page.decode('latin-1')
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-
-letters_page = LetterPage(page_number)
-letters_page.tagline = ("Email klbscroggsbot@gmail.com and your letter will "
-                        "appear here")
+letters_page1 = LetterPage("200",1)
+letters_page2 = LetterPage("201",2)
+letters_page3 = LetterPage("202",3)
+letters_page4 = LetterPage("203",4)
+letters_page5 = LetterPage("204",5)
+letters_page6 = LetterPage("205",6)
+letters_page7 = LetterPage("206",7)
+letters_page8 = LetterPage("207",8)
+letters_page9 = LetterPage("208",9)
+letters_page10 = LetterPage("209",10)
+letters_page11 = LetterPage("210",11)
+letters_page12 = LetterPage("211",12)
+letters_page13 = LetterPage("212",13)
+letters_page14 = LetterPage("213",14)
+letters_page15 = LetterPage("214",15)
+letters_page16 = LetterPage("215",16)
+letters_page17 = LetterPage("216",17)
+letters_page18 = LetterPage("217",18)
+letters_page19 = LetterPage("218",19)
+letters_page20 = LetterPage("219",20)

@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 # width:79
 # height: 30
 
