@@ -1,33 +1,22 @@
 import os
+from os.path import join,expanduser
 from page import Page
-from random import choice
-from colours import colour_print
 from printer import instance as printer
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
-sub_page = Page(page_number)
-sub_page.title = "Awards"
-content = colour_print(
-    printer.text_to_ascii("Awards", padding={"left": 6}))
+p_page = Page(page_number)
 
-awards = [
-          ["Moo Cow Awards",{"Adam Townsend":3,"Matthew Scroggs":2,"Belgin Seymenoglu":4,"Matthew Wright":2,"Stephen Muirhead":1,"Olly Southwick":1,"Shredder":1,"Pietro Servini":1}],
-          ["Tea Maker Awards",{"Matthew Scroggs":5,"Matthew Wright":4,"Pietro Servini":1}],
-          ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1}],
-          ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
-          ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}]
-         ]
+p_page.title = "Historical House Points"
 
-for award in awards:
-    content += "\n"+sub_page.colours.Foreground.GREEN+award[0]+sub_page.colours.Foreground.DEFAULT+"\n"
-    max_len = 0
-    for person in award[1]:
-        max_len = max(max_len,len(person))
-    for person,number in award[1].items():
-        content += person + (" "*(max_len-len(person)))
-        content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
-        for i in range(number):
-            content += choice(sub_page.colours.Foreground.non_boring)
-            content += u"\u263A"+sub_page.colours.Foreground.DEFAULT
-        content += "\n"
-sub_page.content = content
+content = p_page.colours.colour_print(printer.text_to_ascii("house points"))
+
+content += "\n\n"
+
+R = p_page.colours.Foreground.RED
+G = p_page.colours.Foreground.GREEN
+D = p_page.colours.Foreground.DEFAULT
+
+content += G+"Year" + " Gryffindor Slytherin Hufflepuff Ravenclaw Durmstrang Squib Peeves"+D+"\n"
+content += G+"2015"+D+" 618        507       "+R+"1092"+D+"       639       440        513   0\n"
+
+p_page.content = content
