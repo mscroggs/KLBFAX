@@ -85,7 +85,10 @@ class LetterPage(Page):
         page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"
         page += letters+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
         page += "\n\n"
-        page += "The letters continue on page "+str(200+self.n)
+        if self.n==21:
+            page += "~ END OF LETTERS ~"
+        else:
+            page += "The letters continue on page "+str(200+self.n)
         self.content = page.decode('latin-1')
 
 letters_page1 = LetterPage("200",1)
