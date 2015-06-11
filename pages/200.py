@@ -71,14 +71,20 @@ class LetterPage(Page):
                 letters=newletter+"\n"+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
                 mail.read()
 
-        letters = letters.split("\n")[26*self.n-1:27*self.n-1]
+        letters = letters.split("\n")
+        print letters
+        if len(letters)>1000:
+            letters = letters[:1000]
+        print letters
+        with open(join(expanduser("~"),".klb/emails"),"w") as f:
+            f.write("\n".join(letters))
+        letters = letters[24*(self.n-1):24*self.n]
         letters = "\n".join(letters)
 
-        with open(join(expanduser("~"),".klb/emails"),"w") as f:
-            f.write(letters)
 
         page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"
-        page += letters+"\n"+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
+        page += letters+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
+        page += "\n\n"
         page += "The letters continue on page "+str(200+self.n)
         self.content = page.decode('latin-1')
 
