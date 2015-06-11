@@ -78,13 +78,10 @@ class SecretPage(Page):
         self.is_enabled = False
 
     def generate_content(self):
-        from points import add_points
-        add_points("Hufflepuff",10)
 
         content = self.colours.colour_print(printer.text_to_ascii("secret page"))
         content += "\n\n"
         content += "You have found the secret page!\n\n"
-        content += "Ten points to Hufflepuff!!!\n\n"
         content += self.colours.colour_print(printer.text_to_ascii("go puffs!"))
 
         self.content = content
