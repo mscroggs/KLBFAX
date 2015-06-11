@@ -61,15 +61,16 @@ class LetterPage(Page):
                 mail.read()
 
             else:
-                newletter = choice(self.colours.Background.non_boring)
+                newletter_col = choice(self.colours.Background.non_boring)
+                newletter = ""
                 for line in lines:
                     if line!="":
                         while len(line)>79:
-                            newletter += line[:79]+"\n"
+                            newletter += newletter_col+line[:79]+"\n"
                             line=line[79:]
-                        newletter+=line+"\n"
+                        newletter+=newletter_col+line+"\n"
 
-                letters=newletter+"\n"+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
+                letters=newletter+"\n"+newletter_col+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
                 mail.read()
 
         letters = letters.split("\n")
