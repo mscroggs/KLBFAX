@@ -56,9 +56,12 @@ def title(text):
 
 tea_page = Page("451")
 tea_page.content = title("Tea Awards") + "\n\n" + award_show(awards[1]) + "\n" + award_show(awards[2])
+tea_page.in_index = False
 
 moo_page = Page("452")
 moo_page.content = title("Moo Cow Awards") + "\n\n" + award_show(awards[0])
+moo_page.in_index = False
 
 oth_page = Page("453")
 oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4])
+oth_page.in_index = False
