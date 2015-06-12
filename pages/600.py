@@ -65,6 +65,7 @@ class TVPage(Page):
             ["Stacey","Huda"],
             ["Deal","Soheni"],
             ["The Tribe",self.colours.Background.RED+self.colours.Foreground.BLACK+"Pietro's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" The Tribe"],
+            ["Teenage Mutant Ninja Turtles",self.colours.Background.RED+self.colours.Foreground.BLACK+"Belgin's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" Teenage Mutant Ninja Turtles"],
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
