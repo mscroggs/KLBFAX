@@ -82,7 +82,7 @@ class LetterPage(Page):
         letters = "\n".join(letters)
 
 
-        page = self.colours.Foreground.RED+"LETTERS"+self.colours.Foreground.DEFAULT+"\n"
+        page = self.colours.Foreground.RED+"LETTERS "+str(self.n)+"/21"+self.colours.Foreground.DEFAULT+"\n"
         page += letters+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
         page += "\n\n"
         if self.n==21:
