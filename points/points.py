@@ -18,4 +18,7 @@ def add_points(house,number):
         data[house]=number
     with open(join(expanduser('~'),'.klb/points'),'w+') as f:
         json.dump(data,f)
-    update_status(status=str(number)+" points to "+house+"!")
+    if number==1:
+        update_status(status=str(number)+" point to "+house+"!")
+    else:
+        update_status(status=str(number)+" points to "+house+"!")
