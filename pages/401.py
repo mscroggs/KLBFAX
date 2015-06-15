@@ -61,18 +61,30 @@ class WeatherPage(Page):
         
         compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         compass_direction = compass_points[int(float(weather_data[3])*16/360)]
+
+        with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
+            inside_weather = f.read()
 			
         content += " /--------- O U T S I D E ----------|     /---------- I N S I D E -----------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii("|",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
-                        (printer.text_to_ascii(inside_weather,False)+"",
+                        (printer.text_to_ascii(outside_weather,False)+"",
                             self.colours.Background.RED,
                             self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
                         (printer.text_to_ascii(weather_pic,False)+"",
                             weather_colour_foreground,
-                            weather_colour_background)
+                            weather_colour_background),
+                        (printer.text_to_ascii("|||||",False)+"",
+                            self.colours.Background.DEFAULT,
+                            self.colours.Foreground.BLACK), 
+                        (printer.text_to_ascii(inside_weather,False)+"",
+                            self.colours.Background.RED,
+                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii("*",False)+"",
+                            self.colours.Background.YELLOW,
+                            self.colours.Foreground.BLACK)
                     ]," "," ")       
 
         content += "\n"
