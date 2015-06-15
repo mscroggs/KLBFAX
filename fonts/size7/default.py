@@ -465,7 +465,7 @@ xxx,, ''x
 """)
 
 # cloud sun
-_add("`","""
+_add("~","""
 xxxxxxxxxxxxxxxx
 xxx',,,'xx xx'xx
 ',,'xxxx ''x,xxx

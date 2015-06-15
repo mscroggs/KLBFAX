@@ -47,7 +47,7 @@ class WeatherPage(Page):
             weather_colour_foreground = self.colours.Background.CYAN
             weather_colour_background = self.colours.Foreground.BLACK    
         elif weather_data[48] in ["9","19"]:
-            weather_pic = "`" #cloud sun
+            weather_pic = "~" #cloud sun
             weather_colour_foreground = self.colours.Background.WHITE
             weather_colour_background = self.colours.Foreground.BLACK
         elif weather_data[48] in ["29","30","31","32"]:
@@ -55,7 +55,7 @@ class WeatherPage(Page):
             weather_colour_foreground = self.colours.Background.RED
             weather_colour_background = self.colours.Foreground.BLACK       
         elif weather_data[48] in ["23","24","25","26","27"]:
-            weather_pic = "`" #snow
+            weather_pic = "%" #snow
             weather_colour_foreground = self.colours.Background.WHITE
             weather_colour_background = self.colours.Foreground.BLACK
         
