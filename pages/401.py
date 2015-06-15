@@ -32,8 +32,8 @@ class WeatherPage(Page):
 		
         if weather_data[48] in ["2","3","4","13","18"]:
             weather_pic = "@" #cloudy
-            weather_colour_foreground = self.colours.Background.WHITE
-            weather_colour_background = self.colours.Foreground.BLACK
+            weather_colour_foreground = self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.WHITE
         elif weather_data[48] in ["0","5","28"]:
             weather_pic = "*" #sunny
             weather_colour_foreground = self.colours.Background.YELLOW
@@ -48,16 +48,16 @@ class WeatherPage(Page):
             weather_colour_background = self.colours.Foreground.BLACK    
         elif weather_data[48] in ["9","19"]:
             weather_pic = "~" #cloud sun
-            weather_colour_foreground = self.colours.Background.WHITE
-            weather_colour_background = self.colours.Foreground.BLACK
+            weather_colour_foreground = self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.WHITE
         elif weather_data[48] in ["29","30","31","32"]:
             weather_pic = "^" #storm
             weather_colour_foreground = self.colours.Background.RED
             weather_colour_background = self.colours.Foreground.BLACK       
         elif weather_data[48] in ["23","24","25","26","27"]:
             weather_pic = "%" #snow
-            weather_colour_foreground = self.colours.Background.WHITE
-            weather_colour_background = self.colours.Foreground.BLACK
+            weather_colour_foreground = self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.WHITE
         
         compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         compass_direction = compass_points[int(float(weather_data[3])*16/360)]
