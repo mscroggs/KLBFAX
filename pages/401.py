@@ -76,7 +76,7 @@ class WeatherPage(Page):
                         (printer.text_to_ascii(weather_pic,False)+"",
                             weather_colour_foreground,
                             weather_colour_background),
-                        (printer.text_to_ascii("|||||",False)+"",
+                        (printer.text_to_ascii("||||||||",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
                         (printer.text_to_ascii(inside_weather,False)+"",
