@@ -53,9 +53,22 @@ class Background:
     non_boring = [RED,GREEN,YELLOW,BLUE,MAGENTA,CYAN]
     delist = ["DEFAULT","BLACK","RED","GREEN","YELLOW","BLUE","MAGENTA","CYAN","WHITE"]
 
-def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW):
+def block_characters(text,invert=False):
+    if invert==False:
+        text = text.replace("x",u"\u2588")
+        text = text.replace(",",u"\u2584")
+        text = text.replace("'",u"\u2580")
+    else:
+        text = text.replace(" ",u"\u2588")
+        text = text.replace("'",u"\u2584")
+        text = text.replace(",",u"\u2580")	
+        text = text.replace("x"," ")
+    return text
+    
+def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,invert=False):
     text = background+foreground+text
-    text = (u"\u2588").join(text.split("x"))
+    text = block_characters(text,invert)        
+    #text = (u"\u2588").join(text.split("x"))
     text += Foreground.DEFAULT+Background.DEFAULT
     return(text)
 
@@ -73,7 +86,7 @@ def colour_print_join(list,joiner="",pre=""):
         for i in range(length):
             lines[i] += item[1]+item[2]
             if i<len(splitted):
-                lines[i] += (u"\u2588").join(splitted[i].split("x")) + " "*(length2 - len(splitted[i]))
+                lines[i] += block_characters(splitted[i],False) + " "*(length2 - len(splitted[i]))
             else:
                 lines[i] += " "*length2
             lines[i] += Foreground.DEFAULT+Background.DEFAULT+joiner

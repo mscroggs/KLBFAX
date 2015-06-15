@@ -14,7 +14,7 @@ import now
 if not isdir(join(expanduser('~'),'.klb')):
     mkdir(join(expanduser('~'),'.klb'))
 
-house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff"])
+house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff","Squib","Durmstrang"])
 add_points(house,1)
 print("1 point to "+house+"!")
 

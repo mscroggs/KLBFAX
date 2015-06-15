@@ -62,32 +62,32 @@ xxx
 """)
 
 _add("A", """
-xxxxxxxx
-xx   xxx
-x xxx xx
-       x
-  xxx  x
-  xxx  x
-xxxxxxxx
+xxxxxxx
+x'  'xx
+  xx  x
+  ''  x
+  ,,  x
+  xx  x
+xxxxxxx
 """)
 
 _add("B", """
 xxxxxxx
-     xx
-  xx  x
-    xxx
+     'x
   xx  x
      xx
+  xx  x
+     ,x
 xxxxxxx
 """)
 
 _add("C", """
 xxxxxxx
-      x
+'    'x
+  xx,,x
   xxxxx
-  xxxxx
-  xxxxx
-      x
+  xx''x
+,    ,x
 xxxxxxx
 """)
 
@@ -122,13 +122,13 @@ xxxxxxx
 """)
 
 _add("G", """
-xxxxxxx
-      x
-  xxxxx
-  x   x
-  xx  x
-      x
-xxxxxxx
+xxxxxxxx
+'     'x
+  xxx,,x
+  x    x
+  xxx  x
+,     ,x
+xxxxxxxx
 """)
 
 _add("H", """
@@ -144,7 +144,7 @@ xxxxxxx
 _add("I", """
 xxx
   x
-xxx
+  x
   x
   x
   x
@@ -172,23 +172,23 @@ xxxxxxx
 """)
 
 _add("L", """
-xxxxxxx
-  xxxxx
-  xxxxx
-  xxxxx
-  xxxxx
-      x
-xxxxxxx
+xxxxxx
+  xxxx
+  xxxx
+  xxxx
+  xxxx
+     x
+xxxxxx
 """)
 
 _add("M", """
-xxxxxxxxxxx
-   xxxx   x
-    xx    x
-  x    x  x
-  xx  xx  x
-  xxxxxx  x
-xxxxxxxxxxx
+xxxxxxxxx
+  xxxx  x
+   ''   x
+  ,  ,  x
+  x,,x  x
+  xxxx  x
+xxxxxxxxx
 """)
 
 _add("N", """
@@ -202,52 +202,52 @@ xxxxxxxx
 """)
 
 _add("O", """
-xxxxxxxx
-       x
-  xxx  x
-  xxx  x
-  xxx  x
-       x
-xxxxxxxx
+xxxxxxx
+'    'x
+  xx  x
+  xx  x
+  xx  x
+,    ,x
+xxxxxxx
 """)
 
 _add("P", """
 xxxxxxx
-     xx
+     'x
   xx  x
-     xx
+     ,x
   xxxxx
   xxxxx
 xxxxxxx
 """)
 
 _add("Q", """
-xxxxxxxxx
-       xx
-  xxx  xx
-  x    xx
-  xx   xx
-        x
-xxxxxx  x
+xxxxxxxx
+'    'xx
+  xx  xx
+  xx  xx
+  x'  xx
+,   ,  x
+xxxxxxxx
 """)
 
 _add("R", """
 xxxxxxxx
-      xx
-  xx   x
-     xxx
-  xx  xx
+      'x
+  xxx  x
+     ,xx
+  x,  xx
   xxx  x
 xxxxxxxx
 """)
 
 _add("S", """
 xxxxxxx
-      x
+'    'x
   xxxxx
-      x
+,    'x
 xxxx  x
-      x
+,    ,x
 xxxxxxx
 """)
 
@@ -267,7 +267,7 @@ xxxxxxx
   xx  x
   xx  x
   xx  x
-      x
+,    ,x
 xxxxxxx
 """)
 
@@ -419,6 +419,82 @@ xxxxxxx
   xx  x
       x
 xxxxxxx
+""")
+
+_add("*", """
+xxxxx xxxxxx
+x,'xx,xx',xx
+xxx'   'xxxx
+,,x     x,,x
+xxx,   ,xxxx
+x',xx'xx,'xx
+xxxxx xxxxxx
+""")
+
+#cloud
+_add("@", """
+xxxxxxxxxxxxx
+xxxx'''xxxxxx
+x'',xxx,'xxxx
+ xx,xxx',,,'x
+,'''''''''',x
+xxxxxxxxxxxxx
+xxxxxxxxxxxxx
+""")
+
+#rain
+_add("{", """
+xxx',,,'xxxxx
+',,'xxxx ''xx
+ xxxxxx,xxx x
+x,,,,,,,,,,xx
+xx','xxxx'xxx
+x,''',x',x,'x
+xxxxxxx,''',x
+""")
+
+#moon
+_add("}", """
+xxx'' ,,x
+x'   ,xxx
+'   xxxxx
+    xxxxx
+,   xxxxx
+x,   'xxx
+xxx,, ''x
+""")
+
+# cloud sun
+_add("`","""
+xxxxxxxxxxxxxxxx
+xxx',,,'xx xx'xx
+',,'xxxx ''x,xxx
+ xxxxxx,xxx x,,x
+x,,,,,,,,,,x'xxx
+xxxxxxxxxx xx,xx
+xxxxxxxxxxxxxxxx
+""")
+
+# storm
+_add("^","""
+xxx',,,'xxxxx
+',,'xxxx'xxxx
+ xxxxxx, ''xx
+x,,x'   ,,,'x
+xxx,  'xxxx x
+xxxxx,  'x',x
+xxxx' ,x,x,xx
+""")
+
+# snow
+_add("%","""
+xxx',,,'xxxxx
+',,'xxxx ''xx
+ xxxxxx,xxx x
+x,,,,,,,,,,xx
+xxxxxx,',xxxx
+x,',xx,x,xxxx
+x,x,xxxxxxxxx
 """)
 
 
