@@ -19,31 +19,31 @@ class TubePage(Page):
         # Loop through the lines and print the status of each one
         lines_tube = [lines[i] for i in [1,2,11,4,9,0,3,13,5,7,10]]
         lines_other = [lines[i] for i in [8,6,12]]
-        colours_tube = [self.colours.Background.LRED, 
+        colours_tube = [self.colours.Style.BLINK,
                         self.colours.Background.RED,
                         self.colours.Background.YELLOW,
                         self.colours.Background.GREEN,
-                        self.colours.Background.LMAGENTA,
-                        self.colours.Background.LGRAY,
+                        self.colours.Background.MAGENTA,
+                        self.colours.Style.BLINK,
                         self.colours.Background.MAGENTA,
                         self.colours.Background.DEFAULT,
                         self.colours.Background.BLUE,
-                        self.colours.Background.LBLUE,
+                        self.colours.Background.BLUE,
                         self.colours.Background.CYAN]
-        colours_tube_text = [self.colours.Foreground.BLACK, 
+        colours_tube_text = [self.colours.Foreground.WHITE, 
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.BLACK,
                         self.colours.Foreground.BLACK,
                         self.colours.Foreground.BLACK,
-                        self.colours.Foreground.BLACK,
+                        self.colours.Foreground.WHITE,
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.BLACK]
                         
-        colours_other = [self.colours.Background.LCYAN,
-                        self.colours.Background.LRED,
+        colours_other = [self.colours.Background.CYAN,
+                        self.colours.Background.YELLOW,
                         self.colours.Background.BLUE]  
         colours_other_text = [self.colours.Foreground.BLACK, 
                         self.colours.Foreground.BLACK,
