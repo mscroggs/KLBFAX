@@ -2,6 +2,13 @@ import os
 from os.path import join,expanduser
 from page import Page
 from printer import instance as printer
+from math import floor
+
+def points_format(points):
+    points = int(points)
+    points /= 10
+    points = int(floor(points))
+    return str(points)
 
 class PointsPage(Page):
     def __init__(self, page_num):
@@ -14,20 +21,20 @@ class PointsPage(Page):
         with open(join(expanduser('~'),'.klb/points')) as f:
             data = json.load(f)
 
-        if "Gryffindor" in data: g = str(data["Gryffindor"])
+        if "Gryffindor" in data: g = points_format(data["Gryffindor"])
         else:                    g = "0"
-        if "Hufflepuff" in data: h = str(data["Hufflepuff"])
+        if "Hufflepuff" in data: h = points_format(data["Hufflepuff"])
         else:                    h = "0"
-        if "Slytherin" in data:  s = str(data["Slytherin"])
+        if "Slytherin" in data:  s = points_format(data["Slytherin"])
         else:                    s = "0"
-        if "Squib" in data:     sq = str(data["Squib"])
+        if "Squib" in data:     sq = points_format(data["Squib"])
         else:                   sq = "0"
-        if "Ravenclaw" in data:  r = str(data["Ravenclaw"])
+        if "Ravenclaw" in data:  r = points_format(data["Ravenclaw"])
         else:                    r = "0"
-        if "Durmstrang" in data: d = str(data["Durmstrang"])
+        if "Durmstrang" in data: d = points_format(data["Durmstrang"])
         else:                    d = "0"
 
-        content = self.colours.colour_print(printer.text_to_ascii("house points"))
+        content = self.colours.colour_print(printer.text_to_ascii("decapoints"))
         content += "\nWhat do points mean?\n"
 
         content += self.colours.colour_print_join([
