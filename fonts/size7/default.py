@@ -122,13 +122,13 @@ xxxxxxx
 """)
 
 _add("G", """
-xxxxxxxx
-'     'x
-  xxx,,x
-  x    x
-  xxx  x
-,     ,x
-xxxxxxxx
+xxxxxxx
+'    'x
+  xx,,x
+  x'''x
+  x,  x
+,    ,x
+xxxxxxx
 """)
 
 _add("H", """
@@ -222,23 +222,23 @@ xxxxxxx
 """)
 
 _add("Q", """
-xxxxxxxx
-'    'xx
-  xx  xx
-  xx  xx
-  x'  xx
-,   ,  x
-xxxxxxxx
+xxxxxxx
+'    'x
+  xx  x
+  xx  x
+  x'',x
+, ',  x
+xxxxxxx
 """)
 
 _add("R", """
-xxxxxxxx
-      'x
-  xxx  x
-     ,xx
-  x,  xx
-  xxx  x
-xxxxxxxx
+xxxxxxx
+     'x
+  xx  x
+     ,x
+  xx 'x
+  xx  x
+xxxxxxx
 """)
 
 _add("S", """
@@ -292,23 +292,23 @@ xxxxxxxxx
 """)
 
 _add("X", """
-xxxxxxxx
-  xxx  x
-x  x  xx
-xx   xxx
-x  x  xx
-  xxx  x
-xxxxxxxx
+xxxxxxx
+  xx  x
+x '' xx
+xx  xxx
+x ,, xx
+  xx  x
+xxxxxxx
 """)
 
 _add("Y", """
-xxxxxxxxx
-  xxxx  x
-x  xx  xx
-xx    xxx
-xxx  xxxx
-xxx  xxxx
-xxxxxxxxx
+xxxxxxx
+  xx  x
+  xx  x
+x    xx
+xx  xxx
+xx  xxx
+xxxxxxx
 """)
 
 _add("Z", """
@@ -322,42 +322,42 @@ xxxxxxx
 """)
 
 _add("1", """
-xxx
-  x
-  x
-  x
-  x
-  x
-xxx
+xxxx
+'  x
+,  x
+x  x
+x  x
+x  x
+xxxx
 """)
 
 _add("2", """
 xxxxxxx
-      x
-xxxx  x
-      x
-  xxxxx
+'    'x
+,,xx  x
+x'   ,x
+' ,xxxx
       x
 xxxxxxx
 """)
 
 _add("3", """
 xxxxxxx
-      x
-xxxx  x
-      x
-xxxx  x
-      x
+'    'x
+,,xx  x
+xx   ,x
+''xx  x
+,    ,x
 xxxxxxx
 """)
 
 _add("4", """
 xxxxxxx
-  xx  x
-  xx  x
+x  xxxx
+  ,xxxx
+  x  xx
       x
-xxxx  x
-xxxx  x
+xxx  xx
 xxxxxxx
 """)
 
@@ -365,19 +365,19 @@ _add("5", """
 xxxxxxx
       x
   xxxxx
-      x
-xxxx  x
-      x
+,,   'x
+''xx  x
+,    ,x
 xxxxxxx
 """)
 
 _add("6", """
 xxxxxxx
-      x
-  xxxxx
-      x
+'    'x
+  xx,,x
+     'x
   xx  x
-      x
+,    ,x
 xxxxxxx
 """)
 
@@ -385,39 +385,39 @@ _add("7", """
 xxxxxxx
       x
 xxxx  x
-xxxx  x
-xxxx  x
-xxxx  x
+xx'  xx
+xx  xxx
+xx  xxx
 xxxxxxx
 """)
 
 _add("8", """
 xxxxxxx
-      x
+'    'x
   xx  x
-      x
+'    'x
   xx  x
-      x
+,    ,x
 xxxxxxx
 """)
 
 _add("9", """
 xxxxxxx
-      x
+'    'x
   xx  x
-      x
-xxxx  x
-      x
+,     x
+''xx  x
+,    ,x
 xxxxxxx
 """)
 
 _add("0", """
 xxxxxxx
-      x
+'    'x
   xx  x
   xx  x
   xx  x
-      x
+,    ,x
 xxxxxxx
 """)
 
