@@ -9,13 +9,14 @@ def strip_tags(string):
     return sub(r'<[^>]*?>', '', string)
 
 class TrainPage(Page):
-    def __init__(self, page_num, station, code):
+    def __init__(self, page_num, station, code,hogwarts=False):
         super(TrainPage, self).__init__(page_num)
         self.title = station+" Trains"
         self.in_index = False
         self.tagline = "Live trains from "+code+". Data from opentraintimes.com."
         self.station = station
         self.code = code
+        self.hogwarts = hogwarts
         pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
@@ -25,7 +26,14 @@ class TrainPage(Page):
         response = urllib2.urlopen("http://www.opentraintimes.com/location/"+self.code+"/"+self.now().strftime("%Y-%m-%d/%H:%M")+"?passenger=on&show_call=on&show_stp=on&show_var=on&show_wtt=on&utf8=%E2%9C%93")
         html = response.read()
         trains = html.split("<table")[1].split("</table>")[0].split("<tr>")
+        first = False
+        if self.hogwarts: first = True
         for train in trains[2:]:
+            if first:
+                content += "0825 Hogwarts Express"
+                content += " "*44
+                content += "9 3/4\n"
+                first = False
             train = strip_tags(train).lstrip()
             train = train.split("\n")
             try:
@@ -48,7 +56,7 @@ train04 = TrainPage("704","London Charing Cross","CHX")
 train05 = TrainPage("705","London Euston","EUS")
 train06 = TrainPage("706","London Fenchurch Street","FST")
 train08 = TrainPage("708","London Fields","LOF")
-train09 = TrainPage("709","London Kings Cross","KGX")
+train09 = TrainPage("709","London Kings Cross","KGX",True)
 train10 = TrainPage("710","London Liverpool Street","LST")
 train11 = TrainPage("711","London Marylebone","MYB")
 train12 = TrainPage("712","London Paddington","PAD")
