@@ -51,5 +51,5 @@ def title(text):
     return colour_print(printer.text_to_ascii(text))
 
 tea_page = Page("457")
-tea_page.content = title("Tea Unwards") + "\n\n" + award_show(awards[0])
+tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0])
 tea_page.in_index = False
