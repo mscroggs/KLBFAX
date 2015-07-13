@@ -43,7 +43,7 @@ def award_show(award):
         content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
         for i in range(number):
             content += choice(sub_page.colours.Foreground.non_boring)
-            content += u"\u263B"+sub_page.colours.Foreground.DEFAULT
+            content += u"\u0CA0_\u0CA0"+sub_page.colours.Foreground.DEFAULT
         content += "\n"
     return content
 
