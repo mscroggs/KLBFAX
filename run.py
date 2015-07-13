@@ -16,7 +16,10 @@ if not isdir(join(expanduser('~'),'.klb')):
 
 house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff","Squib","Durmstrang"])
 add_points(house,1)
-print("1 point to "+house+"!")
+if house == "Hufflepuff":
+    print("1 point to "+house+"! GO PUFFS!")
+else:
+    print("1 point to "+house+"!")
 
 log_setup.read_from_file()
 ceefax.pageFactory.show_random()
