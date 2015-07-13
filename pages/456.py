@@ -52,3 +52,4 @@ def title(text):
 
 tea_page = Page("457")
 tea_page.content = title("Tea Unwards") + "\n\n" + award_show(awards[0])
+tea_page.in_index = False
