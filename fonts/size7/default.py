@@ -353,8 +353,8 @@ xxxxxxx
 
 _add("4", """
 xxxxxxx
-x  xxxx
-  ,xxxx
+  xxxxx
+  xxxxx
   x  xx
       x
 xxx  xx
