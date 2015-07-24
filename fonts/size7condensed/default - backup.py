@@ -22,13 +22,13 @@ x
 """)
 
 _add("-", """
-xxxx
-xxxx
-xxxx
-   x
-xxxx
-xxxx
-xxxx
+xxxxx
+xxxxx
+xxxxx
+x   x
+xxxxx
+xxxxx
+xxxxx
 """)
 
 _add("!", """

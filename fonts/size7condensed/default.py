@@ -52,93 +52,93 @@ xxxxxx
 """)
 
 _add(" ","""
-xxx
-xxx
-xxx
-xxx
-xxx
-xxx
-xxx
+xx
+xx
+xx
+xx
+xx
+xx
+xx
 """)
 
 _add("A", """
-xxxxxxx
-x'  'xx
-  xx  x
-  ''  x
-  ,,  x
-  xx  x
-xxxxxxx
+xxxxxx
+'   'x
+  x  x
+     x
+  x  x
+  x  x
+xxxxxx
 """)
 
 _add("B", """
-xxxxxxx
-     'x
-  xx  x
-     xx
-  xx  x
-     ,x
-xxxxxxx
+xxxxxx
+    'x
+  x  x
+    'x
+  x  x
+    ,x
+xxxxxx
 """)
 
 _add("C", """
-xxxxxxx
-'    'x
-  xx,,x
-  xxxxx
-  xx''x
-,    ,x
-xxxxxxx
+xxxxx
+'   x
+  xxx
+  xxx
+  xxx
+,   x
+xxxxx
 """)
 
 _add("D", """
-xxxxxxx
-     xx
-  xx  x
-  xx  x
-  xx  x
-     xx
-xxxxxxx
+xxxxxx
+    'x
+  x  x
+  x  x
+  x  x
+    ,x
+xxxxxx
 """)
 
 _add("E", """
-xxxxxxx
-      x
-  xxxxx
-    xxx
-  xxxxx
-      x
-xxxxxxx
+xxxxx
+    x
+  xxx
+   xx
+  xxx
+    x
+xxxxx
 """)
 
 _add("F", """
-xxxxxxx
-      x
-  xxxxx
-    xxx
-  xxxxx
-  xxxxx
-xxxxxxx
+xxxxx
+    x
+  xxx
+   xx
+  xxx
+  xxx
+xxxxx
 """)
 
 _add("G", """
-xxxxxxx
-'    'x
-  xx,,x
-  x'''x
-  x,  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+  xxxx
+  x''x
+  x  x
+,    x
+xxxxxx
 """)
 
 _add("H", """
-xxxxxxx
-  xx  x
-  xx  x
-      x
-  xx  x
-  xx  x
-xxxxxxx
+xxxxxx
+  x  x
+  x  x
+     x
+  x  x
+  x  x
+xxxxxx
 """)
 
 _add("I", """
@@ -157,268 +157,268 @@ xx  x
 xx  x
 xx  x
 xx  x
-    x
+   ,x
 xxxxx
 """)
 
 _add("K", """
-xxxxxxx
-  xx  x
-  x  xx
-    xxx
-  x  xx
-  xx  x
-xxxxxxx
+xxxxxx
+  x  x
+  x ,x
+   'xx
+  x  x
+  x  x
+xxxxxx
 """)
 
 _add("L", """
+xxxxx
+  xxx
+  xxx
+  xxx
+  xxx
+    x
+xxxxx
+""")
+
+_add("M", """
 xxxxxx
+ 'x' x
+     x
+  x  x
+  x  x
+  x  x
+xxxxxx
+""")
+
+_add("N", """
+xxxxxx
+    'x
+  x  x
+  x  x
+  x  x
+  x  x
+xxxxxx
+""")
+
+_add("O", """
+xxxxxx
+'   'x
+  x  x
+  x  x
+  x  x
+,   ,x
+xxxxxx
+""")
+
+_add("P", """
+xxxxxx
+    'x
+  x  x
+    ,x
   xxxx
   xxxx
-  xxxx
-  xxxx
+xxxxxx
+""")
+
+_add("Q", """
+xxxxxx
+'   'x
+  x  x
+  x  x
+  x  x
+,    x
+xxxxxx
+""")
+
+_add("R", """
+xxxxxx
+    'x
+  x  x
+    ,x
+  x  x
+  x  x
+xxxxxx
+""")
+
+_add("S", """
+xxxxx
+'   x
+  xxx
+,  'x
+xx  x
+   ,x
+xxxxx
+""")
+
+_add("T", """
+xxxxx
+    x
+x  xx
+x  xx
+x  xx
+x  xx
+xxxxx
+""")
+
+_add("U", """
+xxxxxx
+  x  x
+  x  x
+  x  x
+  x  x
+,   ,x
+xxxxxx
+""")
+
+_add("V", """
+xxxxxx
+  x  x
+  x  x
+  x  x
+  x  x
+   ,xx
+xxxxxx
+""")
+
+_add("W", """
+xxxxxxx
+  xx  x
+  x'  x
+  x   x
+  '   x
+,  , ,x
+xxxxxxx
+""")
+
+_add("X", """
+xxxxxx
+  x  x
+  x  x
+x   xx
+  x  x
+  x  x
+xxxxxx
+""")
+
+_add("Y", """
+xxxxxx
+  x  x
+  x  x
+,    x
+xxx  x
+x   ,x
+xxxxxx
+""")
+
+_add("Z", """
+xxxxx
+    x
+xx' x
+x   x
+ ,xxx
+    x
+xxxxx
+""")
+
+_add("1", """
+xxx
+' x
+  x
+  x
+  x
+  x
+xxx
+""")
+
+_add("2", """
+xxxxxx
+'   'x
+,,x  x
+x'  ,x
+  ,xxx
      x
 xxxxxx
 """)
 
-_add("M", """
-xxxxxxxxx
-  xxxx  x
-   ''   x
-  ,  ,  x
-  x,,x  x
-  xxxx  x
-xxxxxxxxx
-""")
-
-_add("N", """
-xxxxxxxx
-   xx  x
-    x  x
-  x    x
-  xx   x
-  xxx  x
-xxxxxxxx
-""")
-
-_add("O", """
-xxxxxxx
-'    'x
-  xx  x
-  xx  x
-  xx  x
-,    ,x
-xxxxxxx
-""")
-
-_add("P", """
-xxxxxxx
-     'x
-  xx  x
-     ,x
-  xxxxx
-  xxxxx
-xxxxxxx
-""")
-
-_add("Q", """
-xxxxxxx
-'    'x
-  xx  x
-  xx  x
-  x'',x
-, ',  x
-xxxxxxx
-""")
-
-_add("R", """
-xxxxxxx
-     'x
-  xx  x
-     ,x
-  xx 'x
-  xx  x
-xxxxxxx
-""")
-
-_add("S", """
-xxxxxxx
-'    'x
-  xxxxx
-,    'x
-xxxx  x
-,    ,x
-xxxxxxx
-""")
-
-_add("T", """
-xxxxxxx
-      x
-xx  xxx
-xx  xxx
-xx  xxx
-xx  xxx
-xxxxxxx
-""")
-
-_add("U", """
-xxxxxxx
-  xx  x
-  xx  x
-  xx  x
-  xx  x
-,    ,x
-xxxxxxx
-""")
-
-_add("V", """
-xxxxxxx
-  xx  x
-  xx  x
-  xx  x
-x    xx
-xx  xxx
-xxxxxxx
-""")
-
-_add("W", """
-xxxxxxxxx
-  xxxx  x
-  xxxx  x
-  x  x  x
-        x
-x  xx  xx
-xxxxxxxxx
-""")
-
-_add("X", """
-xxxxxxx
-  xx  x
-x '' xx
-xx  xxx
-x ,, xx
-  xx  x
-xxxxxxx
-""")
-
-_add("Y", """
-xxxxxxx
-  xx  x
-  xx  x
-x    xx
-xx  xxx
-xx  xxx
-xxxxxxx
-""")
-
-_add("Z", """
-xxxxxxx
-      x
-xxx  xx
-xx  xxx
-x  xxxx
-      x
-xxxxxxx
-""")
-
-_add("1", """
-xxxx
-'  x
-,  x
-x  x
-x  x
-x  x
-xxxx
-""")
-
-_add("2", """
-xxxxxxx
-'    'x
-,,xx  x
-x'   ,x
-' ,xxxx
-      x
-xxxxxxx
-""")
-
 _add("3", """
-xxxxxxx
-'    'x
-,,xx  x
-xx   ,x
-''xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+,,x  x
+xx  'x
+''x  x
+,   ,x
+xxxxxx
 """)
 
 _add("4", """
-xxxxxxx
-x  xxxx
-  ,xxxx
-  x  xx
-      x
-xxx  xx
-xxxxxxx
+xxxxxx
+  x  x
+  x  x
+     x
+xxx  x
+xxx  x
+xxxxxx
 """)
 
 _add("5", """
-xxxxxxx
-      x
-  xxxxx
-,,   'x
-''xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+     x
+  xxxx
+    'x
+xxx  x
+    xx
+xxxxxx
 """)
 
 _add("6", """
-xxxxxxx
-'    'x
-  xx,,x
-     'x
-  xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+  x,,x
+    'x
+  x  x
+,   ,x
+xxxxxx
 """)
 
 _add("7", """
-xxxxxxx
-      x
-xxxx  x
-xx'  xx
-xx  xxx
-xx  xxx
-xxxxxxx
+xxxxxx
+     x
+xxx  x
+xxx  x
+xxx  x
+xxx  x
+xxxxxx
 """)
 
 _add("8", """
-xxxxxxx
-'    'x
-  xx  x
-'    'x
-  xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+  x  x
+x   xx
+  x  x
+,   ,x
+xxxxxx
 """)
 
 _add("9", """
-xxxxxxx
-'    'x
-  xx  x
-,     x
-''xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+  x  x
+,    x
+''x  x
+,   ,x
+xxxxxx
 """)
 
 _add("0", """
-xxxxxxx
-'    'x
-  xx  x
-  xx  x
-  xx  x
-,    ,x
-xxxxxxx
+xxxxxx
+'   'x
+  x  x
+  x  x
+  x  x
+,   ,x
+xxxxxx
 """)
 
 _add("*", """

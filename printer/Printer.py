@@ -1,4 +1,5 @@
 import fonts.size7.default
+import fonts.size7condensed.default
 import fonts.exceptions
 import screen
 from fonts.LetterBlock import LetterBlock
@@ -26,8 +27,8 @@ def process_printing_options(function):
 
 
 class Printer(object):
-    def __init__(self):
-        pass
+    def __init__(self, squashed=None):
+        self.squashed = squashed
 
     def set_font(self, font):
         self.font = font
@@ -54,8 +55,14 @@ class Printer(object):
                 output.append(line+"x"*(screen.WIDTH-len(line)))
             else:
                 output.append(line)
-        if hit_sides: output.append("") 
+        if hit_sides and self.squashed is not None:
+            return self.squashed.text_to_ascii(text,fill,**options)
+        
         return "\n".join(output)
 
-instance = Printer()
+        
+thin_instance = Printer()
+thin_instance.set_font(fonts.size7condensed.default)
+
+instance = Printer(thin_instance)
 instance.set_font(fonts.size7.default)
