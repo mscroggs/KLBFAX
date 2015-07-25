@@ -22,13 +22,13 @@ x
 """)
 
 _add("-", """
-xxxx
-xxxx
-xxxx
-   x
-xxxx
-xxxx
-xxxx
+xx
+xx
+xx
+ x
+xx
+xx
+xx
 """)
 
 _add("!", """
@@ -282,13 +282,13 @@ xxxxxx
 """)
 
 _add("W", """
-xxxxxxxx
-  xxx  x
-  xxx  x
-  x x  x
-  x x  x
-,     ,x
-xxxxxxxx
+xxxxxx
+  x  x
+  x  x
+  x  x
+     x
+ ,x, x
+xxxxxx
 """)
 
 _add("X", """
