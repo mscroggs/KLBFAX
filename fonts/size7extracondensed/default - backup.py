@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from fonts.LetterBlock import LetterBlock
 from fonts.exceptions import LetterNotDefined
 
@@ -24,23 +22,13 @@ x
 """)
 
 _add("-", """
-xxxx
-xxxx
-xxxx
-   x
-xxxx
-xxxx
-xxxx
-""")
-
-_add(".", """
-xxx
-xxx
-xxx
-xxx
-xxx
-  x
-xxx
+xxxxx
+xxxxx
+xxxxx
+x   x
+xxxxx
+xxxxx
+xxxxx
 """)
 
 _add("!", """
@@ -72,67 +60,6 @@ xxx
 xxx
 xxx
 """)
-
-_add(u"£","""
-xxxxxxx
-x'   'x
-x  x,,x
-    xxx
-x  xxxx
-      x
-xxxxxxx
-""")
-
-_add(u"$","""
-xxxxxxx
-xx  xxx
-  ,,,,x
-      x
-''''  x
-xx  xxx
-xxxxxxx
-""")
-
-_add(u"€","""
-xxxxxxx
-x'   'x
-'  'xxx
-'  'xxx
-x  xxxx
-x,   ,x
-xxxxxxx
-""")
-
-_add(u"฿","""
-xxxxxxxxxxxxx
-xxxxxx' ' 'xx
-xxxxxx  xx  x
- , ,'x    ''x
- x x x  xx  x
- x x x, , ,xx
-xxxxxxxxxxxxx
-""")
-
-_add(u"₺","""
-xxxxxxx
-x  x'xx
-'  ,xxx
-x  ',xx
-,  x''x
-x    ,x
-xxxxxxx
-""")
-
-_add(u"¥","""
-xxxxxxx
-  xx  x
-  ''  x
-x,  ,xx
-x,  ,xx
-x,  ,xx
-xxxxxxx
-""")
-
 
 _add("A", """
 xxxxxxx
@@ -426,8 +353,8 @@ xxxxxxx
 
 _add("4", """
 xxxxxxx
-  xxxxx
-  xxxxx
+x  xxxx
+  ,xxxx
   x  xx
       x
 xxx  xx
@@ -437,8 +364,8 @@ xxxxxxx
 _add("5", """
 xxxxxxx
       x
-  '''xx
-,,,,  x
+  xxxxx
+,,   'x
 ''xx  x
 ,    ,x
 xxxxxxx

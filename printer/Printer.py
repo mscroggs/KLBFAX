@@ -1,5 +1,6 @@
 import fonts.size7.default
 import fonts.size7condensed.default
+import fonts.size7extracondensed.default
 import fonts.exceptions
 import screen
 from fonts.LetterBlock import LetterBlock
@@ -60,8 +61,11 @@ class Printer(object):
         
         return "\n".join(output)
 
-        
-thin_instance = Printer()
+ 
+extrathin_instance = Printer()
+extrathin_instance.set_font(fonts.size7extracondensed.default)
+ 
+thin_instance = Printer(extrathin_instance)
 thin_instance.set_font(fonts.size7condensed.default)
 
 instance = Printer(thin_instance)
