@@ -364,8 +364,8 @@ xxxxxxx
 _add("5", """
 xxxxxxx
       x
-  xxxxx
-,,   'x
+  '''xx
+,,,,  x
 ''xx  x
 ,    ,x
 xxxxxxx
