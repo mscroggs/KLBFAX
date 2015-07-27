@@ -12,6 +12,7 @@ class XMenPage(Page):
       
     def generate_content(self):
         import urllib2
+        import now
         from time import strftime
         
         def friendly_date(date):
@@ -26,7 +27,7 @@ class XMenPage(Page):
     
         response = urllib2.urlopen("https://www.hep.ucl.ac.uk/restricted/mrbs/month.php?area=5&room=15")
         html = response.readlines()
-        now = pytz.utc.localize(datetime.now()).astimezone(pytz.timezone('Europe/London'))
+        now = now.now().replace(tzinfo=None)
         events = []
         
         for line in html:
@@ -38,8 +39,8 @@ class XMenPage(Page):
                 title = lst.split('title="')[1].split('"')[0]
                 start_hour_minute = title[0:5]
                 end_hour_minute = title[6:11]
-                start_time = datetime(year, month, day, int(start_hour_minute[0:2]), int(start_hour_minute[3:5]),tzinfo=pytz.timezone('Europe/London'))
-                end_time = datetime(year, month, day, int(end_hour_minute[0:2]), int(end_hour_minute[3:5]),tzinfo=pytz.timezone('Europe/London'))
+                start_time = datetime(year, month, day, int(start_hour_minute[0:2]), int(start_hour_minute[3:5]))
+                end_time = datetime(year, month, day, int(end_hour_minute[0:2]), int(end_hour_minute[3:5]))
                 name = title[12:]
                 if end_time > now:
                     events.append([start_time,end_time,name])
@@ -92,7 +93,7 @@ class XMenPage(Page):
             content += name
             content += "\n"
             previous_date = end_time.date()
-            
+          
         self.content = content
         
 xmenpage = XMenPage("102")
