@@ -7,10 +7,11 @@ from random import choice
 uni_chars = range(33,127)+range(161,175)+range(176,179)+range(180,185)+range(186,190)
 uni_chars += range(191,222)+range(223,254)+[255,402,915,920,931,934,937,945,946,948,949,956,960]
 uni_chars += [963,964,966]
+[8226,8252,8319,8359,8486,8490,8491]+range(8592,8598)+[8616,8712,8729,8730,8735,8745,8776,8801,8804,8805]
 #uni_chars += ["000"+str(i) for i in range(1,10)]
 #uni_chars += ["00"+str(i) for i in range(10,100)]
 #uni_chars += ["0"+str(i) for i in range(100,1000)]
-uni_chars += range(3780,10000)
+uni_chars += range(3780,4582)+range(8882,10000)
 
 
 class TestPage(Page):
