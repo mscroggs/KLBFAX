@@ -9,13 +9,6 @@ test_page.is_enabled = False
 
 test_page.content="\nTEST PAGE\n"
 
-j = 0
-for i in range(1000,10000):
-    test_page.content += str(i)+" "+unichr(i)
-    j += 1
-    if j % 9 != 0: test_page.content += "  "
-    else: test_page.content += "\n"
-
 printed=0
 for i in range(0,len(test_page.colours.Foreground.list)):
     test_page.content+=test_page.colours.Foreground.list[i]+test_page.colours.Foreground.delist[i]+test_page.colours.Foreground.DEFAULT
