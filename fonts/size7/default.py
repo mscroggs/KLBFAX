@@ -53,6 +53,26 @@ xxx
 xxx
 """)
 
+_add("(", """
+xxxx
+x  x
+  xx
+ xxx
+  xx
+x  x
+xxxx
+""")
+
+_add(")", """
+xxxx
+x  x
+xx  
+xxx 
+xx  
+x  x
+xxxx
+""")
+
 _add("/", """
 xxxxxx
 xxxx x
