@@ -34,9 +34,9 @@ xx
 _add("(", """
 xxx
 ' x
-  x
  'x
-  x
+ 'x
+ 'x
 , x
 xxx
 """)
@@ -44,9 +44,9 @@ xxx
 _add(")", """
 xxx
  'x
-  x
 ' x
-  x
+' x
+' x
  ,x
 xxx
 """)
