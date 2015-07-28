@@ -25,7 +25,7 @@ class TestPage(Page):
         try:
             self.start += 0
         except:
-            self.start = 0
+            self.start = choice(range(0,10000,500))
         for i in range(self.start,self.start+201):
             if i<len(uni_chars):
                 ch = uni_chars[i]
