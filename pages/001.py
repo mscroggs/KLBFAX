@@ -6,11 +6,11 @@ from random import choice
 
 uni_chars = range(33,127)+range(161,175)+range(176,179)+range(180,185)+range(186,190)
 uni_chars += range(191,222)+range(223,254)+[255,402,915,920,931,934,937,945,946,948,949,956,960]
-uni_chars += [963,964,966,]
+uni_chars += [963,964,966]
 #uni_chars += ["000"+str(i) for i in range(1,10)]
 #uni_chars += ["00"+str(i) for i in range(10,100)]
 #uni_chars += ["0"+str(i) for i in range(100,1000)]
-uni_chars += range(1991,10000)
+uni_chars += range(3780,10000)
 
 
 class TestPage(Page):
@@ -26,7 +26,7 @@ class TestPage(Page):
             self.start += 0
         except:
             self.start = 0
-        for i in range(self.start,self.start+200):
+        for i in range(self.start,self.start+201):
             if i<len(uni_chars):
                 ch = uni_chars[i]
             else:
