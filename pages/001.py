@@ -15,6 +15,7 @@ class TestPage(Page):
 
     def generate_content(self):
         self.content="\nUNICODE TEST PAGE\n"
+        j = 0
         for i in range(self.start,self.start+200):
             if i<len(uni_chars):
                 ch = uni_chars[i]
