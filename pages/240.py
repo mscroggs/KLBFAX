@@ -27,7 +27,7 @@ class CurrencyPage(Page):
         #while random_rate2 == random_rate1:
         #    random_rate2 = randint(0,len(possible_rates)-1)
         
-        ask_for_rates = ['GBPUSD=X', 'EURUSD=X', possible_rates[random_rate1]]#, possible_rates[random_rate2]]
+        ask_for_rates = ['GBPUSD=X', 'GBPEUR=X', possible_rates[random_rate1]]#, possible_rates[random_rate2]]
         currency_symbol = ['$',u"€",possible_symbols[random_rate1]]#,possible_symbols[random_rate2]]
         currency_multiple = [1,1,possible_multiple[random_rate1]]#,possible_multiple[random_rate2]]
         currency_format = ['{:.2f}','{:.2f}',possible_format[random_rate1]]#,possible_format[random_rate2]]
