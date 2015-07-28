@@ -20,9 +20,10 @@ awards = [
            "Peter (who?)":1,"Olly Southwick":1}],
           ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1}],
           ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
-          ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}]
+          ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
+          ["Towel Bringer",{"Huda Ramli":1}]
          ]
-pages = ["452","451","451","453","453"]
+pages = ["452","451","451","453","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
@@ -66,5 +67,5 @@ moo_page.content = title("Moo Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
 oth_page = Page("453")
-oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4])
+oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5])
 oth_page.in_index = False

@@ -7,6 +7,8 @@ test_page.title = "Test Page"
 test_page.is_enabled = False
 
 test_page.content="\nTEST PAGE\n"
+test_page.content += u"\u2615"
+
 printed=0
 for i in range(0,len(test_page.colours.Foreground.list)):
     test_page.content+=test_page.colours.Foreground.list[i]+test_page.colours.Foreground.delist[i]+test_page.colours.Foreground.DEFAULT
@@ -23,3 +25,4 @@ for i in range(0,len(test_page.colours.Style.list)):
     printed+=1
     if printed%3==0: test_page.content+="\n"
     else: test_page.content+=" "
+
