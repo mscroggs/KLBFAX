@@ -1,4 +1,5 @@
 import os
+import screen
 from page import Page
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
@@ -7,7 +8,10 @@ test_page.title = "Test Page"
 test_page.is_enabled = False
 
 test_page.content="\nTEST PAGE\n"
-test_page.content += u"\u2615"
+for i in range(1000,10000):
+    test_page.content += u"\u"+str(i)
+    if i-1 % screen.WIDTH == 0:
+        test_page.content += "\n"
 
 printed=0
 for i in range(0,len(test_page.colours.Foreground.list)):
