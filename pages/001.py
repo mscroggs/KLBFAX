@@ -11,10 +11,10 @@ test_page.is_enabled = False
 
 test_page.content="\nUNICODE TEST PAGE\n"
 
-uni_chars = [] + range(1224,10000)
+uni_chars = [9484] + range(1224,10000)
 
 j = 0
-for i in range(100):
+for i in range(200):
     ch = choice(uni_chars)
     uni_chars.remove(ch)
     test_page.content += str(ch)+" "+unichr(ch)
