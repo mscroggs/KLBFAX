@@ -9,7 +9,7 @@ test_page.is_enabled = False
 
 test_page.content="\nTEST PAGE\n"
 for i in range(1000,10000):
-    test_page.content += u"\u"+str(i)
+    test_page.content += unichr(i)
     if i-1 % screen.WIDTH == 0:
         test_page.content += "\n"
 
