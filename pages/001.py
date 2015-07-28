@@ -4,21 +4,30 @@ from page import Page
 
 from random import choice
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-test_page = Page(page_number)
-test_page.title = "Unicode Test Page"
-test_page.is_enabled = False
+uni_chars = []+range(1000,10000)
 
-test_page.content="\nUNICODE TEST PAGE\n"
+class TestPage(Page):
+    def __init__(self):
+        super(TestPage, self).__init__("001")
+        self.in_index = False
+        self.title = "Unicode Test Page"
+        self.start = 0
 
-uni_chars = [9484] + range(1224,10000)
+    def generate_content(self):
+        self.content="\nUNICODE TEST PAGE\n"
+        for i in range(self.start,self.start+200):
+            if i<len(uni_chars):
+                ch = uni_chars[i]
+            else:
+                ch = choice(uni_chars)
+            uni_chars.remove(ch)
+            self.content += str(ch)+" "+unichr(ch)
+            j += 1
+            if j % 9 != 0: self.content += "  "
+            else: self.content += "\n"
 
-j = 0
-for i in range(200):
-    ch = choice(uni_chars)
-    uni_chars.remove(ch)
-    test_page.content += str(ch)+" "+unichr(ch)
-    j += 1
-    if j % 9 != 0: test_page.content += "  "
-    else: test_page.content += "\n"
 
+
+        self.start = i
+
+instance = TestPage()
