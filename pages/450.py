@@ -18,7 +18,7 @@ awards = [
            "Olly Southwick":6,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1}],
           ["Tea Maker Awards",{"Matthew Scroggs":5,"Matthew Wright":11,"Pietro Servini":1,
            "Peter (who?)":1,"Olly Southwick":1}],
-          ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1}],
+          ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},u"\u9829"],
           ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":1}]
@@ -44,6 +44,10 @@ sub_page.content = content
 def award_show(award):
     content = colours.Foreground.GREEN+award[0]+colours.Foreground.DEFAULT+"\n"
     max_len = 0
+    try:
+        icon = award[2]
+    except:
+        icon = u"\u263B"
     for person in award[1]:
         max_len = max(max_len,len(person))
     for person,number in award[1].items():
@@ -51,7 +55,7 @@ def award_show(award):
         content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
         for i in range(number):
             content += choice(sub_page.colours.Foreground.non_boring)
-            content += u"\u263B"+sub_page.colours.Foreground.DEFAULT
+            content += icon+sub_page.colours.Foreground.DEFAULT
         content += "\n"
     return content
 
