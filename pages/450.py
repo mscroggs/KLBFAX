@@ -18,7 +18,7 @@ awards = [
            "Olly Southwick":6,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1}],
           ["Tea Maker Awards",{"Matthew Scroggs":5,"Matthew Wright":11,"Pietro Servini":1,
            "Peter (who?)":1,"Olly Southwick":1}],
-          ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},u"\u9829"],
+          ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},unichr(9829)],
           ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":1}]
