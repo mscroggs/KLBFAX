@@ -60,6 +60,7 @@ class TVPage(Page):
             ["Casualty","Causality"],
             ["Match","Maths"],
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
+            ["Cycling","Maths"],["Athletics","Maths"],
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
             ["Political","Mathematical"],
