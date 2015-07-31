@@ -9,6 +9,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What is the world's best shop?":"Wal-Mart",
          "What is the world's best sport?":"Marts (Darts)",
          "What is the best suit in a pack of cards?":"Marts (Hearts)",
+         "What is the subject studied at Hogwarts?":"Defence Against the Dark Marts",
          "Who is the world's most popular cartoon character?":"Mart Simpson",
          "What method of surveying did the famous car company Ford use when designing their new car, the Focus?":"Stratified sample"}
 
@@ -21,7 +22,7 @@ class JokePage(Page):
         content = colour_print(printer.text_to_ascii("Jokes"))+"\n\n"
 
         for i in range(6):
-            content += self.colours.Foreground.BLUE+self.colours.Style.BOLD
+            content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
             c = choice(jokes.keys())
             joke,ans = c,jokes[c]
             while len(joke)>screen.WIDTH:
