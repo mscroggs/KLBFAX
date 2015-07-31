@@ -10,7 +10,8 @@ r1.content = (colours.colour_print(
     printer.text_to_ascii("bad tempered cake"),
     colours.Background.RED,
     colours.Foreground.BLUE) +
-"""1/2 lb    Rich tea and/or digestive biscuits
+"""
+1/2 lb    Rich tea and/or digestive biscuits
     4 oz    Margarine
     1 dsp   Sugar
     3 dsp   Cocoa
@@ -33,7 +34,8 @@ r2.content = (colours.colour_print(
     printer.text_to_ascii("Herman Friendship Cake"),
     colours.Background.RED,
     colours.Foreground.BLUE) +
-""""""+colours.Foreground.GREEN+"""Day 1:    """+colours.Foreground.DEFAULT+"""Put me in a large mixing bowl and cover loosely with a tea towel.
+"""
+"""+colours.Foreground.GREEN+"""Day 1:    """+colours.Foreground.DEFAULT+"""Put me in a large mixing bowl and cover loosely with a tea towel.
 """+colours.Foreground.GREEN+"""Days 2-3: """+colours.Foreground.DEFAULT+"""Stir well.
 """+colours.Foreground.GREEN+"""Day 4:    """+colours.Foreground.DEFAULT+"""Herman is hungry. Add 1 cup each of plain flour, sugar and milk.
           Stir well.

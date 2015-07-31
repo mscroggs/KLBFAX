@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+import sys
+sys.path.insert(0,'..')
 
 # width:79
 # height: 30
