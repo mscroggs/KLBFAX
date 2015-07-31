@@ -13,18 +13,19 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["Moo Cow Awards",{"Adam Townsend":4,"Matthew Scroggs":2,
-           "Belgin Seymenoglu":5,"Matthew Wright":2,"Stephen Muirhead":2,
+          ["Mart Cow Awards",{"Adam Townsend":4,"Matthew Scroggs":2,
+           "Belgin Seymenoglu":6,"Matthew Wright":2,"Stephen Muirhead":2,
            "Olly Southwick":6,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1}],
-          ["Tea Maker Awards",{"Matthew Scroggs":5,"Matthew Wright":11,"Pietro Servini":1,
+          ["Tea Marter Awards",{"Matthew Scroggs":5,"Matthew Wright":12,"Pietro Servini":1,
            "Peter (who?)":1,"Olly Southwick":1}],
           ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},unichr(9829)],
-          ["Honorary Fire Marshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
+          ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":1}],
-          ["Lunchtime Goat Award",{"Olly Southwick":1}]
+          ["Lunchtime Goat Award",{"Olly Southwick":1}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":1}]
          ]
-pages = ["452","451","451","453","453","453","453"]
+pages = ["452","451","451","453","453","453","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
@@ -68,9 +69,9 @@ tea_page.content = title("Tea Awards") + "\n\n" + award_show(awards[1]) + "\n" +
 tea_page.in_index = False
 
 moo_page = Page("452")
-moo_page.content = title("Moo Cow Awards") + "\n\n" + award_show(awards[0])
+moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
 oth_page = Page("453")
-oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5]) + "\n" + award_show(awards[6])
+oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5]) + "\n" + award_show(awards[6]) + "\n" + award_show(awards[7])
 oth_page.in_index = False
