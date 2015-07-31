@@ -6,6 +6,9 @@ import screen
 
 jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What is the best Nintendo game?":"Super Mario Mart",
+         "What is the world's best shop?":"Wal-Mart",
+         "What is the world's best sport?":"Marts (Darts)",
+         "What is the best suit in a pack of cards?":"Marts (Hearts)",
          "Who is the world's most popular cartoon character?":"Mart Simpson",
          "What method of surveying did the famous car company Ford use when designing their new car, the Focus?":"Stratified sample"}
 
