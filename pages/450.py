@@ -14,10 +14,10 @@ content = colour_print(
 
 awards = [
           ["Mart Cow Awards",{"Adam Townsend":4,"Matthew Scroggs":2,
-           "Belgin Seymenoglu":6,"Matthew Wright":2,"Stephen Muirhead":2,
-           "Olly Southwick":6,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1}],
-          ["Tea Marter Awards",{"Matthew Scroggs":5,"Matthew Wright":12,"Pietro Servini":1,
-           "Peter (who?)":1,"Olly Southwick":1}],
+           "Belgin Seymenoglu":9,"Matthew Wright":3,"Stephen Muirhead":2,
+           "Olly Southwick":7,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1}],
+          ["Tea Marter Awards",{"Matthew Scroggs":5,"Matthew Wright":15,"Pietro Servini":1,
+           "Peter (who?)":1,"Olly Southwick":1,"Belgin Seymenoglu",1}],
           ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
