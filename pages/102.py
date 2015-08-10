@@ -23,7 +23,7 @@ class XMenPage(Page):
             else:
                 return date.strftime("%A %-d")
 
-        content = colour_print(printer.text_to_ascii("X-Men Origins"))
+        content = colour_print(printer.text_to_ascii("X-Mart Origins"))
     
         response = urllib2.urlopen("https://www.hep.ucl.ac.uk/restricted/mrbs/month.php?area=5&room=15")
         html = response.readlines()
