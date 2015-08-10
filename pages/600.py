@@ -4,6 +4,11 @@ from page import Page
 from colours import colour_print
 from printer import instance as printer
 
+def escape(string):
+    if string=="?":
+        return "\?"
+    return string
+
 class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):
         super(TVPage, self).__init__(page_num)
@@ -71,10 +76,10 @@ class TVPage(Page):
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
-        punc = [" ","\?","!",":","'",'"',"\n"]
+        punc = [" ","?","!",":","'",'"',"\n"]
         for swap in swaps:
             for p in punc:
-                content = (" "+swap[1]+p).join(re.split("(?i) "+swap[0]+p,content))
+                content = (" "+swap[1]+p).join(re.split("(?i) "+swap[0]+escape(p),content))
 #            content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
  #           content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
   #          content = (" "+swap[1]+":").join(re.split("(?i) "+swap[0]+":",content))
