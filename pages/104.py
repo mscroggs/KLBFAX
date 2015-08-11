@@ -13,7 +13,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "Who is the world's most popular cartoon character?":"Mart Simpson",
          "Where does a JCR DODO file his papers?":"In his GRyalling cabinet",
          "What is Rafael doing at the weekend?":"Martying (Partying)",
-         "What is everyone's favourite Queen's of the Stone Age song?":"The Lost Mart of Keeping a Secret",
+         "What is everyone's favourite Queens of the Stone Age song?":"The Lost Mart of Keeping a Secret",
          "What method of surveying did the famous car company Ford use when designing their new car, the Focus?":"Stratified sample"}
 
 class JokePage(Page):
