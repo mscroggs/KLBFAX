@@ -18,7 +18,7 @@ awards = [
            "Olly Southwick":7,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Preito Curiel":1}],
           ["Tea Marter Awards",{"Matthew Scroggs":6,"Matthew Wright":17,"Pietro Servini":1,
-           "Peter (who?)":1,"Olly Southwick":1,"Belgin Seymenoglu":1
+           "Peter (who?)":1,"Olly Southwick":1,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
           ["CelebriTEA",{"Matthew Wright":1,"Matthew Scroggs":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
