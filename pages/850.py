@@ -30,7 +30,7 @@ class TrainPage(Page):
         if self.hogwarts: first = True
         for train in trains[2:]:
             if first:
-                content += "0825 Hogwarts Express"
+                content += "0900 Hogwarts Express"
                 content += " "*44
                 content += "9 3/4\n"
                 first = False
