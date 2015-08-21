@@ -39,7 +39,6 @@ class BdayPage(Page):
         self.title = "Birthdays"
       
     def generate_content(self):
-        content = colour_print(printer.text_to_ascii("Birthdays"))+"\n\n"
 
         s_day = date.today().day
         s_mon = date.today().month
@@ -48,15 +47,18 @@ class BdayPage(Page):
         mon = s_mon
 
         while True:
-            if day in c_b[mon]:
-                if day == s_day and mon == s_mon:
-                    content += colour_print(printer.text_to_ascii("Happy Birthday "+c_b[mon][day]))+"\n\n"
+            if day == s_day and mon == s_mon:
+                if day in c_b[mon]:
+                    content = colour_print(printer.text_to_ascii("Happy Birthday"),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
+                    content = colour_print(printer.text_to_ascii(c_b[mon][day]),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
                 else:
-                    content += self.colours.Background.GREEN + self.colours.Foreground.BLACK
-                    content += str(day) + " "+months[mon] 
-                    content += self.colours.Background.DEFAULT + self.colours.Foreground.DEFAULT
-                    content += " "*(15-len(str(day)+months[mon])) + c_b[mon][day]
-                    content += "\n"
+                    content = colour_print(printer.text_to_ascii("Birthdays"+),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
+            elif day in c_b[mon]:
+                content += self.colours.Background.GREEN + self.colours.Foreground.BLACK
+                content += str(day) + " "+months[mon] 
+                content += self.colours.Background.DEFAULT + self.colours.Foreground.DEFAULT
+                content += " "*(15-len(str(day)+months[mon])) + c_b[mon][day]
+                content += "\n"
             day += 1
             if day > 31:
                 day = 1
