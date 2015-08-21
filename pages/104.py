@@ -14,7 +14,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "Where does a JCR DODO file his papers?":"In his GRyalling cabinet",
          "What is Rafael doing at the weekend?":"Martying (Partying)",
          "What is everyone's favourite Queens of the Stone Age song?":"The Lost Mart of Keeping a Secret",
-         "What method of surveying did the famous car company Ford use when designing their new car, the Focus?":"Stratified sample"}
+         "What method of surveying did the famous car company Ford use when designing their new Ford Focus car?":"Stratified sample"}
 
 class JokePage(Page):
     def __init__(self,page_num):
