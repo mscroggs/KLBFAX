@@ -25,9 +25,10 @@ awards = [
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":1}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2}]
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2}],
+          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
          ]
-pages = ["452","451","451","453","453","453","453","453"]
+pages = ["452","451","451","453","453","453","453","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
@@ -75,5 +76,5 @@ moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
 oth_page = Page("453")
-oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5]) + "\n" + award_show(awards[6]) + "\n" + award_show(awards[7])
+oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5]) + "\n" + award_show(awards[6]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8])
 oth_page.in_index = False
