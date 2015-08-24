@@ -28,12 +28,12 @@ awards = [
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
          ]
-pages = ["452","451","451","453","453","453","453","453","453"]
+pages = ["452","451","451","454","454","453","454","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
 for i,award in enumerate(awards):
-    content += "\n"+sub_page.colours.Foreground.GREEN+award[0]+sub_page.colours.Foreground.DEFAULT+" (see page "+pages[i]+")\n"
+    content += "\n"+sub_page.colours.Foreground.GREEN+award[0]+sub_page.colours.Foreground.DEFAULT+" (see page "+pages[i]+") "
     max_ = 0
     max_p = None
     for person,number in award[1].items():
@@ -43,7 +43,7 @@ for i,award in enumerate(awards):
         elif number==max_:
             max_p = max_p+","+person
     if max_p is not None:
-        content += "  " + max_p + "\n"
+        content += sub_page.colours.Foreground.RED + max_p + sub_page.colours.Foreground.DEFAULT
 sub_page.content = content
 
 def award_show(award):
@@ -75,6 +75,10 @@ moo_page = Page("452")
 moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
-oth_page = Page("453")
-oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5]) + "\n" + award_show(awards[6]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8])
+kit_page = Page("453")
+kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8])
+kit_page.in_index = False
+
+oth_page = Page("454")
+oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[6])
 oth_page.in_index = False
