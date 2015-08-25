@@ -13,9 +13,10 @@ content = colour_print(
     printer.text_to_ascii("Unawards", padding={"left": 6}))
 
 awards = [
-          ["Boo Cow Awards",{"Pietro Servini":1}]
+          ["Boo Cow Unawards",{"Pietro Servini":1}],
+          ["Tea Breaker Unawards",{"Anna Lambert":1}]
          ]
-pages = ["457"]
+pages = ["457","457"]
 
 content += "\nWho has the most Unawards?\n\n"
 
@@ -51,5 +52,5 @@ def title(text):
     return colour_print(printer.text_to_ascii(text))
 
 tea_page = Page("457")
-tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0])
+tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1])
 tea_page.in_index = False
