@@ -39,7 +39,7 @@ class BdayPage(Page):
         self.title = "Birthdays"
       
     def generate_content(self):
-
+        prefixes = []
         s_day = date.today().day
         s_mon = date.today().month
 
@@ -51,9 +51,23 @@ class BdayPage(Page):
                 if day in c_b[mon]:
                     content = colour_print(printer.text_to_ascii("Happy Birthday"),rainbow=True)+"\n\n"
                     content += colour_print(printer.text_to_ascii(c_b[mon][day]+"!"),rainbow=True)+"\n\n"
+                    prefixes = """     .-'"'-.              
+    / #     \             
+   : #       :  .-'"'-.   
+    \       /  / #     \  
+     \     /  : #       : 
+      `'q'`    \       /  
+        (       \     /   
+         )       `'p'`    
+        (          )      
+         )        (       
+                   )      """.split("\n")
                 else:
                     content = colour_print(printer.text_to_ascii("Birthdays"),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
             elif day in c_b[mon]:
+                if len(prefixes)>0:
+                    content += prefixes[0]
+                    prefixes = prefixes[1:]
                 content += self.colours.Background.GREEN + self.colours.Foreground.BLACK
                 content += str(day) + " "+months[mon] 
                 content += self.colours.Background.DEFAULT + self.colours.Foreground.DEFAULT
