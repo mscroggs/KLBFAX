@@ -29,12 +29,15 @@ class PointsPage(Page):
                 larg = pts
             elif pts>seco:
                 seco = pts
-        log = len(str(seco))-1
+        log = len(str(seco))-2
         
         points_names = ["points","decapoints","hectapoints","kilopoints"]
 
         if log>=len(points_names):
             log = len(points_names)-1
+        if log<0:
+            log = 0
+
         if "Gryffindor" in data: g = points_format(data["Gryffindor"],log)
         else:                    g = "0"
         if "Hufflepuff" in data: h = points_format(data["Hufflepuff"],log)
