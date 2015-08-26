@@ -13,6 +13,8 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "Who is the world's most popular cartoon character?":"Mart Simpson",
          "Where does a JCR DODO file his papers?":"In his GRyalling cabinet",
          "What is Rafael doing at the weekend?":"Martying (Partying)",
+         "What is the best Neil Young song?":"Mart of Gold",
+         "What is the best Blondie song?":"Mart of Glass",
          "What is everyone's favourite Queens of the Stone Age song?":"The Lost Mart of Keeping a Secret",
          "What method of surveying did the famous car company Ford use when designing their new Ford Focus car?":"Stratified sample"}
 
@@ -24,9 +26,13 @@ class JokePage(Page):
     def generate_content(self):
         content = colour_print(printer.text_to_ascii("Jokes"))+"\n\n"
 
+        used = []
         for i in range(6):
             content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
             c = choice(jokes.keys())
+            while c in used:
+                c = choice(jokes.keys())
+            used.append(c)
             joke,ans = c,jokes[c]
             while len(joke)>screen.WIDTH:
                 content += joke[:screen.WIDTH]+"\n"
