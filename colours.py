@@ -29,6 +29,7 @@ class Style:
     BLINK    = "\033[5m"
     STRIKE    = "\033[9m"
     list = [DEFAULT,BOLD,FAINT,STANDOUT,UNDERLINE,BLINK,STRIKE]
+    non_strike = [DEFAULT,BOLD,FAINT,STANDOUT,BLINK]
     delist = ["DEFAULT","BOLD","FAINT","STANDOUT","UNDERLINE","BLINK","STRIKE"]
 
 class Background:
@@ -72,6 +73,7 @@ def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,in
         print text[0],text[1]
         newtext = Background.BLACK
         for character in text.strip("\033[44m").strip("\033[33m"):
+            newtext += choice(Style.non_strike)
             newtext += choice(Foreground.non_boring)
             newtext += character
         text = newtext
