@@ -39,6 +39,9 @@ class BdayPage(Page):
         self.title = "Birthdays"
       
     def generate_content(self):
+        R = self.colours.Foreground.RED+self.colours.Style.BOLD
+        G = self.colours.Foreground.GREEN+self.colours.Style.BOLD
+        D = self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT
         prefixes = []
         s_day = date.today().day
         s_mon = date.today().month
@@ -51,17 +54,17 @@ class BdayPage(Page):
                 if day in c_b[mon]:
                     content = colour_print(printer.text_to_ascii("Happy Birthday"),rainbow=True)+"\n\n"
                     content += colour_print(printer.text_to_ascii(c_b[mon][day]+"!"),rainbow=True)+"\n\n"
-                    prefixes = """     .-'"'-.              
-    / #     \             
-   : #       :  .-'"'-.   
-    \       /  / #     \  
-     \     /  : #       : 
-      `'q'`    \       /  
-        (       \     /   
-         )       `'p'`    
-        (          )      
-         )        (       
-                   )      """.split("\n")
+                    prefixes += [R+"   .-'\"'-.  "+G+"            "]
+                    prefixes += [R+"  / #     \ "+G+"            "]
+                    prefixes += [R+" : #       :"+G+"  .-'\"'-.   "]
+                    prefixes += [R+"  \       / "+G+" / #     \  "]
+                    prefixes += [R+"   \     /  "+G+": #       : "]
+                    prefixes += [R+"    `'q'`   "+G+" \       /  "]
+                    prefixes += [R+"      (     "+G+"  \     /   "]
+                    prefixes += [R+"       )    "+G+"   `'p'`    "]
+                    prefixes += [R+"      (     "+G+"     )      "]
+                    prefixes += [R+"       )    "+G+"    (       "]
+                    prefixes += [R+"            "+G+"     )      "]
                 else:
                     content = colour_print(printer.text_to_ascii("Birthdays"),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
             elif day in c_b[mon]:
