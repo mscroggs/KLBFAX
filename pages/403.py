@@ -4,9 +4,9 @@ from page import Page
 from printer import instance as printer
 from math import floor
 
-def points_format(points):
+def points_format(points,log=0):
     points = int(points)
-    points /= 10
+    points /= 10**log
     points = int(floor(points))
     return str(points)
 
@@ -20,21 +20,35 @@ class PointsPage(Page):
         from operator import itemgetter
         with open(join(expanduser('~'),'.klb/points')) as f:
             data = json.load(f)
+        larg = 0
+        seco = 0
+        for house in data:
+            pts = int(data[house])
+            if pts>larg:
+                seco = larg
+                larg = pts
+            elif pts>seco:
+                seco = pts
+        log = len(str(seco))-1
+        
+        points_names = ["points","decapoints","hectapoints","kilopoints"]
 
-        if "Gryffindor" in data: g = points_format(data["Gryffindor"])
+        if log>=len(points_names):
+            log = len(points_names)-1
+        if "Gryffindor" in data: g = points_format(data["Gryffindor"],log)
         else:                    g = "0"
-        if "Hufflepuff" in data: h = points_format(data["Hufflepuff"])
+        if "Hufflepuff" in data: h = points_format(data["Hufflepuff"],log)
         else:                    h = "0"
-        if "Slytherin" in data:  s = points_format(data["Slytherin"])
+        if "Slytherin" in data:  s = points_format(data["Slytherin"],log)
         else:                    s = "0"
-        if "Squib" in data:     sq = points_format(data["Squib"])
+        if "Squib" in data:     sq = points_format(data["Squib"],log)
         else:                   sq = "0"
-        if "Ravenclaw" in data:  r = points_format(data["Ravenclaw"])
+        if "Ravenclaw" in data:  r = points_format(data["Ravenclaw"],log)
         else:                    r = "0"
-        if "Durmstrang" in data: d = points_format(data["Durmstrang"])
+        if "Durmstrang" in data: d = points_format(data["Durmstrang"],log)
         else:                    d = "0"
 
-        content = self.colours.colour_print(printer.text_to_ascii("decapoints"))
+        content = self.colours.colour_print(printer.text_to_ascii(points_names[log]))
         content += "\nWhat do points mean?\n"
 
         content += self.colours.colour_print_join([
