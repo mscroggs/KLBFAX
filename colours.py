@@ -29,7 +29,7 @@ class Style:
     BLINK    = "\033[5m"
     STRIKE    = "\033[9m"
     list = [DEFAULT,BOLD,FAINT,STANDOUT,UNDERLINE,BLINK,STRIKE]
-    non_strike = [DEFAULT,BOLD,FAINT,STANDOUT,BLINK]
+    non_strike = [DEFAULT,BOLD,FAINT,STANDOUT]
     delist = ["DEFAULT","BOLD","FAINT","STANDOUT","UNDERLINE","BLINK","STRIKE"]
 
 class Background:
