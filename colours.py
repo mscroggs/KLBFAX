@@ -65,8 +65,16 @@ def block_characters(text,invert=False):
         text = text.replace("x"," ")
     return text
     
-def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,invert=False):
+def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,invert=False,rainbow=False):
     text = background+foreground+text
+    if rainbow:
+        from random import choice
+        print text[0],text[1]
+        newtext = Background.BLACK
+        for character in text.strip("\033[44m").strip("\033[33m"):
+            newtext += choice(Foreground.non_boring)
+            newtext += character
+        text = newtext
     text = block_characters(text,invert)        
     #text = (u"\u2588").join(text.split("x"))
     text += Foreground.DEFAULT+Background.DEFAULT

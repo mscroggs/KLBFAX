@@ -49,8 +49,8 @@ class BdayPage(Page):
         while True:
             if day == s_day and mon == s_mon:
                 if day in c_b[mon]:
-                    content = colour_print(printer.text_to_ascii("Happy Birthday"),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
-                    content += colour_print(printer.text_to_ascii(c_b[mon][day]),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
+                    content = colour_print(printer.text_to_ascii("Happy Birthday"),rainbow=True)+"\n\n"
+                    content += colour_print(printer.text_to_ascii(c_b[mon][day]+"!"),rainbow=True)+"\n\n"
                 else:
                     content = colour_print(printer.text_to_ascii("Birthdays"),background=self.colours.Background.BLACK,foreground=self.colours.Foreground.GREEN)+"\n\n"
             elif day in c_b[mon]:
