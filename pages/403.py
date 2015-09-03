@@ -31,7 +31,7 @@ class PointsPage(Page):
                 seco = pts
         log = len(str(seco))-2
         
-        points_names = ["points","decapoints","hectapoints","kilopoints"]
+        points_names = ["points","decapoints","hectopoints","kilopoints"]
 
         if log>=len(points_names):
             log = len(points_names)-1
