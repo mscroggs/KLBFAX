@@ -4,6 +4,8 @@ from printer import instance as printer
 from random import choice
 import screen
 from datetime import date
+from os.path import join,expanduser
+import json
 
 with open(join(expanduser('~'),'.klb/birthdays.json')) as f:
     birthdays = json.load(f)
