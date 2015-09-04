@@ -1,84 +1,105 @@
 #!/usr/bin/env python
 
 import ceefax
-from os.path import isfile,expanduser,join,isdir
+from os.path import isfile, expanduser, join, isdir
 from os import mkdir
-import sys
-import select
 import page
 import log_setup
 from random import choice
 from points import add_points
+import points
 import now
+import Keyboard
+import thread_communication
 
-if not isdir(join(expanduser('~'),'.klb')):
-    mkdir(join(expanduser('~'),'.klb'))
+if not isdir(join(expanduser('~'), '.klb')):
+    mkdir(join(expanduser('~'), '.klb'))
 
-house = choice(["Ravenclaw","Gryffindor","Slytherin","Hufflepuff","Squib","Durmstrang"])
-add_points(house,1)
+house = choice(["Ravenclaw", "Gryffindor", "Slytherin", "Hufflepuff", "Squib",
+                "Durmstrang"])
+
+add_points(house, 1)
 if house == "Hufflepuff":
     print("1 point to "+house+"! GO PUFFS!")
 else:
     print("1 point to "+house+"!")
 
 log_setup.read_from_file()
-ceefax.pageFactory.show_random()
 
-loops_done = 0
+
+class Main(object):
+    def __init__(self):
+        pass
+
+    loops_done = 0
+
+    def standard_loop(self):
+        ceefax.pageFactory.show_random()
+
+        self.loops_done += 1
+        if self.loops_done % 10 == 0:
+            reload(ceefax)
+
+        REFRESH_RATE_SECS = 30
+        ceefax.sleep(REFRESH_RATE_SECS)
+
+    def current_loop(self):
+        self.standard_loop()
+
+main = Main()
+
+
+def test_loop():
+    # this loops hijacts the main executaion for a bit, and then returns
+    # back
+    thread_communication.should_interrupt = False
+    main.current_loop = main.standard_loop
+    print "broke out of the main loop!"
+    ceefax.sleep(2)
+
+
+def name_page_handler(input):
+    if input == "001":
+        main.current_loop = test_loop
+        thread_communication.should_interrupt = True
+    elif len(input) <= 3:
+        while len(input) < 3:
+            input = "0" + input
+        ceefax.pageFactory.get_reloaded_page(input).show()
+    elif input == "....":
+        ceefax.stop_execution()
+    elif input == "00488a0488":
+        ceefax.restart_computer()
+    elif input == "0026360488":
+        ceefax.pull_new_version()
+    else:
+        barcode = input
+        namefile_path = "/home/pi/cards/" + barcode
+
+        if isfile(namefile_path):
+            (name, house) = points.get_name_house(barcode)
+
+            if not house:
+                extra = """Error finding your house. Please
+                            report to Scroggs."""
+
+            time = now.now().strftime("%H")
+
+            name_file = points.read_name_file(namefile_path)
+            if points.should_add_morning_points(time, house, name_file,
+                                                barcode):
+                points_added = points.add_morning_points(time, house, barcode)
+                extra = str(points_added) + " points to " + house + "!"
+
+            name_page = page.NamePage(name, extra=extra)
+        else:
+            name_page = page.NamePage(input, large=False)
+        name_page.show()
+
+
+Keyboard.start_keyboard_thread()
+Keyboard.subscribe(name_page_handler)
 
 while True:
-    loops_done += 1
-    if loops_done % 10 == 0:
-        reload(ceefax)
+    main.current_loop()
 
-    REFRESH_RATE_SECS = 30
-    input_fd, _, _ = select.select([sys.stdin], [], [], REFRESH_RATE_SECS)
-
-    if (input_fd):
-        name = sys.stdin.readline().strip()
-        if len(name)<=3:
-            while len(name)<3:
-                name = "0"+name
-            ceefax.pageFactory.get_reloaded_page(name).show()
-        elif name == "....":
-            break
-        elif name == "00488a0488":
-            from os import system
-            print("Restarting")
-            system("python /home/pi/player/off.py;sudo shutdown -r now")
-            break
-        elif name == "0026360488":
-            from os import system
-            print("Pulling newest version.")
-            try:
-                system("cd /home/pi/ceefax;git pull")
-            except:
-                pass
-        else:
-            if isfile("/home/pi/cards/"+name):
-                oldname = name
-                with open("/home/pi/cards/"+name) as f:
-                    lines = f.readlines()
-                    name = lines[0].strip("\n")
-                    try:
-                        house = lines[1].strip("\n")
-                        extra = ""
-                    except:
-                        house = None
-                        extra = "Error finding your house. Please report to Scroggs."
-                if house is not None and "used" not in lines:
-                    with open("/home/pi/cards/"+oldname,"a") as f:
-                        f.write("\nused")
-                    time = now.now().strftime("%H")
-                    if time in ["08","09"]:
-                        if time == "08": t_points = 20
-                        else: t_points = 10
-                        add_points(house,t_points)
-                        extra = str(t_points) + " points to " + house + "!"
-                name_page = page.NamePage(name,extra=extra)
-            else:
-                name_page = page.NamePage(name,large=False)
-            name_page.show()
-                
-    else:
-        ceefax.pageFactory.show_random()

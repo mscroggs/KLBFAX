@@ -1,10 +1,14 @@
 # width:79
 # height: 30
 
+import sys
 from os import listdir
 from os.path import isfile
 import os
 from page import PageFactory, Page
+import Keyboard
+import time
+import thread_communication
 
 
 class ConfigError(Exception):
@@ -44,3 +48,35 @@ for page_file in only_page_files:
                 pageFactory.add(obj)
             except:
                 pass
+
+
+def restart_computer():
+    from os import system
+    print("Restarting")
+    system("python /home/pi/player/off.py;sudo shutdown -r now")
+
+
+def stop_execution():
+    Keyboard.is_thread_active = False
+    sys.exit()
+
+
+def sleep(secs):
+    for i in range(secs):
+        if not Keyboard.is_thread_active:
+            sys.exit()
+
+        if thread_communication.should_interrupt:
+            return
+
+        time.sleep(1)
+
+
+def pull_new_version():
+            from os import system
+            print("Pulling newest version.")
+            try:
+                system("cd /home/pi/ceefax;git pull")
+            except:
+                pass
+
