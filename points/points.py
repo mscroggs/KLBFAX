@@ -1,4 +1,4 @@
-kimport json
+import json
 from os.path import expanduser, join
 
 
