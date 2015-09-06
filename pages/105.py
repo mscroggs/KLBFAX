@@ -13,8 +13,6 @@ birthday_file = config.birthday_file
 try:
     with open(birthday_file) as f:
         birthdays = json.load(f)
-        for person in birthdays:
-            print person, birthdays[person]
 
 except IOError as e:
     logging.critical("""Birthday file failed to load. Try running in DEVELOP

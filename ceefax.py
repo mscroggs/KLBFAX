@@ -9,6 +9,9 @@ from page import PageFactory, Page
 import Keyboard
 import time
 import thread_communication
+import points
+import now
+import page
 
 
 class ConfigError(Exception):
@@ -41,8 +44,8 @@ for page_file in only_page_files:
     module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
                      page_file_no_ext)
     reload(module)
-    for object in dir(module):
-        obj = getattr(module, object)
+    for filename in dir(module):
+        obj = getattr(module, filename)
         if isinstance(obj, Page):
             try:
                 pageFactory.add(obj)
@@ -81,9 +84,33 @@ def pull_new_version():
                 pass
 
 
+class LoopManager(object):
+    def __init__(self):
+        pass
+
+    def standard(self):
+        pageFactory.show_random()
+        REFRESH_RATE_SECS = 30
+        sleep(REFRESH_RATE_SECS)
+
+    def current(self):
+        self.standard()
+
+loop_manager = LoopManager()
+
+
+def test_loop():
+    # this loops hijacts the main executaion for a bit, and then returns
+    # back
+    thread_communication.should_interrupt = False
+    loop_manager.current = loop_manager.standard
+    print "broke out of the main loop!"
+    sleep(2)
+
+
 def name_page_handler(input):
     if input == "001":
-        main.current_loop = test_loop
+        loop_manager.current = test_loop
         thread_communication.should_interrupt = True
     elif len(input) <= 3:
         while len(input) < 3:
