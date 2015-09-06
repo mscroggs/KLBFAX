@@ -2,21 +2,34 @@ from page import Page
 from colours import colour_print
 from printer import instance as printer
 from random import choice
-import screen
 from datetime import date
-from os.path import join,expanduser
 import json
+import config
+import logging
+import sys
 
-with open(join(expanduser('~'),'.klb/birthdays.json')) as f:
-    birthdays = json.load(f)
+birthday_file = config.birthday_file
+
+try:
+    with open(birthday_file) as f:
+        birthdays = json.load(f)
+        for person in birthdays:
+            print person, birthdays[person]
+
+except IOError as e:
+    logging.critical("""Birthday file failed to load. Try running in DEVELOP
+                     mode""")
+    logging.critical(e)
+    sys.exit()
 
 
 more_birthdays = {
-            "Kathleen Lonsdale":(1,28),
-            "Jesus":(12,25),
-            "Jigsaw":(1,3),
-            "ScroggsBot":(1,10)
+            "Kathleen Lonsdale": (1, 28),
+            "Jesus": (12, 25),
+            "Jigsaw": (1, 3),
+            "ScroggsBot": (1, 10)
 }
+
 for birth in more_birthdays:
     birthdays[birth] = more_birthdays[birth]
 
@@ -36,10 +49,10 @@ for person in birthdays:
             c_b[bp[0]][bp[1]] += " & " + person
 
 class BdayPage(Page):
-    def __init__(self,page_num):
+    def __init__(self, page_num):
         super(BdayPage, self).__init__(page_num)
         self.title = "Birthdays"
-      
+
     def generate_content(self):
         R = choice(self.colours.Foreground.list)+self.colours.Style.BOLD
         G = choice(self.colours.Foreground.list)+self.colours.Style.BOLD
@@ -74,7 +87,7 @@ class BdayPage(Page):
                     content += prefixes[0]
                     prefixes = prefixes[1:]
                 content += self.colours.Background.GREEN + self.colours.Foreground.BLACK
-                content += str(day) + " "+months[mon] 
+                content += str(day) + " "+months[mon]
                 content += self.colours.Background.DEFAULT + self.colours.Foreground.DEFAULT
                 content += " "*(15-len(str(day)+months[mon])) + c_b[mon][day]
                 content += "\n"
@@ -88,5 +101,5 @@ class BdayPage(Page):
                 break
 
         self.content = content
-        
+
 bdaypage = BdayPage("105")

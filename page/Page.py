@@ -1,11 +1,8 @@
-from time import strftime
 from math import floor
-from datetime import datetime
 import logging
 import screen
-from random import random,randint,choice
-import colours
 import now
+
 
 def random_error(string):
     """if random()<0.03:
@@ -39,7 +36,7 @@ class Page(object):
 
     def show(self):
         from page import FailPage
-        if self.loaded or isinstance(self,FailPage) or self.number=="---":
+        if self.loaded or isinstance(self, FailPage) or self.number == "---":
             print(random_error(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M")))
             out = self.content.split("\n")
             for i in range(0, 27):
@@ -68,13 +65,13 @@ class Page(object):
             logging.exception(e)
             self.loaded = False
 
+
 class FailPage(Page):
     def __init__(self):
-        super(FailPage,self).__init__("---")
+        super(FailPage, self).__init__("---")
         self.content = "Page failed to load...\n\n2 points to Slytherin!"
         self.is_enabled = False
 
     def generate_content(self):
-        import json
-        from points import add_points 
-        add_points("Slytherin",2)
+        from points import add_points
+        add_points("Slytherin", 2)
