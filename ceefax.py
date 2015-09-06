@@ -99,20 +99,8 @@ class LoopManager(object):
 loop_manager = LoopManager()
 
 
-def test_loop():
-    # this loops hijacts the main executaion for a bit, and then returns
-    # back
-    thread_communication.should_interrupt = False
-    loop_manager.current = loop_manager.standard
-    print "broke out of the main loop!"
-    sleep(2)
-
-
 def name_page_handler(input):
-    if input == "001":
-        loop_manager.current = test_loop
-        thread_communication.should_interrupt = True
-    elif len(input) <= 3:
+    if len(input) <= 3:
         while len(input) < 3:
             input = "0" + input
         pageFactory.get_reloaded_page(input).show()

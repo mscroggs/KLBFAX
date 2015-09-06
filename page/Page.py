@@ -28,8 +28,11 @@ class Page(object):
         self.loaded = False
         self.title = ""
 
-        self.main_loop = None
-        self.keyboard_handler = None
+    def loop(self):
+        pass
+
+    def keyboard_handler(self):
+        pass
 
     def now(self):
         return now.now()
