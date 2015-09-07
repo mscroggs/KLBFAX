@@ -9,6 +9,9 @@ from page import PageFactory, Page
 import Keyboard
 import time
 import thread_communication
+import points
+import now
+import page
 
 
 class ConfigError(Exception):
@@ -41,8 +44,8 @@ for page_file in only_page_files:
     module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
                      page_file_no_ext)
     reload(module)
-    for object in dir(module):
-        obj = getattr(module, object)
+    for filename in dir(module):
+        obj = getattr(module, filename)
         if isinstance(obj, Page):
             try:
                 pageFactory.add(obj)
@@ -80,3 +83,53 @@ def pull_new_version():
             except:
                 pass
 
+
+class LoopManager(object):
+    def __init__(self):
+        pass
+
+    def standard(self):
+        pageFactory.show_random()
+        REFRESH_RATE_SECS = 30
+        sleep(REFRESH_RATE_SECS)
+
+    def current(self):
+        self.standard()
+
+loop_manager = LoopManager()
+
+
+def name_page_handler(input):
+    if len(input) <= 3:
+        while len(input) < 3:
+            input = "0" + input
+        pageFactory.get_reloaded_page(input).show()
+    elif input == "....":
+        stop_execution()
+    elif input == "00488a0488":
+        restart_computer()
+    elif input == "0026360488":
+        pull_new_version()
+    else:
+        barcode = input
+        namefile_path = "/home/pi/cards/" + barcode
+
+        if isfile(namefile_path):
+            (name, house) = points.get_name_house(barcode)
+
+            if not house:
+                extra = """Error finding your house. Please
+                            report to Scroggs."""
+
+            time = now.now().strftime("%H")
+
+            name_file = points.read_name_file(namefile_path)
+            if points.should_add_morning_points(time, house, name_file,
+                                                barcode):
+                points_added = points.add_morning_points(time, house, barcode)
+                extra = str(points_added) + " points to " + house + "!"
+
+            name_page = page.NamePage(name, extra=extra)
+        else:
+            name_page = page.NamePage(input, large=False)
+        name_page.show()
