@@ -115,7 +115,7 @@ def name_page_handler(input):
         namefile_path = "/home/pi/cards/" + barcode
 
         if isfile(namefile_path):
-            (name, house) = points.get_name_house(barcode)
+            (name, house) = points.get_name_house(namefile_path)
 
             if not house:
                 extra = """Error finding your house. Please
