@@ -112,7 +112,7 @@ def name_page_handler(input):
         pull_new_version()
     else:
         barcode = input
-        namefile_path = "/home/pi/.klb/cards/" + barcode
+        namefile_path = "/home/pi/cards/" + barcode
 
         if isfile(namefile_path):
             (name, house) = points.get_name_house(barcode)
