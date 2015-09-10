@@ -14,3 +14,6 @@ current_dir = os.path.dirname(os.path.abspath(
 
 dummy_data_folder = "dummy_data"
 birthday_file = get_bd_filepath()
+
+sleeping_time_ms = 100
+default_page_duration_sec = int(os.getenv('default_page_duration_sec', 30))

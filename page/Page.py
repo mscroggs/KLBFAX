@@ -2,6 +2,7 @@ from math import floor
 import logging
 import screen
 import now
+import config
 
 
 def random_error(string):
@@ -27,6 +28,7 @@ class Page(object):
         self.number = str(number)
         self.loaded = False
         self.title = ""
+        self.duration_sec = config.default_page_duration_sec
 
     def loop(self):
         pass
@@ -77,6 +79,7 @@ class FailPage(Page):
         super(FailPage, self).__init__("---")
         self.content = "Page failed to load...\n\n2 points to Slytherin!"
         self.is_enabled = False
+        self.duration_sec = 2
 
     def generate_content(self):
         from points import add_points

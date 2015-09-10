@@ -2,18 +2,20 @@ from random import random,randint,choice
 from page import Page
 from printer import instance as printer
 import colours
-from points import add_points 
+from points import add_points
 
 def colour_print(text):
     return colours.colour_print(text, colours.Background.RED, colours.Foreground.BLACK)
 
+
 class NamePage(Page):
-    def __init__(self, name,large=True,extra=""):
+    def __init__(self, name, large=True,extra=""):
         super(NamePage, self).__init__("???")
         self.name = name
         self.title = "Greeting"
         self.large = large
         self.extra = extra
+        self.duration_sec = 5
         self.reload()
 
     def generate_content(self):
@@ -26,7 +28,6 @@ class NamePage(Page):
                      u"\u4f60\u597d", "Booyakasha"]
 
         greeting = choice(greetings)
-        #greeting = greetings[-1]
         if "Rafael" in name:
             if random()<0.6:
                 greeting = "Muy Feo"

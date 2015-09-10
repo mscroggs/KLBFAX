@@ -14,12 +14,12 @@ class PrisonersPage(Page):
 
     def keyboard_handler(self, input):
         if input == "000":
-            ThreadSignaller.queue.put(ThreadSignaller.InterruptWait)
             Keyboard.restore_subscribers()
             ceefax.loop_manager.current = ceefax.loop_manager.standard
 
     def reload(self):
         Page.reload(self)
+        ThreadSignaller.queue.put(ThreadSignaller.InterruptStandardLoop)
         Keyboard.save_subscribers()
         Keyboard.clear_subscribers()
         Keyboard.subscribe(self.keyboard_handler)
@@ -30,4 +30,4 @@ class PrisonersPage(Page):
         self.content = "A game will appear here shortly..."
 
     def loop(self):
-        ceefax.sleep(10)
+        pass
