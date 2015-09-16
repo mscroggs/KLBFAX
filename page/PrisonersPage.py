@@ -1,7 +1,7 @@
 from page import Page
-import thread_communication
 import ceefax
 import Keyboard
+import ThreadSignaller
 
 
 class PrisonersPage(Page):
@@ -14,22 +14,20 @@ class PrisonersPage(Page):
 
     def keyboard_handler(self, input):
         if input == "000":
-            thread_communication.should_interrupt = False
-            ceefax.loop_manager.current = ceefax.loop_manager.standard
+            ThreadSignaller.queue.put(ThreadSignaller.InterruptWait)
             Keyboard.restore_subscribers()
+            ceefax.loop_manager.current = ceefax.loop_manager.standard
 
     def reload(self):
         Page.reload(self)
         Keyboard.save_subscribers()
         Keyboard.clear_subscribers()
-        self.keyboard_handler('333')
         Keyboard.subscribe(self.keyboard_handler)
 
-        thread_communication.should_interrupt = True
         ceefax.loop_manager.current = self.loop
 
     def generate_content(self):
         self.content = "A game will appear here shortly..."
 
     def loop(self):
-        pass
+        ceefax.sleep(10)

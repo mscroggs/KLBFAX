@@ -38,9 +38,6 @@ def _threaded_function():
             emit_input_event(input)
 
 
-is_thread_active = True
-
-
 def start_keyboard_thread():
     thread = Thread(target=_threaded_function)
     thread.daemon = True

@@ -6,12 +6,12 @@ from os import listdir
 from os.path import isfile
 import os
 from page import PageFactory, Page
-import Keyboard
 import time
-import thread_communication
 import points
 import now
 import page
+import ThreadSignaller
+import Queue
 
 
 class ConfigError(Exception):
@@ -60,19 +60,25 @@ def restart_computer():
 
 
 def stop_execution():
-    Keyboard.is_thread_active = False
+    ThreadSignaller.queue.put(ThreadSignaller.CleanExit)
     sys.exit()
 
 
 def sleep(secs):
-    for i in range(secs):
-        if not Keyboard.is_thread_active:
-            sys.exit()
+    sleeping_time_ms = 100
+    num_of_cycles = int(round(secs * 1000 / sleeping_time_ms))
 
-        if thread_communication.should_interrupt:
-            return
+    for i in range(num_of_cycles):
+        try:
+            signal = ThreadSignaller.queue.get_nowait()
+            if signal == ThreadSignaller.CleanExit:
+                sys.exit()
+            elif signal == ThreadSignaller.InterruptWait:
+                return
+        except Queue.Empty:
+            pass
 
-        time.sleep(1)
+        time.sleep(sleeping_time_ms / 1000.0)
 
 
 def pull_new_version():
