@@ -25,7 +25,7 @@ awards = [
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":2}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":1}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
          ]
 pages = ["452","451","451","454","454","453","454","453","453"]
