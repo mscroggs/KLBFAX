@@ -23,7 +23,7 @@ awards = [
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2}],
+          ["Towel Bringer",{"Huda Ramli":2},{"Belgin Seymenoglu":1}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":1}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
