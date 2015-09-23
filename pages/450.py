@@ -23,12 +23,13 @@ awards = [
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2},{"Belgin Seymenoglu":1}],
+          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":1}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":1}],
-          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
+          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}],
+          ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
-pages = ["452","451","451","454","454","453","454","453","453"]
+pages = ["452","451","451","454","454","453","454","453","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
@@ -76,7 +77,7 @@ moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
 kit_page = Page("453")
-kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8])
+kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8]) + "\n" + award_show(awards[9])
 kit_page.in_index = False
 
 oth_page = Page("454")
