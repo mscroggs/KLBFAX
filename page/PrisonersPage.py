@@ -2,6 +2,8 @@ from page import Page
 import ceefax
 import Keyboard
 import ThreadSignaller
+import pd.state
+import os.path
 
 
 class PrisonersPage(Page):
@@ -11,6 +13,7 @@ class PrisonersPage(Page):
         self.in_index = False
         self.title = "Prisoner's Dilemma Score"
         self.tagline = "Let's play a game! Press 000 to go back!"
+        self.state = pd.StateHolder(os.path.join('pd', 'game0.db'))
 
     def keyboard_handler(self, input):
         if input == "000":
@@ -26,8 +29,15 @@ class PrisonersPage(Page):
 
         ceefax.loop_manager.current = self.loop
 
+    def _show_player_selection(self):
+        content = "Select your name: \n\n"
+        for playerName, id in self.state.allPlayers():
+            content += "%-20s %s\n" % (playerName, str(id))
+
+        return content
+
     def generate_content(self):
-        self.content = "A game will appear here shortly..."
+        self.content = self._show_player_selection()
 
     def loop(self):
         pass
