@@ -20,6 +20,9 @@ class PrisonersPage(Page):
             Keyboard.restore_subscribers()
             ceefax.loop_manager.current = ceefax.loop_manager.standard
 
+        if input in [str(x[1]) for x in self.state.allPlayers()]:
+            print "Hello " + self.state.getPlayerName(input)
+
     def reload(self):
         Page.reload(self)
         ThreadSignaller.queue.put(ThreadSignaller.InterruptStandardLoop)
