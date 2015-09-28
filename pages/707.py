@@ -43,6 +43,6 @@ class ChalkPage(Page):
                 content += tweet[:screen.WIDTH]
                 tweet = tweet[screen.WIDTH:]
             content += "\n"+tweet+"\n"
-        self.content = content + "sponsors Chalkdust"
+        self.content = content + "\n\n\n    sponsors Chalkdust"
 
 page = ChalkPage("707")
