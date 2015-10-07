@@ -16,6 +16,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What is the best Neil Young song?":"Mart of Gold",
          "What is the best Blondie song?":"Mart of Glass",
          "What is everyone's favourite Queens of the Stone Age song?":"The Lost Mart of Keeping a Secret",
+         "What is everyone's favourite Shakespeare play?":"Henry XIV Mart 1",
          "What method of surveying did the famous car company Ford use when designing their new Ford Focus car?":"Stratified sample"}
 
 class JokePage(Page):
