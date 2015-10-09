@@ -13,19 +13,19 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["Mart Cow Awards",{"Adam Townsend":4,"Matthew Scroggs":2,
+          ["Mart Cow Awards",{"Adam Townsend":5,"Matthew Scroggs":2,
            "Belgin Seymenoglu":14,"Matthew Wright":7,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Preito Curiel":1}],
-          ["Tea Marter Awards",{"Matthew Scroggs":9,"Matthew Wright":18,"Pietro Servini":1,
+          ["Tea Marter Awards",{"Matthew Scroggs":10,"Matthew Wright":18,"Pietro Servini":2,
            "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":1}],
+          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":2}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":3}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":4}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}],
           ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
