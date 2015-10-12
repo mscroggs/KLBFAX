@@ -17,6 +17,7 @@ awards = [
            "Belgin Seymenoglu":15,"Matthew Wright":7,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Preito Curiel":1}],
+           # Tea Rex was formerly known as Tea Maker
           ["Tea Rex",{"Matthew Scroggs":10,"Matthew Wright":18,"Pietro Servini":2,
            "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
