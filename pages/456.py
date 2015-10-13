@@ -15,7 +15,7 @@ content = colour_print(
 awards = [
           ["Boo Cow Unawards",{"Pietro Servini":1,"Stephen Muirhead":1}],
             # Tea Wrecks was formerly known as Tea Breaker
-          ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1}],
+          ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Towel Flood Unawards",{"Jigsaw":1}]
          ]
 pages = ["457","457","457"]
