@@ -8,14 +8,16 @@ from time import strftime
 def strip_tags(string):
     return sub(r'<[^>]*?>', '', string)
 
+
 class TrainPage(Page):
-    def __init__(self, page_num, station, code,hogwarts=False):
+    def __init__(self, page_num, station, code, hogwarts=False, to=None):
         super(TrainPage, self).__init__(page_num)
         self.title = station+" Trains"
         self.in_index = False
         self.tagline = "Live trains from "+code+". Data from opentraintimes.com."
         self.station = station
         self.code = code
+        self.to = to
         self.hogwarts = hogwarts
         pages.append([page_num,station+" ("+code+")"])
 
@@ -37,15 +39,16 @@ class TrainPage(Page):
             train = strip_tags(train).lstrip()
             train = train.split("\n")
             try:
-             if train[4].lstrip()!="Terminates here" and int(train[5].lstrip().split("&")[0])>=int(self.now().strftime("%H%M")):
-                new = train[5].lstrip()+" "+train[4].lstrip()
-                new = "&".join(new.split("&amp;"))
-                new = "'".join(new.split("&#39;"))
-                new = "".join(new.split("&frac12;"))
-                new += " "*(65-len(new))+train[3].lstrip()+"\n"
-                content += new
+                if train[4].lstrip()!="Terminates here" and int(train[5].lstrip().split("&")[0])>=int(self.now().strftime("%H%M")):
+                    if self.to is None or train[4].lstrip() in self.to:
+                        new = train[5].lstrip()+" "+train[4].lstrip()
+                        new = "&".join(new.split("&amp;"))
+                        new = "'".join(new.split("&#39;"))
+                        new = "".join(new.split("&frac12;"))
+                        new += " "*(65-len(new))+train[3].lstrip()+"\n"
+                        content += new
             except:
-             pass
+                pass
         self.content = content
 
 pages=[]
@@ -80,6 +83,7 @@ train29 = TrainPage("879","Moreton-in-Marsh","MIM")
 train30 = TrainPage("880","Ealing Broadway","EAL")
 train31 = TrainPage("881","Farringdon","ZFD")
 train32 = TrainPage("882","East Croydon","ECR")
+train32 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
