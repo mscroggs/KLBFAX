@@ -13,7 +13,7 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["Mart Cow Awards",{"Adam Townsend":5,"Matthew Scroggs":4,
+          ["The Award Formerly Known As A Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
            "Belgin Seymenoglu":15,"Matthew Wright":7,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Preito Curiel":1}],
@@ -24,7 +24,7 @@ awards = [
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":3}],
+          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":4}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":4}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}],
