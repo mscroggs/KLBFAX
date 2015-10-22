@@ -24,10 +24,10 @@ awards = [
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":4}],
+          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":5}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":4}],
-          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}],
+          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
 pages = ["452","451","451","454","454","453","454","453","453","453"]
