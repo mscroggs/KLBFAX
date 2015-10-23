@@ -13,7 +13,7 @@ content = colour_print(
     printer.text_to_ascii("Unawards", padding={"left": 6}))
 
 awards = [
-          ["Boo Cow Unawards",{"Pietro Servini":1,"Stephen Muirhead":1}],
+          ["Boo Cow Unawards",{"Pietro Servini":1,"Stephen Muirhead":1,"Belgin Seymenoglu":1}],
             # Tea Wrecks was formerly known as Tea Breaker
           ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Towel Flood Unawards",{"Jigsaw":1}]
