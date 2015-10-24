@@ -12,7 +12,8 @@ class WeatherPage(Page):
     def generate_content(self):
         import urllib2
 
-        response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
+        #response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
+        response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
         weather_data = response.read().split(" ")
         tag = "Live data from CASA - " + weather_data[29] + ":" + weather_data[30] + ":" + weather_data[31]
         content = colour_print(printer.text_to_ascii("weather", padding={"left": 6}),
