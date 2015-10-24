@@ -58,7 +58,13 @@ class XMenPage(Page):
                 message =  "Free all day"
             else:
                 message = "Free until " + next_occupied.strftime("%H:%M")
-        
+            if next_occupied.date() - now.date() <= timedelta(hours=1):             
+                colours_start = self.colours.Background.YELLOW + self.colours.Foreground.BLACK
+                colours_end = self.colours.Foreground.DEFAULT + self.colours.Background.DEFAULT 
+            else:
+                colours_start = self.colours.Background.GREEN + self.colours.Foreground.BLACK
+                colours_end = self.colours.Foreground.DEFAULT + self.colours.Background.DEFAULT 
+            
         if occupied == True:
             colours_start = self.colours.Background.RED + self.colours.Foreground.WHITE
             colours_end = self.colours.Foreground.DEFAULT + self.colours.Background.DEFAULT   
