@@ -97,6 +97,7 @@ class LoopManager(object):
     def standard(self):
         pageFactory.show_random()
         REFRESH_RATE_SECS = 30
+        
         sleep(REFRESH_RATE_SECS)
 
     def current(self):
