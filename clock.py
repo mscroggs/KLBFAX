@@ -1,4 +1,4 @@
-clock="""             XXXXXXXXXXXXX             
+temp="""             XXXXXXXXXXXXX             
            XXXXXXXXXXXXXXXXX           
          XXXXX           XXXXX         
        XXXX        X        XXXX       
@@ -37,4 +37,11 @@ XXX                                 XXX
          XXXXX           XXXXX         
            XXXXXXXXXXXXXXXXX           
              XXXXXXXXXXXXX             """.split("\n")
+
+def map(j):
+    if j=="X":
+        return True
+    return False
+
+clock = [[map(j) for j in i] for i in temp]
 
