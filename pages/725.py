@@ -23,7 +23,6 @@ class AdventPage(Page):
             background=colours.Background.RED) + "\n\n"
         lines = [" "," "," "]
         days_done = 0
-        self.time = 70
         for day in _arrangement:
             d = str(day)
             if len(d)<2:
@@ -48,7 +47,7 @@ class AdventPage(Page):
                         lines[i] += D
                     lines[i] += colours.Foreground.DEFAULT
             for i in range(3):
-                lines[i] += " "*3
+                lines[i] += D+" "*3
 
             days_done += 1
             if days_done > 6:
@@ -169,10 +168,11 @@ _pics = {1:["BBWBBWB",
             "LLRRRLL",
             "LLWWWLL",
             "    Hat"],
-        21:["WWWOOWW",
-            "WWOOOOW",
-            "WOOOOWW",
-            " Turkey"],
+        21:["WWWWWWW",
+            "WWWWWWW",
+            "WWWWWWW",
+            "V.Heavy",
+            "   Snow"],
         22:["LWRWLLL",
             "LRLRLLL",
             "LLLWLLL",
@@ -187,11 +187,10 @@ _pics = {1:["BBWBBWB",
             "WWRRRWW",
             "WWRRRWW",
             " Bauble"],
-        25:["WWWWWWW",
-            "WWWWWWW",
-            "WWWWWWW",
-            "V.Heavy",
-            "   Snow"]
+        25:["WWWOOWW",
+            "WWOOOOW",
+            "WOOOOWW",
+            " Turkey"]
         }
 
 _arrangement = [15, 22, 17, 21, 7, 10, 1, 13, 24, 19, 8, 9, 3, 23, 16, 11, 25, 14, 20, 4, 12, 18, 5, 6, 2]
