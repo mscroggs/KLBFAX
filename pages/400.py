@@ -43,8 +43,8 @@ class TimePage(Page):
             hour[hour_y][hour_x] = True
 
             r = circle_radius*a*.8/num_points
-            minute_x = screen_radius + int(floor( r*cos(pi/2 - current_minute*2*pi/12) +.5))
-            minute_y = screen_radius - int(floor( r*sin(pi/2 - current_minute*2*pi/12) +.5))
+            minute_x = screen_radius + int(floor( r*cos(pi/2 - current_minute*2*pi/60) +.5))
+            minute_y = screen_radius - int(floor( r*sin(pi/2 - current_minute*2*pi/60) +.5))
             minute[minute_y][minute_x] = True
         
 #        hour_x = np.array([r*np.cos(np.pi/2 - current_hourtopointat*2*np.pi/12) for r in np.arange(0,circle_radius*0.5,circle_radius*0.5/num_points)])
