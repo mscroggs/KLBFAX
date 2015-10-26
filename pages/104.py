@@ -50,6 +50,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What did Juliet say to Romeo?":"Wherefore mart thou, Romeo?",
          "What was the best US president?":"Jimmy Marter",
          "What is the best firework?":"Catherine wheel",
+         "What is Mart's favourite breakfast cereal?":"Pice Krispies",
          "Why do you never see elephants hiding in trees?":"They are big"
          }
 
