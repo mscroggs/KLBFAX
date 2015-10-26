@@ -32,20 +32,29 @@ class TimePage(Page):
 #        circle_y=np.array([circle_radius*np.sin(t) for t in range(num_points)])
 #        circle_points=[np.complex(x,y) for x,y in zip(circle_x,circle_y)] 
 
+        d = .3
         num_points = 25
         current_minute = float(now().strftime("%M"))
         current_hour = float(now().strftime("%I"))
         current_hourtopointat = current_hour + current_minute/60.
         for a in range(0,num_points+1):
             r = circle_radius*a*.5/num_points
-            hour_x = screen_radius + int(floor( r*cos(pi/2 - current_hourtopointat*2*pi/12) +.5))
-            hour_y = screen_radius - int(floor( r*sin(pi/2 - current_hourtopointat*2*pi/12) +.5))
-            hour[hour_y][hour_x] = True
+            hx = r*cos(pi/2 - current_hourtopointat*2*pi/12)
+            hy = r*sin(pi/2 - current_hourtopointat*2*pi/12)
+            for dx in [-d,d]:
+                for dy in [-d,d]:
+                    hour_x = screen_radius + int(floor(hx+.5+dx))
+                    hour_y = screen_radius - int(floor(hy+.5+dy))
+                    hour[hour_y][hour_x] = True
 
-            r = circle_radius*a*.8/num_points
-            minute_x = screen_radius + int(floor( r*cos(pi/2 - current_minute*2*pi/60) +.5))
-            minute_y = screen_radius - int(floor( r*sin(pi/2 - current_minute*2*pi/60) +.5))
-            minute[minute_y][minute_x] = True
+            r = circle_radius*a*.9/num_points
+            mx = r*cos(pi/2 - current_minute*2*pi/60)
+            my = r*sin(pi/2 - current_minute*2*pi/60)
+            for dx in [-d,d]:
+                for dy in [-d,d]:
+                    minute_x = screen_radius + int(floor(mx+.5+dx))
+                    minute_y = screen_radius - int(floor(mx+.5+dy))
+                    minute[minute_y][minute_x] = True
         
 #        hour_x = np.array([r*np.cos(np.pi/2 - current_hourtopointat*2*np.pi/12) for r in np.arange(0,circle_radius*0.5,circle_radius*0.5/num_points)])
 #        hour_y = -np.array([r*np.sin(np.pi/2 - current_hourtopointat*2*np.pi/12) for r in np.arange(0,circle_radius*0.5,circle_radius*0.5/num_points)])
