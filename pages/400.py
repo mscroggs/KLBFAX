@@ -29,7 +29,7 @@ class TimePage(Page):
 #        circle_y=np.array([circle_radius*np.sin(t) for t in range(num_points)])
 #        circle_points=[np.complex(x,y) for x,y in zip(circle_x,circle_y)] 
 
-        num_points = 40
+        num_points = 25
         current_minute = float(now().strftime("%M"))
         current_hour = float(now().strftime("%I"))
         current_hourtopointat = current_hour + current_minute/60.
@@ -51,7 +51,8 @@ class TimePage(Page):
                     output += "X"
                 else:
                     for point in hour_points+minute_points:
-                        if np.abs(point - complex(x,y)) <= 1.1:
+                        diff = point - complex(x,y)
+                        if abs(np.real(diff)) <= 1.1 and abs(np.imag(diff)) <= 1.1 and np.abs(diff) <= 1.1:
                             output += "X"
                             break
                     else:
