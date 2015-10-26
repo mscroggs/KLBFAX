@@ -14,11 +14,12 @@ class TimePage(Page):
         super(TimePage, self).__init__(page_num)
         self.title = "KLB Mean Time"
 
-    def generate_content(self):
-    
+    def generate_content(self,debug=False):
+        if debug: print 1
         tag = "KLB Mean Time"
         content = colour_print(printer.text_to_ascii(now().strftime("%A %-d %b")),background=self.colours.Style.BLINK,foreground=self.colours.Foreground.BLACK)
         content += "\n"
+        if debug: print 2
     
         circle_radius = 19
         screen_radius = 19
@@ -27,6 +28,7 @@ class TimePage(Page):
         circle_x=np.array([circle_radius*np.cos(t) for t in range(num_points)])
         circle_y=np.array([circle_radius*np.sin(t) for t in range(num_points)])
         circle_points=[np.complex(x,y) for x,y in zip(circle_x,circle_y)] 
+        if debug: print 3
 
         num_points = 40
         current_minute = float(now().strftime("%M"))
@@ -41,10 +43,13 @@ class TimePage(Page):
         hourmarkers_x = np.array([r*np.cos(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
         hourmarkers_y = -np.array([r*np.sin(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
         hourmarkers_points=[np.complex(x,y) for x,y in zip(hourmarkers_x,hourmarkers_y)] 
+        if debug: print 4
 
         output = ""
         for y in np.arange(-screen_radius, screen_radius+1, 1):
             for x in np.arange(-screen_radius, screen_radius+1, 1):
+                if debug: print x,y,"  ",screen_radius
+
                 draw = False
                 for point in circle_points+hour_points+minute_points+hourmarkers_points:
                     if np.abs(point - complex(x,y)) <= 1.1:
@@ -54,6 +59,8 @@ class TimePage(Page):
                 else:
                     output = output + " "
             #output = output + "\n"
+        if debug: print 5
+
         output = output + " "*(2*screen_radius + 1)
         output2 = ""
         for y in np.arange(0, 2*screen_radius+1, 2):
@@ -71,6 +78,7 @@ class TimePage(Page):
                     output2 = output2 + u"\u2584"
             if y != 2*screen_radius: output2 = output2 + "\n"
         content += output2    
+        if debug: print 6
 
         self.content = content
         self.tagline = tag
