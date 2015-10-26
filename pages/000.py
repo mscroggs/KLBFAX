@@ -46,3 +46,8 @@ for i in range(0,len(test_page.colours.Background.list)):
     test_page.content += test_page.colours.Background.delist[i]
     test_page.content += test_page.colours.Background.DEFAULT
     test_page.content += " "
+for i in range(0,len(test_page.colours.Background.list)):
+    test_page.content += test_page.colours.Background.list[i] + test_page.colours.Style.BLINK
+    test_page.content += test_page.colours.Background.delist[i]
+    test_page.content += test_page.colours.Background.DEFAULT
+    test_page.content += " "
