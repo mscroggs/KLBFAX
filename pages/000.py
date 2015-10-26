@@ -18,7 +18,6 @@ test_page.is_enabled = False
 test_page.content = ""
 
 test_page.content += "\n" + colour_me("TEST PAGE") + "\n\n"
-test_page.content += colour_me("FOREGROUNDS & STYLES") + "\n"
 
 # 000000011111111112222222222333333333344444444445555555555666666666677777777778
 # 345678901234567890123456789012345678901234567890123456789012345678901234567890
@@ -29,6 +28,7 @@ test_page.content += colour_me("FOREGROUNDS & STYLES") + "\n"
 #"BLINK     "
 #"UNDERLINE "
 #"STRIKE    "
+test_page.content += colour_me("FOREGROUNDS & STYLES") + "\n"
 for i in range(0,len(test_page.colours.Style.list)):
     test_page.content += test_page.colours.Style.delist[i] + " "*(13-len(test_page.colours.Style.delist[i]))
 
@@ -39,15 +39,16 @@ for i in range(0,len(test_page.colours.Style.list)):
         test_page.content += " "
     test_page.content += "\n"
 
-test_page.content += "\n" + colour_me("BACKGROUNDS") + "\n"
+test_page.content += colour_me("BACKGROUNDS & STYLES") + "\n"
+for i in range(0,len(test_page.colours.Style.list)):
+    test_page.content += test_page.colours.Style.delist[i] + " "*(13-len(test_page.colours.Style.delist[i]))
 
-for i in range(0,len(test_page.colours.Background.list)):
-    test_page.content += test_page.colours.Background.list[i]
-    test_page.content += test_page.colours.Background.delist[i]
-    test_page.content += test_page.colours.Background.DEFAULT
-    test_page.content += " "
-for i in range(0,len(test_page.colours.Background.list)):
-    test_page.content += test_page.colours.Background.list[i] + test_page.colours.Style.BLINK
-    test_page.content += test_page.colours.Background.delist[i]
-    test_page.content += test_page.colours.Background.DEFAULT
-    test_page.content += " "
+    for j in range(0,len(test_page.colours.Background.list)):
+        test_page.content += test_page.colours.Style.list[i] + test_page.colours.Background.list[j]
+        test_page.content += test_page.colours.Background.delist[j]
+        test_page.content += test_page.colours.Style.DEFAULT + test_page.colours.Background.DEFAULT
+        test_page.content += " "
+    test_page.content += "\n"
+
+
+
