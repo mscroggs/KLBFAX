@@ -9,7 +9,8 @@ import screen
 class MonaLisaPage(Page):
     def __init__(self,page_num):
         super(MonaLisaPage, self).__init__(page_num)
-        self.title = "Mona Lisa"
+        self.title = "Art"
+        self.index_num = "110-111"
         self.tagline = "Are you warm,are you real,Mona Lisa? Or just a cold & lonely lovely work of art?"
 
     def generate_content(self):

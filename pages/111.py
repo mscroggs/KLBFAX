@@ -9,6 +9,7 @@ import screen
 class VenusPage(Page):
     def __init__(self,page_num):
         super(VenusPage, self).__init__(page_num)
+        self.in_index = False
         self.title = "Venus"
         self.tagline = "Here, it is a nude Venus who emerges from the shell, floating on waves."
 
