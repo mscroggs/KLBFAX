@@ -1,3 +1,4 @@
+
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import os
@@ -15,6 +16,7 @@ class TimePage(Page):
         self.title = "KLB Mean Time"
 
     def generate_content(self,debug=False):
+        from clock import clock
         tag = "KLB Mean Time"
         content = colour_print(printer.text_to_ascii(now().strftime("%A %-d %b")),background=self.colours.Style.BLINK,foreground=self.colours.Foreground.BLACK)
         content += "\n"
@@ -22,10 +24,10 @@ class TimePage(Page):
         circle_radius = 19
         screen_radius = 19
 
-        num_points = 250
-        circle_x=np.array([circle_radius*np.cos(t) for t in range(num_points)])
-        circle_y=np.array([circle_radius*np.sin(t) for t in range(num_points)])
-        circle_points=[np.complex(x,y) for x,y in zip(circle_x,circle_y)] 
+#        num_points = 250
+#        circle_x=np.array([circle_radius*np.cos(t) for t in range(num_points)])
+#        circle_y=np.array([circle_radius*np.sin(t) for t in range(num_points)])
+#        circle_points=[np.complex(x,y) for x,y in zip(circle_x,circle_y)] 
 
         num_points = 40
         current_minute = float(now().strftime("%M"))
@@ -37,26 +39,24 @@ class TimePage(Page):
         minute_x = np.array([r*np.cos(np.pi/2 - current_minute*2*np.pi/60) for r in np.arange(0,circle_radius*0.8,circle_radius*0.8/num_points)])
         minute_y = -np.array([r*np.sin(np.pi/2 - current_minute*2*np.pi/60) for r in np.arange(0,circle_radius*0.8,circle_radius*0.8/num_points)])
         minute_points=[np.complex(x,y) for x,y in zip(minute_x,minute_y)] 
-        hourmarkers_x = np.array([r*np.cos(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
-        hourmarkers_y = -np.array([r*np.sin(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
-        hourmarkers_points=[np.complex(x,y) for x,y in zip(hourmarkers_x,hourmarkers_y)] 
+#        hourmarkers_x = np.array([r*np.cos(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
+#        hourmarkers_y = -np.array([r*np.sin(np.pi/2 - h*2*np.pi/12) for r in np.arange(circle_radius*0.78,circle_radius*0.8,circle_radius*0.8/num_points) for h in [0,3,6,9]])
+#        hourmarkers_points=[np.complex(x,y) for x,y in zip(hourmarkers_x,hourmarkers_y)] 
 
         output = ""
         for y in np.arange(-screen_radius, screen_radius+1, 1):
             for x in np.arange(-screen_radius, screen_radius+1, 1):
-                if debug: print x,y,"  ",screen_radius
-
-                draw = False
-                for point in circle_points+hour_points+minute_points+hourmarkers_points:
-                    if np.abs(point - complex(x,y)) <= 1.1:
-                        draw = True
-                        break
-                if draw:
-                    output = output + "X"
+                if debug: print x,y," ",y+screen_radius,x+screen_radius, " ", clock[x][y]
+                if clock[y+screen_radius][x+screen_radius]=="X":
+                    output += "X"
                 else:
-                    output = output + " "
-            #output = output + "\n"
-
+                    for point in hour_points+minute_points:
+                        if np.abs(point - complex(x,y)) <= 1.1:
+                            output += "X"
+                            break
+                    else:
+                        output += " "
+#            output = output + "\n"
         output = output + " "*(2*screen_radius + 1)
         output2 = ""
         for y in np.arange(0, 2*screen_radius+1, 2):
