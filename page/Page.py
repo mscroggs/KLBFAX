@@ -71,6 +71,9 @@ class Page(object):
             logging.exception(e)
             self.loaded = False
 
+    def refresh(self):
+        pass
+
 
 class FailPage(Page):
     def __init__(self):
