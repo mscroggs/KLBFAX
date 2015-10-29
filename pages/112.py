@@ -17,7 +17,7 @@ class JigPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii("Jigsaw",fill=True))
         content += "\n"
-        jig = """     ,XXTTTTTTTTTTTTTXX,,
+        jig = """     ,XX'''''''''''''XX,,
     XXX               XXX
    XXX                 XXX
   XXX   ,'',     ,'',   XXX
@@ -53,11 +53,11 @@ XXXXGG   XXXXXXXXXXX   GGXXXX
         XXXXXGGXXXXXX
       XXXXXXXGGXXXXXXX
      XXXXX  XGGX  XXXXX"""
-        jig = "\u2588".join(jig.split("X")
-        jig = "\u2580".join(jig.split("'")
-        jig = "\u2584".join(jig.split(",")
-        jig = (self.colours.Foreground.RED+"\u2588"+self.colours.Foreground.DEFAULT).join(jig.split("R")
-        jig = (self.colours.Foreground.BLACK+self.colours.Style.BOLD+"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.Default).join(jig.split("G")
+        jig = u"\u2588".join(jig.split("X"))
+        jig = u"\u2580".join(jig.split("'"))
+        jig = u"\u2584".join(jig.split(","))
+        jig = (self.colours.Foreground.RED+u"\u2588"+self.colours.Foreground.DEFAULT).join(jig.split("R"))
+        jig = (self.colours.Foreground.BLACK+self.colours.Style.BOLD+u"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT).join(jig.split("G"))
         content += jig
         
         self.content = content
