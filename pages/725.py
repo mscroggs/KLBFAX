@@ -61,10 +61,10 @@ class AdventPage(Page):
 
     def refresh(self):
         time = datetime.now()
-        if (time.month == 12 and time.day < 26) or (time.month == 11 and time.date > 25):
+        if time.month == 11 or (time.month == 10 and time.date > 25):
             self.in_index = True
             self.is_enabled = True
-            if time.month == 12:
+            if time.month == 11:
                 self.time = time.day
             else:
                 self.time = 0
