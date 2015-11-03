@@ -18,15 +18,15 @@ awards = [
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Pietro Curiel":2}],
            # Tea Rex was formerly known as Tea Maker
-          ["Tea Rex",{"Matthew Scroggs":10,"Matthew Wright":19,"Pietro Servini":2,
+          ["Tea Rex",{"Matthew Scroggs":10,"Matthew Wright":20,"Pietro Servini":2,
            "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
           ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":5}],
+          ["Towel Bringer",{"Huda Ramli":3,"Belgin Seymenoglu":5}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":5}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":6}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
