@@ -9,4 +9,4 @@ sub_page.title = "I'm a Teapot"
 sub_page.in_index=False
 sub_page.content = colour_print(printer.text_to_ascii("418", padding={"left": 30}))
 sub_page.content += "\n\n"
-sub_page.content += colour_print(printer.text_to_ascii("I'm a Teapot", padding={"left": 2}))
+sub_page.content += colour_print(printer.text_to_ascii("I am a Teapot", padding={"left": 2}))
