@@ -10,12 +10,15 @@ class WeatherPage(Page):
         self.title = "Weather"
 
     def generate_content(self):
-        import urllib2
-
-        #response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
-        response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
-        weather_data = response.read().split(" ")
-        '''
+        try:
+            import urllib2
+    
+            #response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
+            response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
+            weather_data = response.read().split(" ")
+        except:
+            weather_data = ["CLASSIFIED"]*60
+        '''#
         Field # Example 	Description 	Equivalent Webtags
         1 	19/08/09 	Date as 2 figure day [separator] 2 figure month [separator] 2 figure year - the separator is that set in the windows system short date format (see setup) 	<#date>
         2 	16:03:45 	time(always hh:mm:ss as per computer system) 	<#timehhmmss>
@@ -100,8 +103,13 @@ class WeatherPage(Page):
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
 
         content += "\n\n"
-        inside_weather = "|" + str(int(round(float(weather_temperature)))) + "|"
-        outside_weather = str(int(round(float(weather_temperature))))
+        try:
+            inside_weather = "|" + str(int(round(float(weather_temperature)))) + "|"
+            outside_weather = str(int(round(float(weather_temperature))))
+        except:
+            inside_weather = "---"
+            outside_weather = "---"
+        
 
         '''
     FORECASTS = ["Sunny", "Clear Night", "Cloudy", "Cloudy", "Cloudy Night", "Dry Clear", "Fog", "Hazy", "Heavy Rain",
@@ -139,12 +147,21 @@ class WeatherPage(Page):
             weather_pic = "%" #snow
             weather_colour_foreground = self.colours.Background.BLACK
             weather_colour_background = self.colours.Foreground.WHITE
-        
-        compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
-        compass_direction = compass_points[int(float(weather_wind_direction_degrees)*16/360)]
+        else:
+            weather_pic = "`"
+            weather_colour_foreground = self.colours.Background.BLACK
+            weather_colour_background = self.colours.Foreground.WHITE
 
-        with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
-            inside_weather = f.read()
+        compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
+        try:
+            compass_direction = compass_points[int(float(weather_wind_direction_degrees)*16/360)]
+        except:
+            compass_direction = "?"
+        try:
+            with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
+                inside_weather = f.read()
+        except:
+            pass
 			
         content += " /--------- O U T S I D E ----------|     /---------- I N S I D E -----------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
         content += self.colours.colour_print_join([
@@ -171,15 +188,21 @@ class WeatherPage(Page):
         content += "\n"
         content += " /----------------------------------|     /----------------------------------|\n".replace("-",u"\u2500").replace("/",u"\u2514").replace("|",u"\u2518")						
         content += """
-    Wind                """ + str(int(float(weather_wind_speed))) + "mph " + compass_direction + """
+    Wind                """ + round_me(weather_wind_speed) + "mph " + compass_direction + """
     Max/Min Today       """ + weather_high_temp + u"\u00B0" + "C / " + weather_low_temp + u"\u00B0" + """C
     Outdoor Humidity    """ + weather_humidity + """%
-    Pressure            """ + str(int(float(weather_pressure))) + """ hPa
+    Pressure            """ + round_me(weather_pressure) + """ hPa
     Daily Rain          """ + weather_rain_today + """ mm  
-    Cloud Height        """ + str(int(round(float(weather_cloud_height)/10)*10)) + """ ft  
+    Cloud Height        """ + round_me(weather_cloud_height,10) + """ ft  
     """
         self.content = content
         self.tagline = tag
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 weather_page = WeatherPage(page_number)
+
+def round_me(n,i=1):
+    try:
+        return str(int(round(float(n)/i)*i))
+    except:
+        return n
