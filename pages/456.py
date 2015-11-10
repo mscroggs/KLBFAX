@@ -16,9 +16,10 @@ awards = [
           ["Boo Cow Unawards",{"Pietro Servini":1,"Stephen Muirhead":1,"Belgin Seymenoglu":2}],
             # Tea Wrecks was formerly known as Tea Breaker
           ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
-          ["Towel Flood Unawards",{"Jigsaw":1}]
+          ["Towel Flood Unawards",{"Jigsaw":1}],
+          ["Worst Sorting Hat",{"Anna Lambert":1}]
          ]
-pages = ["457","457","457"]
+pages = ["457","457","457","457"]
 
 content += "\nWho has the most Unawards?\n\n"
 
@@ -54,5 +55,5 @@ def title(text):
     return colour_print(printer.text_to_ascii(text))
 
 tea_page = Page("457")
-tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1]) + "\n" + award_show(awards[2])
+tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1]) + "\n" + award_show(awards[2]) + "\n" + award_show(awards[3])
 tea_page.in_index = False
