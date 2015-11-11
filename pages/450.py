@@ -26,7 +26,7 @@ awards = [
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
           ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":7}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":8}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
