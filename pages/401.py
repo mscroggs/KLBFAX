@@ -2,15 +2,48 @@ import os
 from page import Page
 from printer import instance as printer
 from colours import colour_print
+from random import randint
 
 
 class WeatherPage(Page):
     def __init__(self, page_num):
         super(WeatherPage, self).__init__(page_num)
-        self.title = "Weather"
+        self.title = "Weather"      
 
     def generate_content(self):
         import urllib2
+        
+        def number_in_box(number_string):
+            '''
+            if len(number_string) == 2:
+                if number_string.count("1") == 2 or (number_string.count("1") == 1 and number_string.count("-") == 1):
+                    return "|||" + number_string + "|||", ""
+                elif number_string.count("1") == 1 or (number_string.count("1") == 0 and number_string.count("-") == 1):
+                    return "|" + number_string + "|", "|"
+                else:
+                    return number_string,""
+            else:
+                if number_string.count("1") == 1:
+                    return "|||||" + number_string + "|||||", ""
+                else:
+                    return "|||" + number_string + "|||", "|"     
+            '''
+            
+            padded_number_string = number_string.replace("1","|1")
+            padded_number_string = padded_number_string.replace("-","-|")
+            if len(number_string) == 2:
+                if number_string.count("1") == 2 or (number_string.count("1") == 1 and number_string.count("-") == 1):
+                    return "||" + padded_number_string + "||", ""
+                elif number_string.count("1") == 1 or (number_string.count("1") == 0 and number_string.count("-") == 1):
+                    return "|" + padded_number_string + "|", ""
+                else:
+                    return number_string,""
+            else:
+                if number_string.count("1") == 1:
+                    return "||||" + padded_number_string + "|||||", ""
+                else:
+                    return "||||" + padded_number_string + "|||", ""     
+                     
 
         #response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
         response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
@@ -100,11 +133,45 @@ class WeatherPage(Page):
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
 
         content += "\n\n"
-        inside_weather = "|" + str(int(round(float(weather_temperature)))) + "|"
+        
+        with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
+            inside_weather = f.read()
         outside_weather = str(int(round(float(weather_temperature))))
+        
+        #inside_weather = str(int(round(float(weather_temperature))))
+        #outside_weather = str(int(round(float(weather_temperature))))   
+        #inside_weather = str(randint(-9,30))
+        #outside_weather = str(randint(-9,30))
+      
+        
+        if int(inside_weather) >= 20:
+            inside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+            inside_weather_background = self.colours.Foreground.RED
+        elif 10 <= int(inside_weather) < 20:
+            inside_weather_foreground = self.colours.Background.RED
+            inside_weather_background = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+        elif 0 < int(inside_weather) < 10:
+            inside_weather_foreground = self.colours.Background.BLUE
+            inside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD
+        else:
+            inside_weather_foreground = self.colours.Background.BLUE
+            inside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
+        if int(outside_weather) >= 20:
+            outside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+            outside_weather_background = self.colours.Foreground.RED
+        elif 10 <= int(outside_weather) < 20:
+            outside_weather_foreground = self.colours.Background.RED
+            outside_weather_background = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+        elif 0 < int(outside_weather) < 10:
+            outside_weather_foreground = self.colours.Background.BLUE
+            outside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD
+        else:
+            outside_weather_foreground = self.colours.Background.BLUE
+            outside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
+        
 
         '''
-    FORECASTS = ["Sunny", "Clear Night", "Cloudy", "Cloudy", "Cloudy Night", "Dry Clear", "Fog", "Hazy", "Heavy Rain",
+        FORECASTS = ["Sunny", "Clear Night", "Cloudy", "Cloudy", "Cloudy Night", "Dry Clear", "Fog", "Hazy", "Heavy Rain",
                  "Mainly Fine", "Misty", "Night Fog", "Night Heavy Rain", "Night Overcast", "Night Rain",
                  "Night Showers", "Night Snow", "Night Thunder", "Overcast", "Partly Cloudy", "Rain", "Hard Rain",
                  "Showers", "Sleet", "Sleet Showers", "Snow", "Snow Melt", "Snow Showers", "Sunny", "Thunder Showers",
@@ -142,34 +209,37 @@ class WeatherPage(Page):
         
         compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         compass_direction = compass_points[int(float(weather_wind_direction_degrees)*16/360)]
-
-        with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
-            inside_weather = f.read()
 			
-        content += " /--------- O U T S I D E ----------|     /---------- I N S I D E -----------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
+        content += " /--------- O U T S I D E -----------|   /---------- I N S I D E ------------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii("|",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
-                        (printer.text_to_ascii(outside_weather,False)+"",
-                            self.colours.Background.RED,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii(number_in_box(outside_weather)[0],False),
+                            outside_weather_foreground,
+                            outside_weather_background),
+                        (printer.text_to_ascii(number_in_box(outside_weather)[1],False)+"",
+                            self.colours.Background.DEFAULT,
+                            self.colours.Foreground.BLACK),                             
                         (printer.text_to_ascii(weather_pic,False)+"",
                             weather_colour_foreground,
                             weather_colour_background),
-                        (printer.text_to_ascii("||||||||",False)+"",
+                        (printer.text_to_ascii("||||||",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
-                        (printer.text_to_ascii(inside_weather,False)+"",
-                            self.colours.Background.RED,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii(number_in_box(inside_weather)[0],False)+"",
+                            inside_weather_foreground,
+                            inside_weather_background),
+                        (printer.text_to_ascii(number_in_box(inside_weather)[1],False)+"",
+                            self.colours.Background.DEFAULT,
+                            self.colours.Foreground.BLACK),  
                         (printer.text_to_ascii("*",False)+"",
                             self.colours.Background.YELLOW,
                             self.colours.Foreground.BLACK)
-                    ]," "," ")       
+                    ],""," ")       
 
         content += "\n"
-        content += " /----------------------------------|     /----------------------------------|\n".replace("-",u"\u2500").replace("/",u"\u2514").replace("|",u"\u2518")						
+        content += " /-----------------------------------|   /-----------------------------------|\n".replace("-",u"\u2500").replace("/",u"\u2514").replace("|",u"\u2518")						
         content += """
     Wind                """ + str(int(float(weather_wind_speed))) + "mph " + compass_direction + """
     Max/Min Today       """ + weather_high_temp + u"\u00B0" + "C / " + weather_low_temp + u"\u00B0" + """C

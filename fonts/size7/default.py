@@ -515,46 +515,46 @@ xxxxxxx
 """)
 
 _add("*", """
-xxxxx xxxxxx
-x,'xx,xx',xx
-xxx'   'xxxx
-,,x     x,,x
-xxx,   ,xxxx
-x',xx'xx,'xx
-xxxxx xxxxxx
+xxxxxxx xxxxxxxx
+xxx,'xx,xx',xxxx
+xxxxx'   'xxxxxx
+xx,,x     x,,xxx
+xxxxx,   ,xxxxxx
+xxx',xx'xx,'xxxx
+xxxxxxx xxxxxxxx
 """)
 
 #cloud
 _add("@", """
-xxxxxxxxxxxxx
-xxxx'''xxxxxx
-x'',xxx,'xxxx
- xx,xxx',,,'x
-,'''''''''',x
-xxxxxxxxxxxxx
-xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx
+xxxxxx'''xxxxxxx
+xxx'',xxx,'xxxxx
+xx xx,xxx',,,'xx
+xx,'''''''''',xx
+xxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx
 """)
 
 #rain
 _add("{", """
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xx','xxxx'xxx
-x,''',x',x,'x
-xxxxxxx,''',x
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxxxx,xxx xx
+xxx,,,,,,,,,,xxx
+xxxx','xxxx'xxxx
+xxx,''',x',x,'xx
+xxxxxxxxx,''',xx
 """)
 
 #moon
 _add("}", """
-xxx'' ,,x
-x'   ,xxx
-'   xxxxx
-    xxxxx
-,   xxxxx
-x,   'xxx
-xxx,, ''x
+xxxxxx'' ,,xxxxx
+xxxx'   ,xxxxxxx
+xxx'   xxxxxxxxx
+xxx    xxxxxxxxx
+xxx,   xxxxxxxxx
+xxxx,   'xxxxxxx
+xxxxxx,, ''xxxxx
 """)
 
 # cloud sun
@@ -570,24 +570,24 @@ xxxxxxxxxxxxxxxx
 
 # storm
 _add("^","""
-xxx',,,'xxxxx
-',,'xxxx'xxxx
- xxxxxx, ''xx
-x,,x'   ,,,'x
-xxx,  'xxxx x
-xxxxx,  'x',x
-xxxx' ,x,x,xx
+xxxxx',,,'xxxxxx
+xx',,'xxxx'xxxxx
+xx xxxxxx, ''xxx
+xxx,,x'   ,,,'xx
+xxxxx,  'xxxx xx
+xxxxxxx,  'x',xx
+xxxxxx' ,x,x,xxx
 """)
 
 # snow
 _add("%","""
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xxxxxx,',xxxx
-x,',xx,x,xxxx
-x,x,xxxxxxxxx
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxxxx,xxx xx
+xxx,,,,,,,,,,xxx
+xxxxxxxx,',xxxxx
+xxx,',xx,x,xxxxx
+xxx,x,xxxxxxxxxx
 """)
 
 
