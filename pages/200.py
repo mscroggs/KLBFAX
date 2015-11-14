@@ -15,7 +15,7 @@ class LetterPage(Page):
 
 
     def generate_content(self):
-        with open(join(expanduser("~"),".klb/emails")) as f:
+        with open_local("emails") as f:
             letters = f.read()
         if not os.getenv('SLAVE'):
             import gmail
