@@ -120,11 +120,13 @@ class WeatherPage(Page):
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
 
         content += "\n\n"
-        
+        outside_weather_foreground = self.colours.Background.BLUE
+        outside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD 
+        inside_weather_foreground = self.colours.Background.BLUE
+        inside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
         try:        
             with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
                 inside_weather = f.read()
-            outside_weather = str(int(round(float(weather_temperature))))
             if int(inside_weather) >= 20:
                 inside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
                 inside_weather_background = self.colours.Foreground.RED
@@ -133,10 +135,12 @@ class WeatherPage(Page):
                 inside_weather_background = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
             elif 0 < int(inside_weather) < 10:
                 inside_weather_foreground = self.colours.Background.BLUE
-                inside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD
-            else:
-                inside_weather_foreground = self.colours.Background.BLUE
-                inside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
+                inside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD                
+        except: 
+            inside_weather = "??"
+            
+        try:
+            outside_weather = str(int(round(float(weather_temperature))))
             if int(outside_weather) >= 20:
                 outside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
                 outside_weather_background = self.colours.Foreground.RED
@@ -146,12 +150,9 @@ class WeatherPage(Page):
             elif 0 < int(outside_weather) < 10:
                 outside_weather_foreground = self.colours.Background.BLUE
                 outside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD
-            else:
-                outside_weather_foreground = self.colours.Background.BLUE
-                outside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD            
+      
         except:
-            inside_weather = "---"
-            outside_weather = "---"        
+            outside_weather = "??"        
         
         #inside_weather = str(int(round(float(weather_temperature))))
         #outside_weather = str(int(round(float(weather_temperature))))   

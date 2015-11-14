@@ -53,6 +53,16 @@ xxx
 xxx
 """)
 
+_add("?", """
+xxxxxxx
+'    'x
+,,xx  x
+xx'  ,x
+xx,,xxx
+xx  xxx
+xxxxxxx
+""")
+
 _add("(", """
 xxxx
 x  x
