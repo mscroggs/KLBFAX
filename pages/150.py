@@ -1,7 +1,7 @@
 import os
 from os.path import join,expanduser
 from page import Page
-
+from file_handler import open_local
 
 class EventPage(Page):
     def __init__(self, page_num):
@@ -20,7 +20,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 """
         events={}
         cur=""
-        with open(join(expanduser("~"),'.klb/events')) as f:
+        with open_local('events') as f:
             for line in f.readlines():
                 line = line.decode("utf-8")
                 line = line.strip("\n")

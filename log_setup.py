@@ -6,6 +6,8 @@ import logging.config
 def read_from_file():
     if os.getenv('DEVELOP', None):
         config_file = "development.yaml"
+    elif os.getenv('SLAVE', None):
+        config_file = "slave.yaml"
     else:
         config_file = "production.yaml"
 

@@ -1,14 +1,16 @@
 import json
 from os.path import expanduser, join
-
+import os
 
 def update_status(status=None):
+  if not os.getenv("SLAVE"):
     if status is not None:
         with open(join(expanduser('~'), '.klb/tweet_me'), 'a+') as f:
             f.write("\n"+status)
 
 
 def add_points(house, number):
+  if not os.getenv("SLAVE"):
     try:
         with open(join(expanduser('~'), '.klb/points'), 'r') as f:
             data = json.load(f)
@@ -27,6 +29,7 @@ def add_points(house, number):
 
 
 def should_add_morning_points(time, house, lines, oldname):
+  if not os.getenv("SLAVE"):
         if house is not None and "used" not in lines:
             if time in ["08", "09"]:
                 return True
@@ -43,6 +46,7 @@ def num_of_morning_points(time):
 
 
 def add_morning_points(time, house, oldname):
+  if not os.getenv("SLAVE"):
     with open("/home/pi/cards/" + oldname, "a") as f:
         f.write("\nused")
         points_added = num_of_morning_points(time)

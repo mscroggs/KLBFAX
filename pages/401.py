@@ -3,6 +3,7 @@ from page import Page
 from printer import instance as printer
 from colours import colour_print
 from random import randint
+from file_handler import open_local
 
 
 class WeatherPage(Page):
@@ -125,7 +126,7 @@ class WeatherPage(Page):
         inside_weather_foreground = self.colours.Background.BLUE
         inside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
         try:        
-            with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
+            with open_local("temp_now") as f:
                 inside_weather = f.read()
             if int(inside_weather) >= 20:
                 inside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK

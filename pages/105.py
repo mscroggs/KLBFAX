@@ -7,11 +7,12 @@ import json
 import config
 import logging
 import sys
+from file_handler import open_local
 
 birthday_file = config.birthday_file
 
 try:
-    with open(birthday_file) as f:
+    with open_local("birthdays.json") as f:
         birthdays = json.load(f)
 
 except IOError as e:

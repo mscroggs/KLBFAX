@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 
+import os
+
 import ceefax
 from os.path import expanduser, join, isdir
 from os import mkdir
@@ -11,14 +13,15 @@ import Keyboard
 if not isdir(join(expanduser('~'), '.klb')):
     mkdir(join(expanduser('~'), '.klb'))
 
-house = choice(["Ravenclaw", "Gryffindor", "Slytherin", "Hufflepuff", "Squib",
-                "Durmstrang"])
+if not os.getenv("SLAVE"):
+    house = choice(["Ravenclaw", "Gryffindor", "Slytherin", "Hufflepuff", "Squib",
+                    "Durmstrang"])
 
-add_points(house, 1)
-if house == "Hufflepuff":
-    print("1 point to "+house+"! GO PUFFS!")
-else:
-    print("1 point to "+house+"!")
+    add_points(house, 1)
+    if house == "Hufflepuff":
+        print("1 point to "+house+"! GO PUFFS!")
+    else:
+        print("1 point to "+house+"!")
 
 log_setup.read_from_file()
 

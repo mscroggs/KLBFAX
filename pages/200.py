@@ -2,6 +2,8 @@ import os
 import json
 from page import Page
 from random import choice
+from os.path import join, expanduser
+from file_handler import open_local
 
 class LetterPage(Page):
     def __init__(self, page_num,n):
@@ -13,71 +15,65 @@ class LetterPage(Page):
 
 
     def generate_content(self):
-
-        import gmail
-        from os.path import join, expanduser
-
-        details = []
-        with open(join(expanduser("~"),".klb/gmail")) as f:
-            for line in f.readlines():
-                details.append(line.strip("\n"))
-
-        g = gmail.login(details[0],details[1])
-
-
-        unread = g.inbox().mail(unread=True)
-
         with open(join(expanduser("~"),".klb/emails")) as f:
             letters = f.read()
+        if not os.getenv('SLAVE'):
+            import gmail
+            details = []
+            with open_local("gmail") as f:
+                for line in f.readlines():
+                    details.append(line.strip("\n"))
 
-        for mail in unread:
-            mail.fetch()
-            lines = "".join(mail.body.split("\r")).split("\n")
-            if lines[0] == "EVENT" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
-                try:
-                    with open(join(expanduser("~"),'.klb/events'),'a') as f:
-                        for line in lines:
-                            if line!="EVENT":
-                                f.write(line+"\n")
-                    mail.read()
-                except:
-                    pass
-            elif lines[0] == "CARD" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
-                with open('/home/pi/cards/'+lines[1],"w") as f:
-                    f.write("\n".join(lines[2:]))
-                mail.read()
-            elif "POINTS" in lines[0].upper() and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
-                from points import add_points
-                length = 1
-                points_to_give = 0
-                while length<=len(lines[2]):
+            g = gmail.login(details[0],details[1])
+            unread = g.inbox().mail(unread=True)
+            for mail in unread:
+                mail.fetch()
+                lines = "".join(mail.body.split("\r")).split("\n")
+                if lines[0] == "EVENT" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
                     try:
-                        if lines[2][:length]!="-":
-                            points_to_give = int(lines[2][:length])
-                        length += 1
+                        with open(join(expanduser("~"),'.klb/events'),'a') as f:
+                            for line in lines:
+                                if line!="EVENT":
+                                    f.write(line+"\n")
+                        mail.read()
                     except:
-                        break
-                add_points(lines[1].split("=")[0],points_to_give)
-                mail.read()
+                        pass
+                elif lines[0] == "CARD" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
+                    with open('/home/pi/cards/'+lines[1],"w") as f:
+                        f.write("\n".join(lines[2:]))
+                    mail.read()
+                elif "POINTS" in lines[0].upper() and "belgin.seymenoglu.10@ucl.ac.uk" in mail.fr:
+                    from points import add_points
+                    length = 1
+                    points_to_give = 0
+                    while length<=len(lines[2]):
+                        try:
+                            if lines[2][:length]!="-":
+                                points_to_give = int(lines[2][:length])
+                            length += 1
+                        except:
+                            break
+                    add_points(lines[1].split("=")[0],points_to_give)
+                    mail.read()
+    
+                else:
+                    newletter_col = choice(self.colours.Background.non_boring)
+                    newletter = ""
+                    for line in lines:
+                        if line!="":
+                            while len(line)>79:
+                                newletter += newletter_col+line[:79]+"\n"
+                                line=line[79:]
+                            newletter+=newletter_col+line+"\n"
+    
+                    letters=newletter+"\n"+newletter_col+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
+                    mail.read()
+            letters = letters.split("\n")
+            if len(letters)>1000:
+                letters = letters[:1000]
+            with open(join(expanduser("~"),".klb/emails"),"w") as f:
+                f.write("\n".join(letters))
 
-            else:
-                newletter_col = choice(self.colours.Background.non_boring)
-                newletter = ""
-                for line in lines:
-                    if line!="":
-                        while len(line)>79:
-                            newletter += newletter_col+line[:79]+"\n"
-                            line=line[79:]
-                        newletter+=newletter_col+line+"\n"
-
-                letters=newletter+"\n"+newletter_col+self.colours.Foreground.BLACK+"from "+mail.fr+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n\n"+letters
-                mail.read()
-
-        letters = letters.split("\n")
-        if len(letters)>1000:
-            letters = letters[:1000]
-        with open(join(expanduser("~"),".klb/emails"),"w") as f:
-            f.write("\n".join(letters))
         letters = letters[24*(self.n-1):24*self.n]
         letters = "\n".join(letters)
 
