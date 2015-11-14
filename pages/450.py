@@ -13,21 +13,21 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["The Award Formerly Known As A Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
-           "Belgin Seymenoglu":15,"Matthew Wright":7,"Stephen Muirhead":3,
+          ["Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
+           "Belgin Seymenoglu":16,"Matthew Wright":10,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Pietro Curiel":2}],
            # Tea Rex was formerly known as Tea Maker
-          ["Tea Rex",{"Matthew Scroggs":10,"Matthew Wright":19,"Pietro Servini":2,
+          ["Tea Rex",{"Matthew Scroggs":11,"Matthew Wright":21,"Pietro Servini":2,
            "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
-          ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
+          ["CelebriTEA",{"Matthew Wright":3,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2,"Belgin Seymenoglu":5}],
+          ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":5}],
-          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":8}],
+          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":2}],
           ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
 pages = ["452","451","451","454","454","453","454","453","453","453"]

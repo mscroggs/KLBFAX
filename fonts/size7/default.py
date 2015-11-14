@@ -590,6 +590,13 @@ xxx,',xx,x,xxxxx
 xxx,x,xxxxxxxxxx
 """)
 
+from random import choice
+
+# unknown
+_add("`",
+"\n".join(["".join([choice(["x",",","'"]) for i in range(13)]) for j in range(7)])
+)
+
 
 def get_letter(char):
     try:
