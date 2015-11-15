@@ -54,8 +54,9 @@ class Page(object):
             after = screen.WIDTH-len(self.tagline)-before
             tagline_print = " " * before + self.tagline + " " * after
             print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
+                  + self.colours.Style.BOLD
                   + tagline_print + self.colours.Background.DEFAULT
-                  + self.colours.Foreground.DEFAULT)
+                  + self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT)
         else:
             print "h"
             fail_page = FailPage()
