@@ -3,7 +3,7 @@ import json
 from page import Page
 from random import choice
 from os.path import join, expanduser
-from file_handler import open_local
+from file_handler import f_read, f_readlines
 
 class LetterPage(Page):
     def __init__(self, page_num,n):
@@ -15,14 +15,11 @@ class LetterPage(Page):
 
 
     def generate_content(self):
-        with open_local("emails") as f:
-            letters = f.read()
+        letters = f_read("emails")
+
         if not os.getenv('SLAVE'):
             import gmail
-            details = []
-            with open_local("gmail") as f:
-                for line in f.readlines():
-                    details.append(line.strip("\n"))
+            details = f_readlines("gmail")
 
             g = gmail.login(details[0],details[1])
             unread = g.inbox().mail(unread=True)

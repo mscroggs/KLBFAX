@@ -7,19 +7,9 @@ import json
 import config
 import logging
 import sys
-from file_handler import open_local
+from file_handler import f_read_json
 
-birthday_file = config.birthday_file
-
-try:
-    with open_local("birthdays.json") as f:
-        birthdays = json.load(f)
-
-except IOError as e:
-    logging.critical("""Birthday file failed to load. Try running in DEVELOP
-                     mode""")
-    logging.critical(e)
-    sys.exit()
+birthdays = f_read_json("birthdays.json")
 
 
 more_birthdays = {

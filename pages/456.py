@@ -19,7 +19,7 @@ awards = [
           ["Towel Flood Unawards",{"Jigsaw":1}],
           ["Worst Sorting Hat",{"Anna Lambert":4}]
          ]
-pages = ["457","457","457","457"]
+pages = ["457","457","458","458"]
 
 content += "\nWho has the most Unawards?\n\n"
 
@@ -55,5 +55,10 @@ def title(text):
     return colour_print(printer.text_to_ascii(text))
 
 tea_page = Page("457")
-tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1]) + "\n" + award_show(awards[2]) + "\n" + award_show(awards[3])
+tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1])
 tea_page.in_index = False
+o_page = Page("458")
+o_page.content = title("Other Unawards") + "\n\n" + award_show(awards[2]) + "\n" + award_show(awards[3])
+o_page.in_index = False
+
+
