@@ -21,7 +21,7 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
         events={}
         cur=""
         lines = f_readlines('events')
-        for line in f.lines:
+        for line in lines:
             line = line.decode("utf-8")
             line = line.strip("\n")
             if line != "":
