@@ -31,6 +31,16 @@ xx
 xx
 """)
 
+_add("'", """
+ x
+ x
+xx
+xx
+xx
+xx
+xx
+""")
+
 _add("(", """
 xxx
 ' x
