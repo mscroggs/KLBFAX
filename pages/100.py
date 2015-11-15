@@ -1,6 +1,7 @@
 import os
 from page import Page, PageFactory
 from random import shuffle
+from name import NAME
 
 class IndexPage(Page):
     def __init__(self, page_num):
@@ -19,7 +20,7 @@ xxxxxxxxxxx      xx     x xxxx  x x  x  x x    xx x  x  x xx   xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxx xxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
                           x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxx
                         xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
-""")+"\n28JHFAX"
+""")
         else:
             content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
@@ -31,8 +32,8 @@ xxxxxxxxxxxxxxxx  x  x x  xxxx x    xx x    xx x  x  x xx   xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                        x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
-""")+"\nKLBFAX"
-        content += """ currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
+""")
+        content += "\n"+NAME+""" currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
 Temperature graphs can be viewed on Twitter: @klbscroggsbot.
 
 """+self.colours.Foreground.GREEN+"INDEX"+self.colours.Foreground.DEFAULT+"""
