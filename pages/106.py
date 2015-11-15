@@ -113,12 +113,12 @@ class StephenPage(Page):
         shuffle(skills)
         content = self.colours.colour_print(printer.text_to_ascii("Stephen's Skills"))
         for skill in skills:
+            content += "\n"
             content += choice(self.colours.Foreground.non_boring)
             content += choice(["",self.colours.Style.BOLD])
             content += skill
             content += self.colours.Foreground.DEFAULT
             content += self.colours.Style.DEFAULT
-            content += "\n"
         self.content = content
 
 
