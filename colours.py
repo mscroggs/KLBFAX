@@ -66,7 +66,7 @@ def block_characters(text,invert=False):
         text = text.replace("x"," ")
     return text
     
-def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,invert=False,rainbow=False):
+def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW+Style.BOLD,invert=False,rainbow=False):
     text = background+foreground+text
     if rainbow:
         from random import choice
@@ -79,7 +79,7 @@ def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW,in
         text = newtext
     text = block_characters(text,invert)        
     #text = (u"\u2588").join(text.split("x"))
-    text += Foreground.DEFAULT+Background.DEFAULT
+    text += Foreground.DEFAULT+Background.DEFAULT+Style.DEFAULT
     return(text)
 
 def colour_print_join(list,joiner="",pre=""):

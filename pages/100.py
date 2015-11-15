@@ -19,7 +19,7 @@ xxxxxxxxxxx      xx     x xxxx  x x  x  x x    xx x  x  x xx   xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxxxxx xxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
                           x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxx
                         xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
-""", foreground=self.colours.Foreground.YELLOW+self.colours.Style.BOLD)+"\n28JHFAX"
+""")+"\n28JHFAX"
         else:
             content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
@@ -31,7 +31,7 @@ xxxxxxxxxxxxxxxx  x  x x  xxxx x    xx x    xx x  x  x xx   xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                        x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
-""", foreground=self.colours.Foreground.YELLOW+self.colours.Style.BOLD)+"\nKLBFAX"
+""")+"\nKLBFAX"
         content += """ currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
 Temperature graphs can be viewed on Twitter: @klbscroggsbot.
 
