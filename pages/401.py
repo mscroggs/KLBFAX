@@ -168,7 +168,7 @@ class WeatherPage(Page):
                  "Thunder Showers", "Thunderstorms", "Tornado Warning", "Windy", "Stopped Raining", "Windy Rain"]
         '''
 		
-        if weather_forecast in ["2","3","4","13","18"]:
+        if weather_forecast in ["2","3","4","13","18","7"]:
             weather_pic = "@" #cloudy
             weather_colour_foreground = self.colours.Background.BLACK
             weather_colour_background = self.colours.Foreground.WHITE
