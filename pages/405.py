@@ -57,19 +57,19 @@ class PointsPage(Page):
         content = self.colours.colour_print(printer.text_to_ascii(points_names[log]))
         content += "\n\n"
         content += self.colours.colour_print_join([
-                        (printer.text_to_ascii(mike,False)+"\nMike",
+                        (printer.text_to_ascii(mike,False)+"\n  Mike",
                             self.colours.Background.GREEN+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK),
-                        (printer.text_to_ascii(scroggs,False)+"\nScroggs",
+                        (printer.text_to_ascii(scroggs,False)+"\n Scroggs",
                             self.colours.Background.BLUE+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK)
                     ],"   ","   ")
         content += "\n\n"
         content += self.colours.colour_print_join([
-                        (printer.text_to_ascii(adam,False)+"\nAdam",
-                            self.colours.Background.YELLOW,
+                        (printer.text_to_ascii(adam,False)+"\n  Adam",
+                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK),
-                        (printer.text_to_ascii(alan,False)+"\nAlan",
+                        (printer.text_to_ascii(alan,False)+"\n  Alan",
                             self.colours.Background.MAGENTA,
                             self.colours.Foreground.BLACK)
                     ],"   ","   ")
