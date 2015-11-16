@@ -167,35 +167,48 @@ class WeatherPage(Page):
                  "Showers", "Sleet", "Sleet Showers", "Snow", "Snow Melt", "Snow Showers", "Sunny", "Thunder Showers",
                  "Thunder Showers", "Thunderstorms", "Tornado Warning", "Windy", "Stopped Raining", "Windy Rain"]
         '''
-		
-        if weather_forecast in ["2","3","4","13","18","7"]:
-            weather_pic = "@" #cloudy
-            weather_colour_foreground = self.colours.Background.BLACK
-            weather_colour_background = self.colours.Foreground.WHITE
-        elif weather_forecast in ["0","5","28"] and weather_daylight == "1":
+
+        if weather_forecast in ["1", "2", "-1"] and weather_daylight == "1":
             weather_pic = "*" #sunny
-            weather_colour_foreground = self.colours.Background.YELLOW
+            weather_colour_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
             weather_colour_background = self.colours.Foreground.BLACK  
-        elif weather_forecast == "1" or (weather_forecast in ["0","5","28"] and weather_daylight == "0"):
+        elif weather_forecast in ["1", "2"] and weather_daylight == "0":
             weather_pic = "}" #moon
             weather_colour_foreground = self.colours.Background.YELLOW
-            weather_colour_background = self.colours.Foreground.BLACK              
-        elif weather_data[48] in ["8","12","14","15","20","21","22","35","3"]:
-            weather_pic = "{" #rain
-            weather_colour_foreground = self.colours.Background.CYAN
-            weather_colour_background = self.colours.Foreground.BLACK    
-        elif weather_data[48] in ["9","19"]:
+            weather_colour_background = self.colours.Foreground.BLACK 
+        elif weather_forecast in ["3","6"]:
             weather_pic = "~" #cloud sun
             weather_colour_foreground = self.colours.Background.BLACK
             weather_colour_background = self.colours.Foreground.WHITE
-        elif weather_data[48] in ["29","30","31","32"]:
+        elif weather_forecast in ["4", "5", "7", "8"]:
+            weather_pic = "<" #cloud sun rain 
+            weather_colour_foreground = self.colours.Background.BLACK
+            weather_colour_background = self.colours.Foreground.WHITE            
+        elif weather_forecast in ["9", "11", "14", "15"]:
+            weather_pic = ">" #light rain
+            weather_colour_foreground = self.colours.Background.CYAN+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK               
+        elif weather_forecast in ["10"]:
+            weather_pic = "@" #cloudy
+            weather_colour_foreground = self.colours.Background.BLACK
+            weather_colour_background = self.colours.Foreground.WHITE
+        elif weather_forecast in ["12","13"]:
+            weather_pic = "@" #dark cloud 
+            weather_colour_foreground = self.colours.Background.WHITE+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK            
+        elif weather_forecast in ["16","18","19","20","21","23"]:
+            weather_pic = "{" #rain
+            weather_colour_foreground = self.colours.Background.CYAN
+            weather_colour_background = self.colours.Foreground.BLACK    
+
+        elif weather_forecast in ["17","22","24","25","26","-26"]:
             weather_pic = "^" #storm
             weather_colour_foreground = self.colours.Background.RED
             weather_colour_background = self.colours.Foreground.BLACK       
-        elif weather_data[48] in ["23","24","25","26","27"]:
-            weather_pic = "%" #snow
-            weather_colour_foreground = self.colours.Background.BLACK
-            weather_colour_background = self.colours.Foreground.WHITE
+        #elif weather_forecast in []:
+        #    weather_pic = "%" #snow
+        #    weather_colour_foreground = self.colours.Background.BLACK
+        #    weather_colour_background = self.colours.Foreground.WHITE
         else:
             weather_pic = "`"
             weather_colour_foreground = self.colours.Background.BLACK

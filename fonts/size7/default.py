@@ -547,12 +547,34 @@ xxxxxxx xxxxxxxx
 #cloud
 _add("@", """
 xxxxxxxxxxxxxxxx
-xxxxxx'''xxxxxxx
-xxx'',xxx,'xxxxx
-xx xx,xxx',,,'xx
-xx,'''''''''',xx
+xxxx',,,,,'xxxxx
+x'' xxxxxxx xxxx
+ xxx,xxxx'',,,'x
+ 'xxxxxxxxxxxx x
+x,,,,,,,,,,,,,xx
 xxxxxxxxxxxxxxxx
+""")
+
+#cloud sun rain
+_add("<", """
 xxxxxxxxxxxxxxxx
+xxx',,,'xx xx'xx
+',,'xxxx ''x,xxx
+ xxxxxx,xxx x,,x
+x,x'x,,,,,,x'xxx
+x',x,'xxxx xx,xx
+xx,,,xxxxxxxxxxx
+""")
+
+#light rain
+_add("{", """
+xxxxxxxxxxxxxxxx
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxx'x,xxx xx
+xxx,x',,'x,,,xxx
+xxxx xxx xxxxxxx
+xxxxx,,,xxxxxxxx
 """)
 
 #rain
@@ -590,13 +612,13 @@ xxxxxxxxxxxxxxxx
 
 # storm
 _add("^","""
-xxxxx',,,'xxxxxx
-xx',,'xxxx'xxxxx
-xx xxxxxx, ''xxx
-xxx,,x'   ,,,'xx
-xxxxx,  'xxxx xx
-xxxxxxx,  'x',xx
-xxxxxx' ,x,x,xxx
+xxx',,,'xxxxx
+',,'xxxx ''xx
+ xxxxxx,xxx x
+x,,x'   ,x,xx
+xxx,  'xxxxxx
+xxxxx,  xxxxx
+xxxx' ,xxxxxx
 """)
 
 # snow
