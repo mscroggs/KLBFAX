@@ -71,7 +71,7 @@ class PointsPage(Page):
                             self.colours.Foreground.YELLOW),
                         (printer.text_to_ascii(alan,False)+"\nAlan",
                             self.colours.Background.RED,
-                            self.colours.Foreground.MAGENTA)
+                            self.colours.Foreground.GREEN)
                     ],"   ","   ")
         self.content = content
 
