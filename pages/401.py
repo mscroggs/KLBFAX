@@ -168,6 +168,15 @@ class WeatherPage(Page):
                  "Thunder Showers", "Thunderstorms", "Tornado Warning", "Windy", "Stopped Raining", "Windy Rain"]
         '''
 
+        if weather_daylight == "1":
+            inside_weather_pic = "*" #sunny
+            inside_weather_colour_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+            inside_weather_colour_background = self.colours.Foreground.BLACK 
+        else:
+            inside_weather_pic = "}" #moon
+            inside_weather_colour_foreground = self.colours.Background.YELLOW
+            inside_weather_colour_background = self.colours.Foreground.BLACK         
+        
         if weather_forecast in ["1", "2", "-1"] and weather_daylight == "1":
             weather_pic = "*" #sunny
             weather_colour_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
@@ -246,9 +255,9 @@ class WeatherPage(Page):
                         (printer.text_to_ascii(number_in_box(inside_weather)[1],False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK),  
-                        (printer.text_to_ascii("*",False)+"",
-                            self.colours.Background.YELLOW,
-                            self.colours.Foreground.BLACK)
+                        (printer.text_to_ascii(inside_weather_pic,False)+"",
+                            inside_weather_colour_foreground,
+                            inside_weather_colour_background)
                     ],""," ")       
 
         content += "\n"
