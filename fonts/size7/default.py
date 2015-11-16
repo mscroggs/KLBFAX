@@ -612,13 +612,13 @@ xxxxxxxxxxxxxxxx
 
 # storm
 _add("^","""
-xxxxx',,,'xxxxxx
-xx',,'xxxx'xxxxx
-xx xxxxxx, ''xxx
-xxx,,x'   ,,,'xx
-xxxxx,  'xxxx xx
-xxxxxxx,  'x',xx
-xxxxxx' ,x,x,xxx
+xxx',,,'xxxxx
+',,'xxxx ''xx
+ xxxxxx,xxx x
+x,,x'   ,x,xx
+xxx,  'xxxxxx
+xxxxx,  xxxxx
+xxxx' ,xxxxxx
 """)
 
 # snow
