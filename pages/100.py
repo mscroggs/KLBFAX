@@ -33,9 +33,7 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                        x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
 """)
-        content += "\n"+NAME+""" currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
-Temperature graphs can be viewed on Twitter: @klbscroggsbot.
-
+        content +="""
 """+self.colours.Foreground.GREEN+"INDEX"+self.colours.Foreground.DEFAULT+"""
 """
         i = 0
