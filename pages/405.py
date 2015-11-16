@@ -58,17 +58,17 @@ class PointsPage(Page):
         content += "\n\n"
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(mike,False)+"\nMike",
-                            self.colours.Background.WHITE,
-                            self.colours.Foreground.RED),
+                            self.colours.Background.GREEN+self.colours.Style.BLINK,
+                            self.colours.Foreground.BLACK),
                         (printer.text_to_ascii(scroggs,False)+"\nScroggs",
                             self.colours.Background.BLUE+self.colours.Style.BLINK,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD)
+                            self.colours.Foreground.BLACK)
                     ],"   ","   ")
         content += "\n\n"
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(adam,False)+"\nAdam",
-                            self.colours.Background.BLUE,
-                            self.colours.Foreground.YELLOW),
+                            self.colours.Background.YELLOW,
+                            self.colours.Foreground.BLACK),
                         (printer.text_to_ascii(alan,False)+"\nAlan",
                             self.colours.Background.MAGENTA,
                             self.colours.Foreground.BLACK)
