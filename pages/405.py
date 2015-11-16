@@ -45,13 +45,13 @@ class PointsPage(Page):
         if log<0:
             log = 0
 
-        if "mike" in data:    mike = points_format(data["Mike"],log)
+        if "mike" in data:    mike = points_format(data["mike"],log)
         else:                 mike = "0"
-        if "scroggs" in data: scroggs = points_format(data["Scroggs"],log)
+        if "scroggs" in data: scroggs = points_format(data["scroggs"],log)
         else:                 scroggs = "0"
-        if "adam" in data:    adam = points_format(data["Adam"],log)
+        if "adam" in data:    adam = points_format(data["adam"],log)
         else:                 adam = "0"
-        if "alan" in data:    alan = points_format(data["Alan"],log)
+        if "alan" in data:    alan = points_format(data["alan"],log)
         else:                 alan = "0"
 
         content = self.colours.colour_print(printer.text_to_ascii(points_names[log]))
