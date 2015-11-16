@@ -56,9 +56,9 @@ def f_read_json(f_name):
     if _getenv("SLAVE"):
         try:
             with open(_join(_expanduser("~"), ".slave/" + f_name)) as f:
+                temp = _json.load(f)
                 for a in temp:
                     ret[a] = temp[a]
-                    ret += _json.load(f)
         except:
             pass
     return ret
