@@ -185,7 +185,7 @@ class WeatherPage(Page):
             weather_colour_foreground = self.colours.Background.BLACK
             weather_colour_background = self.colours.Foreground.WHITE            
         elif weather_forecast in ["9", "11", "14", "15"]:
-            weather_pic = ">" #light rain
+            weather_pic = "[" #light rain
             weather_colour_foreground = self.colours.Background.CYAN+self.colours.Style.BLINK
             weather_colour_background = self.colours.Foreground.BLACK               
         elif weather_forecast in ["10"]:
@@ -200,8 +200,11 @@ class WeatherPage(Page):
             weather_pic = "{" #rain
             weather_colour_foreground = self.colours.Background.CYAN
             weather_colour_background = self.colours.Foreground.BLACK    
-
-        elif weather_forecast in ["17","22","24","25","26","-26"]:
+        elif weather_forecast in ["17","22","24"]:
+            weather_pic = "]" #heavy rain
+            weather_colour_foreground = self.colours.Background.BLUE+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK  
+        elif weather_forecast in ["25","26","-26"]:
             weather_pic = "^" #storm
             weather_colour_foreground = self.colours.Background.RED
             weather_colour_background = self.colours.Foreground.BLACK       

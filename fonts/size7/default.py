@@ -567,7 +567,7 @@ xx,,,xxxxxxxxxxx
 """)
 
 #light rain
-_add("{", """
+_add("[", """
 xxxxxxxxxxxxxxxx
 xxxxx',,,'xxxxxx
 xx',,'xxxx ''xxx
@@ -610,15 +610,29 @@ xxxxxxxxxx xx,xx
 xxxxxxxxxxxxxxxx
 """)
 
+# heavy rain
+_add("]","""
+xxxx'',,,'xxxxxx
+',,,'xxxxx ''''x
+ xxxxxxxx,xxxxx 
+,''''''''''xx'x,
+xx'xxxxx'xx',x,'
+',x,'x',x,'x,,,x
+x,,,xxx,,,xxxxxx
+""")
+
+
+
+
 # storm
 _add("^","""
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,x'   ,x,xx
-xxx,  'xxxxxx
-xxxxx,  xxxxx
-xxxx' ,xxxxxx
+xxxx',,,'xxxxxx
+x',,'xxxx ''xxx
+x xxxxxx,xxx xx
+xx,,x'   ,x,xxx
+xxxx,  'xxxxxxx
+xxxxxx,  xxxxxx
+xxxxx' ,xxxxxxx
 """)
 
 # snow
