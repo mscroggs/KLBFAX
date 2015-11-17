@@ -1,6 +1,7 @@
 import os
 from page import Page, PageFactory
 from random import shuffle
+from name import NAME
 
 class IndexPage(Page):
     def __init__(self, page_num):
@@ -8,7 +9,20 @@ class IndexPage(Page):
         self.title = "Index"
 
     def generate_content(self):
-        content = self.colours.colour_print("""
+        if os.getenv("SLAVE"):
+            content = self.colours.colour_print("""
+xxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
+xxxxxxxxxxx      xx     x         x  x  x         x     x
+xxxxxxxxxxxxxxx  xx  x  x xxxxxxx x  x  x xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxx      xx     x xxxx  x x     x x     x x     x x  x  xxxxxxxxxxxxxxxx
+xxxxxxxxxxx  xxxxxx  x  x xxxx  x x  x  x x  xxxx x  x  x x  x  xxxxxxxxxxxxxxxx
+xxxxxxxxxxx      xx     x xxxx  x x  x  x x    xx x  x  x xx   xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxx xxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
+                          x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxx
+                        xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
+""")
+        else:
+            content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxxxxxxx  x  x         x    xx         x     x
 xxxxxxxxxxxxxxxx    xx xxxxxxx x  x  x xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxxxxx
@@ -18,10 +32,8 @@ xxxxxxxxxxxxxxxx  x  x x  xxxx x    xx x    xx x  x  x xx   xxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                        x     x         x  xxxx         x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
-""")+"""
-KLBFAX currently has """+str(len(PageFactory().pages))+""" pages. Contribute at github.com/mscroggs/KLBFAX.
-Temperature graphs can be viewed on Twitter: @klbscroggsbot.
-
+""")
+        content +="""
 """+self.colours.Foreground.GREEN+"INDEX"+self.colours.Foreground.DEFAULT+"""
 """
         i = 0

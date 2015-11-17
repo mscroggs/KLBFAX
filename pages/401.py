@@ -2,23 +2,41 @@ import os
 from page import Page
 from printer import instance as printer
 from colours import colour_print
+from random import randint
+from file_handler import f_read
 
 
 class WeatherPage(Page):
     def __init__(self, page_num):
         super(WeatherPage, self).__init__(page_num)
-        self.title = "Weather"
+        self.title = "Weather"      
 
     def generate_content(self):
+        import urllib2
+        
+        def number_in_box(number_string):          
+            padded_number_string = number_string.replace("1","|1")
+            padded_number_string = padded_number_string.replace("-","-|")
+            if len(number_string) == 2:
+                if number_string.count("1") == 2 or (number_string.count("1") == 1 and number_string.count("-") == 1):
+                    return "||" + padded_number_string + "||", ""
+                elif number_string.count("1") == 1 or (number_string.count("1") == 0 and number_string.count("-") == 1):
+                    return "|" + padded_number_string + "|", ""
+                else:
+                    return number_string,""
+            else:
+                if number_string.count("1") == 1:
+                    return "||||" + padded_number_string + "|||||", ""
+                else:
+                    return "||||" + padded_number_string + "|||", ""     
+                     
         try:
-            import urllib2
-    
-            #response = urllib2.urlopen("http://www.casa.ucl.ac.uk/weather/clientraw.txt")
             response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
             weather_data = response.read().split(" ")
         except:
             weather_data = ["CLASSIFIED"]*60
-        '''#
+        '''
+
         Field # Example 	Description 	Equivalent Webtags
         1 	19/08/09 	Date as 2 figure day [separator] 2 figure month [separator] 2 figure year - the separator is that set in the windows system short date format (see setup) 	<#date>
         2 	16:03:45 	time(always hh:mm:ss as per computer system) 	<#timehhmmss>
@@ -103,90 +121,147 @@ class WeatherPage(Page):
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
 
         content += "\n\n"
+        outside_weather_foreground = self.colours.Background.BLUE
+        outside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD 
+        inside_weather_foreground = self.colours.Background.BLUE
+        inside_weather_background = self.colours.Foreground.CYAN+self.colours.Style.BOLD
+        try:        
+            inside_weather = f_read("temp_now")
+            if int(inside_weather) >= 20:
+                inside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+                inside_weather_background = self.colours.Foreground.RED
+            elif 10 <= int(inside_weather) < 20:
+                inside_weather_foreground = self.colours.Background.RED
+                inside_weather_background = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+            elif 0 < int(inside_weather) < 10:
+                inside_weather_foreground = self.colours.Background.BLUE
+                inside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD                
+        except: 
+            inside_weather = "??"
+            
         try:
-            inside_weather = "|" + str(int(round(float(weather_temperature)))) + "|"
             outside_weather = str(int(round(float(weather_temperature))))
+            if int(outside_weather) >= 20:
+                outside_weather_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+                outside_weather_background = self.colours.Foreground.RED
+            elif 10 <= int(outside_weather) < 20:
+                outside_weather_foreground = self.colours.Background.RED
+                outside_weather_background = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+            elif 0 < int(outside_weather) < 10:
+                outside_weather_foreground = self.colours.Background.BLUE
+                outside_weather_background = self.colours.Foreground.GREEN+self.colours.Style.BOLD
+      
         except:
-            inside_weather = "---"
-            outside_weather = "---"
+            outside_weather = "??"        
         
+        #inside_weather = str(int(round(float(weather_temperature))))
+        #outside_weather = str(int(round(float(weather_temperature))))   
+        #inside_weather = str(randint(-9,30))
+        #outside_weather = str(randint(-9,30))
+             
 
         '''
-    FORECASTS = ["Sunny", "Clear Night", "Cloudy", "Cloudy", "Cloudy Night", "Dry Clear", "Fog", "Hazy", "Heavy Rain",
+        FORECASTS = ["Sunny", "Clear Night", "Cloudy", "Cloudy", "Cloudy Night", "Dry Clear", "Fog", "Hazy", "Heavy Rain",
                  "Mainly Fine", "Misty", "Night Fog", "Night Heavy Rain", "Night Overcast", "Night Rain",
                  "Night Showers", "Night Snow", "Night Thunder", "Overcast", "Partly Cloudy", "Rain", "Hard Rain",
                  "Showers", "Sleet", "Sleet Showers", "Snow", "Snow Melt", "Snow Showers", "Sunny", "Thunder Showers",
                  "Thunder Showers", "Thunderstorms", "Tornado Warning", "Windy", "Stopped Raining", "Windy Rain"]
         '''
-		
-        if weather_forecast in ["2","3","4","13","18"]:
-            weather_pic = "@" #cloudy
-            weather_colour_foreground = self.colours.Background.BLACK
-            weather_colour_background = self.colours.Foreground.WHITE
-        elif weather_forecast in ["0","5","28"] and weather_daylight == "1":
+
+        if weather_daylight == "1":
+            inside_weather_pic = "*" #sunny
+            inside_weather_colour_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
+            inside_weather_colour_background = self.colours.Foreground.BLACK 
+        else:
+            inside_weather_pic = "}" #moon
+            inside_weather_colour_foreground = self.colours.Background.YELLOW
+            inside_weather_colour_background = self.colours.Foreground.BLACK         
+        
+        if weather_forecast in ["1", "2", "-1"] and weather_daylight == "1":
             weather_pic = "*" #sunny
-            weather_colour_foreground = self.colours.Background.YELLOW
+            weather_colour_foreground = self.colours.Background.YELLOW+self.colours.Style.BLINK
             weather_colour_background = self.colours.Foreground.BLACK  
-        elif weather_forecast == "1" or (weather_forecast in ["0","5","28"] and weather_daylight == "0"):
+        elif weather_forecast in ["1", "2"] and weather_daylight == "0":
             weather_pic = "}" #moon
             weather_colour_foreground = self.colours.Background.YELLOW
-            weather_colour_background = self.colours.Foreground.BLACK              
-        elif weather_data[48] in ["8","12","14","15","20","21","22","35","3"]:
-            weather_pic = "{" #rain
-            weather_colour_foreground = self.colours.Background.CYAN
-            weather_colour_background = self.colours.Foreground.BLACK    
-        elif weather_data[48] in ["9","19"]:
+            weather_colour_background = self.colours.Foreground.BLACK 
+        elif weather_forecast in ["3","6"]:
             weather_pic = "~" #cloud sun
             weather_colour_foreground = self.colours.Background.BLACK
             weather_colour_background = self.colours.Foreground.WHITE
-        elif weather_data[48] in ["29","30","31","32"]:
+        elif weather_forecast in ["4", "5", "7", "8"]:
+            weather_pic = "<" #cloud sun rain 
+            weather_colour_foreground = self.colours.Background.BLACK
+            weather_colour_background = self.colours.Foreground.WHITE            
+        elif weather_forecast in ["9", "11", "14", "15"]:
+            weather_pic = "[" #light rain
+            weather_colour_foreground = self.colours.Background.CYAN+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK               
+        elif weather_forecast in ["10"]:
+            weather_pic = "@" #cloudy
+            weather_colour_foreground = self.colours.Background.BLACK
+            weather_colour_background = self.colours.Foreground.WHITE
+        elif weather_forecast in ["12","13"]:
+            weather_pic = "@" #dark cloud 
+            weather_colour_foreground = self.colours.Background.WHITE+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK            
+        elif weather_forecast in ["16","18","19","20","21","23"]:
+            weather_pic = "{" #rain
+            weather_colour_foreground = self.colours.Background.CYAN
+            weather_colour_background = self.colours.Foreground.BLACK    
+        elif weather_forecast in ["17","22","24"]:
+            weather_pic = "]" #heavy rain
+            weather_colour_foreground = self.colours.Background.BLUE+self.colours.Style.BLINK
+            weather_colour_background = self.colours.Foreground.BLACK  
+        elif weather_forecast in ["25","26","-26"]:
             weather_pic = "^" #storm
             weather_colour_foreground = self.colours.Background.RED
             weather_colour_background = self.colours.Foreground.BLACK       
-        elif weather_data[48] in ["23","24","25","26","27"]:
-            weather_pic = "%" #snow
-            weather_colour_foreground = self.colours.Background.BLACK
-            weather_colour_background = self.colours.Foreground.WHITE
+        #elif weather_forecast in []:
+        #    weather_pic = "%" #snow
+        #    weather_colour_foreground = self.colours.Background.BLACK
+        #    weather_colour_background = self.colours.Foreground.WHITE
         else:
             weather_pic = "`"
             weather_colour_foreground = self.colours.Background.BLACK
-            weather_colour_background = self.colours.Foreground.WHITE
-
+            weather_colour_background = self.colours.Foreground.WHITE            
+        
         compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         try:
             compass_direction = compass_points[int(float(weather_wind_direction_degrees)*16/360)]
         except:
             compass_direction = "?"
-        try:
-            with open(os.path.join(os.path.expanduser("~"),".graphs/temp_now")) as f:
-                inside_weather = f.read()
-        except:
-            pass
 			
-        content += " /--------- O U T S I D E ----------|     /---------- I N S I D E -----------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
+        content += " /--------- O U T S I D E -----------|   /---------- I N S I D E ------------|\n".replace("-",u"\u2500").replace("/",u"\u250C").replace("|",u"\u2510")
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii("|",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
-                        (printer.text_to_ascii(outside_weather,False)+"",
-                            self.colours.Background.RED,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                        (printer.text_to_ascii(number_in_box(outside_weather)[0],False),
+                            outside_weather_foreground,
+                            outside_weather_background),
+                        (printer.text_to_ascii(number_in_box(outside_weather)[1],False)+"",
+                            self.colours.Background.DEFAULT,
+                            self.colours.Foreground.BLACK),                             
                         (printer.text_to_ascii(weather_pic,False)+"",
                             weather_colour_foreground,
                             weather_colour_background),
-                        (printer.text_to_ascii("||||||||",False)+"",
+                        (printer.text_to_ascii("||||||",False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK), 
-                        (printer.text_to_ascii(inside_weather,False)+"",
-                            self.colours.Background.RED,
-                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
-                        (printer.text_to_ascii("*",False)+"",
-                            self.colours.Background.YELLOW,
-                            self.colours.Foreground.BLACK)
-                    ]," "," ")       
+                        (printer.text_to_ascii(number_in_box(inside_weather)[0],False)+"",
+                            inside_weather_foreground,
+                            inside_weather_background),
+                        (printer.text_to_ascii(number_in_box(inside_weather)[1],False)+"",
+                            self.colours.Background.DEFAULT,
+                            self.colours.Foreground.BLACK),  
+                        (printer.text_to_ascii(inside_weather_pic,False)+"",
+                            inside_weather_colour_foreground,
+                            inside_weather_colour_background)
+                    ],""," ")       
 
         content += "\n"
-        content += " /----------------------------------|     /----------------------------------|\n".replace("-",u"\u2500").replace("/",u"\u2514").replace("|",u"\u2518")						
+        content += " /-----------------------------------|   /-----------------------------------|\n".replace("-",u"\u2500").replace("/",u"\u2514").replace("|",u"\u2518")						
         content += """
     Wind                """ + round_me(weather_wind_speed) + "mph " + compass_direction + """
     Max/Min Today       """ + weather_high_temp + u"\u00B0" + "C / " + weather_low_temp + u"\u00B0" + """C

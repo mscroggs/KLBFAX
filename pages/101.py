@@ -19,17 +19,17 @@ class TubePage(Page):
         # Loop through the lines and print the status of each one
         lines_tube = [lines[i] for i in [1,2,11,4,9,0,3,13,5,7,10]]
         lines_other = [lines[i] for i in [8,6,12]]
-        colours_tube = [self.colours.Style.BLINK,
+        colours_tube = [self.colours.Background.RED+self.colours.Style.BLINK,
                         self.colours.Background.RED,
-                        self.colours.Background.YELLOW,
+                        self.colours.Background.YELLOW+self.colours.Style.BLINK,
                         self.colours.Background.GREEN,
-                        self.colours.Background.MAGENTA,
+                        self.colours.Background.MAGENTA+self.colours.Style.BLINK,
                         self.colours.Style.BLINK,
                         self.colours.Background.MAGENTA,
                         self.colours.Background.DEFAULT,
                         self.colours.Background.BLUE,
-                        self.colours.Background.BLUE,
-                        self.colours.Background.CYAN]
+                        self.colours.Background.BLUE+self.colours.Style.BLINK,
+                        self.colours.Background.CYAN+self.colours.Style.BLINK]
         colours_tube_text = [self.colours.Foreground.WHITE, 
                         self.colours.Foreground.WHITE,
                         self.colours.Foreground.BLACK,

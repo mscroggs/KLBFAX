@@ -13,6 +13,16 @@ def _add(letter, string):
     assert len(letter_str.split("\n")) == SIZE
     alphabet[letter] = LetterBlock(letter_str)
 
+_add("'", """
+ x
+ x
+xx
+xx
+xx
+xx
+xx
+""")
+
 _add("|", """
 x
 x

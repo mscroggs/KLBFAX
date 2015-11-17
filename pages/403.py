@@ -3,6 +3,7 @@ from os.path import join,expanduser
 from page import Page
 from printer import instance as printer
 from math import floor
+from file_handler import f_read_json
 
 def points_format(points,log=0):
     points = int(points)
@@ -18,8 +19,7 @@ class PointsPage(Page):
     def generate_content(self):
         import json
         from operator import itemgetter
-        with open(join(expanduser('~'),'.klb/points')) as f:
-            data = json.load(f)
+        data = f_read_json('points')
         larg = 0
         seco = 0
         for house in data:

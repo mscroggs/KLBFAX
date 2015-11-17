@@ -1,12 +1,8 @@
-
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 import os
 from page import Page
 from printer import instance as printer
 from colours import colour_print
 import time
-#import numpy as np
 from now import now
 from math import cos,sin,floor,pi
 from random import choice
