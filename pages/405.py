@@ -36,7 +36,7 @@ class PointsPage(Page):
                 larg = pts
             elif pts>seco:
                 seco = pts
-        log = len(str(seco))-2
+        log = len(str(seco))-3
         
         points_names = ["points","decapoints","hectopoints","kilopoints"]
 
