@@ -60,7 +60,7 @@ class JokePage(Page):
         self.title = "Jokes"
       
     def generate_content(self):
-        content = colour_print(printer.text_to_ascii("Jokes"))+"\n\n"
+        content = colour_print(printer.text_to_ascii("Jokes"))+"\n"
 
         used = []
         for i in range(6):
