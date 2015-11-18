@@ -51,6 +51,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What was the best US president?":"Jimmy Marter",
          "What is the best firework?":"Catherine wheel",
          "What is Mart's favourite breakfast cereal?":"Pice Krispies",
+         "What is the best coffee?":"A Martte",
          "Why do you never see elephants hiding in trees?":"They are big"
          }
 
