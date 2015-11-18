@@ -60,10 +60,10 @@ class JokePage(Page):
         self.title = "Jokes"
       
     def generate_content(self):
-        content = colour_print(printer.text_to_ascii("Jokes"))+"\n"
+        content = colour_print(printer.text_to_ascii("Jokes"))+"\n\n"
 
         used = []
-        for i in range(6):
+        for i in range(10):
             content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
             c = choice(jokes.keys())
             while c in used:
@@ -79,7 +79,7 @@ class JokePage(Page):
                 content += " "*(screen.WIDTH-len(joke)-1-len(ans)) + ans
             else:
                 content += "\n"+" "*(screen.WIDTH-1-len(ans)) + ans
-            content += self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT+"\n\n\n"
+            content += self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT+"\n\n"
 
           
         self.content = content
