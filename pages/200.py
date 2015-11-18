@@ -15,7 +15,7 @@ class LetterPage(Page):
 
 
     def generate_content(self):
-        letters = f_readlines("emails")
+        letters = f_read("emails")
 
         if not os.getenv('SLAVE'):
             import gmail
@@ -71,6 +71,8 @@ class LetterPage(Page):
             with open(join(expanduser("~"),".klb/emails"),"w") as f:
                 f.write("\n".join(letters))
 
+        else:
+            letters = letters.split("\n")
         letters = letters[24*(self.n-1):24*self.n]
         letters = "\n".join(letters)
 
