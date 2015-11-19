@@ -17,7 +17,7 @@ awards = [
             # Tea Wrecks was formerly known as Tea Breaker
           ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
           ["Towel Flood Unawards",{"Jigsaw":1}],
-          ["Worst Sorting Hat",{"Anna Lambert":5}],
+          ["Worst Sorting Hat",{"Anna Lambert":10}],
           ["Boo Key",{"Anna Lambert":1,"Sam Brown":1,"Rafael Prieto Curiel":1,"Mart Wright":1}],
           ["Stolen Pen",{"Anna Lambert":1}]
          ]
