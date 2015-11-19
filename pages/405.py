@@ -53,7 +53,7 @@ class PointsPage(Page):
         if "alan" in data:    alan = points_format(data["alan"],log)
         else:                 alan = "0"
 
-        content = self.colours.colour_print(printer.text_to_ascii(points_names[log]))
+        content = self.colours.colour_print(printer.text_to_ascii("Flat "+points_names[log]))
         content += "\n\n"
         content += self.colours.colour_print_join([
                         (printer.text_to_ascii(mike,False)+"\n  Mike",
