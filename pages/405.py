@@ -16,11 +16,12 @@ class PointsPage(Page):
         super(PointsPage, self).__init__(page_num)
         self.title = "Flat Points"
         if os.getenv("SLAVE"):
-            self.is_index = True
+            self.in_index = True
+            self.tagline = "Visit Hufflepuff Intranet (192.168.0.27) to add points"
         else:
-            self.is_index = False
+            self.in_index = False
+            self.tagline = "Via 28JHFAX"
         self.is_enabled = True
-        self.tagline = "Visit Hufflepuff Intranet (192.168.0.27) to add points"
 
     def generate_content(self):
         import json
