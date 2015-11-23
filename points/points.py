@@ -11,6 +11,8 @@ def update_status(status=None):
 
 def add_points(house, number):
   if not os.getenv("SLAVE"):
+    while u"\u0000" in house:
+        house = house.strip(u"\u0000")
     try:
         with open(join(expanduser('~'), '.klb/points'), 'r') as f:
             data = json.load(f)
