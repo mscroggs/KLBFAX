@@ -7,23 +7,23 @@ from printer import instance as printer
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 sub_page = Page(page_number)
-sub_page.title = "Unawards"
+sub_page.title = "Annawards"
 sub_page.index_num = "456-457"
 content = colour_print(
-    printer.text_to_ascii("Unawards", padding={"left": 6}))
+    printer.text_to_ascii("Annawards", padding={"left": 6}))
 
 awards = [
-          ["Boo Cow Unawards",{"Pietro Servini":1,"Stephen Muirhead":1,"Belgin Seymenoglu":2}],
+          ["Boo Cow Annawards",{"Pietro Servini":1,"Stephen Muirhead":1,"Belgin Seymenoglu":2}],
             # Tea Wrecks was formerly known as Tea Breaker
-          ["Tea Wrecks Unawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
-          ["Towel Flood Unawards",{"Jigsaw":1}],
-          ["Worst Sorting Hat",{"Anna Lambert":10}],
+          ["Tea Wrecks Annawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
+          ["Towel Flood Annawards",{"Jigsaw":1}],
+          ["Worst Sorting Hat",{"Anna Lambert":20}],
           ["Boo Key",{"Anna Lambert":1,"Sam Brown":1,"Rafael Prieto Curiel":1,"Mart Wright":1}],
           ["Stolen Pen",{"Anna Lambert":1}]
          ]
 pages = ["457","457","458","458","458","458"]
 
-content += "\nWho has the most Unawards?\n\n"
+content += "\nWho has the most Annawards?\n\n"
 
 for i,award in enumerate(awards):
     content += "\n"+sub_page.colours.Foreground.GREEN+award[0]+sub_page.colours.Foreground.DEFAULT+" (see page "+pages[i]+")\n"
@@ -57,9 +57,9 @@ def title(text):
     return colour_print(printer.text_to_ascii(text))
 
 tea_page = Page("457")
-tea_page.content = title("Tea Unawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1])
+tea_page.content = title("Tea Annawards") + "\n\n" + award_show(awards[0]) + "\n" + award_show(awards[1])
 tea_page.in_index = False
 
 other_page = Page("458")
-other_page.content = title("Other Unawards") + "\n\n" + award_show(awards[2]) + "\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5])
+other_page.content = title("Other Annawards") + "\n\n" + award_show(awards[2]) + "\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[5])
 other_page.in_index = False
