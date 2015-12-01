@@ -34,16 +34,20 @@ class AdventPage(Page):
             else:
                 for i in range(3):
                     for j,col in enumerate(_pics[day][i]):
-                        lines[i] += _cols[col] + colours.Foreground.BLACK
-
+                        lines[i] += _cols[col]
+                        if col!="W":
+                            lines[i] += colours.Foreground.BLACK
+                        newt = " "
                         if i==0:
-                            lines[i] += _pics[day][3][j]
+                            newt = _pics[day][3][j]
                         elif i==1 and len(_pics[day])>4:
-                            lines[i] += _pics[day][4][j]
+                            newt = _pics[day][4][j]
                         elif i==2 and j in [5,6]:
-                            lines[i] += d[j-5]
+                            newt = d[j-5]
+                        if col=="W" and newt == " ":
+                            lines[i] += u"\u2588"
                         else:
-                            lines[i] += " "
+                            lines[i] += newt
                         lines[i] += D
                     lines[i] += colours.Foreground.DEFAULT
             for i in range(3):
@@ -79,7 +83,7 @@ _cols = {"B":colours.Background.BLUE,
          "O":colours.Background.YELLOW,
          "L":colours.Background.BLACK+colours.Style.BLINK,
          "Y":colours.Background.YELLOW+colours.Style.BLINK,
-         "W":colours.Background.WHITE}
+         "W":colours.Foreground.WHITE+colours.Background.BLACK}
 
 
 _pics = {1:["BBWBBWB",
