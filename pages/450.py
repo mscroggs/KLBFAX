@@ -14,7 +14,7 @@ content = colour_print(
 
 awards = [
           ["Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
-           "Belgin Seymenoglu":16,"Matthew Wright":13,"Stephen Muirhead":3,
+           "Belgin Seymenoglu":16,"Matthew Wright":14,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Pietro Curiel":2}],
            # Tea Rex was formerly known as Tea Maker
@@ -24,7 +24,7 @@ awards = [
           ["CelebriTEA",{"Matthew Wright":3,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6}],
+          ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6,"Matthew Wright":1}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
           ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":8}],
           ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":2}],
