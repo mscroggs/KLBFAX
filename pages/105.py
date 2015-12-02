@@ -14,6 +14,7 @@ birthdays = f_read_json("birthdays.json")
 
 more_birthdays = {
             "Kathleen Lonsdale": (1, 28),
+            "Martin Gardner": (10, 21),
             "Jesus": (12, 25),
             "Jigsaw": (1, 3),
             "ScroggsBot": (1, 10)
