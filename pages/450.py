@@ -14,7 +14,7 @@ content = colour_print(
 
 awards = [
           ["Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
-           "Belgin Seymenoglu":16,"Matthew Wright":15,"Stephen Muirhead":3,
+           "Belgin Seymenoglu":17,"Matthew Wright":16,"Stephen Muirhead":3,
            "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
            "Rafael Pietro Curiel":2}],
            # Tea Rex was formerly known as Tea Maker
