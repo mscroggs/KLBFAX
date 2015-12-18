@@ -65,6 +65,7 @@ class TVPage(Page):
             ["Alan Carr","Olly Southwick"],
             ["Casualty","Causality"],
             ["Match","Maths"],
+            ["Christmas","Oxmas"],
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
             ["Cycling","Maths"],["Athletics","Maths"],
             ["Wallace","Crazy Nico"],
