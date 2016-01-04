@@ -14,14 +14,14 @@ def points_format(points,log=0):
 class OllyPage(Page):
     def __init__(self, page_num):
         super(OllyPage, self).__init__(page_num)
-        self.title = "Countdown to Olly Leaving"
+        self.title = "Countdown to Belgin Leaving"
 
     def generate_content(self):
         import datetime
-        delta = datetime.datetime(2016, 3, 24,17,0) - datetime.datetime.now()
+        delta = datetime.datetime(2018, 8, 31,17,0) - datetime.datetime.now()
         left = str(delta.days) + " days"
         left2 = str(delta.seconds/3600) + " hours"
-        content = self.colours.colour_print(printer.text_to_ascii("Olly Leaves In"),foreground=self.colours.Foreground.GREEN+self.colours.Style.BOLD,background=self.colours.Background.BLACK)
+        content = self.colours.colour_print(printer.text_to_ascii("Belgin Leaves In"),foreground=self.colours.Foreground.GREEN+self.colours.Style.BOLD,background=self.colours.Background.BLACK)
         content += "\n\n"
         content += self.colours.colour_print(printer.text_to_ascii(left),foreground=self.colours.Foreground.MAGENTA+self.colours.Style.BOLD,background=self.colours.Background.BLACK)
         content += "\n\n"
