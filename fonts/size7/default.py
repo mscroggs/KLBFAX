@@ -275,13 +275,13 @@ xxx
 """)
 
 _add("J", """
-xxxxx
-xx  x
-xx  x
-xx  x
-xx  x
-    x
-xxxxx
+xxxxxx
+xxx  x
+xxx  x
+xxx  x
+''x  x
+,   ,x
+xxxxxx
 """)
 
 _add("K", """
