@@ -109,7 +109,8 @@ class StephenPage(Page):
                   "Painting with all colours of the wind",
                   "Consensus-building",
                   "Modesty",
-                  "Opening champagne bottles with just a knife"]
+                  "Opening champagne bottles with just a knife",
+                  "Passing vivas"]
         shuffle(skills)
         content = self.colours.colour_print(printer.text_to_ascii("Stephen's Skills"))
         for skill in skills:
