@@ -109,16 +109,23 @@ class StephenPage(Page):
                   "Painting with all colours of the wind",
                   "Consensus-building",
                   "Modesty",
-                  "Opening champagne bottles with just a knife"]
+                  "Opening champagne bottles with just a knife",
+                  "Passing vivas"]
         shuffle(skills)
         content = self.colours.colour_print(printer.text_to_ascii("Stephen's Skills"))
+        next = 0
         for skill in skills:
-            content += "\n"
             content += choice(self.colours.Foreground.non_boring)
             content += choice(["",self.colours.Style.BOLD])
             content += skill
             content += self.colours.Foreground.DEFAULT
             content += self.colours.Style.DEFAULT
+            if next == 0:
+                content += " "*max(1,38-len(skill))
+            else:
+                content += "\n"
+            next += 1
+            next %= 2
         self.content = content
 
 
