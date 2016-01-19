@@ -52,6 +52,7 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What is the best firework?":"Catherine wheel",
          "What is Mart's favourite breakfast cereal?":"Pice Krispies",
          "What is the best coffee?":"A Martte",
+         "What do you get when you put French bread in a spiraliser?":"Baguetti",
          "Why do you never see elephants hiding in trees?":"They are big"
          }
 
