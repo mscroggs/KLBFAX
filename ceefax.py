@@ -1,6 +1,7 @@
 # width:79
 # height: 30
 
+import config
 import sys
 from os import listdir
 from os.path import isfile
@@ -61,44 +62,77 @@ def restart_computer():
 
 def stop_execution():
     ThreadSignaller.queue.put(ThreadSignaller.CleanExit)
-    sys.exit()
 
 
-def sleep(secs):
-    sleeping_time_ms = 100
-    num_of_cycles = int(round(secs * 1000 / sleeping_time_ms))
+def get_greeting_page(barcode):
+    namefile_path = "/home/pi/cards/" + barcode
+    extra = ""
+    if isfile(namefile_path):
+        (name, house) = points.get_name_house(namefile_path)
 
-    for i in range(num_of_cycles):
-        try:
-            signal = ThreadSignaller.queue.get_nowait()
-            if signal == ThreadSignaller.CleanExit:
-                sys.exit()
-            elif signal == ThreadSignaller.InterruptWait:
-                return
-        except Queue.Empty:
-            pass
+        if not house:
+            extra = """Error finding your house. Please
+                        report to Scroggs."""
 
-        time.sleep(sleeping_time_ms / 1000.0)
+        time = now.now().strftime("%H")
+
+        name_file = points.read_name_file(namefile_path)
+        if points.should_add_morning_points(time, house, name_file,
+                                            barcode):
+            points_added = points.add_morning_points(time, house, barcode)
+            extra = str(points_added) + " points to " + house + "!"
+
+        name_page = page.NamePage(name, extra=extra)
+    else:
+        name_page = page.NamePage(barcode, large=False)
+    return name_page
 
 
 def pull_new_version():
-            from os import system
-            print("Pulling newest version.")
-            try:
-                system("cd /home/pi/ceefax;git pull")
-            except:
-                pass
+    from os import system
+    print("Pulling newest version.")
+    try:
+        system("cd /home/pi/ceefax;git pull")
+    except:
+        pass
 
 
 class LoopManager(object):
     def __init__(self):
         pass
 
+    def _get_cycles_left(self, duration_sec):
+        return int(round(duration_sec * 1000.0 / config.sleeping_time_ms))
+
     def standard(self):
-        pageFactory.show_random()
-        REFRESH_RATE_SECS = 30
-        
-        sleep(REFRESH_RATE_SECS)
+        i = 0
+        num_cycles_left = 0
+        page = None
+
+        while True:
+            if i >= num_cycles_left:
+                page = pageFactory.get_loaded_random()
+            try:
+                signal = ThreadSignaller.queue.get_nowait()
+                if isinstance(signal, ThreadSignaller.ShowPage):
+                    page = pageFactory.get_reloaded_page(signal.page_num)
+                elif isinstance(signal, ThreadSignaller.ShowGreetingPage):
+                    page = get_greeting_page(signal.barcode)
+                elif signal == ThreadSignaller.CleanExit:
+                    sys.exit()
+                elif signal == ThreadSignaller.InterruptStandardLoop:
+                    break
+            except Queue.Empty:
+                pass
+
+            if page:
+                num_cycles_left = self._get_cycles_left(page.duration_sec)
+                i = 0
+                page.show()
+                page = None
+            if not page:
+                i += 1
+                time.sleep(config.sleeping_time_ms / 1000.0)
 
     def current(self):
         self.standard()
@@ -107,10 +141,11 @@ loop_manager = LoopManager()
 
 
 def name_page_handler(input):
+    # make sure the Keyboard thread is never blocked by loading pages
     if len(input) <= 3:
         while len(input) < 3:
             input = "0" + input
-        pageFactory.get_reloaded_page(input).show()
+        ThreadSignaller.queue.put(ThreadSignaller.ShowPage(input))
     elif input == "....":
         stop_execution()
     elif input == "00488a0488":
@@ -118,25 +153,4 @@ def name_page_handler(input):
     elif input == "0026360488":
         pull_new_version()
     else:
-        barcode = input
-        namefile_path = "/home/pi/cards/" + barcode
-        extra = ""
-        if isfile(namefile_path):
-            (name, house) = points.get_name_house(namefile_path)
-            
-            if not house:
-                extra = """Error finding your house. Please
-                            report to Scroggs."""
-
-            time = now.now().strftime("%H")
-
-            name_file = points.read_name_file(namefile_path)
-            if points.should_add_morning_points(time, house, name_file,
-                                                barcode):
-                points_added = points.add_morning_points(time, house, barcode)
-                extra = str(points_added) + " points to " + house + "!"
-
-            name_page = page.NamePage(name, extra=extra)
-        else:
-            name_page = page.NamePage(input, large=False)
-        name_page.show()
+        ThreadSignaller.queue.put(ThreadSignaller.ShowGreetingPage(input))
