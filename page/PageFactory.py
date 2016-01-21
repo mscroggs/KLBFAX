@@ -14,6 +14,7 @@ class PageFactory:
     def __init__(self):
         from page import FailPage
         self.i = 0
+        self.loads = 0
         self.pages = {}
         self.fail_page = FailPage()
         self.fake_page = Page("---")
@@ -27,6 +28,11 @@ class PageFactory:
 
     def get_loaded_random(self):
         page = self.fail_page
+        self.loads += 1
+        if self.loads > 200:
+            for p in self.pages:
+                self.pages[p].refresh()
+            self.loads = 0
         while not page.loaded:
             page = random.choice(self.get_enabled_pages(str(self.i)))
             self.i += 1

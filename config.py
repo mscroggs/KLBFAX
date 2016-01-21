@@ -3,7 +3,7 @@ import inspect
 
 
 def get_bd_filepath():
-    if os.getenv('DEVELOP'):
+    if os.getenv('DEVELOP') or os.getenv('SLAVE'):
         return os.path.join(current_dir, dummy_data_folder, 'birthdays.json')
     else:
         return os.path.join(os.path.expanduser('~'), '.klb/birthdays.json')

@@ -39,6 +39,11 @@ class NamePage(Page):
             add_points("Slytherin",10)
 
             extra = "\n\n10 points to Slytherin!"
+        if random() < 0.01:
+            name = "Fake Belgin"
+            add_points("Squiberin",10)
+
+            extra = "\n\n10 points to Squiberin!"
         extra += "\n\n"+self.extra
         self.content = colour_print(printer.text_to_ascii(greeting))
         self.content += "\n\n"

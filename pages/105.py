@@ -7,22 +7,14 @@ import json
 import config
 import logging
 import sys
+from file_handler import f_read_json
 
-birthday_file = config.birthday_file
-
-try:
-    with open(birthday_file) as f:
-        birthdays = json.load(f)
-
-except IOError as e:
-    logging.critical("""Birthday file failed to load. Try running in DEVELOP
-                     mode""")
-    logging.critical(e)
-    sys.exit()
+birthdays = f_read_json("birthdays.json")
 
 
 more_birthdays = {
             "Kathleen Lonsdale": (1, 28),
+            "Martin Gardner": (10, 21),
             "Jesus": (12, 25),
             "Jigsaw": (1, 3),
             "ScroggsBot": (1, 10)

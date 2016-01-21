@@ -41,6 +41,7 @@ class TVPage(Page):
             ["USA","KLB"],
             ["BBC","KLB"],
             ["A&E","KLB"],
+            ["Builder","Constructor"],
             ["World","KLB"],
             ["Home","KLB"],
             ["Homes","KLBs"],
@@ -64,12 +65,17 @@ class TVPage(Page):
             ["Alan Carr","Olly Southwick"],
             ["Casualty","Causality"],
             ["Match","Maths"],
+            ["Christmas","Oxmas"],
             ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
             ["Cycling","Maths"],["Athletics","Maths"],
             ["Wallace","Crazy Nico"],
             ["Politics","Mathematics"],
             ["Political","Mathematical"],
             ["Stacey","Huda"],
+            ["Antiques","Statistics"],
+            ["Santa","Huda"],
+            ["Ben","Momchil"],
+            ["Holly","Antonio"],
             ["Deal","Soheni"],
             ["The Tribe",self.colours.Background.RED+self.colours.Foreground.BLACK+"Pietro's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" The Tribe"],
             ["Teenage Mutant Ninja Turtles",self.colours.Background.RED+self.colours.Foreground.BLACK+"Belgin's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" Teenage Mutant Ninja Turtles"],
@@ -91,7 +97,7 @@ tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")
 tv3 = TVPage("603","BBC3","http://bleb.org/tv/data/listings/0/bbc3.xml","Today")
 tv4 = TVPage("604","BBC4","http://bleb.org/tv/data/listings/0/bbc4.xml","Today")
-tv5 = TVPage("605","BBC News 24","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
+tv5 = TVPage("605","BBC News","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
 tv6 = TVPage("606","BBC Parliament","http://bleb.org/tv/data/listings/0/bbc_parliament.xml","Today")
 tv7 = TVPage("607","Channel 4","http://bleb.org/tv/data/listings/0/ch4.xml","Today")
 tv8 = TVPage("608","Challenge","http://bleb.org/tv/data/listings/0/challenge.xml","Today")
@@ -105,7 +111,7 @@ tv15 = TVPage("615","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml","Tomorr
 tv16 = TVPage("616","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml","Tomorrow")
 tv17 = TVPage("617","BBC3","http://bleb.org/tv/data/listings/1/bbc3.xml","Tomorrow")
 tv18 = TVPage("618","BBC4","http://bleb.org/tv/data/listings/1/bbc4.xml","Tomorrow")
-tv19 = TVPage("619","BBC News 24","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
+tv19 = TVPage("619","BBC News","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
 tv20 = TVPage("620","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml","Tomorrow")
 tv21 = TVPage("621","Channel 4","http://bleb.org/tv/data/listings/1/ch4.xml","Tomorrow")
 tv22 = TVPage("622","Challenge","http://bleb.org/tv/data/listings/1/challenge.xml","Tomorrow")

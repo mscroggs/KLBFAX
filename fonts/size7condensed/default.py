@@ -31,6 +31,26 @@ xx
 xx
 """)
 
+_add("&", """
+xxxx
+xxxx
+x xx
+   x
+x xx
+xxxx
+xxxx
+""")
+
+_add("'", """
+ x
+ x
+xx
+xx
+xx
+xx
+xx
+""")
+
 _add("(", """
 xxx
 ' x

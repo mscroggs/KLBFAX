@@ -5,15 +5,17 @@ from datetime import datetime, timedelta
 import pytz
 import screen
 
-class XMenPage(Page):
+class MRoomPage(Page):
     def __init__(self,page_num):
-        super(XMenPage, self).__init__(page_num)
-        self.title = "X-Men Origins Seminar Room"
+        super(MRoomPage, self).__init__(page_num)
+        self.title = "Muirhead Room"
       
     def generate_content(self):
         import urllib2
         import now
+        import json
         from time import strftime
+        from dateutil import parser
         
         def friendly_date(date):
             if date.date() == datetime.today().date():
@@ -23,35 +25,26 @@ class XMenPage(Page):
             else:
                 return date.strftime("%A %-d")
 
-        content = colour_print(printer.text_to_ascii("X-Mart Origins"))
+        content = colour_print(printer.text_to_ascii("Muirhead Room"))
     
-        response = urllib2.urlopen("https://www.hep.ucl.ac.uk/restricted/mrbs/month.php?area=5&room=15")
-        html = response.readlines()
+        response = urllib2.urlopen("http://www.mscroggs.co.uk/room_list.json")
+        events = json.load(response)
         now = now.now().replace(tzinfo=None)
-        events = []
-        
-        for line in html:
-            lst = line.strip("\n")
-            if '<a href="view_entry.php' in lst:
-                year  = int(lst.split("year=") [1].split('"')[0])
-                month = int(lst.split("month=")[1].split("&")[0])
-                day   = int(lst.split("day=")  [1].split("&")[0])
-                title = lst.split('title="')[1].split('"')[0]
-                start_hour_minute = title[0:5]
-                end_hour_minute = title[6:11]
-                start_time = datetime(year, month, day, int(start_hour_minute[0:2]), int(start_hour_minute[3:5]))
-                end_time = datetime(year, month, day, int(end_hour_minute[0:2]), int(end_hour_minute[3:5]))
-                name = title[12:]
-                if end_time > now:
-                    events.append([start_time,end_time,name])
-        
+        for e in events:
+            e[0] = parser.parse(e[0])
+            e[1] = parser.parse(e[1])
+        events = [e for e in events if e[1]>now]
+
         occupied = False
         for event in events:
             if event[0] < now and event[1] > now:
                 occupied = True
         
         if occupied == False:
-            next_occupied = events[0][0]
+            try:
+                next_occupied = events[0][0]
+            except:
+                next_occupied = datetime.today() + timedelta(days=300)
             colours_start = self.colours.Background.GREEN + self.colours.Foreground.BLACK
             colours_end = self.colours.Foreground.DEFAULT + self.colours.Background.DEFAULT   
             if next_occupied.date() != now.date():             
@@ -102,4 +95,4 @@ class XMenPage(Page):
           
         self.content = content
         
-xmenpage = XMenPage("102")
+muirheadpage = MRoomPage("107")

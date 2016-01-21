@@ -13,22 +13,24 @@ content = colour_print(
     printer.text_to_ascii("Awards", padding={"left": 6}))
 
 awards = [
-          ["Mart Cow Awards",{"Adam Townsend":4,"Matthew Scroggs":2,
-           "Belgin Seymenoglu":11,"Matthew Wright":6,"Stephen Muirhead":2,
-           "Olly Southwick":8,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
-           "Rafael Preito Curiel":1}],
-          ["Tea Marter Awards",{"Matthew Scroggs":6,"Matthew Wright":17,"Pietro Servini":1,
+          ["Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
+           "Belgin Seymenoglu":17,"Matthew Wright":16,"Stephen Muirhead":3,
+           "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
+           "Rafael Pietro Curiel":2}],
+           # Tea Rex was formerly known as Tea Maker
+          ["Tea Rex",{"Matthew Scroggs":11,"Matthew Wright":21,"Pietro Servini":2,
            "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
            "Rafael Prieto Curiel":1}],
-          ["CelebriTEA",{"Matthew Wright":2,"Matthew Scroggs":1},unichr(9829)],
+          ["CelebriTEA",{"Matthew Wright":3,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
           ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
           ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":2}],
+          ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6,"Matthew Wright":1}],
           ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2}],
-          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1}]
+          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":8}],
+          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":2}],
+          ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
          ]
-pages = ["452","451","451","454","454","453","454","453","453"]
+pages = ["452","451","451","454","454","453","454","453","453","453"]
 
 content += "\nWho has the most awards?\n\n"
 
@@ -76,7 +78,7 @@ moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
 moo_page.in_index = False
 
 kit_page = Page("453")
-kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8])
+kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8]) + "\n" + award_show(awards[9])
 kit_page.in_index = False
 
 oth_page = Page("454")

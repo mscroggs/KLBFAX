@@ -1,5 +1,5 @@
 from page import Page
-import ceefax
+#import ceefax
 import Keyboard
 import ThreadSignaller
 

@@ -13,6 +13,26 @@ def _add(letter, string):
     assert len(letter_str.split("\n")) == SIZE
     alphabet[letter] = LetterBlock(letter_str)
 
+_add("'", """
+ x
+ x
+xx
+xx
+xx
+xx
+xx
+""")
+
+_add("&", """
+xxxx
+xxxx
+x xx
+   x
+x xx
+xxxx
+xxxx
+""")
+
 _add("|", """
 x
 x
@@ -51,6 +71,16 @@ xxx
 xxx
   x
 xxx
+""")
+
+_add("?", """
+xxxxxxx
+'    'x
+,,xx  x
+xx'  ,x
+xx,,xxx
+xx  xxx
+xxxxxxx
 """)
 
 _add("(", """
@@ -245,13 +275,13 @@ xxx
 """)
 
 _add("J", """
-xxxxx
-xx  x
-xx  x
-xx  x
-xx  x
-    x
-xxxxx
+xxxxxx
+xxx  x
+xxx  x
+xxx  x
+''x  x
+,   ,x
+xxxxxx
 """)
 
 _add("K", """
@@ -515,46 +545,68 @@ xxxxxxx
 """)
 
 _add("*", """
-xxxxx xxxxxx
-x,'xx,xx',xx
-xxx'   'xxxx
-,,x     x,,x
-xxx,   ,xxxx
-x',xx'xx,'xx
-xxxxx xxxxxx
+xxxxxxx xxxxxxxx
+xxx,'xx,xx',xxxx
+xxxxx'   'xxxxxx
+xx,,x     x,,xxx
+xxxxx,   ,xxxxxx
+xxx',xx'xx,'xxxx
+xxxxxxx xxxxxxxx
 """)
 
 #cloud
 _add("@", """
-xxxxxxxxxxxxx
-xxxx'''xxxxxx
-x'',xxx,'xxxx
- xx,xxx',,,'x
-,'''''''''',x
-xxxxxxxxxxxxx
-xxxxxxxxxxxxx
+xxxxxxxxxxxxxxxx
+xxxx',,,,,'xxxxx
+x'' xxxxxxx xxxx
+ xxx,xxxx'',,,'x
+ 'xxxxxxxxxxxx x
+x,,,,,,,,,,,,,xx
+xxxxxxxxxxxxxxxx
+""")
+
+#cloud sun rain
+_add("<", """
+xxxxxxxxxxxxxxxx
+xxx',,,'xx xx'xx
+',,'xxxx ''x,xxx
+ xxxxxx,xxx x,,x
+x,x'x,,,,,,x'xxx
+x',x,'xxxx xx,xx
+xx,,,xxxxxxxxxxx
+""")
+
+#light rain
+_add("[", """
+xxxxxxxxxxxxxxxx
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxx'x,xxx xx
+xxx,x',,'x,,,xxx
+xxxx xxx xxxxxxx
+xxxxx,,,xxxxxxxx
 """)
 
 #rain
 _add("{", """
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xx','xxxx'xxx
-x,''',x',x,'x
-xxxxxxx,''',x
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxxxx,xxx xx
+xxx,,,,,,,,,,xxx
+xxxx','xxxx'xxxx
+xxx,''',x',x,'xx
+xxxxxxxxx,''',xx
 """)
 
 #moon
 _add("}", """
-xxx'' ,,x
-x'   ,xxx
-'   xxxxx
-    xxxxx
-,   xxxxx
-x,   'xxx
-xxx,, ''x
+xxxxxx'' ,,xxxxx
+xxxx'   ,xxxxxxx
+xxx'   xxxxxxxxx
+xxx    xxxxxxxxx
+xxx,   xxxxxxxxx
+xxxx,   'xxxxxxx
+xxxxxx,, ''xxxxx
 """)
 
 # cloud sun
@@ -568,27 +620,48 @@ xxxxxxxxxx xx,xx
 xxxxxxxxxxxxxxxx
 """)
 
+# heavy rain
+_add("]","""
+xxxx'',,,'xxxxxx
+',,,'xxxxx ''''x
+ xxxxxxxx,xxxxx 
+,''''''''''xx'x,
+xx'xxxxx'xx',x,'
+',x,'x',x,'x,,,x
+x,,,xxx,,,xxxxxx
+""")
+
+
+
+
 # storm
 _add("^","""
-xxx',,,'xxxxx
-',,'xxxx'xxxx
- xxxxxx, ''xx
-x,,x'   ,,,'x
-xxx,  'xxxx x
-xxxxx,  'x',x
-xxxx' ,x,x,xx
+xxxx',,,'xxxxxx
+x',,'xxxx ''xxx
+x xxxxxx,xxx xx
+xx,,x'   ,x,xxx
+xxxx,  'xxxxxxx
+xxxxxx,  xxxxxx
+xxxxx' ,xxxxxxx
 """)
 
 # snow
 _add("%","""
-xxx',,,'xxxxx
-',,'xxxx ''xx
- xxxxxx,xxx x
-x,,,,,,,,,,xx
-xxxxxx,',xxxx
-x,',xx,x,xxxx
-x,x,xxxxxxxxx
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxxxx,xxx xx
+xxx,,,,,,,,,,xxx
+xxxxxxxx,',xxxxx
+xxx,',xx,x,xxxxx
+xxx,x,xxxxxxxxxx
 """)
+
+from random import choice
+
+# unknown
+_add("`",
+"\n".join(["".join([choice(["x",",","'"]) for i in range(13)]) for j in range(7)])
+)
 
 
 def get_letter(char):

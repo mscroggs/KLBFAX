@@ -3,7 +3,7 @@ import logging
 import screen
 import now
 import config
-
+from name import NAME
 
 def random_error(string):
     """if random()<0.03:
@@ -24,7 +24,7 @@ class Page(object):
         self.is_enabled = True
         self.in_index = True
         self.index_num = None
-        self.tagline = "KLBFAX: The World at Your Fingertips"
+        self.tagline = NAME + ": The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
         self.title = ""
@@ -45,7 +45,7 @@ class Page(object):
     def show(self):
         from page import FailPage
         if self.loaded or isinstance(self, FailPage) or self.number == "---":
-            print(random_error(" " * 53 + self.number + " KLBFAX " + self.now().strftime("%a %d %b %H:%M")))
+            print(random_error(" " * (59-len(NAME)) + self.number + " "+NAME+" " + self.now().strftime("%a %d %b %H:%M")))
             out = self.content.split("\n")
             for i in range(0, 27):
                 if i < len(out):
@@ -56,8 +56,9 @@ class Page(object):
             after = screen.WIDTH-len(self.tagline)-before
             tagline_print = " " * before + self.tagline + " " * after
             print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
+                  + self.colours.Style.BOLD
                   + tagline_print + self.colours.Background.DEFAULT
-                  + self.colours.Foreground.DEFAULT)
+                  + self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT)
         else:
             print "h"
             fail_page = FailPage()
@@ -72,6 +73,9 @@ class Page(object):
             logging.warning("Page " + self.title + " could not be reloaded")
             logging.exception(e)
             self.loaded = False
+
+    def refresh(self):
+        pass
 
 
 class FailPage(Page):

@@ -1,7 +1,7 @@
 import os
 from os.path import join,expanduser
 from page import Page
-
+from file_handler import f_readlines
 
 class EventPage(Page):
     def __init__(self, page_num):
@@ -20,17 +20,17 @@ xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 """
         events={}
         cur=""
-        with open(join(expanduser("~"),'.klb/events')) as f:
-            for line in f.readlines():
-                line = line.decode("utf-8")
-                line = line.strip("\n")
-                if line != "":
-                    if line[0] == "#":
-                        line = line.strip("#").strip(" ")
-                        cur = line
-                        events[cur] = []
-                    elif cur in events:
-                        events[cur].append(line)
+        lines = f_readlines('events')
+        for line in lines:
+            line = line.decode("utf-8")
+            line = line.strip("\n")
+            if line != "":
+                if line[0] == "#":
+                    line = line.strip("#").strip(" ")
+                    cur = line
+                    events[cur] = []
+                elif cur in events:
+                    events[cur].append(line)
 
         for date in sorted(events):
             event = events[date]
