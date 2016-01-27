@@ -17,6 +17,7 @@ more_birthdays = {
             "Martin Gardner": (10, 21),
             "Jesus": (12, 25),
             "Jigsaw": (1, 3),
+            "Chalkdust": (1, 27),
             "ScroggsBot": (1, 10)
 }
 
