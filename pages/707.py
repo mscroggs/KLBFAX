@@ -28,6 +28,8 @@ class ChalkPage(Page):
     def generate_content(self):
         import urllib2
         content = colour_print(printer.text_to_ascii("G-research!",fill=False))
+        content += "\n  &\n"
+        content += colour_print(printer.text_to_ascii("K-research!",fill=False))
 
         response = urllib2.urlopen("https://twitter.com/chalkdustmag")
         html = unescape(response.read().decode("utf-8"))
@@ -43,6 +45,7 @@ class ChalkPage(Page):
                 content += tweet[:screen.WIDTH]
                 tweet = tweet[screen.WIDTH:]
             content += "\n"+tweet+"\n"
+        
         self.content = content + "\n\n\n    sponsors Chalkdust"
 
 page = ChalkPage("707")
