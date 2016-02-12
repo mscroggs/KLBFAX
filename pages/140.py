@@ -18,7 +18,7 @@ class CurrencyPage(Page):
 
         possible_rates = ['GBPJPY=X','GBPAUD=X','GBPCNY=X','GBPBTC=X','GBPBND=X','GBPMXN=X','GBPCLP=X','GBPETB=X','GBPTRY=X','GBPCHF=X','GBPCAD=X','GBPXAU=X','BZJ16.NYM']
         possible_symbols_before = [u'¥', 'A$|', u'CN¥|', u'฿', 'B$|', 'MX$|', 'CL$|', 'ETB|', u'₺', 'CHF|', 'C$|', '','']
-        possible_symbols_after = ['','','','','','','','','','','','mg Au','L oil']
+        possible_symbols_after = ['','','','','','','','','','','','mg gold','L oil']
         possible_multiple = [1,1,1,1000,1,1,1,1,1,1,1,31103,1]
         possible_format = ['{:.0f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.0f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.0f}','{:.2f}']
         
