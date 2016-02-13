@@ -17,7 +17,18 @@ class TimePage(Page):
         minute = [[False]*len(i) for i in clock]
         hour   = [[False]*len(i) for i in clock]
         tag = "KLB Mean Time"
-        content = colour_print(printer.text_to_ascii(now().strftime("%A %-d %b")),background=self.colours.Style.BLINK,foreground=self.colours.Foreground.BLACK)
+        
+        current_minute = float(now().strftime("%M"))
+        current_hour = float(now().strftime("%I"))
+        current_weekday = now().strftime("%a")
+        if current_weekday == "Mon": bgcolor = self.colours.Style.BLINK+self.colours.Background.RED
+        if current_weekday == "Tue": bgcolor = self.colours.Style.BLINK+self.colours.Background.YELLOW
+        if current_weekday == "Wed": bgcolor = self.colours.Style.BLINK+self.colours.Background.CYAN
+        if current_weekday == "Thu": bgcolor = self.colours.Style.BLINK+self.colours.Background.GREEN
+        if current_weekday == "Fri": bgcolor = self.colours.Style.BLINK+self.colours.Background.MAGENTA
+        if current_weekday == "Sat": bgcolor = self.colours.Style.BLINK+self.colours.Background.BLUE
+        if current_weekday == "Sun": bgcolor = self.colours.Background.RED
+        content = colour_print(printer.text_to_ascii(now().strftime("%A %-d %b")),background=bgcolor,foreground=self.colours.Foreground.BLACK)
         content += "\n"
     
         circle_radius = 19
@@ -30,8 +41,6 @@ class TimePage(Page):
 
         d = .3
         num_points = 25
-        current_minute = float(now().strftime("%M"))
-        current_hour = float(now().strftime("%I"))
         current_hourtopointat = current_hour + current_minute/60.
 
         for a in range(0,num_points+1):

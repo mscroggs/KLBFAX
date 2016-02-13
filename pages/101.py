@@ -19,7 +19,7 @@ class TubePage(Page):
         # Loop through the lines and print the status of each one
         lines_tube = [lines[i] for i in [1,2,11,4,9,0,3,13,5,7,10]]
         lines_other = [lines[i] for i in [8,6,12]]
-        colours_tube = [self.colours.Background.RED+self.colours.Style.BLINK,
+        colours_tube = [self.colours.Background.YELLOW,
                         self.colours.Background.RED,
                         self.colours.Background.YELLOW+self.colours.Style.BLINK,
                         self.colours.Background.GREEN,
@@ -58,10 +58,27 @@ class TubePage(Page):
             content += self.colours.Background.DEFAULT
             desc = current_status.get_status(line).description
             if desc == "Good Service":
-                content += self.colours.Foreground.GREEN
+                content += self.colours.Foreground.GREEN+self.colours.Style.BOLD
+            elif desc == "Minor Delays":
+                content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+            elif desc == "Part Closure":
+                content += self.colours.Foreground.YELLOW
             else:
-                content += self.colours.Foreground.RED
+                content += self.colours.Foreground.RED+self.colours.Style.BOLD
             content += " " + current_status.get_status(line).description
+            description = current_status.get_status(line).status_details
+            if len(description) > 0:
+                mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''), 
+                            ('No service between ', ''),
+                            ('Kings Cross St. Pancras', 'KX'),
+                            (' due to planned engineering work.', ''),
+                            (' and ','-')]
+                for k, v in mapping:
+                    description = description.replace(k, v)
+                if len(description)>43: 
+                    content += ":\n" + " "*24 + description
+                else:
+                    content += ": " + description
             content += self.colours.Foreground.DEFAULT
             linei += 1
         content += "\n"
@@ -74,10 +91,28 @@ class TubePage(Page):
             content += self.colours.Background.DEFAULT
             desc = current_status.get_status(line).description
             if desc == "Good Service":
-                content += self.colours.Foreground.GREEN
+                content += self.colours.Foreground.GREEN+self.colours.Style.BOLD
+            elif desc == "Minor Delays":
+                content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+            elif desc == "Part Closure":
+                content += self.colours.Foreground.YELLOW
             else:
-                content += self.colours.Foreground.RED
+                content += self.colours.Foreground.RED+self.colours.Style.BOLD
             content += " " + current_status.get_status(line).description
+            description = current_status.get_status(line).status_details
+            if len(description) > 0:
+                mapping = [ ('There is a GOOD SERVICE on all other routes.', ''), 
+                            ('No service between ', ''),
+                            ('Highbury & Islington', 'H&I'),
+                            ('Cross', 'X'),
+                            (' due to planned engineering work.', ''),
+                            (' and ','-')]
+                for k, v in mapping:
+                    description = description.replace(k, v)
+                if len(description)>43: 
+                    content += ":\n" + " "*24 + description
+                else:
+                    content += ": " + description
             content += self.colours.Foreground.DEFAULT
             linei += 1            
 
