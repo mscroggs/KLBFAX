@@ -1,6 +1,7 @@
 import fonts.size7.default
 import fonts.size7condensed.default
 import fonts.size7extracondensed.default
+import fonts.size4.default
 import fonts.exceptions
 import screen
 from fonts.LetterBlock import LetterBlock
@@ -70,3 +71,7 @@ thin_instance.set_font(fonts.size7condensed.default)
 
 instance = Printer(thin_instance)
 instance.set_font(fonts.size7.default)
+
+# If you want to add more fonts you have to also add their names into __init__.py
+size4_instance = Printer()
+size4_instance.set_font(fonts.size4.default)
