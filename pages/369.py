@@ -3,11 +3,17 @@ from printer import instance as printer
 import datetime
 
 class OllyPage(Page):
-    def __init__(self, page_num,who,when):
+    def __init__(self, page_num,who,when,numb=False):
         super(OllyPage, self).__init__(page_num)
-        self.title = "Countdown to "+who+" Leaving"
+        self.title = "Countdowns"
         self.who = who
         self.when = when
+        if numb==False:
+            self.in_index = False
+        else:
+            self.in_index = True
+            self.index_num = numb
+            
 
     def generate_content(self):
         delta = self.when - datetime.datetime.now()
@@ -26,7 +32,7 @@ class OllyPage(Page):
         content += self.colours.colour_print(printer.text_to_ascii(left2),foreground=self.colours.Foreground.WHITE+self.colours.Style.BOLD,background=self.colours.Background.BLUE)
         self.content = content
 
-j_page = OllyPage("368","Jigsaw",datetime.datetime(2016, 3, 24, 17, 0))
+j_page = OllyPage("368","Jigsaw",datetime.datetime(2016, 3, 24, 17, 0),"368-370")
 o_page = OllyPage("369","Olly",datetime.datetime(2016, 3, 24, 17, 0))
 b_page = OllyPage("370","Belgin",datetime.datetime(2018, 8, 31, 16, 0))
 
