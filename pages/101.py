@@ -2,6 +2,7 @@ from page import Page
 from colours import colour_print
 from printer import instance as printer
 from random import choice
+from textwrap import wrap
 
 class TubePage(Page):
     def __init__(self,page_num):
@@ -65,24 +66,36 @@ class TubePage(Page):
                 content += self.colours.Foreground.YELLOW
             else:
                 content += self.colours.Foreground.RED+self.colours.Style.BOLD
-            content += " " + current_status.get_status(line).description
+            full_description = " "
+            full_description += current_status.get_status(line).description
             description = current_status.get_status(line).status_details
-            if len(description) > 0:
-                mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''), 
-                            ('No service between ', ''),
-                            ('Kings Cross St. Pancras', 'KX'),
-                            (' due to planned engineering work.', ''),
-                            (' and ','-')]
-                for k, v in mapping:
-                    description = description.replace(k, v)
-                if len(description)>43: 
-                    content += ":\n" + " "*24 + description
-                else:
-                    content += ": " + description
+            mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''), 
+                                        ('The service will resume again at 0615 on Monday.', ''), 
+                                        ('The service will resume again at 0615 tomorrow.', ''),
+                                        ('The service will resume again at 0615.', ''), 
+                                        ('GOOD SERVICE on the rest of the line.', ''), 
+                                        ('No service between ', ''),
+                                        ('King\'s Cross St. Pancras', 'KX'),
+                                        ('Kings Cross St. Pancras', 'KX'),
+                                        ('Tottenham Court Road', 'TCR'),
+                                        ('Cross', 'X'),
+                                        ('Road', 'Rd'),    
+                                        ('Square', 'Sq'),
+                                        ('Street', 'St'),                                        
+                                        ('Junction', 'Jn'),    
+                                        (' due to planned engineering work.', ''),
+                                        (' and ','-')]
+            for k, v in mapping:
+                description = description.replace(k, v)
+            if len(description)>1:
+                full_description += ": " + description
+            content += wrap(full_description,56)[0] 
+            for line in wrap(full_description,56)[1:]:
+                content += "\n"+" "*24 + line  
+                
             content += self.colours.Foreground.DEFAULT
             linei += 1
         content += "\n"
-        
         linei = 0
         for line in lines_other:
             content += "\n  "
@@ -98,21 +111,27 @@ class TubePage(Page):
                 content += self.colours.Foreground.YELLOW
             else:
                 content += self.colours.Foreground.RED+self.colours.Style.BOLD
-            content += " " + current_status.get_status(line).description
+            full_description = " "
+            full_description += current_status.get_status(line).description            
             description = current_status.get_status(line).status_details
-            if len(description) > 0:
-                mapping = [ ('There is a GOOD SERVICE on all other routes.', ''), 
-                            ('No service between ', ''),
-                            ('Highbury & Islington', 'H&I'),
-                            ('Cross', 'X'),
-                            (' due to planned engineering work.', ''),
-                            (' and ','-')]
-                for k, v in mapping:
-                    description = description.replace(k, v)
-                if len(description)>43: 
-                    content += ":\n" + " "*24 + description
-                else:
-                    content += ": " + description
+            mapping = [ ('There is a GOOD SERVICE on all other routes.', ''), 
+                        ('GOOD SERVICE on all other routes.', ''), 
+                        ('No service between ', ''),
+                        ('Highbury & Islington', 'H&I'),
+                        ('Cross', 'X'),
+                        ('Junction', 'Jn'),
+                        (' due to planned engineering work.', ''),
+                        (' due to planned work.', ''),
+                        (' and ','-'),
+                        (' to ','-')]
+            for k, v in mapping:
+                description = description.replace(k, v)
+            if len(description)>1:
+                full_description += ": " + description
+            content += wrap(full_description,56)[0] 
+            for line in wrap(full_description,56)[1:]:
+                content += "\n"+" "*24 + line
+            
             content += self.colours.Foreground.DEFAULT
             linei += 1            
 
