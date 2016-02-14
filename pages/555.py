@@ -22,7 +22,7 @@ class LotteryPage(Page):
         results = req.read().replace("\n",",").split(",")
         
         draw_date = time.strftime("%a %-d %b",time.strptime(results[12],"%d-%b-%Y"))
-        balls = "||".join(map(str,sorted(map(int,results[13:19]))))
+        balls = map(str,sorted(map(int,results[13:19])))
         bonus_ball = results[19]
         ball_set = results[20]
         machine = results[21]
@@ -32,25 +32,40 @@ class LotteryPage(Page):
         content += "\n\n\n"
         content += self.colours.colour_print_join([
                         (size4_printer.text_to_ascii(draw_date,False)+"",
-                            self.colours.Background.CYAN+self.colours.Style.BLINK,
+                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK)                            
                     ]," "," ")       
         content += "\n\n"
         content += self.colours.colour_print_join([
-                        (size4_printer.text_to_ascii(balls,False)+"",
-                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK), 
-                        (size4_printer.text_to_ascii(bonus_ball,False)+"",
-                            self.colours.Background.GREEN+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK)                              
-                    ]," "," ") 
+                            (size4_printer.text_to_ascii("|"+balls[0],False)+"",
+                                self.colours.Background.YELLOW+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),               
+                            (size4_printer.text_to_ascii(balls[1],False)+"",
+                                self.colours.Background.CYAN+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),  
+                            (size4_printer.text_to_ascii(balls[2],False)+"",
+                                self.colours.Background.YELLOW+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),  
+                            (size4_printer.text_to_ascii(balls[3],False)+"",
+                                self.colours.Background.CYAN+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),  
+                            (size4_printer.text_to_ascii(balls[4],False)+"",
+                                self.colours.Background.YELLOW+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),  
+                            (size4_printer.text_to_ascii(balls[5],False)+"",
+                                self.colours.Background.CYAN+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),                              
+                            (size4_printer.text_to_ascii(bonus_ball,False)+"",
+                                self.colours.Background.RED+self.colours.Style.BLINK,
+                                self.colours.Foreground.BLACK),                                  
+                        ],"","")                   
         content += "\n\n\n"
         content += self.colours.colour_print_join([
                         (size4_printer.text_to_ascii(machine,False)+"",
-                            self.colours.Background.RED+self.colours.Style.BLINK,
+                            self.colours.Background.CYAN+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK), 
                         (size4_printer.text_to_ascii(" Set " + ball_set,False)+"",
-                            self.colours.Background.RED+self.colours.Style.BLINK,
+                            self.colours.Background.CYAN+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK)                              
                     ]," "," ")                       
 
