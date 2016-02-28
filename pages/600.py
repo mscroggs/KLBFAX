@@ -15,21 +15,48 @@ class TVPage(Page):
         self.title = day+"'s TV: "+channel
         self.in_index = False
         self.channel = channel
+        self.page_num = page_num
         self.feed = feed
         self.day = day
         pages.append([page_num,channel+" ("+day+")"])
 
     def generate_content(self):
         import urllib2
-        from xml.etree import ElementTree
         content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
-        response = urllib2.urlopen(self.feed)
-        xml = response.read()
-        e = ElementTree.fromstring(xml)
-        for prog in e.findall('programme'):
-            if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
-                content += self.colours.Foreground.GREEN+prog.find('start').text+self.colours.Foreground.DEFAULT+" "+prog.find('title').text+"\n"
-        content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
+
+        if self.page_num == "603" or "617":
+            import feedparser
+            from time import strptime, strftime
+            import datetime
+    
+            if self.page_num == "603":
+                rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx"
+            else:
+                rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
+            feed = feedparser.parse(rss_url)
+            start_times = list()
+            start_times_formatted = list()
+            titles = list()
+            for item in feed['items']:
+                start_times.append(strptime(item['published'],"%m/%d/%Y %I:%M:%S %p"))
+                start_times_formatted.append(strftime("%H%M",strptime(item['published'],"%m/%d/%Y %I:%M:%S %p")))
+                titles.append(item['title'] )
+
+            for i in range(len(titles)):
+                if i == len(titles)-1 or (int(strftime("%y%m%d%H%M",start_times[i+1])) > int(self.now().strftime("%y%m%d%H%M"))):
+                    #if i != len(titles)-1:
+                    #    print strftime("%y%m%d%H%M",start_times[i+1]) , int(self.now().strftime("%y%m%d%H%M")), (int(strftime("%y%m%d%H%M",start_times[i+1])) > int(self.now().strftime("%y%m%d%H%M")))
+                    content += self.colours.Foreground.GREEN+start_times_formatted[i]+self.colours.Foreground.DEFAULT+" "+titles[i]+"\n"
+            
+        else:
+            from xml.etree import ElementTree
+            response = urllib2.urlopen(self.feed)
+            xml = response.read()
+            e = ElementTree.fromstring(xml)
+            for prog in e.findall('programme'):
+                if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
+                    content += self.colours.Foreground.GREEN+prog.find('start').text+self.colours.Foreground.DEFAULT+" "+prog.find('title').text+"\n"
+            content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
         swaps = [
             ["Breakfast","Belgin Breakfast"],
             ["Not",u"\u00AC"],
@@ -95,7 +122,7 @@ class TVPage(Page):
 pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")
-tv3 = TVPage("603","BBC3","http://bleb.org/tv/data/listings/0/bbc3.xml","Today")
+tv3 = TVPage("603","BBC Radio 2","http://bleb.org/tv/data/listings/0/bbc3.xml","Today")
 tv4 = TVPage("604","BBC4","http://bleb.org/tv/data/listings/0/bbc4.xml","Today")
 tv5 = TVPage("605","BBC News","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
 tv6 = TVPage("606","BBC Parliament","http://bleb.org/tv/data/listings/0/bbc_parliament.xml","Today")
@@ -109,7 +136,7 @@ tv13 = TVPage("613","s4c","http://bleb.org/tv/data/listings/0/s4c.xml","Today")
 tv14 = TVPage("614","QVC","http://bleb.org/tv/data/listings/0/qvc.xml","Today")
 tv15 = TVPage("615","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml","Tomorrow")
 tv16 = TVPage("616","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml","Tomorrow")
-tv17 = TVPage("617","BBC3","http://bleb.org/tv/data/listings/1/bbc3.xml","Tomorrow")
+tv17 = TVPage("617","BBC Radio 2","http://bleb.org/tv/data/listings/1/bbc3.xml","Tomorrow")
 tv18 = TVPage("618","BBC4","http://bleb.org/tv/data/listings/1/bbc4.xml","Tomorrow")
 tv19 = TVPage("619","BBC News","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
 tv20 = TVPage("620","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml","Tomorrow")
