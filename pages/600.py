@@ -24,15 +24,19 @@ class TVPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
 
-        if self.page_num == "603" or "617":
+        if self.page_num == "642" or self.page_num == "692" or self.page_num == "644" or self.page_num == "694":
             import feedparser
             from time import strptime, strftime
             import datetime
     
-            if self.page_num == "603":
+            if self.page_num == "642":
                 rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx"
-            else:
+            elif self.page_num == "692":
                 rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
+            elif self.page_num == "644":
+                rss_url = "http://www.iplayerconverter.co.uk/wu/4/date/" + strftime("%Y-%m-%d") + "/rss.aspx"
+            elif self.page_num == "694":
+                rss_url = "http://www.iplayerconverter.co.uk/wu/4/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"                
             feed = feedparser.parse(rss_url)
             start_times = list()
             start_times_formatted = list()
@@ -122,36 +126,46 @@ class TVPage(Page):
 pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")
-tv3 = TVPage("603","BBC Radio 2","http://bleb.org/tv/data/listings/0/bbc3.xml","Today")
-tv4 = TVPage("604","BBC4","http://bleb.org/tv/data/listings/0/bbc4.xml","Today")
-tv5 = TVPage("605","BBC News","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
-tv6 = TVPage("606","BBC Parliament","http://bleb.org/tv/data/listings/0/bbc_parliament.xml","Today")
-tv7 = TVPage("607","Channel 4","http://bleb.org/tv/data/listings/0/ch4.xml","Today")
-tv8 = TVPage("608","Challenge","http://bleb.org/tv/data/listings/0/challenge.xml","Today")
-tv9 = TVPage("609","Dave","http://bleb.org/tv/data/listings/0/dave.xml","Today")
-tv10 = TVPage("610","Channel 5","http://bleb.org/tv/data/listings/0/five.xml","Today")
-tv11 = TVPage("611","more4","http://bleb.org/tv/data/listings/0/more4.xml","Today")
-tv12 = TVPage("612","Film 4","http://bleb.org/tv/data/listings/0/film_four.xml","Today")
-tv13 = TVPage("613","s4c","http://bleb.org/tv/data/listings/0/s4c.xml","Today")
-tv14 = TVPage("614","QVC","http://bleb.org/tv/data/listings/0/qvc.xml","Today")
-tv15 = TVPage("615","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml","Tomorrow")
-tv16 = TVPage("616","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml","Tomorrow")
-tv17 = TVPage("617","BBC Radio 2","http://bleb.org/tv/data/listings/1/bbc3.xml","Tomorrow")
-tv18 = TVPage("618","BBC4","http://bleb.org/tv/data/listings/1/bbc4.xml","Tomorrow")
-tv19 = TVPage("619","BBC News","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
-tv20 = TVPage("620","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml","Tomorrow")
-tv21 = TVPage("621","Channel 4","http://bleb.org/tv/data/listings/1/ch4.xml","Tomorrow")
-tv22 = TVPage("622","Challenge","http://bleb.org/tv/data/listings/1/challenge.xml","Tomorrow")
-tv23 = TVPage("623","Dave","http://bleb.org/tv/data/listings/1/dave.xml","Tomorrow")
-tv24 = TVPage("624","Channel 5","http://bleb.org/tv/data/listings/1/five.xml","Tomorrow")
-tv25 = TVPage("625","more4","http://bleb.org/tv/data/listings/1/more4.xml","Tomorrow")
-tv26 = TVPage("626","Film 4","http://bleb.org/tv/data/listings/1/film_four.xml","Tomorrow")
-tv27 = TVPage("627","s4c","http://bleb.org/tv/data/listings/1/s4c.xml","Tomorrow")
-tv28 = TVPage("628","QVC","http://bleb.org/tv/data/listings/1/qvc.xml","Tomorrow")
+tv3 = TVPage("603","ITV","http://bleb.org/tv/data/listings/0/p_itv1.xml","Today")
+tv4 = TVPage("604","Channel 4","http://bleb.org/tv/data/listings/0/ch4.xml","Today")
+tv5 = TVPage("605","Channel 5","http://bleb.org/tv/data/listings/0/five.xml","Today")
+tv6 = TVPage("606","ITV2","http://bleb.org/tv/data/listings/0/p_itv2.xml","Today")
+tv7 = TVPage("608","S4C","http://bleb.org/tv/data/listings/0/s4c.xml","Today")
+tv8 = TVPage("609","BBC4","http://bleb.org/tv/data/listings/0/bbc4.xml","Today")
+tv9 = TVPage("612","Dave","http://bleb.org/tv/data/listings/0/dave.xml","Today")
+tv10 = TVPage("614","More4","http://bleb.org/tv/data/listings/0/more4.xml","Today")
+tv11 = TVPage("615","Film 4","http://bleb.org/tv/data/listings/0/film_four.xml","Today")
+tv12 = TVPage("616","QVC","http://bleb.org/tv/data/listings/0/qvc.xml","Today")
+tv13 = TVPage("628","E4","http://bleb.org/tv/data/listings/0/e4.xml","Today")
+tv14 = TVPage("629","Challenge","http://bleb.org/tv/data/listings/0/challenge.xml","Today")
+tv15 = TVPage("630","BBC News","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
+tv16 = TVPage("631","BBC Parliament","http://bleb.org/tv/data/listings/0/bbc_parliament.xml","Today")
+tv17 = TVPage("642","BBC Radio 2","R2","Today")
+tv18 = TVPage("644","BBC Radio 4","R4","Today")
+
+tv19 = TVPage("651","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml","Tomorrow")
+tv20 = TVPage("652","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml","Tomorrow")
+tv21 = TVPage("653","ITV","http://bleb.org/tv/data/listings/1/p_itv1.xml","Tomorrow")
+tv22 = TVPage("654","Channel 4","http://bleb.org/tv/data/listings/1/ch4.xml","Tomorrow")
+tv23 = TVPage("655","Channel 5","http://bleb.org/tv/data/listings/1/five.xml","Tomorrow")
+tv24 = TVPage("656","ITV2","http://bleb.org/tv/data/listings/1/p_itv2.xml","Tomorrow")
+tv25 = TVPage("658","S4C","http://bleb.org/tv/data/listings/1/s4c.xml","Tomorrow")
+tv26 = TVPage("659","BBC4","http://bleb.org/tv/data/listings/1/bbc4.xml","Tomorrow")
+tv27 = TVPage("662","Dave","http://bleb.org/tv/data/listings/1/dave.xml","Tomorrow")
+tv28 = TVPage("664","More4","http://bleb.org/tv/data/listings/1/more4.xml","Tomorrow")
+tv29 = TVPage("665","Film 4","http://bleb.org/tv/data/listings/1/film_four.xml","Tomorrow")
+tv30 = TVPage("666","QVC","http://bleb.org/tv/data/listings/1/qvc.xml","Tomorrow")
+tv31 = TVPage("678","E4","http://bleb.org/tv/data/listings/1/e4.xml","Tomorrow")
+tv32 = TVPage("679","Challenge","http://bleb.org/tv/data/listings/1/challenge.xml","Tomorrow")
+tv33 = TVPage("680","BBC News","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
+tv34 = TVPage("681","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml","Tomorrow")
+tv35 = TVPage("692","BBC Radio 2","R2","Tomorrow")
+tv36 = TVPage("694","BBC Radio 4","R4","Tomorrow")
+
 
 tv_page = Page("600")
-tv_page.content = colour_print(printer.text_to_ascii("TV Index"))+"\n"
-tv_page.title = "TV Index"
+tv_page.content = colour_print(printer.text_to_ascii("TV & Radio"))+"\n"
+tv_page.title = "TV & Radio Index"
 i=0
 for page in pages:
     tv_page.content+=tv_page.colours.Foreground.RED+page[0]+tv_page.colours.Foreground.DEFAULT+" "+page[1]
