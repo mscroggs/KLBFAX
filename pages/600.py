@@ -23,20 +23,17 @@ class TVPage(Page):
     def generate_content(self):
         import urllib2
         content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
-
-        if self.page_num == "642" or self.page_num == "692" or self.page_num == "644" or self.page_num == "694":
+        rss_dict = {"642": "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
+                    "692": "http://www.iplayerconverter.co.uk/wu/2/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx",
+                    "644": "http://www.iplayerconverter.co.uk/wu/4/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
+                    "694": "http://www.iplayerconverter.co.uk/wu/4/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
+                    }
+        if self.page_num in rss_dict.keys():
             import feedparser
             from time import strptime, strftime
             import datetime
-    
-            if self.page_num == "642":
-                rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx"
-            elif self.page_num == "692":
-                rss_url = "http://www.iplayerconverter.co.uk/wu/2/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
-            elif self.page_num == "644":
-                rss_url = "http://www.iplayerconverter.co.uk/wu/4/date/" + strftime("%Y-%m-%d") + "/rss.aspx"
-            elif self.page_num == "694":
-                rss_url = "http://www.iplayerconverter.co.uk/wu/4/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"                
+            rss_url = rss_dict[self.page_num]
+            
             feed = feedparser.parse(rss_url)
             start_times = list()
             start_times_formatted = list()
