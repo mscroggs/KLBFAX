@@ -16,7 +16,7 @@ awards = [
           ["Boo Cow Annawards",{"Pietro Servini":1,"Stephen Muirhead":1,"Belgin Seymenoglu":2}],
             # Tea Wrecks was formerly known as Tea Breaker
           ["Tea Wrecks Annawards",{"Anna Lambert":1,"Rafael Prieto Curiel":1,"Belgin Seymenoglu":1}],
-          ["Towel Flood Annawards",{"Jigsaw":1}],
+          ["Towel Flood Annawards",{"Jigsaw":1,"Belgin Seymenoglu":2}],
           ["Worst Sorting Hat",{"Anna Lambert":20}],
           ["Boo Key",{"Anna Lambert":1,"Sam Brown":1,"Rafael Prieto Curiel":1,"Mart Wright":1}],
           ["Stolen Pen",{"Anna Lambert":1}]
