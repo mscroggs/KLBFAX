@@ -28,21 +28,21 @@ r1.content = (colours.colour_print(
 5. Leave in the fridge to set""")
 
 r2 = Page("582")
-r2.title = "Herman Friendship Cake"
+r2.title = "Huda Friendship Cake"
 r2.in_index = False
 r2.content = (colours.colour_print(
-    printer.text_to_ascii("Herman Friendship Cake"),
+    printer.text_to_ascii("Huda Friendship Cake"),
     colours.Background.RED,
     colours.Foreground.BLUE) +
 """
 """+colours.Foreground.GREEN+"""Day 1:    """+colours.Foreground.DEFAULT+"""Put me in a large mixing bowl and cover loosely with a tea towel.
 """+colours.Foreground.GREEN+"""Days 2-3: """+colours.Foreground.DEFAULT+"""Stir well.
-"""+colours.Foreground.GREEN+"""Day 4:    """+colours.Foreground.DEFAULT+"""Herman is hungry. Add 1 cup each of plain flour, sugar and milk.
+"""+colours.Foreground.GREEN+"""Day 4:    """+colours.Foreground.DEFAULT+"""HUDA HUNGRY. Add 1 cup each of plain flour, sugar and milk.
           Stir well.
 """+colours.Foreground.GREEN+"""Days 5-8: """+colours.Foreground.DEFAULT+"""Stir well.
 """+colours.Foreground.GREEN+"""Day 9:    """+colours.Foreground.DEFAULT+"""Add the same as day 4 and stir well. Divide into 4 equal portions and
           give away to friends with a copy of these instructions. Keep the
-          fourthportion.
+          fourth portion.
 """+colours.Foreground.GREEN+"""Day 10:   """+colours.Foreground.DEFAULT+"""Now you are ready to make the cake. Stir well and add the following:
 """+colours.Style.BOLD+colours.Foreground.YELLOW+"""    1 cup of sugar (8oz or 225g)     2 cups plain flour (10oz or 300g)
     half tsp. salt                   2/3 cup of cooking oil (5.3oz or 160ml)
@@ -54,9 +54,9 @@ r2.content = (colours.colour_print(
     with a quarter of a cup of brown sugar and a quarter of a cup of melted
     butter. Bake for 45 minutes at 170-180C. 
     Test the middle with a clean knife; you may need to cover in tin foil and
-    bake for a further 20 minutes to make sure your Herman is cooked properly
+    bake for a further 20 minutes to make sure Huda is cooked properly
     in the middle. 
-    When baked, Herman can be frozen.
+    When baked, Huda can be frozen.
 """)
 
 
