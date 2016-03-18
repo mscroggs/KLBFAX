@@ -24,7 +24,7 @@ class NewsPage(Page):
                         (printer.text_to_ascii(self.title)+"",
                             self.colours.Background.BLACK,
                             self.colours.Foreground.RED+self.colours.Style.BOLD)                            
-                    ]," "," ")   
+                    ],"","")   
 
         rss_url = self.url
         feed = feedparser.parse(rss_url)
