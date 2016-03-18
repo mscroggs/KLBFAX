@@ -103,6 +103,19 @@ xxx x
 xxxxx
 """)
 
+_add(u"⇾","""
+xxxxx
+xx'xx
+,, ,x
+xxxxx
+""")
+
+_add(u"⇿","""
+xxxxxx
+x'x'xx
+, , ,x
+xxxxxx
+""")
 
 _add("(","""
 ',x
