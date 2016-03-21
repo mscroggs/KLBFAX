@@ -21,5 +21,5 @@ class WheresOllyPage(Page):
                 content += choice(["OILY","YLLO"])
         self.content = content
 
-b_page = WheresOllyPage("371")
+b_page = WheresOllyPage("367")
 

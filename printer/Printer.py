@@ -42,7 +42,7 @@ class Printer(object):
         except fonts.exceptions.LetterNotDefined:
             return text
 
-    def text_to_ascii(self, text, fill=True, **options):
+    def text_to_ascii(self, text, fill=True, vertical_condense=False, **options):
         try:
             text_to_print = str(self.text_to_letterblock("|"+text, **options))
         except:
@@ -57,12 +57,42 @@ class Printer(object):
                 output.append(line+"x"*(screen.WIDTH-len(line)))
             else:
                 output.append(line)
+        if vertical_condense:
+            output = self.v_condense(output)
+
         if hit_sides and self.squashed is not None:
-            return self.squashed.text_to_ascii(text,fill,**options)
+            return self.squashed.text_to_ascii(text,fill,vertical_condense=vertical_condense,**options)
         
         return "\n".join(output)
 
- 
+    def v_condense(self, text):
+        output = []
+        for i in range(0,len(text),2):
+            line = ""
+            if i+1==len(text):
+                text.append("x"*len(text[i]))
+            for a,b in zip(text[i],text[i+1]):
+                if a+b=="xx":
+                    line += "x"
+                elif a+b=="x ":
+                    line += "'"
+                elif a+b=="' ":
+                    line += "'"
+                elif a+b==", ":
+                    line += "'"
+                elif a+b==" x":
+                    line += ","
+                elif a+b==" ,":
+                    line += ","
+                elif a+b==" '":
+                    line += ","
+                elif a+b=="  ":
+                    line += " "
+                else:
+                    line += "x"
+            output.append(line)
+        return output
+
 extrathin_instance = Printer()
 extrathin_instance.set_font(fonts.size7extracondensed.default)
  
