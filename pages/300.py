@@ -6,6 +6,7 @@ from printer import instance as printer
 from printer import size4_instance as size4_printer
 from colours import colour_print
 import time
+from functions import klb_replace
 
 
 class NewsPage(Page):
@@ -61,7 +62,7 @@ class NewsPage(Page):
                     
         content += "\n"
         
-        self.content = content
+        self.content = klb_replace(content)
         self.tagline = tag
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
