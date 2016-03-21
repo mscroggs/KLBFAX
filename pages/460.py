@@ -45,29 +45,44 @@ class WorldTempPage(Page):
 
         content += "\n\n"
         for i in range(4):
-            color1 = [self.colours.Background.YELLOW+self.colours.Style.BLINK,self.colours.Background.YELLOW][i%2]
-            color2 = [self.colours.Background.YELLOW+self.colours.Style.BLINK,self.colours.Background.YELLOW][(i+1)%2]
-            bcolor1 = [self.colours.Foreground.YELLOW+self.colours.Style.BOLD,self.colours.Foreground.YELLOW][i%2]
-            bcolor2 = [self.colours.Foreground.YELLOW+self.colours.Style.BOLD,self.colours.Foreground.YELLOW][(i+1)%2]            
+            fcolor = ['','','']
+            bcolor = ['','','']
+            for j in range(3):
+                if int(temps[3*i+j]) <= 0:
+                    fcolor[j] = self.colours.Background.CYAN+self.colours.Style.BLINK
+                    bcolor[j] = self.colours.Foreground.CYAN+self.colours.Style.BOLD            
+                elif 0 < int(temps[3*i+j]) < 10:
+                    fcolor[j] = self.colours.Background.GREEN+self.colours.Style.BLINK
+                    bcolor[j] = self.colours.Foreground.GREEN+self.colours.Style.BOLD            
+                elif 10 <= int(temps[3*i+j]) < 20:
+                    fcolor[j] = self.colours.Background.YELLOW+self.colours.Style.BLINK
+                    bcolor[j] = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+                elif 10 <= int(temps[3*i+j]) < 30:
+                    fcolor[j] = self.colours.Background.YELLOW
+                    bcolor[j] = self.colours.Foreground.YELLOW
+                else:
+                    fcolor[j] = self.colours.Background.RED+self.colours.Style.BLINK
+                    bcolor[j] = self.colours.Foreground.RED+self.colours.Style.BOLD
+                       
             content += self.colours.colour_print_join([
                             (size4_printer.text_to_ascii(zones[3*i]+"",False)+"",
-                                color1,
+                                fcolor[0],
                                 self.colours.Foreground.BLACK),
                             (size4_printer.text_to_ascii(pad_number(temps[3*i]),False)+"  ",
                                 self.colours.Background.BLACK,
-                                bcolor1),
+                                bcolor[0]),
                             (size4_printer.text_to_ascii(zones[3*i+1]+"",False)+"",
-                                color2,
+                                fcolor[1],
                                 self.colours.Foreground.BLACK),
                             (size4_printer.text_to_ascii(pad_number(temps[3*i+1]),False)+"  ",
                                 self.colours.Background.BLACK,
-                                bcolor2),
+                                bcolor[1]),
                             (size4_printer.text_to_ascii(zones[3*i+2]+"",False)+"",
-                                color1,
+                                fcolor[2],
                                 self.colours.Foreground.BLACK),
                             (size4_printer.text_to_ascii(pad_number(temps[3*i+2]),False)+"",
                                 self.colours.Background.BLACK,
-                                bcolor1)                                
+                                bcolor[2])                                
                         ]," "," ")     
             content += "\n"
                     
