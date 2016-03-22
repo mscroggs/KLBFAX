@@ -76,18 +76,19 @@ class LetterPage(Page):
             letters = letters.split("\n")
         letters = letters[20*(self.n-1):20*self.n]
         letters = "\n".join(letters)
+        letters = unicode(letters,'latin1')
 
 
-        page = self.colours.colour_print(printer.text_to_ascii("Have your say "+str(self.n)+"/21",vertical_condense=True))      
-        page += unicode(letters)
+        page = self.colours.colour_print(printer.text_to_ascii("Have your say "+str(self.n)+"/21",vertical_condense=True))
+        page += "\n\n"
+        page += letters
         page += self.colours.Foreground.DEFAULT
         page += self.colours.Background.DEFAULT
-        page += "\n\n"
         if self.n==21:
             page += "~ END OF LETTERS ~"
         else:
             page += "The letters continue on page "+str(200+self.n)
-        self.content = page.decode('latin-1')
+        self.content = page
 
 letters_page1 = LetterPage("200",1)
 letters_page1.in_index = True
