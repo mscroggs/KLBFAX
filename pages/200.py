@@ -79,7 +79,9 @@ class LetterPage(Page):
 
 
         page = self.colours.colour_print(printer.text_to_ascii("Have your say "+str(self.n)+"/21",vertical_condense=True))      
-        page += letters+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
+        page += unicode(letters)
+        page += self.colours.Foreground.DEFAULT
+        page += self.colours.Background.DEFAULT
         page += "\n\n"
         if self.n==21:
             page += "~ END OF LETTERS ~"
