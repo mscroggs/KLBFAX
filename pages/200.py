@@ -85,7 +85,7 @@ class LetterPage(Page):
             page += "~ END OF LETTERS ~"
         else:
             page += "The letters continue on page "+str(200+self.n)
-        self.content = page#.decode('latin-1')
+        self.content = page.decode('latin-1')
 
 letters_page1 = LetterPage("200",1)
 letters_page1.in_index = True
