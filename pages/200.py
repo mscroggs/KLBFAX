@@ -84,6 +84,7 @@ class LetterPage(Page):
         page += letters
         page += self.colours.Foreground.DEFAULT
         page += self.colours.Background.DEFAULT
+        page += "\n\n"
         if self.n==21:
             page += "~ END OF LETTERS ~"
         else:
