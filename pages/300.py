@@ -12,6 +12,7 @@ from functions import klb_replace
 class NewsPage(Page):
     def __init__(self, page_num, url, title):
         super(NewsPage, self).__init__(page_num)
+        self.top_title = title
         self.title = "Marts"
         self.url = url
         if page_num == 300:
@@ -27,7 +28,7 @@ class NewsPage(Page):
         newsreaders = ['Huw Edwards','Lizo from Newsround','Moira Stuart','Nick Owen','Aiming Homes','Michael Burke','Trevor Martdonald','Sam Brown','Mart Pice','Jon Snow','Jeremy Paxperson']
         tag = "Presented by " + random.choice(newsreaders)
         content = self.colours.colour_print_join([
-                        (printer.text_to_ascii(self.title)+"",
+                        (printer.text_to_ascii(self.top_title)+"",
                             self.colours.Background.BLACK,
                             self.colours.Foreground.RED+self.colours.Style.BOLD)                            
                     ],"","")   
