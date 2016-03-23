@@ -9,6 +9,8 @@ class XMenPage(Page):
     def __init__(self,page_num):
         super(XMenPage, self).__init__(page_num)
         self.title = "X-Men Origins Seminar Room"
+        self.in_index = False
+        self.is_enabled = False
       
     def generate_content(self):
         import urllib2

@@ -12,8 +12,13 @@ from functions import klb_replace
 class NewsPage(Page):
     def __init__(self, page_num, url, title):
         super(NewsPage, self).__init__(page_num)
-        self.title = title
+        self.title = "Marts"
         self.url = url
+        if page_num == 300:
+            self.in_index = True
+            self.index_num = "300-301, 303-306"
+        else:
+            self.in_index = False
 
     def generate_content(self):
         import urllib2

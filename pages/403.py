@@ -15,6 +15,7 @@ class PointsPage(Page):
     def __init__(self, page_num):
         super(PointsPage, self).__init__(page_num)
         self.title = "House Points"
+        self.in_index = False
 
     def generate_content(self):
         import json
