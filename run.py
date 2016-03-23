@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+with open("/home/pi/ceefax/temp","w") as f:
+    f.write("NO")
 
 import os
 

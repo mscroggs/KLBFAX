@@ -93,8 +93,6 @@ def pull_new_version():
     print("Pulling newest version.")
     try:
         system("cd /home/pi/ceefax;git pull")
-        os.environ["klb_run"] = "YES"
-        print os.environ["klb_run"]
         stop_execution()
     except:
         pass
