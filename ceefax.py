@@ -93,6 +93,8 @@ def pull_new_version():
     print("Pulling newest version.")
     try:
         system("cd /home/pi/ceefax;git pull")
+        with open("/home/pi/ceefax/temp","w") as f:
+            f.write("YES")
         stop_execution()
     except:
         pass
