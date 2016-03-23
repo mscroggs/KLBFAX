@@ -42,7 +42,7 @@ class UKTempPage(Page):
                                     ^r4$$$$$$$$"
                                       *f*$$$$*"
                                     ".4 *$$$$$$$$.
-                              4eee%.e.  .$$$$$$$$$$r
+                              4eee%.e   .$$$$$$$$$$r
                             4$$$$$$$$b  P$**)$$$$$$b
                          e..4$$$$$$$$$"     $$$$$$$$c.
                          3$$$$$$$$$$*"   "  ^"$$$$$$$$c
@@ -61,7 +61,7 @@ class UKTempPage(Page):
         height_chars = 20
         width_chars = 38
         min_lat = 49.95
-        max_lat = 58.6725
+        max_lat = 57.827
         min_lon = -10.454521
         max_lon = 1.766667
         
@@ -77,7 +77,7 @@ class UKTempPage(Page):
         uk_map = uk_map.replace("\"",u"▀")
         uk_map = uk_map.replace("*",u"▀")
         uk_map = uk_map.replace("F",u"▀")
-        uk_map = uk_map.replace("f",u"▀")
+        uk_map = uk_map.replace("f",u"█")
         uk_map = uk_map.replace("^",u"▀")
         uk_map = uk_map.replace("P",u"▀")
         uk_map = uk_map.replace("4",u"█")
@@ -85,6 +85,7 @@ class UKTempPage(Page):
         uk_map = uk_map.replace("b",u"█")
         uk_map = uk_map.replace("d",u"▄")
         uk_map = uk_map.replace("r",u"▄")
+        uk_map = uk_map.replace("=",u"▄")
         uk_map = uk_map.replace("c",u"▄")
         uk_map = uk_map.replace("e",u"▄")
         uk_map = uk_map.replace("L",u"▄")
@@ -94,64 +95,65 @@ class UKTempPage(Page):
         uk_map = uk_map.replace(")","")
         uk_map = uk_map.replace("-","")
         
-        content += uk_map
-        
-        
-        '''
-        zones = ["LA","NY","MX","LO","PA","BE|","RO","AA","BN|","BJ","TK|","ML"]
-        temps = ['50' for i in range(12)]    
-
+        with open("uk_coordinate_ids.txt") as f:
+            ordered_ids = [line.rstrip('\n') for line in f]    
+          
+        temps = [99 for i in range(len(ordered_ids))]
         i = 0
+              
+        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[0:100]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
+        response = urllib2.urlopen(url)
+        data = json.load(response)   
         for city in data['list']:
-            temps[i] = str(int(round(city['main']['temp'])))
+            temps[i] = float(city['main']['temp'])
             i+=1
+        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[100:200]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
+        response = urllib2.urlopen(url)
+        data = json.load(response)   
+        for city in data['list']:
+            temps[i] = float(city['main']['temp'])
+            i+=1 
+        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[200:300]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
+        response = urllib2.urlopen(url)
+        data = json.load(response)   
+        for city in data['list']:
+            temps[i] = float(city['main']['temp'])
+            i+=1 
+        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[300:]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
+        response = urllib2.urlopen(url)
+        data = json.load(response)   
+        for city in data['list']:
+            temps[i] = float(city['main']['temp'])
+            i+=1    
+            
+        ordered_temps = sorted(temps)
+        #boundaries = [ordered_temps[int((len(ordered_ids)-1)*(n/6.))] for n in range(6)]
+        boundaries = [-99,0,3,6,9,12,15,18,21,24]
+        colours_before = [self.colours.Style.DEFAULT+self.colours.Foreground.BLUE,
+                            self.colours.Foreground.BLUE+self.colours.Style.BOLD,
+                            self.colours.Foreground.CYAN+self.colours.Style.BOLD,
+                            self.colours.Style.DEFAULT+self.colours.Foreground.CYAN,
+                            self.colours.Style.DEFAULT+self.colours.Foreground.GREEN,
+                            self.colours.Foreground.GREEN+self.colours.Style.BOLD,
+                            self.colours.Foreground.YELLOW+self.colours.Style.BOLD,
+                            self.colours.Style.DEFAULT+self.colours.Foreground.YELLOW,
+                            self.colours.Foreground.RED+self.colours.Style.BOLD,
+                            self.colours.Style.DEFAULT+self.colours.Foreground.RED]
+        clear_colour = self.colours.Foreground.DEFAULT
+        i = 0
+        coloured_map = ''
+        for char in uk_map:
+            color = ''
+            if (char != ' ' and char != "\n"):
+                j = 0
+                for b in boundaries:
+                    if temps[i] >= b:
+                        color = colours_before[j]
+                    j+=1
+                i+=1
+            coloured_map = coloured_map + color + char
         
-
-        content += "\n\n"
-        for i in range(4):
-            fcolor = ['','','']
-            bcolor = ['','','']
-            for j in range(3):
-                if int(temps[3*i+j]) <= 0:
-                    fcolor[j] = self.colours.Background.CYAN+self.colours.Style.BLINK
-                    bcolor[j] = self.colours.Foreground.CYAN+self.colours.Style.BOLD            
-                elif 0 < int(temps[3*i+j]) < 10:
-                    fcolor[j] = self.colours.Background.GREEN+self.colours.Style.BLINK
-                    bcolor[j] = self.colours.Foreground.GREEN+self.colours.Style.BOLD            
-                elif 10 <= int(temps[3*i+j]) < 20:
-                    fcolor[j] = self.colours.Background.YELLOW+self.colours.Style.BLINK
-                    bcolor[j] = self.colours.Foreground.YELLOW+self.colours.Style.BOLD
-                elif 10 <= int(temps[3*i+j]) < 30:
-                    fcolor[j] = self.colours.Background.YELLOW
-                    bcolor[j] = self.colours.Foreground.YELLOW
-                else:
-                    fcolor[j] = self.colours.Background.RED+self.colours.Style.BLINK
-                    bcolor[j] = self.colours.Foreground.RED+self.colours.Style.BOLD
-                       
-            content += self.colours.colour_print_join([
-                            (size4_printer.text_to_ascii(zones[3*i]+"",False)+"",
-                                fcolor[0],
-                                self.colours.Foreground.BLACK),
-                            (size4_printer.text_to_ascii(pad_number(temps[3*i]),False)+"  ",
-                                self.colours.Background.BLACK,
-                                bcolor[0]),
-                            (size4_printer.text_to_ascii(zones[3*i+1]+"",False)+"",
-                                fcolor[1],
-                                self.colours.Foreground.BLACK),
-                            (size4_printer.text_to_ascii(pad_number(temps[3*i+1]),False)+"  ",
-                                self.colours.Background.BLACK,
-                                bcolor[1]),
-                            (size4_printer.text_to_ascii(zones[3*i+2]+"",False)+"",
-                                fcolor[2],
-                                self.colours.Foreground.BLACK),
-                            (size4_printer.text_to_ascii(pad_number(temps[3*i+2]),False)+"",
-                                self.colours.Background.BLACK,
-                                bcolor[2])                                
-                        ]," "," ")     
-            content += "\n"
-                    
-        content += "\n"
-        '''
+        content += coloured_map
         
         self.content = content
         self.tagline = tag
