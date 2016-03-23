@@ -18,7 +18,7 @@ class WorldTempPage(Page):
     def generate_content(self):
         import urllib2, json
         
-        url = "http://api.openweathermap.org/data/2.5/group?id=5368361,5128638,3530597,2643743,2968815,2950158,3169070,344979,1820906,1816670,1850147,7839805&units=metric&appid=b1b15e88fa797225412429c1c50c122a"
+        url = "http://api.openweathermap.org/data/2.5/group?id=5368361,5128638,3530597,2643743,2968815,2950158,3169070,344979,1820906,1816670,1850147,7839805&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
         response = urllib2.urlopen(url)
         data = json.load(response)        
         

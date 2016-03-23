@@ -10,14 +10,14 @@ from pytz import timezone
 import pytz
 
 
-class WorldTempPage(Page):
+class UKTempPage(Page):
     def __init__(self, page_num):
-        super(WorldTempPage, self).__init__(page_num)
-        self.title = "World Temperature"
+        super(UKTempPage, self).__init__(page_num)
+        self.title = "UK Temperature"
 
     def generate_content(self):
         import urllib2, json
-        
+        '''
         url = "http://api.openweathermap.org/data/2.5/group?id=5368361,5128638,3530597,2643743,2968815,2950158,3169070,344979,1820906,1816670,1850147,7839805&units=metric&appid=b1b15e88fa797225412429c1c50c122a"
         response = urllib2.urlopen(url)
         data = json.load(response)        
@@ -28,12 +28,76 @@ class WorldTempPage(Page):
                 zero_pad = "|"*5
             
             return zero_pad + "|"*2*number.count("1") + "|"*2*number.count("-") + number
-        
+        '''
         
         tag = "Why exactly do we live in Britain?"
-        content = colour_print(printer.text_to_ascii("World Temperature"),
+        content = colour_print(printer.text_to_ascii("UK Temperature"),
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
-
+        
+        uk_map = '''
+                                   F"  4$$$$P"
+                                    r *$$$$$".c...
+                                    %-4$$$$$$$$$$"
+                                     J$*$$$$$$$$P
+                                    ^r4$$$$$$$$"
+                                      *f*$$$$*"
+                                    ".4 *$$$$$$$$.
+                              4eee%.e.  .$$$$$$$$$$r
+                            4$$$$$$$$b  P$**)$$$$$$b
+                         e..4$$$$$$$$$"     $$$$$$$$c.
+                         3$$$$$$$$$$*"   "  ^"$$$$$$$$c
+                        *$$$$$$$$$$$.        *$$$$$$$$$.
+                         ..$$$$$$$$$L    c ..J$$$$$$$$$b
+                         d"$$$$$$$$$F   .@$$$$$$$$$$$$$P"..
+                      ..$$$$$$$$$$$$      d$$$$$$$$$$$$$$$$$
+                      =$$$$$$$$P"" "    .e$$$$$$$$$$$$$$$$$$
+                         *""          $**$$$$$$$$$$$$$$$$*
+                                          "".$$$$$$$$$$$C .
+                                       .z$$$$$$$$$$$$$$$$""
+                                      .$$$$*"^**"  "    
+        '''
+        
+        # Map goes from 58.6725 N to  49.95 and -10.454521 (W) to 1.766667 E
+        height_chars = 20
+        width_chars = 38
+        min_lat = 49.95
+        max_lat = 58.6725
+        min_lon = -10.454521
+        max_lon = 1.766667
+        
+        lats = [min_lat + i*(max_lat-min_lat)/(height_chars-1) for i in range(height_chars)]
+        lons = [min_lon + i*(max_lon-min_lon)/(width_chars-1) for i in range(width_chars)]
+        
+        
+        
+        uk_map = uk_map.replace("$",u"█")
+        uk_map = uk_map.replace("@",u"█")
+        uk_map = uk_map.replace("%",u"█")
+        uk_map = uk_map.replace("3",u"█")
+        uk_map = uk_map.replace("\"",u"▀")
+        uk_map = uk_map.replace("*",u"▀")
+        uk_map = uk_map.replace("F",u"▀")
+        uk_map = uk_map.replace("f",u"▀")
+        uk_map = uk_map.replace("^",u"▀")
+        uk_map = uk_map.replace("P",u"▀")
+        uk_map = uk_map.replace("4",u"█")
+        uk_map = uk_map.replace("C",u"█")
+        uk_map = uk_map.replace("b",u"█")
+        uk_map = uk_map.replace("d",u"▄")
+        uk_map = uk_map.replace("r",u"▄")
+        uk_map = uk_map.replace("c",u"▄")
+        uk_map = uk_map.replace("e",u"▄")
+        uk_map = uk_map.replace("L",u"▄")
+        uk_map = uk_map.replace("z",u"▄")
+        uk_map = uk_map.replace(".",u"▄")
+        uk_map = uk_map.replace("J","")
+        uk_map = uk_map.replace(")","")
+        uk_map = uk_map.replace("-","")
+        
+        content += uk_map
+        
+        
+        '''
         zones = ["LA","NY","MX","LO","PA","BE|","RO","AA","BN|","BJ","TK|","ML"]
         temps = ['50' for i in range(12)]    
 
@@ -87,9 +151,10 @@ class WorldTempPage(Page):
             content += "\n"
                     
         content += "\n"
+        '''
         
         self.content = content
         self.tagline = tag
 
 page_number = os.path.splitext(os.path.basename(__file__))[0]
-worldtemp_page = WorldTempPage(page_number)
+uktemp_page = UKTempPage(page_number)
