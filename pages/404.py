@@ -9,4 +9,4 @@ sub_page.title = "Page Not Found"
 sub_page.in_index=False
 sub_page.content = colour_print(printer.text_to_ascii("404", padding={"left": 30}))
 sub_page.content += "\n\n"
-sub_page.content += colour_print(printer.text_to_ascii("PAge Not Found", padding={"left": 2}))
+sub_page.content += colour_print(printer.text_to_ascii("Page Not Found", padding={"left": 2}))
