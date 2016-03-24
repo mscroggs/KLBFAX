@@ -1,7 +1,9 @@
 #!/usr/bin/env python
-with open("/home/pi/ceefax/temp","w") as f:
-    f.write("NO")
-
+try:
+    with open("/home/pi/ceefax/temp","w") as f:
+        f.write("NO")
+    except:
+        pass
 import os
 
 import ceefax
