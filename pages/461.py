@@ -156,8 +156,10 @@ class UKTempPage(Page):
             coloured_map = coloured_map + color + char
 
         scale = [colours_before[-1]+"Hottest"+clear_colour]
-        for i in reversed(colours_before):
-            scale.append(i+u"█"*7+clear_colour)
+        bstr = [u"██"]+["0"*(2-len(str(i)))+str(i) for i in boundaries[1:]]+[u"██"]
+        #[-99,0,3,6,9,12,15,18,21,24]
+        for i,r in enumerate(reversed(colours_before)):
+            scale.append(r+u"█"+bstr[-i-2]+"-"+bstr[-i-1]+u"█"+clear_colour)
         scale.append(colours_before[0]+"Coldest"+clear_colour)
 
         map_with_scale = ""
