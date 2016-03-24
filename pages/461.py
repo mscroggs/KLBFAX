@@ -34,8 +34,7 @@ class UKTempPage(Page):
         content = colour_print(printer.text_to_ascii("UK Temperature"),
                             self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
         
-        uk_map = '''
-                                   F"  4$$$$P"
+        uk_map = '''                                   F"  4$$$$P"
                                     r *$$$$$".c...
                                     %-4$$$$$$$$$$"
                                      J$*$$$$$$$$P
@@ -155,8 +154,22 @@ class UKTempPage(Page):
                     j+=1
                 i+=1
             coloured_map = coloured_map + color + char
-        
-        content += coloured_map
+
+        scale = [[colours_before[-1]+"Hottest"+clear_colour,7]]
+        for i in reversed(colours_before):
+            scale.append([i+u"█"+clear_colour,1])
+        scale.append([colours_before[0]+"Coldest"+clear_colour,7])
+
+        map_with_scale = ""
+        for i,line in enumerate(coloured_map.split("\n")):
+            if i<len(scale):
+                map_with_scale += scale[i][0]
+                map_with_scale += line[scale[i][1]:]
+            else:
+                map_with_scale += line
+            map_with_scale += "\n"
+
+        content += map_with_scale
         
         self.content = content
         self.tagline = tag
