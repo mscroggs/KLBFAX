@@ -94,9 +94,12 @@ class UKTempPage(Page):
         uk_map = uk_map.replace("J","")
         uk_map = uk_map.replace(")","")
         uk_map = uk_map.replace("-","")
-        
-        with open("uk_coordinate_ids.txt") as f:
-            ordered_ids = [line.rstrip('\n') for line in f]    
+        try:
+            with open("uk_coordinate_ids.txt") as f:
+                ordered_ids = [line.rstrip('\n') for line in f]
+        except:
+            with open("/home/pi/ceefax/uk_coordinate_ids.txt") as f:
+                ordered_ids = [line.rstrip('\n') for line in f]
           
         temps = [99 for i in range(len(ordered_ids))]
         i = 0
