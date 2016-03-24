@@ -155,16 +155,16 @@ class UKTempPage(Page):
                 i+=1
             coloured_map = coloured_map + color + char
 
-        scale = [[colours_before[-1]+"Hottest"+clear_colour,7]]
+        scale = [colours_before[-1]+"Hottest"+clear_colour]
         for i in reversed(colours_before):
-            scale.append([i+u"█"+clear_colour,1])
-        scale.append([colours_before[0]+"Coldest"+clear_colour,7])
+            scale.append(i+u"█"*7+clear_colour)
+        scale.append(colours_before[0]+"Coldest"+clear_colour)
 
         map_with_scale = ""
         for i,line in enumerate(coloured_map.split("\n")):
             if i<len(scale):
-                map_with_scale += scale[i][0]
-                map_with_scale += line[scale[i][1]:]
+                map_with_scale += scale[i]
+                map_with_scale += line[7:]
             else:
                 map_with_scale += line
             map_with_scale += "\n"
