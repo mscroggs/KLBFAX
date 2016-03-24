@@ -2,8 +2,9 @@
 try:
     with open("/home/pi/ceefax/temp","w") as f:
         f.write("NO")
-    except:
-        pass
+except:
+    pass
+
 import os
 
 import ceefax
