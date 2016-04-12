@@ -66,7 +66,7 @@ for page_num, page in items:
             pages_on += p_next + '"'+page_num+'"'
             p_next = ","
         if page.tagline != NAME + ": The World at Your Fingertips":
-            pages_on += t_next +'"'+page_num+'":"'+page.tagline+'"'
+            taglines += t_next +'"'+page_num+'":"'+page.tagline+'"'
             t_next = ","
     except BaseException as e:
         print page_num,e
