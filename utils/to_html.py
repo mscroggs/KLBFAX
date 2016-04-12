@@ -39,12 +39,12 @@ for page_file in only_page_files:
             except:
                 pass
 
-pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../html")
+html_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../html")
 
 items = pageFactory.pages.items()
 items.sort()
-taglines = "taglines = {
-pages_on = "pages_on = Array(
+taglines = "taglines = {"
+pages_on = "pages_on = Array("
 t_next = ""
 p_next = ""
 for page_num, page in items:
@@ -60,7 +60,7 @@ for page_num, page in items:
             spans = len(cont[0].split("<span"))-len(cont[0].split("</span>"))
             cont = [cont[0]+"</span>"*spans+cont[1]] + cont[2:]
         cont = cont[0]
-        with open(os.path.join(pages_dir,page_num+".html"),"w") as f:
+        with open(os.path.join(html_dir,page_num+".html"),"w") as f:
             f.write(cont)
         if page.is_enabled:
             pages_on += p_next + '"'+page_num+'"'
@@ -68,11 +68,13 @@ for page_num, page in items:
         if page.tagline != NAME + ": The World at Your Fingertips":
             pages_on += t_next +'"'+page_num+'":"'+page.tagline+'"'
             t_next = ","
+        print page_num
     except BaseException as e:
         print page_num,e
 
 taglines += "}"
 pages_on += ")"
 
-with open(os.path.join(pages_dir,"info.js"),"w") as f:
+print os.path.join(html_dir,"info.js")
+with open(os.path.join(html_dir,"info.js"),"w") as f:
     f.write(taglines+"\n"+pages_on)
