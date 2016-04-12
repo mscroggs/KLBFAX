@@ -44,7 +44,6 @@ items = pageFactory.pages.items()
 items.sort()
 for page_num, page in items:
     try:
-        print page_num,"starting"
         page.generate_content()
         cont = page.content.encode('ascii', 'xmlcharrefreplace')
         cont = "<br />".join(cont.split("\n"))
@@ -58,7 +57,5 @@ for page_num, page in items:
         cont = cont[0]
         with open(os.path.join(pages_dir,page_num+".html"),"w") as f:
             f.write(cont)
-        print page_num,"finished"
-    except:
-        print page_num,"failed"
-    print "-------------"
+    except BaseException as e:
+        print page_num,e
