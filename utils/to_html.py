@@ -44,10 +44,11 @@ items = pageFactory.pages.items()
 items.sort()
 for page_num, page in items:
     try:
+        print page_num,"starting"
         page.generate_content()
         cont = page.content.encode('ascii', 'xmlcharrefreplace')
         cont = "<br />".join(cont.split("\n"))
-        cont = " &nbsp;".join(cont.split("  "))
+        cont = "&nbsp;".join(cont.split(" "))
         for term,html in terminal_to_html.items():
             cont = html.join(cont.split(term))
         cont = cont.split("\033[0m")
@@ -57,5 +58,7 @@ for page_num, page in items:
         cont = cont[0]
         with open(os.path.join(pages_dir,page_num+".html"),"w") as f:
             f.write(cont)
+        print page_num,"finished"
     except:
-        pass
+        print page_num,"failed"
+    print "-------------"
