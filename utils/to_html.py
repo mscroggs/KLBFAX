@@ -51,8 +51,8 @@ for page_num, page in items:
     try:
         page.generate_content()
         cont = page.content.encode('ascii', 'xmlcharrefreplace')
-        cont = "<br />".join(cont.split("\n"))
         cont = "&nbsp;".join(cont.split(" "))
+        cont = "<br />".join(cont.split("\n"))
         for term,html in terminal_to_html.items():
             cont = html.join(cont.split(term))
         cont = cont.split("\033[0m")
