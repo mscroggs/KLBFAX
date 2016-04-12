@@ -4,6 +4,7 @@ from page import Page
 from colours import colour_print
 from printer import instance as printer
 from functions import klb_replace
+from time import strftime
 
 class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):
