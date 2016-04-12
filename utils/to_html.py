@@ -42,6 +42,10 @@ pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../html")
 
 items = pageFactory.pages.items()
 items.sort()
+taglines = "taglines = {
+pages_on = "pages_on = Array(
+t_next = ""
+p_next = ""
 for page_num, page in items:
     try:
         page.generate_content()
@@ -57,5 +61,17 @@ for page_num, page in items:
         cont = cont[0]
         with open(os.path.join(pages_dir,page_num+".html"),"w") as f:
             f.write(cont)
+        if page.is_enabled:
+            pages_on += p_next + '"'+page_num+'"'
+            p_next = ","
+        if page.tagline != "KLBFAX: The World at Your Fingertips":
+            pages_on += t_next +'"'+page_num+'":"'+page.tagline+'"'
+            t_next = ","
     except BaseException as e:
         print page_num,e
+
+taglines += "}"
+pages_on += ")"
+
+with open(os.path.join(pages_dir,"info.js"),"w") as f:
+    f.write(taglines+"\n"+pages_on)
