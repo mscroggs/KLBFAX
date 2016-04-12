@@ -10,6 +10,7 @@ from os.path import isfile
 import os
 from page import PageFactory, Page
 from colours import terminal_to_html
+from name import NAME
 
 def is_page_file(f):
     if "_" in f:
@@ -64,7 +65,7 @@ for page_num, page in items:
         if page.is_enabled:
             pages_on += p_next + '"'+page_num+'"'
             p_next = ","
-        if page.tagline != "KLBFAX: The World at Your Fingertips":
+        if page.tagline != NAME + ": The World at Your Fingertips":
             pages_on += t_next +'"'+page_num+'":"'+page.tagline+'"'
             t_next = ","
     except BaseException as e:
