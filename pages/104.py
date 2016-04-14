@@ -53,7 +53,8 @@ jokes = {"Who is the best singer in the KLB?":"Mart Garfunkel",
          "What is Mart's favourite breakfast cereal?":"Pice Krispies",
          "What is the best coffee?":"A Martte",
          "What do you get when you put French bread in a spiraliser?":"Baguetti",
-         "Why do you never see elephants hiding in trees?":"They are big"
+         "Why do you never see elephants hiding in trees?":"They are big",
+		 "What is the best sausage?":"Cumberbatch"
          }
 
 class JokePage(Page):

@@ -17,6 +17,9 @@ class TVPage(Page):
         pages.append([page_num,channel+" ("+day+")"])
 
     def generate_content(self):
+        from time import strptime, strftime
+        import feedparser
+        import datetime
         import urllib2
         content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
         rss_dict = {"642": "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
@@ -25,9 +28,6 @@ class TVPage(Page):
                     "694": "http://www.iplayerconverter.co.uk/wu/4/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
                     }
         if self.page_num in rss_dict.keys():
-            import feedparser
-            from time import strptime, strftime
-            import datetime
             rss_url = rss_dict[self.page_num]
             
             feed = feedparser.parse(rss_url)
