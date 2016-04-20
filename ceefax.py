@@ -13,7 +13,7 @@ import now
 import page
 import ThreadSignaller
 import Queue
-
+from random import choice
 
 class ConfigError(Exception):
     pass
@@ -67,6 +67,8 @@ def stop_execution():
 def get_greeting_page(barcode):
     namefile_path = "/home/pi/cards/" + barcode
     extra = ""
+    from page import greetings
+    greetings += ["Good morning","Guten morgen","God morgen"]
     if isfile(namefile_path):
         (name, house, twitter) = points.get_name_house(namefile_path)
 
@@ -77,7 +79,7 @@ def get_greeting_page(barcode):
         if twitter is None:
             deets = ""
         else:
-            deets = "Good morning @"+twitter+"!"
+            deets = choice(greetings) + " @"+twitter+"! "
 
         time = now.now().strftime("%H")
 
