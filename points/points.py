@@ -9,7 +9,7 @@ def update_status(status=None):
             f.write("\n"+status)
 
 
-def add_points(house, number):
+def add_points(house, number, deets=""):
   if not os.getenv("SLAVE"):
     while u"\u0000" in house:
         house = house.strip(u"\u0000")
@@ -25,9 +25,9 @@ def add_points(house, number):
     with open(join(expanduser('~'), '.klb/points'), 'w+') as f:
         json.dump(data, f)
     if number == 1:
-        update_status(status=str(number)+" point to "+house+"!")
+        update_status(status=deets + str(number)+" point to "+house+"!")
     else:
-        update_status(status=str(number)+" points to "+house+"!")
+        update_status(status=deets + str(number)+" points to "+house+"!")
 
 
 def should_add_morning_points(time, house, lines, oldname):
@@ -47,12 +47,12 @@ def num_of_morning_points(time):
         return 10
 
 
-def add_morning_points(time, house, oldname):
+def add_morning_points(time, house, oldname, deets):
   if not os.getenv("SLAVE"):
     with open("/home/pi/cards/" + oldname, "a") as f:
         f.write("\nused")
         points_added = num_of_morning_points(time)
-        add_points(house, points_added)
+        add_points(house, points_added, deets)
     return points_added
 
 
@@ -71,6 +71,12 @@ def get_name_house(input):
         house = lines[1].strip("\n")
     except:
         house = None
+    try:
+        twitter = lines[2].strip("\n")
+        if twitter == "used":
+            twitter = None
+    except:
+        twitter = None
 
-    return (name, house)
+    return (name, house, twitter)
 

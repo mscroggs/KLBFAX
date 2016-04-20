@@ -68,18 +68,23 @@ def get_greeting_page(barcode):
     namefile_path = "/home/pi/cards/" + barcode
     extra = ""
     if isfile(namefile_path):
-        (name, house) = points.get_name_house(namefile_path)
+        (name, house, twitter) = points.get_name_house(namefile_path)
 
         if not house:
             extra = """Error finding your house. Please
                         report to Scroggs."""
+
+        if twitter is None:
+            deets = ""
+        else:
+            deets = "Good morning @"+twitter+"!"
 
         time = now.now().strftime("%H")
 
         name_file = points.read_name_file(namefile_path)
         if points.should_add_morning_points(time, house, name_file,
                                             barcode):
-            points_added = points.add_morning_points(time, house, barcode)
+            points_added = points.add_morning_points(time, house, barcode, deets)
             extra = str(points_added) + " points to " + house + "!"
 
         name_page = page.NamePage(name, extra=extra)
