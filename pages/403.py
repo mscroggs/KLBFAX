@@ -88,7 +88,7 @@ class PointsPage(Page):
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
             content += " "
             content += self.colours.Foreground.GREEN + str(points) + self.colours.Foreground.DEFAULT
-            if i%4==0:  content += "\n"
+            if i%5==0:  content += "\n"
             else:       content += "  "
 
         self.content = content
