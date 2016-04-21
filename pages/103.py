@@ -8,7 +8,7 @@ page_number = os.path.splitext(os.path.basename(__file__))[0]
 
 class SuckPage(Page):
     def __init__(self,page_num):
-        super(TubePage, self).__init__(page_num)
+        super(SuckPage, self).__init__(page_num)
         self.title = "Important Information"
 
     def generate_content(self):
