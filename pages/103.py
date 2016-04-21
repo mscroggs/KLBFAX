@@ -21,6 +21,4 @@ class SuckPage(Page):
             self.content = colour_print(
                 printer.text_to_ascii("B&Q suck(s)"))
 
-page = TubePage("101")
-
 sub_page = SuckPage(page_number)
