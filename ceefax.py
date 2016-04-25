@@ -42,16 +42,16 @@ pageFactory = PageFactory()
 
 for page_file in only_page_files:
     page_file_no_ext = os.path.splitext(page_file)[0]
-    module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
-                     page_file_no_ext)
-    reload(module)
-    for filename in dir(module):
-        obj = getattr(module, filename)
-        if isinstance(obj, Page):
-            try:
+    try:
+        module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                         page_file_no_ext)
+        reload(module)
+        for filename in dir(module):
+            obj = getattr(module, filename)
+            if isinstance(obj, Page):
                 pageFactory.add(obj)
-            except:
-                pass
+    except:
+        pass
 
 
 def restart_computer():
