@@ -14,9 +14,9 @@ class PiPage(Page):
     def generate_content(self):
         with open("pages/pi.txt") as f:
             pi = f.read()
-        self.content = title
+        self.content = title + "\n"
         for i in range(100):
-            line = pi[i:i+80]
+            line = pi[80*i:80*i+80]
             self.content += line + "\n"      
 
 sub_page = PiPage("314")
