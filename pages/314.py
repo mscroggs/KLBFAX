@@ -12,8 +12,9 @@ class PiPage(Page):
         self.title = "Pi"
 
     def generate_content(self):
-        with open("pages/pi.txt") as f:
-            pi = f.read()
+        #with open("pages/pi.txt") as f:
+        #    pi = f.read()
+        from pi import pi
         self.content = title + "\n"
         for i in range(100):
             line = pi[80*i:80*i+80]
