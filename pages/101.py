@@ -122,7 +122,7 @@ class TubePage(Page):
             contentT += self.colours.Foreground.DEFAULT
 
             if desc == "Good Service":
-			    content_good_service+=contentT
+                content_good_service+=contentT
             else
                 content_bad_service+=contentT
             linei += 1
