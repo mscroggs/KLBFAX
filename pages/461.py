@@ -32,7 +32,7 @@ class UKTempPage(Page):
         
         tag = "Why exactly do we live in Britain?"
         content = colour_print(printer.text_to_ascii("UK Temperature"),
-                            self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)
+                            self.colours.Background.CYAN, self.colours.Foreground.MAGENTA)+"\n"
         
         uk_map = '''                                   F"  4$$$$P"
                                     r *$$$$$".c...
