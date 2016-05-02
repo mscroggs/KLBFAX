@@ -157,7 +157,7 @@ class TubePage(Page):
             content += self.colours.Foreground.DEFAULT
             linei += 1        
 		'''
-		content = content_bad_service + "\n" + content_good_service
+		content += content_bad_service + "\n" + content_good_service
 
         self.content = content
 
