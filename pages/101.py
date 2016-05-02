@@ -123,7 +123,7 @@ class TubePage(Page):
 
             if desc == "Good Service":
                 content_good_service+=contentT
-            else
+            else:
                 content_bad_service+=contentT
             linei += 1
         #content += "\n"
