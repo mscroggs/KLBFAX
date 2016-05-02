@@ -18,8 +18,8 @@ class TubePage(Page):
         # Get a list of tube lines
         lines = current_status.list_lines()
         # Loop through the lines and print the status of each one
-        lines_tube = [lines[i] for i in [1,2,11,4,9,0,3,13,5,7,10]]
-        lines_other = [lines[i] for i in [8,6,12]]
+        lines_tube = [lines[i] for i in [1,2,12,4,10,0,3,14,5,7,11]]
+        lines_other = [lines[i] for i in [8,6,12,9]]
         colours_tube = [self.colours.Background.YELLOW,
                         self.colours.Background.RED,
                         self.colours.Background.YELLOW+self.colours.Style.BLINK,
@@ -45,10 +45,12 @@ class TubePage(Page):
                         
         colours_other = [self.colours.Background.CYAN,
                         self.colours.Background.YELLOW,
-                        self.colours.Background.BLUE]  
+                        self.colours.Background.BLUE,
+						self.colours.Background.GREEN+self.colours.Style.BLINK]  
         colours_other_text = [self.colours.Foreground.BLACK, 
                         self.colours.Foreground.BLACK,
-                        self.colours.Foreground.WHITE]
+                        self.colours.Foreground.WHITE,
+						self.colours.Foreground.BLACK]
                         
         mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''), 
                     ('GOOD SERVICE on the rest of the line.', ''),
@@ -61,7 +63,7 @@ class TubePage(Page):
                     ('The service will resume again at 0615.', ''), 
                     ('Train service will resume at 06:15 tomorrow.', ''),
                     ('No service between ', ''),
-                    ('Minor delays ', ''),
+                    #('Minor delays ', ''),
                     (' due to planned engineering work.', ''),
                     (' due to planned work.', ''),   
                     #('due to ', ''),                    
@@ -69,6 +71,7 @@ class TubePage(Page):
                     ('Kings Cross St. Pancras', 'KX'),
                     ('Tottenham Court Road', 'TCR'),
                     ('Highbury & Islington', 'H&I'),
+					('Harrow & Wealdstone', 'H&W'),
                     ('Cross', 'X'),
                     ('Road', 'Rd'),    
                     ('Square', 'Sq'),
@@ -76,7 +79,13 @@ class TubePage(Page):
                     ('Junction', 'Jn'),  
                     ('Town', 'Tn'),   
                     ('Park', 'Pk'),
-                    ('Lane', 'Ln'),                    
+                    ('Lane', 'Ln'),
+					('Hill', 'Hl'),
+					('Central','Ctl'),
+					('North ','N '),
+					('South ','S '),
+					('East ','E '),
+					('West ','W '),
                     (' and ','-'),
                     ('between ',''),
                     (' to ','-')]   
