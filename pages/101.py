@@ -19,7 +19,7 @@ class TubePage(Page):
         lines = current_status.list_lines()
         # Loop through the lines and print the status of each one
         lines_tube = [lines[i] for i in [1,2,12,4,10,0,3,14,5,7,11]]
-        lines_other = [lines[i] for i in [8,6,12,9]]
+        lines_other = [lines[i] for i in [8,6,13,9]]
         colours_tube = [self.colours.Background.YELLOW,
                         self.colours.Background.RED,
                         self.colours.Background.YELLOW+self.colours.Style.BLINK,
@@ -90,22 +90,24 @@ class TubePage(Page):
                     ('between ',''),
                     (' to ','-')]   
         
-        linei = 0
-        for line in lines_tube:
-            content += "\n  "
-            content += colours_tube[linei] + colours_tube_text[linei]
+        content_bad_service = ""
+		content_good_service = ""
+		linei = 0
+        for line in lines_tube + lines_other:
+            contentT = "\n  "
+            contentT += colours_tube[linei] + colours_tube_text[linei]
             #line = line.replace("and","&")
-            content += " " + str(line).replace("and","&") +" "*(20-len(str(line).replace("and","&")))
-            content += self.colours.Background.DEFAULT
+            contentT += " " + str(line).replace("and","&") +" "*(20-len(str(line).replace("and","&")))
+            contentT += self.colours.Background.DEFAULT
             desc = current_status.get_status(line).description
             if desc == "Good Service":
-                content += self.colours.Foreground.GREEN+self.colours.Style.BOLD
+                contentT += self.colours.Foreground.GREEN+self.colours.Style.BOLD
             elif desc == "Minor Delays":
-                content += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
+                contentT += self.colours.Foreground.YELLOW+self.colours.Style.BOLD
             elif desc == "Part Closure":
-                content += self.colours.Foreground.YELLOW
+                contentT += self.colours.Foreground.YELLOW
             else:
-                content += self.colours.Foreground.RED+self.colours.Style.BOLD
+                contentT += self.colours.Foreground.RED+self.colours.Style.BOLD
             full_description = " "
             full_description += current_status.get_status(line).description
             description = current_status.get_status(line).status_details
@@ -113,16 +115,22 @@ class TubePage(Page):
                 description = description.replace(k, v)
             if len(description)>1:
                 full_description += ": " + description
-            content += wrap(full_description,56)[0] 
+            contentT += wrap(full_description,56)[0] 
             for line in wrap(full_description,56)[1:]:
-                content += "\n"+" "*24 + line  
+                contentT += "\n"+" "*24 + line  
                 
-            content += self.colours.Foreground.DEFAULT
+            contentT += self.colours.Foreground.DEFAULT
+			
+			if desc == "Good Service":
+				content_good_service+=contentT
+			else
+				content_bad_service+=contentT
             linei += 1
-        content += "\n"
+        #content += "\n"
         linei = 0
+		'''
         for line in lines_other:
-            content += "\n  "
+            contentT += "\n  "
             content += colours_other[linei] + colours_other_text[linei]            
             content += " " + str(line).replace("and","&") +" "*(20-len(str(line).replace("and","&")))
             content += self.colours.Background.DEFAULT
@@ -147,7 +155,9 @@ class TubePage(Page):
                 content += "\n"+" "*24 + line
             
             content += self.colours.Foreground.DEFAULT
-            linei += 1            
+            linei += 1        
+		'''
+		content = content_bad_service + "\n" + content_good_service
 
         self.content = content
 
