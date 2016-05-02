@@ -46,11 +46,11 @@ class TubePage(Page):
         colours_other = [self.colours.Background.CYAN,
                         self.colours.Background.YELLOW,
                         self.colours.Background.BLUE,
-						self.colours.Background.GREEN+self.colours.Style.BLINK]  
+                        self.colours.Background.GREEN+self.colours.Style.BLINK]  
         colours_other_text = [self.colours.Foreground.BLACK, 
                         self.colours.Foreground.BLACK,
                         self.colours.Foreground.WHITE,
-						self.colours.Foreground.BLACK]
+                        self.colours.Foreground.BLACK]
                         
         mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''), 
                     ('GOOD SERVICE on the rest of the line.', ''),
@@ -71,7 +71,7 @@ class TubePage(Page):
                     ('Kings Cross St. Pancras', 'KX'),
                     ('Tottenham Court Road', 'TCR'),
                     ('Highbury & Islington', 'H&I'),
-					('Harrow & Wealdstone', 'H&W'),
+                    ('Harrow & Wealdstone', 'H&W'),
                     ('Cross', 'X'),
                     ('Road', 'Rd'),    
                     ('Square', 'Sq'),
@@ -80,12 +80,12 @@ class TubePage(Page):
                     ('Town', 'Tn'),   
                     ('Park', 'Pk'),
                     ('Lane', 'Ln'),
-					('Hill', 'Hl'),
-					('Central','Ctl'),
-					('North ','N '),
-					('South ','S '),
-					('East ','E '),
-					('West ','W '),
+                    ('Hill', 'Hl'),
+                    ('Central','Ctl'),
+                    ('North ','N '),
+                    ('South ','S '),
+                    ('East ','E '),
+                    ('West ','W '),
                     (' and ','-'),
                     ('between ',''),
                     (' to ','-')]   
