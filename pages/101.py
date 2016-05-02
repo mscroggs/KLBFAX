@@ -95,7 +95,7 @@ class TubePage(Page):
         linei = 0
         for line in lines_tube + lines_other:
             contentT = "\n  "
-            contentT += colours_tube[linei] + colours_tube_text[linei]
+            contentT += (colours_tube+colours_other)[linei] + (colours_tube_text+colours_other_text)[linei]
             #line = line.replace("and","&")
             contentT += " " + str(line).replace("and","&") +" "*(20-len(str(line).replace("and","&")))
             contentT += self.colours.Background.DEFAULT
