@@ -91,8 +91,8 @@ class TubePage(Page):
                     (' to ','-')]   
         
         content_bad_service = ""
-		content_good_service = ""
-		linei = 0
+        content_good_service = ""
+        linei = 0
         for line in lines_tube + lines_other:
             contentT = "\n  "
             contentT += colours_tube[linei] + colours_tube_text[linei]
@@ -120,15 +120,15 @@ class TubePage(Page):
                 contentT += "\n"+" "*24 + line  
                 
             contentT += self.colours.Foreground.DEFAULT
-			
-			if desc == "Good Service":
-				content_good_service+=contentT
-			else
-				content_bad_service+=contentT
+
+            if desc == "Good Service":
+			    content_good_service+=contentT
+            else
+                content_bad_service+=contentT
             linei += 1
         #content += "\n"
         linei = 0
-		'''
+        '''
         for line in lines_other:
             contentT += "\n  "
             content += colours_other[linei] + colours_other_text[linei]            
@@ -156,8 +156,8 @@ class TubePage(Page):
             
             content += self.colours.Foreground.DEFAULT
             linei += 1        
-		'''
-		content += content_bad_service + "\n" + content_good_service
+        '''
+        content += content_bad_service + "\n" + content_good_service
 
         self.content = content
 
