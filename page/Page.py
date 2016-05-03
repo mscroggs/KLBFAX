@@ -60,7 +60,6 @@ class Page(object):
                   + tagline_print + self.colours.Background.DEFAULT
                   + self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT)
         else:
-            print "h"
             fail_page = FailPage()
             fail_page.reload()
             fail_page.show()

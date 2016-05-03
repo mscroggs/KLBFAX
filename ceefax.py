@@ -117,17 +117,20 @@ class LoopManager(object):
     def standard(self):
         i = 0
         num_cycles_left = 0
-        page = None
+        the_page = None
 
         while True:
             if i >= num_cycles_left:
-                page = pageFactory.get_loaded_random()
+                if now.now().strftime("%H %M") == "12 00":
+                    the_page = page.LunchPage()
+                else:
+                    the_page = pageFactory.get_loaded_random()
             try:
                 signal = ThreadSignaller.queue.get_nowait()
                 if isinstance(signal, ThreadSignaller.ShowPage):
-                    page = pageFactory.get_reloaded_page(signal.page_num)
+                    the_page = pageFactory.get_reloaded_page(signal.page_num)
                 elif isinstance(signal, ThreadSignaller.ShowGreetingPage):
-                    page = get_greeting_page(signal.barcode)
+                    the_page = get_greeting_page(signal.barcode)
                 elif signal == ThreadSignaller.CleanExit:
                     sys.exit()
                 elif signal == ThreadSignaller.InterruptStandardLoop:
@@ -135,12 +138,12 @@ class LoopManager(object):
             except Queue.Empty:
                 pass
 
-            if page:
-                num_cycles_left = self._get_cycles_left(page.duration_sec)
+            if the_page:
+                num_cycles_left = self._get_cycles_left(the_page.duration_sec)
                 i = 0
-                page.show()
-                page = None
-            if not page:
+                the_page.show()
+                the_page = None
+            if not the_page:
                 i += 1
                 time.sleep(config.sleeping_time_ms / 1000.0)
 
