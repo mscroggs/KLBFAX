@@ -120,7 +120,7 @@ class LoopManager(object):
 
         while True:
             if i >= num_cycles_left:
-                if now.now().strftime("%H") == "12" and now.now().minutes < 20:
+                if now.now().strftime("%H") == "12" and now.now().minute < 20:
                     the_page = page.LunchPage()
                 else:
                     the_page = pageFactory.get_loaded_random()
