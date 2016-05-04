@@ -25,6 +25,7 @@ def klb_replace(imput):
             ["Cwm","KLB"],
             ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
             ["You","Belgin"],
+            ["Week","Weak"],
             ["Raymond","Belgin"],
             ["He","Adam"],["Him","Adam"],
             ["She","Anna"],["Her","Anna"],
