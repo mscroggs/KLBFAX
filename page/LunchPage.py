@@ -3,7 +3,7 @@ from printer import instance as printer
 import colours
 
 def colour_print(text):
-    return colours.colour_print(text, colours.Background.WHITE+colours.Style.BLINK, colours.Foreground.BLACK)
+    return colours.colour_print(text, colours.Background.YELLOW+colours.Style.BLINK, colours.Foreground.BLACK)
 
 
 class LunchPage(Page):
