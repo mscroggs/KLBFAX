@@ -23,7 +23,7 @@ class NamePage(Page):
         name = self.name
         from page import greetings
 
-        greeting = choice(greetings)
+        greeting = greetings.random()
         if "Rafael" in name:
             if random()<0.6:
                 greeting = "Muy Feo"

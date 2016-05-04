@@ -68,7 +68,6 @@ def get_greeting_page(barcode):
     namefile_path = "/home/pi/cards/" + barcode
     extra = ""
     from page import greetings
-    greetings += ["Good morning","Guten morgen","God morgen"]
     if isfile(namefile_path):
         (name, house, twitter) = points.get_name_house(namefile_path)
 
@@ -79,7 +78,7 @@ def get_greeting_page(barcode):
         if twitter is None:
             deets = ""
         else:
-            deets = choice(greetings) + " @"+twitter+"! "
+            deets = greetings.random() + " @"+twitter+"! "
 
         time = now.now().strftime("%H")
 
