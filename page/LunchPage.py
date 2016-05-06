@@ -13,5 +13,6 @@ class LunchPage(Page):
         self.name = "Lunch"
         self.content = colour_print(printer.text_to_ascii("Lunchtime!"))
         if now.now().strftime("%a")=="Fri":
+            self.content += "\n"
             self.content += colour_print(printer.text_to_ascii("It's Fancy Friday!"),colours.Background.RED)
         self.loaded = True
