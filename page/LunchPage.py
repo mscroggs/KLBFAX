@@ -1,9 +1,10 @@
 from page import Page
 from printer import instance as printer
 import colours
+import now
 
-def colour_print(text):
-    return colours.colour_print(text, colours.Background.YELLOW+colours.Style.BLINK, colours.Foreground.BLACK)
+def colour_print(text, col=colours.Background.YELLOW):
+    return colours.colour_print(text, col+colours.Style.BLINK, colours.Foreground.BLACK)
 
 
 class LunchPage(Page):
@@ -11,4 +12,6 @@ class LunchPage(Page):
         super(LunchPage, self).__init__("???")
         self.name = "Lunch"
         self.content = colour_print(printer.text_to_ascii("Lunchtime!"))
+        if now.now().strftime("%a")=="Fri":
+            self.content += colour_print(printer.text_to_ascii("It's Fancy Friday!"),colours.Background.RED)
         self.loaded = True
