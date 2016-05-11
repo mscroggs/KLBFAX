@@ -17,3 +17,5 @@ birthday_file = get_bd_filepath()
 
 sleeping_time_ms = 100
 default_page_duration_sec = int(os.getenv('default_page_duration_sec', 30))
+
+weather_file_location = '/home/pi/ceefax/uk_weather_data'
