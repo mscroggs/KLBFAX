@@ -131,6 +131,7 @@ class LoopManager(object):
                 elif isinstance(signal, ThreadSignaller.ShowGreetingPage):
                     the_page = get_greeting_page(signal.barcode)
                 elif signal == ThreadSignaller.CleanExit:
+                    self.weather_thread.stop()
                     sys.exit()
                 elif signal == ThreadSignaller.InterruptStandardLoop:
                     break
@@ -148,6 +149,9 @@ class LoopManager(object):
 
     def current(self):
         self.standard()
+
+    def set_weather_thread(self, weather_thread):
+        self.weather_thread = weather_thread
 
 loop_manager = LoopManager()
 

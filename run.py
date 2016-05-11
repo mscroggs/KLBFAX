@@ -39,4 +39,5 @@ weather_thread = weather.weatherThread()
 weather_thread.start()
 
 while True:
+    ceefax.loop_manager.set_weather_thread(weather_thread)
     ceefax.loop_manager.current()

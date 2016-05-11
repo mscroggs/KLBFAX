@@ -4,11 +4,12 @@ import urllib2
 import pickle
 import json
 import config
+import file_handler
 
 # Update interval for weather data in seconds
 interval = 1800
 
-file_location = config.weather_file_location
+f_name = config.weather_f_name
 
 def write_weather_data(file_location):
     try:
@@ -34,8 +35,7 @@ def write_weather_data(file_location):
             i+=1
 
     # Save temp list with pickle
-    with open(file_location, 'w') as f:
-        pickle.dump(temps, f)
+    file_handler.f_write_pickle(f_name, temps)
 
 class weatherThread(threading.Thread):
     def __init__(self, parent=None):
@@ -45,7 +45,7 @@ class weatherThread(threading.Thread):
 
     def run(self):
         while not self.stop_event.is_set():
-            write_weather_data(file_location)
+            write_weather_data(f_name)
             self.update.wait(interval)
 
     def stop(self):
