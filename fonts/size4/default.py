@@ -27,6 +27,13 @@ xxx
 xxx
 """)
 
+_add(u"–", """
+xxx
+''x
+xxx
+xxx
+""")
+
 _add("!", """
 'x
  x
@@ -53,6 +60,99 @@ xx
 xx
 xx
 ,x
+""")
+_add(",","""
+xx
+xx
+xx
+ x
+""")
+
+_add("?","""
+x''xx
+,xx x
+xx,xx
+xx,xx
+""")
+
+
+
+
+_add("'","""
+'x
+,x
+xx
+xx
+""")
+
+_add(u"’","""
+'x
+,x
+xx
+xx
+""")
+
+_add(u"∨","""
+xxxxx
+'xx'x
+ '',x
+xxxxx
+""")
+
+_add(u"∧","""
+xxxxx
+'''xx
+ xx x
+xxxxx
+""")
+
+_add(u"¬","""
+xxxxx
+''''x
+xxx x
+xxxxx
+""")
+
+_add(u"⇾","""
+xxxxx
+xx'xx
+,, ,x
+xxxxx
+""")
+
+_add(u"⇿","""
+xxxxxx
+x'x'xx
+, , ,x
+xxxxxx
+""")
+
+_add("(","""
+',x
+ xx
+ xx
+,'x
+""")
+
+_add(u"°","""
+x'xx
+,',x
+xxxx
+xxxx
+""")
+
+_add(")","""
+,'x
+x x
+x x
+',x
+""")
+
+_add("&","""
+xxxx
+x'xx
+, ,x
+xxxx
 """)
 
 _add("$","""

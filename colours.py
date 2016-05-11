@@ -102,3 +102,47 @@ def colour_print_join(list,joiner="",pre=""):
                 lines[i] += " "*length2
             lines[i] += Foreground.DEFAULT+Background.DEFAULT+joiner
     return "\n".join(lines)
+
+terminal_to_html = {
+#    "\033[0m":"</span>",
+    "\033[30m":"<span style='color:black'>",
+    "\033[31m":"<span style='color:red'>",
+    "\033[32m":"<span style='color:green'>",
+    "\033[33m":"<span style='color:yellow'>",
+    "\033[34m":"<span style='color:blue'>",
+    "\033[35m":"<span style='color:magenta'>",
+    "\033[36m":"<span style='color:cyan'>",
+    "\033[97m":"<span style='color:white'>",
+    "\033[37m":"<span style='color:#CCCCCC'>",
+    "\033[90m":"<span style='color:#888888'>",
+    "\033[91m":"<span style='color:red'>",
+    "\033[92m":"<span style='color:green'>",
+    "\033[92m":"<span style='color:yellow'>",
+    "\033[94m":"<span style='color:blue'>",
+    "\033[95m":"<span style='color:magenta'>",
+    "\033[96m":"<span style='color:cyan'>",
+
+    "\033[1m":"<span style='font-weight:bold'>",
+    "\033[2m":"<span style='font-weight:lighter'>",
+    "\033[3m":"<span style='font-weight:bold'>",
+    "\033[4m":"<span style='text-decoration:underline'>",
+    "\033[5m":"<span>",
+    "\033[9m":"<span style='text-decoration:line-through'>",
+
+    "\033[40m":"<span style='background-color:black'>",
+    "\033[41m":"<span style='background-color:red'>",
+    "\033[42m":"<span style='background-color:green'>",
+    "\033[43m":"<span style='background-color:yellow'>",
+    "\033[44m":"<span style='background-color:blue'>",
+    "\033[45m":"<span style='background-color:magenta'>",
+    "\033[46m":"<span style='background-color:cyan'>",
+    "\033[47m":"<span style='background-color:#CCCCCC'>",
+    "\033[100m":"<span style='background-color:#888888'>",
+    "\033[101m":"<span style='background-color:red'>",
+    "\033[102m":"<span style='background-color:green'>",
+    "\033[103m":"<span style='background-color:yellow'>",
+    "\033[104m":"<span style='background-color:blue'>",
+    "\033[105m":"<span style='background-color:magenta'>",
+    "\033[106m":"<span style='background-color:cyan'>",
+    "\033[107m":"<span style='background-color:white'>"
+}

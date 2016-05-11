@@ -3,11 +3,7 @@ import re
 from page import Page
 from colours import colour_print
 from printer import instance as printer
-
-def escape(string):
-    if string=="?":
-        return "\?"
-    return string
+from functions import klb_replace
 
 class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):
@@ -21,6 +17,9 @@ class TVPage(Page):
         pages.append([page_num,channel+" ("+day+")"])
 
     def generate_content(self):
+        from time import strptime, strftime
+        import feedparser
+        import datetime
         import urllib2
         content = colour_print(printer.text_to_ascii(self.channel,fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" "+self.day+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT+"\n"
         rss_dict = {"642": "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
@@ -29,9 +28,6 @@ class TVPage(Page):
                     "694": "http://www.iplayerconverter.co.uk/wu/4/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx"
                     }
         if self.page_num in rss_dict.keys():
-            import feedparser
-            from time import strptime, strftime
-            import datetime
             rss_url = rss_dict[self.page_num]
             
             feed = feedparser.parse(rss_url)
@@ -58,68 +54,7 @@ class TVPage(Page):
                 if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
                     content += self.colours.Foreground.GREEN+prog.find('start').text+self.colours.Foreground.DEFAULT+" "+prog.find('title').text+"\n"
             content = (self.colours.Foreground.BLUE+"New:"+self.colours.Foreground.DEFAULT).join(content.split("New:"))
-        swaps = [
-            ["Breakfast","Belgin Breakfast"],
-            ["Not",u"\u00AC"],
-            ["The One Show","The Olly Show"],
-            ["Wright","Mart Wright"],
-            ["Sport","Maths"],["Sportsday","Mathsday"],
-            ["Jamie","Pietro"],
-            ["Agents of S\.H\.I\.E\.L\.D\.","Mathematicians of U.C.L.K.L.B"],
-            ["USA","KLB"],
-            ["BBC","KLB"],
-            ["A&E","KLB"],
-            ["Builder","Constructor"],
-            ["World","KLB"],
-            ["Home","KLB"],
-            ["Homes","KLBs"],
-            ["Cwm","KLB"],
-            ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
-            ["You","Belgin"],
-            ["Raymond","Belgin"],
-            ["He","Adam"],["Him","Adam"],
-            ["She","Anna"],["Her","Anna"],
-            ["It","Scroggsbot"],
-            ["We","The West Wingers"],["Us","The West Wingers"],
-            ["They","The EastEnders"],["Them","The EastEnders"],
-            ["Man","Olly"],["Men","Ollys"],
-            ["News","News (presented by Sam Brown)"],
-            ["Newyddion","Newyddion (a gyflwynwyd gan Sam Brown)"],
-            ["Mother","Supervisor"],["Father","Supervisor"],
-            ["8 out of 10","0.8"],
-            ["Movie","chalkdust"],["Film","chalkdust"],["Family","chalkdust"],
-            ["Castle","Mathematics Mezzanine"],
-            ["Mrs Brown","Rafael"],
-            ["Alan Carr","Olly Southwick"],
-            ["Casualty","Causality"],
-            ["Match","Maths"],
-            ["Christmas","Oxmas"],
-            ["Football","Maths"],["Rugby","Maths"],["Tennis","Maths"],["Golf","Maths"],
-            ["Cycling","Maths"],["Athletics","Maths"],
-            ["Wallace","Crazy Nico"],
-            ["Politics","Mathematics"],
-            ["Political","Mathematical"],
-            ["Stacey","Huda"],
-            ["Antiques","Statistics"],
-            ["Santa","Huda"],
-            ["Ben","Momchil"],
-            ["Holly","Antonio"],
-            ["Deal","Soheni"],
-            ["The Tribe",self.colours.Background.RED+self.colours.Foreground.BLACK+"Pietro's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" The Tribe"],
-            ["Teenage Mutant Ninja Turtles",self.colours.Background.RED+self.colours.Foreground.BLACK+"Belgin's Pick"+self.colours.Background.DEFAULT+self.colours.Foreground.DEFAULT+" Teenage Mutant Ninja Turtles"],
-            ["X-Men Origins","X-Men Origins Seminar Room"],
-            ["Bruce","Rafael"]
-        ]
-        punc = [" ","?","!",":","'",'"',"\n"]
-        for swap in swaps:
-            for p in punc:
-                content = (" "+swap[1]+p).join(re.split("(?i) "+swap[0]+escape(p),content))
-#            content = (" "+swap[1]+"?").join(re.split("(?i) "+swap[0]+"\?",content))
- #           content = (" "+swap[1]+"!").join(re.split("(?i) "+swap[0]+"!",content))
-  #          content = (" "+swap[1]+":").join(re.split("(?i) "+swap[0]+":",content))
-   #         content = (" "+swap[1]+"'").join(re.split("(?i) "+swap[0]+"'",content))
-    #        content = (" "+swap[1]+"\n").join(re.split("(?i) "+swap[0]+"\n",content))
-        self.content = content
+        self.content = klb_replace(content)
 pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")

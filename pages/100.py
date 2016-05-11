@@ -9,7 +9,7 @@ class IndexPage(Page):
         self.title = "Index"
 
     def generate_content(self):
-        if os.getenv("SLAVE"):
+        if NAME=="28JHFAX":
             content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxx      xx     x         x  x  x         x     x

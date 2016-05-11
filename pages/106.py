@@ -112,7 +112,7 @@ class StephenPage(Page):
                   "Opening champagne bottles with just a knife",
                   "Passing vivas"]
         shuffle(skills)
-        content = self.colours.colour_print(printer.text_to_ascii("Stephen's Skills"))
+        content = self.colours.colour_print(printer.text_to_ascii("Stephen's Skills"))+"\n"
         next = 0
         for skill in skills:
             content += choice(self.colours.Foreground.non_boring)

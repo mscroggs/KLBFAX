@@ -26,7 +26,7 @@ only_page_files = [f for f in listdir(pages_dir)
 pageFactory = PageFactory()
 
 for page_file in only_page_files:
-    page_file_no_ext = os.path.splitext(page_file)[0]
+    page_file_no_ext = str(os.path.splitext(page_file)[0])
     module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
                      page_file_no_ext)
     reload(module)

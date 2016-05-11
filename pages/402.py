@@ -6,7 +6,8 @@ from printer import instance as printer
 page_number = os.path.splitext(os.path.basename(__file__))[0]
 p_page = Page(page_number)
 
-p_page.title = "Historical House Points"
+p_page.title = "House Points"
+p_page.index_num = "402-403"
 
 content = p_page.colours.colour_print(printer.text_to_ascii("house points"))
 

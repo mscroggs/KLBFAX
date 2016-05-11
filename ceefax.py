@@ -13,7 +13,7 @@ import now
 import page
 import ThreadSignaller
 import Queue
-
+from random import choice
 
 class ConfigError(Exception):
     pass
@@ -42,16 +42,16 @@ pageFactory = PageFactory()
 
 for page_file in only_page_files:
     page_file_no_ext = os.path.splitext(page_file)[0]
-    module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
-                     page_file_no_ext)
-    reload(module)
-    for filename in dir(module):
-        obj = getattr(module, filename)
-        if isinstance(obj, Page):
-            try:
+    try:
+        module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                         page_file_no_ext)
+        reload(module)
+        for filename in dir(module):
+            obj = getattr(module, filename)
+            if isinstance(obj, Page):
                 pageFactory.add(obj)
-            except:
-                pass
+    except:
+        pass
 
 
 def restart_computer():
@@ -67,19 +67,25 @@ def stop_execution():
 def get_greeting_page(barcode):
     namefile_path = "/home/pi/cards/" + barcode
     extra = ""
+    from page import greetings
     if isfile(namefile_path):
-        (name, house) = points.get_name_house(namefile_path)
+        (name, house, twitter) = points.get_name_house(namefile_path)
 
         if not house:
             extra = """Error finding your house. Please
                         report to Scroggs."""
+
+        if twitter is None:
+            deets = ""
+        else:
+            deets = greetings.random() + " @"+twitter+"! "
 
         time = now.now().strftime("%H")
 
         name_file = points.read_name_file(namefile_path)
         if points.should_add_morning_points(time, house, name_file,
                                             barcode):
-            points_added = points.add_morning_points(time, house, barcode)
+            points_added = points.add_morning_points(time, house, barcode, deets)
             extra = str(points_added) + " points to " + house + "!"
 
         name_page = page.NamePage(name, extra=extra)
@@ -93,6 +99,9 @@ def pull_new_version():
     print("Pulling newest version.")
     try:
         system("cd /home/pi/ceefax;git pull")
+        with open("/home/pi/ceefax/temp","w") as f:
+            f.write("YES")
+        stop_execution()
     except:
         pass
 
@@ -107,17 +116,20 @@ class LoopManager(object):
     def standard(self):
         i = 0
         num_cycles_left = 0
-        page = None
+        the_page = None
 
         while True:
             if i >= num_cycles_left:
-                page = pageFactory.get_loaded_random()
+                if now.now().strftime("%H") == "12" and now.now().minute < 20:
+                    the_page = page.LunchPage()
+                else:
+                    the_page = pageFactory.get_loaded_random()
             try:
                 signal = ThreadSignaller.queue.get_nowait()
                 if isinstance(signal, ThreadSignaller.ShowPage):
-                    page = pageFactory.get_reloaded_page(signal.page_num)
+                    the_page = pageFactory.get_reloaded_page(signal.page_num)
                 elif isinstance(signal, ThreadSignaller.ShowGreetingPage):
-                    page = get_greeting_page(signal.barcode)
+                    the_page = get_greeting_page(signal.barcode)
                 elif signal == ThreadSignaller.CleanExit:
                     sys.exit()
                 elif signal == ThreadSignaller.InterruptStandardLoop:
@@ -125,12 +137,12 @@ class LoopManager(object):
             except Queue.Empty:
                 pass
 
-            if page:
-                num_cycles_left = self._get_cycles_left(page.duration_sec)
+            if the_page:
+                num_cycles_left = self._get_cycles_left(the_page.duration_sec)
                 i = 0
-                page.show()
-                page = None
-            if not page:
+                the_page.show()
+                the_page = None
+            if not the_page:
                 i += 1
                 time.sleep(config.sleeping_time_ms / 1000.0)
 

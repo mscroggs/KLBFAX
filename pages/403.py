@@ -15,6 +15,7 @@ class PointsPage(Page):
     def __init__(self, page_num):
         super(PointsPage, self).__init__(page_num)
         self.title = "House Points"
+        self.in_index = False
 
     def generate_content(self):
         import json
@@ -87,7 +88,7 @@ class PointsPage(Page):
             content += self.colours.Foreground.YELLOW + house + self.colours.Foreground.DEFAULT
             content += " "
             content += self.colours.Foreground.GREEN + str(points) + self.colours.Foreground.DEFAULT
-            if i%4==0:  content += "\n"
+            if i%5==0:  content += "\n"
             else:       content += "  "
 
         self.content = content
