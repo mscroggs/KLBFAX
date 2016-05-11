@@ -14,6 +14,7 @@ import log_setup
 from random import choice
 from points import add_points
 import Keyboard
+import weather
 
 if not isdir(join(expanduser('~'), '.klb')):
     mkdir(join(expanduser('~'), '.klb'))
@@ -33,6 +34,9 @@ log_setup.read_from_file()
 
 Keyboard.start_keyboard_thread()
 Keyboard.subscribe(ceefax.name_page_handler)
+
+weather_thread = weather.weatherThread()
+weather_thread.start()
 
 while True:
     ceefax.loop_manager.current()
