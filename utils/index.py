@@ -39,3 +39,6 @@ for page_file in only_page_files:
                 pass
 
 pageFactory.print_all()
+pageFactory.export_all()
+
+

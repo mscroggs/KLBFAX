@@ -4,6 +4,8 @@ If you want to add to KLBFAX, the easiest thing is to add files into the pages f
 
 Look at the files in that folder for examples.
 
+For a list of current pages, see `PAGES.md`.
+
 ## Dependencies
 ```shell
 pip install -r requirements.txt
@@ -18,3 +20,5 @@ pip install -r requirements.txt
 ```shell
 DEVELOP=1 ./run.py
 ```
+
+

@@ -51,6 +51,23 @@ class PageFactory:
             if not page.is_enabled: p += page.colours.Foreground.DEFAULT
             print(p)
 
+    def export_all(self):
+        import os
+        import colours
+        items = self.pages.items()
+        items.sort()
+        ls = ["# List of pages","The pages in brackets are disabled.",""]
+        for page_num, page in items:
+            p = ""
+            if not page.is_enabled: p += "("
+            p += (page_num+" ")
+            p += (page.title)
+            if not page.is_enabled: p += ")"
+            p = colours.strip(p)
+            ls.append(p)
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
+            f.write("\n".join(ls))
+
     def get_reloaded_page(self, number):
         if number not in self.pages:
             return self.fake_page

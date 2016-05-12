@@ -146,3 +146,8 @@ terminal_to_html = {
     "\033[106m":"<span style='background-color:cyan'>",
     "\033[107m":"<span style='background-color:white'>"
 }
+
+def strip(string):
+    for a in Background.list + Foreground.list + Style.list:
+        string = string.replace(a,"")
+    return string
