@@ -2,8 +2,23 @@ from os.path import join as _join
 from os.path import expanduser as _expanduser
 from os.path import dirname as _dirname
 from os.path import realpath as _realpath
+from os.path import isdir as _isdir
+from os import mkdir as _mkdir
 from os import getenv as _getenv
 import json as _json
+import pickle
+
+if _getenv("SLAVE"):
+    default_path = _join(_expanduser("~"), ".slave/")
+else:
+    default_path = _join(_expanduser("~"), ".klb/")
+
+def test_dir(directory):
+    if not _isdir(directory):
+        try:
+            _mkdir(directory)
+        except:
+            pass
 
 def open_local(f_name, method="r"):
     try:
@@ -62,3 +77,21 @@ def f_read_json(f_name):
         except:
             pass
     return ret
+
+def f_read_pickle(f_name, path=None):
+    if path == None:
+        path = default_path
+    try:
+        with open(_join(path, f_name), "r") as f:
+            return pickle.load(f)
+    except:
+        pass
+
+def f_write_pickle(f_name, var, path=None):
+    if path == None:
+        path = default_path
+    try:
+        with open(_join(path, f_name), "w") as f:
+            pickle.dump(var, f)
+    except:
+        pass

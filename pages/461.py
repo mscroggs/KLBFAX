@@ -8,8 +8,9 @@ from colours import colour_print
 from datetime import datetime
 from pytz import timezone
 import pytz
-from config import weather_file_location
-import pickle
+from config import weather_f_name
+import file_handler
+
 
 class UKTempPage(Page):
     def __init__(self, page_num):
@@ -95,8 +96,7 @@ class UKTempPage(Page):
         uk_map = uk_map.replace(")","")
         uk_map = uk_map.replace("-","")
 
-        with open(weather_file_location, 'r') as f:
-            temps = pickle.load(f)
+        temps = file_handler.f_read_pickle(weather_f_name)
 
         ordered_temps = sorted(temps)
         #boundaries = [ordered_temps[int((len(ordered_ids)-1)*(n/6.))] for n in range(6)]
