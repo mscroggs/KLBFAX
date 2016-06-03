@@ -12,6 +12,7 @@ interval = 1800
 f_name = config.weather_f_name
 
 def write_weather_data(file_location):
+  try:
     try:
         with open("uk_coordinate_ids.txt") as f:
             ordered_ids = [line.rstrip('\n') for line in f]
@@ -36,6 +37,8 @@ def write_weather_data(file_location):
 
     # Save temp list with pickle
     file_handler.f_write_pickle(f_name, temps)
+  except:
+    pass
 
 class weatherThread(threading.Thread):
     def __init__(self, parent=None):
