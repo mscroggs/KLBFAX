@@ -17,6 +17,7 @@ The pages in brackets are disabled.
 113 Trophy
 114 Soup
 115 Python
+116 SCORPIONS
 140 Currency exchange
 150 Events
 200 Letters
