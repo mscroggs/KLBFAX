@@ -78,7 +78,7 @@ def get_greeting_page(barcode):
         if twitter is None:
             deets = ""
         else:
-            deets = greetings.random() + " @"+twitter+"! "
+            deets = greetings.random() + " @"+twitter+"!"
 
         time = now.now().strftime("%H")
 
@@ -139,6 +139,8 @@ class LoopManager(object):
                     break
             except Queue.Empty:
                 pass
+            except KeyboardInterrupt:
+                stop_execution()
 
             if the_page:
                 num_cycles_left = self._get_cycles_left(the_page.duration_sec)

@@ -25,9 +25,9 @@ def add_points(house, number, deets=""):
     with open(join(expanduser('~'), '.klb/points'), 'w+') as f:
         json.dump(data, f)
     if number == 1:
-        update_status(status=deets + str(number)+" point to "+house+"!")
+        update_status(status=deets + " " + str(number)+" point to "+house+"!")
     else:
-        update_status(status=deets + str(number)+" points to "+house+"!")
+        update_status(status=deets + " " + str(number)+" points to "+house+"!")
 
 
 def should_add_morning_points(time, house, lines, oldname):
