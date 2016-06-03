@@ -1,4 +1,5 @@
 from file_handler import f_read_json
+from os.path import expanduser, join
 
 def add_award(name, award):
     data = f_read_json('awards')
