@@ -58,14 +58,13 @@ The pages in brackets are disabled.
 404 Page Not Found
 405 Flat Points
 418 I'm a Teapot
-450 Awards
-451 
-452 
-453 
-454 
-456 Annawards
-457 
-458 
+450 Awards & Unawards
+451 Tea Awards
+452 Mart Cow Awards
+453 Kitchen Awards
+454 Other Awards
+455 Tea Unawards
+456 Other Unawards
 459 World Clock
 460 World Temperature
 461 UK Temperature
