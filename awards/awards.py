@@ -10,5 +10,5 @@ def add_award(name, award):
         data[award][name] += 1
     else:
         data[award][name] = 1
-    with open(join(expanduser('~'), '.klb/points'), 'w+') as f:
+    with open(join(expanduser('~'), '.klb/awards'), 'w+') as f:
         json.dump(data, f)
