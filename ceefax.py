@@ -139,17 +139,17 @@ class LoopManager(object):
                     break
             except Queue.Empty:
                 pass
+            try:
+                if the_page:
+                    num_cycles_left = self._get_cycles_left(the_page.duration_sec)
+                    i = 0
+                    the_page.show()
+                    the_page = None
+                if not the_page:
+                    i += 1
+                    time.sleep(config.sleeping_time_ms / 1000.0)
             except KeyboardInterrupt:
                 stop_execution()
-
-            if the_page:
-                num_cycles_left = self._get_cycles_left(the_page.duration_sec)
-                i = 0
-                the_page.show()
-                the_page = None
-            if not the_page:
-                i += 1
-                time.sleep(config.sleeping_time_ms / 1000.0)
 
     def current(self):
         self.standard()

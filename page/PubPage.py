@@ -11,7 +11,7 @@ class PubPage(Page):
     def __init__(self):
         super(PubPage, self).__init__("???")
         self.name = "Pub"
-        self.content += colour_print(printer.text_to_ascii("It's Friday Afternoon!"),colours.Background.RED)
+        self.content = colour_print(printer.text_to_ascii("It's Friday Afternoon!"),colours.Background.RED)
         self.content += "\n"
-        self.content = colour_print(printer.text_to_ascii("Go to the pub!"))
+        self.content += colour_print(printer.text_to_ascii("Go to the pub!"))
         self.loaded = True
