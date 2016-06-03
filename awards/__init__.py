@@ -1,1 +1,1 @@
-from awards import add_awards
+from awards import add_award
