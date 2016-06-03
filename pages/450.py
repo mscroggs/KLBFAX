@@ -27,7 +27,7 @@ def award_show(award, data, icon):
 
 awards_on_pages = {
         "451":["Tea Maker","CelebriTEA"],
-        "452":["Mart Cow"],
+        "452":["Moo Cow"],
         "453":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
         "454":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
         "455":["Boo Cow","Tea Wrecks"],
