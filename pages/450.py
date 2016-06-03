@@ -4,83 +4,98 @@ from random import choice
 import colours
 from colours import colour_print
 from printer import instance as printer
+from file_handler import f_read_json
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-sub_page = Page(page_number)
-sub_page.title = "Awards"
-sub_page.index_num = "450-453"
-content = colour_print(
-    printer.text_to_ascii("Awards", padding={"left": 6}))
-
-awards = [
-          ["Mart Cow Award",{"Adam Townsend":6,"Matthew Scroggs":4,
-           "Belgin Seymenoglu":17,"Matthew Wright":16,"Stephen Muirhead":3,
-           "Olly Southwick":10,"Shredder":1,"Pietro Servini":1,"Anna Lambert":1,
-           "Rafael Pietro Curiel":2}],
-           # Tea Rex was formerly known as Tea Maker
-          ["Tea Rex",{"Matthew Scroggs":11,"Matthew Wright":21,"Pietro Servini":2,
-           "Peter (who?)":1,"Olly Southwick":2,"Belgin Seymenoglu":1,
-           "Rafael Prieto Curiel":1}],
-          ["CelebriTEA",{"Matthew Wright":3,"Matthew Scroggs":1,"Oliver Southwick":1},unichr(9829)],
-          ["Honorary Fire Martshal",{"Rafael \"Bruce\" Prieto Curiel":1}],
-          ["Double Noughts and Crosses",{"Belgin Seymenoglu":1}],
-          ["Towel Bringer",{"Huda Ramli":4,"Belgin Seymenoglu":6,"Matthew Wright":1}],
-          ["Lunchtime Goat Award",{"Olly Southwick":1}],
-          ["Squeaky Clean",{"Huda Ramli":1,"Rafael \"Bruce\" Prieto Curiel":2,"Belgin Seymenoglu":8}],
-          ["Spongebob Squarepoints",{"Rafael Prieto Curiel":1,"Belgin Seymenoglu":2}],
-          ["Cleaning the Bloody Fridge",{"Matthew Scroggs":1}]
-         ]
-pages = ["452","451","451","454","454","453","454","453","453","453"]
-
-content += "\nWho has the most awards?\n\n"
-
-for i,award in enumerate(awards):
-    content += "\n"+sub_page.colours.Foreground.GREEN+award[0]+sub_page.colours.Foreground.DEFAULT+" (see page "+pages[i]+") "
-    max_ = 0
-    max_p = None
-    for person,number in award[1].items():
-        if number>max_:
-            max_p = person
-            max_ = number
-        elif number==max_:
-            max_p = max_p+","+person
-    if max_p is not None:
-        content += sub_page.colours.Foreground.RED + max_p + sub_page.colours.Foreground.DEFAULT
-sub_page.content = content
-
-def award_show(award):
-    content = colours.Foreground.GREEN+award[0]+colours.Foreground.DEFAULT+"\n"
-    max_len = 0
+def award_show(award, data, icon):
+    content = colours.Foreground.GREEN+award+colours.Foreground.DEFAULT+"\n"
     try:
-        icon = award[2]
-    except:
-        icon = u"\u263B"
-    for person in award[1]:
+        winners = data[award]
+    except KeyError:
+        content += "No-one has won this award yet...\n\n"
+        return content
+    max_len = 0
+    for person in winners:
         max_len = max(max_len,len(person))
-    for person,number in award[1].items():
+    for person,number in winners.items():
         content += person + (" "*(max_len-len(person)))
         content += sub_page.colours.Foreground.RED+"|"+sub_page.colours.Foreground.DEFAULT
         for i in range(number):
-            content += choice(sub_page.colours.Foreground.non_boring)
-            content += icon+sub_page.colours.Foreground.DEFAULT
+            content += choice(colours.Foreground.non_boring)
+            content += icon + colours.Foreground.DEFAULT
         content += "\n"
-    return content
+    return content + "\n"
 
-def title(text):
-    return colour_print(printer.text_to_ascii(text))
+awards_on_pages = {
+        "451":["Tea Maker","CelebriTEA"],
+        "452":["Mart Cow"],
+        "453":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
+        "454":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
+        "455":["Boo Cow","Tea Wrecks"],
+        "456":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat"]
+    }
 
-tea_page = Page("451")
-tea_page.content = title("Tea Awards") + "\n\n" + award_show(awards[1]) + "\n" + award_show(awards[2])
-tea_page.in_index = False
+def get_page(a):
+    for n,it in awards_on_pages.items():
+        for i in it:
+            if i == a:
+                return n
+    return "???"
 
-moo_page = Page("452")
-moo_page.content = title("Mart Cow Awards") + "\n\n" + award_show(awards[0])
-moo_page.in_index = False
+def title(text,vc=False):
+    return colour_print(printer.text_to_ascii(text,vertical_condense=vc))
 
-kit_page = Page("453")
-kit_page.content = title("Kitchen Awards") + "\n\n" + award_show(awards[5]) + "\n" + award_show(awards[7]) + "\n" + award_show(awards[8]) + "\n" + award_show(awards[9])
-kit_page.in_index = False
+class AwardsPage(Page):
+    def __init__(self, page_num,title="",icon=u"\u263B"):
+        super(AwardsPage, self).__init__(page_num)
+        self.in_index = False
+        self.awards = awards_on_pages[page_num]
+        self.title = title
+        self.icon = icon
 
-oth_page = Page("454")
-oth_page.content = title("Other Awards") + "\n\n" + award_show(awards[3]) + "\n" + award_show(awards[4]) + "\n" + award_show(awards[6])
-oth_page.in_index = False
+    def generate_content(self):
+        import json
+        from operator import itemgetter
+        data = f_read_json('awards')
+        content = title(self.title)
+        content += "\n\n"
+        for a in self.awards:
+            content += award_show(a,data,self.icon)
+        self.content = content
+
+class AwardsIndex(Page):
+    def __init__(self, page_num):
+        super(AwardsIndex, self).__init__(page_num)
+        self.title = "Awards & Unawards"
+        self.in_index = True
+        self.index_num = "450-453"
+
+    def generate_content(self):
+        import json
+        from operator import itemgetter
+        data = f_read_json('awards')
+        print data
+        content = title("The most awards",True)
+        content += "\n\n"
+        for a,b in data.items():
+            m = 0
+            mp = ""
+            for person,n in b.items():
+                if n > m:
+                    m = n
+                    mp = person
+                elif n==m:
+                    mp += " & " + person
+            content += "\n"+self.colours.Foreground.GREEN+a+sub_page.colours.Foreground.DEFAULT + " (see page "+str(get_page(a))+") "
+            content += sub_page.colours.Foreground.RED + mp + sub_page.colours.Foreground.DEFAULT
+        self.content = content
+
+
+sub_page = AwardsIndex("450")
+
+p1 = AwardsPage("451","Tea Awards")
+p2 = AwardsPage("452","Mart Cow Awards")
+p3 = AwardsPage("453","Kitchen Awards")
+p4 = AwardsPage("454","Other Awards")
+p5 = AwardsPage("455","Tea Unawards","o_0")
+p6 = AwardsPage("456","Other Unawards","0_o")
+
