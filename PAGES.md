@@ -48,6 +48,10 @@ The pages in brackets are disabled.
 304 Marts
 305 Marts
 306 Marts
+310 Euro 2016
+311 Euro 2016 Sweepstake
+312 Euro 2016 Scores & Fixtures
+313 Euro 2016 Tables
 314 Pi
 367 Where's Olly?
 368 Countdowns
@@ -75,6 +79,7 @@ The pages in brackets are disabled.
 580 Recipes Index
 581 Bad Tempered Cake
 582 Huda Friendship Cake
+583 Cherry Clafoutis
 600 TV & Radio Index
 601 Today's TV: BBC1
 602 Today's TV: BBC2
