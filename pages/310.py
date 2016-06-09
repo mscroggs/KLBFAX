@@ -238,7 +238,7 @@ class SoccerPage3(Page):
 soccer_page0 = Page("310")
 #soccer_page1 = SoccerPage1("311")
 soccer_page2 = SoccerPage2("311")
-soccer_page3 = SoccerPage3("312")
+soccer_page3 = SoccerPage3("313")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
 for page in [soccer_page2,soccer_page3]:
