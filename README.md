@@ -20,9 +20,3 @@ pip install -r requirements.txt
 ```shell
 DEVELOP=1 ./run.py
 ```
-
-
-
-HELLO BELGIN!
-
-Testing, 1, 2...
