@@ -13,10 +13,11 @@ def add_points(house, number, deets=""):
   if not os.getenv("SLAVE"):
     if deets != "":
         if deets[-1] != " ":
-            if deets[-1] not in [".","!",":","?"]:
-                deets += ". "
+            if deets[-2] not in [".","!",":","?"]:
+                deets += "."
+            deets += " "
         elif deets[-2] not in [".","!",":","?"]:
-            deets = deets[:-1] + ". "
+            deets = deets[:-2] + ". "
         
     while u"\u0000" in house:
         house = house.strip(u"\u0000")
