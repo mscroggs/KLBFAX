@@ -49,9 +49,8 @@ The pages in brackets are disabled.
 305 Marts
 306 Marts
 310 Euro 2016
-311 Euro 2016 Sweepstake
-312 Euro 2016 Scores & Fixtures
-313 Euro 2016 Tables
+311 Euro 2016 Scores & Fixtures
+312 Euro 2016 Tables
 314 Pi
 367 Where's Olly?
 368 Countdowns

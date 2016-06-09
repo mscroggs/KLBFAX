@@ -7,13 +7,13 @@ from now import now
 
 def get_team(code):
     for a in people:
-        if a[2] == code:
+        if a[1] == code:
             return a
     return None
 
 def get_team_n(code):
     for i,a in enumerate(people):
-        if a[2] == code:
+        if a[1] == code:
             return i
     return None
 
@@ -31,46 +31,55 @@ for p in people:
         p[0] = "?"
     p.append([0,0,0,0,0])
 
-groups = [
-           ["FRA","ROM",10,6,20,0,None,None],
-           ["ALB","SWI",11,6,14,0,None,None],
-           ["WAL","SVK",11,6,17,0,None,None],
-           ["ENG","RUS",11,6,20,0,None,None],
-           ["TUR","CRO",12,6,14,0,None,None],
-           ["POL","NIR",12,6,17,0,None,None],
-           ["GER","UKR",12,6,20,0,None,None],
-           ["SPA","CZE",13,6,14,0,None,None],
-           ["ROI","SWE",13,6,17,0,None,None],
-           ["BEL","ITA",13,6,20,0,None,None],
-           ["AUS","HUN",14,6,17,0,None,None],
-           ["POR","ICE",14,6,20,0,None,None],
-           ["RUS","SVK",15,6,14,0,None,None],
-           ["ROM","SWI",15,6,17,0,None,None],
-           ["FRA","ALB",15,6,20,0,None,None],
-           ["ENG","WAL",16,6,14,0,None,None],
-           ["UKR","NIR",16,6,17,0,None,None],
-           ["GER","POL",16,6,20,0,None,None],
-           ["ITA","SWE",17,6,14,0,None,None],
-           ["CZE","CRO",17,6,17,0,None,None],
-           ["SPA","TUR",17,6,20,0,None,None],
-           ["BEL","ROI",18,6,14,0,None,None],
-           ["ICE","HUN",18,6,17,0,None,None],
-           ["POR","AUS",18,6,20,0,None,None],
-           ["ROM","ALB",19,6,20,0,None,None],
-           ["SWI","FRA",19,6,20,0,None,None],
-           ["RUS","WAL",20,6,20,0,None,None],
-           ["SVK","ENG",20,6,20,0,None,None],
-           ["UKR","POL",21,6,17,0,None,None],
-           ["NIR","GER",21,6,17,0,None,None],
-           ["CZE","TUR",21,6,20,0,None,None],
-           ["CRO","SPA",21,6,20,0,None,None],
-           ["ICE","AUS",22,6,17,0,None,None],
-           ["HUN","POR",22,6,17,0,None,None],
-           ["ITA","ROI",22,6,20,0,None,None],
-           ["SWE","BEL",22,6,20,0,None,None]
-          ]
+import json
+import urllib2
 
-knockout = []
+headers = { 'X-Auth-Token': 'fcb6821c0ef24603a74f0e00bf5ba897', 'X-Response-Control': 'minified' }
+url = "http://api.football-data.org/v1/soccerseasons/424/fixtures"
+
+import urllib2
+request = urllib2.Request(url, headers=headers)
+data = json.load(urllib2.urlopen(request))
+
+
+def get_groups():
+    groups = []
+
+    for match in data["fixtures"]:
+        if match["matchday"] in [1,2,3]:
+            d = match["date"]
+            groups.append([
+                match["homeTeamName"],
+                match["awayTeamName"],
+                int(d.split("-")[2].split("T")[0]),
+                int(d.split("-")[1]),
+                int(d.split("T")[1].split(":")[0]),
+                int(d.split(":")[1]),
+                match["result"]["goalsHomeTeam"],
+                match["result"]["goalsAwayTeam"]
+            ])
+
+    return groups
+
+def get_knockout():
+    groups = []
+
+    for match in data["fixtures"]:
+        if match["matchday"] not in [1,2,3]:
+            d = match["date"]
+            groups.append([
+                match["homeTeamName"],
+                match["awayTeamName"],
+                int(d.split("-")[2].split("T")[0]),
+                int(d.split("-")[1]),
+                int(d.split("T")[1].split(":")[0]),
+                int(d.split(":")[1]),
+                match["result"]["goalsHomeTeam"],
+                match["result"]["goalsAwayTeam"]
+            ])
+
+    return groups
+
 
 class SoccerPage1(Page):
     def __init__(self, page_num):
@@ -80,7 +89,7 @@ class SoccerPage1(Page):
 
     def generate_content(self):
         content = colour_print(printer.text_to_ascii("Euro 2016 Sweepstake"))        
-        lines = [ls[1] + colours.Foreground.BLUE+" ("+ls[0]+")" + colours.Foreground.DEFAULT for ls in people]
+        lines = [ls[1] + colours.Foreground.GREEN+" ("+ls[0]+")" + colours.Foreground.DEFAULT for ls in people]
         for i in range(12):
             if i%4 == 0:
                 content += "\n"
@@ -103,7 +112,7 @@ class SoccerPage2(Page):
     def generate_content(self):
         # ["ENG","WAL",16,6,14,0,None,None],
         content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
-        matches = groups + knockout
+        matches = get_groups() + get_knockout()
         matches.reverse()
         date = (0,0)
         nowdate = now()
@@ -117,8 +126,8 @@ class SoccerPage2(Page):
                 content += "\n"
             team1 = get_team(match[0])
             team2 = get_team(match[1])
-            str1 = colours.Foreground.BLUE + "("+team1[0]+") " + colours.Foreground.DEFAULT + team1[1]
-            str2 = team2[1] + colours.Foreground.BLUE + " ("+team2[0]+")" + colours.Foreground.DEFAULT
+            str1 = colours.Foreground.GREEN + "("+team1[0]+") " + colours.Foreground.DEFAULT + team1[1]
+            str2 = team2[1] + colours.Foreground.GREEN + " ("+team2[0]+")" + colours.Foreground.DEFAULT
 
             content += " " * (40-len(str1)) + str1 + " "
             if match[6] is not None:
@@ -145,7 +154,7 @@ class SoccerPage3(Page):
         content = colour_print(printer.text_to_ascii("Euro 2016 Tables"))
         for p in people:
             p[3] = [0,0,0,0,0,0]
-        for m in groups:
+        for m in get_groups():
             n1 = get_team_n(m[0])
             n2 = get_team_n(m[1])
             if m[6] is not None:
@@ -186,7 +195,7 @@ class SoccerPage3(Page):
             content += "\n"
             for j in range(4):
                 t = gs[i][j]
-                team = (t[1]+" ")[:19-len(t[0])] + colours.Foreground.BLUE + "(" + t[0] + ")" + colours.Foreground.DEFAULT
+                team = (t[1]+" ")[:19-len(t[0])] + colours.Foreground.GREEN + "(" + t[0] + ")" + colours.Foreground.DEFAULT
                 content += team + " "*(30-len(team))
                 pts = ""
                 pts += str(t[3][0]+t[3][1]+t[3][2])
@@ -205,7 +214,7 @@ class SoccerPage3(Page):
                 content += pts + " "*(19-len(pts))
 
                 t = gs[i+3][j]                
-                team = (t[1]+" ")[:19-len(t[0])] + colours.Foreground.BLUE + "(" + t[0] + ")" + colours.Foreground.DEFAULT
+                team = (t[1]+" ")[:19-len(t[0])] + colours.Foreground.GREEN + "(" + t[0] + ")" + colours.Foreground.DEFAULT
                 content += team + " "*(30-len(team))
                 pts = ""
                 pts += str(t[3][0]+t[3][1]+t[3][2])
@@ -227,12 +236,12 @@ class SoccerPage3(Page):
         self.content = content
 
 soccer_page0 = Page("310")
-soccer_page1 = SoccerPage1("311")
-soccer_page2 = SoccerPage2("312")
-soccer_page3 = SoccerPage3("313")
+#soccer_page1 = SoccerPage1("311")
+soccer_page2 = SoccerPage2("311")
+soccer_page3 = SoccerPage3("312")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
-for page in [soccer_page1,soccer_page2,soccer_page3]:
+for page in [soccer_page2,soccer_page3]:
     content += "\n"
     content += colours.Foreground.RED + page.number + colours.Foreground.DEFAULT
     content += " "
