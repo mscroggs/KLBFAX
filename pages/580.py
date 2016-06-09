@@ -59,6 +59,21 @@ r2.content = (colours.colour_print(
     When baked, Huda can be frozen.
 """)
 
+r3 = Page("583")
+r3.title = "Cherry Clafoutis"
+r3.in_index = False
+r3.content = (colours.colour_print(
+    printer.text_to_ascii("cherry clafoutis"),
+    colours.Background.RED,
+    colours.Foreground.BLUE) +
+"""
+    4       Eggs
+    1 jar   Cherries
+    ? ???   Flour
+ 
+
+1. To be continued...""")
+
 
 r_index = Page("580")
 r_index.title = "Recipes Index"
@@ -67,5 +82,5 @@ r_index.content = (colours.colour_print(
     colours.Background.RED,
     colours.Foreground.BLUE) + "\n\n")
 
-for r in [r1,r2]:
+for r in [r1,r2,r3]:
     r_index.content += colours.Background.BLUE+r.number+colours.Background.DEFAULT+" "+r.title+"\n"
