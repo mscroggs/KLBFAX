@@ -10,8 +10,8 @@ class JigPage(Page):
     def __init__(self,page_num):
         super(JigPage, self).__init__(page_num)
         self.in_index = False
-        self.title = "Snowdon"
-        self.tagline = "Snowdon"
+        self.title = "Olly"
+        self.tagline = "Olly"
 
     def generate_content(self):
         import urllib2
