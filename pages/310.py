@@ -81,28 +81,6 @@ def get_knockout():
     return groups
 
 
-class SoccerPage1(Page):
-    def __init__(self, page_num):
-        super(SoccerPage1, self).__init__(page_num)
-        self.title = "Euro 2016 Sweepstake"
-        self.in_index = False
-
-    def generate_content(self):
-        content = colour_print(printer.text_to_ascii("Euro 2016 Sweepstake"))        
-        lines = [ls[1] + colours.Foreground.GREEN+" ("+ls[0]+")" + colours.Foreground.DEFAULT for ls in people]
-        for i in range(12):
-            if i%4 == 0:
-                content += "\n"
-                content += self.colours.Foreground.GREEN + "Group " + str(i/4+1) + self.colours.Foreground.DEFAULT
-                content += " " * 24
-                content += self.colours.Foreground.GREEN + "Group " + str(i/4+4) + self.colours.Foreground.DEFAULT
-                content += "\n"
-            content += lines[i]
-            content += " "*(40-len(lines[i]))
-            content += lines[i+12]
-            content += "\n"
-        self.content = content
-
 class SoccerPage2(Page):
     def __init__(self, page_num):
         super(SoccerPage2, self).__init__(page_num)
@@ -183,7 +161,7 @@ class SoccerPage3(Page):
             gs.append(group)
         for i in range(3):
             content += "\n"
-            content += colours.Foreground.GREEN
+            content += colours.Foreground.YELLOW + colours.Style.BOLD
             content += "Group "+str(i+1)
             content += " " * 14
             content += "P W D L F A Pts"
@@ -191,7 +169,7 @@ class SoccerPage3(Page):
             content += "Group "+str(i+4)
             content += " " * 14
             content += "P W D L F A Pts"
-            content += colours.Foreground.DEFAULT
+            content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
             content += "\n"
             for j in range(4):
                 t = gs[i][j]
@@ -238,7 +216,7 @@ class SoccerPage3(Page):
 soccer_page0 = Page("310")
 #soccer_page1 = SoccerPage1("311")
 soccer_page2 = SoccerPage2("311")
-soccer_page3 = SoccerPage3("313")
+soccer_page3 = SoccerPage3("312")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
 for page in [soccer_page2,soccer_page3]:
@@ -248,4 +226,4 @@ for page in [soccer_page2,soccer_page3]:
     content += page.title
 soccer_page0.content = content
 soccer_page0.title = "Euro 2016"
-soccer_page0.index_num = "310-313"
+soccer_page0.index_num = "310-312"
