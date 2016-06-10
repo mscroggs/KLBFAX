@@ -122,7 +122,7 @@ class LoopManager(object):
             if i >= num_cycles_left:
                 if now.now().strftime("%H") == "12" and now.now().minute < 20:
                     the_page = page.LunchPage()
-                if now.now().strftime("%a%H") == "Fri17" and now.now().minute < 20:
+                elif now.now().strftime("%a%H") == "Fri17" and now.now().minute < 20:
                     the_page = page.PubPage()
                 else:
                     the_page = pageFactory.get_loaded_random()
