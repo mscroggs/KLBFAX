@@ -75,10 +75,12 @@ def get_greeting_page(barcode):
             extra = """Error finding your house. Please
                         report to Scroggs."""
 
-        if twitter is None:
-            deets = ""
-        else:
+        if twitter is not None:
             deets = greetings.random() + " @"+twitter+"!"
+        elif name is none None:
+            deets = greetings.random() + " " + name
+        else:
+            deets = ""
 
         time = now.now().strftime("%H")
 
