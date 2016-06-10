@@ -51,6 +51,7 @@ The pages in brackets are disabled.
 310 Euro 2016
 311 Euro 2016 Scores & Fixtures
 312 Euro 2016 Tables
+313 Euro 2016 Knockout
 314 Pi
 367 Where's Olly?
 368 Countdowns
@@ -166,6 +167,6 @@ The pages in brackets are disabled.
 879 Moreton-in-Marsh Trains
 880 Ealing Broadway Trains
 881 Farringdon Trains
-883 St Pancras to East Croydon Trains
+883 Blaenau Ffestiniog Trains
 888 Subtitles
 (999 Prisoner's Dilemma Score)

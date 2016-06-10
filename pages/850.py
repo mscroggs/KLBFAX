@@ -84,6 +84,7 @@ train30 = TrainPage("880","Ealing Broadway","EAL")
 train31 = TrainPage("881","Farringdon","ZFD")
 train32 = TrainPage("882","East Croydon","ECR")
 train32 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
+train32 = TrainPage("883","Blaenau Ffestiniog","BFF")
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
