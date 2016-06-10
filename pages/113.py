@@ -11,7 +11,7 @@ class JigPage(Page):
         super(JigPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Trophy"
-        self.tagline = "GO PUFFS!"
+        self.tagline = "GO SQUIBS!"
 
     def generate_content(self):
         import urllib2
@@ -20,18 +20,18 @@ class JigPage(Page):
         jig = """
                    XXXXXRRRRRRRRXXXXX
                    XXXXXXXXRRXXXXXXXX
-             BYXXXXXXXXXXRRXXRRXXXXXXXXXXYB
-             BYXX  XXXXXXXXXXXXXXXXXX  XXYB
-             BYXX   XXXXRRRRRRRRXXXX   XXYB
-             BY XX  XXXXRXXXXXXXXXXX  XX YB
-             BY XX   XXXXXXXXXXXXXX   XX YB
-             BY  XX   XXRRRRRRRRXX   XX  YB 
-             BY   XX   XRXXRRXXRX   XX   YB
-             BY    XXX  XRRRRRRX  XXX    YB
-             BY      XXX XXXXXX XXX      YB
-             BY        XXXXXXXXXX        YB
-             BY           XXXX           YB
-             BY           XXXX           YB
+             GMXXXXXXXXXXRRXXRRXXXXXXXXXXMG
+             GMXX  XXXXXXXXXXXXXXXXXX  XXMG
+             GMXX   XXXXRRRRRRRRXXXX   XXMG
+             GM XX  XXXXRXXXXXXXXXXX  XX MG
+             GM XX   XXXXXXXXXXXXXX   XX MG
+             GM  XX   XXRRRRRRRRXX   XX  MG 
+             GM   XX   XRXXRRXXRX   XX   MG
+             GM    XXX  XRRRRRRX  XXX    MG
+             GM      XXX XXXXXX XXX      MG
+             GM        XXXXXXXXXX        MG
+             GM           XXXX           MG
+             GM           XXXX           MG
                       BBBBBBBBBBBB
                       BBBBBBBBBBBB
                       BBBBBBBBBBBB
@@ -43,6 +43,8 @@ class JigPage(Page):
         jig = u"\u2584".join(jig.split(","))
         jig = (self.colours.Foreground.RED+u"\u2588"+self.colours.Foreground.DEFAULT).join(jig.split("R"))
         jig = (self.colours.Foreground.YELLOW+self.colours.Style.BOLD+u"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT).join(jig.split("Y"))
+        jig = (self.colours.Foreground.MAGENTA+self.colours.Style.BOLD+u"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT).join(jig.split("M"))
+        jig = (self.colours.Foreground.BLACK+self.colours.Style.BOLD+u"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT).join(jig.split("G"))
         jig = (self.colours.Foreground.BLACK+self.colours.Style.BOLD+u"\u2588"+self.colours.Foreground.DEFAULT+self.colours.Style.DEFAULT).join(jig.split("B"))
         content += jig
         

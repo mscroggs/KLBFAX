@@ -213,13 +213,33 @@ class SoccerPage3(Page):
                 content += "\n"
         self.content = content
 
+class SoccerPage4(Page):
+    def __init__(self, page_num):
+        super(SoccerPage4, self).__init__(page_num)
+        self.title = "Euro 2016 Knockout"
+        self.in_index = False
+
+    def generate_content(self):
+        # ["ENG","WAL",16,6,14,0,None,None],
+        content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
+        matches = get_knockout()
+        rounds = {4:[],5:[],6:[],7:[]}
+        for m in matches:
+            pass
+
+        self.content = content
+
+
+
+
 soccer_page0 = Page("310")
 #soccer_page1 = SoccerPage1("311")
 soccer_page2 = SoccerPage2("311")
 soccer_page3 = SoccerPage3("312")
+soccer_page4 = SoccerPage4("313")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
-for page in [soccer_page2,soccer_page3]:
+for page in [soccer_page2,soccer_page3,soccer_page4]:
     content += "\n"
     content += colours.Foreground.RED + page.number + colours.Foreground.DEFAULT
     content += " "
