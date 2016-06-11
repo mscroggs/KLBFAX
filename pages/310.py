@@ -53,7 +53,7 @@ def get_groups():
                 match["awayTeamName"],
                 int(d.split("-")[2].split("T")[0]),
                 int(d.split("-")[1]),
-                int(d.split("T")[1].split(":")[0]),
+                int(d.split("T")[1].split(":")[0])+1,
                 int(d.split(":")[1]),
                 match["result"]["goalsHomeTeam"],
                 match["result"]["goalsAwayTeam"]
