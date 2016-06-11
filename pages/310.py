@@ -61,11 +61,11 @@ def get_groups():
 
     return groups
 
-def get_knockout():
+def get_knockout(n=None):
     groups = []
 
     for match in data["fixtures"]:
-        if match["matchday"] not in [1,2,3]:
+        if match["matchday"] not in [1,2,3] and (n is None or n == match["matchday"]):
             d = match["date"]
             groups.append([
                 match["homeTeamName"],
@@ -80,6 +80,31 @@ def get_knockout():
 
     return groups
 
+def write_match(match,indent=None):
+    team1 = get_team(match[0])
+    if team1 is None:
+        str1 = colours.Foreground.BLUE + "?" + colours.Foreground.DEFAULT
+    else:
+        str1 = colours.Foreground.GREEN + "("+team1[0]+") " + colours.Foreground.DEFAULT + team1[1]
+    team2 = get_team(match[1])
+    if team2 is None:
+        str2 = colours.Foreground.BLUE + "?" + colours.Foreground.DEFAULT
+    else:
+        str2 = team2[1] + colours.Foreground.GREEN + " ("+team2[0]+")" + colours.Foreground.DEFAULT
+    if indent is None:
+        content = ""
+    else:
+        content = " " * (indent-len(str1))
+    content += str1 + " "
+    if match[6] is not None:
+        content += " " + str(match[6])+"-"+str(match[7]) + " "
+    else:
+        pad = ""
+        if match[5] < 10:
+            pad = "0"
+        content += str(match[4])+":"+pad+str(match[5])
+    content += " " + str2
+    return content
 
 class SoccerPage2(Page):
     def __init__(self, page_num):
@@ -102,20 +127,7 @@ class SoccerPage2(Page):
                 content += str(date[0]) +"/0"+ str(date[1])
                 content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
                 content += "\n"
-            team1 = get_team(match[0])
-            team2 = get_team(match[1])
-            str1 = colours.Foreground.GREEN + "("+team1[0]+") " + colours.Foreground.DEFAULT + team1[1]
-            str2 = team2[1] + colours.Foreground.GREEN + " ("+team2[0]+")" + colours.Foreground.DEFAULT
-
-            content += " " * (40-len(str1)) + str1 + " "
-            if match[6] is not None:
-                content += " " + str(match[6])+"-"+str(match[7]) + " "
-            else:
-                pad = ""
-                if match[5] < 10:
-                    pad = "0"
-                content += str(match[4])+":"+pad+str(match[5])
-            content += " " + str2
+            content += write_match(match,40)
             content += "\n"
 
         self.content = content
@@ -221,11 +233,38 @@ class SoccerPage4(Page):
 
     def generate_content(self):
         # ["ENG","WAL",16,6,14,0,None,None],
+        import screen
         content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
         matches = get_knockout()
-        rounds = {4:[],5:[],6:[],7:[]}
-        for m in matches:
-            pass
+        rounds = {}
+        f = {4:8,5:4,6:2,7:1}
+        for i in [4,5,6,7]:
+            rounds[i] = get_knockout(i)
+            while len(rounds[i]) < f[i]:
+                rounds[i].append(["???","???","??","??","??","??",None,None])
+
+        names = {4:"Second Round",5:"Quarter Finals",6:"Semi Finals",7:"Final"}
+        for i in [4,5,6,7]:
+            content += colours.Foreground.YELLOW + colours.Style.BOLD
+            content += " " * ((screen.WIDTH-len(names[i]))/2) +  names[i]
+            content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
+            content += "\n"
+            next = " "
+            if i==7:
+                wr = write_match(rounds[i][0])
+                content += " " * ((screen.WIDTH+17-len(wr))/2)
+                content += wr
+            else:
+                for match in rounds[i]:
+                    wr = write_match(match,25)
+                    content += wr
+                    if next == " ":
+                        content += " " * (57-len(wr))
+                        next = "\n"
+                    elif next == "\n":
+                        content += "\n"
+                        next = " "
+            content += "\n\n"
 
         self.content = content
 

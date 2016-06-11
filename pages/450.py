@@ -73,7 +73,6 @@ class AwardsIndex(Page):
         import json
         from operator import itemgetter
         data = f_read_json('awards')
-        print data
         content = title("The most awards",True)
         content += "\n\n"
         for a,b in data.items():
