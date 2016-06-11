@@ -167,6 +167,8 @@ The pages in brackets are disabled.
 879 Moreton-in-Marsh Trains
 880 Ealing Broadway Trains
 881 Farringdon Trains
-883 Blaenau Ffestiniog Trains
+882 East Croydon Trains
+883 St Pancras to East Croydon Trains
+884 Blaenau Ffestiniog Trains
 888 Subtitles
 (999 Prisoner's Dilemma Score)
