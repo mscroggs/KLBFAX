@@ -18,7 +18,7 @@ class WheresOllyPage(Page):
             if i==n:
                 content += "OLLY"
             else:
-                content += choice(["OILY","YLLO"])
+                content += choice(["OILY","YLLO","YOLO"])
         self.content = content
 
 b_page = WheresOllyPage("367")
