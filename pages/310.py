@@ -31,18 +31,20 @@ for p in people:
         p[0] = "?"
     p.append([0,0,0,0,0])
 
-import json
-import urllib2
-
-headers = { 'X-Auth-Token': 'fcb6821c0ef24603a74f0e00bf5ba897', 'X-Response-Control': 'minified' }
-url = "http://api.football-data.org/v1/soccerseasons/424/fixtures"
-
-import urllib2
-request = urllib2.Request(url, headers=headers)
-data = json.load(urllib2.urlopen(request))
+def load_scores():
+    import json
+    import urllib2
+    
+    headers = { 'X-Auth-Token': 'fcb6821c0ef24603a74f0e00bf5ba897', 'X-Response-Control': 'minified' }
+    url = "http://api.football-data.org/v1/soccerseasons/424/fixtures"
+    
+    import urllib2
+    request = urllib2.Request(url, headers=headers)
+    return json.load(urllib2.urlopen(request))
 
 
 def get_groups():
+    data = load_scores()
     groups = []
 
     for match in data["fixtures"]:
@@ -62,6 +64,7 @@ def get_groups():
     return groups
 
 def get_knockout(n=None):
+    data = load_scores()
     groups = []
 
     for match in data["fixtures"]:
