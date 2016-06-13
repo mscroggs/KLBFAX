@@ -17,14 +17,7 @@ def get_team_n(code):
             return i
     return None
 
-people = [
-          ["Doaky","Albania","ALB"], ["Rafael","France","FRA"], ["Jason","Romania","ROM"], ["Huda","Switzerland","SWI"],
-          ["Adam","England","ENG"], ["Sebas","Russia","RUS"], ["Mart","Slovakia","SVK"], ["Pietro","Wales","WAL"],
-          ["Belgin","Germany","GER"], ["Momchil","Northern Ireland","NIR"], ["Grace","Poland","POL"], ["Mattia","Ukraine","UKR"],
-          ["CHARITY","Croatia","CRO"], ["Anna","Czech Republic","CZE"], ["John","Spain","SPA"], ["Newgo","Turkey","TUR"],
-          ["Rudie","Belgium","BEL"], ["Luca","Italy","ITA"], ["Sam","Republic of Ireland","ROI"], ["Antonio","Sweden","SWE"],
-          ["Wei Guan","Austria","AUS"], ["Shredder","Hungary","HUN"], ["Scroggs","Iceland","ICE"], ["Olly","Portugal","POR"]
-         ]
+from functions import sweepstake_people as people
 
 for p in people:
     if p[0] == "":
@@ -319,13 +312,13 @@ class SoccerPage5(Page):
         sts.sort(key=lambda p: p[3][0])
 
         content = colour_print(printer.text_to_ascii("Euro 2016 Standing")) + "\n"
-        lines = [p[1] + colours.Foreground.GREEN +" ("+ p[0]+")" + colours.Foreground.DEFAULT for p in sts[:6]]
+        lines = [p[1] + colours.Foreground.GREEN +" ("+ p[0]+")" + colours.Foreground.DEFAULT for p in sts]
         lines = [l + " "*(40-len(l)) + lines[-1-i] for i,l in enumerate(lines)]
         content += colours.Foreground.RED + "Bottom" + colours.Foreground.DEFAULT
         content += " " * 25
         content += colours.Foreground.GREEN + "Top" + colours.Foreground.DEFAULT 
         content += "\n"
-        content += "\n".join(lines)
+        content += "\n".join(lines[:6])
 
         self.content = content
 

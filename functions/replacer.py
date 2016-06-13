@@ -1,5 +1,6 @@
 import re
 import colours
+from sweep import sweepstake_people
 
 def escape(string):
     if string=="?":
@@ -60,6 +61,8 @@ def klb_replace(imput):
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
+    for p in sweepstake_people:
+        swaps.append([p[1],p[1]+colours.Foreground.GREEN+" ("+p[0]+")"+colours.Foreground.DEFAULT])
     punc = [" ","?","!",":","'",'"',"\n"]
     for swap in swaps:
         for p in punc:
