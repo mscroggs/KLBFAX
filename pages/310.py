@@ -340,7 +340,7 @@ soccer_page4 = SoccerPage4("313")
 soccer_page5 = SoccerPage5("315")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
-for page in [soccer_page2,soccer_page3,soccer_page4]:
+for page in [soccer_page2,soccer_page3,soccer_page4,soccer_page5]:
     content += "\n"
     content += colours.Foreground.RED + page.number + colours.Foreground.DEFAULT
     content += " "
