@@ -272,6 +272,64 @@ class SoccerPage4(Page):
         self.content = content
 
 
+class SoccerPage5(Page):
+    def __init__(self, page_num):
+        super(SoccerPage5, self).__init__(page_num)
+        self.title = "Euro 2016 Standing"
+        self.in_index = False
+
+    def generate_content(self):
+        # ["ENG","WAL",16,6,14,0,None,None],
+        import screen
+        matches = get_groups()
+        for p in people:
+            #      round,for,against,points
+            p[3] = [3,0,0,0]
+        for m in matches:
+            n1 = get_team_n(m[0])
+            n2 = get_team_n(m[1])
+            if m[6] is not None:
+                people[n1][3][1] += m[6]
+                people[n1][3][2] += m[7]
+                people[n2][3][2] += m[6]
+                people[n2][3][1] += m[7]
+                if m[6] > m[7]:
+                    people[n1][3][3] += 3
+                if m[6] == m[7]:
+                    people[n1][3][3] += 1
+                    people[n2][3][3] += 1
+                if m[6] < m[7]:
+                    people[n2][3][3] += 3
+        for i in [4,5,6,7]:
+            matches = get_knockout(i)
+            for m in matches:
+                n1 = get_team_n(m[0])
+                n2 = get_team_n(m[1])
+                people[n1][0] = i
+                if m[6] is not None:
+                    if m[6] > m[7]:
+                        people[n1][3][0] = i+1
+                    if m[6] < m[7]:
+                        people[n2][3][0] = i+1
+
+        sts = [p for p in people]
+        sts.sort(key=lambda p: p[3][1])
+        sts.sort(key=lambda p: p[3][1]-p[3][2])
+        sts.sort(key=lambda p: p[3][3])
+        sts.sort(key=lambda p: p[3][0])
+
+        content = colour_print(printer.text_to_ascii("Euro 2016 Standing")) + "\n"
+        lines = [p[1] + colours.Foreground.GREEN +" ("+ p[0]+")" + colours.Foreground.DEFAULT for p in sts[:6]]
+        lines = [l + " "*(40-len(l)) + lines[-1-i] for i,l in enumerate(lines)]
+        content += colours.Foreground.RED + "Bottom" + colours.Foreground.DEFAULT
+        content += " " * 25
+        content += colours.Foreground.GREEN + "Top" + colours.Foreground.DEFAULT 
+        content += "\n"
+        content += "\n".join(lines)
+
+        self.content = content
+
+
 
 
 soccer_page0 = Page("310")
@@ -279,6 +337,7 @@ soccer_page0 = Page("310")
 soccer_page2 = SoccerPage2("311")
 soccer_page3 = SoccerPage3("312")
 soccer_page4 = SoccerPage4("313")
+soccer_page5 = SoccerPage5("315")
 
 content = colour_print(printer.text_to_ascii("Euro 2016 Index"))
 for page in [soccer_page2,soccer_page3,soccer_page4]:
@@ -288,4 +347,4 @@ for page in [soccer_page2,soccer_page3,soccer_page4]:
     content += page.title
 soccer_page0.content = content
 soccer_page0.title = "Euro 2016"
-soccer_page0.index_num = "310-312"
+soccer_page0.index_num = "310-315"
