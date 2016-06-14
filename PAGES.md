@@ -19,6 +19,7 @@ The pages in brackets are disabled.
 115 Python
 116 SCORPIONS
 117 Olly
+118 Laptop
 140 Currency exchange
 150 Events
 200 Letters
@@ -53,6 +54,7 @@ The pages in brackets are disabled.
 312 Euro 2016 Tables
 313 Euro 2016 Knockout
 314 Pi
+315 Euro 2016 Standing
 367 Where's Olly?
 368 Countdowns
 369 Countdowns

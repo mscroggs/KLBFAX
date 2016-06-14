@@ -63,6 +63,17 @@ xx
 xx
 """)
 
+_add("?", """
+xxx
+  x
+x x
+ xx
+xxx
+ xx
+xxx
+""")
+
+
 _add("/", """
 xxxx
 xx x
