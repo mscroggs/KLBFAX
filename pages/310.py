@@ -268,7 +268,7 @@ class SoccerPage4(Page):
 class SoccerPage5(Page):
     def __init__(self, page_num):
         super(SoccerPage5, self).__init__(page_num)
-        self.title = "Euro 2016 Standing"
+        self.title = "Euro 2016 Standings"
         self.in_index = False
 
     def generate_content(self):
@@ -311,14 +311,36 @@ class SoccerPage5(Page):
         sts.sort(key=lambda p: p[3][3])
         sts.sort(key=lambda p: p[3][0])
 
-        content = colour_print(printer.text_to_ascii("Euro 2016 Standing")) + "\n"
+        content = colour_print(printer.text_to_ascii("Euro 2016 Standings")) + "\n"
         lines = [p[1] + colours.Foreground.GREEN +" ("+ p[0]+")" + colours.Foreground.DEFAULT for p in sts]
-        lines = [l + " "*(40-len(l)) + lines[-1-i] for i,l in enumerate(lines)]
-        content += colours.Foreground.RED + "Bottom" + colours.Foreground.DEFAULT
-        content += " " * 25
-        content += colours.Foreground.GREEN + "Top" + colours.Foreground.DEFAULT 
+        content += colours.Foreground.GREEN + "Top" + colours.Foreground.DEFAULT
+        content += " " * 28
+        content += colours.Foreground.RED + "Bottom" + colours.Foreground.DEFAULT 
         content += "\n"
-        content += "\n".join(lines[:6])
+        for i in range(12):
+            t_win = lines[-1-i]
+            t_lose = lines[i]
+            spaces = " " * (38-len(lines[-i-1]))
+            if i==0 or sts[-i][3] != sts[-i-1][3]:
+                if i<9:
+                    content += " "
+                content += str(i+1)
+            else:
+                if i<9:
+                    content += " "
+                else:
+                    content += "="
+                content += "="
+            content += " "
+            content += t_win
+            content += spaces
+            if i==0 or sts[-i][3] != sts[-i-1][3]:
+                content += str(len(lines)-i)
+            else:
+                content += "=="
+            content += " "
+            content += t_lose
+            content += "\n"
 
         self.content = content
 
