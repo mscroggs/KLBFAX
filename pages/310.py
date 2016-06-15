@@ -317,28 +317,24 @@ class SoccerPage5(Page):
         content += " " * 28
         content += colours.Foreground.RED + "Bottom" + colours.Foreground.DEFAULT 
         content += "\n"
+
+        n = " ?"
+        for i in range(24):
+            num = ""
+            if i==0 or sts[-i][3] != sts[-i-1][3]:
+                n = ""
+                if i<9:
+                    n += " "
+                n += str(i+1)
+            
+            lines[-1-i] = n + " " + lines[-1-i]
+
         for i in range(12):
             t_win = lines[-1-i]
             t_lose = lines[i]
-            spaces = " " * (38-len(lines[-i-1]))
-            if i==0 or sts[-i][3] != sts[-i-1][3]:
-                if i<9:
-                    content += " "
-                content += str(i+1)
-            else:
-                if i<9:
-                    content += " "
-                else:
-                    content += "="
-                content += "="
-            content += " "
+            spaces = " " * (41-len(lines[-i-1]))
             content += t_win
             content += spaces
-            if i==0 or sts[-i][3] != sts[-i-1][3]:
-                content += str(len(lines)-i)
-            else:
-                content += "=="
-            content += " "
             content += t_lose
             content += "\n"
 
