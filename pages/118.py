@@ -13,6 +13,8 @@ class SuckPage(Page):
         self.title = "Laptop"
 
     def generate_content(self):
+        from datetime import date
+        days = 31 + (date.today() - date(2016,6,15)).days
         self.content = colour_print(
             printer.text_to_ascii("has Adam's"),colours.Foreground.BLACK,colours.Background.YELLOW)
         self.content += "\n"
@@ -21,5 +23,7 @@ class SuckPage(Page):
         self.content += "\n"
         self.content += colour_print(
             printer.text_to_ascii("no"),colours.Foreground.BLACK,colours.Background.RED)
+        self.content += colour_print(
+            printer.text_to_ascii(str(days)+" days and counting"),colours.Foreground.BLACK,colours.Background.BLUE+colours.Style.BLINK)
 
 sub_page = SuckPage(page_number)
