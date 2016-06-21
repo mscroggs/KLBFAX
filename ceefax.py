@@ -109,7 +109,7 @@ def pull_new_version():
         except:
             satis = []
         with open("/home/pi/ceefax/requirements.txt") as f:
-            with open("/home/pi/ceefax/requirements-satisfied.txt","a") as g:
+            with open("/home/pi/ceefax/requirements-satisfied.txt","a+") as g:
                 for line in f.readlines():
                     line = line.strip("\n")
                     if line not in satis:
