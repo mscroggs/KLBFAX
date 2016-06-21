@@ -110,12 +110,14 @@ def pull_new_version():
             satis = []
         print satis
         with open("/home/pi/ceefax/requirements.txt") as f:
-            with open("/home/pi/ceefax/requirements-satisfied.txt","a+") as g:
-                for line in f.readlines():
-                    line = line.strip("\n")
-                    if line not in satis:
-                        g.write(satis+"\n")
-                        system("sudo pip install "+line)
+            for line in f.readlines():
+                line = line.strip("\n")
+                if line not in satis:
+                    print "installing "+line
+                    with open("/home/pi/ceefax/requirements-satisfied.txt","a+") as g:
+                        g.write(line+"\n")
+                    system("sudo pip install "+line)
+                    print "installed "+line
         stop_execution()
     except:
         pass
