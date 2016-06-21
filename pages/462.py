@@ -13,16 +13,16 @@ class SunrisePage(Page):
         self.title = "Sunrise & sunset"
 
     def generate_content(self):
-		import datetime
-		from astral import Astral	
-		city_name = 'London'
-		a = Astral()
-		a.solar_depression = 'civil'
-		city = a[city_name]
-		sun = city.sun(local=True)
-		sunrise = sun['sunrise'].strftime("%H:%M")
-		sunset = sun['sunset'].strftime("%H:%M")
-		
+        import datetime
+        from astral import Astral	
+        city_name = 'London'
+        a = Astral()
+        a.solar_depression = 'civil'
+        city = a[city_name]
+        sun = city.sun(local=True)
+        sunrise = sun['sunrise'].strftime("%H:%M")
+        sunset = sun['sunset'].strftime("%H:%M")
+
         tag = "Here comes the sun"
         content = colour_print(printer.text_to_ascii("Sunrise/sunset"))       
 
