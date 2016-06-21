@@ -2,3 +2,4 @@ pyyaml
 pytz
 zope.event
 tubestatus
+astral
