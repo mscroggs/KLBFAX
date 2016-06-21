@@ -108,7 +108,6 @@ def pull_new_version():
                 satis = [s.strip("\n") for s in f.readlines()]
         except:
             satis = []
-        print satis
         with open("/home/pi/ceefax/requirements.txt") as f:
             for line in f.readlines():
                 line = line.strip("\n")
