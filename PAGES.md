@@ -54,7 +54,7 @@ The pages in brackets are disabled.
 312 Euro 2016 Tables
 313 Euro 2016 Knockout
 314 Pi
-315 Euro 2016 Standing
+315 Euro 2016 Standings
 367 Where's Olly?
 368 Countdowns
 369 Countdowns
@@ -76,6 +76,7 @@ The pages in brackets are disabled.
 459 World Clock
 460 World Temperature
 461 UK Temperature
+462 Sunrise & sunset
 508 Resource Limit
 555 National Lottery
 580 Recipes Index
