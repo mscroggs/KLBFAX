@@ -12,13 +12,16 @@ class SuckPage(Page):
         self.title = "Important Information"
 
     def generate_content(self):
-        n = randrange(2)
+        n = randrange(3)
         if n==1:
             self.content = colour_print(
                 printer.text_to_ascii("imperial suck(s)"))
             self.content += "\n\n (Except for Kuru,\n  love from Scroggs)"
-        else:
+        elif n==2:
             self.content = colour_print(
                 printer.text_to_ascii("B&Q suck(s)"))
+        elif n==3:
+            self.content = colour_print(
+                printer.text_to_ascii("Dell suck(s)"))
 
 sub_page = SuckPage(page_number)
