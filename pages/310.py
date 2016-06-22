@@ -312,6 +312,7 @@ class SoccerPage5(Page):
                     n1 = get_team_n(m[0])
                     n2 = get_team_n(m[1])
                     people[n1][3][0] = i
+                    people[n2][3][0] = i
                     for ii in range(1,4):
                         people[n1][3][ii] = 0
                         people[n2][3][ii] = 0
