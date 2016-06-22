@@ -24,16 +24,29 @@ for p in people:
         p[0] = "?"
     p.append([0,0,0,0,0])
 
+class Loader:
+    def __init__(self):
+        self.cache = {"fixtures":[]}
+
+    def load(self):
+        try:
+            import json
+            import urllib2
+    
+            headers = { 'X-Auth-Token': 'fcb6821c0ef24603a74f0e00bf5ba897', 'X-Response-Control': 'minified' }
+            url = "http://api.football-data.org/v1/soccerseasons/424/fixtures"
+    
+            import urllib2
+            request = urllib2.Request(url, headers=headers)
+            self.cache = json.load(urllib2.urlopen(request))
+        except:
+            pass
+        return self.cache
+
+l = Loader()
+
 def load_scores():
-    import json
-    import urllib2
-    
-    headers = { 'X-Auth-Token': 'fcb6821c0ef24603a74f0e00bf5ba897', 'X-Response-Control': 'minified' }
-    url = "http://api.football-data.org/v1/soccerseasons/424/fixtures"
-    
-    import urllib2
-    request = urllib2.Request(url, headers=headers)
-    return json.load(urllib2.urlopen(request))
+    return l.load()
 
 
 def get_groups():
@@ -109,28 +122,24 @@ class SoccerPage2(Page):
         self.in_index = False
 
     def generate_content(self):
-        try:
-            # ["ENG","WAL",16,6,14,0,None,None],
-            content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
-            matches = get_groups() + get_knockout()
-            matches.reverse()
-            date = (0,0)
-            nowdate = now()
-            for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
-                if date != (match[2],match[3]):
-                    date = (match[2],match[3])
-                    content +=  " " * 32
-                    content += colours.Foreground.YELLOW + colours.Style.BOLD
-                    content += str(date[0]) +"/0"+ str(date[1])
-                    content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
-                    content += "\n"
-                content += write_match(match,40)
-                content += "\n"
-    
-            self.content = content
-            self.cache = content
-        except:
-            self.content = self.cache
+        # ["ENG","WAL",16,6,14,0,None,None],
+       content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
+       matches = get_groups() + get_knockout()
+       matches.reverse()
+       date = (0,0)
+       nowdate = now()
+       for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
+           if date != (match[2],match[3]):
+               date = (match[2],match[3])
+               content +=  " " * 32
+               content += colours.Foreground.YELLOW + colours.Style.BOLD
+               content += str(date[0]) +"/0"+ str(date[1])
+               content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
+               content += "\n"
+           content += write_match(match,40)
+           content += "\n"
+
+       self.content = content
 
 
 class SoccerPage3(Page):
@@ -140,7 +149,6 @@ class SoccerPage3(Page):
         self.in_index = False
 
     def generate_content(self):
-        try:
             # ["ENG","WAL",16,6,14,0,None,None],
             content = colour_print(printer.text_to_ascii("Euro 2016 Tables"))
             for p in people:
@@ -160,7 +168,7 @@ class SoccerPage3(Page):
                     if m[6] == m[7]:
                         people[n1][3][1] += 1
                         people[n2][3][1] += 1
-                            people[n1][3][5] += 1
+                        people[n1][3][5] += 1
                         people[n2][3][5] += 1
                     if m[6] < m[7]:
                         people[n1][3][2] += 1
@@ -225,9 +233,6 @@ class SoccerPage3(Page):
     
                     content += "\n"
             self.content = content
-            self.cache = content
-        except:
-            self.content = self.cache
 
 class SoccerPage4(Page):
     def __init__(self, page_num):
@@ -236,7 +241,6 @@ class SoccerPage4(Page):
         self.in_index = False
 
     def generate_content(self):
-        try:
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
@@ -272,9 +276,6 @@ class SoccerPage4(Page):
                 content += "\n\n"
     
             self.content = content
-            self.cache = content
-        except:
-            self.content = self.cache
 
 
 class SoccerPage5(Page):
@@ -284,7 +285,6 @@ class SoccerPage5(Page):
         self.in_index = False
 
     def generate_content(self):
-        try:
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             matches = get_groups()
@@ -352,9 +352,6 @@ class SoccerPage5(Page):
                 content += "\n"
     
             self.content = content
-            self.cache = content
-        except:
-            self.content = self.cache
 
 
 
