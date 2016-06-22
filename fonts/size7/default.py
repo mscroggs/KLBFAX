@@ -63,6 +63,16 @@ xxx
 xxx
 """)
 
+_add(":", """
+xxx
+xxx
+''x
+,,x
+''x
+,,x
+xxx
+""")
+
 _add("!", """
 xxx
   x

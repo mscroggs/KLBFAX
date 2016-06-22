@@ -103,6 +103,20 @@ def pull_new_version():
         system("cd /home/pi/ceefax;git pull")
         with open("/home/pi/ceefax/temp","w") as f:
             f.write("YES")
+        try:
+            with open("/home/pi/ceefax/requirements-satisfied.txt") as f:
+                satis = [s.strip("\n") for s in f.readlines()]
+        except:
+            satis = []
+        with open("/home/pi/ceefax/requirements.txt") as f:
+            for line in f.readlines():
+                line = line.strip("\n")
+                if line not in satis:
+                    print "installing "+line
+                    with open("/home/pi/ceefax/requirements-satisfied.txt","a+") as g:
+                        g.write(line+"\n")
+                    system("sudo pip install "+line)
+                    print "installed "+line
         stop_execution()
     except:
         pass
