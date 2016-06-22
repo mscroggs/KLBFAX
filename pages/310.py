@@ -311,7 +311,10 @@ class SoccerPage5(Page):
                 for m in matches:
                     n1 = get_team_n(m[0])
                     n2 = get_team_n(m[1])
-                    people[n1][0] = i
+                    people[n1][3][0] = i
+                    for ii in range(1,4):
+                        people[n1][3][ii] = 0
+                        people[n2][3][ii] = 0
                     if m[6] is not None:
                         if m[6] > m[7]:
                             people[n1][3][0] = i+1
