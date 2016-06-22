@@ -13,14 +13,14 @@ class SuckPage(Page):
 
     def generate_content(self):
         n = randrange(3)
-        if n==1:
+        if n==0:
             self.content = colour_print(
                 printer.text_to_ascii("imperial suck(s)"))
             self.content += "\n\n (Except for Kuru,\n  love from Scroggs)"
-        elif n==2:
+        elif n==1:
             self.content = colour_print(
                 printer.text_to_ascii("B&Q suck(s)"))
-        elif n==3:
+        elif n==2:
             self.content = colour_print(
                 printer.text_to_ascii("Dell suck(s)"))
 
