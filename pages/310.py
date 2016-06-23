@@ -255,25 +255,15 @@ class SoccerPage4(Page):
             names = {4:"Second Round",5:"Quarter Finals",6:"Semi Finals",7:"Final"}
             for i in [4,5,6,7]:
                 content += colours.Foreground.YELLOW + colours.Style.BOLD
-                content += " " * ((screen.WIDTH-len(names[i]))/2) +  names[i]
+                content += names[i]
                 content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
-                content += "\n"
-                next = " "
-                if i==7:
-                    wr = write_match(rounds[i][0])
-                    content += " " * ((screen.WIDTH+17-len(wr))/2)
+                l = len(names[i])
+                for match in rounds[i]:
+                    wr = write_match(match,43-l)
+                    l = 0
                     content += wr
-                else:
-                    for match in rounds[i]:
-                        wr = write_match(match,25)
-                        content += wr
-                        if next == " ":
-                            content += " " * (57-len(wr))
-                            next = "\n"
-                        elif next == "\n":
-                            content += "\n"
-                            next = " "
-                content += "\n\n"
+                    content += "\n"
+                content += "\n"
     
             self.content = content
 
