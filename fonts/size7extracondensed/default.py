@@ -115,13 +115,13 @@ xxxx
 """)
 
 _add("C", """
-xxxx
-   x
- x,x
- xxx
- x'x
-   x
-xxxx
+xxx
+  x
+ xx
+ xx
+ xx
+  x
+xxx
 """)
 
 _add("D", """
@@ -205,13 +205,13 @@ xxxx
 """)
 
 _add("L", """
-xxxx
- xxx
- xxx
- xxx
- xxx
-   x
-xxxx
+xxx
+ xx
+ xx
+ xx
+ xx
+  x
+xxx
 """)
 
 _add("M", """
@@ -275,13 +275,13 @@ xxxx
 """)
 
 _add("S", """
-xxxx
-   x
- x,x
-, 'x
-'x x
-   x
-xxxx
+xxx
+  x
+ xx
+  x
+x x
+  x
+xxx
 """)
 
 _add("T", """

@@ -29,9 +29,7 @@ class ChalkPage(Page):
         import urllib2
         content = colour_print(printer.text_to_ascii("G-research!",fill=False))
         content += "\n  &\n"
-        content += colour_print(printer.text_to_ascii("K-research!",fill=False))
-        content += "\n  &\n"
-        content += colour_print(printer.text_to_ascii("U-research!",fill=False))        
+        content += colour_print(printer.text_to_ascii("?-research!",fill=False))        
 
         response = urllib2.urlopen("https://twitter.com/chalkdustmag")
         html = unescape(response.read().decode("utf-8"))

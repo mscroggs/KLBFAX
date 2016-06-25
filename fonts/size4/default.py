@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from fonts.LetterBlock import LetterBlock
 from fonts.exceptions import LetterNotDefined
@@ -75,8 +75,26 @@ xx,xx
 xx,xx
 """)
 
+_add(u"▲","""
+xxxxxx
+xx'xxx
+'   'x
+xxxxxx
+""")
 
+_add(u"▼","""
+xxxxxx
+'''''x
+x, ,xx
+xxxxxx
+""")
 
+_add("%","""
+'xxxx
+xx',x
+',xxx
+xxx,x
+""")
 
 _add("'","""
 'x
@@ -153,6 +171,13 @@ xxxx
 x'xx
 , ,x
 xxxx
+""")
+
+_add("=","""
+xxxxx
+''''x
+''''x
+xxxxx
 """)
 
 _add("$","""
