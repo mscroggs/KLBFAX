@@ -64,7 +64,8 @@ def get_groups():
                 int(d.split("T")[1].split(":")[0])+1,
                 int(d.split(":")[1]),
                 match["result"]["goalsHomeTeam"],
-                match["result"]["goalsAwayTeam"]
+                match["result"]["goalsAwayTeam"],
+                False
             ])
 
     return groups
@@ -76,7 +77,7 @@ def get_knockout(n=None):
     for match in data["fixtures"]:
         if match["matchday"] not in [1,2,3] and (n is None or n == match["matchday"]):
             d = match["date"]
-            groups.append([
+            add = [
                 match["homeTeamName"],
                 match["awayTeamName"],
                 int(d.split("-")[2].split("T")[0]),
@@ -84,8 +85,17 @@ def get_knockout(n=None):
                 int(d.split("T")[1].split(":")[0]),
                 int(d.split(":")[1]),
                 match["result"]["goalsHomeTeam"],
-                match["result"]["goalsAwayTeam"]
-            ])
+                match["result"]["goalsAwayTeam"],
+                False
+            ]
+            if "extraTime" in match["result"]:
+                add[-3] += match["result"]["extraTime"]["goalsHomeTeam"]
+                add[-2] += match["result"]["extraTime"]["goalsAwayTeam"]
+                add[-1] = True
+            if "penaltyShootout" in match["result"]:
+                add.append(match["result"]["penaltyShootout"]["goalsHomeTeam"])
+                add.append(match["result"]["penaltyShootout"]["goalsAwayTeam"])
+            groups.append(add)
 
     return groups
 
@@ -103,10 +113,29 @@ def write_match(match,indent=None):
     if indent is None:
         content = ""
     else:
-        content = " " * (indent-len(str1))
+        minus = 0
+        if len(match) == 11:
+            minus = 2
+        content = " " * (indent-len(str1)-minus)
     content += str1 + " "
     if match[6] is not None:
-        content += " " + str(match[6])+"-"+str(match[7]) + " "
+        if len(match) == 11:
+            content += colours.Foreground.RED
+            content += "("+str(match[9])+")"
+            content += colours.Foreground.DEFAULT
+        else:
+            content += " "
+        content += str(match[6])+"-"+str(match[7])
+        if match[8] and len(match)==9:
+            content += colours.Foreground.RED
+            content += "(ET)"
+            content += colours.Foreground.DEFAULT
+        elif len(match) == 11:
+            content += colours.Foreground.RED
+            content += "("+str(match[10])+")"
+            content += colours.Foreground.DEFAULT
+        else:
+            content += " "
     else:
         pad = ""
         if match[5] < 10:
@@ -250,7 +279,7 @@ class SoccerPage4(Page):
             for i in [4,5,6,7]:
                 rounds[i] = get_knockout(i)
                 while len(rounds[i]) < f[i]:
-                    rounds[i].append(["???","???","??","??","??","??",None,None])
+                    rounds[i].append(["???","???","??","??","??","??",None,None,False])
     
             names = {4:"Second Round",5:"Quarter Finals",6:"Semi Finals",7:"Final"}
             for i in [4,5,6,7]:
@@ -307,10 +336,12 @@ class SoccerPage5(Page):
                         people[n1][3][ii] = 0
                         people[n2][3][ii] = 0
                     if m[6] is not None:
-                        if m[6] > m[7]:
+                        if m[6] > m[7] or (len(m) == 11 and m[9] > m[10]):
                             people[n1][3][0] = i+1
-                        if m[6] < m[7]:
+                            people[n2][3][0] = i-.5
+                        if m[6] < m[7] or (len(m) == 11 and m[9] < m[10]):
                                 people[n2][3][0] = i+1
+                                people[n1][3][0] = i-.5
     
             sts = [p for p in people]
             sts.sort(key=lambda p: p[3][1])
