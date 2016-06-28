@@ -99,7 +99,11 @@ def get_knockout(n=None):
 
     return groups
 
-def write_match(match,indent=None):
+date = (0,0)
+
+def write_match(match,indent=None,show_date=False):
+    global date
+    content = ""
     team1 = get_team(match[0])
     if team1 is None:
         str1 = colours.Foreground.BLUE + "?" + colours.Foreground.DEFAULT
@@ -111,12 +115,12 @@ def write_match(match,indent=None):
     else:
         str2 = team2[1] + colours.Foreground.GREEN + " ("+team2[0]+")" + colours.Foreground.DEFAULT
     if indent is None:
-        content = ""
+        content += ""
     else:
         minus = 0
         if len(match) == 11:
             minus = 2
-        content = " " * (indent-len(str1)-minus)
+        content += " " * (indent-len(str1)-minus)
     content += str1 + " "
     if match[6] is not None:
         if len(match) == 11:
@@ -137,10 +141,18 @@ def write_match(match,indent=None):
         else:
             content += " "
     else:
-        pad = ""
-        if match[5] < 10:
-            pad = "0"
-        content += str(match[4])+":"+pad+str(match[5])
+        if show_date:
+            pad1,pad2 = "",""
+            if match[2] < 10:
+                pad1 = "0"
+            if match[3] < 10:
+                pad2 = "0"
+            content += pad1+str(match[2])+"/"+pad2+str(match[3])
+        else:
+            pad = ""
+            if match[5] < 10:
+                pad = "0"
+            content += str(match[4])+":"+pad+str(match[5])
     content += " " + str2
     return content
 
@@ -151,24 +163,24 @@ class SoccerPage2(Page):
         self.in_index = False
 
     def generate_content(self):
+        date = (0,0)
         # ["ENG","WAL",16,6,14,0,None,None],
-       content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
-       matches = get_groups() + get_knockout()
-       matches.reverse()
-       date = (0,0)
-       nowdate = now()
-       for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
-           if date != (match[2],match[3]):
-               date = (match[2],match[3])
-               content +=  " " * 32
-               content += colours.Foreground.YELLOW + colours.Style.BOLD
-               content += str(date[0]) +"/0"+ str(date[1])
-               content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
-               content += "\n"
-           content += write_match(match,40)
-           content += "\n"
+        content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
+        matches = get_groups() + get_knockout()
+        matches.reverse()
+        nowdate = now()
+        for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
+            if date != (match[2],match[3]):
+                date = (match[2],match[3])
+                content +=  " " * 32
+                content += colours.Foreground.YELLOW + colours.Style.BOLD
+                content += str(date[0]) +"/0"+ str(date[1])
+                content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
+                content += "\n"
+            content += write_match(match,40)
+            content += "\n"
 
-       self.content = content
+        self.content = content
 
 
 class SoccerPage3(Page):
@@ -178,6 +190,7 @@ class SoccerPage3(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             content = colour_print(printer.text_to_ascii("Euro 2016 Tables"))
             for p in people:
@@ -270,6 +283,7 @@ class SoccerPage4(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
@@ -288,7 +302,8 @@ class SoccerPage4(Page):
                 content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
                 l = len(names[i])
                 for match in rounds[i]:
-                    wr = write_match(match,43-l)
+                    show_date = match[6] == None
+                    wr = write_match(match, 43-l, show_date)
                     l = 0
                     content += wr
                     content += "\n"
@@ -304,6 +319,7 @@ class SoccerPage5(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             matches = get_groups()
