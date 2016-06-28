@@ -64,7 +64,8 @@ def get_groups():
                 int(d.split("T")[1].split(":")[0])+1,
                 int(d.split(":")[1]),
                 match["result"]["goalsHomeTeam"],
-                match["result"]["goalsAwayTeam"]
+                match["result"]["goalsAwayTeam"],
+                False
             ])
 
     return groups
@@ -76,7 +77,7 @@ def get_knockout(n=None):
     for match in data["fixtures"]:
         if match["matchday"] not in [1,2,3] and (n is None or n == match["matchday"]):
             d = match["date"]
-            groups.append([
+            add = [
                 match["homeTeamName"],
                 match["awayTeamName"],
                 int(d.split("-")[2].split("T")[0]),
@@ -84,12 +85,25 @@ def get_knockout(n=None):
                 int(d.split("T")[1].split(":")[0]),
                 int(d.split(":")[1]),
                 match["result"]["goalsHomeTeam"],
-                match["result"]["goalsAwayTeam"]
-            ])
+                match["result"]["goalsAwayTeam"],
+                False
+            ]
+            if "extraTime" in match["result"]:
+                add[-3] += match["result"]["extraTime"]["goalsHomeTeam"]
+                add[-2] += match["result"]["extraTime"]["goalsAwayTeam"]
+                add[-1] = True
+            if "penaltyShootout" in match["result"]:
+                add.append(match["result"]["penaltyShootout"]["goalsHomeTeam"])
+                add.append(match["result"]["penaltyShootout"]["goalsAwayTeam"])
+            groups.append(add)
 
     return groups
 
-def write_match(match,indent=None):
+date = (0,0)
+
+def write_match(match,indent=None,show_date=False):
+    global date
+    content = ""
     team1 = get_team(match[0])
     if team1 is None:
         str1 = colours.Foreground.BLUE + "?" + colours.Foreground.DEFAULT
@@ -101,17 +115,44 @@ def write_match(match,indent=None):
     else:
         str2 = team2[1] + colours.Foreground.GREEN + " ("+team2[0]+")" + colours.Foreground.DEFAULT
     if indent is None:
-        content = ""
+        content += ""
     else:
-        content = " " * (indent-len(str1))
+        minus = 0
+        if len(match) == 11:
+            minus = 2
+        content += " " * (indent-len(str1)-minus)
     content += str1 + " "
     if match[6] is not None:
-        content += " " + str(match[6])+"-"+str(match[7]) + " "
+        if len(match) == 11:
+            content += colours.Foreground.RED
+            content += "("+str(match[9])+")"
+            content += colours.Foreground.DEFAULT
+        else:
+            content += " "
+        content += str(match[6])+"-"+str(match[7])
+        if match[8] and len(match)==9:
+            content += colours.Foreground.RED
+            content += "(ET)"
+            content += colours.Foreground.DEFAULT
+        elif len(match) == 11:
+            content += colours.Foreground.RED
+            content += "("+str(match[10])+")"
+            content += colours.Foreground.DEFAULT
+        else:
+            content += " "
     else:
-        pad = ""
-        if match[5] < 10:
-            pad = "0"
-        content += str(match[4])+":"+pad+str(match[5])
+        if show_date:
+            pad1,pad2 = "",""
+            if match[2] < 10:
+                pad1 = "0"
+            if match[3] < 10:
+                pad2 = "0"
+            content += pad1+str(match[2])+"/"+pad2+str(match[3])
+        else:
+            pad = ""
+            if match[5] < 10:
+                pad = "0"
+            content += str(match[4])+":"+pad+str(match[5])
     content += " " + str2
     return content
 
@@ -122,24 +163,24 @@ class SoccerPage2(Page):
         self.in_index = False
 
     def generate_content(self):
+        date = (0,0)
         # ["ENG","WAL",16,6,14,0,None,None],
-       content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
-       matches = get_groups() + get_knockout()
-       matches.reverse()
-       date = (0,0)
-       nowdate = now()
-       for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
-           if date != (match[2],match[3]):
-               date = (match[2],match[3])
-               content +=  " " * 32
-               content += colours.Foreground.YELLOW + colours.Style.BOLD
-               content += str(date[0]) +"/0"+ str(date[1])
-               content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
-               content += "\n"
-           content += write_match(match,40)
-           content += "\n"
+        content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
+        matches = get_groups() + get_knockout()
+        matches.reverse()
+        nowdate = now()
+        for match in [m for m in matches if m[3]<nowdate.month or (m[3]==nowdate.month and m[2]<=nowdate.day) or (m[2] == 10 and m[3] == 6)]:
+            if date != (match[2],match[3]):
+                date = (match[2],match[3])
+                content +=  " " * 32
+                content += colours.Foreground.YELLOW + colours.Style.BOLD
+                content += str(date[0]) +"/0"+ str(date[1])
+                content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
+                content += "\n"
+            content += write_match(match,40)
+            content += "\n"
 
-       self.content = content
+        self.content = content
 
 
 class SoccerPage3(Page):
@@ -149,6 +190,7 @@ class SoccerPage3(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             content = colour_print(printer.text_to_ascii("Euro 2016 Tables"))
             for p in people:
@@ -241,6 +283,7 @@ class SoccerPage4(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             content = colour_print(printer.text_to_ascii("Euro 2016 Scores & Fixtures")) + "\n"
@@ -250,30 +293,21 @@ class SoccerPage4(Page):
             for i in [4,5,6,7]:
                 rounds[i] = get_knockout(i)
                 while len(rounds[i]) < f[i]:
-                    rounds[i].append(["???","???","??","??","??","??",None,None])
+                    rounds[i].append(["???","???","??","??","??","??",None,None,False])
     
             names = {4:"Second Round",5:"Quarter Finals",6:"Semi Finals",7:"Final"}
             for i in [4,5,6,7]:
                 content += colours.Foreground.YELLOW + colours.Style.BOLD
-                content += " " * ((screen.WIDTH-len(names[i]))/2) +  names[i]
+                content += names[i]
                 content += colours.Foreground.DEFAULT + colours.Style.DEFAULT
-                content += "\n"
-                next = " "
-                if i==7:
-                    wr = write_match(rounds[i][0])
-                    content += " " * ((screen.WIDTH+17-len(wr))/2)
+                l = len(names[i])
+                for match in rounds[i]:
+                    show_date = match[6] == None
+                    wr = write_match(match, 43-l, show_date)
+                    l = 0
                     content += wr
-                else:
-                    for match in rounds[i]:
-                        wr = write_match(match,25)
-                        content += wr
-                        if next == " ":
-                            content += " " * (57-len(wr))
-                            next = "\n"
-                        elif next == "\n":
-                            content += "\n"
-                            next = " "
-                content += "\n\n"
+                    content += "\n"
+                content += "\n"
     
             self.content = content
 
@@ -285,6 +319,7 @@ class SoccerPage5(Page):
         self.in_index = False
 
     def generate_content(self):
+            date = (0,0)
             # ["ENG","WAL",16,6,14,0,None,None],
             import screen
             matches = get_groups()
@@ -317,10 +352,12 @@ class SoccerPage5(Page):
                         people[n1][3][ii] = 0
                         people[n2][3][ii] = 0
                     if m[6] is not None:
-                        if m[6] > m[7]:
+                        if m[6] > m[7] or (len(m) == 11 and m[9] > m[10]):
                             people[n1][3][0] = i+1
-                        if m[6] < m[7]:
+                            people[n2][3][0] = i-.5
+                        if m[6] < m[7] or (len(m) == 11 and m[9] < m[10]):
                                 people[n2][3][0] = i+1
+                                people[n1][3][0] = i-.5
     
             sts = [p for p in people]
             sts.sort(key=lambda p: p[3][1])

@@ -1,4 +1,4 @@
-import os
+﻿import os
 from page import Page
 import colours
 from printer import instance as printer
@@ -10,13 +10,13 @@ r1.content = (colours.colour_print(
     printer.text_to_ascii("bad tempered cake"),
     colours.Background.RED,
     colours.Foreground.BLUE) +
-"""
-1/2 lb    Rich tea and/or digestive biscuits
+u"""
+    ½ lb    Rich tea and/or digestive biscuits
     4 oz    Margarine
     1 dsp   Sugar
     3 dsp   Cocoa
     3 dsp   Drinking chocolate
-1 1/2 tbsp  Golden syrup
+   1½ tbsp  Golden syrup
     2 oz    Sultanas
     2 bars  Milk chocolate
 
