@@ -9,7 +9,8 @@ from file_handler import f_read
 class WeatherPage(Page):
     def __init__(self, page_num):
         super(WeatherPage, self).__init__(page_num)
-        self.title = "Weather"      
+        self.title = "Weather & The World"      
+        self.index_num = "401, 459-462"
 
     def generate_content(self):
         import urllib2

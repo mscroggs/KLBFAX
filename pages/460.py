@@ -14,6 +14,7 @@ class WorldTempPage(Page):
     def __init__(self, page_num):
         super(WorldTempPage, self).__init__(page_num)
         self.title = "World Temperature"
+        self.in_index = False
 
     def generate_content(self):
         import urllib2, json

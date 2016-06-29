@@ -11,6 +11,7 @@ class SuckPage(Page):
     def __init__(self,page_num):
         super(SuckPage, self).__init__(page_num)
         self.title = "Laptop"
+        self.in_index = False
 
     def generate_content(self):
         from datetime import date

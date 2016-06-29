@@ -16,6 +16,7 @@ class UKTempPage(Page):
     def __init__(self, page_num):
         super(UKTempPage, self).__init__(page_num)
         self.title = "UK Temperature"
+        self.in_index = False
 
     def generate_content(self):
         import urllib2, json

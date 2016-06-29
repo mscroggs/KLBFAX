@@ -34,7 +34,7 @@ xxxxxxxxxxxxxxxxxxxxxx x  xxxx xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxxxxx
                      xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxxxxx
 """)
         content +="""
-"""+self.colours.Foreground.GREEN+"INDEX"+self.colours.Foreground.DEFAULT+"""
+"""+self.colours.Foreground.GREEN+("INDEX "*13)+self.colours.Foreground.DEFAULT+"""
 """
         i = 0
         items = PageFactory().pages.items()

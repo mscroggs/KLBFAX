@@ -11,6 +11,7 @@ class SunrisePage(Page):
     def __init__(self, page_num):
         super(SunrisePage, self).__init__(page_num)
         self.title = "Sunrise & sunset"
+        self.in_index = False
 
     def generate_content(self):
         import datetime

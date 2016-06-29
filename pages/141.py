@@ -11,6 +11,7 @@ class StockExchangePage(Page):
     def __init__(self, page_num):
         super(StockExchangePage, self).__init__(page_num)
         self.title = "World markets"
+        self.in_index = False
 
     def generate_content(self):
         import urllib2

@@ -10,7 +10,8 @@ from colours import colour_print
 class CurrencyPage(Page):
     def __init__(self, page_num):
         super(CurrencyPage, self).__init__(page_num)
-        self.title = "Currency exchange"
+        self.title = "Money"
+        self.index_num = "140-141"
 
     def generate_content(self):
         import urllib2
