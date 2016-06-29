@@ -23,8 +23,8 @@ class SuckPage(Page):
             printer.text_to_ascii("Laptop arrived?"),colours.Foreground.BLACK,colours.Background.YELLOW)
         self.content += "\n"
         self.content += colour_print(
-            printer.text_to_ascii("no"),colours.Foreground.BLACK,colours.Background.RED)
+            printer.text_to_ascii("YES!"),colours.Foreground.BLACK,colours.Background.RED)
         self.content += colour_print(
-            printer.text_to_ascii(str(days)+" days and counting"),colours.Foreground.BLACK,colours.Background.BLUE+colours.Style.BLINK)
+            printer.text_to_ascii("Only 44 days to arrive"),colours.Foreground.BLACK,colours.Background.BLUE+colours.Style.BLINK)
 
 sub_page = SuckPage(page_number)
