@@ -69,7 +69,6 @@ def block_characters(text,invert=False):
 def colour_print(text,background=Background.BLUE,foreground=Foreground.YELLOW+Style.BOLD,invert=False,rainbow=False):
     if rainbow:
         from random import choice
-        print text[0],text[1]
         newtext = Background.BLACK
         for character in text.strip("\033[44m").strip("\033[33m"):
             newtext += choice(Style.non_strike)
