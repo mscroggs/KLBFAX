@@ -3,6 +3,7 @@ The pages in brackets are disabled.
 
 (000 Test Page)
 (001 Unicode Test Page)
+(007 FF choice)
 (042 Secret Page)
 100 Index
 101 Tube Line Status
@@ -20,7 +21,8 @@ The pages in brackets are disabled.
 116 SCORPIONS
 117 Olly
 118 Laptop
-140 Currency exchange
+140 Money
+141 World markets
 150 Events
 200 Letters
 201 Letters
@@ -60,7 +62,7 @@ The pages in brackets are disabled.
 369 Countdowns
 370 Countdowns
 400 KLB Mean Time
-401 Weather
+401 Weather & The World
 402 House Points
 403 House Points
 404 Page Not Found
