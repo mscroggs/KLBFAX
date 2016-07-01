@@ -16,6 +16,7 @@ class LunchPage(Page):
             self.content += "\n"
             self.content += colour_print(printer.text_to_ascii("It's Fancy Friday!"),colours.Background.RED)
             self.content += "\nPress 7 to pick a restaurant!"
+            self.content += "\nPress 8 to pick a restaurant if you are Olly!"
         self.content += "\n"
         self.content += colour_print(printer.text_to_ascii("HUDA HUNGRY!"),colours.Background.BLUE+colours.Style.BLINK)
         self.loaded = True

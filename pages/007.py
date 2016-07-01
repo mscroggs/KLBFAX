@@ -4,11 +4,9 @@ from colours import colour_print
 from printer import instance as printer
 from random import choice
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-
-class SuckPage(Page):
+class FoodPage(Page):
     def __init__(self,page_num):
-        super(SuckPage, self).__init__(page_num)
+        super(FoodPage, self).__init__(page_num)
         self.title = "FF choice"
         self.in_index = False
         self.is_enabled = False
@@ -37,5 +35,21 @@ class SuckPage(Page):
         self.content = colour_print(
                 printer.text_to_ascii(choice(ls)),rainbow = True)
 
+class OllyPage(Page):
+    def __init__(self,page_num):
+        super(OllyPage, self).__init__(page_num)
+        self.title = "FF choice"
+        self.in_index = False
+        self.is_enabled = False
 
-sub_page = SuckPage(page_number)
+    def generate_content(self):
+        ls = ["Curry?","Curry!","Indian?","Curry","Indian!",
+              "Drummond Street","Buffet?","Curry","Pizza Hut Buffet",
+              "Dosa","Vegetarian Curry","My third curry this week"]
+        
+        self.content = colour_print(
+                printer.text_to_ascii(choice(ls)),rainbow = True)
+
+
+sub_page = FoodPage("007")
+sub_page1 = OllyPage("008")
