@@ -4,6 +4,7 @@ The pages in brackets are disabled.
 (000 Test Page)
 (001 Unicode Test Page)
 (007 FF choice)
+(008 FF choice)
 (042 Secret Page)
 100 Index
 101 Tube Line Status
@@ -21,6 +22,7 @@ The pages in brackets are disabled.
 116 SCORPIONS
 117 Olly
 118 Laptop
+119 Squirrel
 140 Money
 141 World markets
 150 Events
