@@ -18,7 +18,7 @@ class JigPage(Page):
 
     def generate_content(self):
         import random
-        tit = random.choice(["Yupeng","Chunxin"])
+        tit = random.choice(["Hazel","Wispy"])
 		
         content = colour_print(printer.text_to_ascii(tit,fill=True,vertical_condense=True))
         content += "\n"
