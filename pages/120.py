@@ -5,6 +5,7 @@ from re import sub
 from page import Page
 from colours import colour_print
 from printer import instance as printer
+from printer import size4_instance as size4_printer
 from time import strftime
 import screen
 
@@ -219,7 +220,7 @@ class JigPage(Page):
         picture = [squirrel,chicken,cat,magpie,giraffe,wombat,kestral,fox,elephant,hyena][j]
         
         
-        content = colour_print(printer.text_to_ascii(title,fill=True,vertical_condense=True),
+        content = colour_print(size4_printer.text_to_ascii(title,fill=True,vertical_condense=True),
                                 self.colours.Background.BLUE, self.colours.Foreground.MAGENTA+self.colours.Style.BOLD)
         content += "\n"
         content += picture
