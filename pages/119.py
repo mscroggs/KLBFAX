@@ -44,15 +44,15 @@ class JigPage(Page):
 """
         execute = random.choice
         a = random.choice([
-                           ("Wispy",squ,self.colours.Foreground.YELLOW),
-                           ("Hazel",squ,self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
-                           ("Yupeng",squ[::-1],self.colours.Foreground.YELLOW),
-                           ("Chunxin",squ[::-1],self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
-                           ("Q-bert",squ,self.colours.Foreground.GREEN+self.colours.Style.BOLD),
-                           ("Jigsaw",squ[::-1],self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
-                           ("Meatball","\n".join([a[::-1] for a in squ.split("\n")]),self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
-                           ("Merlin","\n".join([a[::-1] for a in squ.split("\n")])[::-1],self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
-                           ("Quickdraw","\n".join([a for a in squ.split("\n")]),self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
+                           ("Chunxin 1",squ,self.colours.Foreground.YELLOW),
+                           ("Chunxin 2",squ,self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                           ("Chunxin 3",squ[::-1],self.colours.Foreground.YELLOW),
+                           ("Chunxin 4",squ[::-1],self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                           ("Chunxin 5",squ,self.colours.Foreground.GREEN+self.colours.Style.BOLD),
+                           ("Yupeng 1",squ[::-1],self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
+                           ("Yupeng 2","\n".join([a[::-1] for a in squ.split("\n")]),self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
+                           ("Yupeng 3","\n".join([a[::-1] for a in squ.split("\n")])[::-1],self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
+                           ("Yupeng 5","\n".join([a for a in squ.split("\n")]),self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
                            ("Wild Squirrel fled","","")
                           ])
         content = colour_print(printer.text_to_ascii(a[0],fill=True,vertical_condense=True))
