@@ -153,7 +153,7 @@ class JigPage(Page):
              ,"`-._>-:        ;,'  `---.,---.
              `>'"  "-`       ,'   "":::::".. `-.
               `;"'_,  (\`\ _ `:::::::::::'"     `---.
-      -hrr-    `-(_,' -'),)\`.       _      .::::"'  `----._,-"")
+               `-(_,' -'),)\`.       _      .::::"'  `----._,-"")
                    \_,': `.-' `-----' `--;-.   `.   ``.`--.____/ 
                      `-^--'                \(-.  `.``-.`-=:-.__)
                                             `  `.`.`._`.-._`--.)
@@ -219,7 +219,8 @@ class JigPage(Page):
         picture = [squirrel,chicken,cat,magpie,giraffe,wombat,kestral,fox,elephant,hyena][j]
         
         
-        content = colour_print(printer.text_to_ascii(title,fill=True,vertical_condense=True))
+        content = colour_print(printer.text_to_ascii(title,fill=True,vertical_condense=True),
+                                self.colours.Background.BLUE, self.colours.Foreground.MAGENTA+self.colours.Style.BOLD)
         content += "\n"
         content += picture
         self.content = content
