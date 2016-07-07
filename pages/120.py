@@ -222,7 +222,7 @@ class JigPage(Page):
         
         content = colour_print(size4_printer.text_to_ascii(title,fill=True),
                                 self.colours.Background.BLUE, self.colours.Foreground.MAGENTA+self.colours.Style.BOLD)
-        content += "|n|n"
+        content += "\n\n"
         content += picture
         self.content = content
 
