@@ -44,8 +44,8 @@ class JigPage(Page):
 """
         execute = random.choice
         a = random.choice([
-                           ("Wispy",squ,self.colours.Foreground.YELLOW),
-                           ("Hazel",squ,self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
+                           ("Waspy",squ,self.colours.Foreground.YELLOW),
+                           ("Hazer",squ,self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
                            ("Yupeng",squ[::-1],self.colours.Foreground.YELLOW),
                            ("Chunxin",squ[::-1],self.colours.Foreground.YELLOW+self.colours.Style.BOLD),
                            ("Q-bert",squ,self.colours.Foreground.GREEN+self.colours.Style.BOLD),
