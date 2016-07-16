@@ -309,7 +309,7 @@ class JigPage(Page):
                    |:  ::::.       ::'
                    |:  ::::::    ,::' """
 
-        j = random.choice(range(10))
+        j = random.choice(range(15))
         title = ["Chunxin","Sam","Anna","Huda","Raf","Scroggs","Pietro","Ginbelg","Olly","Adam","Mart","Doaky","James","Antonio","Luca"][j]
         picture = [squirrel,chicken,cat,magpie,giraffe,wombat,kestral,fox,elephant,hyena,dragon,hedgehog,stork,ant,dog][j]
 
