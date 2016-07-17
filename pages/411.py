@@ -12,11 +12,13 @@ from file_handler import f_read
 class WeatherPage(Page):
     def __init__(self, page_num):
         super(WeatherPage, self).__init__(page_num)
-        self.title = "Weather Forecast"
-        self.index_num = "410"
+        self.title = "Weather Forecast Day"
+        self.index_num = "411"
 
     def generate_content(self):
         import metoffer
+        import datetime
+        import pytz
 
         def number_in_box(number_string):
             padded_number_string = number_string.replace("1","|1")
@@ -129,21 +131,19 @@ class WeatherPage(Page):
         api_key = "f2ef8ecf-175f-491d-aea1-93a38209bd55"
         M = metoffer.MetOffer(api_key);
         #x = M.nearest_loc_forecast(51.4033, -0.3375, metoffer.THREE_HOURLY)
-        x = M.nearest_loc_forecast(51.5252257441084, -0.134831964969635, metoffer.DAILY)
+        x = M.nearest_loc_forecast(51.5252257441084, -0.134831964969635, metoffer.THREE_HOURLY)
         y = metoffer.parse_val(x)
         day_weather = []
         day_max = []
         day_min = []
         date = []
         for i in y.data:
-            if i["timestamp"][1] == "Day":
+            #timestamp = i['timestamp'][0].replace(tzinfo=pytz.utc).astimezone(pytz.timezone("Europe/London"))
+            if i['timestamp'][0] > datetime.datetime.now() - datetime.timedelta(hours=2.9):
                 #content+= ("{} - {} - {}".format(i["timestamp"][0].strftime("%d %b, %H:%M"), i["Feels Like Day Maximum Temperature"][0], metoffer.WEATHER_CODES[i["Weather Type"][0]]))
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
-                day_max.append(i["Feels Like Day Maximum Temperature"][0])
-                date.append(i["timestamp"][0].strftime("%a"))
-            if i["timestamp"][1] == "Night":
-                #content+= ("{} - {} - {}".format(i["timestamp"][0].strftime("%d %b, %H:%M"), i["Feels Like Night Minimum Temperature"][0], metoffer.WEATHER_CODES[i["Weather Type"][0]]))
-                day_min.append(i["Feels Like Night Minimum Temperature"][0])
+                day_max.append(i["Feels Like Temperature"][0])
+                date.append(i["timestamp"][0].strftime("%-I%p"))
 
         # Day of week
 
@@ -228,35 +228,6 @@ class WeatherPage(Page):
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK),
                         (size4_printer.text_to_ascii(str(day_max[3]),False)+"",
-                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK)
-                    ]," "," ")
-        content += "\n"
-
-        # Min temps
-        content += self.colours.colour_print_join([
-                        (size4_printer.text_to_ascii("||",False)+"",
-                             self.colours.Background.DEFAULT,
-                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(day_min[0]),False)+"",
-                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(15-((len(size4_printer.text_to_ascii(str(day_min[0]),False))-7)/4 - 1)),False)+"",
-                            self.colours.Background.DEFAULT,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(day_min[1]),False)+"",
-                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(15-((len(size4_printer.text_to_ascii(str(day_min[1]),False))-7)/4 - 1)),False)+"",
-                            self.colours.Background.DEFAULT,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(day_min[2]),False)+"",
-                            self.colours.Background.YELLOW+self.colours.Style.BLINK,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(15-((len(size4_printer.text_to_ascii(str(day_min[2]),False))-7)/4 - 1)),False)+"",
-                            self.colours.Background.DEFAULT,
-                            self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(day_min[3]),False)+"",
                             self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK)
                     ]," "," ")
