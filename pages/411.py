@@ -139,37 +139,41 @@ class WeatherPage(Page):
         date = []
         for i in y.data:
             #timestamp = i['timestamp'][0].replace(tzinfo=pytz.utc).astimezone(pytz.timezone("Europe/London"))
-            if i['timestamp'][0] > datetime.datetime.now() - datetime.timedelta(hours=2.9):
+            if i['timestamp'][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
                 #content+= ("{} - {} - {}".format(i["timestamp"][0].strftime("%d %b, %H:%M"), i["Feels Like Day Maximum Temperature"][0], metoffer.WEATHER_CODES[i["Weather Type"][0]]))
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
                 day_max.append(i["Feels Like Temperature"][0])
-                date.append(i["timestamp"][0].strftime("%-I%p"))
+                date.append(i["timestamp"][0].strftime("%-I%p").replace("AM",u"㏂").replace("PM",u"㏘"))
 
         # Day of week
 
+        if date[3][:2] == "12":
+                spacing=16
+        else:
+                spacing = 17
         content += self.colours.colour_print_join([
                         (size4_printer.text_to_ascii("",False)+"",
                              self.colours.Background.DEFAULT,
                              self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(date[0]),False)+"",
+                        (size4_printer.text_to_ascii(date[0],False)+"",
                             self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(17-((len(size4_printer.text_to_ascii(str(date[0]),False))-7)/4 - 1)),False)+"",
+                        (size4_printer.text_to_ascii("|"*(17-((len(size4_printer.text_to_ascii(date[0],False))-7)/4 - 1)),False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(date[1]),False)+"",
+                        (size4_printer.text_to_ascii(date[1],False)+"",
                             self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(17-((len(size4_printer.text_to_ascii(str(date[1]),False))-7)/4 - 1)),False)+"",
+                        (size4_printer.text_to_ascii("|"*(17-((len(size4_printer.text_to_ascii(date[1],False))-7)/4 - 1)),False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(date[2]),False)+"",
+                        (size4_printer.text_to_ascii(date[2],False)+"",
                             self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii("|"*(17-((len(size4_printer.text_to_ascii(str(date[2]),False))-7)/4 - 1)),False)+"",
+                        (size4_printer.text_to_ascii("|"*(spacing-((len(size4_printer.text_to_ascii(date[2],False))-7)/4 - 1)),False)+"",
                             self.colours.Background.DEFAULT,
                             self.colours.Foreground.BLACK),
-                        (size4_printer.text_to_ascii(str(date[3]),False)+"",
+                        (size4_printer.text_to_ascii(date[3],False)+"",
                             self.colours.Background.YELLOW+self.colours.Style.BLINK,
                             self.colours.Foreground.BLACK)
                     ],""," ")
