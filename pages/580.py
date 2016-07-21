@@ -92,7 +92,7 @@ r4.content = (colours.colour_print(
 3. Spread pesto on the cheese.
 4. Cover with the other half of pastry (like a sandwich).
 5. Cut into 1cm wide, 6cm long strips. Twist and place on baking tray.
-6. Bake in oven for 20 minutes at 180"""+u"\u2103")
+6. Bake in oven for 20 minutes at 180"""+u"\u00b0"+"C")
 
 r5 = Page("585")
 r5.title = "Pesto"
