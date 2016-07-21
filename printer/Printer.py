@@ -2,6 +2,7 @@ import fonts.size7.default
 import fonts.size7condensed.default
 import fonts.size7extracondensed.default
 import fonts.size4.default
+import fonts.size4bold.default
 import fonts.exceptions
 import screen
 from fonts.LetterBlock import LetterBlock
@@ -62,7 +63,7 @@ class Printer(object):
 
         if hit_sides and self.squashed is not None:
             return self.squashed.text_to_ascii(text,fill,vertical_condense=vertical_condense,**options)
-        
+
         return "\n".join(output)
 
     def v_condense(self, text):
@@ -95,7 +96,7 @@ class Printer(object):
 
 extrathin_instance = Printer()
 extrathin_instance.set_font(fonts.size7extracondensed.default)
- 
+
 thin_instance = Printer(extrathin_instance)
 thin_instance.set_font(fonts.size7condensed.default)
 
@@ -105,3 +106,6 @@ instance.set_font(fonts.size7.default)
 # If you want to add more fonts you have to also add their names into __init__.py
 size4_instance = Printer()
 size4_instance.set_font(fonts.size4.default)
+
+size4bold_instance = Printer(size4_instance)
+size4bold_instance.set_font(fonts.size4bold.default)

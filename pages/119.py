@@ -5,6 +5,7 @@ from re import sub
 from page import Page
 from colours import colour_print
 from printer import instance as printer
+from printer import size4bold_instance as size4bold_printer
 from time import strftime
 import screen
 
@@ -19,28 +20,28 @@ class JigPage(Page):
     def generate_content(self):
         import random
         squ = u"""
-          ¶¶¶¶¶¶¶¶¶¶¶                                 
-      ¶¶¶¶¶¶¶¶       ¶¶¶¶¶¶¶           ¶              
-        ¶¶¶¶¶¶             ¶¶¶¶      ¶¶¶¶  ¶¶         
-              ¶¶            ¶¶       ¶¶ ¶ ¶           
-             ¶¶¶          ¶¶¶     ¶¶¶¶    ¶¶          
-            ¶¶¶          ¶¶¶  ¶¶¶¶¶¶       ¶¶¶¶       
-          ¶¶¶          ¶¶¶¶¶¶¶¶¶              ¶¶      
-        ¶¶¶           ¶¶¶¶¶¶               ¶¶ ¶¶      
-      ¶¶¶            ¶¶¶¶                 ¶¶¶ ¶¶      
-     ¶¶¶            ¶¶¶¶             ¶¶¶      ¶¶      
-    ¶¶             ¶¶¶             ¶¶¶¶¶¶¶    ¶¶      
-   ¶¶             ¶¶¶                 ¶¶¶¶¶¶¶¶¶  ¶¶   
-  ¶¶              ¶¶                     ¶¶    ¶¶¶¶   
-  ¶¶             ¶¶¶               ¶¶¶     ¶¶¶¶¶  ¶   
-  ¶¶             ¶¶            ¶¶¶¶¶¶¶¶¶¶¶¶    ¶¶  ¶  
-  ¶¶             ¶¶              ¶¶¶¶     ¶¶¶¶ ¶¶¶ ¶  
-  ¶             ¶¶                 ¶¶      ¶¶¶¶¶¶ ¶¶  
-  ¶¶            ¶¶                  ¶¶      ¶¶   ¶¶   
-  ¶¶            ¶¶                  ¶¶      ¶¶¶¶¶     
-    ¶        ¶¶¶¶¶                ¶¶¶¶¶¶¶             
-     ¶¶¶¶¶¶¶¶    ¶¶                   ¶¶              
-                 ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶  ¶¶¶                
+          ¶¶¶¶¶¶¶¶¶¶¶                                       
+      ¶¶¶¶¶¶¶¶       ¶¶¶¶¶¶¶           ¶                    
+        ¶¶¶¶¶¶             ¶¶¶¶      ¶¶¶¶  ¶¶               
+              ¶¶            ¶¶       ¶¶ ¶ ¶                 
+             ¶¶¶          ¶¶¶     ¶¶¶¶    ¶¶                
+            ¶¶¶          ¶¶¶  ¶¶¶¶¶¶       ¶¶¶¶             
+          ¶¶¶          ¶¶¶¶¶¶¶¶¶              ¶¶            
+        ¶¶¶           ¶¶¶¶¶¶               ¶¶ ¶¶            
+      ¶¶¶            ¶¶¶¶                 ¶¶¶ ¶¶            
+     ¶¶¶            ¶¶¶¶             ¶¶¶      ¶¶            
+    ¶¶             ¶¶¶             ¶¶¶¶¶¶¶    ¶¶            
+   ¶¶             ¶¶¶                 ¶¶¶¶¶¶¶¶¶  ¶¶         
+  ¶¶              ¶¶                     ¶¶    ¶¶¶¶         
+  ¶¶             ¶¶¶               ¶¶¶     ¶¶¶¶¶  ¶         
+  ¶¶             ¶¶            ¶¶¶¶¶¶¶¶¶¶¶¶    ¶¶  ¶        
+  ¶¶             ¶¶              ¶¶¶¶     ¶¶¶¶ ¶¶¶ ¶        
+  ¶             ¶¶                 ¶¶      ¶¶¶¶¶¶ ¶¶        
+  ¶¶            ¶¶                  ¶¶      ¶¶   ¶¶         
+  ¶¶            ¶¶                  ¶¶      ¶¶¶¶¶           
+    ¶        ¶¶¶¶¶                ¶¶¶¶¶¶¶                   
+     ¶¶¶¶¶¶¶¶    ¶¶                   ¶¶                    
+                 ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶  ¶¶¶                      
 """
         execute = random.choice
         a = random.choice([
@@ -55,7 +56,7 @@ class JigPage(Page):
                            ("Quickdraw","\n".join([a for a in squ.split("\n")]),self.colours.Foreground.MAGENTA+self.colours.Style.BOLD),
                            ("Wild Squirrel fled","","")
                           ])
-        content = colour_print(printer.text_to_ascii(a[0],fill=True,vertical_condense=True))
+        content = colour_print(size4bold_printer.text_to_ascii(a[0],fill=True))
         content += "\n"
         content += a[2]+a[1]
         self.content = content

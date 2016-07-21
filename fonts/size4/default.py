@@ -229,6 +229,20 @@ xxxxxxxxxxx
 xxxxxx,,,xx
 """)
 
+_add(u"㏂","""
+xxxxxxxxxx
+x,'x , ,'x
+', x x x x
+x,,x,x,x,x
+""")
+
+_add(u"㏘","""
+xxxxxxxxxx
+ ,'x , ,'x
+ ',x x x x
+,xxx,x,x,x
+""")
+
 _add(" ","""
 xxx
 xxx
