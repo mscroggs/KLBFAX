@@ -74,6 +74,45 @@ r3.content = (colours.colour_print(
 
 1. To be continued...""")
 
+r4 = Page("584")
+r4.title = "Cheese Twists"
+r4.in_index = False
+r4.content = (colours.colour_print(
+    printer.text_to_ascii("cheese twists"),
+    colours.Background.RED,
+    colours.Foreground.BLUE) +
+"""
+    1 sheet Puff pastry (all butter)
+    100g    Soft cheese
+    100g    Pesto (see page 585)
+    1       Egg (yolk only)
+
+1. Cut pastry sheet in half.
+2. Spread soft cheese on one half.
+3. Spread pesto on the cheese.
+4. Cover with the other half of pastry (like a sandwich).
+5. Cut into 1cm wide, 6cm long strips. Twist and place on baking tray.
+6. Bake in oven for 20 minutes at 180"""+u"\u2103")
+
+r5 = Page("585")
+r5.title = "Pesto"
+r5.in_index = False
+r5.content = (colours.colour_print(
+    printer.text_to_ascii("pesto"),
+    colours.Background.RED,
+    colours.Foreground.BLUE) +
+"""
+    100g    Pine nuts
+    100g    Parmesan cheese
+    50g     Olive oil
+    4 cloves of Garlic
+    One large basil plant (or two small basil planes)
+
+1. Put in blender.
+2. Turn on blender.
+3. Wait.
+4. Turn off blender.""")
+
 
 r_index = Page("580")
 r_index.title = "Recipes Index"
@@ -82,5 +121,5 @@ r_index.content = (colours.colour_print(
     colours.Background.RED,
     colours.Foreground.BLUE) + "\n\n")
 
-for r in [r1,r2,r3]:
+for r in [r1,r2,r3,r4,r5]:
     r_index.content += colours.Background.BLUE+r.number+colours.Background.DEFAULT+" "+r.title+"\n"
