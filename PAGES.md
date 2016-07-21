@@ -23,6 +23,7 @@ The pages in brackets are disabled.
 117 Olly
 118 Laptop
 119 Squirrel
+120 Patronus
 140 Money
 141 World markets
 150 Events
@@ -69,6 +70,8 @@ The pages in brackets are disabled.
 403 House Points
 404 Page Not Found
 405 Flat Points
+410 Weather Forecast
+411 Weather Forecast Day
 418 I'm a Teapot
 450 Awards & Unawards
 451 Tea Awards
