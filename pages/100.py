@@ -11,7 +11,7 @@ class IndexPage(Page):
     def generate_content(self):
         if NAME=="EMFFAX":
             content = self.colours.colour_print("""
-xxxxxxxxxxxxxxxxxxx            xxxxxxxxx       xxxxxxxxx
+xxxxxxxxxxxxxxxxxxx             xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxxx      x               x     x         x     x
 xxxxxxxxxxxx  xxxxx xxxxxxxxxxxxx x  xxxx xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxx
 xxxxxxxxxxxx    xxx x    xxx    x x    xx x     x x     x x  x  xxxxxxxxxxxxxxxx
