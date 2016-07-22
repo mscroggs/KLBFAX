@@ -53,7 +53,7 @@ class WeatherPage(Page):
                 weather_pic = "<" #cloud sun rain
                 weather_colour_foreground = self.colours.Background.BLACK
                 weather_colour_background = self.colours.Foreground.WHITE
-            elif weather_forecast in [11]:
+            elif weather_forecast in [11,12]:
                 weather_pic = "[" #light rain
                 weather_colour_foreground = self.colours.Background.CYAN+self.colours.Style.BLINK
                 weather_colour_background = self.colours.Foreground.BLACK
