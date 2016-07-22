@@ -106,9 +106,9 @@ xxxx
 _add(")", """
 xxxx
 x  x
-xx  
-xxx 
-xx  
+xx
+xxx
+xx
 x  x
 xxxx
 """)
@@ -575,6 +575,17 @@ x,,,,,,,,,,,,,xx
 xxxxxxxxxxxxxxxx
 """)
 
+#cloud
+_add(">", """
+----------------
+----,''''',-----
+-,,x-------x----
+x---'----,,''',-
+x,------------x-
+-'''''''''''''--
+----------------
+""")
+
 #cloud sun rain
 _add("<", """
 xxxxxxxxxxxxxxxx
@@ -634,7 +645,7 @@ xxxxxxxxxxxxxxxx
 _add("]","""
 xxxx'',,,'xxxxxx
 ',,,'xxxxx ''''x
- xxxxxxxx,xxxxx 
+ xxxxxxxx,xxxxxx
 ,''''''''''xx'x,
 xx'xxxxx'xx',x,'
 ',x,'x',x,'x,,,x
@@ -646,13 +657,13 @@ x,,,xxx,,,xxxxxx
 
 # storm
 _add("^","""
-xxxx',,,'xxxxxx
-x',,'xxxx ''xxx
-x xxxxxx,xxx xx
-xx,,x'   ,x,xxx
-xxxx,  'xxxxxxx
-xxxxxx,  xxxxxx
-xxxxx' ,xxxxxxx
+xxxxx',,,'xxxxxx
+xx',,'xxxx ''xxx
+xx xxxxxx,xxx xx
+xxx,,x'   ,x,xxx
+xxxxx,  'xxxxxxx
+xxxxxxx,  xxxxxx
+xxxxxx' ,xxxxxxx
 """)
 
 # snow
@@ -670,7 +681,7 @@ from random import choice
 
 # unknown
 _add("`",
-"\n".join(["".join([choice(["x",",","'"]) for i in range(13)]) for j in range(7)])
+"\n".join(["".join([choice(["x",",","'"]) for i in range(16)]) for j in range(7)])
 )
 
 

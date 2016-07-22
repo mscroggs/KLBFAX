@@ -61,6 +61,7 @@ def block_characters(text,invert=False):
         text = text.replace("'",u"\u2580")
     else:
         text = text.replace(" ",u"\u2588")
+        text = text.replace("-",u"\u2588")
         text = text.replace("'",u"\u2584")
         text = text.replace(",",u"\u2580")	
         text = text.replace("x"," ")
