@@ -9,7 +9,19 @@ class IndexPage(Page):
         self.title = "Index"
 
     def generate_content(self):
-        if NAME=="28JHFAX":
+        if NAME=="EMFFAX":
+            content = self.colours.colour_print("""
+xxxxxxxxxxxxxxxxxxx            xxxxxxxxx       xxxxxxxxx
+xxxxxxxxxxxx      x               x     x         x     x
+xxxxxxxxxxxx  xxxxx xxxxxxxxxxxxx x  xxxx xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxxxxxx    xxx x    xxx    x x    xx x     x x     x x  x  xxxxxxxxxxxxxxxx
+xxxxxxxxxxxx  xxxxx x  x  x  x  x x  xxxx x  xxxx x  x  x x  x  xxxxxxxxxxxxxxxx
+xxxxxxxxxxxx      x x  xx   xx  x x  xxxx x    xx x  x  x xx   xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxx x  xxxxxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
+                    x  xxxxxxx  x         x  xxxx         x  x  xxxxxxxxxxxxxxxx
+                  xxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
+""")
+        elif NAME=="28JHFAX":
             content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxx      xx     x         x  x  x         x     x
