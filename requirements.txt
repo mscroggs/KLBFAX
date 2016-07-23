@@ -4,4 +4,3 @@ zope.event
 tubestatus
 astral
 metoffer
-gmail
