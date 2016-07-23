@@ -3,6 +3,7 @@ The pages in brackets are disabled.
 
 (000 Test Page)
 (001 Unicode Test Page)
+(002 IP Address Finder)
 (007 FF choice)
 (008 FF choice)
 (042 Secret Page)
