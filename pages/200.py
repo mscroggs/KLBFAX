@@ -18,7 +18,7 @@ class LetterPage(Page):
     def generate_content(self):
         letters = f_read("emails")
 
-        if not os.getenv('SLAVE'):
+        if not os.getenv('SLAVE') and not os.getenv("EMF"):
             import gmail
             details = f_readlines("gmail")
 
