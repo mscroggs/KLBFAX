@@ -19,8 +19,10 @@ class IPPage(Page):
                 0x8915,  # SIOCGIFADDR
                 struct.pack('256s', ifname[:15])
             )[20:24])
-        
-        self.content = "lo: "+get_ip_address('lo')
+        self.content+= "IP Addresses"
+        self.content+= "\n\n"
+        self.content+= "lo: "+get_ip_address('lo')
+        self.content+= "\n"
         self.content+= "eth0: "+get_ip_address('eth0')
 
 instance = IPPage()
