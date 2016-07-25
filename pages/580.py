@@ -91,8 +91,8 @@ r4.content = (colours.colour_print(
 2. Spread soft cheese on one half.
 3. Spread pesto on the cheese.
 4. Cover with the other half of pastry (like a sandwich).
-5. Cut into 1cm wide, 6cm long strips. Twist and place on baking tray.
-6. Bake in oven for 20 minutes at 180"""+u"\u00b0"+"C")
+5. Cut into 1cm wide, 6cm long strips. Twist and place on a baking tray.
+6. Bake in the oven for 20 minutes at 180"""+u"\u00b0"+"C")
 
 r5 = Page("585")
 r5.title = "Pesto"
@@ -106,12 +106,16 @@ r5.content = (colours.colour_print(
     100g    Parmesan cheese
     50g     Olive oil
     4 cloves of Garlic
-    One large basil plant (or two small basil planes)
+    One large basil plant (or two small basil plants)
 
 1. Put in blender.
 2. Turn on blender.
 3. Wait.
-4. Turn off blender.""")
+4. Turn off blender.
+
+    Note: You can make other kinds of pesto if you replace the basil with
+    another ingredient, such as rocket, mint or sundried tomatoes. In fact,
+    if you put straw rather than basil leaves, you end up with HEY PESTO!""")
 
 
 r_index = Page("580")
