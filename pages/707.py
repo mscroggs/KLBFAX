@@ -49,3 +49,7 @@ class ChalkPage(Page):
         self.content = content + "\n\n\n    sponsor Chalkdust"
 
 page = ChalkPage("707")
+
+from name import NAME
+if NAME=="EMFFAX":
+    page.is_enabled = False

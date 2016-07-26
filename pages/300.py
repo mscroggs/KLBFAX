@@ -82,8 +82,6 @@ news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
 
 
-
-
-
-
-
+from name import NAME
+if NAME=="EMFFAX":
+    news_pageX.is_enabled = False
