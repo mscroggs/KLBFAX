@@ -52,10 +52,10 @@ r2.content = (colours.colour_print(
 """+colours.Style.DEFAULT+colours.Foreground.YELLOW+"""    Optional: 1/4 cup brown sugar    Optional: 1/4 cup melted butter"""+colours.Foreground.DEFAULT+"""
     Mix everything together and put into a large greased baking tin. Sprinkle
     with a quarter of a cup of brown sugar and a quarter of a cup of melted
-    butter. Bake for 45 minutes at 170-180C. 
+    butter. Bake for 45 minutes at 170-180C.
     Test the middle with a clean knife; you may need to cover in tin foil and
     bake for a further 20 minutes to make sure Huda is cooked properly
-    in the middle. 
+    in the middle.
     When baked, Huda can be frozen.
 """)
 
@@ -70,7 +70,7 @@ r3.content = (colours.colour_print(
     4       Eggs
     1 jar   Cherries
     ? ???   Flour
- 
+
 
 1. To be continued...""")
 
@@ -98,7 +98,7 @@ r5 = Page("585")
 r5.title = "Pesto"
 r5.in_index = False
 r5.content = (colours.colour_print(
-    printer.text_to_ascii("pesto"),
+    printer.text_to_ascii("hey pesto!"),
     colours.Background.RED,
     colours.Foreground.BLUE) +
 """
@@ -112,6 +112,7 @@ r5.content = (colours.colour_print(
 2. Turn on blender.
 3. Wait.
 4. Turn off blender.
+5. Hey Pesto!
 
     Note: You can make other kinds of pesto if you replace the basil with
     another ingredient, such as rocket, mint or sundried tomatoes. In fact,
