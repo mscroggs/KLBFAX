@@ -3,7 +3,7 @@ from screen import WIDTH
 import urllib2
 import json
 from name import NAME
-from printer import instance as printer
+from printer import size4bold_instance as printer
 from dateutil import parser
 from datetime import datetime
 
@@ -23,32 +23,39 @@ class EMFPage(Page):
 
     def generate_content(self):
         the_json = json.load(urllib2.urlopen("https://www.emfcamp.org/schedule.json"))
-        content = self.colours.colour_print(printer.text_to_ascii("EMF Day "+str(self.n),vertical_condense=True))
+        content = self.colours.colour_print(printer.text_to_ascii("EMF Day "+str(self.n),fill=True))+"\n"
         events = []
         for item in the_json:
             the_date = parser.parse(item["end_date"])
             if item["start_date"].split()[0] == self.day:
                 if datetime.now() > self.endday or the_date > datetime.now():
                     events.append(item)
-        print [a["start_date"] for a in events]
         events = sorted(events, key=lambda item: item["start_date"])
-        print [a["start_date"] for a in events]
         for item in events:
             content += self.colours.Foreground.YELLOW
             content += just_time(item["start_date"])
-            content += " - "
+            content += "-"
             content += just_time(item["end_date"])
             content += self.colours.Style.BOLD
-            content += "  "
-            content += item["venue"]
+            content += " "
+            venue = item["venue"]
+            if venue == "Workshop 1":
+                venue = "Wshop 1"
+            if venue == "Workshop 2":
+                venue = "Wshop 2"
+            content += venue
+            content += self.colours.Foreground.DEFAULT
+            content += " "
+            speaker = item["speaker"]
+            title = item["title"]
+            if len(title) > WIDTH - len(speaker) - len(venue) - 13:
+                title = title[:WIDTH - len(speaker) - len(venue) - 13 - 4]+"... "
+            content += title
+            content += " " * (WIDTH - len(speaker) - len(venue) - 13 - len(title))
+            content += self.colours.Foreground.GREEN
+            content += speaker
             content += self.colours.Foreground.DEFAULT
             content += "\n"
-            speaker = " - " + item["speaker"]
-            title = item["title"]
-            if len(title) > WIDTH - len(speaker):
-                title = title[:WIDTH - len(speaker)-3]+"..."
-            content += title + speaker
-            content += "\n\n"
         self.content = content
 
 page1 = EMFPage("701",1)
