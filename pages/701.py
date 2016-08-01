@@ -43,6 +43,12 @@ class EMFPage(Page):
                 venue = "Wshop 1"
             if venue == "Workshop 2":
                 venue = "Wshop 2"
+            if venue == "Workshop 3":
+                venue = "Wshop 3"
+            if len(venue) > 7:
+                venue = venue[:7]
+            if venue == "Maths V":
+                content += self.colours.Foreground.RED
             content += venue
             content += self.colours.Foreground.DEFAULT
             content += " "
