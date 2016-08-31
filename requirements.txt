@@ -4,3 +4,4 @@ zope.event
 tubestatus
 astral
 metoffer
+tweepy
