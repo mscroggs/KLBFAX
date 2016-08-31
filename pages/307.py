@@ -32,6 +32,7 @@ class WhoPage(Page):
         content = colour_print(printer.text_to_ascii("Who is Peter?",fill=False))
         content += "\n\n"
 
+        
         try:
             with open("/home/pi/login.json") as f:
                 details = json.load(f)
@@ -40,10 +41,12 @@ class WhoPage(Page):
         auth = tweepy.OAuthHandler(details['oauth_token'], details['oauth_token_secret'])
         auth.set_access_token(details['app_key'], details['app_secret'])
 
+
+
         api = tweepy.API(auth)
 
         #public_tweets = api.home_timeline()
-        peter_replies = api.search(q="@who_is_peter",show_user=True,count=5)
+        peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
         for tweet in peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
@@ -70,13 +73,13 @@ class WhoPage(Page):
 
                     content += str(created_at) + "\n"
                     if original0_text != "":
-                        content +=  "@" + original0_username + ": " + original0_text + "\n"
-                    content += "@" + original_username + ": " + original_text + "\n"
-                    content += "@who_is_Peter: Who?" + "\n"
-                    content += "@" + reply_username + ":" + reply_text.replace("@who_is_Peter","") + "\n"
+                        content +=  self.colours.Foreground.CYAN + self.colours.Style.BOLD + "@" + original0_username + ": " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + original0_text + "\n"
+                    content += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "@" + original_username + ": " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + original_text + "\n"
+                    content += self.colours.Foreground.MAGENTA + self.colours.Style.BOLD + "@who_is_Peter: Who?" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
+                    content += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "@" + reply_username + ":" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + reply_text.replace("@who_is_Peter","") + "\n"
                     content += "----------------" + "\n"
-                except Exception,e:
-                    content += str(e)
+                except:# Exception,e:
+                    #content += str(e)
                     continue
 
         self.content = content + "\n"
