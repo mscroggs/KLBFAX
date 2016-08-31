@@ -4,6 +4,8 @@ from colours import colour_print
 from printer import instance as printer
 from time import strftime
 import screen
+import tweepy
+import json
 try:
     from html import unescape
 except:
@@ -21,29 +23,27 @@ def strip_tags(string):
 
 class WhoPage(Page):
     def __init__(self,page_num):
-        super(ChalkPage, self).__init__(page_num)
+        super(WhoPage, self).__init__(page_num)
         self.title = "Who is Peter?"
         self.tagline = "@who_is_peter"
 
     def generate_content(self):
         import urllib2
         content = colour_print(printer.text_to_ascii("Who is Peter?",fill=False))
-        content += "\n  &\n"
+        content += "\n\n"
 
         try:
-            import json
             with open("/home/pi/login.json") as f:
                 details = json.load(f)
         except:
             pass
-
         auth = tweepy.OAuthHandler(details['oauth_token'], details['oauth_token_secret'])
         auth.set_access_token(details['app_key'], details['app_secret'])
 
         api = tweepy.API(auth)
 
         #public_tweets = api.home_timeline()
-        peter_replies = api.search(q="@who_is_peter",show_user=True)
+        peter_replies = api.search(q="@who_is_peter",show_user=True,count=5)
         for tweet in peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
@@ -68,16 +68,16 @@ class WhoPage(Page):
                         except:
                             continue
 
-                    content += created_at + "\n"
+                    content += str(created_at) + "\n"
                     if original0_text != "":
                         content +=  "@" + original0_username + ": " + original0_text + "\n"
                     content += "@" + original_username + ": " + original_text + "\n"
                     content += "@who_is_Peter: Who?" + "\n"
                     content += "@" + reply_username + ":" + reply_text.replace("@who_is_Peter","") + "\n"
                     content += "----------------" + "\n"
-                except:
+                except Exception,e:
+                    content += str(e)
                     continue
-
 
         self.content = content + "\n"
 
