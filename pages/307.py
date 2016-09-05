@@ -38,8 +38,8 @@ class WhoPage(Page):
                 details = json.load(f)
         except:
             pass
-        auth = tweepy.OAuthHandler(details['oauth_token'], details['oauth_token_secret'])
-        auth.set_access_token(details['app_key'], details['app_secret'])
+        auth = tweepy.OAuthHandler(details['app_key'], details['app_secret'])
+        auth.set_access_token(details['oauth_token'], details['oauth_token_secret'])
 
 
 
