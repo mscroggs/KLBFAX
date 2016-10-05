@@ -31,7 +31,7 @@ awards_on_pages = {
         "453":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
         "454":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
         "455":["Boo Cow","Tea Wrecks"],
-        "456":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat","SNORE-lax","Banana Split"]
+        "456":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat","SNORE-lax","Banana Split","Orange Peel"]
     }
 
 def get_page(a):
