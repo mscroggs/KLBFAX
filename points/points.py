@@ -48,20 +48,24 @@ def should_add_morning_points(time, house, lines, oldname):
 
 
 def num_of_morning_points(time):
+    from datetime import datetime
+    i=1
+    if datetime.today().weekday() in [5,6]:
+        i=-1
     if time == "08":
-        return 20
-
+        return 20*i
     elif time == "09":
-        return 10
+        return 10*i
 
 
 def add_morning_points(time, house, oldname, deets):
-  if not os.getenv("SLAVE"):
-    with open("/home/pi/cards/" + oldname, "a") as f:
-        f.write("\nused")
-        points_added = num_of_morning_points(time)
-        add_points(house, points_added, deets)
-    return points_added
+    if not os.getenv("SLAVE"):
+        with open("/home/pi/cards/" + oldname, "a") as f:
+            f.write("\nused")
+            points_added = num_of_morning_points(time)
+            add_points(house, points_added, deets)
+        return points_added
+    return 0
 
 
 def read_name_file(namefile_path):
