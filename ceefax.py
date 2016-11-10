@@ -89,6 +89,8 @@ def get_greeting_page(barcode):
                                             barcode):
             points_added = points.add_morning_points(time, house, barcode, deets)
             extra = str(points_added) + " points to " + house + "!"
+            if points_added < 0:
+                extra += "\n" + "It's the weekend, go home!"
 
         name_page = page.NamePage(name, extra=extra)
     else:
