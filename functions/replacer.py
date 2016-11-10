@@ -15,6 +15,7 @@ def klb_replace(imput):
             ["Wright","Mart Wright"],
             ["Sport","Maths"],["Sportsday","Mathsday"],
             ["Jamie","Pietro"],
+            ["Trump","Twat"],
             ["Agents of S\.H\.I\.E\.L\.D\.","Mathematicians of U.C.L.K.L.B"],
             ["USA","KLB"],
             ["BBC","KLB"],
