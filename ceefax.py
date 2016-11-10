@@ -76,9 +76,9 @@ def get_greeting_page(barcode):
                         report to Scroggs."""
 
         if twitter is not None:
-            deets = greetings.random() + " @"+twitter+"!"
+            deets = greetings.random_twitter() + " @"+twitter+"!"
         elif name is not None:
-            deets = greetings.random() + " " + name
+            deets = greetings.random_twitter() + " " + name
         else:
             deets = ""
 

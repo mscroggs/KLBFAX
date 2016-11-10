@@ -6,14 +6,22 @@ class GreetingChooser:
                           "Booyakasha","Ahoy there"]
         self.morning = ["Good morning","Guten morgen","God morgen"]
         self.evening = ["Guten abend","Good evening"]
+        self.twitter = ["\xe4\xbd\xa0\xe5\xa5\xbd"]
 
     def random(self):
-        import now
         from random import choice
+        return choice(self.greetings + self.get_daytime())
+
+    def random_twitter(self):
+        from random import choice
+        return choice(self.greetings + self.get_daytime() + self.twitter)
+
+    def get_daytime(self):
+        import now
         if now.now().hour < 12:
-            return choice(self.greetings + self.morning)
+            return self.morning
         if now.now().hour > 17:
-            return choice(self.greetings + self.evening)
-        return choice(self.greetings)
+            return self.evening
+        return []
 
 greetings = GreetingChooser()
