@@ -25,7 +25,7 @@ def klb_replace(imput):
             ["Home","KLB"],
             ["Homes","KLBs"],
             ["Cwm","KLB"],
-            ["Have I","Has Adam Townsend"],["I","Adam Townsend"],["Me","Adam Townsend"],
+            ["Have I","Has Jigsaw"],["I","Jigsaw"],["Me","Jigsaw"],["I'm","Jigsaw is"],
             ["You","Belgin"],
             ["Week","Weak"],
             ["Raymond","Belgin"],
