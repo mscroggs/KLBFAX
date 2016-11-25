@@ -130,6 +130,10 @@ The pages in brackets are disabled.
 681 Tomorrow's TV: BBC Parliament
 692 Tomorrow's TV: BBC Radio 2
 694 Tomorrow's TV: BBC Radio 4
+(701 EMF Schedule)
+(702 EMF Schedule)
+(703 EMF Schedule)
+(704 EMF Shifts)
 707 chalkdust
 708 Marts
 (725 Advent Calendar)

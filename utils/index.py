@@ -26,17 +26,17 @@ only_page_files = [f for f in listdir(pages_dir)
 pageFactory = PageFactory()
 
 for page_file in only_page_files:
-    page_file_no_ext = str(os.path.splitext(page_file)[0])
-    module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
-                     page_file_no_ext)
-    reload(module)
-    for object in dir(module):
-        obj = getattr(module, object)
-        if isinstance(obj, Page):
-            try:
-                pageFactory.add(obj)
-            except:
-                pass
+    try:
+        page_file_no_ext = str(os.path.splitext(page_file)[0])
+        module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                         page_file_no_ext)
+        reload(module)
+        for object in dir(module):
+            obj = getattr(module, object)
+            if isinstance(obj, Page):
+                    pageFactory.add(obj)
+    except:
+        pass
 
 pageFactory.print_all()
 pageFactory.export_all()
