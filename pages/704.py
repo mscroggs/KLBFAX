@@ -12,7 +12,7 @@ class ShiftsPage(Page):
             self.in_index = True
         else:
             self.in_index = False
-        self.is_enabled = True
+        self.is_enabled = False
 
     def generate_content(self):
         from datetime import datetime

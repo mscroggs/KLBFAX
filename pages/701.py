@@ -16,7 +16,7 @@ class EMFPage(Page):
         super(EMFPage, self).__init__(page_num)
         self.title = "EMF Schedule"
         self.in_index = False
-        self.is_enabled = True
+        self.is_enabled = False
         self.n = n
         self.day = ["2016-08-05","2016-08-06","2016-08-07"][n-1]
         self.endday = parser.parse("2016-08-0"+["6","7","8"][n-1]+" 00:00:00")
