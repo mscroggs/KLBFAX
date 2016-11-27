@@ -3,6 +3,7 @@ from re import sub
 from page import Page
 from colours import colour_print
 from printer import instance as printer
+from printer import size4bold_instance as size4bold_printer
 from time import strftime
 
 def strip_tags(string):
@@ -22,33 +23,112 @@ class TrainPage(Page):
         pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
-        import urllib2
-        content = colour_print(printer.text_to_ascii("TRAINS",fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" from "+self.station+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
-        content += self.colours.Foreground.GREEN+"\nTime Destination"+" "*49+"Platform\n"+self.colours.Foreground.DEFAULT
-        response = urllib2.urlopen("http://www.opentraintimes.com/location/"+self.code+"/"+self.now().strftime("%Y-%m-%d/%H:%M")+"?passenger=on&show_call=on&show_stp=on&show_var=on&show_wtt=on&utf8=%E2%9C%93")
-        html = response.read()
-        trains = html.split("<table")[1].split("</table>")[0].split("<tr>")
-        first = False
-        if self.hogwarts: first = True
-        for train in trains[2:]:
-            if first:
-                content += "0900 Hogwarts Express"
-                content += " "*44
-                content += "9 3/4\n"
-                first = False
-            train = strip_tags(train).lstrip()
-            train = train.split("\n")
-            try:
-                if train[4].lstrip()!="Terminates here" and int(train[5].lstrip().split("&")[0])>=int(self.now().strftime("%H%M")):
-                    if self.to is None or train[4].lstrip() in self.to:
-                        new = train[5].lstrip()+" "+train[4].lstrip()
-                        new = "&".join(new.split("&amp;"))
-                        new = "'".join(new.split("&#39;"))
-                        new = "".join(new.split("&frac12;"))
-                        new += " "*(65-len(new))+train[3].lstrip()+"\n"
-                        content += new
-            except:
-                pass
+        from nrewebservices.ldbws import Session
+        content = colour_print(size4bold_printer.text_to_ascii(self.station,fill=True))
+        content += "\n"
+
+        session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
+
+        board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
+
+        # Loop over all the train services in that board.
+        k = 0
+        num_of_rows = len(board.train_services)
+
+        mapping=[('Cross', 'X'),
+        ('Road', 'Rd'),
+        ('Square', 'Sq'),
+        ('Street', 'St'),
+        ('Junction', 'Jn'),
+        ('Town', 'Tn'),
+        ('Park', 'Pk'),
+        ('Lane', 'Ln'),
+        ('Hill', 'Hl'),
+        ('Central','Ctl'),
+        ('North ','N '),
+        ('South ','S '),
+        ('East ','E '),
+        ('West ','W '),
+        ('International', 'Intl'),
+        (' (London)', '')]
+
+        # 4 across the top
+        big_boards = ""
+        for i in range(min(4,len(board.train_services))):
+            service = board.train_services[i]
+            destinations = [destination.location_name for destination in service.destinations]
+            std = service.std
+            destination_j = ",".join(destinations)
+            if len(destination_j) > 19:
+                for k, v in mapping:
+                    destination_j = destination.replace(k, v)
+            destination = (destination_j + " "*21)[0:19]
+
+            platform = service.platform
+            if platform == None:
+                platform = "-"
+            platform = (platform + " "*3)[0:3]
+            if service.etd[0] in ["0","1","2"]:
+                etd2 = "Ex " + service.etd
+            else:
+                etd2 = service.etd
+            etd = (etd2 + " "*7)[0:9]
+            #big_boards += "\n"
+            big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:19] + "\n"
+            big_boards += self.colours.Style.BOLD + destination.upper() + self.colours.Style.DEFAULT + "\n"
+            big_boards += "Calling at:        \n"
+            calling_points = service.subsequent_calling_points[0]
+            calling_at = []
+            for point in calling_points:
+                lname = point.location_name
+                if len(lname) > 19:
+                    for k, v in mapping:
+                        lname = lname.replace(k, v)
+                calling_at.append((lname + " "*21)[0:19])
+            calling_at = (calling_at + [' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19])[0:11]
+            big_boards += "\n".join(calling_at)
+            if len(calling_points)>=11:
+                big_boards += ("\n+ " + str(len(calling_points)-10) + " stations            ")[0:20] + "\n"
+            else:
+                big_boards += "\n"+' '*19+"\n"
+            big_boards += (service.operator + "                ")[0:19] + "\n"
+
+        #print big_boards
+        columns = big_boards.split("\n")
+        #print "X",columns[1],"Y"
+        columns = (columns + [' '*19 for ii in range(64)])[0:64]
+        for j in range(16):
+            content += " " + columns[0+j] + " " + columns[16+j] + " " + columns[32+j] + " " + columns[48+j] + "\n"
+            #print j, len(columns)
+
+        content += self.colours.Foreground.GREEN+"\nTime  Destination           Plt Exptd    Time  Destination           Plt Exptd "+self.colours.Foreground.DEFAULT
+        for k in range(5):
+            if k < num_of_rows:
+                service = board.train_services[k]
+                # Build a list of destinations for each train service.
+                destinations = [destination.location_name for destination in service.destinations]
+                std = service.std
+                destination = (",".join(destinations) + " "*21)[0:21]
+                platform = service.platform
+                if platform == None:
+                    platform = "-"
+                platform = (platform + " "*3)[0:3]
+                etd = (service.etd + " "*7)[0:7]
+                content += "\n" + std + " " + destination + " " + platform + " " + etd + "  "
+
+            if k + 5 < num_of_rows:
+                service = board.train_services[k+5]
+                # Build a list of destinations for each train service.
+                destinations = [destination.location_name for destination in service.destinations]
+                std = service.std
+                destination = (",".join(destinations) + " "*21)[0:21]
+                platform = service.platform
+                if platform == None:
+                    platform = "-"
+                platform = (platform + " "*3)[0:3]
+                etd = (service.etd + " "*7)[0:7]
+                content += std + " " + destination + " " + platform + " " + etd
+
         self.content = content
 
 pages=[]
