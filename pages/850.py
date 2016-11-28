@@ -68,7 +68,7 @@ class TrainPage(Page):
             if platform == None:
                 platform = "-"
             platform = (platform + " "*3)[0:3]
-            if service.etd[0] in ["0","1","2"]:                                 
+            if service.etd[0] in ["0","1","2"]:
                 etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + "Exp " + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             elif service.etd[0] == "D":
                 etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + service.etd + "  " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
@@ -80,7 +80,7 @@ class TrainPage(Page):
             #big_boards += "\n"
             big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:36] + "\n"
             big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + destination.upper() + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
-            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.DEFAULT + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             calling_points = service.subsequent_calling_points[0]
             calling_at = []
             for point in calling_points:
@@ -136,24 +136,23 @@ class TrainPage(Page):
         self.content = content
 
 pages=[]
-train01 = TrainPage("851","London Blackfriars","BFR")
+train01 = TrainPage("851","Blackfriars","BFR")
 train02 = TrainPage("852","London Bridge","LBG")
-train03 = TrainPage("853","London Cannon Street","CST")
-train04 = TrainPage("854","London Charing Cross","CHX")
-train05 = TrainPage("855","London Euston","EUS")
-train06 = TrainPage("856","London Fenchurch Street","FST")
-train08 = TrainPage("858","London Fields","LOF")
-train09 = TrainPage("859","London Kings Cross","KGX",True)
-train10 = TrainPage("860","London Liverpool Street","LST")
-train11 = TrainPage("861","London Marylebone","MYB")
-train12 = TrainPage("862","London Paddington","PAD")
+train03 = TrainPage("853","Cannon Street","CST")
+train04 = TrainPage("854","Charing Cross","CHX")
+train05 = TrainPage("855","Euston","EUS")
+train06 = TrainPage("856","Fenchurch Street","FST")
+train09 = TrainPage("859","Kings Cross","KGX",True)
+train10 = TrainPage("860","Liverpool Street","LST")
+train11 = TrainPage("861","Marylebone","MYB")
+train12 = TrainPage("862","Paddington","PAD")
 train13 = TrainPage("863","Acton Central","ACC")
 train14 = TrainPage("864","Acton Main Line","AML")
-train15 = TrainPage("865","London St Pancras Intl.","STP")
+train15 = TrainPage("865","St Pancras","STP")
 train16 = TrainPage("866","Ffairfach","FFA")
-train17 = TrainPage("867","London Victoria","VIC")
-train18 = TrainPage("868","London Waterloo","WAT")
-train19 = TrainPage("869","London Waterloo East","WAE")
+train17 = TrainPage("867","Victoria","VIC")
+train18 = TrainPage("868","Waterloo","WAT")
+train19 = TrainPage("869","Waterloo East","WAE")
 train20 = TrainPage("870","Banbury","BAN")
 train21 = TrainPage("871","Reading","RDG")
 train22 = TrainPage("872","Oxford","OXF")
@@ -169,6 +168,7 @@ train31 = TrainPage("881","Farringdon","ZFD")
 train32 = TrainPage("882","East Croydon","ECR")
 train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
 train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
+train35 = TrainPage("885","Sutton Coldfield","SUT")
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
