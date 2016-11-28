@@ -61,22 +61,26 @@ class TrainPage(Page):
             destination_j = ",".join(destinations)
             if len(destination_j) > 19:
                 for k, v in mapping:
-                    destination_j = destination.replace(k, v)
+                    destination_j = destination_j.replace(k, v)
             destination = (destination_j + " "*21)[0:19]
-
+            std = self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT + std
             platform = service.platform
             if platform == None:
                 platform = "-"
             platform = (platform + " "*3)[0:3]
-            if service.etd[0] in ["0","1","2"]:
-                etd2 = "Ex " + service.etd
+            if service.etd[0] in ["0","1","2"]:                                 
+                etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + "Exp " + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            elif service.etd[0] == "D":
+                etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + service.etd + "  " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            elif service.etd[0] == "C":
+                etd2 = self.colours.Foreground.CYAN + self.colours.Style.BOLD + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             else:
-                etd2 = service.etd
-            etd = (etd2 + " "*7)[0:9]
+                etd2 = self.colours.Foreground.WHITE + self.colours.Style.DEFAULT + service.etd + "  " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            etd = (etd2 + " "*7)[0:29]
             #big_boards += "\n"
-            big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:19] + "\n"
-            big_boards += self.colours.Style.BOLD + destination.upper() + self.colours.Style.DEFAULT + "\n"
-            big_boards += "Calling at:        \n"
+            big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:36] + "\n"
+            big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + destination.upper() + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
+            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.DEFAULT + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             calling_points = service.subsequent_calling_points[0]
             calling_at = []
             for point in calling_points:
@@ -87,8 +91,8 @@ class TrainPage(Page):
                 calling_at.append((lname + " "*21)[0:19])
             calling_at = (calling_at + [' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19])[0:11]
             big_boards += "\n".join(calling_at)
-            if len(calling_points)>=11:
-                big_boards += ("\n+ " + str(len(calling_points)-10) + " stations            ")[0:20] + "\n"
+            if len(calling_points)>=12:
+                big_boards += ("\n+ " + str(len(calling_points)-11) + " stations            ")[0:20] + "\n"
             else:
                 big_boards += "\n"+' '*19+"\n"
             big_boards += (service.operator + "                ")[0:19] + "\n"
