@@ -53,7 +53,18 @@ class TrainPage(Page):
         (' (London)', '')]
 
         # 4 across the top
-        big_boards = ""
+        if self.hogwarts:
+            big_boards = "8:30 9"+u"\u00BE"+"   On time  \n"
+            big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + "HOGWARTS EXPRESS   " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
+            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            calling_at = (["Hogwarts School    "] + [' '*19]*12)[0:11]
+            big_boards += "\n".join(calling_at)
+            big_boards += "\n"+' '*19+"\n"
+            big_boards += ("Ministry of Magic                ")[0:19] + "\n"
+            n=3
+        else:
+            big_boards = ""
+            n = 4
         for i in range(min(4,len(board.train_services))):
             service = board.train_services[i]
             destinations = [destination.location_name for destination in service.destinations]
@@ -89,7 +100,7 @@ class TrainPage(Page):
                     for k, v in mapping:
                         lname = lname.replace(k, v)
                 calling_at.append((lname + " "*21)[0:19])
-            calling_at = (calling_at + [' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19,' '*19])[0:11]
+            calling_at = (calling_at + [' '*19]*12)[0:11]
             big_boards += "\n".join(calling_at)
             if len(calling_points)>=12:
                 big_boards += ("\n+ " + str(len(calling_points)-11) + " stations            ")[0:20] + "\n"
