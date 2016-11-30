@@ -54,7 +54,7 @@ class TrainPage(Page):
 
         # 4 across the top
         if self.hogwarts:
-            big_boards = "8:30 9"+u"\u00BE"+"   On time  \n"
+            big_boards = "8:30 9 3/4   On time  \n"
             big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + "HOGWARTS EXPRESS   " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
             big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             calling_at = (["Hogwarts School    "] + [' '*19]*12)[0:11]
