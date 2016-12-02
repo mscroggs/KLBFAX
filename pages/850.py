@@ -180,6 +180,7 @@ train32 = TrainPage("882","East Croydon","ECR")
 train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
 train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
 train35 = TrainPage("885","Sutton Coldfield","SUT")
+train35 = TrainPage("886","Cambridge","CAM")
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
