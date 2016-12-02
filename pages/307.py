@@ -32,7 +32,7 @@ class WhoPage(Page):
         content = colour_print(printer.text_to_ascii("Who is Peter?",fill=False))
         content += "\n\n"
 
-        
+
         try:
             with open("/home/pi/login.json") as f:
                 details = json.load(f)

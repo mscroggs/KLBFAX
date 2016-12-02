@@ -21,8 +21,14 @@ class IPPage(Page):
             )[20:24])
         self.content = "IP Addresses"
         self.content+= "\n\n"
-        self.content+= "lo: "+get_ip_address('lo')
+        try:
+            self.content+= "lo: "+get_ip_address('lo')
+        except IOError:
+            self.content+= "lo: ERROR"
         self.content+= "\n"
-        self.content+= "eth0: "+get_ip_address('eth0')
+        try:
+            self.content+= "eth0: "+get_ip_address('eth0')
+        except IOError:
+            self.content+= "eth0: ERROR"
 
 instance = IPPage()

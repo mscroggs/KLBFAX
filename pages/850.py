@@ -3,6 +3,7 @@ from re import sub
 from page import Page
 from colours import colour_print
 from printer import instance as printer
+from printer import size4bold_instance as size4bold_printer
 from time import strftime
 
 def strip_tags(string):
@@ -22,54 +23,147 @@ class TrainPage(Page):
         pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
-        import urllib2
-        content = colour_print(printer.text_to_ascii("TRAINS",fill=False))+self.colours.Foreground.YELLOW+self.colours.Background.BLUE+" from "+self.station+self.colours.Foreground.DEFAULT+self.colours.Background.DEFAULT
-        content += self.colours.Foreground.GREEN+"\nTime Destination"+" "*49+"Platform\n"+self.colours.Foreground.DEFAULT
-        response = urllib2.urlopen("http://www.opentraintimes.com/location/"+self.code+"/"+self.now().strftime("%Y-%m-%d/%H:%M")+"?passenger=on&show_call=on&show_stp=on&show_var=on&show_wtt=on&utf8=%E2%9C%93")
-        html = response.read()
-        trains = html.split("<table")[1].split("</table>")[0].split("<tr>")
-        first = False
-        if self.hogwarts: first = True
-        for train in trains[2:]:
-            if first:
-                content += "0900 Hogwarts Express"
-                content += " "*44
-                content += "9 3/4\n"
-                first = False
-            train = strip_tags(train).lstrip()
-            train = train.split("\n")
-            try:
-                if train[4].lstrip()!="Terminates here" and int(train[5].lstrip().split("&")[0])>=int(self.now().strftime("%H%M")):
-                    if self.to is None or train[4].lstrip() in self.to:
-                        new = train[5].lstrip()+" "+train[4].lstrip()
-                        new = "&".join(new.split("&amp;"))
-                        new = "'".join(new.split("&#39;"))
-                        new = "".join(new.split("&frac12;"))
-                        new += " "*(65-len(new))+train[3].lstrip()+"\n"
-                        content += new
-            except:
-                pass
+        from nrewebservices.ldbws import Session
+        content = colour_print(size4bold_printer.text_to_ascii(self.station,fill=True))
+        content += "\n"
+
+        session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
+
+        board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
+
+        # Loop over all the train services in that board.
+        k = 0
+        num_of_rows = len(board.train_services)
+
+        mapping=[('Cross', 'X'),
+        ('Road', 'Rd'),
+        ('Square', 'Sq'),
+        ('Street', 'St'),
+        ('Junction', 'Jn'),
+        ('Town', 'Tn'),
+        ('Park', 'Pk'),
+        ('Lane', 'Ln'),
+        ('Hill', 'Hl'),
+        ('Central','Ctl'),
+        ('North ','N '),
+        ('South ','S '),
+        ('East ','E '),
+        ('West ','W '),
+        ('International', 'Intl'),
+        (' (London)', '')]
+
+        # 4 across the top
+        if self.hogwarts:
+            big_boards = "8:30 9 3/4   On time  \n"
+            big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + "HOGWARTS EXPRESS   " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
+            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            calling_at = (["Hogwarts School    "] + [' '*19]*12)[0:11]
+            big_boards += "\n".join(calling_at)
+            big_boards += "\n"+' '*19+"\n"
+            big_boards += ("Ministry of Magic                ")[0:19] + "\n"
+            n=3
+        else:
+            big_boards = ""
+            n = 4
+        for i in range(min(4,len(board.train_services))):
+            service = board.train_services[i]
+            destinations = [destination.location_name for destination in service.destinations]
+            std = service.std
+            destination_j = ",".join(destinations)
+            if len(destination_j) > 19:
+                for k, v in mapping:
+                    destination_j = destination_j.replace(k, v)
+            destination = (destination_j + " "*21)[0:19]
+            std = self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT + std
+            platform = service.platform
+            if platform == None:
+                platform = "-"
+            platform = (platform + " "*3)[0:3]
+            if service.etd[0] in ["0","1","2"]:
+                etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + "Exp " + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            elif service.etd[0] == "D":
+                etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + service.etd + "  " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            elif service.etd[0] == "C":
+                etd2 = self.colours.Foreground.CYAN + self.colours.Style.BOLD + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            else:
+                etd2 = self.colours.Foreground.WHITE + self.colours.Style.DEFAULT + service.etd + "  " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            etd = (etd2 + " "*7)[0:29]
+            #big_boards += "\n"
+            big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:36] + "\n"
+            big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + destination.upper() + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
+            big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+            calling_points = service.subsequent_calling_points[0]
+            calling_at = []
+            for point in calling_points:
+                lname = point.location_name
+                if len(lname) > 19:
+                    for k, v in mapping:
+                        lname = lname.replace(k, v)
+                calling_at.append((lname + " "*21)[0:19])
+            calling_at = (calling_at + [' '*19]*12)[0:11]
+            big_boards += "\n".join(calling_at)
+            if len(calling_points)>=12:
+                big_boards += ("\n+ " + str(len(calling_points)-11) + " stations            ")[0:20] + "\n"
+            else:
+                big_boards += "\n"+' '*19+"\n"
+            big_boards += (service.operator + "                ")[0:19] + "\n"
+
+        #print big_boards
+        columns = big_boards.split("\n")
+        #print "X",columns[1],"Y"
+        columns = (columns + [' '*19 for ii in range(64)])[0:64]
+        for j in range(16):
+            content += " " + columns[0+j] + " " + columns[16+j] + " " + columns[32+j] + " " + columns[48+j] + "\n"
+            #print j, len(columns)
+
+        content += self.colours.Foreground.GREEN+"\nTime  Destination           Plt Exptd    Time  Destination           Plt Exptd "+self.colours.Foreground.DEFAULT
+        for k in range(5):
+            if k < num_of_rows:
+                service = board.train_services[k]
+                # Build a list of destinations for each train service.
+                destinations = [destination.location_name for destination in service.destinations]
+                std = service.std
+                destination = (",".join(destinations) + " "*21)[0:21]
+                platform = service.platform
+                if platform == None:
+                    platform = "-"
+                platform = (platform + " "*3)[0:3]
+                etd = (service.etd + " "*7)[0:7]
+                content += "\n" + std + " " + destination + " " + platform + " " + etd + "  "
+
+            if k + 5 < num_of_rows:
+                service = board.train_services[k+5]
+                # Build a list of destinations for each train service.
+                destinations = [destination.location_name for destination in service.destinations]
+                std = service.std
+                destination = (",".join(destinations) + " "*21)[0:21]
+                platform = service.platform
+                if platform == None:
+                    platform = "-"
+                platform = (platform + " "*3)[0:3]
+                etd = (service.etd + " "*7)[0:7]
+                content += std + " " + destination + " " + platform + " " + etd
+
         self.content = content
 
 pages=[]
-train01 = TrainPage("851","London Blackfriars","BFR")
+train01 = TrainPage("851","Blackfriars","BFR")
 train02 = TrainPage("852","London Bridge","LBG")
-train03 = TrainPage("853","London Cannon Street","CST")
-train04 = TrainPage("854","London Charing Cross","CHX")
-train05 = TrainPage("855","London Euston","EUS")
-train06 = TrainPage("856","London Fenchurch Street","FST")
-train08 = TrainPage("858","London Fields","LOF")
-train09 = TrainPage("859","London Kings Cross","KGX",True)
-train10 = TrainPage("860","London Liverpool Street","LST")
-train11 = TrainPage("861","London Marylebone","MYB")
-train12 = TrainPage("862","London Paddington","PAD")
+train03 = TrainPage("853","Cannon Street","CST")
+train04 = TrainPage("854","Charing Cross","CHX")
+train05 = TrainPage("855","Euston","EUS")
+train06 = TrainPage("856","Fenchurch Street","FST")
+train09 = TrainPage("859","Kings Cross","KGX",True)
+train10 = TrainPage("860","Liverpool Street","LST")
+train11 = TrainPage("861","Marylebone","MYB")
+train12 = TrainPage("862","Paddington","PAD")
 train13 = TrainPage("863","Acton Central","ACC")
 train14 = TrainPage("864","Acton Main Line","AML")
-train15 = TrainPage("865","London St Pancras Intl.","STP")
+train15 = TrainPage("865","St Pancras","STP")
 train16 = TrainPage("866","Ffairfach","FFA")
-train17 = TrainPage("867","London Victoria","VIC")
-train18 = TrainPage("868","London Waterloo","WAT")
-train19 = TrainPage("869","London Waterloo East","WAE")
+train17 = TrainPage("867","Victoria","VIC")
+train18 = TrainPage("868","Waterloo","WAT")
+train19 = TrainPage("869","Waterloo East","WAE")
 train20 = TrainPage("870","Banbury","BAN")
 train21 = TrainPage("871","Reading","RDG")
 train22 = TrainPage("872","Oxford","OXF")
@@ -85,6 +179,7 @@ train31 = TrainPage("881","Farringdon","ZFD")
 train32 = TrainPage("882","East Croydon","ECR")
 train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
 train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
+train35 = TrainPage("885","Sutton Coldfield","SUT")
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
