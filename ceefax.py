@@ -100,11 +100,16 @@ def get_greeting_page(barcode):
 
 def pull_new_version():
     from os import system
+    from name import NAME
     print("Pulling newest version.")
     try:
         system("cd /home/pi/ceefax;git pull")
-        with open("/home/pi/ceefax/temp","w") as f:
-            f.write("YES")
+        if NAME == "KLBFAX":
+            with open("/home/pi/ceefax/temp","w") as f:
+                f.write("YES")
+        elif NAME == "28JHFAX":
+            with open("/home/pi/KLBFAX_status","w") as f:
+                f.write("1")
         try:
             with open("/home/pi/ceefax/requirements-satisfied.txt") as f:
                 satis = [s.strip("\n") for s in f.readlines()]
