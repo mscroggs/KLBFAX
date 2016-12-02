@@ -190,5 +190,7 @@ def name_page_handler(input):
         restart_computer()
     elif input == "0026360488":
         pull_new_version()
+    elif input == "1337":
+        pull_new_version()
     else:
         ThreadSignaller.queue.put(ThreadSignaller.ShowGreetingPage(input))
