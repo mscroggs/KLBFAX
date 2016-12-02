@@ -108,8 +108,7 @@ def pull_new_version():
             with open("/home/pi/ceefax/temp","w") as f:
                 f.write("YES")
         elif NAME == "28JHFAX":
-            with open("/home/pi/KLBFAX_status","w") as f:
-                f.write("1")
+            system("KLBur")
         try:
             with open("/home/pi/ceefax/requirements-satisfied.txt") as f:
                 satis = [s.strip("\n") for s in f.readlines()]
