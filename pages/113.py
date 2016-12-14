@@ -11,7 +11,7 @@ class JigPage(Page):
         super(JigPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Trophy"
-        self.tagline = "GO SQUIBS!"
+        self.tagline = "GO PUFF!"
 
     def generate_content(self):
         import urllib2
@@ -20,18 +20,18 @@ class JigPage(Page):
         jig = """
                    XXXXXRRRRRRRRXXXXX
                    XXXXXXXXRRXXXXXXXX
-             GMXXXXXXXXXXRRXXRRXXXXXXXXXXMG
-             GMXX  XXXXXXXXXXXXXXXXXX  XXMG
-             GMXX   XXXXRRRRRRRRXXXX   XXMG
-             GM XX  XXXXRXXXXXXXXXXX  XX MG
-             GM XX   XXXXXXXXXXXXXX   XX MG
-             GM  XX   XXRRRRRRRRXX   XX  MG 
-             GM   XX   XRXXRRXXRX   XX   MG
-             GM    XXX  XRRRRRRX  XXX    MG
-             GM      XXX XXXXXX XXX      MG
-             GM        XXXXXXXXXX        MG
-             GM           XXXX           MG
-             GM           XXXX           MG
+             YBXXXXXXXXXXRRXXRRXXXXXXXXXXBY
+             YBXX  XXXXXXXXXXXXXXXXXX  XXBY
+             YBXX   XXXXRRRRRRRRXXXX   XXBY
+             YB XX  XXXXRXXXXXXXXXXX  XX BY
+             YB XX   XXXXXXXXXXXXXX   XX BY
+             YB  XX   XXRRRRRRRRXX   XX  BY 
+             YB   XX   XRXXRRXXRX   XX   BY
+             YB    XXX  XRRRRRRX  XXX    BY
+             YB      XXX XXXXXX XXX      BY
+             YB        XXXXXXXXXX        BY
+             YB           XXXX           BY
+             YB           XXXX           BY
                       BBBBBBBBBBBB
                       BBBBBBBBBBBB
                       BBBBBBBBBBBB
