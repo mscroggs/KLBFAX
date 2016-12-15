@@ -24,6 +24,8 @@ class NamePage(Page):
         from page import greetings
 
         greeting = greetings.random()
+        if "Sean" in name:
+            name = choice(["Sean","Sean the Sheep","Sean of the Dead"])
         if "Rafael" in name:
             if random()<0.6:
                 greeting = "Muy Feo"
