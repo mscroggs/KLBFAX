@@ -26,15 +26,15 @@ xxxxxxxxxxxxxxxxxxx x  xxxxxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
         elif NAME=="28JHFAX":
             if datetime.now().month==12 and datetime.now().day in [15,16,17,18,19]:
                 content = self.colours.colour_print("""
-xxxxxxxx        xxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
-x      x          x   x   x         x     x         x     x
-x  xx  x xxxxxxxx x       x xxxxxxx x  xxxx xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxx
-x  xx  x x  xx  x x  x x  x x     x x     x x     x x     x x  x  xxxxxxxxxxxxxx
-x  xx  x xx    xx x  xxx  x x xx  x xxxx  x x  xxxx x  x  x x  x  xxxxxxxxxxxxxx
-x      x xxx  xxx x  xxx  x x     x x     x x    xx x  x  x xx   xxxxxxxxxxxxxxx
-xxxxxxxx xx    xx xxxxxxxxx x xx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxx
-         x  xx  x           x xx  x         x  xxxx         x  x  xxxxxxxxxxxxxx
-       xxxxxxxxxx         xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxx
+xxxxxxxx        xxxxxxxxxxx        xxxxxxxxx       xxxxxxxxx
+x      x          x   x   x          x     x         x     x
+x  xx  x xxxxxxxx x       x xxxxxxxx x  xxxx xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxx
+x  xx  x x  xx  x x  x x  x xx    xx x     x x     x x     x x  x  xxxxxxxxxxxxx
+x  xx  x xx    xx x  xxx  x x  xx  x xxxx  x x  xxxx x  x  x x  x  xxxxxxxxxxxxx
+x      x xxx  xxx x  xxx  x x      x x     x x    xx x  x  x xx   xxxxxxxxxxxxxx
+xxxxxxxx xx    xx xxxxxxxxx x  xx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxx
+         x  xx  x           x  xx  x         x  xxxx         x  x  xxxxxxxxxxxxx
+       xxxxxxxxxx          xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxx
 """)
             else:
                 content = self.colours.colour_print("""
