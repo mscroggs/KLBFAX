@@ -22,7 +22,20 @@ xxxxxxxxxxxxxxxxxxx x  xxxxxxx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
                   xxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
 """)
         elif NAME=="28JHFAX":
-            content = self.colours.colour_print("""
+            if datetime.now().month==12 and datetime.now().day in [15,16,17,18,19]:
+                content = self.colours.colour_print("""
+xxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
+xx     xx  xx  xx   x   x         x     x         x     x
+xx xx  xxx    xxx       x xxxxxxx x  xxxx xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxx
+xx xx  xxxx  xxxx  x x  x x     x x     x x     x x     x x  x  xxxxxxxxxxxxxxxx
+xx xx  xxx    xxx  xxx  x x xx  x xxxx  x x  xxxx x  x  x x  x  xxxxxxxxxxxxxxxx
+xx     xx  xx  xx  xxx  x x     x x     x x    xx x  x  x xx   xxxxxxxxxxxxxxxxx
+xxxxxxxxxxxxxxxxxxxxxxxxx x xx  x xxxxxxx x  xxxx xxxxxxx x  x  xxxxxxxxxxxxxxxx
+                          x xx  x         x  xxxx         x  x  xxxxxxxxxxxxxxxx
+                        xxxxxxxxx       xxxxxxxxx       xxxxxxxxxxxxxxxxxxxxxxxx
+""")
+            else:
+                content = self.colours.colour_print("""
 xxxxxxxxxxxxxxxxxxxxxxxxx       xxxxxxxxx       xxxxxxxxx
 xxxxxxxxxxx      xx     x         x  x  x         x     x
 xxxxxxxxxxxxxxx  xx  x  x xxxxxxx x  x  x xxxxxxx x  x  x xxxxxxxxxxxxxxxxxxxxxx
