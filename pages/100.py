@@ -3,6 +3,8 @@ from page import Page, PageFactory
 from random import shuffle
 from name import NAME
 
+from datetime import datetime
+
 class IndexPage(Page):
     def __init__(self, page_num):
         super(IndexPage, self).__init__(page_num)
