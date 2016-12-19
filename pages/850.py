@@ -50,11 +50,17 @@ class TrainPage(Page):
         ('East ','E '),
         ('West ','W '),
         ('International', 'Intl'),
-        (' (London)', '')]
+        (' (London)', ''),
+        (' (Kent)', ''),
+        (' (Intl)', ''),
+        ('Trent Valley', 'T Valley'),
+        ('Piccadilly','Picc'),
+        ('Thameslink','Thmslk'),
+        (' Underground', '')]
 
         # 4 across the top
         if self.hogwarts:
-            big_boards = "8:30 9 3/4   On time  \n"
+            big_boards = "8:30 9 3/4 On time \n"
             big_boards += self.colours.Foreground.DEFAULT + self.colours.Style.BOLD + "HOGWARTS EXPRESS   " + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT + "\n"
             big_boards += self.colours.Foreground.YELLOW + self.colours.Style.BOLD + "Calling at:        \n" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
             calling_at = (["Hogwarts School    "] + [' '*19]*12)[0:11]
@@ -123,12 +129,24 @@ class TrainPage(Page):
                 # Build a list of destinations for each train service.
                 destinations = [destination.location_name for destination in service.destinations]
                 std = service.std
-                destination = (",".join(destinations) + " "*21)[0:21]
+                destination_j = ",".join(destinations)
+                if len(destination_j) > 21:
+                    for kk, v in mapping:
+                        destination_j = destination_j.replace(kk, v)
+                destination = (destination_j + " "*21)[0:21]
                 platform = service.platform
                 if platform == None:
                     platform = "-"
                 platform = (platform + " "*3)[0:3]
-                etd = (service.etd + " "*7)[0:7]
+                if service.etd[0] in ["0","1","2"]:
+                    etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                elif service.etd[0] == "D":
+                    etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + "Delayed" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                elif service.etd[0] == "C":
+                    etd2 = self.colours.Foreground.CYAN + self.colours.Style.BOLD + "Canceld" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                else:
+                    etd2 = self.colours.Foreground.WHITE + self.colours.Style.DEFAULT + service.etd + "" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                etd = (etd2 + " "*22)[0:24]
                 content += "\n" + std + " " + destination + " " + platform + " " + etd + "  "
 
             if k + 5 < num_of_rows:
@@ -136,12 +154,24 @@ class TrainPage(Page):
                 # Build a list of destinations for each train service.
                 destinations = [destination.location_name for destination in service.destinations]
                 std = service.std
-                destination = (",".join(destinations) + " "*21)[0:21]
+                destination_j = ",".join(destinations)
+                if len(destination_j) > 21:
+                    for kk, v in mapping:
+                        destination_j = destination_j.replace(kk, v)
+                destination = (destination_j + " "*21)[0:21]
                 platform = service.platform
                 if platform == None:
                     platform = "-"
                 platform = (platform + " "*3)[0:3]
-                etd = (service.etd + " "*7)[0:7]
+                if service.etd[0] in ["0","1","2"]:
+                    etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + service.etd + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                elif service.etd[0] == "D":
+                    etd2 = self.colours.Foreground.RED + self.colours.Style.BOLD + "Delayed" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                elif service.etd[0] == "C":
+                    etd2 = self.colours.Foreground.CYAN + self.colours.Style.BOLD + "Canceld" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                else:
+                    etd2 = self.colours.Foreground.WHITE + self.colours.Style.DEFAULT + service.etd + "" + self.colours.Style.DEFAULT + self.colours.Foreground.DEFAULT
+                etd = (etd2 + " "*22)[0:24]
                 content += std + " " + destination + " " + platform + " " + etd
 
         self.content = content
@@ -180,7 +210,7 @@ train32 = TrainPage("882","East Croydon","ECR")
 train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
 train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
 train35 = TrainPage("885","Sutton Coldfield","SUT")
-train35 = TrainPage("886","Cambridge","CBG")
+train36 = TrainPage("886","Cambridge","CBG")
 
 tv_page = Page("850")
 tv_page.content = colour_print(printer.text_to_ascii("Trains Index"))+"\n"
