@@ -12,7 +12,10 @@ import points
 import now
 import page
 import ThreadSignaller
-import Queue
+try:
+    import Queue
+except ImportError:
+    import queue as Queue
 from random import choice
 
 class ConfigError(Exception):
@@ -118,11 +121,11 @@ def pull_new_version():
             for line in f.readlines():
                 line = line.strip("\n")
                 if line not in satis:
-                    print "installing "+line
+                    print("installing "+line)
                     with open("/home/pi/ceefax/requirements-satisfied.txt","a+") as g:
                         g.write(line+"\n")
                     system("sudo pip install "+line)
-                    print "installed "+line
+                    print("installed "+line)
         stop_execution()
     except:
         pass

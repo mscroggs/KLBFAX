@@ -1,6 +1,9 @@
 import threading
 from time import sleep, time
-import urllib2
+try:
+    import urllib2
+except ImportError:
+    import urllib.request as urllib2
 import pickle
 import json
 import config

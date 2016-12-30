@@ -4,6 +4,7 @@ import screen
 import now
 import config
 from name import NAME
+from cupt import CuPT
 
 def random_error(string):
     """if random()<0.03:
@@ -29,6 +30,7 @@ class Page(object):
         self.loaded = False
         self.title = ""
         self.duration_sec = config.default_page_duration_sec
+        self.exception = None
 
     def loop(self):
         pass
@@ -60,7 +62,7 @@ class Page(object):
                   + tagline_print + self.colours.Background.DEFAULT
                   + self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT)
         else:
-            fail_page = FailPage()
+            fail_page = FailPage(self.exception)
             fail_page.reload()
             fail_page.show()
 
@@ -71,6 +73,7 @@ class Page(object):
         except Exception as e:
             logging.warning("Page " + self.title + " could not be reloaded")
             logging.exception(e)
+            self.exception = e
             self.loaded = False
 
     def refresh(self):
@@ -78,12 +81,21 @@ class Page(object):
 
 
 class FailPage(Page):
-    def __init__(self):
+    def __init__(self, e=None):
         super(FailPage, self).__init__("---")
-        self.content = "Page failed to load...\n\n2 points to Slytherin!"
+        self.set_exception(e)
         self.is_enabled = False
         self.duration_sec = 2
 
     def generate_content(self):
         from points import add_points
         add_points("Slytherin", 2)
+
+    def set_exception(self, e):
+        self.content = "Page failed to load...\n\n2 points to Slytherin!\n\n"
+        if e is None:
+            self.content += "UNKNOWN ERROR"
+        elif e.type == str:
+            self.content += e
+        else:
+            self.content += str(e)

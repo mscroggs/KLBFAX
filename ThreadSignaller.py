@@ -1,5 +1,7 @@
-import Queue
-
+try:
+    import Queue
+except ImportError:
+    import queue as Queue
 
 class CleanExit(object):
     pass
