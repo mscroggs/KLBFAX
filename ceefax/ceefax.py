@@ -32,7 +32,7 @@ class Ceefax:
 
     def begin(self):
         self.scr = curses.initscr()
-        self.page_manager = PageManager()
+        self.page_manager = PageManager(self.scr)
 
         curses.start_color()
         curses.use_default_colors()

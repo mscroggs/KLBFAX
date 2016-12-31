@@ -70,15 +70,9 @@ class Page(object):
         pass
 
     def show(self):
-        if (self.loaded and self.background_loaded) or isinstance(self, FailPage) or self.number == "---":
-            self.cupt.show_page_number(self.number)
-            self.cupt.show_tagline(self.tagline)
-            self.cupt.show()
-
-        else:
-            fail_page = FailPage(self.exception)
-            fail_page.reload()
-            fail_page.show()
+        self.cupt.show_page_number(self.number)
+        self.cupt.show_tagline(self.tagline)
+        self.cupt.show()
 
     def reload(self):
         self.cupt.clear_content()
