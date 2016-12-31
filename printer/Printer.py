@@ -4,7 +4,7 @@ import fonts.size7extracondensed.default
 import fonts.size4.default
 import fonts.size4bold.default
 import fonts.exceptions
-import screen
+import config
 from fonts.LetterBlock import LetterBlock
 
 
@@ -20,7 +20,7 @@ def process_printing_options(function):
         result = function(self, text)
 
         if padding_enabled:
-            right_shift = screen.WIDTH - len(result)
+            right_shift = config.WIDTH - len(result)
             if right_shift > 0:
                 result += function(self, filler * right_shift)
 
@@ -51,11 +51,11 @@ class Printer(object):
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):
-            if len(line) > screen.WIDTH:
-                output.append(line[:screen.WIDTH])
+            if len(line) > config.WIDTH:
+                output.append(line[:config.WIDTH])
                 hit_sides = True
             elif fill:
-                output.append(line+"x"*(screen.WIDTH-len(line)))
+                output.append(line+"x"*(config.WIDTH-len(line)))
             else:
                 output.append(line)
         if vertical_condense:

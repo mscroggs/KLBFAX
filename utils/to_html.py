@@ -8,7 +8,7 @@ sys.path.insert(0,'..')
 from os import listdir
 from os.path import isfile
 import os
-from page import PageFactory, Page
+from page import PageManger, Page
 from colours import terminal_to_html
 from name import NAME
 
@@ -24,7 +24,7 @@ pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../pages"
 only_page_files = [f for f in listdir(pages_dir)
                    if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
-pageFactory = PageFactory()
+page_manager = PageManager()
 
 for page_file in only_page_files:
     page_file_no_ext = str(os.path.splitext(page_file)[0])
@@ -35,13 +35,13 @@ for page_file in only_page_files:
         obj = getattr(module, object)
         if isinstance(obj, Page):
             try:
-                pageFactory.add(obj)
+                page_manager.add(obj)
             except:
                 pass
 
 html_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../html")
 
-items = pageFactory.pages.items()
+items = page_manager.pages.items()
 items.sort()
 taglines = "taglines = {"
 pages_on = "pages_on = Array("

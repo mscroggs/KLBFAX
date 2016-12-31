@@ -8,6 +8,13 @@ def update_status(status=None):
         with open(join(expanduser('~'), '.klb/tweet_me'), 'a+') as f:
             f.write("\n"+status)
 
+def add_one_random(printing=False):
+    from random import choice
+    house = choice(["Gryffindor","Hufflepuff","Slytherin","Ravenclaw","Durmstrang","Squib"])
+    if printing:
+        print("1 point to "+house)
+    add_points(house,1)
+    return house
 
 def add_points(house, number, deets=""):
   if not os.getenv("SLAVE"):

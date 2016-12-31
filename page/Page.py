@@ -1,36 +1,56 @@
 from math import floor
 import logging
-import screen
-import now
 import config
-from name import NAME
 from cupt import CuPT
-
-def random_error(string):
-    """if random()<0.03:
-      try:
-        chars = ["A","5","h","i","#","@","{","9","."]
-        pos = randint(0,len(string)-2)
-        string = string[:pos]+choice(colours.Foreground.list)+string[pos]+colours.Foreground.DEFAULT+string[pos+1:]
-      except:
-        pass"""
-    return string
-
-
+    
 class Page(object):
     def __init__(self, number):
-        import colours
-        self.colours = colours
         self.content = ""
         self.is_enabled = True
         self.in_index = True
         self.index_num = None
-        self.tagline = NAME + ": The World at Your Fingertips"
+        self.tagline = config.NAME + ": The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
+        self.background_loaded = False
         self.title = ""
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
+        from ceefax import Ceefax
+        self.cupt = CuPT(Ceefax().scr)
+
+    def move_cursor(self, x=None, y=None):
+        self.cupt.move_cursor(x=x,y=y)
+
+    def start_fg_color(self, color):
+        self.cupt.start_fg_color(color)
+
+    def start_bg_color(self, color):
+        self.cupt.start_bg_color(color)
+
+    def end_fg_color(self):
+        self.cupt.end_fg_color()
+
+    def end_bg_color(self):
+        self.cupt.end_bg_color()
+
+    def add_block(self, block, *args, **kwargs):
+        bg = None
+        if "bg" in kwargs:
+            bg = kwargs["bg"]
+        self.cupt.add_block(block, *args, bg=bg)
+
+    def add_title(self, title, fg=-1, bg=-1):
+        pass
+
+    def add_text(self, text):
+        self.cupt.add_text(text)
+
+    def add_newline(self):
+        self.cupt.add_newline()
+
+    def add_wrapped_text(self, text):
+        self.cupt.add_text(text, True)
 
     def loop(self):
         pass
@@ -39,63 +59,28 @@ class Page(object):
         pass
 
     def now(self):
-        return now.now()
+        return config.now()
+
+    def background(self):
+        """This function will be run every so often in the background. Use it for (eg) downloading weather data."""
+        pass
 
     def generate_content(self):
+        """This function will be run every time the page is loaded."""
         pass
 
     def show(self):
-        from page import FailPage
-        if self.loaded or isinstance(self, FailPage) or self.number == "---":
-            print(random_error(" " * (59-len(NAME)) + self.number + " "+NAME+" " + self.now().strftime("%a %d %b %H:%M")))
-            out = self.content.split("\n")
-            for i in range(0, 27):
-                if i < len(out):
-                    print(random_error(out[i].encode('utf-8')))
-                else:
-                    print("")
-            before = int(floor((screen.WIDTH-len(self.tagline))/2))
-            after = screen.WIDTH-len(self.tagline)-before
-            tagline_print = " " * before + self.tagline + " " * after
-            print(self.colours.Background.BLUE + self.colours.Foreground.YELLOW
-                  + self.colours.Style.BOLD
-                  + tagline_print + self.colours.Background.DEFAULT
-                  + self.colours.Foreground.DEFAULT + self.colours.Style.DEFAULT)
+        if (self.loaded and self.background_loaded) or isinstance(self, FailPage) or self.number == "---":
+            self.cupt.show_page_number(self.number)
+            self.cupt.show_tagline(self.tagline)
+            self.cupt.show()
+
         else:
             fail_page = FailPage(self.exception)
             fail_page.reload()
             fail_page.show()
 
     def reload(self):
-        try:
-            self.generate_content()
-            self.loaded = True
-        except Exception as e:
-            logging.warning("Page " + self.title + " could not be reloaded")
-            logging.exception(e)
-            self.exception = e
-            self.loaded = False
-
-    def refresh(self):
-        pass
-
-
-class FailPage(Page):
-    def __init__(self, e=None):
-        super(FailPage, self).__init__("---")
-        self.set_exception(e)
-        self.is_enabled = False
-        self.duration_sec = 2
-
-    def generate_content(self):
-        from points import add_points
-        add_points("Slytherin", 2)
-
-    def set_exception(self, e):
-        self.content = "Page failed to load...\n\n2 points to Slytherin!\n\n"
-        if e is None:
-            self.content += "UNKNOWN ERROR"
-        elif e.type == str:
-            self.content += e
-        else:
-            self.content += str(e)
+        self.cupt.clear_content()
+        self.generate_content()
+        self.loaded = True

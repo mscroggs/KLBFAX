@@ -1,5 +1,5 @@
 import os
-import screen
+import config
 from page import Page
 from random import choice
 

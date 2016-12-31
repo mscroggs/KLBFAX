@@ -7,6 +7,7 @@ from os import mkdir as _mkdir
 from os import getenv as _getenv
 import json as _json
 import pickle
+import config
 
 if _getenv("SLAVE"):
     default_path = _join(_expanduser("~"), ".slave/")
@@ -95,3 +96,6 @@ def f_write_pickle(f_name, var, path=None):
             pickle.dump(var, f)
     except:
         pass
+
+def load_file(f_name):
+    return open(_join(_join(config.current_dir,'files'),f_name)

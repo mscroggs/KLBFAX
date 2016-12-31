@@ -8,7 +8,7 @@ sys.path.insert(0,'..')
 from os import listdir
 from os.path import isfile
 import os
-from page import PageFactory, Page
+from page import PageManager, Page
 
 
 def is_page_file(f):
@@ -23,7 +23,7 @@ pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "../pages"
 only_page_files = [f for f in listdir(pages_dir)
                    if isfile(os.path.join(pages_dir, f)) and is_page_file(f)]
 
-pageFactory = PageFactory()
+page_manager = PageManager()
 
 for page_file in only_page_files:
     try:
@@ -34,11 +34,11 @@ for page_file in only_page_files:
         for object in dir(module):
             obj = getattr(module, object)
             if isinstance(obj, Page):
-                    pageFactory.add(obj)
+                    page_manager.add(obj)
     except:
         pass
 
-pageFactory.print_all()
-pageFactory.export_all()
+page_manager.print_all()
+page_manager.export_all()
 
 
