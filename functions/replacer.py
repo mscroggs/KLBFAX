@@ -1,5 +1,4 @@
 import re
-import colours
 from sweep import sweepstake_people
 
 def escape(string):
@@ -57,13 +56,13 @@ def klb_replace(imput):
             ["Ben","Momchil"],
             ["Holly","Antonio"],
             ["Deal","Soheni"],
-            ["The Tribe",colours.Background.RED+colours.Foreground.BLACK+"Pietro's Pick"+colours.Background.DEFAULT+colours.Foreground.DEFAULT+" The Tribe"],
-            ["Teenage Mutant Ninja Turtles",colours.Background.RED+colours.Foreground.BLACK+"Belgin's Pick"+colours.Background.DEFAULT+colours.Foreground.DEFAULT+" Teenage Mutant Ninja Turtles"],
+            ["The Tribe","Pietro's Pick: The Tribe"],
+            ["Teenage Mutant Ninja Turtles","Belgin's Pick: Teenage Mutant Ninja Turtles"],
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
     for p in sweepstake_people:
-        swaps.append([p[1],p[1]+colours.Foreground.GREEN+" ("+p[0]+")"+colours.Foreground.DEFAULT])
+        swaps.append([p[1],p[1]+" ("+p[0]+")"])
     punc = [" ","?","!",":","'",'"',"\n"]
     for swap in swaps:
         for p in punc:

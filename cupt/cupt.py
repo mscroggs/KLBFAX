@@ -31,17 +31,20 @@ class CuPT:
             bg = kwargs["bg"]
         self.ls.append(Block(block, *args, bg=bg))
 
+    def add_blocked_block(self, block, fg=None, bg=None):
+        self.ls.append(BlockedBlock(block, fg=fg, bg=bg))
+
     def move_cursor(self, x=None, y=None):
         self.ls.append(Move(x,y))
 
     def add_newline(self):
         self.ls.append(Command("NEWLINE"))
 
-    def add_text(self, text, wrapping=False):
+    def add_text(self, text, wrapping=False, pre=0):
         for line in text.split("\n")[:-1]:
-            self.ls.append(CuPTPart(text, wrapping))
+            self.ls.append(CuPTPart(line, wrapping, pre=pre))
             self.add_newline()
-        self.ls.append(CuPTPart(text.split("\n")[-1], wrapping))
+        self.ls.append(CuPTPart(text.split("\n")[-1], wrapping, pre=pre))
 
     def start_fg_color(self, color):
         self.ls.append(FGColor(color))
@@ -75,13 +78,16 @@ class CuPT:
                     y = bit.y
             elif isinstance(bit, Block):
                 y,x = bit.as_curses(y,x,self)
+            elif isinstance(bit, BlockedBlock):
+                y,x = bit.as_curses(y,x,self)
             else:
                 for cha in bit.text:
                     self.add_char(y,x,cha,csty(fg,bg))
                     x += 1
                     if bit.wrapping and x >= self.WIDTH:
                         y += 1
-                        x = 0
+                        x = bit.pre
+                                    
 
     def add_char(self, y, x, cha, sty=None):
         if sty is None:
@@ -114,17 +120,26 @@ class Move:
         self.y = y
 
 class CuPTPart:
-    def __init__(self, text, wrapping):
+    def __init__(self, text, wrapping, pre):
         self.text = text
         self.wrapping = wrapping
+        self.pre = pre
 
 curses_colors = {
         "RED":(curses.COLOR_RED,0),
+        "BRIGHTRED":(curses.COLOR_RED,1),
         "GREEN":(curses.COLOR_GREEN,0),
+        "LIGHTGREEN":(curses.COLOR_GREEN,1),
         "BLUE":(curses.COLOR_BLUE,0),
+        "LIGHTBLUE":(curses.COLOR_BLUE,1),
         "YELLOW":(curses.COLOR_YELLOW,1),
+        "CYAN":(curses.COLOR_CYAN,0),
+        "LIGHTCYAN":(curses.COLOR_CYAN,1),
         "ORANGE":(curses.COLOR_YELLOW,0),
-        "MAGENTA":(curses.COLOR_MAGENTA,0)
+        "MAGENTA":(curses.COLOR_MAGENTA,0),
+        "PINK":(curses.COLOR_MAGENTA,1),
+        "GREY":(-1,1),
+        "DEFAULT":(-1,0)
     }
 
 
@@ -164,6 +179,41 @@ class Block:
                     while x<config.WIDTH:
                         cupt.add_char(y,x," ",csty(bg=self.bg))
                         x += 1
+                y += 1
+                x = 0
+        return y,x
+
+cmap = {
+        "x":u"\u2588",
+        "'":u"\u2580",
+        ",":u"\u2584"
+       }
+
+class BlockedBlock:
+    def __init__(self, block, fg=None, bg=None):
+        self.block = block
+        self.bg = bg
+        self.fg = fg
+
+    def as_curses(self, y, x, cupt):
+        my_csty = csty(fg=self.fg, bg=self.bg)
+
+        if x!=0:
+            x,y = 0,y+1
+
+        for line in self.block.split("\n"):
+            if line!="":
+                for j in line:
+                    for inc,outc in cmap.items():
+                        if j==inc:
+                            cupt.add_char(y,x,outc.encode("utf-8"),my_csty)
+                            break
+                    else:
+                        cupt.add_char(y,x," ",my_csty)
+                    x += 1
+                while x<config.WIDTH:
+                    cupt.add_char(y,x," ",my_csty)
+                    x += 1
                 y += 1
                 x = 0
         return y,x

@@ -20,7 +20,7 @@ class GreetingChooser:
         import config
         if config.now().hour < 12:
             return self.morning
-        if confog.now().hour > 17:
+        if config.now().hour > 17:
             return self.evening
         return []
 

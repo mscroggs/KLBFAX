@@ -14,4 +14,7 @@ class InfoPage(Page):
         self.add_text(config.NAME+" v"+config.VERSION)
         self.add_newline()
 
+    def background(self):
+        agdjdsglj()
+
 i_p = InfoPage("200")

@@ -1,7 +1,7 @@
 import random
 import config
 import os
-from page import Page
+from page import Page,special
 import signal
 import curses
 
@@ -112,11 +112,12 @@ class PageManager:
         while True:
             for page in self.pages.values():
                 try:
+                    page.background_error = None
                     page.background_loaded = False
                     page.background()
                     page.background_loaded = True
-                except:
-                    pass
+                except Exception as e:
+                    page.background_error = e
             sleep(60*30)
 
     def start_loop(self):
@@ -133,6 +134,10 @@ class PageManager:
             self.clear_input()
             if inp is None:
                 page = self.get_loaded_random()
+            elif config.now().strftime("%H") == "12" and config.now().minute < 20:
+                page = special.LunchPage()
+            elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
+                page = special.PubPage()
             else:
                 page = self.handle_input(inp)
             self.show(page)
@@ -150,14 +155,48 @@ class PageManager:
                         pass
             except TimeUp:
                 inp = None
-            #input_fd, _, _ = select.select([sys.stdin], [], [], 30)
-            #print input_fd
-            #print "->"
-            #print "<-"
-            #if input_fd:
-            #    self.handle_input(sys.stdin.readline().strip())
 
     def handle_input(self, the_input):
+        if the_input == "pub":
+            return special.PubPage()
+        if the_input == "lunch":
+            return special.LunchPage()
+        if len(the_input)>6:
+            from page.special import NamePage
+            namefile_path = "/home/pi/cards/" + the_input
+            extra = ""
+            from functions import greetings
+            if os.path.isfile(namefile_path):
+                _name, house, twitter = points.get_name_house(namefile_path)
+            else:
+                _name, house, twitter = None,None,None
+            if house is not None:
+                extra = "Error finding your house. Please report to Scroggs."
+
+                if twitter is not None:
+                    deets = greetings.random_twitter() + " @"+twitter+"!"
+                elif _name is not None:
+                    deets = greetings.random_twitter() + " " + _name
+                else:
+                    deets = ""
+        
+                time = now.now().strftime("%H")
+        
+                name_file = points.read_name_file(namefile_path)
+                if points.should_add_morning_points(time, house, name_file,
+                                                    the_input):
+                    points_added = points.add_morning_points(time, house, the_input, deets)
+                    extra = str(points_added) + " points to " + house + "!"
+                    if points_added < 0:
+                        extra += "\nIt's the weekend, go home!"
+        
+                name_page = NamePage(name, extra=extra)
+            else:
+                name_page = NamePage(the_input, large=False)
+            return name_page
+
+
+
         try:
             return self.pages[the_input]
         except KeyError:
@@ -165,9 +204,9 @@ class PageManager:
 
     def show(self, page):
         if not isinstance(page, FailPage):
-            if not page.loaded:
-                page = FailPage("Page not loaded.")
-            if not page.background_loaded:
+            if page.background_error is not None:
+                page = FailPage("There was an error running the page's background function.\n\n"+str(page.background_error))
+            elif not page.background_loaded:
                 page = FailPage("Page currently updating. Please try again in a few minutes")
         try:
             page.reload()
@@ -216,3 +255,4 @@ class FailPage(Page):
 
     def set_exception(self, e):
         self.ee = e
+

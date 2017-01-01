@@ -13,6 +13,7 @@ class Page(object):
         self.number = str(number)
         self.loaded = False
         self.background_loaded = False
+        self.background_error = None
         self.title = ""
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
@@ -40,8 +41,21 @@ class Page(object):
             bg = kwargs["bg"]
         self.cupt.add_block(block, *args, bg=bg)
 
-    def add_title(self, title, fg=-1, bg=-1):
-        pass
+    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7"):
+        if font=="size7":
+            from printer import instance as prinstance
+        elif font=="size7condensed":
+            from printer import thin_instance as prinstance
+        elif font=="size7extracondensed":
+            from printer import extrathin_instance as prinstance
+        elif font=="size4":
+            from printer import size4_instance as prinstance
+        elif font=="size4bold":
+            from printer import size4bold_instance as prinstance
+        else:
+            raise ValueError("Undefined font.")
+        title_block = prinstance.text_to_ascii(title)
+        self.cupt.add_blocked_block(title_block, fg=fg, bg=bg)
 
     def add_text(self, text):
         self.cupt.add_text(text)
@@ -49,8 +63,8 @@ class Page(object):
     def add_newline(self):
         self.cupt.add_newline()
 
-    def add_wrapped_text(self, text):
-        self.cupt.add_text(text, True)
+    def add_wrapped_text(self, text, pre=0):
+        self.cupt.add_text(text, True, pre=pre)
 
     def loop(self):
         pass
