@@ -149,7 +149,10 @@ class PageManager:
                 while key != curses.KEY_ENTER and key != 10:
                     key = self.scr.getch()
                     try:
-                        inp += get_chr(key)
+                        if key==263:
+                            inp = inp[:-1]
+                        else:
+                            inp += get_chr(key)
                         self.show_input(inp)
                     except ValueError:
                         pass
