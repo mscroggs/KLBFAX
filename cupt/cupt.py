@@ -19,11 +19,11 @@ class CuPT:
         pad.refresh(0,0, 0,self.WIDTH-len(txt)-1, 0,self.WIDTH)
 
     def show_tagline(self, tagline):
-        pad = curses.newpad(1, self.WIDTH)
+        pad = curses.newpad(2, self.WIDTH)
         pre = " " * ((self.WIDTH-len(tagline))/2)
-        post = " " * (self.WIDTH-len(tagline)-len(pre)-1)
+        post = " " * (self.WIDTH-len(tagline)-len(pre))
         pad.addstr(0,0,pre+tagline+post,csty("YELLOW","BLUE"))
-        pad.refresh(0,0, self.HEIGHT+1,0, self.HEIGHT+1,self.WIDTH)
+        pad.refresh(0,0, self.HEIGHT+1,0, self.HEIGHT+2,self.WIDTH)
 
     def add_block(self, block, *args, **kwargs):
         bg = None
@@ -101,14 +101,18 @@ class CuPT:
 
     def show(self):
         from time import sleep
+        from .transitions import random
         self.make_curses_list()
-        pad = self.pad()
-        for y in range(self.HEIGHT):
-            for x in range(self.WIDTH):
-                if x!=self.WIDTH-1 or y!=self.HEIGHT-1:
-                    if y in self.cls and x in self.cls[y]:
-                        pad.addstr(y,x,self.cls[y][x][0],self.cls[y][x][1])
-        pad.refresh(0,0,1,0,self.HEIGHT+1,self.WIDTH)
+        tran = random()
+        pad = curses.newpad(1,2)
+        for n in sorted(tran.keys()):
+            for y,x in tran[n]:
+                if y in self.cls and x in self.cls[y]:
+                    pad.addstr(0,0,self.cls[y][x][0],self.cls[y][x][1])
+                else:
+                    pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
+            sleep(.01)
 
 class Command:
     def __init__(self, c):
