@@ -115,7 +115,10 @@ class CuPT:
                         try:
                             pad.addstr(0,0,self.cls[y][x][0],self.cls[y][x][1])
                         except:
-                            pad.addstr(0,0,self.cls[y][x][0].encode("utf-8"),self.cls[y][x][1])
+                            try:
+                                pad.addstr(0,0,self.cls[y][x][0].encode("utf-8"),self.cls[y][x][1])
+                            except:
+                                pad.addstr(0,0," ")
                     else:
                         pad.addstr(0,0," ")
                     pad.refresh(0,0,y+1,x,y+1,x)
