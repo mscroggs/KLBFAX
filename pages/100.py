@@ -62,7 +62,7 @@ class IndexPage(Page):
             if datetime.now().month==12 and datetime.now().day in [15,16,17,18,19]:
                 self.add_block(ox_title,"YELLOW", bg="BLUE")
             else:
-                self.add_block(te_fax,"YELLOW", bg="BLUE")
+                self.add_block(te_title,"YELLOW", bg="BLUE")
         else:
             self.add_block(klb_title,"YELLOW",bg="BLUE")
         self.start_fg_color("GREEN")
