@@ -86,7 +86,7 @@ class LetterPage(Page):
                 self.end_bg_color()
                 self.start_random_bg_color()
             self.add_text(line)
-            self.add_newlines()
+            self.add_newline()
         self.end_bg_color()
         if self.n==21:
             self.add_text("~ END OF LETTERS ~")
