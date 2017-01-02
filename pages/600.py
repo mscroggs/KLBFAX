@@ -14,6 +14,7 @@ class TVPage(Page):
         self.feed_type = None
 
     def generate_content(self):
+        from time import strptime, strftime
         self.add_title(self.channel)
         self.move_cursor(x=80-len(self.day))
         self.add_text(self.day, bg="YELLOW", fg="BLUE")
