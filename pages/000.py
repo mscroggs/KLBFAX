@@ -1,54 +1,64 @@
 import os
-import config
 from page import Page
 from random import choice
+import config
 
-def colour_me(text):
-    output = ""
-    for i in text:
-        output += choice(test_page.colours.Foreground.non_boring) + i
-    output += test_page.colours.Foreground.DEFAULT
-    return output
+class TestPage(Page):
+    def __init__(self):
+        super(TestPage, self).__init__("000")
+        self.title = "About "+config.NAME
+        self.is_enabled = False
 
-page_number = os.path.splitext(os.path.basename(__file__))[0]
-test_page = Page(page_number)
-test_page.title = "Test Page"
-test_page.is_enabled = False
-
-test_page.content = ""
-
-test_page.content += "\n" + colour_me("TEST PAGE") + "\n"
-
-# 000000011111111112222222222333333333344444444445555555555666666666677777777778
-# 345678901234567890123456789012345678901234567890123456789012345678901234567890
-#"          DEFAULT BLACK RED GREEN YELLOW BLUE MAGENTA CYAN WHITE"
-#"BOLD      "
-#"FAINT     "
-#"STANDOUT  "
-#"BLINK     "
-#"UNDERLINE "
-#"STRIKE    "
-test_page.content += "\n" + colour_me("FOREGROUNDS & STYLES") + "\n"
-for i in range(0,len(test_page.colours.Style.list)):
-    test_page.content += test_page.colours.Style.delist[i] + " "*(13-len(test_page.colours.Style.delist[i]))
-
-    for j in range(0,len(test_page.colours.Foreground.list)):
-        test_page.content += test_page.colours.Style.list[i] + test_page.colours.Foreground.list[j]
-        test_page.content += test_page.colours.Foreground.delist[j]
-        test_page.content += test_page.colours.Style.DEFAULT + test_page.colours.Foreground.DEFAULT
-        test_page.content += " "
-    test_page.content += "\n"
-
-test_page.content += "\n" + colour_me("BACKGROUNDS & STYLES") + "\n"
-for i in range(0,len(test_page.colours.Style.list)):
-    test_page.content += test_page.colours.Style.delist[i] + " "*(13-len(test_page.colours.Style.delist[i]))
-
-    for j in range(0,len(test_page.colours.Background.list)):
-        test_page.content += test_page.colours.Style.list[i] + test_page.colours.Background.list[j]
-        test_page.content += test_page.colours.Background.delist[j]
-        test_page.content += test_page.colours.Style.DEFAULT + test_page.colours.Background.DEFAULT
-        test_page.content += " "
-    test_page.content += "\n"
+    def generate_content(self):
+        from cupt.cupt import curses_colors
+        self.add_rainbow_text(config.NAME + " v" + config.VERSION)
+        self.add_newline()
+        self.add_newline()
+        self.add_rainbow_text("FOREGROUNDS")
+        self.add_newline()
+        for i,c in enumerate(curses_colors):
+            if i%6 == 0 and i>0:
+                self.add_newline()
+            self.move_cursor(x=12*(i%6))
+            self.start_fg_color(c)
+            self.add_wrapped_text(c+" ")
+        self.end_fg_color()
+        self.add_newline()
+        self.add_newline()
+        self.add_rainbow_text("BACKGROUNDS")
+        self.add_newline()
+        for i,c in enumerate(curses_colors):
+            if i%6 == 0 and i>0:
+                self.add_newline()
+            self.move_cursor(x=12*(i%6))
+            self.start_bg_color(c)
+            self.add_wrapped_text(c+" ")
+        self.end_bg_color()
+        self.add_newline()
+        self.add_newline()
 
 
+        import socket
+        import fcntl
+        import struct
+        
+        def get_ip_address(ifname):
+            s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+            return socket.inet_ntoa(fcntl.ioctl(
+                s.fileno(),
+                0x8915,  # SIOCGIFADDR
+                struct.pack('256s', ifname[:15])
+            )[20:24])
+        self.add_rainbow_text("IP ADDRESSES")
+        self.add_newline()
+        try:
+            self.add_text("lo: "+get_ip_address('lo'))
+        except IOError:
+            self.add_text("lo: ERROR")
+        self.add_newline()
+        try:
+            self.add_text("eth0: "+get_ip_address('eth0'))
+        except IOError:
+            self.add_text("eth0: ERROR")
 
+test_page = TestPage()

@@ -474,6 +474,16 @@ xxxx
 xxxx
 """)
 
+_add(".", """
+xx
+xx
+xx
+xx
+xx
+ x
+xx
+""")
+
 _add("*", """
 xxxxx xxxxxx
 x,'xx,xx',xx

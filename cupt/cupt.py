@@ -31,8 +31,11 @@ class CuPT:
             bg = kwargs["bg"]
         self.ls.append(Block(block, *args, bg=bg))
 
-    def add_blocked_block(self, block, fg=None, bg=None):
-        self.ls.append(BlockedBlock(block, fg=fg, bg=bg))
+    def add_blocked_block(self, block, fg=None, bg=None, rainbow=False, pre=0):
+        if rainbow:
+            self.ls.append(BlockedBlock(block, rainbow=True, pre=pre))
+        else:
+            self.ls.append(BlockedBlock(block, fg=fg, bg=bg, pre=pre))
 
     def move_cursor(self, x=None, y=None):
         self.ls.append(Move(x,y))
@@ -108,7 +111,10 @@ class CuPT:
         for n in sorted(tran.keys()):
             for y,x in tran[n]:
                 if y in self.cls and x in self.cls[y]:
-                    pad.addstr(0,0,self.cls[y][x][0],self.cls[y][x][1])
+                    try:
+                        pad.addstr(0,0,self.cls[y][x][0],self.cls[y][x][1])
+                    except:
+                        pad.addstr(0,0,self.cls[y][x][0].encode("utf-8"),self.cls[y][x][1])
                 else:
                     pad.addstr(0,0," ")
                 pad.refresh(0,0,y+1,x,y+1,x)
@@ -142,8 +148,11 @@ curses_colors = {
         "ORANGE":(curses.COLOR_YELLOW,0),
         "MAGENTA":(curses.COLOR_MAGENTA,0),
         "PINK":(curses.COLOR_MAGENTA,1),
-        "GREY":(-1,1),
-        "DEFAULT":(-1,0)
+        "GREY":(curses.COLOR_BLACK,1),
+        "DEFAULT":(-1,0),
+        "WHITE":(curses.COLOR_WHITE,0),
+        "BRIGHTWHITE":(curses.COLOR_WHITE,1),
+        "BLACK":(curses.COLOR_BLACK,0)
     }
 
 
@@ -194,20 +203,28 @@ cmap = {
        }
 
 class BlockedBlock:
-    def __init__(self, block, fg=None, bg=None):
+    def __init__(self, block, fg=None, bg=None, rainbow=False, pre=0):
         self.block = block
         self.bg = bg
         self.fg = fg
+        self.rainbow=rainbow
+        self.pre = pre
 
     def as_curses(self, y, x, cupt):
+        from random import choice
+            
         my_csty = csty(fg=self.fg, bg=self.bg)
 
-        if x!=0:
-            x,y = 0,y+1
+        if x>self.pre:
+            x,y = self.pre,y+1
+        if x<self.pre:
+            x = self.pre
 
         for line in self.block.split("\n"):
             if line!="":
                 for j in line:
+                    if self.rainbow:
+                        my_csty = csty(fg=choice(curses_colors.keys()))
                     for inc,outc in cmap.items():
                         if j==inc:
                             cupt.add_char(y,x,outc.encode("utf-8"),my_csty)
@@ -219,7 +236,7 @@ class BlockedBlock:
                     cupt.add_char(y,x," ",my_csty)
                     x += 1
                 y += 1
-                x = 0
+                x = self.pre
         return y,x
 
 class ColorManager:

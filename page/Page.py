@@ -29,6 +29,16 @@ class Page(object):
     def start_bg_color(self, color):
         self.cupt.start_bg_color(color)
 
+    def start_random_fg_color(self):
+        from cupt.cupt import curses_colors
+        from random import choice
+        self.cupt.start_fg_color(choice(curses_colors.keys()))
+
+    def start_random_bg_color(self):
+        from cupt.cupt import curses_colors
+        from random import choice
+        self.cupt.start_bg_color(choice(curses_colors.keys()))
+
     def end_fg_color(self):
         self.cupt.end_fg_color()
 
@@ -41,7 +51,7 @@ class Page(object):
             bg = kwargs["bg"]
         self.cupt.add_block(block, *args, bg=bg)
 
-    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7"):
+    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0):
         if font=="size7":
             from printer import instance as prinstance
         elif font=="size7condensed":
@@ -55,10 +65,34 @@ class Page(object):
         else:
             raise ValueError("Undefined font.")
         title_block = prinstance.text_to_ascii(title)
-        self.cupt.add_blocked_block(title_block, fg=fg, bg=bg)
+        self.cupt.add_blocked_block(title_block, fg=fg, bg=bg, pre=pre)
+
+    def add_rainbow_title(self, title, font="size7", pre=0):
+        if font=="size7":
+            from printer import instance as prinstance
+        elif font=="size7condensed":
+            from printer import thin_instance as prinstance
+        elif font=="size7extracondensed":
+            from printer import extrathin_instance as prinstance
+        elif font=="size4":
+            from printer import size4_instance as prinstance
+        elif font=="size4bold":
+            from printer import size4bold_instance as prinstance
+        else:
+            raise ValueError("Undefined font.")
+        title_block = prinstance.text_to_ascii(title)
+        self.cupt.add_blocked_block(title_block, rainbow=True,pre=pre)
 
     def add_text(self, text):
         self.cupt.add_text(text)
+
+    def add_rainbow_text(self, text):
+        from cupt.cupt import curses_colors
+        from random import choice
+        for c in text:
+            self.start_fg_color(choice(curses_colors.keys()))
+            self.cupt.add_text(c)
+        self.end_fg_color()
 
     def add_newline(self):
         self.cupt.add_newline()

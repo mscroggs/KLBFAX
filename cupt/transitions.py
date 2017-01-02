@@ -1,3 +1,5 @@
+from __future__ import division
+
 import config
 def make_transition(f):
     to_do = {}

@@ -61,7 +61,8 @@ class PageManager:
             page = random.choice(self.get_enabled_pages(str(self.i)))
             self.i += 1
             self.i %= 10
-            page.reload()
+            if page.background_loaded:
+                page.reload()
         return page
 
     def print_all(self):
@@ -129,17 +130,17 @@ class PageManager:
         from time import sleep
         import sys
         import select
-        inp = None
+        inp = "100"
         while True:
             self.clear_input()
-            if inp is None:
-                page = self.get_loaded_random()
+            if inp is not None:
+                page = self.handle_input(inp)
             elif config.now().strftime("%H") == "12" and config.now().minute < 20:
                 page = special.LunchPage()
             elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
                 page = special.PubPage()
             else:
-                page = self.handle_input(inp)
+                page = self.get_loaded_random()
             self.show(page)
             signal.signal(signal.SIGALRM, alarm)
             signal.alarm(30)
@@ -201,6 +202,8 @@ class PageManager:
 
 
         try:
+            while len(the_input)<3:
+                the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
             return FailPage("Page does not exist. Try the index in page 100.",False)
@@ -209,8 +212,8 @@ class PageManager:
         if not isinstance(page, FailPage):
             if page.background_error is not None:
                 page = FailPage("There was an error running the page's background function.\n\n"+str(page.background_error))
-            elif not page.background_loaded:
-                page = FailPage("Page currently updating. Please try again in a few minutes")
+            elif page.number != "100" and not page.background_loaded:
+                page = FailPage("Page currently updating. Please try again in a few minutes",False)
         try:
             page.reload()
             page.show()

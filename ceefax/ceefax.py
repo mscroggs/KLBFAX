@@ -29,6 +29,7 @@ class Ceefax:
             points.add_one_random(printing=True)
         if not os.path.isdir(config.config_dir):
             mkdir(config.config_dir)
+        self.scr = None
 
     def begin(self):
         import locale

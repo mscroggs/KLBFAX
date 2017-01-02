@@ -13,6 +13,10 @@ debug = False
 if os.getenv('DEBUG'):
     debug = True
 
+def has_gmail_login():
+    return os.path.isfile(os.path.join(os.path.expanduser("~"), ".klb/gmail"))
+
+
 def get_bd_filepath():
     if os.getenv('DEVELOP') or os.getenv('SLAVE'):
         return os.path.join(current_dir, dummy_data_folder, 'birthdays.json')

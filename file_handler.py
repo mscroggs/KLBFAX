@@ -98,4 +98,5 @@ def f_write_pickle(f_name, var, path=None):
         pass
 
 def load_file(f_name):
-    return open(_join(_join(config.current_dir,'files'),f_name)
+    with open(_join(_join(config.current_dir,'files'),f_name)) as f:
+        return f.read()
