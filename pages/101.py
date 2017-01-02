@@ -80,7 +80,7 @@ class TubePage(Page):
                 elif desc == "Part Closure":
                     self.start_fg_color("ORANGE")
                 else:
-                    self.start_fg_color("BRIGHTRED")
+                    self.start_fg_color("LIGHTRED")
 
                 full_description = " "
                 full_description += self.current_status.get_status(line).description

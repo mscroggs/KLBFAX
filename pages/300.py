@@ -27,7 +27,7 @@ class NewsPage(Page):
         newsreaders = ['Huw Edwards','Lizo from Newsround','Moira Stuart','Nick Owen','Aiming Homes','Michael Burke','Trevor Martdonald','Sam Brown','Mart Pice','Jon Snow','Jeremy Paxperson']
         self.tagline = "Presented by " + random.choice(newsreaders)
 
-        self.add_title(self.top_title,bg="BLACK",fg="BRIGHTRED")
+        self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
 
         ticker = 0
         for item in self.feed['entries']:

@@ -21,7 +21,7 @@ class TimePage(Page):
         current_minute = float(now().strftime("%M"))
         current_hour = float(now().strftime("%I"))
         current_weekday = now().strftime("%a")
-        if current_weekday == "Mon": bgcolor = "BRIGHTRED"
+        if current_weekday == "Mon": bgcolor = "LIGHTRED"
         if current_weekday == "Tue": bgcolor = "YELLOW"
         if current_weekday == "Wed": bgcolor = "LIGHTCYAN"
         if current_weekday == "Thu": bgcolor = "LIGHTGREEN"

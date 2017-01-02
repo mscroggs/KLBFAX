@@ -138,7 +138,7 @@ class CuPTPart:
 
 curses_colors = {
         "RED":(curses.COLOR_RED,0),
-        "BRIGHTRED":(curses.COLOR_RED,1),
+        "LIGHTRED":(curses.COLOR_RED,1),
         "GREEN":(curses.COLOR_GREEN,0),
         "LIGHTGREEN":(curses.COLOR_GREEN,1),
         "BLUE":(curses.COLOR_BLUE,0),
