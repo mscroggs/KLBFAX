@@ -15,8 +15,11 @@ def git_pull():
     except:
         pass
 
-def kill_ceefax():
+def restart_ceefax():
     with open(path.join(config.config_dir,"KLBFAX_status"),"w") as f:
         f.write("1")
+    kill_ceefax()
+
+def kill_ceefax():
     from os import system
     system("kill $(pgrep -f run.py)")

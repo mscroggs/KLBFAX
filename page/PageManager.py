@@ -165,6 +165,12 @@ class PageManager:
             return special.PubPage()
         if the_input == "lunch":
             return special.LunchPage()
+        if the_input == "1337":
+            import computer
+            computer.git_pull()
+        if the_input == "....":
+            import computer
+            computer.kill_ceefax()
         if len(the_input)>6:
             from page.special import NamePage
             namefile_path = "/home/pi/cards/" + the_input

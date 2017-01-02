@@ -236,9 +236,6 @@ class BlockedBlock:
                     else:
                         cupt.add_char(y,x," ",my_csty)
                     x += 1
-                while x<config.WIDTH:
-                    cupt.add_char(y,x," ",my_csty)
-                    x += 1
                 y += 1
                 x = self.pre
         return y,x
