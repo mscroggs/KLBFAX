@@ -1,6 +1,4 @@
-import os
 from page import Page
-from random import randint
 from file_handler import f_read
 
 
@@ -79,23 +77,6 @@ class WeatherPage(Page):
         
 
     def generate_content(self):
-        
-        def number_in_box(number_string):          
-            padded_number_string = number_string.replace("1","|1")
-            padded_number_string = padded_number_string.replace("-","-|")
-            if len(number_string) == 2:
-                if number_string.count("1") == 2 or (number_string.count("1") == 1 and number_string.count("-") == 1):
-                    return "||" + padded_number_string + "||", ""
-                elif number_string.count("1") == 1 or (number_string.count("1") == 0 and number_string.count("-") == 1):
-                    return "|" + padded_number_string + "|", ""
-                else:
-                    return number_string,""
-            else:
-                if number_string.count("1") == 1:
-                    return "||||" + padded_number_string + "|||||", ""
-                else:
-                    return "||||" + padded_number_string + "|||", ""     
-        
         weather_date = self.weather_data[0]
         weather_time = self.weather_data[1]
         weather_temperature = self.weather_data[2]

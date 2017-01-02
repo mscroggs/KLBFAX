@@ -83,8 +83,16 @@ class Page(object):
         title_block = prinstance.text_to_ascii(title, fill=fill)
         self.cupt.add_blocked_block(title_block, rainbow=True,pre=pre)
 
-    def add_text(self, text):
+    def add_text(self, text, fg=None, bg=None):
+        if fg is not None:
+            self.start_fg_color(fg)
+        if bg is not None:
+            self.start_bg_color(bg)
         self.cupt.add_text(text)
+        if fg is not None:
+            self.end_fg_color()
+        if bg is not None:
+            self.end_bg_color()
 
     def add_rainbow_text(self, text):
         from cupt.cupt import curses_colors
@@ -97,8 +105,16 @@ class Page(object):
     def add_newline(self):
         self.cupt.add_newline()
 
-    def add_wrapped_text(self, text, pre=0):
+    def add_wrapped_text(self, text, pre=0, fg=None, bg=None):
+        if fg is not None:
+            self.start_fg_color(fg)
+        if bg is not None:
+            self.start_bg_color(bg)
         self.cupt.add_text(text, True, pre=pre)
+        if fg is not None:
+            self.end_fg_color()
+        if bg is not None:
+            self.end_bg_color()
 
     def loop(self):
         pass
