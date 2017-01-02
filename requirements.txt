@@ -6,3 +6,4 @@ astral
 metoffer
 tweepy
 nrewebservices
+feedparser
