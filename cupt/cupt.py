@@ -110,7 +110,7 @@ class CuPT:
         pad = curses.newpad(1,2)
         for n in sorted(tran.keys()):
             for y,x in tran[n]:
-                if y!=self.HEIGHT-1 or x!=self.WIDTH-1:
+                #if y!=self.HEIGHT-1 or x!=self.WIDTH-1:
                     if y in self.cls and x in self.cls[y]:
                         try:
                             pad.addstr(0,0,self.cls[y][x][0],self.cls[y][x][1])
