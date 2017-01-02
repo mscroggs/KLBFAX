@@ -58,4 +58,4 @@ news_page5 = NewsPage(304, "http://open.live.bbc.co.uk/weather/feeds/en/2643743/
 news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
 
-news_pageX = NewsPage(708, "http://chalkdustmagazine.com/feed/", "Chalkmart")
+news_pageX = NewsPage(707, "http://chalkdustmagazine.com/feed/", "Chalkmart")

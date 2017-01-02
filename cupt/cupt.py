@@ -190,7 +190,10 @@ class Block:
                         else:
                             cupt.add_char(y,x," ",csty(bg=self.bg))
                     else:
-                        cupt.add_char(y,x," ",csty(bg=self.cols[int(j)]))
+                        try:
+                            cupt.add_char(y,x," ",csty(bg=self.cols[int(j)]))
+                        except:
+                            cupt.add_char(y,x,j)
                     x+=1
                 if self.bg is not None:
                     while x<config.WIDTH:

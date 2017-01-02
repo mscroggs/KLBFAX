@@ -139,6 +139,10 @@ class Page(object):
         self.cupt.show()
 
     def reload(self):
-        self.cupt.clear_content()
-        self.generate_content()
-        self.loaded = True
+        self.loaded = False
+        try:
+            self.cupt.clear_content()
+            self.generate_content()
+            self.loaded = True
+        except:
+            pass
