@@ -5,7 +5,7 @@ def reboot():
     system("sudo shutdown -r now")
 
 def git_pull():
-    from os import system,path
+    from os import system
     from config import NAME
     print("Pulling newest version.")
     try:
@@ -16,6 +16,7 @@ def git_pull():
         pass
 
 def restart_ceefax():
+    from os import path
     with open(path.join(config.config_dir,"KLBFAX_status"),"w") as f:
         f.write("1")
     kill_ceefax()
