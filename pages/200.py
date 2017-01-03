@@ -81,7 +81,8 @@ class LetterPage(Page):
 
         self.add_title("Have your say "+str(self.n)+"/21",font="size4")
         self.start_random_bg_color()
-        for line in letters:
+        for line in letters.split("\n"):
+            line = line.rstrip("\n")
             if line == "":
                 self.end_bg_color()
                 self.start_random_bg_color()
