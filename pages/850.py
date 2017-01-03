@@ -12,14 +12,13 @@ class TrainPage(Page):
         self.hogwarts = hogwarts
         pages.append([page_num,station+" ("+code+")"])
 
-    def background(self):
+    def generate_content(self):
         from nrewebservices.ldbws import Session
 
         session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
 
-        self.board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
+        board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
 
-    def generate_content(self):
         self.add_title(self.station,font="size4")
 
 
@@ -65,7 +64,7 @@ class TrainPage(Page):
             self.add_text("Ministry of Magic")
             n = 3
 
-        for i,service in enumerate(self.board.train_services[:n]):
+        for i,service in enumerate(board.train_services[:n]):
             destinations = [destination.location_name for destination in service.destinations]
             destination_j = ",".join(destinations)
             if len(destination_j) > 19:
@@ -131,7 +130,7 @@ class TrainPage(Page):
             self.add_text(t)
         self.end_fg_color()
         self.add_newline()
-        for i,service in enumerate(self.board.train_services[n:n+10]):
+        for i,service in enumerate(board.train_services[n:n+10]):
             if i < 5:
                 pos = pos1
                 y=21+i
