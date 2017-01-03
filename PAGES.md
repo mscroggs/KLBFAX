@@ -1,12 +1,10 @@
 # List of pages
 The pages in brackets are disabled.
 
-(000 Test Page)
+(000 About KLBFAX)
 (001 Unicode Test Page)
-(002 IP Address Finder)
 (007 FF choice)
 (008 FF choice)
-(042 Secret Page)
 100 Index
 101 Tube Line Status
 103 Important Information
@@ -26,41 +24,16 @@ The pages in brackets are disabled.
 119 Squirrel
 120 Patronus
 140 Money
-141 World markets
+141 Money
 150 Events
-200 Letters
-201 Letters
-202 Letters
-203 Letters
-204 Letters
-205 Letters
-206 Letters
-207 Letters
-208 Letters
-209 Letters
-210 Letters
-211 Letters
-212 Letters
-213 Letters
-214 Letters
-215 Letters
-216 Letters
-217 Letters
-218 Letters
-219 Letters
-220 Letters
 300 Marts
 301 Marts
+302 Marts
 303 Marts
 304 Marts
 305 Marts
 306 Marts
-310 Euro 2016
-311 Euro 2016 Scores & Fixtures
-312 Euro 2016 Tables
-313 Euro 2016 Knockout
 314 Pi
-315 Euro 2016 Standings
 367 Where's Olly?
 368 Countdowns
 369 Countdowns
@@ -130,13 +103,7 @@ The pages in brackets are disabled.
 681 Tomorrow's TV: BBC Parliament
 692 Tomorrow's TV: BBC Radio 2
 694 Tomorrow's TV: BBC Radio 4
-(701 EMF Schedule)
-(702 EMF Schedule)
-(703 EMF Schedule)
-(704 EMF Shifts)
-707 chalkdust
-708 Marts
-(725 Advent Calendar)
+707 Marts
 777 The Team
 800 Buses Index
 801 Gower Street / UCH (N) Buses
@@ -155,24 +122,23 @@ The pages in brackets are disabled.
 814 Wembley Park Station (O) Buses
 815 Euston Square Station (Q) Buses
 850 Trains Index
-851 London Blackfriars Trains
+851 Blackfriars Trains
 852 London Bridge Trains
-853 London Cannon Street Trains
-854 London Charing Cross Trains
-855 London Euston Trains
-856 London Fenchurch Street Trains
-858 London Fields Trains
-859 London Kings Cross Trains
-860 London Liverpool Street Trains
-861 London Marylebone Trains
-862 London Paddington Trains
+853 Cannon Street Trains
+854 Charing Cross Trains
+855 Euston Trains
+856 Fenchurch Street Trains
+859 Kings Cross Trains
+860 Liverpool Street Trains
+861 Marylebone Trains
+862 Paddington Trains
 863 Acton Central Trains
 864 Acton Main Line Trains
-865 London St Pancras Intl. Trains
+865 St Pancras Trains
 866 Ffairfach Trains
-867 London Victoria Trains
-868 London Waterloo Trains
-869 London Waterloo East Trains
+867 Victoria Trains
+868 Waterloo Trains
+869 Waterloo East Trains
 870 Banbury Trains
 871 Reading Trains
 872 Oxford Trains
@@ -188,5 +154,6 @@ The pages in brackets are disabled.
 882 East Croydon Trains
 883 St Pancras to East Croydon Trains
 884 Blaenau Ffestiniog Trains
+885 Sutton Coldfield Trains
+886 Cambridge Trains
 888 Subtitles
-(999 Prisoner's Dilemma Score)

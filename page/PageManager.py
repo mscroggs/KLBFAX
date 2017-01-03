@@ -70,15 +70,18 @@ class PageManager:
         items.sort()
         for page_num, page in items:
             p = ""
-            if not page.is_enabled: p += page.colours.Foreground.RED
+            if not page.is_enabled: p += "\033[31m"
             p += (page_num+" ")
             p += (page.title)
-            if not page.is_enabled: p += page.colours.Foreground.DEFAULT
+            if not page.is_enabled: p += "\033[0m"
             print(p)
+
+    def export_all_to_html(self):
+        # To do: Write this!
+        pass
 
     def export_all(self):
         import os
-        import colours
         items = self.pages.items()
         items.sort()
         ls = ["# List of pages","The pages in brackets are disabled.",""]
@@ -88,7 +91,6 @@ class PageManager:
             p += (page_num+" ")
             p += (page.title)
             if not page.is_enabled: p += ")"
-            p = colours.strip(p)
             ls.append(p)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("\n".join(ls))
