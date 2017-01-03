@@ -22,4 +22,4 @@ def restart_ceefax():
 
 def kill_ceefax():
     from os import system
-    system("kill $(pgrep -f run.py)")
+    system("sudo kill $(pgrep -f run.py)")
