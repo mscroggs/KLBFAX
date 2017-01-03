@@ -8,6 +8,7 @@ class TestPage(Page):
         super(TestPage, self).__init__("000")
         self.title = "About "+config.NAME
         self.is_enabled = False
+        self.background_loaded = True # DO NOT COPY THIS LINE INTO A NEW PAGE!
 
     def generate_content(self):
         from cupt.cupt import curses_colors

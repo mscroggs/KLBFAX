@@ -5,7 +5,7 @@ class TrainPage(Page):
         super(TrainPage, self).__init__(page_num)
         self.title = station+" Trains"
         self.in_index = False
-        self.tagline = "Live trains from "+code+". Data from opentraintimes.com."
+        self.tagline = "Live trains from "+code+". Data from National Rail API."
         self.station = station
         self.code = code
         self.to = to
@@ -20,13 +20,10 @@ class TrainPage(Page):
         self.board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
 
     def generate_content(self):
-        self.add_title(self.station)
+        self.add_title(self.station,font="size4")
 
 
         # Loop over all the train services in that board.
-        k = 0
-        num_of_rows = len(self.board.train_services)
-
         mapping=[('Cross', 'X'),
         ('Road', 'Rd'),
         ('Square', 'Sq'),
@@ -50,23 +47,26 @@ class TrainPage(Page):
         ('Thameslink','Thmslk'),
         (' Underground', '')]
 
+        n = 4
+
         # 4 across the top
         if self.hogwarts:
-            big_boards = "8:30 9 3/4 On time \n"
-            big_boards += "HOGWARTS EXPRESS   \n"
-            big_boards += "Calling at:        \n"
-            calling_at = (["Hogwarts School    "] + [' '*19]*12)[0:11]
-            big_boards += "\n".join(calling_at)
-            big_boards += "\n"+' '*19+"\n"
-            big_boards += ("Ministry of Magic                ")[0:19] + "\n"
-            n=3
-        else:
-            big_boards = ""
-            n = 4
-        for i in range(min(4,len(self.board.train_services))):
-            service = self.board.train_services[i]
+            self.move_cursor(x=1,y=4)
+            self.add_text("8:30 9 3/4 On time")
+            self.move_cursor(x=1,y=5)
+            self.add_rainbow_text("HOGWARTS EXPRESS   ")
+            self.move_cursor(x=1,y=6)
+            self.start_fg_color("YELLOW")
+            self.add_text("Calling at:        ")
+            self.end_fg_color()
+            self.move_cursor(x=1,y=7)
+            self.add_text("Hogwarts School")
+            self.move_cursor(x=1,y=18)
+            self.add_text("Ministry of Magic")
+            n = 3
+
+        for i,service in enumerate(self.board.train_services[:n]):
             destinations = [destination.location_name for destination in service.destinations]
-            std = service.std
             destination_j = ",".join(destinations)
             if len(destination_j) > 19:
                 for k, v in mapping:
@@ -75,97 +75,103 @@ class TrainPage(Page):
             platform = service.platform
             if platform == None:
                 platform = "-"
-            platform = (platform + " "*3)[0:3]
+            self.move_cursor(x=1+(4-n+i)*20,y=4)
+            self.add_text(service.std+" "+platform+" "*(3-len(platform)))
+            self.move_cursor(x=11+(4-n+1)*20)
             if service.etd[0] in ["0","1","2"]:
-                etd2 = "Exp " + service.etd
+                self.start_fg_color("RED")
+                self.add_text("Exp " + service.etd)
+                self.end_fg_color()
             elif service.etd[0] == "D":
-                etd2 = service.etd + "  "
-            elif service.etd[0] == "C":
+                self.start_fg_color("RED")
                 etd2 = service.etd
+                self.end_fg_color()
+            elif service.etd[0] == "C":
+                self.start_fg_color("CYAN")
+                etd2 = service.etd
+                self.end_fg_color()
             else:
-                etd2 = service.etd + "  "
-            etd = (etd2 + " "*7)[0:29]
-            #big_boards += "\n"
-            big_boards += (std + " " + platform + "   "[0:3-len(platform)] + " " + etd +  " "*30)[0:36] + "\n"
-            big_boards += destination.upper() + "\n"
-            big_boards += "Calling at:        \n"
+                etd2 = service.etd
+
+            self.move_cursor(x=1+(4-n+i)*20,y=5)
+            self.start_fg_color("BRIGHTWHITE")
+            self.add_text(destination.upper())
+            self.end_fg_color()
+
+            self.move_cursor(x=1+(4-n+i)*20,y=6)
+            self.start_fg_color("YELLOW")
+            self.add_text("Calling at:        ")
+            self.end_fg_color()
+
             calling_points = service.subsequent_calling_points[0]
             calling_at = []
-            for point in calling_points:
+            for j,point in enumerate(calling_points[:11]):
                 lname = point.location_name
                 if len(lname) > 19:
                     for k, v in mapping:
                         lname = lname.replace(k, v)
-                calling_at.append((lname + " "*21)[0:19])
-            calling_at = (calling_at + [' '*19]*12)[0:11]
-            big_boards += "\n".join(calling_at)
-            if len(calling_points)>=12:
-                big_boards += ("\n+ " + str(len(calling_points)-11) + " stations            ")[0:20] + "\n"
+                self.move_cursor(x=1+(4-n+i)*20,y=7+j)
+                self.add_text(lname)
+            if len(calling_points)>11:
+                self.move_cursor(x=1+(4-n+i)*20,y=17)
+                d = len(calling_points)-10
+                self.add_text("+ " + str(d) + " stations")
+            self.move_cursor(x=1+(4-n+i)*20,y=18)
+            self.add_text(service.operator)
+
+
+        self.move_cursor(x=0,y=20)
+        self.start_fg_color("GREEN")
+        pos1 = (0,6,26,30)
+        pos2 = (39,45,65,69)
+        for p1,p2,t in zip(pos1,pos2,("Time","Destination","Plt","Exptd")):
+            self.move_cursor(p1)
+            self.add_text(t)
+            self.move_cursor(p2)
+            self.add_text(t)
+        self.end_fg_color()
+        self.add_newline()
+        for i,service in enumerate(self.board.train_services[n:n+10]):
+            if i < 5:
+                pos = pos1
+                y=21+i
+            else:    
+                pos = pos2
+                y=16+i
+            # Build a list of destinations for each train service.
+            self.move_cursor(x=pos[0],y=y)
+            self.add_text(service.std)
+
+            self.move_cursor(x=pos[1],y=y)
+            destinations = [destination.location_name for destination in service.destinations]
+            destination_j = ",".join(destinations)
+            if len(destination_j) > 21:
+                for kk, v in mapping:
+                    destination_j = destination_j.replace(kk, v)
+            self.add_text(destination_j)
+
+            self.move_cursor(x=pos[2],y=y)
+            destination = (destination_j + " "*21)[0:21]
+            platform = service.platform
+            if platform == None:
+                platform = "-"
+            self.add_text(platform)
+
+            self.move_cursor(x=pos[3],y=y)
+            if service.etd[0] in ["0","1","2"]:
+                self.start_fg_color("RED")
+                self.add_text(service.etd)
+                self.end_fg_color()
+            elif service.etd[0] == "D":
+                self.start_fg_color("RED")
+                self.add_text("Delayed")
+                self.end_fg_color()
+            elif service.etd[0] == "C":
+                self.start_fg_color("CYAN")
+                self.add_text("Canceld")
+                self.end_fg_color()
             else:
-                big_boards += "\n"+' '*19+"\n"
-            big_boards += (service.operator + "                ")[0:19] + "\n"
-
-        #print big_boards
-        columns = big_boards.split("\n")
-        #print "X",columns[1],"Y"
-        columns = (columns + [' '*19 for ii in range(64)])[0:64]
-        for j in range(16):
-            content += " " + columns[0+j] + " " + columns[16+j] + " " + columns[32+j] + " " + columns[48+j] + "\n"
-            #print j, len(columns)
-
-        content += "\nTime  Destination           Plt Exptd    Time  Destination           Plt Exptd "
-        for k in range(5):
-            if k < num_of_rows:
-                service = self.board.train_services[k]
-                # Build a list of destinations for each train service.
-                destinations = [destination.location_name for destination in service.destinations]
-                std = service.std
-                destination_j = ",".join(destinations)
-                if len(destination_j) > 21:
-                    for kk, v in mapping:
-                        destination_j = destination_j.replace(kk, v)
-                destination = (destination_j + " "*21)[0:21]
-                platform = service.platform
-                if platform == None:
-                    platform = "-"
-                platform = (platform + " "*3)[0:3]
-                if service.etd[0] in ["0","1","2"]:
-                    etd2 = service.etd
-                elif service.etd[0] == "D":
-                    etd2 = "Delayed"
-                elif service.etd[0] == "C":
-                    etd2 = "Canceld"
-                else:
-                    etd2 = service.etd
-                etd = (etd2 + " "*22)[0:24]
-                content += "\n" + std + " " + destination + " " + platform + " " + etd + "  "
-
-            if k + 5 < num_of_rows:
-                service = self.board.train_services[k+5]
-                # Build a list of destinations for each train service.
-                destinations = [destination.location_name for destination in service.destinations]
-                std = service.std
-                destination_j = ",".join(destinations)
-                if len(destination_j) > 21:
-                    for kk, v in mapping:
-                        destination_j = destination_j.replace(kk, v)
-                destination = (destination_j + " "*21)[0:21]
-                platform = service.platform
-                if platform == None:
-                    platform = "-"
-                platform = (platform + " "*3)[0:3]
-                if service.etd[0] in ["0","1","2"]:
-                    etd2 = service.etd
-                elif service.etd[0] == "D":
-                    etd2 = "Delayed"
-                elif service.etd[0] == "C":
-                    etd2 = "Canceld"
-                else:
-                    etd2 = service.etd
-                etd = (etd2 + " "*22)[0:24]
-                content += std + " " + destination + " " + platform + " " + etd
-
-        self.add_text(content)
+                self.add_text(service.etd)
 
 pages=[]
 train01 = TrainPage("851","Blackfriars","BFR")
