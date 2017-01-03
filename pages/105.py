@@ -43,6 +43,7 @@ class BdayPage(Page):
 
 
     def generate_content(self):
+        from random import choice
         s_day = date.today().day
         s_mon = date.today().month
 
@@ -56,7 +57,7 @@ class BdayPage(Page):
                 if day in self.c_b[mon]:
                     self.add_rainbow_title("Happy Birthday")
                     self.add_newline()
-                    self.add_rainbow_title(self.c_b[mon][day]+"!")
+                    self.add_rainbow_title(choice(self.c_b[mon][day].split(" & "))+"!")
                     self.add_newline()
                     self.start_random_fg_color()
                     for i,line in enumerate([
