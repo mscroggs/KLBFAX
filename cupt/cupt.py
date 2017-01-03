@@ -158,7 +158,21 @@ curses_colors = {
         "BRIGHTWHITE":(curses.COLOR_WHITE,1),
         "BLACK":(curses.COLOR_BLACK,0)
     }
-
+non_dark_colors = [
+        "RED",
+        "LIGHTRED",
+        "GREEN",
+        "LIGHTGREEN",
+        "BLUE",
+        "LIGHTBLUE",
+        "YELLOW",
+        "CYAN",
+        "LIGHTCYAN",
+        "ORANGE",
+        "MAGENTA",
+        "PINK",
+        "WHITE",
+        "BRIGHTWHITE"]
 
 class FGColor:
     def __init__(self, color=None):
@@ -231,7 +245,7 @@ class BlockedBlock:
             if line!="":
                 for j in line:
                     if self.rainbow:
-                        my_csty = csty(fg=choice(curses_colors.keys()))
+                        my_csty = csty(fg=choice(non_dark_colors))
                     for inc,outc in cmap.items():
                         if j==inc:
                             cupt.add_char(y,x,outc.encode("utf-8"),my_csty)

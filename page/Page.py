@@ -30,14 +30,14 @@ class Page(object):
         self.cupt.start_bg_color(color)
 
     def start_random_fg_color(self):
-        from cupt.cupt import curses_colors
+        from cupt.cupt import non_dark_colors
         from random import choice
-        self.cupt.start_fg_color(choice(curses_colors.keys()))
+        self.cupt.start_fg_color(choice(non_dark_colors))
 
     def start_random_bg_color(self):
-        from cupt.cupt import curses_colors
+        from cupt.cupt import non_dark_colors
         from random import choice
-        self.cupt.start_bg_color(choice(curses_colors.keys()))
+        self.cupt.start_bg_color(choice(non_dark_colors))
 
     def end_fg_color(self):
         self.cupt.end_fg_color()
@@ -95,10 +95,10 @@ class Page(object):
             self.end_bg_color()
 
     def add_rainbow_text(self, text):
-        from cupt.cupt import curses_colors
+        from cupt.cupt import non_dark_colors
         from random import choice
         for c in text:
-            self.start_fg_color(choice(curses_colors.keys()))
+            self.start_fg_color(choice(non_dark_colors))
             self.cupt.add_text(c)
         self.end_fg_color()
 
