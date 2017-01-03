@@ -73,36 +73,48 @@ The pages in brackets are disabled.
 604 Today's TV: Channel 4
 605 Today's TV: Channel 5
 606 Today's TV: ITV2
-608 Today's TV: S4C
-609 Today's TV: BBC4
-612 Today's TV: Dave
-614 Today's TV: More4
-615 Today's TV: Film 4
-616 Today's TV: QVC
-628 Today's TV: E4
-629 Today's TV: Challenge
-630 Today's TV: BBC News
-631 Today's TV: BBC Parliament
-642 Today's TV: BBC Radio 2
-644 Today's TV: BBC Radio 4
-651 Tomorrow's TV: BBC1
-652 Tomorrow's TV: BBC2
-653 Tomorrow's TV: ITV
-654 Tomorrow's TV: Channel 4
-655 Tomorrow's TV: Channel 5
-656 Tomorrow's TV: ITV2
-658 Tomorrow's TV: S4C
-659 Tomorrow's TV: BBC4
-662 Tomorrow's TV: Dave
-664 Tomorrow's TV: More4
-665 Tomorrow's TV: Film 4
-666 Tomorrow's TV: QVC
-678 Tomorrow's TV: E4
-679 Tomorrow's TV: Challenge
-680 Tomorrow's TV: BBC News
-681 Tomorrow's TV: BBC Parliament
-692 Tomorrow's TV: BBC Radio 2
-694 Tomorrow's TV: BBC Radio 4
+607 Today's TV: S4C
+608 Today's TV: BBC4
+609 Today's TV: Dave
+610 Today's TV: More4
+611 Today's TV: Film 4
+612 Today's TV: QVC
+613 Today's TV: E4
+614 Today's TV: Challenge
+615 Today's TV: BBC News
+616 Today's TV: BBC Parliament
+617 Today's TV: BBC Radio 2
+618 Today's TV: BBC Radio 4
+626 Tomorrow's TV: BBC1
+627 Tomorrow's TV: BBC2
+628 Tomorrow's TV: ITV
+629 Tomorrow's TV: Channel 4
+630 Tomorrow's TV: Channel 5
+631 Tomorrow's TV: ITV2
+632 Tomorrow's TV: S4C
+633 Tomorrow's TV: BBC4
+634 Tomorrow's TV: Dave
+635 Tomorrow's TV: More4
+636 Tomorrow's TV: Film 4
+637 Tomorrow's TV: QVC
+638 Tomorrow's TV: E4
+639 Tomorrow's TV: Challenge
+640 Tomorrow's TV: BBC News
+641 Tomorrow's TV: BBC Parliament
+642 Tomorrow's TV: BBC Radio 2
+643 Tomorrow's TV: BBC Radio 4
+650 Tube Index
+651 Euston Underground Trains
+652 Euston Square Underground Trains
+653 Warren Street Underground Trains
+654 Russel Square Underground Trains
+655 Mornington Crescent Underground Trains
+656 Perivale Underground Trains
+657 Kings Cross St Pancras Underground Trains
+658 Tottenham Court Road Underground Trains
+659 Oxford Circus Underground Trains
+660 Alperton Underground Trains
+661 Waterloo Underground Trains
 707 Marts
 777 The Team
 800 Buses Index
@@ -117,10 +129,7 @@ The pages in brackets are disabled.
 809 Euston Station (E) Buses
 810 Upper Woburn Place / Euston Road (L) Buses
 811 Upper Woburn Place (M) Buses
-812 Jubilee Road (PD) Buses
-813 Jubilee Road (J) Buses
-814 Wembley Park Station (O) Buses
-815 Euston Square Station (Q) Buses
+812 Euston Square Station (Q) Buses
 850 Trains Index
 851 Blackfriars Trains
 852 London Bridge Trains

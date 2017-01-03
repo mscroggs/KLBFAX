@@ -1,10 +1,6 @@
 from __future__ import division
 import json
-from re import sub
 from page import Page
-
-def strip_tags(string):
-    return sub(r'<[^>]*?>', '', string)
 
 class BusPage(Page):
     def __init__(self, page_num, bus_num, station, code):
@@ -61,10 +57,7 @@ bus08 = BusPage("808","490000077G","Euston Bus Station","G")
 bus09 = BusPage("809","490000077E","Euston Station","E")
 bus10 = BusPage("810","490012867L","Upper Woburn Place / Euston Road","L")
 bus11 = BusPage("811","490012867M","Upper Woburn Place","M")
-bus12 = BusPage("812","72238","Jubilee Road","PD")
-bus13 = BusPage("813","58812","Jubilee Road","J")
-bus14 = BusPage("814","55027","Wembley Park Station","O")
-bus15 = BusPage("815","490000078Q","Euston Square Station","Q")
+bus12 = BusPage("812","490000078Q","Euston Square Station","Q")
 
 class TVIPage(Page):
     def __init__(self):

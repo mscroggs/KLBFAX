@@ -62,7 +62,12 @@ class PageManager:
             self.i += 1
             self.i %= 10
             if page.background_loaded:
-                page.reload()
+                page.loaded = False
+                try:
+                    page.reload()
+                    page.loaded = True
+                except:
+                    pass
         return page
 
     def print_all(self):
@@ -223,11 +228,14 @@ class PageManager:
             elif page.number != "100" and not page.background_loaded:
                 page = FailPage("Page "+page.number+" currently updating. Please try again in a few minutes",False)
         try:
+            page.loaded = False
             page.reload()
+            page.loaded = True
             page.show()
         except Exception as e:
             page = FailPage(e)
             page.reload()
+            page.loaded = True
             page.show()
 
     def show_input(self, i):
