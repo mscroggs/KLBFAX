@@ -25,6 +25,7 @@ def get_ceefax():
 class Ceefax:
     _instance = None
     def __init__(self):
+        self.start_time = config.now()
         if config.NAME == "KLBFAX":
             points.add_one_random(printing=True)
         if not os.path.isdir(config.config_dir):

@@ -37,7 +37,6 @@ class TestPage(Page):
         self.add_newline()
         self.add_newline()
 
-
         import socket
         import fcntl
         import struct
@@ -60,5 +59,13 @@ class TestPage(Page):
             self.add_text("eth0: "+get_ip_address('eth0'))
         except IOError:
             self.add_text("eth0: ERROR")
+
+        from ceefax import Ceefax
+
+        self.add_newline()
+        self.add_newline()
+
+        self.add_text(config.NAME+" has been running since "+Ceefax().start_time.strftime("%y-%m-%d %H:%M"))
+
 
 test_page = TestPage()

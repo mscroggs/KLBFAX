@@ -212,14 +212,14 @@ class PageManager:
                 the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return FailPage("Page does not exist. Try the index in page 100.",False)
+            return FailPage("Page "+the_input+" does not exist. Try the index in page 100.",False)
 
     def show(self, page):
         if not isinstance(page, FailPage):
             if page.background_error is not None:
-                page = FailPage("There was an error running the page's background function.\n\n"+str(page.background_error))
+                page = FailPage("There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
             elif page.number != "100" and not page.background_loaded:
-                page = FailPage("Page currently updating. Please try again in a few minutes",False)
+                page = FailPage("Page "+page.number+" currently updating. Please try again in a few minutes",False)
         try:
             page.reload()
             page.show()

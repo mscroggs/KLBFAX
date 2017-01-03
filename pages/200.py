@@ -3,7 +3,7 @@ import json
 from page import Page
 from random import choice
 from os.path import join, expanduser
-from file_handler import f_read, f_readlines
+from file_handler import f_read, f_readlines, open_local
 import config
 
 class LetterPage(Page):
@@ -28,7 +28,7 @@ class LetterPage(Page):
                 lines = "".join(mail.body.split("\r")).split("\n")
                 if lines[0] == "EVENT" and "matthew.scroggs.14@ucl.ac.uk" in mail.fr:
                     try:
-                        with open(join(expanduser("~"),'.klb/events'),'a') as f:
+                        with open_local('events','a') as f:
                             for line in lines:
                                 if line!="EVENT":
                                     f.write(line+"\n")
@@ -67,7 +67,7 @@ class LetterPage(Page):
             self.letters = self.letters.split("\n")
             if len(self.letters)>1000:
                 self.letters = self.letters[:1000]
-            with open(join(expanduser("~"),".klb/emails"),"w") as f:
+            with open_local("emails","w") as f:
                 f.write("\n".join(self.letters))
         else:
             self.letters = self.letters.split("\n")
@@ -90,7 +90,7 @@ class LetterPage(Page):
             if line == "":
                 self.end_bg_color()
                 self.start_random_bg_color()
-            self.add_text(line)
+            self.add_text(line,fg="BLACK")
             self.add_newline()
         self.end_bg_color()
         if self.n==21:
