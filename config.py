@@ -1,13 +1,14 @@
 import os
 import inspect 
 
-VERSION = "2.0"
 WIDTH = 80
 HEIGHT = 30
 
 config_dir = os.path.join(os.path.expanduser('~'), '.klb')
 
 pages_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), "pages")
+with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "VERSION")) as f:
+    VERSION = f.read()
 
 debug = False
 if os.getenv('DEBUG'):
