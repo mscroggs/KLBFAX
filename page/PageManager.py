@@ -4,6 +4,7 @@ import os
 from page import Page,special
 import signal
 import curses
+import points
 
 class TimeUp(BaseException):
     pass
@@ -172,9 +173,12 @@ class PageManager:
             return special.PubPage()
         if the_input == "lunch":
             return special.LunchPage()
-        if the_input == "1337":
+        if the_input == "1337" or the_input == "0026360488":
             import computer
             computer.git_pull()
+        if the_input == "00488a0488":
+            import computer
+            computer.reboot()
         if the_input == "....":
             import computer
             computer.kill_ceefax()
