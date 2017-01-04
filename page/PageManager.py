@@ -211,7 +211,7 @@ class PageManager:
                     if points_added < 0:
                         extra += "\nIt's the weekend, go home!"
         
-                name_page = NamePage(name, extra=extra)
+                name_page = NamePage(_name, extra=extra)
             else:
                 name_page = NamePage(the_input, large=False)
             return name_page
