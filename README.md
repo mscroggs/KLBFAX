@@ -20,3 +20,10 @@ pip install -r requirements.txt
 ```shell
 DEVELOP=1 ./run.py
 ```
+
+## Disable screen blanking
+To disable screen blanking, make the command
+```shell 
+echo -ne "\033[13]" > /dev/tty1
+```
+run every minute using `cron`.
