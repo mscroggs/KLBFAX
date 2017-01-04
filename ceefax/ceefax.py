@@ -63,7 +63,7 @@ class Ceefax:
             import sys
             import traceback
             exc_type, exc_obj, tb = sys.exc_info()
-            print traceback.print_tb(tb)
+            traceback.print_tb(tb)
             print(type(e))
             print(e)
             sleep(5)

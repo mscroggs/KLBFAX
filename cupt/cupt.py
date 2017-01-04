@@ -1,3 +1,5 @@
+from __future__ import division62
+
 import curses
 import config
 
@@ -25,7 +27,7 @@ class CuPT:
 
     def show_tagline(self, tagline):
         pad = curses.newpad(2, self.WIDTH)
-        pre = " " * ((self.WIDTH-len(tagline))/2)
+        pre = " " * ((self.WIDTH-len(tagline))//2)
         post = " " * (self.WIDTH-len(tagline)-len(pre))
         pad.addstr(0,0,pre+tagline+post,csty("YELLOW","BLUE"))
         pad.refresh(0,0, self.HEIGHT+1,0, self.HEIGHT+2,self.WIDTH)
