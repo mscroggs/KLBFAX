@@ -226,6 +226,7 @@ class PageManager:
             return FailPage("Page "+the_input+" does not exist. Try the index in page 100.",False)
 
     def show(self, page):
+        page.cupt.show_loading()
         if not isinstance(page, FailPage):
             if page.background_error is not None:
                 page = FailPage("There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
