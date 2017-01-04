@@ -130,7 +130,10 @@ class PageManager:
             sleep(60*30)
 
     def start_loop(self):
-        import thread
+        try:
+            import thread
+        except ImportError:
+            import _thread as thread
         thread.start_new_thread(self.background_loop,())
         self.main_loop()
 
