@@ -19,8 +19,6 @@ class CuPT:
         pad.refresh(0,0, 0,self.WIDTH-len(txt)-1, 0,self.WIDTH)
 
     def show_loading(self):
-        from os import system
-        system("""echo "\033[13]"""")
         pad = curses.newpad(1, self.WIDTH)
         pad.addstr(0,0,"Loading next page...")
         pad.refresh(0,0, self.HEIGHT+2,0, self.HEIGHT+2,self.WIDTH)
