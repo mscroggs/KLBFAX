@@ -17,7 +17,7 @@ class TrainPage(Page):
 
         session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
 
-        board = session.get_station_board_with_details(self.code, rows=10, include_departures=True, include_arrivals=False)
+        board = session.get_station_board_with_details(self.code, rows=14, include_departures=True, include_arrivals=False)
 
         self.add_title(self.station,font="size4")
 
@@ -134,7 +134,7 @@ class TrainPage(Page):
             if i < 5:
                 pos = pos1
                 y=21+i
-            else:    
+            else:
                 pos = pos2
                 y=16+i
             # Build a list of destinations for each train service.
@@ -207,6 +207,7 @@ train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges"
 train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
 train35 = TrainPage("885","Sutton Coldfield","SUT")
 train36 = TrainPage("886","Cambridge","CBG")
+train37 = TrainPage("887","Lichfield TV","LTV")
 
 class TVIPage(Page):
     def __init__(self):
@@ -225,4 +226,3 @@ class TVIPage(Page):
                 self.move_cursor(x=38)
 
 tp = TVIPage()
-
