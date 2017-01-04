@@ -201,7 +201,7 @@ class PageManager:
                 else:
                     deets = ""
         
-                time = now.now().strftime("%H")
+                time = config.now().strftime("%H")
         
                 name_file = points.read_name_file(namefile_path)
                 if points.should_add_morning_points(time, house, name_file,
