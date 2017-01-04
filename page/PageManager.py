@@ -191,9 +191,9 @@ class PageManager:
                 _name, house, twitter = points.get_name_house(namefile_path)
             else:
                 _name, house, twitter = None,None,None
-            if house is None:
-                extra = "Error finding your house. Please report to Scroggs."
-            else:
+            if _name is not None:
+                if house is None:
+                    extra = "Error finding your house. Please report to Scroggs."
                 if twitter is not None:
                     deets = greetings.random_twitter() + " @"+twitter+"!"
                 elif _name is not None:
