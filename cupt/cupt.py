@@ -1,4 +1,4 @@
-from __future__ import division62
+from __future__ import division
 
 import curses
 import config
