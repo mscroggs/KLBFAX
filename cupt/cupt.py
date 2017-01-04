@@ -19,9 +19,10 @@ class CuPT:
         pad.refresh(0,0, 0,self.WIDTH-len(txt)-1, 0,self.WIDTH)
 
     def show_loading(self):
-        """echo -ne "\033[13]" > /dev/tty1"""
+        from os import system
+        system("""echo -ne "\033[13]" > /dev/tty1""")
         pad = curses.newpad(1, self.WIDTH)
-        pad.addstr(0,0,"Loading next page..."+"\033[13]")
+        pad.addstr(0,0,"Loading next page...")
         pad.refresh(0,0, self.HEIGHT+2,0, self.HEIGHT+2,self.WIDTH)
 
     def show_tagline(self, tagline):
