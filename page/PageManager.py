@@ -171,8 +171,8 @@ class PageManager:
                         self.show_input(inp)
                     except ValueError:
                         pass
-               signal.alarm(0)
-            signal.signal(signal.SIGALRM, pass_f)
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, pass_f)
             except TimeUp:
                 inp = None
 
