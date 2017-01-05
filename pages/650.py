@@ -79,7 +79,7 @@ pages=[]
 tube01 = TubePage("651","940GZZLUEUS","Euston")
 tube02 = TubePage("652","940GZZLUESQ","Euston Square")
 tube03 = TubePage("653","940GZZLUWRR","Warren Street")
-tube04 = TubePage("654","940GZZLURSQ","Russel Square")
+tube04 = TubePage("654","940GZZLURSQ","Russell Square")
 tube05 = TubePage("655","940GZZLUMTC","Mornington Crescent")
 tube06 = TubePage("656","940GZZLUPVL","Perivale")
 tube07 = TubePage("657","940GZZLUKSX","Kings Cross St Pancras")
@@ -87,6 +87,7 @@ tube08 = TubePage("658","940GZZLUTCR","Tottenham Court Road")
 tube09 = TubePage("659","940GZZLUOXC","Oxford Circus")
 tube10 = TubePage("660","940GZZLUALP","Alperton")
 tube11 = TubePage("661","940GZZLUWLO","Waterloo")
+tube12 = TubePage("662","940GZZLUEMB","Embankment")
 
 class TVIPage(Page):
     def __init__(self):

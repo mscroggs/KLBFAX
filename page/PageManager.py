@@ -130,7 +130,10 @@ class PageManager:
             sleep(60*30)
 
     def start_loop(self):
-        import thread
+        try:
+            import thread
+        except ImportError:
+            import _thread as thread
         thread.start_new_thread(self.background_loop,())
         self.main_loop()
 
@@ -140,19 +143,19 @@ class PageManager:
         import select
         inp = "100"
         while True:
-            self.clear_input()
-            if inp is not None:
-                page = self.handle_input(inp)
-            elif config.now().strftime("%H") == "12" and config.now().minute < 20:
-                page = special.LunchPage()
-            elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
-                page = special.PubPage()
-            else:
-                page = self.get_loaded_random()
-            self.show(page)
-            signal.signal(signal.SIGALRM, alarm)
-            signal.alarm(30)
             try:
+                self.clear_input()
+                if inp is not None:
+                    page = self.handle_input(inp)
+                elif config.now().strftime("%H") == "12" and config.now().minute < 20:
+                    page = special.LunchPage()
+                elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
+                    page = special.PubPage()
+                else:
+                    page = self.get_loaded_random()
+                self.show(page)
+                signal.signal(signal.SIGALRM, alarm)
+                signal.alarm(30)
                 key = None
                 inp = ""
                 while key != curses.KEY_ENTER and key != 10:
