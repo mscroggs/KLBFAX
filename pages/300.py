@@ -22,6 +22,12 @@ class NewsPage(Page):
         rss_url = self.url
         self.feed = feedparser.parse(rss_url)
 
+        item = feed['entries'][0]
+        self.words = item['title'].split(" ")
+
+        self.entries = [klb_replace(item['title']) for item in feed['entries'][1:]]
+
+
     def generate_content(self):
         import random
         newsreaders = ['Huw Edwards','Lizo from Newsround','Moira Stuart','Nick Owen','Aiming Homes','Michael Burke','Trevor Martdonald','Sam Brown','Mart Pice','Jon Snow','Jeremy Paxperson']
@@ -30,11 +36,9 @@ class NewsPage(Page):
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
 
         self.add_newline()
-        item = self.feed['entries'][0]
-        words = item['title'].split(" ")
         chars_left = 80
         line = ""
-        for word in words:
+        for word in self.words:
             if chars_left - len(word)*5 <= 0:
                 chars_left = 80
                 self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
@@ -43,8 +47,8 @@ class NewsPage(Page):
                 line = line + word + " "
             chars_left = chars_left - (len(word) + 1)*5
         self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
-        for item in self.feed['entries'][1:15]:
-            self.add_text(" - "+ klb_replace(item['title']))
+        for item in self.entries:
+            self.add_text(" - "+ item)
             self.add_newline()
 
 news_page = NewsPage(300, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Newsmart")
