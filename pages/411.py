@@ -23,54 +23,210 @@ class WeatherPage(Page):
     def generate_content(self):
 
         def weather_symbol(weather_forecast):
-            if weather_forecast in [1]:
-                weather_pic = "*" #sunny
-                weather_colour_foreground = "YELLOW"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [0]:
-                weather_pic = "}" #moon
-                weather_colour_foreground = "YELLOW"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [2,3]:
-                weather_pic = "~" #cloud sun
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
-            elif weather_forecast in [9,10]:
-                weather_pic = "<" #cloud sun rain
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
-            elif weather_forecast in [11,12]:
-                weather_pic = "[" #light rain
-                weather_colour_foreground = "CYAN"
-                weather_colour_background = "BLACK"
+            if weather_forecast in [1]: #sun
+                image = """
+-------y--------
+-------y--------
+---y-------y----
+----y--y--y-----
+------yyy-------
+-----yyyyy------
+-----yyyyy------
+--yy-yyyyy-yy---
+-----yyyyy------
+------yyy-------
+----y--y--y-----
+---y-------y----
+-------y--------
+-------y--------
+"""
+            elif weather_forecast in [0]:#moon
+                image = """
+--------ooo-----
+------ooo-------
+-----oooo-------
+----oooo--------
+----ooo---------
+---oooo---------
+---oooo---------
+---oooo---------
+---oooo---------
+----ooo---------
+----oooo--------
+-----oooo-------
+------ooo-------
+--------ooo-----
+"""
+            elif weather_forecast in [2,3]: #cloud sun
+                image = """
+----------------
+----------------
+----WWW---y-----
+---WwwwW--y--y--
+-WWwwwwwW---y---
+WwwWwwwwWWW-----
+WwwwwwwWwwwW-yy-
+WwwwwwwwwwwW----
+-WWWWWWWWWW-----
+------------y---
+----------y--y--
+----------y-----
+----------------
+----------------
+"""
+            elif weather_forecast in [9,10]: #cloud sun rain
+                image = """
+----------------
+----------------
+----WWW---y-----
+---WwwwW--y--y--
+-WWwwwwwW---y---
+WwwWwwwwWWW-----
+WwwwwwwWwwwW-yy-
+WwwwwwwwwwwW----
+-WWWWWCWWWW-----
+-----CC-----y---
+---CC-C---y--y--
+--C---C---y-----
+---CCC----------
+----------------
+"""
+            elif weather_forecast in [11,12]: #light rain
+                image = """
+----------------
+----------------
+------www-------
+-----w---w------
+---ww-----w-----
+--w--w----www---
+--w------w---w--
+--w----C-----w--
+---w--CC--www---
+-----C--C-------
+----C---C-------
+----C---C-------
+-----CCC--------
+----------------
+"""
             elif weather_forecast in [7]:
-                weather_pic = "@" #cloudy
-                weather_colour_foreground = "BRIGHTWHITE"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [8]:
-                weather_pic = "@" #dark cloud
-                weather_colour_foreground = "WHITE"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [13,14,16,17,19,20]:
-                weather_pic = "{" #rain
-                weather_colour_foreground = "CYAN"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [15,18,21]:
-                weather_pic = "]" #heavy rain
-                weather_colour_foreground = "BLUE"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [28,29,30]:
-                weather_pic = "^" #storm
-                weather_colour_foreground = "RED"
-                weather_colour_background = "BLACK"
-            elif weather_forecast in [22,23,24,25,26,27]:
-                weather_pic = "%" #snow
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
-            else:
-                weather_pic = "`" #mixed
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
+                image = """
+----------------
+----------------
+-----WWWWW------
+----WwwwwwW-----
+---WwwwwwwwW----
+-WWWwwwwwwwW----
+WwwwWwwwwwwWWW--
+WwwwwwwwwWWwwwW-
+WwwwwwwwwwwwwwW-
+WWwwwwwwwwwwwwW-
+-WWWWWWWWWWWWW--
+----------------
+----------------
+----------------
+"""
+            elif weather_forecast in [8]:  #dark cloud
+                image = """
+----------------
+----------------
+-----wwwww------
+----w-----w-----
+---w-------w----
+-www-------w----
+w---w------www--
+w--------ww---w-
+w-------------w-
+ww------------w-
+-wwwwwwwwwwwww--
+----------------
+----------------
+----------------
+"""
+            elif weather_forecast in [13,14,16,17,19,20]: #rain
+                image = """
+------www-------
+-----w---w------
+---ww-----w-----
+--w--w----www---
+--w------w---w--
+--w----------w--
+---wwwwwwwwww---
+----------------
+-----C----------
+----C-C----C----
+---C---C--C-C---
+----CCC--C---C--
+---------C---C--
+----------CCC---
+"""
+            elif weather_forecast in [15,18,21]: #heavy rain
+                image = """
+------www-------
+-----w---w------
+---ww-----w-----
+--w--w----www---
+--w------w---w--
+--w----------w--
+---wwwwwwwwww---
+----------------
+--C---------C---
+-C-C---C---C-C--
+C---C-C-C-C---C-
+-CCC-C---C-CCC--
+-----C---C------
+------CCC-------
+"""
+            elif weather_forecast in [28,29,30]: #storm
+                image = """
+------www-------
+-----w---w------
+---ww-----w-----
+--w--w----www---
+--w------w---w--
+--w----------w--
+---www-RRRR-w---
+------RRRR------
+-----RRRR-------
+------RRRR------
+--------RRR-----
+-------RR-------
+------RR--------
+-----R----------
+"""
+            elif weather_forecast in [22,23,24,25,26,27]: #snow
+                image = """
+------www-------
+-----w---w------
+---ww-----w-----
+--w--w----www---
+--w------w---w--
+--w----------w--
+---wwww-W-W-w---
+---------W------
+--------W-W-----
+---W-W----------
+----W-----------
+---W-W----W-W---
+-----------W----
+----------W-W---
+"""
+            else: #mixed
+                image = """
+rrrrrrrrrrrrrrrr
+oooooooooooooooo
+yyyyyyyyyyyyyyyy
+GGGGGGGGGGGGGGGG
+BBBBBBBBBBBBBBBB
+bbbbbbbbbbbbbbbb
+mmmmmmmmmmmmmmmm
+rrrrrrrrrrrrrrrr
+oooooooooooooooo
+yyyyyyyyyyyyyyyy
+GGGGGGGGGGGGGGGG
+BBBBBBBBBBBBBBBB
+bbbbbbbbbbbbbbbb
+mmmmmmmmmmmmmmmm
+"""
 
             '''
             {0: 'Clear night',
@@ -107,7 +263,30 @@ class WeatherPage(Page):
              'NA': 'Not available'}
             '''
 
-            return [weather_pic, weather_colour_foreground, weather_colour_background]
+            return image #[weather_pic, weather_colour_foreground, weather_colour_background]
+
+        def print_image(image,y_coord=0,x_coord=0):
+            self.move_cursor(y=y_coord,x=x_coord)
+            color_codes = {"k": "BLACK",  "K": "GREY",
+                           "r": "RED",    "R": "LIGHTRED",
+                           "o": "ORANGE", "y": "YELLOW",
+                           "g": "GREEN",  "G": "LIGHTGREEN",
+                           "c": "CYAN",   "C": "LIGHTCYAN",
+                           "b": "BLUE",   "B": "LIGHTBLUE",
+                           "m": "MAGENTA","p": "PINK",
+                           "w": "WHITE",  "W": "BRIGHTWHITE",
+                           "d": "DEFAULT","-": "BLACK"}
+            lines = image.split("\n")[1:-1]
+            for l in range(len(lines)//2):
+                for c in range(len(lines[2*l])):
+                    c1 = lines[2*l][c]
+                    c2 = lines[2*l+1][c]
+                    self.start_fg_color(color_codes[c1])
+                    self.start_bg_color(color_codes[c2])
+                    self.add_text(u"\u2580")
+                    self.end_bg_color()
+                    self.end_fg_color()
+                self.move_cursor(y=y_coord + l+1, x=x_coord)
 
         self.add_title("Forecast",fg="MAGENTA",bg="CYAN")
 
@@ -134,14 +313,10 @@ class WeatherPage(Page):
 
 
         # Pictures
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[0][0]),bg=day_weather[0][1],fg=day_weather[0][2],fill=False)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[1][0]),bg=day_weather[1][1],fg=day_weather[1][2],fill=False,pre=20)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[2][0]),bg=day_weather[2][1],fg=day_weather[2][2],fill=False,pre=40)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[3][0]),bg=day_weather[3][1],fg=day_weather[3][2],fill=False,pre=60)
+        print_image(day_weather[0],11,1)
+        print_image(day_weather[1],11,21)
+        print_image(day_weather[2],11,41)
+        print_image(day_weather[3],11,61)
 
         # Max temps
         self.move_cursor(y=18,x=0)
