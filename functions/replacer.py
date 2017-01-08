@@ -65,11 +65,7 @@ def klb_replace(imput):
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
         ]
-    for p in sweepstake_people:
-        swaps.append([p[1],p[1]+" ("+p[0]+")"])
-    punc = [" ","?","!",":","'",'"',"\n"]
     for swap in swaps:
-        for p in punc:
-            imput = (" "+swap[1]+p).join(re.split("(?i) "+swap[0]+escape(p),imput))
+            imput = swap[1].join(re.split(swap[0]+"(?i)",imput))
     return imput
 
