@@ -34,15 +34,10 @@ class WhoPage(Page):
         auth = tweepy.OAuthHandler(details['app_key'], details['app_secret'])
         auth.set_access_token(details['oauth_token'], details['oauth_token_secret'])
 
+        api = tweepy.API(auth)
 
-
-        self.api = tweepy.API(auth)
-
-        #public_tweets = self.api.home_timeline()
-        self.peter_replies = self.api.search(q="@who_is_peter",show_user=True,count=15)
-
-    def generate_content(self):
-        self.add_title("Who is Peter?")
+        peter_replies = self.api.search(q="@who_is_peter",show_user=True,count=15)
+        self.tweets = []
         for tweet in self.peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
@@ -66,33 +61,46 @@ class WhoPage(Page):
                             created_at = original0.created_at
                         except:
                             continue
+                    this = []
+                    this.append(str(created_at))
+                    this.append(original0_username)
+                    this.append(original0_text)
+                    this.append(original_username)
+                    this.append(original_text)
+                    this.append(reply_username)
+                    this.append(reply_text.replace("@who_is_Peter",""))
+                    self.tweets.append(this)
 
-                    self.add_text(str(created_at))
-                    self.add_newline()
-                    if original0_text != "":
-                        self.start_fg_color("LIGHTCYAN")
-                        self.add_text("@" + original0_username + ": ")
-                        self.end_fg_color()
-                        self.add_text(original0_text)
-                        self.add_newline()
-                    self.start_fg_color("YELLOW")
-                    self.add_text("@" + original_username + ": ")
-                    self.end_fg_color()
-                    self.add_text(original_text)
-                    self.add_newline()
-                    self.start_fg_color("PINK")
-                    self.add_text("@who_is_peter: Who?")
-                    self.end_fg_color()
-                    self.add_newline()
-                    self.start_fg_color("YELLOW")
-                    self.add_text("@" + reply_username + ": ")
-                    self.end_fg_color()
-                    self.add_text(reply_text.replace("@who_is_Peter",""))
-                    self.add_newline()
-                    self.add_text("----------------")
-                    self.add_newline()
                 except:
                     continue
+
+    def generate_content(self):
+        self.add_title("Who is Peter?")
+        for t in self.tweets:
+            self.add_text(t[0])
+            self.add_newline()
+            if t[1] != "":
+                self.start_fg_color("LIGHTCYAN")
+                self.add_text("@" + t[1] + ": ")
+                self.end_fg_color()
+                self.add_text(t[2])
+                self.add_newline()
+            self.start_fg_color("YELLOW")
+            self.add_text("@" + t[3] + ": ")
+            self.end_fg_color()
+            self.add_text(t[4])
+            self.add_newline()
+            self.start_fg_color("PINK")
+            self.add_text("@who_is_peter: Who?")
+            self.end_fg_color()
+            self.add_newline()
+            self.start_fg_color("YELLOW")
+            self.add_text("@" + t[5] + ": ")
+            self.end_fg_color()
+            self.add_text(t[6])
+            self.add_newline()
+            self.add_text("----------------")
+            self.add_newline()
 
 page = WhoPage("307")
 
