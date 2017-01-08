@@ -12,6 +12,9 @@ class TimeUp(BaseException):
 def alarm(signum, frame):
     raise TimeUp
 
+def pass_f(signum, frame):
+    pass
+
 def is_page_file(f):
     if not os.path.isfile(os.path.join(config.pages_dir, f)):
         return False
@@ -143,19 +146,19 @@ class PageManager:
         import select
         inp = "100"
         while True:
+            self.clear_input()
+            if inp is not None:
+                page = self.handle_input(inp)
+            elif config.now().strftime("%H") == "12" and config.now().minute < 20:
+                page = special.LunchPage()
+            elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
+                page = special.PubPage()
+            else:
+                page = self.get_loaded_random()
+            self.show(page)
+            signal.signal(signal.SIGALRM, alarm)
+            signal.alarm(30)
             try:
-                self.clear_input()
-                if inp is not None:
-                    page = self.handle_input(inp)
-                elif config.now().strftime("%H") == "12" and config.now().minute < 20:
-                    page = special.LunchPage()
-                elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
-                    page = special.PubPage()
-                else:
-                    page = self.get_loaded_random()
-                self.show(page)
-                signal.signal(signal.SIGALRM, alarm)
-                signal.alarm(30)
                 key = None
                 inp = ""
                 while key != curses.KEY_ENTER and key != 10:
@@ -168,6 +171,8 @@ class PageManager:
                         self.show_input(inp)
                     except ValueError:
                         pass
+                signal.alarm(0)
+                signal.signal(signal.SIGALRM, pass_f)
             except TimeUp:
                 inp = None
 

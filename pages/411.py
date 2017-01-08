@@ -45,8 +45,8 @@ class WeatherPage(Page):
                 weather_colour_background = "BLACK"
             elif weather_forecast in [7]:
                 weather_pic = "@" #cloudy
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
+                weather_colour_foreground = "BRIGHTWHITE"
+                weather_colour_background = "BLACK"
             elif weather_forecast in [8]:
                 weather_pic = "@" #dark cloud
                 weather_colour_foreground = "WHITE"
@@ -119,18 +119,18 @@ class WeatherPage(Page):
             if i["timestamp"][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
                 day_max.append(i["Feels Like Temperature"][0])
-                date.append(i["timestamp"][0].strftime("%-I%p"))#.replace("AM",u"㏂").replace("PM",u"㏘"))
+                date.append((i["timestamp"][0].strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
 
 
         # Day of week
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.add_title(date[0],bg="YELLOW",fg="BLACK",fill=False,font='size4')
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.add_title(date[1],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.add_title(date[2],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+        self.add_title(date[3],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
 
 
         # Pictures

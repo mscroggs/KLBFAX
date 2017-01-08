@@ -7,18 +7,19 @@ class CurrencyPage(Page):
         super(CurrencyPage, self).__init__("141")
         self.title = "Money"
         self.index_num = "140-141"
+        self.in_index = False
         self.tagline = "Live data from Yahoo!"
 
 
     def background(self):
         import urllib2
-       
+
         ask_for_rates = ['^FTSE', '^GDAXI', '^FCHI', "^NDX", "^N225"]
         self.currency_symbol_before = ['FTSE','DAX ','CAC ','NAS ','NIK ']
         self.currency_symbol_after = ['','','','','']
         self.currency_multiple = [1,1,1,1,1]
         self.currency_format = ['{:.0f}','{:.0f}','{:.0f}','{:.0f}','{:.0f}']
-               
+
         self.currency_rate = []
         self.currency_change = []
         req = urllib2.urlopen('http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1p2d1t1&s='+','.join(ask_for_rates))
@@ -48,7 +49,7 @@ class CurrencyPage(Page):
             self.add_title(currency_text, fg="BLACK",bg=bg_color, font="size4")
             self.move_cursor(y=7+i*4,x=0)
             self.add_title(change_message, fg="BLACK",bg=up_down_color, pre=50, font="size4")
-        
+
 
 
 currency_page = CurrencyPage()

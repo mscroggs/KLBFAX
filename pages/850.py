@@ -76,7 +76,7 @@ class TrainPage(Page):
                 platform = "-"
             self.move_cursor(x=1+(4-n+i)*20,y=4)
             self.add_text(service.std+" "+platform+" "*(3-len(platform)))
-            self.move_cursor(x=11+(4-n+1)*20)
+            self.move_cursor(x=11+(4-n+i)*20,y=4)
             if service.etd[0] in ["0","1","2"]:
                 self.start_fg_color("RED")
                 self.add_text("Exp " + service.etd)
@@ -110,13 +110,15 @@ class TrainPage(Page):
                     for k, v in mapping:
                         lname = lname.replace(k, v)
                 self.move_cursor(x=1+(4-n+i)*20,y=7+j)
-                self.add_text(lname)
+                self.add_text(lname[0:19])
             if len(calling_points)>11:
                 self.move_cursor(x=1+(4-n+i)*20,y=17)
                 d = len(calling_points)-10
                 self.add_text("+ " + str(d) + " stations")
             self.move_cursor(x=1+(4-n+i)*20,y=18)
+            self.start_fg_color("YELLOW")
             self.add_text(service.operator)
+            self.end_fg_color()
 
 
         self.move_cursor(x=0,y=20)
@@ -130,7 +132,8 @@ class TrainPage(Page):
             self.add_text(t)
         self.end_fg_color()
         self.add_newline()
-        for i,service in enumerate(board.train_services[n:n+10]):
+
+        for i,service in enumerate(board.train_services[0:0+10]):
             if i < 5:
                 pos = pos1
                 y=21+i
@@ -144,10 +147,10 @@ class TrainPage(Page):
             self.move_cursor(x=pos[1],y=y)
             destinations = [destination.location_name for destination in service.destinations]
             destination_j = ",".join(destinations)
-            if len(destination_j) > 21:
+            if len(destination_j) > 19:
                 for kk, v in mapping:
                     destination_j = destination_j.replace(kk, v)
-            self.add_text(destination_j)
+            self.add_text(destination_j[0:19])
 
             self.move_cursor(x=pos[2],y=y)
             destination = (destination_j + " "*21)[0:21]

@@ -40,6 +40,8 @@ if os.getenv("SLAVE") and not os.getenv("EXPORT_ME"):
     NAME = "28JHFAX"
 elif os.getenv("EMF"):
     NAME = "EMFFAX"
+elif os.getenv("POST"):
+    NAME = "602FAX"
 else:
     NAME = "KLBFAX"
 
