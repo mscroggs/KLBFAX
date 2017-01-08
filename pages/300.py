@@ -20,7 +20,7 @@ class NewsPage(Page):
     def background(self):
         import feedparser
         rss_url = self.url
-        self.feed = feedparser.parse(rss_url)
+        feed = feedparser.parse(rss_url)
 
         item = feed['entries'][0]
         self.words = item['title'].split(" ")
