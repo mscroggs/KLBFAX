@@ -30,6 +30,7 @@ class NewsPage(Page):
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
 
         self.add_newline()
+        item = self.feed['entries'][0]
         words = item['title'].split(" ")
         chars_left = 80
         line = ""
