@@ -25,7 +25,6 @@ class WhoPage(Page):
 
     def background(self):
         import urllib2
-        self.add_title("Who is Peter?")
 
         try:
             with open("/home/pi/login.json") as f:
@@ -43,6 +42,7 @@ class WhoPage(Page):
         self.peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
 
     def generate_content(self):
+        self.add_title("Who is Peter?")
         for tweet in self.peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
@@ -95,3 +95,4 @@ class WhoPage(Page):
                     continue
 
 page = WhoPage("307")
+
