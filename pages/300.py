@@ -43,7 +43,7 @@ class NewsPage(Page):
                 line = line + word + " "
             chars_left = chars_left - (len(word) + 1)*5
         self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
-        for item in self.feed['entries'][1:]:
+        for item in self.feed['entries'][1:15]:
             self.add_text(" - "+ klb_replace(item['title']))
             self.add_newline()
 
