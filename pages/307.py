@@ -36,18 +36,18 @@ class WhoPage(Page):
 
         api = tweepy.API(auth)
 
-        peter_replies = self.api.search(q="@who_is_peter",show_user=True,count=15)
+        peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
         self.tweets = []
-        for tweet in self.peter_replies:
+        for tweet in peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
             reply_text = tweet.text
             if who_id > 0:
                 try:
-                    who = self.api.get_status(who_id)
+                    who = api.get_status(who_id)
                     #print who.text
                     original_id = who.in_reply_to_status_id
-                    original = self.api.get_status(original_id)
+                    original = api.get_status(original_id)
                     original_text = original.text
                     original_username = original.author.screen_name
                     created_at = original.created_at
@@ -55,7 +55,7 @@ class WhoPage(Page):
                     original0_text = ""
                     if original0_id > 0:
                         try:
-                            original0 = self.api.get_status(original0_id)
+                            original0 = api.get_status(original0_id)
                             original0_text = original0.text
                             original0_username = original0.author.screen_name
                             created_at = original0.created_at
