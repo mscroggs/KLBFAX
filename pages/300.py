@@ -21,12 +21,16 @@ class NewsPage(Page):
         import feedparser
         rss_url = self.url
         feed = feedparser.parse(rss_url)
+        if len(feed) > 0:
+            item = feed['entries'][0]
+            self.words = item['title'].split(" ")
+        else:
+            self.words = []
 
-        item = feed['entries'][0]
-        self.words = item['title'].split(" ")
-
-        self.entries = [klb_replace(item['title']) for item in feed['entries'][1:]]
-
+        if len(feed) > 1:
+            self.entries = [klb_replace(item['title']) for item in feed['entries'][1:21]]
+        else:
+            self.entries = []
 
     def generate_content(self):
         import random
