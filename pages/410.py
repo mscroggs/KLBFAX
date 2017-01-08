@@ -23,6 +23,21 @@ class WeatherPage(Page):
     def generate_content(self):
 
         def weather_symbol(weather_forecast):
+            image = """
+----------------
+----------------
+-----wwwww------
+----w-----w-----
+---w-------w----
+-www-------w----
+w---w------www--
+w--------ww---w-
+w-------------w-
+ww------------w-
+-wwwwwwwwwwwww--
+----------------
+----------------
+            """
             if weather_forecast in [1]:
                 weather_pic = "*" #sunny
                 weather_colour_foreground = "YELLOW"
@@ -44,9 +59,21 @@ class WeatherPage(Page):
                 weather_colour_foreground = "CYAN"
                 weather_colour_background = "BLACK"
             elif weather_forecast in [7]:
-                weather_pic = "@" #cloudy
-                weather_colour_foreground = "BLACK"
-                weather_colour_background = "WHITE"
+                image = """
+----------------
+----------------
+-----WWWWW------
+----WwwwwwW-----
+---WwwwwwwwW----
+-WWWwwwwwwwW----
+WwwwWwwwwwwWWW--
+WwwwwwwwwWWwwwW-
+WwwwwwwwwwwwwwW-
+WWwwwwwwwwwwwwW-
+-WWWWWWWWWWWWW--
+----------------
+----------------
+"""
             elif weather_forecast in [8]:
                 weather_pic = "@" #dark cloud
                 weather_colour_foreground = "WHITE"
@@ -107,7 +134,30 @@ class WeatherPage(Page):
              'NA': 'Not available'}
             '''
 
-            return [weather_pic, weather_colour_foreground, weather_colour_background]
+            return image #[weather_pic, weather_colour_foreground, weather_colour_background]
+
+        def print_image(image,y_coord=0,x_coord=0):
+            self.move_cursor(y=y_coord,x=x_coord)
+            color_codes = {"k": "BLACK",  "K": "GREY",
+                           "r": "RED",    "R": "LIGHTRED",
+                           "o": "ORANGE", "y": "YELLOW",
+                           "g": "GREEN",  "G": "LIGHTGREEN",
+                           "c": "CYAN",   "C": "LIGHTCYAN",
+                           "b": "BLUE",   "B": "LIGHTBLUE",
+                           "m": "MAGENTA","p": "PINK",
+                           "w": "WHITE",  "W": "BRIGHTWHITE",
+                           "d": "DEFAULT","-": "BLACK"}
+            lines = image.split("\n")[1:-1]
+            for l in range(len(lines)//2):
+                for c in range(len(lines[2*l])):
+                    c1 = lines[2*l][c]
+                    c2 = lines[2*l+1][c]
+                    self.start_fg_color(color_codes[c1])
+                    self.start_bg_color(color_codes[c2])
+                    self.add_text(u"\u2580")
+                    self.end_bg_color()
+                    self.end_fg_color()
+                self.move_cursor(y=y_coord + l, x=x_coord)
 
         self.add_title("Forecast",fg="MAGENTA",bg="CYAN")
 
@@ -123,6 +173,26 @@ class WeatherPage(Page):
             if i["timestamp"][1] == "Night":
                 day_min.append(i["Feels Like Night Minimum Temperature"][0])
 
+        #-------------------------
+        # k BLACK   K GREY
+        # r RED     R LIGHTRED
+        # o ORANGE  y YELLOW
+        # g GREEN   G LIGHTGREEN
+        # c CYAN    C LIGHTCYAN
+        # b BLUE    B LIGHTBLUE
+        # m MAGENTA p PINK
+        # w WHITE   W BRIGHTWHITE
+        # d DEFAULT
+        # ------------------------
+
+
+
+
+        #self.move_cursor(y=0,x=0)
+
+
+
+
 
         # Day of week
         self.move_cursor(y=7,x=0)
@@ -137,14 +207,17 @@ class WeatherPage(Page):
 
         # Pictures
         self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[0][0]),bg=day_weather[0][1],fg=day_weather[0][2],fill=False)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[1][0]),bg=day_weather[1][1],fg=day_weather[1][2],fill=False,pre=20)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[2][0]),bg=day_weather[2][1],fg=day_weather[2][2],fill=False,pre=40)
-        self.move_cursor(y=11,x=0)
-        self.add_title(str(day_weather[3][0]),bg=day_weather[3][1],fg=day_weather[3][2],fill=False,pre=60)
-
+        print_image(day_weather[0],11,0)
+        #self.add_title(str(day_weather[0][0]),bg=day_weather[0][1],fg=day_weather[0][2],fill=False)
+        self.move_cursor(y=11,x=20)
+        print_image(day_weather[0],11,20)
+        #self.add_title(str(day_weather[1][0]),bg=day_weather[1][1],fg=day_weather[1][2],fill=False,pre=20)
+        self.move_cursor(y=11,x=40)
+        print_image(day_weather[0],11,40)
+        #self.add_title(str(day_weather[2][0]),bg=day_weather[2][1],fg=day_weather[2][2],fill=False,pre=40)
+        self.move_cursor(y=11,x=60)
+        #self.add_title(str(day_weather[3][0]),bg=day_weather[3][1],fg=day_weather[3][2],fill=False,pre=60)
+        print_image(day_weather[0],11,60)
         # Max temps
         self.move_cursor(y=18,x=0)
         self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
