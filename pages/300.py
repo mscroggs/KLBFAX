@@ -23,7 +23,7 @@ class NewsPage(Page):
         feed = feedparser.parse(rss_url)
         if len(feed) > 0:
             item = feed['entries'][0]
-            self.words = item['title'].split(" ")
+            self.words = klb_replace(item['title']).split(" ")
         else:
             self.words = []
 
