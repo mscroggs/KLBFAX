@@ -335,10 +335,10 @@ mmmmmmmmmmmmmmmm
 
 
         # Pictures
-        print_image(day_weather[0],11,0)
-        print_image(day_weather[1],11,20)
-        print_image(day_weather[2],11,40)
-        print_image(day_weather[3],11,60)
+        print_image(day_weather[0],11,1)
+        print_image(day_weather[1],11,21)
+        print_image(day_weather[2],11,41)
+        print_image(day_weather[3],11,61)
         # Max temps
         self.move_cursor(y=18,x=0)
         self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
