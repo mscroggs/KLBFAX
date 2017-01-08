@@ -23,7 +23,7 @@ class WhoPage(Page):
         self.title = "Who is Peter?"
         self.tagline = "@who_is_peter"
 
-    def generate_content(self):
+    def background(self):
         import urllib2
         self.add_title("Who is Peter?")
 
@@ -40,8 +40,10 @@ class WhoPage(Page):
         api = tweepy.API(auth)
 
         #public_tweets = api.home_timeline()
-        peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
-        for tweet in peter_replies:
+        self.peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
+
+    def generate_content(self):
+        for tweet in self.peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
             reply_text = tweet.text
