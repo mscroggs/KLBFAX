@@ -71,7 +71,7 @@ news_page = NewsPage(300, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Ne
 news_page2 = NewsPage(301, "http://feeds.bbci.co.uk/sport/0/rss.xml?edition=uk", "Sportsmart")
 news_page3 = NewsPage(302, "http://mscroggs.co.uk/blog/rss.xml", "mscroggs.co.ukmart")
 news_page4 = NewsPage(303, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weatherwarningmart")
-#news_page5 = NewsPage(304, "http://open.live.bbc.co.uk/weather/feeds/en/2643743/3dayforecast.rss", "Forecastmart")
+news_page5 = NewsPage(304, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbizmart")
 news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
 
