@@ -7,6 +7,7 @@ class UKTempPage(Page):
         super(UKTempPage, self).__init__("461")
         self.title = "UK Temperature"
         self.tagline = "Why exactly do we live in Britain?"
+        self.in_index = False
 
     def background(self):
         import urllib2, json
@@ -40,7 +41,7 @@ class UKTempPage(Page):
         for city in data['list']:
             self.temps[i] = float(city['main']['temp'])
             i+=1
-        
+
     def generate_content(self):
         self.add_title("UK TEMPERATURE")
         uk_map = '''                                   F"  4$$$$P"
@@ -62,9 +63,9 @@ class UKTempPage(Page):
                          *""          $**$$$$$$$$$$$$$$$$*
                                           "".$$$$$$$$$$$C .
                                        .z$$$$$$$$$$$$$$$$""
-                                      .$$$$*"^**"  "    
+                                      .$$$$*"^**"  "
         '''
-        
+
         # Map goes from 58.6725 N to  49.95 and -10.454521 (W) to 1.766667 E
         height_chars = 20
         width_chars = 38
@@ -72,10 +73,10 @@ class UKTempPage(Page):
         max_lat = 57.827
         min_lon = -10.454521
         max_lon = 1.766667
-        
+
         lats = [min_lat + i*(max_lat-min_lat)/(height_chars-1) for i in range(height_chars)]
         lons = [min_lon + i*(max_lon-min_lon)/(width_chars-1) for i in range(width_chars)]
-        
+
         uk_map = uk_map.replace("$",u"█")
         uk_map = uk_map.replace("@",u"█")
         uk_map = uk_map.replace("%",u"█")
@@ -100,7 +101,7 @@ class UKTempPage(Page):
         uk_map = uk_map.replace("J","")
         uk_map = uk_map.replace(")","")
         uk_map = uk_map.replace("-","")
-            
+
         boundaries = [-99,0,3,6,9,12,15,18,21,24]
         colours_before = ["BLUE","LIGHTBLUE","LIGHTCYAN","CYAN","GREEN","LIGHTGREEN","YELLOW","ORANGE","LIGHTRED","RED"]
 
@@ -131,4 +132,3 @@ class UKTempPage(Page):
         self.add_text("Coldest",fg=colours_before[0])
 
 uktemp_page = UKTempPage()
-

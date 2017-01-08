@@ -9,7 +9,8 @@ import pytz
 class WorldClockPage(Page):
     def __init__(self):
         super(WorldClockPage, self).__init__("459")
-        self.title = "World Clock"
+        self.title = "Time"
+        self.index_num = "400, 459"
         self.in_index = False
         self.tagline = "It's 5 o'clock somewhere"
 
@@ -24,7 +25,7 @@ class WorldClockPage(Page):
                 datetime.now(pytz.utc).astimezone(timezone('Europe/Moscow')).strftime("%H:%M"),
                 datetime.now(pytz.utc).astimezone(timezone('Asia/Shanghai')).strftime("%H:%M"),
                 datetime.now(pytz.utc).astimezone(timezone('Asia/Tokyo')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Australia/Melbourne')).strftime("%H:%M")]       
+                datetime.now(pytz.utc).astimezone(timezone('Australia/Melbourne')).strftime("%H:%M")]
 
         for i in range(4):
             color1 = ["YELLOW","LIGHTCYAN"][i%2]

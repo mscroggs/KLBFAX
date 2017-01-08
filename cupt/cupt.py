@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from __future__ import division
 
 import curses
@@ -97,7 +99,7 @@ class CuPT:
                     if bit.wrapping and x >= self.WIDTH:
                         y += 1
                         x = bit.pre
-                                    
+
 
     def add_char(self, y, x, cha, sty=None):
         if sty is None:
@@ -240,7 +242,7 @@ class BlockedBlock:
 
     def as_curses(self, y, x, cupt):
         from random import choice
-            
+
         my_csty = csty(fg=self.fg, bg=self.bg)
 
         if x>self.pre:
@@ -299,6 +301,3 @@ def csty(fg=None,bg=None):
     if fgc[1] == 1:
         c |= curses.A_BOLD
     return c
-
-        
-

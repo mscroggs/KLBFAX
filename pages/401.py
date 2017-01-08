@@ -5,8 +5,8 @@ from file_handler import f_read
 class WeatherPage(Page):
     def __init__(self):
         super(WeatherPage, self).__init__("401")
-        self.title = "Weather & The World"      
-        self.index_num = "401, 459-462"
+        self.title = "Weather"
+        self.index_num = "401,410-411,460-462"
 
     def background(self):
         import urllib2
@@ -73,8 +73,8 @@ class WeatherPage(Page):
         # 55 	12.3 	Apparent temperature 	<#apptemp>
         # 56 	11.1 	Sunshine hours so far today 	<#SunshineHours>
         # 57 	420.1 	Current theoretical max solar radiation 	<#CurrentSolarMax>
-        # 58 	1 	Is it sunny? 1 if the sun is shining, otherwise 0 (above or below threshold) 	<#IsSunny> 
-        
+        # 58 	1 	Is it sunny? 1 if the sun is shining, otherwise 0 (above or below threshold) 	<#IsSunny>
+
 
     def generate_content(self):
         weather_date = self.weather_data[0]
@@ -100,7 +100,7 @@ class WeatherPage(Page):
         outside_weather_background = "LIGHTCYAN"
         inside_weather_foreground = "BLUE"
         inside_weather_background = "LIGHT CYAN"
-        try:        
+        try:
             inside_weather = f_read("temp_now")
             if int(inside_weather) >= 20:
                 inside_weather_foreground = "YELLOW"
@@ -111,9 +111,9 @@ class WeatherPage(Page):
             elif 0 < int(inside_weather) < 10:
                 inside_weather_foreground = "BLUE"
                 inside_weather_background = "LIGHTGREEN"
-        except: 
+        except:
             inside_weather = "??"
-            
+
         try:
             outside_weather = str(int(round(float(weather_temperature))))
             if int(outside_weather) >= 20:
@@ -125,10 +125,10 @@ class WeatherPage(Page):
             elif 0 < int(outside_weather) < 10:
                 outside_weather_foreground = "BLUE"
                 outside_weather_background = "LIGHTGREEN"
-      
+
         except:
-            outside_weather = "??"        
-        
+            outside_weather = "??"
+
         if weather_daylight == "1":
             inside_weather_pic = "*" #sunny
             inside_weather_colour_foreground = "YELLOW"
@@ -137,47 +137,47 @@ class WeatherPage(Page):
             inside_weather_pic = "}" #moon
             inside_weather_colour_foreground = "ORANGE"
             inside_weather_colour_background = "BLACK"
-        
+
         if weather_forecast in ["1", "2", "-1"] and weather_daylight == "1":
             weather_pic = "*" #sunny
             weather_colour_foreground = "YELLOW"
-            weather_colour_background = "BLACK"  
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["1", "2"] and weather_daylight == "0":
             weather_pic = "}" #moon
             weather_colour_foreground = "YELLOW"
-            weather_colour_background = "BLACK" 
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["3","6"]:
             weather_pic = "~" #cloud sun
             weather_colour_foreground = "BLACK"
             weather_colour_background = "WHITE"
         elif weather_forecast in ["4", "5", "7", "8"]:
-            weather_pic = "<" #cloud sun rain 
+            weather_pic = "<" #cloud sun rain
             weather_colour_foreground = "BLACK"
             weather_colour_background = "WHITE"
         elif weather_forecast in ["9", "11", "14", "15"]:
             weather_pic = "[" #light rain
             weather_colour_foreground = "LIGHTCYAN"
-            weather_colour_background = "BLACK"               
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["10"]:
             weather_pic = "@" #cloudy
             weather_colour_foreground = "BLACK"
             weather_colour_background = "WHITE"
         elif weather_forecast in ["12","13"]:
-            weather_pic = "@" #dark cloud 
+            weather_pic = "@" #dark cloud
             weather_colour_foreground = "BRIGHTWHITE"
-            weather_colour_background = "BLACK"            
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["16","18","19","20","21","23"]:
             weather_pic = "{" #rain
             weather_colour_foreground = "CYAN"
-            weather_colour_background = "BLACK"    
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["17","22","24"]:
             weather_pic = "]" #heavy rain
             weather_colour_foreground = "LIGHTBLUE"
-            weather_colour_background = "BLACK"  
+            weather_colour_background = "BLACK"
         elif weather_forecast in ["25","26","-26"]:
             weather_pic = "^" #storm
             weather_colour_foreground = "RED"
-            weather_colour_background = "BLACK"       
+            weather_colour_background = "BLACK"
         #elif weather_forecast in []:
         #    weather_pic = "%" #snow
         #    weather_colour_foreground = self.colours.Background.BLACK
@@ -186,13 +186,13 @@ class WeatherPage(Page):
             weather_pic = "`"
             weather_colour_foreground = "BLACK"
             weather_colour_background = "WHITE"
-        
+
         compass_points = ["N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE", "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW"]
         try:
             compass_direction = compass_points[int(float(weather_wind_direction_degrees)*16/360)]
         except:
             compass_direction = "?"
-			
+
         self.move_cursor(x=1)
         self.add_text(u"\u250C" + u"\u2500"*9 + " O U T S I D E "+u"\u2500"*11+u"\u2510")
         self.move_cursor(x=41)
@@ -216,8 +216,8 @@ class WeatherPage(Page):
     Max/Min Today       """ + weather_high_temp + u"\u00B0" + "C / " + weather_low_temp + u"\u00B0" + """C
     Outdoor Humidity    """ + weather_humidity + """%
     Pressure            """ + round_me(weather_pressure) + """ hPa
-    Daily Rain          """ + weather_rain_today + """ mm  
-    Cloud Height        """ + round_me(weather_cloud_height,10) + """ ft  
+    Daily Rain          """ + weather_rain_today + """ mm
+    Cloud Height        """ + round_me(weather_cloud_height,10) + """ ft
     """)
 
 weather_page = WeatherPage()

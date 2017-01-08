@@ -8,7 +8,8 @@ from random import choice
 class TimePage(Page):
     def __init__(self):
         super(TimePage, self).__init__("400")
-        self.title = "KLB Mean Time"
+        self.title = "Time"
+        self.index_num = "400,459"
         self.tagline = "KLB Mean Time"
 
     def generate_content(self,debug=False):
@@ -17,7 +18,7 @@ class TimePage(Page):
         clock = [[j=="X" for j in i] for i in clock]
         minute = [[False]*len(i) for i in clock]
         hour   = [[False]*len(i) for i in clock]
-        
+
         current_minute = float(now().strftime("%M"))
         current_hour = float(now().strftime("%I"))
         current_weekday = now().strftime("%a")
@@ -29,7 +30,7 @@ class TimePage(Page):
         if current_weekday == "Sat": bgcolor = "LIGHTBLUE"
         if current_weekday == "Sun": bgcolor = "RED"
         self.add_title(now().strftime("%A %-d %b"),bg=bgcolor,fg="BLACK")
-    
+
         circle_radius = 19
         screen_radius = 19
 
@@ -54,7 +55,7 @@ class TimePage(Page):
                     minute_x = screen_radius + int(floor(mx+.5+dx))
                     minute_y = screen_radius - int(floor(my+.5+dy))
                     minute[minute_y][minute_x] = True
-        
+
         output = ""
         for y in range(0, 2*screen_radius+1):
             for x in range(0, 2*screen_radius+1):
@@ -65,7 +66,7 @@ class TimePage(Page):
         output = output + " "*(2*screen_radius + 1)
         output2 = ""
         for y in range(0, 2*screen_radius+1, 2):
-            output2 = output2 + " "*(screen_radius+1)      
+            output2 = output2 + " "*(screen_radius+1)
             for x in range(0, 2*screen_radius+1):
                 letter0 = output[y*(2*screen_radius+1)+x]
                 letter1 = output[(y+1)*(2*screen_radius+1)+x]
