@@ -29,27 +29,23 @@ class NewsPage(Page):
 
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
 
-        ticker = 0
-        for item in self.feed['entries']:
-            if ticker == 0:
-                self.add_newline()
-                words = item['title'].split(" ")
+        self.add_newline()
+        words = item['title'].split(" ")
+        chars_left = 80
+        line = ""
+        for word in words:
+            if chars_left - len(word)*5 <= 0:
                 chars_left = 80
-                line = ""
-                for word in words:
-                    if chars_left - len(word)*5 <= 0:
-                        chars_left = 80
-                        self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
-                        line = word + " "
-                    else:
-                        line = line + word + " "
-                    chars_left = chars_left - (len(word) + 1)*5
                 self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
+                line = word + " "
             else:
-                self.add_text(" - "+ klb_replace(item['title']))
-                self.add_newline()
-            ticker+=1
-                    
+                line = line + word + " "
+            chars_left = chars_left - (len(word) + 1)*5
+        self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
+        for item in self.feed['entries'][1:]:
+            self.add_text(" - "+ klb_replace(item['title']))
+            self.add_newline()
+
 news_page = NewsPage(300, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Newsmart")
 news_page2 = NewsPage(301, "http://feeds.bbci.co.uk/sport/0/rss.xml?edition=uk", "Sportsmart")
 news_page3 = NewsPage(302, "http://mscroggs.co.uk/blog/rss.xml", "mscroggs.co.ukmart")
