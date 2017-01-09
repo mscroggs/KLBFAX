@@ -21,6 +21,18 @@ class TrainPage(Page):
 
         self.add_title(self.station,font="size4")
 
+        british_rail = """
+rrrrrWrrrrr
+rrrrrrWrrrr
+rWWWWWWWWWr
+rrrrrWWrrrr
+rrrWWrrrrrr
+rWWWWWWWWWr
+rrrrWrrrrrr
+rrrrrWrrrrr
+"""
+        self.print_image(british_rail,0,69)
+
 
         # Loop over all the train services in that board.
         mapping=[('Cross', 'X'),

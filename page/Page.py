@@ -2,7 +2,7 @@ from math import floor
 import logging
 import config
 from cupt import CuPT
-    
+
 class Page(object):
     def __init__(self, number):
         self.content = ""
@@ -115,6 +115,29 @@ class Page(object):
             self.end_fg_color()
         if bg is not None:
             self.end_bg_color()
+
+    def print_image(self,image,y_coord=0,x_coord=0):
+        self.move_cursor(y=y_coord,x=x_coord)
+        color_codes = {"k": "BLACK",  "K": "GREY",
+                       "r": "RED",    "R": "LIGHTRED",
+                       "o": "ORANGE", "y": "YELLOW",
+                       "g": "GREEN",  "G": "LIGHTGREEN",
+                       "c": "CYAN",   "C": "LIGHTCYAN",
+                       "b": "BLUE",   "B": "LIGHTBLUE",
+                       "m": "MAGENTA","p": "PINK",
+                       "w": "WHITE",  "W": "BRIGHTWHITE",
+                       "d": "DEFAULT","-": "BLACK"}
+        lines = image.split("\n")[1:-1]
+        for l in range(len(lines)//2):
+            for c in range(len(lines[2*l])):
+                c1 = lines[2*l][c]
+                c2 = lines[2*l+1][c]
+                self.start_fg_color(color_codes[c1])
+                self.start_bg_color(color_codes[c2])
+                self.add_text(u"\u2580")
+                self.end_bg_color()
+                self.end_fg_color()
+            self.move_cursor(y=y_coord + l+1, x=x_coord)
 
     def loop(self):
         pass
