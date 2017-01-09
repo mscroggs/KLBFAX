@@ -21,6 +21,18 @@ class TrainPage(Page):
 
         self.add_title(self.station,font="size4")
 
+        british_rail = """
+rrrrWWrrrrr
+rrrrrWWrrrr
+rWWWWWWWWWr
+rrrrrWWrrrr
+rrrrWWrrrrr
+rWWWWWWWWWr
+rrrrWWrrrrr
+rrrrrWWrrrr
+"""
+        self.print_image(british_rail,0,69)
+
 
         # Loop over all the train services in that board.
         mapping=[('Cross', 'X'),
@@ -181,9 +193,9 @@ train02 = TrainPage("852","London Bridge","LBG")
 train03 = TrainPage("853","Cannon Street","CST")
 train04 = TrainPage("854","Charing Cross","CHX")
 train05 = TrainPage("855","Euston","EUS")
-train06 = TrainPage("856","Fenchurch Street","FST")
-train09 = TrainPage("859","Kings Cross","KGX",True)
-train10 = TrainPage("860","Liverpool Street","LST")
+train06 = TrainPage("856","Fenchurch St","FST")
+train09 = TrainPage("859","King's Cross","KGX",True)
+train10 = TrainPage("860","Liverpool St","LST")
 train11 = TrainPage("861","Marylebone","MYB")
 train12 = TrainPage("862","Paddington","PAD")
 train13 = TrainPage("863","Acton Central","ACC")
@@ -196,21 +208,21 @@ train19 = TrainPage("869","Waterloo East","WAE")
 train20 = TrainPage("870","Banbury","BAN")
 train21 = TrainPage("871","Reading","RDG")
 train22 = TrainPage("872","Oxford","OXF")
-train23 = TrainPage("873","Stratford-upon-Avon","SAV")
-train24 = TrainPage("874","B'ham New Street","BHM")
-train25 = TrainPage("875","B'ham Moor Street","BMO")
+train23 = TrainPage("873","Stratford-u-A","SAV")
+train24 = TrainPage("874","B'ham New St","BHM")
+train25 = TrainPage("875","B'ham Moor St","BMO")
 train26 = TrainPage("876","B'ham Snow Hill","BSW")
-train27 = TrainPage("877","Wembley Stadium","WCX")
+train27 = TrainPage("877","Wembley Stadm","WCX")
 train28 = TrainPage("878","Kilmarnock","KMK")
-train29 = TrainPage("879","Moreton-in-Marsh","MIM")
-train30 = TrainPage("880","Ealing Broadway","EAL")
+train29 = TrainPage("879","Moreton-in-Msh","MIM")
+train30 = TrainPage("880","Ealing B'dway","EAL")
 train31 = TrainPage("881","Farringdon","ZFD")
 train32 = TrainPage("882","East Croydon","ECR")
-train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
-train34 = TrainPage("884","Blaenau Ffestiniog","BFF")
-train35 = TrainPage("885","Sutton Coldfield","SUT")
+#train33 = TrainPage("883","St Pancras to East Croydon","STP",to=["Three Bridges","Brighton"])
+train34 = TrainPage("884","Blaenau Ffest.","BFF")
+train35 = TrainPage("885","Sutton C'field","SUT")
 train36 = TrainPage("886","Cambridge","CBG")
-train37 = TrainPage("887","Lichfield TV","LTV")
+train37 = TrainPage("887","Lichfield T.V.","LTV")
 
 class TVIPage(Page):
     def __init__(self):
