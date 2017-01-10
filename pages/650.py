@@ -28,12 +28,12 @@ class TubePage(Page):
 
         underground = """
 WWWWWWWWWWW
-WWWbbbbbWWW
-WWbbWWWbbWW
-WrrrrrrrrrW
-WrrrrrrrrrW
-WWbbWWWbbWW
-WWWbbbbbWWW
+WWWrrrrrWWW
+WWrrWWWrrWW
+WbbbbbbbbbW
+WbbbbbbbbbW
+WWrrWWWrrWW
+WWWrrrrrWWW
 WWWWWWWWWWW
 """
         self.print_image(underground,0,69)
