@@ -26,6 +26,18 @@ class TubePage(Page):
 
         self.add_title(self.station,font='size4')
 
+        underground = """
+WWWWWWWWWWW
+WWWbbbbbWWW
+WWbbWWWbbWW
+WrrrrrrrrrW
+WrrrrrrrrrW
+WWbbWWWbbWW
+WWWbbbbbWWW
+WWWWWWWWWWW
+"""
+        self.print_image(underground,0,69)
+
         pos = (0,7,25,50)
         for p,t in zip(pos,("Time","Line","Destination","Current Location")):
             self.move_cursor(x=p)
