@@ -12,7 +12,7 @@ class NewsPage(Page):
         self.title = title
         self.url = url
         if page_num == 300:
-        self.title = "Marts"
+            self.title = "Marts"
             self.in_index = True
             self.index_num = "300-307"
         else:
