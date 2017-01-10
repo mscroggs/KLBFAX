@@ -14,7 +14,7 @@ class NewsPage(Page):
         if page_num == 300:
             self.title = "Marts"
             self.in_index = True
-            self.index_num = "300-307"
+            self.index_num = "300-306,308"
         else:
             self.in_index = False
 
@@ -75,5 +75,5 @@ news_page4 = NewsPage(303, "http://www.metoffice.gov.uk/public/data/PWSCache/War
 news_page5 = NewsPage(304, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbizmart")
 news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
-news_page8 = NewsPage(307, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart")
+news_page8 = NewsPage(308, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart")
 news_pageX = NewsPage(707, "http://chalkdustmagazine.com/feed/", "Chalkmart")
