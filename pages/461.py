@@ -24,7 +24,7 @@ class UKTempPage(Page):
         try:
             for j in range(0,len(self.ordered_ids),step):
                 url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(self.ordered_ids[j:j+step]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-                print url
+                #print url
                 response = urllib2.urlopen(url)
                 data = json.load(response)
                 for city in data['list']:
