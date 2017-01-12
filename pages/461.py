@@ -8,39 +8,31 @@ class UKTempPage(Page):
         self.title = "UK Temperature"
         self.tagline = "Why exactly do we live in Britain?"
         self.in_index = False
+        from file_handler import load_file
+        self.ordered_ids = [i.rstrip("\n") for i in load_file("uk_coordinate_ids.txt").split("\n")]
+        self.temps = [99 for i in range(len(self.ordered_ids))]
+
 
     def background(self):
         import urllib2, json
-        from file_handler import load_file
-        ordered_ids = [i.rstrip("\n") for i in load_file("uk_coordinate_ids.txt").split("\n")]
+        from time import sleep
 
-        self.temps = [99 for i in range(len(ordered_ids))]
+
         i = 0
 
-        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[0:100]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-        response = urllib2.urlopen(url)
-        data = json.load(response)
-        for city in data['list']:
-            self.temps[i] = float(city['main']['temp'])
-            i+=1
-        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[100:200]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-        response = urllib2.urlopen(url)
-        data = json.load(response)
-        for city in data['list']:
-            self.temps[i] = float(city['main']['temp'])
-            i+=1
-        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[200:300]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-        response = urllib2.urlopen(url)
-        data = json.load(response)
-        for city in data['list']:
-            self.temps[i] = float(city['main']['temp'])
-            i+=1
-        url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(ordered_ids[300:]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-        response = urllib2.urlopen(url)
-        data = json.load(response)
-        for city in data['list']:
-            self.temps[i] = float(city['main']['temp'])
-            i+=1
+        step = 30
+        try:
+            for j in range(0,len(self.ordered_ids),step):
+                url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(self.ordered_ids[j:j+step]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
+                print url
+                response = urllib2.urlopen(url)
+                data = json.load(response)
+                for city in data['list']:
+                    self.temps[i] = float(city['main']['temp'])
+                    i+=1
+                #sleep(5)
+        except:
+            pass
 
     def generate_content(self):
         self.add_title("UK TEMPERATURE")
@@ -102,8 +94,8 @@ class UKTempPage(Page):
         uk_map = uk_map.replace(")","")
         uk_map = uk_map.replace("-","")
 
-        boundaries = [-99,0,3,6,9,12,15,18,21,24]
-        colours_before = ["BLUE","LIGHTBLUE","LIGHTCYAN","CYAN","GREEN","LIGHTGREEN","YELLOW","ORANGE","LIGHTRED","RED"]
+        boundaries = [-99,0,3,6,9,12,15,18,21,24,98]
+        colours_before = ["BLUE","LIGHTBLUE","LIGHTCYAN","CYAN","GREEN","LIGHTGREEN","YELLOW","ORANGE","LIGHTRED","RED","BRIGHTWHITE"]
 
         i = 0
         for char in uk_map:
