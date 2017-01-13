@@ -20,13 +20,25 @@ class TubePage(Page):
 
         tubes = []
         for b in tube_times:
-            tubes.append((int(b['timeToStation']),str(b['timeToStation']//60)+" min",b['lineName'],b['towards'],b['currentLocation']))
+            tubes.append((int(b['timeToStation']),str(b['timeToStation']//60)+" min",b['lineName'].replace('Hammersmith','Ham').replace('Waterloo','Wloo'),b['towards'],b['currentLocation']))
 
         tubes.sort()
 
-        self.add_title(self.station,font='size4')
+        self.add_title(self.station,font='size4',fg="BRIGHTWHITE",bg="BLUE")
 
-        pos = (0,7,25,50)
+        underground = """
+WWWWWWWWWWW
+WWWrrrrrWWW
+WWrrWWWrrWW
+WbbbbbbbbbW
+WbbbbbbbbbW
+WWrrWWWrrWW
+WWWrrrrrWWW
+WWWWWWWWWWW
+"""
+        self.print_image(underground,0,69)
+
+        pos = (0,7,20,45)
         for p,t in zip(pos,("Time","Line","Destination","Current Location")):
             self.move_cursor(x=p)
             self.add_text(t)
@@ -45,7 +57,7 @@ class TubePage(Page):
             if tube[2]=="District":
                 self.start_fg_color("BLACK")
                 self.start_bg_color("GREEN")
-            if tube[2]=="Hammersmith & City":
+            if tube[2]=="Ham & City":
                 self.start_fg_color("BLACK")
                 self.start_bg_color("PINK")
             if tube[2]=="Jubilee":
@@ -63,7 +75,7 @@ class TubePage(Page):
             if tube[2]=="Victoria":
                 self.start_fg_color("WHITE")
                 self.start_bg_color("LIGHTBLUE")
-            if tube[2]=="Waterloo & City":
+            if tube[2]=="Wloo & City":
                 self.start_fg_color("WHITE")
                 self.start_bg_color("LIGHTCYAN")
             self.add_text(" "*80)

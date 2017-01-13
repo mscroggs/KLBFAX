@@ -6,15 +6,16 @@ from functions import klb_replace
 
 
 class NewsPage(Page):
-    def __init__(self, page_num, url, title):
+    def __init__(self, page_num, url, title, bit="title"):
         super(NewsPage, self).__init__(page_num)
+        self.bit = bit
         self.top_title = title
         self.title = title
         self.url = url
         if page_num == 300:
-        self.title = "Marts"
+            self.title = "Marts"
             self.in_index = True
-            self.index_num = "300-307"
+            self.index_num = "300-306,308"
         else:
             self.in_index = False
 
@@ -24,12 +25,12 @@ class NewsPage(Page):
         feed = feedparser.parse(rss_url)
         if len(feed) > 0:
             item = feed['entries'][0]
-            self.words = klb_replace(item['title']).split(" ")
+            self.words = klb_replace(item[self.bit]).split(" ")
         else:
             self.words = []
 
         if len(feed) > 1:
-            self.entries = [klb_replace(item['title']) for item in feed['entries'][1:21]]
+            self.entries = [klb_replace(item[self.bit]) for item in feed['entries'][1:21]]
         else:
             self.entries = []
 
@@ -75,5 +76,5 @@ news_page4 = NewsPage(303, "http://www.metoffice.gov.uk/public/data/PWSCache/War
 news_page5 = NewsPage(304, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbizmart")
 news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
-news_page8 = NewsPage(307, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart")
+news_page8 = NewsPage(308, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart","description")
 news_pageX = NewsPage(707, "http://chalkdustmagazine.com/feed/", "Chalkmart")

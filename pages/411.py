@@ -297,9 +297,10 @@ mmmmmmmmmmmmmmmm
         for i in self.y.data:
             if i["timestamp"][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
-                day_max.append(i["Feels Like Temperature"][0])
+                day_max.append(i["Temperature"][0])
                 date.append((i["timestamp"][0].strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
 
+        self.tagline = "Met Office, updated " + datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ').strftime("%a %d %b %H:%M")
 
         # Day of week
         self.move_cursor(y=7,x=0)
