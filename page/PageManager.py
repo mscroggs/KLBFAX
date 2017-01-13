@@ -181,7 +181,7 @@ class PageManager:
             return special.PubPage()
         if the_input == "lunch":
             return special.LunchPage()
-        if the_input == "1337" or the_input == "0026360488":
+        if the_input == "1337" or the_input == "0026360488" or the_input == "0082620488":
             import computer
             computer.git_pull()
         if the_input == "00488a0488":
