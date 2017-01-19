@@ -30,6 +30,10 @@ class WhoPage(Page):
             with open("/home/pi/login.json") as f:
                 details = json.load(f)
         except:
+            try:
+                self.tweets
+            except:
+                self.tweets = []
             return
         auth = tweepy.OAuthHandler(details['app_key'], details['app_secret'])
         auth.set_access_token(details['oauth_token'], details['oauth_token_secret'])
