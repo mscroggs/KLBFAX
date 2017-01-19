@@ -23,6 +23,7 @@ class MRoomPage(Page):
 
 
     def generate_content(self):
+        from functions import klb_replace
         import config
         from time import strftime
 
@@ -82,7 +83,7 @@ class MRoomPage(Page):
         for event in self.events:
             start_time = event[0]
             end_time = event[1]
-            _name = event[2].replace("Rafael","Rafeal").replace("Eleanor","Eleanorovirus")
+            _name = event[2]
 
             if end_time.date() != previous_date:
                 self.add_newline()
@@ -94,7 +95,7 @@ class MRoomPage(Page):
 
             self.add_text(start_time.strftime("%H:%M") + "-" + end_time.strftime("%H:%M") + " ")
             self.end_fg_color()
-            self.add_text(_name)
+            self.add_text(klb_replace(_name))
             self.add_newline()
             previous_date = end_time.date()
 
