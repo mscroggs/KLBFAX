@@ -64,7 +64,7 @@ def klb_replace(imput):
             ["Teenage Mutant Ninja Turtles","Belgin's Pick: Teenage Mutant Ninja Turtles"],
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"]
-.           ["Rafael","Rafeal"],
+            ["Rafael","Rafeal"],
             ["Eleanor","Eleanorovirus"]
 
         ]
