@@ -14,7 +14,7 @@ def klb_replace(imput):
             ["Wright","Mart Wright"],
             ["Sport","Maths"],["Sportsday","Mathsday"],
             ["Jamie","Pietro"],
-            ["Trump","Twat"],
+            ["Trump","Duck"],
             ["Theresa May","Theresa June"],
             ["Boris Johnson","Boris Jebend"],
             ["Farage","Bellend"],
