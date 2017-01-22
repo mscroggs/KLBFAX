@@ -8,9 +8,9 @@ import pytz
 
 class WorldClockPage(Page):
     def __init__(self):
-        super(WorldClockPage, self).__init__("459")
+        super(WorldClockPage, self).__init__("421")
         self.title = "Time"
-        self.index_num = "400, 459"
+        self.index_num = "421"
         self.in_index = False
         self.tagline = "It's 5 o'clock somewhere"
 

@@ -3,14 +3,14 @@ from page import Page
 
 class SunrisePage(Page):
     def __init__(self):
-        super(SunrisePage, self).__init__("462")
+        super(SunrisePage, self).__init__("413")
         self.title = "Sunrise & sunset"
         self.in_index = False
         self.tagline = "Here comes the sun"
 
     def generate_content(self):
         import datetime
-        from astral import Astral	
+        from astral import Astral
         city_name = 'London'
         a = Astral()
         a.solar_depression = 'civil'

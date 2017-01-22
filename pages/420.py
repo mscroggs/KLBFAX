@@ -7,9 +7,9 @@ from random import choice
 
 class TimePage(Page):
     def __init__(self):
-        super(TimePage, self).__init__("400")
+        super(TimePage, self).__init__("420")
         self.title = "Time"
-        self.index_num = "400,459"
+        self.index_num = "420-421"
         self.tagline = "KLB Mean Time"
 
     def generate_content(self,debug=False):
