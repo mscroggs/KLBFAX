@@ -626,7 +626,7 @@ mmmmmmmmmmmmmmmm
                     self.end_fg_color()
                 self.move_cursor(y=y_coord + l+1, x=x_coord)
 
-        self.add_title("Forecast",fg="MAGENTA",bg="CYAN")
+        self.add_title("24hr Weather",fg="CYAN",bg="BRIGHTWHITE")
 
         day_weather = []
         day_max = []
