@@ -92,6 +92,7 @@ class WhoPage(Page):
 -GGGGGGGGG-
 """
         self.print_image(twitter,0,69)
+        self.move_cursor(x=0)
 
         for t in self.tweets:
             self.add_text(t[0])
