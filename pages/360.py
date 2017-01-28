@@ -45,7 +45,7 @@ class WhoPage(Page):
 
         peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
         self.tweets = []
-        for tweet in peter_replies[0:4]:
+        for tweet in peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
             reply_text = tweet.text
@@ -69,7 +69,7 @@ class WhoPage(Page):
                         except:
                             continue
                     this = []
-                    this.append(datetime.strftime("%a %d %b, %H:%M",datetime.strptime(str(created_at), '%Y-%m-%d %H:%M:%S')))
+                    this.append(datetime.strftime(datetime.strptime(str(created_at), '%Y-%m-%d %H:%M:%S'),"%a %d %b, %H:%M"))
                     this.append(original0_username)
                     this.append(original0_text)
                     this.append(original_username)
