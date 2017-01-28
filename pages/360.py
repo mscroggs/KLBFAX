@@ -45,7 +45,7 @@ class WhoPage(Page):
 
         peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
         self.tweets = []
-        for tweet in peter_replies:
+        for tweet in peter_replies[0:4]:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
             reply_text = tweet.text
