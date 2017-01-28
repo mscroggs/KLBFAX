@@ -104,7 +104,9 @@ class WhoPage(Page):
                     dash = ""
                 else:
                     dash = u"─"
+                self.start_fg_color("GREEN")
                 self.add_text("[ " + t[0] + " ]" + dash*50) # date
+                self.start_fg_color("DEFAULT")
                 self.add_newline()
                 if t[1] != "":
                     self.start_fg_color("LIGHTCYAN")
