@@ -79,7 +79,20 @@ class WhoPage(Page):
                     continue
 
     def generate_content(self):
-        self.add_title("Who is Peter?")
+        self.add_title("Who is peter?",font="size4",fg="GREEN",bg="BRIGHTWHITE")
+
+        twitter = """
+--G-----G--
+-GGGGGGGGG-
+-G-------G-
+-G-G---G-G-
+-G-------G-
+-G-GGGGG-G-
+-G-------G-
+-GGGGGGGGG-
+"""
+        self.print_image(twitter,0,69)
+
         for t in self.tweets:
             self.add_text(t[0])
             self.add_newline()
