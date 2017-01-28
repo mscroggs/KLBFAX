@@ -94,8 +94,10 @@ class WhoPage(Page):
         self.print_image(twitter,0,69)
         self.move_cursor(x=0)
 
+        t_count = 0
         for t in self.tweets:
-            self.add_text(t[0])
+            if t_count == 0: dash = "" else: dash = u"─"
+            self.add_text("[ " + t[0] + " ]" + dash*30) # date
             self.add_newline()
             if t[1] != "":
                 self.start_fg_color("LIGHTCYAN")
@@ -117,7 +119,8 @@ class WhoPage(Page):
             self.end_fg_color()
             self.add_wrapped_text(t[6])
             self.add_newline()
-            self.add_text("----------------")
-            self.add_newline()
+            #self.add_text("----------------")
+            #self.add_newline()
+            t_count = t_count + 1
 
 page = WhoPage("360")
