@@ -96,7 +96,10 @@ class WhoPage(Page):
 
         t_count = 0
         for t in self.tweets:
-            if t_count == 0: dash = "" else: dash = u"─"
+            if t_count == 0:
+                dash = ""
+            else:
+                dash = u"─"
             self.add_text("[ " + t[0] + " ]" + dash*30) # date
             self.add_newline()
             if t[1] != "":
