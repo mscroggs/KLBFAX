@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from page import Page
-import datetime
+
 
 class WeatherPage(Page):
     def __init__(self):
-        super(WeatherPage, self).__init__("412")
-        self.title = "Weather Forecast Day"
-        self.in_index=False
+        super(WeatherPage, self).__init__("322")
+        self.title = "Weather Forecast"
+        self.in_index = False
 
     def background(self):
         import metoffer
@@ -15,7 +15,7 @@ class WeatherPage(Page):
         api_key = "f2ef8ecf-175f-491d-aea1-93a38209bd55"
         M = metoffer.MetOffer(api_key);
         #x = M.nearest_loc_forecast(51.4033, -0.3375, metoffer.THREE_HOURLY)
-        x = M.nearest_loc_forecast(51.5252257441084, -0.134831964969635, metoffer.THREE_HOURLY)
+        x = M.nearest_loc_forecast(51.5252257441084, -0.134831964969635, metoffer.DAILY)
         self.y = metoffer.parse_val(x)
 
         self.tagline = "Live from the Met Office"
@@ -566,15 +566,14 @@ BBBBBBBBBBBBBBBB
 bbbbbbbbbbbbbbbb
 mmmmmmmmmmmmmmmm
 """
-
             '''
             {0: 'Clear night',
              1: 'Sunny day',
              2: 'Partly cloudy (night)',
              3: 'Partly cloudy (day)',
-             4: 'Sand storm',
-             5: 'Mist',
-             6: 'Fog',
+             4: 'Not used',
+             5: 'Mist',xxxx
+             6: 'Fog',xxxxx
              7: 'Cloudy',
              8: 'Overcast',
              9: 'Light rain shower (night)',
@@ -627,29 +626,50 @@ mmmmmmmmmmmmmmmm
                     self.end_fg_color()
                 self.move_cursor(y=y_coord + l+1, x=x_coord)
 
-        self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
+        self.add_title("4-day Weather",fg="CYAN",bg="BRIGHTWHITE")
 
         day_weather = []
         day_max = []
         day_min = []
         date = []
         for i in self.y.data:
-            if i["timestamp"][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
+            if i["timestamp"][1] == "Day":
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
-                day_max.append(i["Temperature"][0])
-                date.append((i["timestamp"][0].strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
+                day_max.append(i["Feels Like Day Maximum Temperature"][0])
+                date.append(i["timestamp"][0].strftime("%a"))
+            if i["timestamp"][1] == "Night":
+                day_min.append(i["Feels Like Night Minimum Temperature"][0])
 
-        self.tagline = "Met Office, updated " + datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ').strftime("%a %d %b %H:%M")
+        #-------------------------
+        # k BLACK   K GREY
+        # r RED     R LIGHTRED
+        # o ORANGE  y YELLOW
+        # g GREEN   G LIGHTGREEN
+        # c CYAN    C LIGHTCYAN
+        # b BLUE    B LIGHTBLUE
+        # m MAGENTA p PINK
+        # w WHITE   W BRIGHTWHITE
+        # d DEFAULT
+        # ------------------------
+
+
+
+
+        #self.move_cursor(y=0,x=0)
+
+
+
+
 
         # Day of week
         self.move_cursor(y=7,x=0)
-        self.add_title(date[0],bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.add_title(str(date[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4')
         self.move_cursor(y=7,x=0)
-        self.add_title(date[1],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.add_title(str(date[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
         self.move_cursor(y=7,x=0)
-        self.add_title(date[2],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.add_title(str(date[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
         self.move_cursor(y=7,x=0)
-        self.add_title(date[3],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+        self.add_title(str(date[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
 
 
         # Pictures
@@ -657,7 +677,6 @@ mmmmmmmmmmmmmmmm
         print_image(day_weather[1],11,21)
         print_image(day_weather[2],11,41)
         print_image(day_weather[3],11,61)
-
         # Max temps
         self.move_cursor(y=18,x=0)
         self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
@@ -667,6 +686,16 @@ mmmmmmmmmmmmmmmm
         self.add_title(str(day_max[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=45)
         self.move_cursor(y=18,x=0)
         self.add_title(str(day_max[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=65)
+
+        # Min temps
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[0]),bg="RED",fg="BLACK",fill=False,font='size4', pre=5)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[1]),bg="RED",fg="BLACK",fill=False,font='size4', pre=25)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[2]),bg="RED",fg="BLACK",fill=False,font='size4', pre=45)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[3]),bg="RED",fg="BLACK",fill=False,font='size4', pre=65)
 
 weather_page = WeatherPage()
 

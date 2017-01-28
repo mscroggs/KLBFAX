@@ -1,22 +1,49 @@
 import os
+from os.path import join,expanduser
 from page import Page
-from random import randrange
+from file_handler import f_readlines
 
-class SuckPage(Page):
+class EventPage(Page):
     def __init__(self):
-        super(SuckPage, self).__init__("103")
-        self.title = "Important Information"
-        self.in_index = False
+        super(EventPage, self).__init__("103")
+        self.title = "Events"
 
     def generate_content(self):
-        n = randrange(3)
-        if n==0:
-            self.add_title("imperial suck(s)")
-            self.add_newline()
-            self.add_text("(Except for Kuru,\n  love from Scroggs)")
-        elif n==1:
-            self.add_title("B&Q suck(s)")
-        elif n==2:
-            self.add_title("Dell suck(s)")
+        self.add_title("EVENTS")
+        events={}
+        cur=""
+        lines = f_readlines('events')
+        for line in lines:
+            line = line.decode("utf-8")
+            line = line.strip("\n")
+            if line != "":
+                if line[0] == "#":
+                    line = line.strip("#").strip(" ")
+                    cur = line
+                    events[cur] = []
+                elif cur in events:
+                    events[cur].append(line)
 
-sub_page = SuckPage()
+        for date in sorted(events):
+            event = events[date]
+            self.add_text(date)
+            self.add_newline()
+            i = 0
+            col = "WHITE"
+            for info in event:
+                self.add_text("  ")
+                self.start_fg_color(col)
+                self.add_text(info)
+                self.end_fg_color()
+                self.add_newline()
+                if col == "WHITE":
+                    if i >= 2:
+                        col = "YELLOW"
+                    i += 1
+                elif col == "YELLOW":
+                    col = "GREEN"
+                elif col == "GREEN":
+                    col = "YELLOW"
+            self.add_newline()
+
+events_page = EventPage()

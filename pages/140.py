@@ -1,86 +1,96 @@
-﻿#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+import os
 from page import Page
+from random import choice
+from file_handler import f_read_json
 
-class CurrencyPage(Page):
-    def __init__(self):
-        super(CurrencyPage, self).__init__("140")
-        self.title = "Money"
-        self.index_num = "140-141"
-        self.tagline = "Live data from Yahoo!"
+def award_show(self,award, data, icon):
+    self.add_text(award,fg="GREEN")
+    self.add_newline()
+    try:
+        winners = data[award]
+    except KeyError:
+        self.add_text("No-one has won this award yet...")
+        self.add_newline()
+        self.add_newline()
+        return
+    max_len = 0
+    for person in winners:
+        max_len = max(max_len,len(person))
+    for person,number in winners.items():
+        self.add_text(person)
+        self.move_cursor(x=max_len)
+        self.add_text("|",fg="RED")
+        for i in range(number):
+            self.start_random_fg_color()
+            self.add_text(icon)
+            self.end_fg_color()
+        self.add_newline()
+    self.add_newline()
 
+awards_on_pages = {
+        "451":["Tea Maker","CelebriTEA"],
+        "452":["Moo Cow"],
+        "453":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
+        "454":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
+        "455":["Boo Cow","Tea Wrecks"],
+        "456":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat","SNORE-lax","Banana Split","Orange Peel"]
+    }
 
-    def background(self):
-        import urllib2
+def get_page(a):
+    for n,it in awards_on_pages.items():
+        for i in it:
+            if i == a:
+                return n
+    return "???"
 
-        possible_rates = ['GBPJPY=X','GBPAUD=X','GBPCNY=X','GBPBTC=X','GBPBND=X','GBPMXN=X','GBPCLP=X','GBPETB=X','GBPTRY=X','GBPCHF=X','GBPCAD=X','GBPXAU=X','BZJ16.NYM']
-        possible_symbols_before = [u'¥', 'A$|', u'CN¥|', u'฿', 'B$|', 'MX$|', 'CL$|', 'ETB|', u'₺', 'CHF|', 'C$|', '','']
-        possible_symbols_after = ['','','','','','','','','','','',u'㎎ gold','L oil']
-        possible_multiple = [1,1,1,1000,1,1,1,1,1,1,1,31103,1]
-        possible_format = ['{:.0f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.0f}','{:.2f}','{:.2f}','{:.2f}','{:.2f}','{:.0f}','{:.2f}']
-        
-        from random import randint
-        random_rate1 = randint(0,len(possible_rates)-1)
-        random_rate2 = random_rate1
-        random_rate3 = random_rate1
-        while random_rate2 == random_rate1:
-            random_rate2 = randint(0,len(possible_rates)-1)
-        while random_rate3 == random_rate1 or random_rate3 == random_rate2:
-            random_rate3 = randint(0,len(possible_rates)-1)            
-        
-        ask_for_rates = ['GBPUSD=X', 'GBPEUR=X', possible_rates[random_rate1], possible_rates[random_rate2], possible_rates[random_rate3]]
-        self.currency_symbol_before = ['$',u"€",possible_symbols_before[random_rate1],possible_symbols_before[random_rate2],possible_symbols_before[random_rate3]]
-        self.currency_symbol_after = ['','',possible_symbols_after[random_rate1],possible_symbols_after[random_rate2],possible_symbols_after[random_rate3]]
-        self.currency_multiple = [1,1,possible_multiple[random_rate1],possible_multiple[random_rate2],possible_multiple[random_rate3]]
-        self.currency_format = ['{:.2f}','{:.2f}',possible_format[random_rate1],possible_format[random_rate2],possible_format[random_rate3]]
-               
-        self.currency_rate = []
-        self.currency_change = []
-        req = urllib2.urlopen('http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1p2d1t1&s='+','.join(ask_for_rates))
-        results = req.read()
-        for i in range(len(ask_for_rates)):
-            try:
-                self.currency_rate.append(float(results.split(",")[4*i+1]))
-            except:
-                self.currency_rate.append(1)
-            try:
-                self.currency_change.append(float(results.split(",")[4*i+2][1:-2]))
-            except:
-                self.currency_change.append(0)
-        # result = "USDNOK=X",5.9423,"5/3/2010","12:39pm"
-
-        if random_rate1 == 12: #oil
-            self.currency_rate[2] = 1./self.currency_rate[2]*158.987*self.currency_rate[0]
-            self.currency_change[2] = ""
-        if random_rate2 == 12: #oil
-            self.currency_rate[3] = 1./self.currency_rate[3]*158.987*self.currency_rate[0]      
-            self.currency_change[3] = ""
-        if random_rate3 == 12: #oil
-            self.currency_rate[4] = 1./self.currency_rate[4]*158.987*self.currency_rate[0]              
-            self.currency_change[4] = ""
+class AwardsPage(Page):
+    def __init__(self, page_num,title="",icon=u"\u263B"):
+        super(AwardsPage, self).__init__(page_num)
+        self.in_index = False
+        self.awards = awards_on_pages[page_num]
+        self.title = title
+        self.icon = icon
 
     def generate_content(self):
-        self.add_title(u"£1 buys")
-        for i in range(5):
-            bg_color = ["GREEN","CYAN","ORANGE","ORANGE","ORANGE"][i]
-            if self.currency_change[i] == "":
-                change_message = ""
-                up_down_color = "GREEN"
-            elif self.currency_change[i] < 0:
-                change_message = u"▼" + "{:.2f}".format(abs(self.currency_change[i])) + "%"
-                up_down_color = "RED"
-            elif self.currency_change[i] == 0:
-                change_message = "=|" + "{:.2f}".format(abs(self.currency_change[i])) + "%"
-                up_down_color = "YELLOW"
-            else:
-                change_message = u"▲" + "{:.2f}".format(abs(self.currency_change[i])) + "%"
-                up_down_color = "GREEN"
-            currency_text = self.currency_symbol_before[i] + self.currency_format[i].format(self.currency_rate[i]*self.currency_multiple[i]) + self.currency_symbol_after[i]
-            self.move_cursor(y=7+i*4,x=0)
-            self.add_title(currency_text, fg="BLACK",bg=bg_color, font="size4")
-            self.move_cursor(y=7+i*4,x=0)
-            self.add_title(change_message, fg="BLACK",bg=up_down_color, pre=50, font="size4")
-        
+        import json
+        from operator import itemgetter
+        data = f_read_json('awards')
+        self.add_title(self.title)
+        for a in self.awards:
+            award_show(self,a,data,self.icon)
+
+class AwardsIndex(Page):
+    def __init__(self, page_num):
+        super(AwardsIndex, self).__init__(page_num)
+        self.title = "Awards & Unawards"
+        self.in_index = True
+        self.index_num = "140-146"
+
+    def generate_content(self):
+        import json
+        from operator import itemgetter
+        data = f_read_json('awards')
+        self.add_title("The most awards")
+        for a,b in data.items():
+            m = 0
+            mp = ""
+            for person,n in b.items():
+                if n > m:
+                    m = n
+                    mp = person
+                elif n==m:
+                    mp += " & " + person
+            self.add_newline()
+            self.add_text(a,fg="GREEN")
+            self.add_text(" (see page "+str(get_page(a))+") ")
+            self.add_text(mp,fg="RED")
 
 
-currency_page = CurrencyPage()
+sub_page = AwardsIndex("140")
+
+p1 = AwardsPage("141","Tea Awards")
+p2 = AwardsPage("142","Mart Cow Awards")
+p3 = AwardsPage("143","Kitchen Awards")
+p4 = AwardsPage("144","Other Awards")
+p5 = AwardsPage("145","Tea Unawards","o_0")
+p6 = AwardsPage("146","Other Unawards","0_o")

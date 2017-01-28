@@ -15,7 +15,7 @@ class NewsPage(Page):
         if page_num == 300:
             self.title = "Marts"
             self.in_index = True
-            self.index_num = "300-306,308"
+            self.index_num = "300-310"
         else:
             self.in_index = False
 

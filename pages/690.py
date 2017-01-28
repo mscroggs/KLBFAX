@@ -12,7 +12,7 @@ class RecipePage(Page):
         self.add_wrapped_text(self.recipe, pre=4)
 
 
-r1 = RecipePage("581","Bad Tempered Cake","""
+r1 = RecipePage("691","Bad Tempered Cake","""
   1/2 lb    Rich tea and/or digestive biscuits
     4 oz    Margarine
     1 dsp   Sugar
@@ -28,7 +28,7 @@ r1 = RecipePage("581","Bad Tempered Cake","""
 4. Cover with melted milk chocolate.
 5. Leave in the fridge to set""")
 
-r2 = RecipePage("582","Huda Friendship Cake","""
+r2 = RecipePage("692","Huda Friendship Cake","""
 Day 1:    Put me in a large mixing bowl and cover loosely with a tea towel.
 Days 2-3: Stir well.
 Day 4:    HUDA HUNGRY. Add 1 cup each of plain flour, sugar and milk. Stir well.
@@ -44,7 +44,7 @@ Day 10:   Now you are ready to make the cake. Stir well and add the following:
     Mix everything together and put into a large greased baking tin. Sprinkle with a quarter of a cup of brown sugar and a quarter of a cup of melted butter. Bake for 45 minutes at 170-180C. Test the middle with a clean knife; you may need to cover in tin foil and bake for a further 20 minutes to make sure Huda is cooked properly in the middle. When baked, Huda can be frozen.
 """)
 
-r3 = RecipePage("583","Cherry Clafoutis","""
+r3 = RecipePage("693","Cherry Clafoutis","""
     4       Eggs
     1 jar   Cherries
     ? ???   Flour
@@ -52,7 +52,7 @@ r3 = RecipePage("583","Cherry Clafoutis","""
 
 1. To be continued...""")
 
-r4 = RecipePage("584","Cheese Twists",
+r4 = RecipePage("694","Cheese Twists",
 """
     1 sheet Puff pastry (all butter)
     100g    Soft cheese
@@ -66,7 +66,7 @@ r4 = RecipePage("584","Cheese Twists",
 5. Cut into 1cm wide, 6cm long strips. Twist and place on a baking tray.
 6. Bake in the oven for 20 minutes at 180"""+u"\u00b0"+"C")
 
-r5 = RecipePage("585","Pesto",
+r5 = RecipePage("695","Pesto",
 """
     100g    Pine nuts
     100g    Parmesan cheese
@@ -85,7 +85,7 @@ r5 = RecipePage("585","Pesto",
 
 class RecipeIPage(Page):
     def __init__(self):
-        super(RecipeIPage, self).__init__("580")
+        super(RecipeIPage, self).__init__("690")
         self.title = "Recipes Index"
 
     def generate_content(self):

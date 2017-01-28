@@ -4,7 +4,7 @@ from page import Page
 
 class WorldTempPage(Page):
     def __init__(self):
-        super(WorldTempPage, self).__init__("415")
+        super(WorldTempPage, self).__init__("325")
         self.title = "World Temperature"
         self.in_index = False
         self.tagline = "Why exactly do we live in Britain?"

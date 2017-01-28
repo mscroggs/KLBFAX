@@ -4,9 +4,9 @@ from page import Page
 
 class CurrencyPage(Page):
     def __init__(self):
-        super(CurrencyPage, self).__init__("141")
+        super(CurrencyPage, self).__init__("331")
         self.title = "Money"
-        self.index_num = "140-141"
+        self.index_num = "330-331"
         self.in_index = False
         self.tagline = "Live data from Yahoo!"
 

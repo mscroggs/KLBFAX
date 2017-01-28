@@ -3,7 +3,7 @@ from page import Page
 
 class SunrisePage(Page):
     def __init__(self):
-        super(SunrisePage, self).__init__("413")
+        super(SunrisePage, self).__init__("323")
         self.title = "Sunrise & sunset"
         self.in_index = False
         self.tagline = "Here comes the sun"

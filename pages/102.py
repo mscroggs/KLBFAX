@@ -90,7 +90,7 @@ class BdayPage(Page):
                     self.end_fg_color()
                     ind = 13
                     self.move_cursor(y=16)
-                    
+
                 else:
                     self.add_title("Birthdays",bg="BLACK",fg="GREEN")
             elif day in self.c_b[mon]:
@@ -113,4 +113,4 @@ class BdayPage(Page):
                 break
 
 
-bdaypage = BdayPage("105")
+bdaypage = BdayPage("102")

@@ -8,7 +8,7 @@ import pytz
 
 class WorldClockPage(Page):
     def __init__(self):
-        super(WorldClockPage, self).__init__("421")
+        super(WorldClockPage, self).__init__("341")
         self.title = "Time"
         self.index_num = "421"
         self.in_index = False

@@ -1,45 +1,128 @@
 from page import Page
+from random import shuffle,choice
 
-
-class VenusPage(Page):
-    def __init__(self,page_num):
-        super(VenusPage, self).__init__(page_num)
-        self.in_index = False
-        self.title = "Venus"
-        self.tagline = "Here, it is a nude Venus who emerges from the shell, floating on waves."
+class StephenPage(Page):
+    def __init__(self, page_num):
+        super(StephenPage, self).__init__(page_num)
+        self.title = "Stephen's Skills"
 
     def generate_content(self):
-        import urllib2
-        self.add_title("Venus")
-        self.add_text("""                                    ,<<CCCCCCC>>,,..,,,<C> ,c' -;;,`C><   ,-
-                                . <CCCCCCCCCCCCCCCCCCCCC> <C ,;, CCC `  ./
-                              ,cC `CC>>>'' ,;;,,..`''''.,<C ,CC> CCCC>,<C>,<
-                            .<CC' ,ccccccc  `<'CCCCCCCCCC>',cCC> <CCCCCCCCCC
-                            CC> z$$$$$$$$$$cc,`'<C>>>>''',<CCCCCC,`<<<'.,.``
-                          ,-C'.d$$$$$$$$$$$$$$c, -,<<<CCCCCCCCCCCC>CC>'''<C,
-                         C' C $$$$$$$$$$P"'.."?h -<CCCC''.,,,.`CCC>  .<C> <C
-                         \,<C $$$$$$$$$cc$?????$$.``<<CCCC'<CC `CCCC,`<CC>,c
-                         ,C'  ?"'.,,$$$$$'    ,$$$ `> C<C .`<CCCCCC>>  `<CCC
-                        -CCC> `$$"    $$$ccccd$$$$h >>C <CC>,`<<'',,<CC>.`<<
-                         `<<,> "    ,r`$$$$$$$$$$$$ <CC,`<CCCC>.`<CCCCCCC>,,
-                            CCC ?$$$$$ $$$$$$$$$$$$r`CCCC,cCCCCC, `'''',,<<<
-                           ,<CC> ?$$$$ ??""3$$$$$$$$c`'CCC>>>CC,cCCCCCCCCCCC
-                          C(`CC>, `$$$c,ccd$???$$$$$F   -,,<<CCCCCC>' ,;,``<
-                          '  `<CC>.`?$$P"''  ,c$$$$' .,c, <CCCCCCC>>-`)CCC>,
-                                CCC, `$hccccc$$$$F z$`<CC,  `<<<<'.,<<CCCCCC
-                              ,<C>.<> .`"$$$$$$P'.$$$ CCC'   `-<CCCCCCCC>>>>
-                              CC>.<> J$$c,`""\"',c$$$F,;>'.<C,  `'<C>'    ;.`
-                             'CC><CC ?$$$$$$$$$$$$$P C,,; CC>           ,<>.
-                       ,---;, CC CCC-<$$$$$$$$$$$$P <CCCC,CC>          ,<> >
-                     ,',;-<C',c> CCC ..,.`"$$$$$$$ ,CCCC' C> , .       <C <C
-                    ,C,cC,'',<' <CC',cCCCC $$$$$$'c.`>' ;C' <C C>,      <>,.
-                    `<CCC>.''.<CCC' <<<<<C,`$$$$$$$$. <C> ;CC' CCCCC>,,,.``<
-                   ,c,`CCCCCCCCC>',cCC>>.`C, "$$$$$$$h.`CCC' -CCC,.`<CCCCC>>
-                ,c$$$$c `<<C>>' .,c`,.`'C, <> $$P"".,,;,.`CC>>,``<C>>,,;``<C
-              .d$$$$$$$$$cccccd$$$$$$$$$ <C>,,.,,<CCCCCC>.`<CCCC>,.`<CCCC>,.
-            zd$$$$$$$$$$$$$$$$$$$$$$$$$$>`CCCCCCCCC>>'''<C>.`<CCCCC>. <CCCCC
-          .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ `<CCCCC>  -<CC;,<C> ``<<CCC>,`CCCC
-          
-""")
+        skills = ["Conversation",
+                  "Law",
+                  "French",
+                  "Spanish",
+                  "Australian",
+                  "Relationships (la petit amor)",
+                  "Korean",
+                  "Russian",
+                  "Fashion",
+                  "Keepy uppies",
+                  "Probability",
+                  "Squash",
+                  "Cycling",
+                  "Maths",
+                  "Taxidermy",
+                  "After-dinner speeches",
+                  "Writing blogs",
+                  "Literary theory",
+                  "Reading",
+                  "Academic discourse",
+                  "The discus",
+                  "Water sports",
+                  "Bear-baiting",
+                  "Editor of magazine",
+                  "Patting on head while rubbing stomach",
+                  "Football",
+                  "Levitation",
+                  "Living near Huda",
+                  "Greek mythology",
+                  "Being a lovely chap",
+                  "Pool parties",
+                  "Backstroke",
+                  "Beamer",
+                  "PG Seminars",
+                  "Reflective",
+                  "Being here most afternoons",
+                  "Always paying his debts",
+                  "Chivalry",
+                  "Softball",
+                  "Counting to infinity (backwards)",
+                  "Laissez-faire economics",
+                  "Coffee",
+                  "Typing",
+                  "Lunch from UCLU",
+                  "Riddlery",
+                  "Russian puzzles",
+                  "Puzzles",
+                  "Art",
+                  "Creativity",
+                  "Camping",
+                  "Self-awareness",
+                  "Down-to-earth",
+                  "Making tea",
+                  "Guitar solos",
+                  "Restaurant recommendations",
+                  "Djing",
+                  "Calendar reading",
+                  "Calendar having",
+                  "Curing disease",
+                  "Karaoke",
+                  "Not making a scene",
+                  "Politeness",
+                  "Navigation",
+                  "Proposing",
+                  "Sculpture",
+                  "Poetry",
+                  "Quotes",
+                  "Thoughts",
+                  "Chocolate fountains",
+                  "Programming Scroggsbot",
+                  "Hogwarts house-sorting",
+                  "Deeper voice than Anna or Grego",
+                  "Leadership",
+                  "Architecture",
+                  "Graphic design",
+                  "Entrepeneurship",
+                  "Spelling",
+                  "Venture capital",
+                  "Merges and acquisiitons",
+                  "Email",
+                  "Excel",
+                  "Talking to Richard P.",
+                  "Leviticus",
+                  "Water into wine",
+                  "Jesus",
+                  "Eternal life",
+                  "Roti King",
+                  "Vocabulary",
+                  "Handwriting",
+                  "Cultural awareness",
+                  "Postcards",
+                  "Wine tasting",
+                  "Problem solving class",
+                  "Keeping calm",
+                  "Carrying on",
+                  "Handsomeness",
+                  "Nice smell",
+                  "Talking to the elderly",
+                  "Painting with all colours of the wind",
+                  "Consensus-building",
+                  "Modesty",
+                  "Opening champagne bottles with just a knife",
+                  "Passing vivas"]
+        shuffle(skills)
+        self.add_title("Stephen's Skills")
+        next = 0
+        for skill in skills:
+            self.start_random_fg_color()
+            self.add_text(skill)
+            self.end_fg_color()
+            if next == 0:
+                self.move_cursor(x=38)
+            else:
+                self.add_newline()
+            next += 1
+            next %= 2
 
-page = VenusPage("111")
+
+stephen_page = StephenPage("111")

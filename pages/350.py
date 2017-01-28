@@ -4,7 +4,7 @@ import time
 
 class LotteryPage(Page):
     def __init__(self):
-        super(LotteryPage, self).__init__("555")
+        super(LotteryPage, self).__init__("350")
         self.title = "National Lottery"
         self.tagline = "Don't live a little, live a Lotto"
 

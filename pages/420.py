@@ -1,84 +1,311 @@
-import os
 from page import Page
-import time
-from config import now
-from math import cos,sin,floor,pi
-from random import choice
 
-class TimePage(Page):
-    def __init__(self):
-        super(TimePage, self).__init__("420")
-        self.title = "Time"
-        self.index_num = "420-421"
-        self.tagline = "KLB Mean Time"
 
-    def generate_content(self,debug=False):
-        from file_handler import load_file
-        clock = load_file("clock.txt").split("\n")
-        clock = [[j=="X" for j in i] for i in clock]
-        minute = [[False]*len(i) for i in clock]
-        hour   = [[False]*len(i) for i in clock]
+class JigPage(Page):
+    def __init__(self,page_num):
+        super(JigPage, self).__init__(page_num)
+        self.in_index = False
+        self.title = "Patronus"
+        self.tagline = "EXPECTO PATRONUM!"
 
-        current_minute = float(now().strftime("%M"))
-        current_hour = float(now().strftime("%I"))
-        current_weekday = now().strftime("%a")
-        if current_weekday == "Mon": bgcolor = "LIGHTRED"
-        if current_weekday == "Tue": bgcolor = "YELLOW"
-        if current_weekday == "Wed": bgcolor = "LIGHTCYAN"
-        if current_weekday == "Thu": bgcolor = "LIGHTGREEN"
-        if current_weekday == "Fri": bgcolor = "PINK"
-        if current_weekday == "Sat": bgcolor = "LIGHTBLUE"
-        if current_weekday == "Sun": bgcolor = "RED"
-        self.add_title(now().strftime("%A %-d %b"),bg=bgcolor,fg="BLACK")
+    def generate_content(self):
+        import random
+        squirrel = u"""
+          00000000000
+      00000000       0000000           0
+        000000             0000      0000  00
+              00            00       00 0 0
+             000          000     0000    00
+            000          000  000000       0000
+          000          000000000              00
+        000           000000               00 00
+      000            0000                 000 00
+     000            0000             000      00
+    00             000             0000000    00
+   00             000                 000000000  00
+  00              00                     00    0000
+  00             000               000     00000  0
+  00             00            000000000000    00  0
+  00             00              0000     0000 000 0
+  0             00                 00      000000 00
+  00            00                  00      00   00
+  00            00                  00      00000
+    0        00000                0000000
+     00000000    00                   00
+                 0000000000000000  000
+"""
+        chicken = """     ,~.
+   ,-'__ `-,
+  {,-'  `. }              ,')
+ ,( a )   `-.__         ,',')~,
+<=.) (         `-.__,==' ' ' '}
+  (   )                      /)
+   `-'|   ,                    )
+       |  |        `~.        /
+       |   `._        |      /
+        |     `._____,'    ,'
+         `-.             ,'
+            `-._     _,-'
+                77jj'
+               //_||
+            __//--'/`
+          ,--'/`  '"""
 
-        circle_radius = 19
-        screen_radius = 19
+        cat = """                 .-.   _                __
+                `  )`'-,`|        .-''``.-'
+   _.-''-.      _.'       `'--._.' ,-'  /
+   `|    _`'--'`                      .'
+     '._ _`-       .--.   .--.      (`
+        `.'       /    '.'    |      '.
+       .'         |  0  |  0  /        '.
+      /   _        '._.---._.'      _    |
+      /    `'-.      (     )    .-'`     |
+      / .---'_.   .   `-,-`  .  ._'---.  |
+      |   -'`   .       |      .  `'-    |
+      /_       .   '   /;|  '    .     ,_|
+        '-.     '-..-`( ' )`-..-'     /
+           '._         '-'         _.'
+              '-..,__       __,..-'
+                     `'---'`"""
 
-        d = .3
-        num_points = 25
-        current_hourtopointat = current_hour + current_minute/60.
+        magpie = """                                                 ,::::.._
+                                               ,':::::::::.
+                                           _,-'`:::,::(o)::`-,.._
+                                        _.', ', `:::::::::;'-..__`.
+                                   _.-'' ' ,' ,' ,|:::,'::-`'''
+                               _.-'' , ' , ,'  ' ,' `:::/
+                         _..-'' , ' , ' ,' , ,' ',' '/::
+                 _...:::'`-..'_, ' , ,'  , ' ,'' , ,'::|
+              _`.:::::,':::::,'::`-:..'_',_'_,'..-'::,'|
+      _..-:::'::,':::::::,':::,':,'::,':::,'::::::,':::;
+        `':,'::::::,:,':::::::::::::::::':::,'::_:::,'/
+        __..:'::,':::::::--''' `-:,':,':::'::-' ,':::/
+   _.::::::,:::.-''-`-`..'_,'. ,',  , ' , ,'  ', `','
+ ,::SSt:''''`                 |:. . ,' '  ,',' '_,'
+                               ``::._,'_'_,',.-'
+                                   || ||
+                                    ||_||
+                                     ||`-`.-'_
+                                  .`-.||__`. ``
+                                     ``-.-._"""
 
-        for a in range(0,num_points+1):
-            r = circle_radius*a*.5/num_points
-            hx = r*cos(pi/2 - current_hourtopointat*2*pi/12)
-            hy = r*sin(pi/2 - current_hourtopointat*2*pi/12)
-            for dx in [-d,d]:
-                for dy in [-d,d]:
-                    hour_x = screen_radius + int(floor(hx+.5+dx))
-                    hour_y = screen_radius - int(floor(hy+.5+dy))
-                    hour[hour_y][hour_x] = True
-            r = circle_radius*a*.8/num_points
-            mx = r*cos(pi/2 - current_minute*2*pi/60)
-            my = r*sin(pi/2 - current_minute*2*pi/60)
-            for dx in [-d,d]:
-                for dy in [-d,d]:
-                    minute_x = screen_radius + int(floor(mx+.5+dx))
-                    minute_y = screen_radius - int(floor(my+.5+dy))
-                    minute[minute_y][minute_x] = True
+        giraffe = """             .-.  .-.
+             |  |/  |
+            /,   ,_  `'-.
+          .-||   /`|     '.
+        .'  0/   | 0|  |_  `".
+     .-'  _,/    '--'.'|#''---'
+      `--'  |       /   |#
+            |      /     |#
+            |     ;||    .|#
+            |' ' //  |   ::|#
+            |   /`    |   ':|#
+             `"`       |..   |#
+                        |::.  |#
+                         |::   |#
+                          |'  .:|#
+                           |  :::|#
+                            |  '::|#
+                             |     |#
+                              | """
 
-        output = ""
-        for y in range(0, 2*screen_radius+1):
-            for x in range(0, 2*screen_radius+1):
-                if clock[y][x] or minute[y][x] or hour[y][x]:
-                    output += "X"
-                else:
-                    output += " "
-        output = output + " "*(2*screen_radius + 1)
-        output2 = ""
-        for y in range(0, 2*screen_radius+1, 2):
-            output2 = output2 + " "*(screen_radius+1)
-            for x in range(0, 2*screen_radius+1):
-                letter0 = output[y*(2*screen_radius+1)+x]
-                letter1 = output[(y+1)*(2*screen_radius+1)+x]
-                if letter0 == " " and letter1 == " ":
-                    output2 = output2 + " "
-                elif letter0 == "X" and letter1 == "X":
-                    output2 = output2 + u"\u2588"
-                elif letter0 == "X" and letter1 == " ":
-                    output2 = output2 + u"\u2580"
-                else:
-                    output2 = output2 + u"\u2584"
-            if y != 2*screen_radius: output2 = output2 + "\n"
-        self.add_text(output2)
 
-currency_page = TimePage()
+        wombat = '''                               ,.--""""--.._
+                             ."     .'      `-.
+                            ;      ;           ;
+                           '      ;             )
+                          /     '             . ;
+                         /     ;     `.        `;
+                       ,.'     :         .     : )
+                       ;||'    :      `./|) |  ;/
+                       ;| |"  -,-   "-./ |;  ).;
+                       /|/              |/   );
+                      :                 |    ;
+                      :     _      _     ;   )
+                      `.   |;|    /;/    ;  /
+                        !    :   :     ,/  ;
+                         (`. : _ : ,/""   ;
+                          |||`"^" ` :    ;
+                                   (    )
+                                   //// '''
+
+        kestral = '''((
+||``.
+|_`.``-.
+( `.`.` `._
+ `._`-.    `._
+   |`--.   ,' `.
+    `--._  `.  .`.
+     `--.--- `. ` `.
+         `.--  `;  .`._
+           :-   :   ;. `.__,.,__ __
+            `|  :       ,-(     ';o`>.
+              `-.`:   ,'   `._ .:  (,-`,
+                 |    ;      ;.  ,:
+             ,"`-._>-:        ;,'  `---.,---.
+             `>'"  "-`       ,'   "":::::".. `-.
+              `;"'_,  (|`| _ `:::::::::::'"     `---.
+               `-(_,' -'),)|`.       _      .::::"'  `----._,-"")
+                   |_,': `.-' `-----' `--;-.   `.   ``.`--.____/
+                     `-^--'                |(-.  `.``-.`-=:-.__)
+                                            `  `.`.`._`.-._`--.)
+                                                 `-^---^--.`-- '''
+
+        fox = '''                                                            ,-,
+                                                      _.-=;~ /_
+                                                   _-~   '     ;.
+                                               _.-~     '   .-~-~`-._
+                                         _.--~~:.             --.____88
+                              ____...-~~~. .' .  .        _..-------~~
+                     _..--~~~~        .' .'             ,'
+                 _.-~                 .       .     ` ,'
+               .'                             :.    ./
+             .:     ,/          `            ::.   ,'
+           .:'     ,(            ;.         ::. ,-'
+          .'     ./'.`.     . . /:::..... _/:.o/
+         /     ./'. . .)  . _.,'        `88;?88|
+       ,'  . .,/'._,-~ /_.o8P'           88P ?8b
+    _,'' . .,/',-~    d888P'             88'  88|
+ _.'~  . .,:oP'        ?88b          --- 88.--'8b.--..__
+:     ...' 88o __,------.88o ...__...    `~~   `~~      ~-.
+`.;;;:='    ~~            ~~~         ~-    -       -   - '''
+
+
+        elephant = '''              ___.-~"~-._   __....__
+            .'    `    | ~"~        ``-.
+           /` _      )  `|              `|
+          /`  a)    /     |               `|
+         :`        /      |                 |
+    <`-._|`  .-.  (      /   .            `;||
+     `-. `--'_.'-.;|___/'   .      .       | ||
+  _     /:--`     |        /     /        .'  ||
+ ("|   /`/        |       '     '         /    :`;
+ `|'|_/`/         .|     /`~`=-.:        /     ``
+   `._.'          /`|    |      `|      /(
+                 /  /|   |        `Y   /  |
+                J  /  Y  |         |  /`|  |
+               /  |   |  |         |  |  |  |
+              "---"  /___|        /___|  /__|
+                     '"""         '"""  '""" '''
+
+        hyena = '''                     /
+                 _,     _,
+                /)|    /)|
+                |_'-"`/(_/```",,
+                  /   <        ``--._
+                  |. _ )     `    *  ',
+                  ^  ^/_,     *     (|*|
+                  (#_/  `|)  /'  * - ))_|
+                   U      |  |*   _,//_ *
+                           ) >|_* ((||_/
+                           | | |  | # (
+                            |#  |#| | #
+                             ||  |(  )/
+                             _)> _))/(_
+                   .-||,, , /||//|//||/),, ,,)/
+                     ,|.        .-    -'-,)|/.')) '''
+
+        dragon = """                 .
+             ___/|'              _____
+        ____/_. .'              //'''/
+     _ ~|,, @   }|            .'____(___        .
+     |(====)   } >           '/.------'/   ___ /_|
+        |^^_  }  |          / |--'._  (   / _ |//
+        |/  | _   >       .'/|_-.. ''-.> ( (_) )'
+             (_)xx|  ____//|'. ''|'.  '___|_/ .'
+             (__)xx>/--/-|' '.|   ''|.' .___.'
+      <)=|   (__)x//_//  ||  _||__ .'   )
+     <)=+ '.  (_)_/ |/|__||_/  ' |'xxxxx '.
+      <)= . '._(_(  __   |/       |_ xxxx  |
+        |/ '.  _|| /   _/_/_/~~/~~~/'.___.  '.__
+        '    |/ /  _  )       ( /_ |      |_    |
+               / // |/        '.  |/~       |  |/~
+           <)=/ //          <)=/ //      <)=/ //
+          <)=+  (          <)=+  (      <)=+
+           <)=.'|=(>        <)=.'|=(>    <)=.'|=(>"""
+
+        hedgehog = """
+
+                                     | / |/ |/ / ,
+                                   | /  |/ |/  |/  / ,
+                                 | | |/ |/ |/ | |/ |/ /
+                               .|  |/  |/ |/ |/  |/ / / /
+                              '  / / |/  |/ |/ |/  |/ | |/ |
+                           .'     ) |/ |/ |/ |/  |/  |/ | / |
+                          /   o    ) |/ |/ |/ |/ |/ |/ |// /
+                        o'_ ',__ .'   ,.,.,.,.,.,.,.,'- '%
+                                 // ||          // ||
+                                ''  ''         ''  ''"""
+
+        stork = """                     ,-~.
+                    :  .o |
+                    `.   _/`.
+                      `.  `. `.
+                        `.  ` .`.
+                          `.  ``.`.
+                  _._.-. -._`.  `.``.
+              _.'            .`.  `. `.
+           _.'            )     |   '
+         .'             _.          "
+       .'.-.'._     _.-'            "
+     ;'       _'-.-'              "
+    ; _._.-.-;  `.,,_;  ,..,,,.:"
+   %-'      `._.-'   |_/   :;;
+                     | |
+                     : :
+                     | |
+                     { }
+                      ||
+                      ||
+                      ||
+                      ||
+                    _ ;; _
+                   ''-' `-''"""
+
+        ant = """
+              |     |
+               |   /
+                |_/
+           __   /^|   __
+          '  `. |_/ ,'  `
+               |/ |/
+          _,--./| ||.--._
+       _,'   _.-|_/-._   `._
+            |   / |   |
+            |  /   |  |
+           /   |   |   |
+         -'    |___/    `-"""
+
+        dog = """           ____,'`-,
+      _,--'   ,/::.;
+   ,-'       ,/::,' `---.___        ___,_
+   |       ,:';:/        ;'"`;"`--./ ,-^.;--.
+   |:     ,:';,'         '         `.   ;`   `-.
+    |:.,:::/;/ -:.                   `  | `     `-.
+     |:::,'//__.;  ,;  ,  ,  :.`-.   :. |  ;       :.
+      |,',';/O)^. :'  ;  :   '__` `  :::`.       .:' )
+      |,'  ||__,: ;      ;  '/O)`.   :::`;       ' ,'
+           |`--''            |__,' , ::::(       ,'
+           `    ,            `--' ,: :::,'|   ,-'
+            | ,;         ,    ,::'  ,:::   |,'
+            |,:        .(          ,:::|   `
+            ::'_   _   ::         ,::/:|
+           ,',' `-' |   `.      ,:::/,:|
+          | : _  _   |   '     ,::,' :::
+          | | O`'O  ,',   ,    :,'   ;::
+           | `-'`--',:' ,' , ,,'      ::
+            ``:.:.__   ',-','        ::'
+               `--.__, ,::.         ::'
+                   |:  ::::.       ::'
+                   |:  ::::::    ,::' """
+
+        j = random.choice(range(15))
+        title = ["Chunxin","Sam","Anna","Huda","Raf","Scroggs","Pietro","Ginbelg","Olly","Adam","Mart","Doaky","James","Antonio","Luca"][j]
+        picture = [squirrel,chicken,cat,magpie,giraffe,wombat,kestral,fox,elephant,hyena,dragon,hedgehog,stork,ant,dog][j]
+
+        self.add_title(title,bg="BLUE",fg="PINK",font="size4")
+        self.add_text(picture)
+
+
+
+page = JigPage("420")
