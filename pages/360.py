@@ -99,7 +99,7 @@ class WhoPage(Page):
 
         t_count = 0
         for t in self.tweets:
-            if t_count < 5:
+            if t_count < 4:
                 if t_count == 0:
                     dash = ""
                 else:
