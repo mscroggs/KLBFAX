@@ -28,6 +28,7 @@ class WhoPage(Page):
     def background(self):
         import urllib2
         from datetime import datetime
+        import re
 
         try:
             with open("/home/pi/login.json") as f:
@@ -71,9 +72,9 @@ class WhoPage(Page):
                     this = []
                     this.append(datetime.strftime(datetime.strptime(str(created_at), '%Y-%m-%d %H:%M:%S'),"%a %d %b, %H:%M"))
                     this.append(original0_username)
-                    this.append(original0_text)
+                    this.append(re.sub("http.\S+","[link]",original0_text))
                     this.append(original_username)
-                    this.append(original_text)
+                    this.append(re.sub("http.\S+","[link]",original_text))
                     this.append(reply_username)
                     this.append(reply_text.replace("@who_is_Peter",""))
                     self.tweets.append(this)
@@ -105,7 +106,7 @@ class WhoPage(Page):
                 else:
                     dash = u"─"
                 self.start_fg_color("GREEN")
-                self.add_text("[ " + t[0] + " ]" + dash*50) # date
+                self.add_text("[ " + t[0] + " ]" + dash*56) # date
                 self.start_fg_color("DEFAULT")
                 self.add_newline()
                 if t[1] != "":
