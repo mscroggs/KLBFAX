@@ -45,7 +45,7 @@ class WhoPage(Page):
 
         peter_replies = api.search(q="@who_is_peter",show_user=True,count=15)
         self.tweets = []
-        for tweet in peter_replies[0:4]:
+        for tweet in peter_replies:
             who_id = tweet.in_reply_to_status_id
             reply_username =  tweet.author.screen_name
             reply_text = tweet.text
@@ -99,34 +99,35 @@ class WhoPage(Page):
 
         t_count = 0
         for t in self.tweets:
-            if t_count == 0:
-                dash = ""
-            else:
-                dash = u"─"
-            self.add_text("[ " + t[0] + " ]" + dash*50) # date
-            self.add_newline()
-            if t[1] != "":
-                self.start_fg_color("LIGHTCYAN")
-                self.add_text("@" + t[1] + ": ")
-                self.end_fg_color()
-                self.add_text(t[2])
+            if t_count < 4:
+                if t_count == 0:
+                    dash = ""
+                else:
+                    dash = u"─"
+                self.add_text("[ " + t[0] + " ]" + dash*50) # date
                 self.add_newline()
-            self.start_fg_color("YELLOW")
-            self.add_text("@" + t[3] + ": ")
-            self.end_fg_color()
-            self.add_wrapped_text(t[4])
-            self.add_newline()
-            self.start_fg_color("PINK")
-            self.add_text("@who_is_peter: Who?")
-            self.end_fg_color()
-            self.add_newline()
-            self.start_fg_color("YELLOW")
-            self.add_text("@" + t[5] + ": ")
-            self.end_fg_color()
-            self.add_wrapped_text(t[6])
-            self.add_newline()
-            #self.add_text("----------------")
-            #self.add_newline()
-            t_count = t_count + 1
+                if t[1] != "":
+                    self.start_fg_color("LIGHTCYAN")
+                    self.add_text("@" + t[1] + ": ")
+                    self.end_fg_color()
+                    self.add_text(t[2])
+                    self.add_newline()
+                self.start_fg_color("YELLOW")
+                self.add_text("@" + t[3] + ": ")
+                self.end_fg_color()
+                self.add_wrapped_text(t[4])
+                self.add_newline()
+                self.start_fg_color("PINK")
+                self.add_text("@who_is_peter: Who?")
+                self.end_fg_color()
+                self.add_newline()
+                self.start_fg_color("YELLOW")
+                self.add_text("@" + t[5] + ": ")
+                self.end_fg_color()
+                self.add_wrapped_text(t[6])
+                self.add_newline()
+                #self.add_text("----------------")
+                #self.add_newline()
+                t_count = t_count + 1
 
 page = WhoPage("360")
