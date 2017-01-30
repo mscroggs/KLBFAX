@@ -11,7 +11,7 @@ class Horoscope(Page):
         response = urllib2.urlopen("http://a.knrz.co/horoscope-api/current")
         self.horo = json.load(response)
         for i,scope in enumerate(horo):
-            self.horo[i]["prediction"] = "'".join(scope["prediction"].split(u"\u2019")
+            self.horo[i]["prediction"] = "'".join(scope["prediction"].split(u"\u2019"))
 
     def generate_content(self):
         from functions import klb_replace
