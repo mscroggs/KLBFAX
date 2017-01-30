@@ -14,14 +14,15 @@ class Horoscope(Page):
     def generate_content(self):
         from functions import klb_replace
         import config
-        from random import choice
+        from random import shuffle
 
         self.add_title("Horoscope",font="size4")
-        scope = choice(self.horo)
-        self.add_newline()
-        self.add_title(klb_replace(scope["sign"]),fg="RED",bg="WHITE",font="size4")
-        self.add_newline()
-        self.add_wrapped_text(klb_replace(scope["prediction"]))
-        self.add_newline()
+        shuffle(self.horo)
+        for scope in self.horo:
+            self.add_newline()
+            self.add_title(klb_replace(scope["sign"]),fg="RED",bg="WHITE",font="size4")
+            self.add_newline()
+            self.add_wrapped_text(klb_replace(scope["prediction"]))
+            self.add_newline()
 
 muirheadpage = Horoscope("160")
