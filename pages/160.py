@@ -3,7 +3,7 @@ from page import Page
 class Horoscope(Page):
     def __init__(self,page_num):
         super(Horoscope, self).__init__(page_num)
-        self.title = "Horoscope"
+        self.title = "Horoscopes"
 
     def background(self):
         import urllib2
@@ -16,9 +16,9 @@ class Horoscope(Page):
         import config
         from random import shuffle
 
-        self.add_title("Horoscope",font="size4")
+        self.add_title("Horoscopes",font="size4")
         shuffle(self.horo)
-        for scope in self.horo:
+        for scope in self.horo[:3]:
             self.add_newline()
             self.add_title(klb_replace(scope["sign"]),fg="RED",bg="WHITE",font="size4")
             self.add_wrapped_text(klb_replace(scope["prediction"]))
