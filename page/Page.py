@@ -5,7 +5,6 @@ from cupt import CuPT
 
 class Page(object):
     def __init__(self, number):
-        self.content = ""
         self.is_enabled = True
         self.in_index = True
         self.index_num = None

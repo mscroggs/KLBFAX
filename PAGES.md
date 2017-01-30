@@ -18,6 +18,7 @@ The pages in brackets are disabled.
 130 House Points
 131 House Points
 132 Flat Points
+160 Horoscope
 300 Marts
 301 Sportsmart
 302 mscroggs.co.ukmart
