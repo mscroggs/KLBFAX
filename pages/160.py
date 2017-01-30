@@ -21,7 +21,6 @@ class Horoscope(Page):
         for scope in self.horo:
             self.add_newline()
             self.add_title(klb_replace(scope["sign"]),fg="RED",bg="WHITE",font="size4")
-            self.add_newline()
             self.add_wrapped_text(klb_replace(scope["prediction"]))
             self.add_newline()
 
