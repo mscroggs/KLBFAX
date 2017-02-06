@@ -18,7 +18,7 @@ The pages in brackets are disabled.
 130 House Points
 131 House Points
 132 Flat Points
-160 Horoscope
+160 Horoscopes
 300 Marts
 301 Sportsmart
 302 mscroggs.co.ukmart
@@ -42,6 +42,7 @@ The pages in brackets are disabled.
 340 Time
 341 Time
 350 National Lottery
+370 Six Nations
 400 Art
 401 Venus
 402 Jigsaw
