@@ -52,11 +52,11 @@ r3 = RecipePage("693","Cherry Clafoutis","""
 
 1. To be continued...""")
 
-r4 = RecipePage("694","Cheese Twists",
+r4 = RecipePage("694","Pesto Twists",
 """
     1 sheet Puff pastry (all butter)
     100g    Soft cheese
-    100g    Pesto (see page 585)
+    100g    Pesto (see page 695)
     1       Egg (yolk only)
 
 1. Cut pastry sheet in half.
