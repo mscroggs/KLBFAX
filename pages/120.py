@@ -43,3 +43,4 @@ class OllyPage(Page):
 j_page = OllyPage("120","Jigsaw",datetime.datetime(2016, 3, 24, 17, 0),"120-122")
 o_page = OllyPage("121","Olly",datetime.datetime(2016, 3, 24, 17, 0))
 b_page = OllyPage("122","Belgin",datetime.datetime(2018, 8, 31, 16, 0))
+a_page = OllyPage("123","Adam",datetime.datetime(2017, 4, 28, 17, 0))
