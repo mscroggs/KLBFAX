@@ -48,9 +48,9 @@ def add_points(house, number, deets=""):
         else:
             with open(join(expanduser('~'), '.points/602points'), 'a') as f:
                 if number == 1:
-                    f.write(house+","+str(number)+","+deets + str(number)+" point to "+house+"!")
+                    f.write(house+","+str(number)+","+deets + str(number)+" point to "+house+"!\n")
                 else:
-                    f.write(house+","+str(number)+","+deets + str(number)+" points to "+house+"!")
+                    f.write(house+","+str(number)+","+deets + str(number)+" points to "+house+"!\n")
             
 
 def should_add_morning_points(time, house, lines, oldname):
