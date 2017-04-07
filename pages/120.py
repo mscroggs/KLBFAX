@@ -40,7 +40,7 @@ class OllyPage(Page):
             self.add_title(left2,fg="BRIGHTWHITE",bg="BLACK")
             self.add_title("ago",fg="LIGHTGREEN",bg="BLACK")
 
-j_page = OllyPage("120","Jigsaw",datetime.datetime(2016, 3, 24, 17, 0),"120-122")
+j_page = OllyPage("120","Jigsaw",datetime.datetime(2016, 3, 24, 17, 0),"120-123")
 o_page = OllyPage("121","Olly",datetime.datetime(2016, 3, 24, 17, 0))
 b_page = OllyPage("122","Belgin",datetime.datetime(2018, 8, 31, 16, 0))
 a_page = OllyPage("123","Adam",datetime.datetime(2017, 4, 28, 17, 0))

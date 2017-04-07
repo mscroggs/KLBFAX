@@ -48,6 +48,8 @@ class PointsPage(Page):
         else:                    r = "0"
         if "Durmstrang" in data: d = points_format(data["Durmstrang"],log)
         else:                    d = "0"
+        if "Postdoc" in data: po = points_format(data["Postdoc"],log)
+        else:                 po = "0"
 
         self.add_title(points_names[log])
         self.add_text("What do points mean?")
@@ -77,10 +79,16 @@ class PointsPage(Page):
         self.move_cursor(x=27, y=23)
         self.add_text("Hufflepuff",fg="YELLOW",bg="GREY")
 
-        self.move_cursor(x=54, y=16)
-        self.add_title(d,fg="RED",bg="GREEN",fill=False,pre=54)
-        self.move_cursor(x=54, y=23)
-        self.add_text("Durmstrang",fg="RED",bg="GREEN")
+        if config.NAME == "KLBFAX":
+            self.move_cursor(x=54, y=16)
+            self.add_title(d,fg="RED",bg="GREEN",fill=False,pre=54)
+            self.move_cursor(x=54, y=23)
+            self.add_text("Durmstrang",fg="RED",bg="GREEN")
+        else:
+            self.move_cursor(x=54, y=16)
+            self.add_title(po,fg="RED",bg="GREEN",fill=False,pre=54)
+            self.move_cursor(x=54, y=23)
+            self.add_text("Postdoc",fg="RED",bg="GREEN")
 
         self.add_newline()
 
