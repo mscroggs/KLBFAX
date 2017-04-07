@@ -16,6 +16,7 @@ class PointsPage(Page):
         self.in_index = False
 
     def background(self):
+        import os
         files = ["points"]
         if config.NAME == "KLBFAX":
             for f in files:
