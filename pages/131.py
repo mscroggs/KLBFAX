@@ -17,7 +17,7 @@ class PointsPage(Page):
 
     def background(self):
         import os
-        files = ["points"]
+        files = ["points","events","emails"]
         if config.NAME == "KLBFAX":
             for f in files:
                 os.system("scp /home/pi/.klb/"+f+" mscroggs:~/.klbdump/"+f+" > /dev/null 2>&1")
