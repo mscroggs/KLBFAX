@@ -20,6 +20,27 @@ The pages in brackets are disabled.
 131 House Points
 132 Flat Points
 160 Horoscopes
+200 Letters
+201 Letters
+202 Letters
+203 Letters
+204 Letters
+205 Letters
+206 Letters
+207 Letters
+208 Letters
+209 Letters
+210 Letters
+211 Letters
+212 Letters
+213 Letters
+214 Letters
+215 Letters
+216 Letters
+217 Letters
+218 Letters
+219 Letters
+220 Letters
 300 Marts
 301 Sportsmart
 302 mscroggs.co.ukmart

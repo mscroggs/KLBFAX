@@ -15,6 +15,15 @@ class PointsPage(Page):
         self.title = "House Points"
         self.in_index = False
 
+    def background(self):
+        files = ["points"]
+        if config.NAME == "KLBFAX":
+            for f in files:
+                os.system("scp /home/pi/.klb/"+f+" mscroggs:~/.klbdump/"+f+" > /dev/null 2>&1")
+        else:
+            for f in files:
+                os.system("scp mscroggs:~/.klbdump/"+f+" /home/pi/.klb/"+f+" > /dev/null 2>&1")
+
     def generate_content(self):
         import json
         from operator import itemgetter
