@@ -81,7 +81,7 @@ class LetterPage(Page):
 
         self.add_title("Have your say",font="size4")
         a = str(self.n)+"/21"
-        self.move_cursor(x=90-len(a)):
+        self.move_cursor(x=90-len(a))
         self.add_text(a, fg="BLUE", bg="YELLOW")
         self.move_cursor(x=0)
         self.start_random_bg_color()
