@@ -1,6 +1,7 @@
 from page import Page
 from math import floor
 from file_handler import f_read_json
+import config
 
 def points_format(points,log=0):
     points = int(points)
