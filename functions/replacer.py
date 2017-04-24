@@ -67,7 +67,10 @@ def klb_replace(imput):
             ["Rafael","Rafeal"],
             ["Eleanor","Eleanorovirus"],
             ["Scorpio","Scorpions"],
-            ["Election","UCLU Election"],
+            ["General Election","Winter Olympics"],
+            ["Snap Election","Olympics"],
+            ["Election","Olympics"],
+            ["Corbyn","Clarkson"],
             ["Le Pen","Le Pencil"],
             ["Hollande","Netherlandse"]
         ]
