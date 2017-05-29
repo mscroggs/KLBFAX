@@ -18,7 +18,7 @@ class OllyPage(Page):
         delta = self.when - datetime.datetime.now()
         hs = delta.seconds/3600
         ds = delta.days
-        if ds > 0:
+        if ds >= 0:
             left = str(ds) + " day"
             left2 = str(hs) + " hour"
             if ds!=1: left += "s"
