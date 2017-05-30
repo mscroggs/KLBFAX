@@ -72,7 +72,8 @@ def klb_replace(imput):
             ["Election","Olympics"],
             ["Corbyn","Clarkson"],
             ["Le Pen","Le Pencil"],
-            ["Hollande","Netherlandse"]
+            ["Hollande","Netherlandse"],
+            ["Michael","Pichael"]
         ]
     for swap in swaps:
         imput = re.sub("(^|[^A-Za-z])"+swap[0]+"($|[^A-Za-z])(?i)",r"\1"+swap[1]+r"\2",imput)
