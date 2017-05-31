@@ -77,7 +77,7 @@ news_page5 = NewsPage(304, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Sh
 news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
 news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
 news_page8 = NewsPage(308, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart","description")
-news_page9 = NewsPage(309, "https://alanlovesbooks.wordpress.com/feed/","Booksmart","description")
+news_page9 = NewsPage(309, "https://aliandsomebooks.wordpress.com/feed/","Booksmart","description")
 news_page10 = NewsPage(310, "https://quotesponge.wordpress.com/feed/","Musicmart","description")
 
 
