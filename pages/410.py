@@ -5,8 +5,8 @@ class JigPage(Page):
     def __init__(self,page_num):
         super(JigPage, self).__init__(page_num)
         self.in_index = False
-        self.title = "TD"
-        self.tagline = "TD"
+        self.title = "TD Slang"
+        self.tagline = "TD Slang is the worst"
 
     def generate_content(self):
         td = """###+#++++''++'++#+++###++';;;:::::,,,,,,,,,,,,,,.,,,,.,,,..,,,,,,,,::::;;;+++#++++#####+'+:#.+'#####
