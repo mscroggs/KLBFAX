@@ -2,6 +2,7 @@ import json
 import config
 from os.path import expanduser, join
 import os
+import file_handler
 
 def update_status(status=None):
     if config.NAME in ["KLBFAX","602FAX"]:
@@ -26,7 +27,7 @@ def add_points(house, number, deets=""):
                 deets += " "
             elif deets[-2] not in [".","!",":","?"]:
                 deets = deets[:-2] + ". "
-            
+
         while u"\u0000" in house:
             house = house.strip(u"\u0000")
         if config.NAME == "KLBFAX":
@@ -51,7 +52,6 @@ def add_points(house, number, deets=""):
                     f.write(house+","+str(number)+","+deets + str(number)+" point to "+house+"!\n")
                 else:
                     f.write(house+","+str(number)+","+deets + str(number)+" points to "+house+"!\n")
-            
 
 def should_add_morning_points(time, house, lines, oldname):
     if config.NAME in ["KLBFAX","602FAX"]:

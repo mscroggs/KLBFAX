@@ -21,6 +21,8 @@ def test_dir(directory):
         except:
             pass
 
+test_dir(default_path)
+
 def open_local(f_name, method="r"):
     try:
         return open(_join(_expanduser("~"), ".klb/" + f_name),method)

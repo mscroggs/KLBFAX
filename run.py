@@ -11,6 +11,14 @@ from ceefax import Ceefax
 from os.path import expanduser, join, isdir
 from os import mkdir
 
-c = Ceefax()
+import sys
+
+test = None
+
+for i,a in enumerate(sys.argv):
+    if a == "-t" and i+1 < len(sys.argv):
+        test = sys.argv[i+1]
+
+c = Ceefax(test)
 #c.disable_curses()
 c.begin()

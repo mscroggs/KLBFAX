@@ -132,11 +132,20 @@ class PageManager:
                     page.background_error = e
             sleep(60*30)
 
-    def start_loop(self):
+    def start_loop(self, test=None):
         try:
             import thread
         except ImportError:
             import _thread as thread
+        if test is not None:
+            page = self.pages[test]
+            try:
+                page.background_error = None
+                page.background_loaded = False
+                page.background()
+                page.background_loaded = True
+            except Exception as e:
+                page.background_error = e
         thread.start_new_thread(self.background_loop,())
         self.main_loop()
 
