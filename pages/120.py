@@ -3,6 +3,10 @@ import datetime
 
 class OllyPage(Page):
     def __init__(self, page_num,who,when,numb=None):
+
+        self.is_enabled = False
+
+
         super(OllyPage, self).__init__(page_num)
         self.title = "Countdowns"
         self.who = who
@@ -13,6 +17,7 @@ class OllyPage(Page):
             self.in_index = True
             self.index_num = numb
 
+        self.in_index = False
 
     def generate_content(self):
         delta = self.when - datetime.datetime.now()
