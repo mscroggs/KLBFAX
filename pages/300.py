@@ -41,7 +41,7 @@ class NewsPage(Page):
 
         def width_of_word(word):
             width = len(word)*5 \
-            - sum(map(word.upper().count, u"!:.'I’"))*3
+            - sum(map(word.upper().count, u"!:,‘’.'I’"))*3
             - sum(map(word.upper().count, u"-()1"))*2
             - sum(map(word.upper().count, u"T"))*1
             + sum(map(word.upper().count, u"MW"))*1
@@ -59,12 +59,12 @@ class NewsPage(Page):
         for word in self.words:
             if chars_left - width_of_word(word) <= 0:
                 chars_left = 80
-                self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
+                self.add_title(line,bg="YELLOW",fg="BLACK",font="size4")
                 line = word + " "
             else:
                 line = line + word + " "
             chars_left = chars_left - width_of_word(word) - 3
-        self.add_title(line+" ",bg="YELLOW",fg="BLACK",font="size4")
+        self.add_title(line,bg="YELLOW",fg="BLACK",font="size4")
         for item in self.entries:
             self.add_text(" - "+ item)
             self.add_newline()

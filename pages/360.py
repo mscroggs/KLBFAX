@@ -68,7 +68,7 @@ class WhoPage(Page):
                             original0_username = original0.author.screen_name
                             created_at = original0.created_at
                         except:
-                            continue
+                            pass
                     this = []
                     this.append(datetime.strftime(datetime.strptime(str(created_at), '%Y-%m-%d %H:%M:%S'),"%a %d %b, %H:%M"))
                     this.append(original0_username)
