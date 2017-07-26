@@ -30,6 +30,11 @@ def open_local(f_name, method="r"):
         folder = _dirname(_realpath(__file__))
         return open(_join(folder, "blank_file"))
 
+def open_html(f_name, method="r"):
+    html = _join(_dirname(_realpath(__file__)), "html")
+    test_dir(html)
+    return open(_join(html, f_name), method)
+
 def f_readlines(f_name):
     ret = []
     try:

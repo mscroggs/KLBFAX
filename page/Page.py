@@ -163,3 +163,6 @@ class Page(object):
     def reload(self):
         self.cupt.clear_content()
         self.generate_content()
+
+    def as_html(self):
+        return self.cupt.as_html()

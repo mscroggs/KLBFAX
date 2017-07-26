@@ -13,6 +13,9 @@ class CuPT:
         self.ls = []
         self.scr = scr
 
+    def as_html(self):
+        return "<html></html>"
+
     def clear_content(self):
         self.ls = []
 
