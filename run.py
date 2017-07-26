@@ -16,7 +16,7 @@ import sys
 test = None
 
 for i,a in enumerate(sys.argv):
-    if a == "-t" and i+1 < len(sys.argv):
+    if a in ["-t","--test","-T"] and i+1 < len(sys.argv):
         test = sys.argv[i+1]
 
 c = Ceefax(test)

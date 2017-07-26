@@ -2,12 +2,12 @@ import json
 import config
 from os.path import expanduser, join
 import os
-import file_handler
+from file_handler import open_local
 
 def update_status(status=None):
     if config.NAME in ["KLBFAX","602FAX"]:
         if status is not None:
-            with open(join(expanduser('~'), '.klb/tweet_me'), 'a+') as f:
+            with open_local('tweet_me', 'a+') as f:
                 f.write("\n"+status)
 
 def add_one_random(printing=False):
@@ -32,7 +32,7 @@ def add_points(house, number, deets=""):
             house = house.strip(u"\u0000")
         if config.NAME == "KLBFAX":
             try:
-                with open(join(expanduser('~'), '.klb/points'), 'r') as f:
+                with open_local('points', 'r') as f:
                     data = json.load(f)
             except:
                 data = {}
@@ -40,14 +40,14 @@ def add_points(house, number, deets=""):
                 data[house] += number
             else:
                 data[house] = number
-            with open(join(expanduser('~'), '.klb/points'), 'w+') as f:
+            with open_local('points', 'w+') as f:
                 json.dump(data, f)
             if number == 1:
                 update_status(status=deets + str(number)+" point to "+house+"!")
             else:
                 update_status(status=deets + str(number)+" points to "+house+"!")
         else:
-            with open(join(expanduser('~'), '.points/602points'), 'a') as f:
+            with open(join(expanduser("~"),'.points/602points'), 'a') as f:
                 if number == 1:
                     f.write(house+","+str(number)+","+deets + str(number)+" point to "+house+"!\n")
                 else:
