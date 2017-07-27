@@ -49,4 +49,4 @@ class OllyPage(Page):
             self.move_cursor(x=0,y=7+4*i)
             self.add_title(str(ds),bg="YELLOW",fg="BLACK",font="size4",pre=50)
             i+=1
-ghosts_page = OllyPage("126","126")
+ghosts_page = OllyPage("996","996")
