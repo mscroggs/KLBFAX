@@ -12,10 +12,13 @@ The pages in brackets are disabled.
 110 Jokes
 111 Stephen's Skills
 112 Where's Olly?
+113 The 10 Commitments
 120 Countdowns
 121 Countdowns
 122 Countdowns
 123 Countdowns
+125 Ghosts
+126 Countdown
 130 House Points
 131 House Points
 132 Flat Points
@@ -74,7 +77,7 @@ The pages in brackets are disabled.
 406 SCORPIONS
 407 Olly
 409 Squirrel
-410 TD
+410 TD Slang
 411 I'm a Teapot
 420 Patronus
 600 TV & Radio Index
