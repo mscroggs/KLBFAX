@@ -61,13 +61,14 @@ class OllyPageN(Page):
         people = [["Scroggs",datetime.datetime(2019, 3, 22, 17, 0)],
                   ["Belgin", datetime.datetime(2018, 9, 22, 16, 0)],
                   ["Rafeal", datetime.datetime(2017,12, 25, 16, 0)],
-                  ["Anna",   datetime.datetime(2017, 8, 31, 16, 0)],
-                  ["Adam",   datetime.datetime(2017, 4, 20, 17, 0)],
+                  ["Anna",   datetime.datetime(2017,11, 1,  16, 0)],
+                  ["Adam",   datetime.datetime(2017, 6, 20, 17, 0)],
                   ["Mart",   datetime.datetime(2016, 12,19, 17, 0)],
                   ["Huda",   datetime.datetime(2016, 11,25, 17, 0)],
-                  ["Jigsaw", datetime.datetime(2016, 3, 24, 17, 0)],
-                  ["Olly",   datetime.datetime(2016, 3, 24, 17, 0)],
-                  ["Ali",    datetime.datetime(2014, 11,20, 17, 0)],
+                  ["Sam",    datetime.datetime(2016, 9, 26, 17, 0)],
+                  ["Jigsaw", datetime.datetime(2016, 6, 2 , 17, 0)],
+                  ["Olly",   datetime.datetime(2016, 6, 2 , 17, 0)],
+                  ["Ali",    datetime.datetime(2015, 2, 20, 17, 0)],
                  ]
 
         ghosts = [person for person in people if (person[1] - datetime.datetime.now()).days < 0]
