@@ -7,3 +7,4 @@ metoffer
 tweepy
 nrewebservices
 feedparser
+gmail
