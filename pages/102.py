@@ -19,6 +19,7 @@ class BdayPage(Page):
                     "Martin Gardner": (10, 21),
                     "Jesus": (12, 25),
                     "Jigsaw": (1, 3),
+                    "The Queen": (4, 21),
                     "Chalkdust": (1, 27),
                     "ScroggsBot": (1, 10)
         }
