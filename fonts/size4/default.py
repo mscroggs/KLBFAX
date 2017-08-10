@@ -110,6 +110,20 @@ xx
 xx
 """)
 
+_add(u"‘","""
+'x
+,x
+xx
+xx
+""")
+
+_add(u"’","""
+'x
+,x
+xx
+xx
+""")
+
 _add(u"∨","""
 xxxxx
 'xx'x

@@ -16,21 +16,22 @@ def is_page_file(f):
     return True
 
 
-def get_ceefax():
+def get_ceefax(test=None):
     if Ceefax._instance is None:
-        Ceefax._instance = Ceefax()
+        Ceefax._instance = Ceefax(test)
     return Ceefax._instance
     
 
 class Ceefax:
     _instance = None
-    def __init__(self):
+    def __init__(self, test=None):
         self.start_time = config.now()
         if config.NAME == "KLBFAX":
             points.add_one_random(printing=True)
         if not os.path.isdir(config.config_dir):
             os.mkdir(config.config_dir)
         self.scr = None
+        self.test = test
 
     def begin(self):
         import locale
@@ -58,7 +59,7 @@ class Ceefax:
     def start_loop(self):
         from time import sleep
         try:
-            self.page_manager.start_loop()
+            self.page_manager.start_loop(self.test)
         except Exception as e:
             import sys
             import traceback
