@@ -2,10 +2,16 @@
 import sys
 sys.path.insert(0,'..')
 
+import os
+os.environ["WWW"] = "1"
+
 from page import PageManager, Page
+from ceefax import Ceefax
+
+cee = Ceefax()
 
 page_manager = PageManager(None)
-
-page_manager.load_all_pages()
+cee.page_manager = page_manager
 
 page_manager.export_all_to_html()
+

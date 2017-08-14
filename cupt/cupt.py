@@ -13,8 +13,65 @@ class CuPT:
         self.ls = []
         self.scr = scr
 
+
+    def add_to_grid(self, y, x, stuff):
+        try:
+            self.grid[y][x] = stuff
+        except IndexError:
+            pass
+
     def as_html(self):
-        return "<html></html>"
+        out = ""
+
+        self.grid = [[(" ",-1,-1) for j in range(self.WIDTH)]
+                     for i in range(self.HEIGHT)]
+        y, x = 0, 0
+        fg, bg = -1, -1
+        for bit in self.ls:
+            if isinstance(bit, Command):
+                if bit.c == "NEWLINE":
+                    y += 1
+                    x = 0
+            elif isinstance(bit, FGColor):
+                fg = bit.color
+            elif isinstance(bit, BGColor):
+                bg = bit.color
+            elif isinstance(bit, Move):
+                if bit.x is not None:
+                    x = bit.x
+                if bit.y is not None:
+                    y = bit.y
+            elif isinstance(bit, Block):
+                y,x = bit.as_html(y,x,self)
+            elif isinstance(bit, BlockedBlock):
+                y,x = bit.as_html(y,x,self)
+            else:
+                for cha in bit.text:
+                    self.add_to_grid(y,x,(cha,fg,bg))
+                    x += 1
+                    if bit.wrapping and x >= self.WIDTH:
+                        y += 1
+                        x = bit.pre
+        for line in self.grid:
+            for char,fg,bg in line:
+                out += "<span style='background-color:"
+                try:
+                    out += html_colors[bg]
+                except:
+                    out += "black"
+                out += ";color:"
+                try:
+                    out += html_colors[fg]
+                except:
+                    out += "white"
+                out += "'>"
+                if char == " ":
+                    out += "&nbsp;"
+                else:
+                    out += char.encode("utf-8")
+                out += "</span>"
+            out += "<br />"
+        return out
 
     def clear_content(self):
         self.ls = []
@@ -170,6 +227,26 @@ curses_colors = {
         "BRIGHTWHITE":(curses.COLOR_WHITE,1),
         "BLACK":(curses.COLOR_BLACK,0)
     }
+
+html_colors = {
+        "RED":"Red",
+        "LIGHTRED":"LightCoral",
+        "GREEN":"Green",
+        "LIGHTGREEN":"LightGreen",
+        "BLUE":"Blue",
+        "LIGHTBLUE":"SkyBlue",
+        "YELLOW":"Yellow",
+        "CYAN":"Cyan",
+        "LIGHTCYAN":"Aquamarine",
+        "ORANGE":"Orange",
+        "MAGENTA":"Magenta",
+        "PINK":"Pink",
+        "GREY":"Gray",
+        "WHITE":"White",
+        "BRIGHTWHITE":"White",
+        "BLACK":"Black"
+    }
+
 non_dark_colors = [
         "RED",
         "LIGHTRED",
@@ -229,6 +306,32 @@ class Block:
                 x = 0
         return y,x
 
+    def as_html(self, y, x, cupt):
+        if x!=0:
+            x,y = 0,y+1
+
+        for line in self.block.split("\n"):
+            if line!="":
+                for j in line:
+                    if j ==" ":
+                        if self.bg is None:
+                            cupt.add_to_grid(y,x,(" ",-1,-1))
+                        else:
+                            cupt.add_to_grid(y,x,(" ",-1,self.bg))
+                    else:
+                        try:
+                            cupt.add_to_grid(y,x,(" ",-1,self.cols[int(j)]))
+                        except:
+                            cupt.add_to_grid(y,x,(j,-1,-1))
+                    x+=1
+                if self.bg is not None:
+                    while x<config.WIDTH:
+                        cupt.add_to_grid(y,x,(" ",-1,self.bg))
+                        x += 1
+                y += 1
+                x = 0
+        return y,x
+
 cmap = {
         "x":u"\u2588",
         "'":u"\u2580",
@@ -264,6 +367,34 @@ class BlockedBlock:
                             break
                     else:
                         cupt.add_char(y,x," ",my_csty)
+                    x += 1
+                y += 1
+                x = self.pre
+        return y,x
+
+    def as_html(self, y, x, cupt):
+        from random import choice
+
+        fg=self.fg
+        bg=self.bg
+
+        if x>self.pre:
+            x,y = self.pre,y+1
+        if x<self.pre:
+            x = self.pre
+
+        for line in self.block.split("\n"):
+            if line!="":
+                for j in line:
+                    if self.rainbow:
+                        fg=choice(non_dark_colors)
+                        bg = -1
+                    for inc,outc in cmap.items():
+                        if j==inc:
+                            cupt.add_to_grid(y,x,(outc,fg,bg))
+                            break
+                    else:
+                        cupt.add_to_grid(y,x,(" ",fg,bg))
                     x += 1
                 y += 1
                 x = self.pre

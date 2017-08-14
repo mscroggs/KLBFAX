@@ -165,4 +165,9 @@ class Page(object):
         self.generate_content()
 
     def as_html(self):
-        return self.cupt.as_html()
+        try:
+            self.background()
+            self.generate_content()
+            return self.cupt.as_html()
+        except:
+            return "Error loading page..."

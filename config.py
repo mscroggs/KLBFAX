@@ -36,12 +36,14 @@ default_page_duration_sec = int(os.getenv('default_page_duration_sec', 30))
 
 weather_f_name = 'uk_weather_data'
 
-if os.getenv("SLAVE") and not os.getenv("EXPORT_ME"):
+if os.getenv("SLAVE"):
     NAME = "28JHFAX"
 elif os.getenv("EMF"):
     NAME = "EMFFAX"
 elif os.getenv("POST"):
     NAME = "602FAX"
+elif os.getenv("WWW"):
+    NAME = "WWWFAX"
 else:
     NAME = "KLBFAX"
 

@@ -61,6 +61,17 @@ klb_title = """
                        0     0         0  0000         0  0  0000000000000000000
                      000000000       000000000       000000000000000000000000000"""
 
+www_title = """
+0000000000000000000000       000000000       000000000
+0000000000000  0000  0         0    00         0     0
+0000000000000  0000  0 0000000 0  0  0 0000000 0  0  0 0000000000000000000000000
+0000000000000  0000  0 0     0 0    00 0     0 0     0 0  0  0000000000000000000
+0000000000000  0  0  0 0  0000 0  0  0 0  0000 0  0  0 0  0  0000000000000000000
+00000000000000      00 0    00 0    00 0    00 0  0  0 00   00000000000000000000
+0000000000000000000000 0  0000 0000000 0  0000 0000000 0  0  0000000000000000000
+                       0     0         0  0000         0  0  0000000000000000000
+                     000000000       000000000       000000000000000000000000000"""
+
 class IndexPage(Page):
     def __init__(self, n):
         super(IndexPage, self).__init__(n)
@@ -71,6 +82,8 @@ class IndexPage(Page):
             self.add_block(emf_title, "YELLOW", bg="BLUE")
         elif NAME=="602FAX":
             self.add_block(six_title, "YELLOW", bg="BLUE")
+        elif NAME=="WWWFAX":
+            self.add_block(www_title, "YELLOW", bg="BLUE")
         elif NAME=="28JHFAX":
             if datetime.now().month==12 and datetime.now().day in [15,16,17,18,19]:
                 self.add_block(ox_title,"YELLOW", bg="BLUE")

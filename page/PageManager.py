@@ -87,7 +87,8 @@ class PageManager:
 
     def export_all_to_html(self):
         from file_handler import open_html
-        for page_num, page in self.pages.items():
+        for page_num, page in sorted(self.pages.items()):
+            print(page_num+" "+page.title)
             with open_html(page_num+".html","w") as f:
                 f.write(page.as_html())
 
