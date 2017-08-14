@@ -17,8 +17,8 @@ The pages in brackets are disabled.
 121 Countdowns
 122 Countdowns
 123 Countdowns
-125 Ghosts
-126 Countdown
+125 Countdowns/Ghosts
+126 Countdowns/Ghosts
 130 House Points
 131 House Points
 132 Flat Points
@@ -187,3 +187,4 @@ The pages in brackets are disabled.
 886 Cambridge Trains
 887 Lichfield T.V. Trains
 888 Subtitles
+996 Countdown
