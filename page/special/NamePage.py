@@ -14,7 +14,7 @@ class NamePage(Page):
         extra = ""
         _name = self.name
         from functions import greetings
-        from random import random
+        from random import random, choice
         greeting = greetings.random()
         if "Sean" in _name:
             _name = choice(["Sean","Sean the Sheep","Sean of the Dead"])
