@@ -163,6 +163,8 @@ class PageManager:
                 page = self.handle_input(inp)
             elif config.now().strftime("%H") == "12" and config.now().minute < 20:
                 page = special.LunchPage()
+            elif config.now().strftime("%H:%M") == "13:37":
+                page = special.LeetPage()
             elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
                 page = special.PubPage()
             else:
