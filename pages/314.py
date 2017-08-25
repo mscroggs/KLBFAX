@@ -6,8 +6,11 @@ class PiPage(Page):
         self.title = "Pi"
 
     def generate_content(self):
+        from random import randrange
         self.add_title("Pi",font="size4")
         from file_handler import load_file
-        self.add_wrapped_text(load_file("pi.txt"))
+        pi = load_file("pi.txt")
+        pi[randrange(len(pi))]="0"
+        self.add_wrapped_text(pi)
 
 sub_page = PiPage()

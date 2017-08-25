@@ -18,6 +18,11 @@ class NamePage(Page):
         greeting = greetings.random()
         if "Sean" in _name:
             _name = choice(["Sean","Sean the Sheep","Sean of the Dead"])
+        if "Eleanor" in _name:
+            if random()<0.01:
+                _name = "Eleanorovirus"
+                add_points("Slytherin",-10)
+                extra = "\n\n-10 points to Slytherin!"
         if "Rafael" in _name:
             if random()<0.6:
                 greeting = "Muy Feo"
