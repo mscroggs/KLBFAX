@@ -3,7 +3,7 @@ import config
 
 class LeetPage(Page):
     def __init__(self):
-        super(LunchPage, self).__init__("???")
+        super(LeetPage, self).__init__("???")
         self.name = "13:37"
         self.background_loaded = True
 
