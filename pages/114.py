@@ -1,10 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 from page import Page
 from random import shuffle,choice
 
 class EachWithHisPage(Page):
     def __init__(self, page_num):
-        super(StephenPage, self).__init__(page_num)
-        self.title = "Stephen's Skills"
+        super(EachWithHisPage, self).__init__(page_num)
+        self.title = "Merry lads' checklist"
         self.tagline = "Shall we play 'barley bay'?"
 
     def generate_content(self):
@@ -61,7 +63,7 @@ class EachWithHisPage(Page):
         "bleedin' box",
         "sodding log",
         "uncle Glenn",
-        "beans of toast",
+        "beans on toast",
         "Christmas tree",
         "Captain Magenta",
         "Galilei... oh",
@@ -81,7 +83,7 @@ class EachWithHisPage(Page):
         chars_left = 80
         line = ""
         self.move_cursor(y=7,x=0)
-        for word in self.words:
+        for word in words:
             if chars_left - width_of_word(word) <= 0:
                 chars_left = 80
                 self.add_title(line,bg="YELLOW",fg="BLACK",font="size4")
