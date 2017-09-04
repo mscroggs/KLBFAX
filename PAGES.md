@@ -67,6 +67,7 @@ The pages in brackets are disabled.
 340 Time
 341 Time
 350 National Lottery
+360 Who is Peter?
 370 Six Nations
 400 Art
 401 Venus
@@ -133,9 +134,11 @@ The pages in brackets are disabled.
 690 Recipes Index
 691 Bad Tempered Cake
 692 Huda Friendship Cake
-693 Cherry Clafoutis
+693 Kvass
 694 Pesto Twists
 695 Pesto
+696 Chalkdust Rocky Road
+697 Chalkdust Rocky Road
 707 Chalkmart
 777 The Team
 800 Buses Index

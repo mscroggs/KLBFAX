@@ -29,6 +29,6 @@ class JigPage(Page):
                       333333333333
                      33333333333333
                     3333333333333333
-""", "WHITE", "RED", "YELLOW", "GREY")
+""", "WHITE", "RED", "GREEN", "GREY")
 
 page = JigPage("403")
