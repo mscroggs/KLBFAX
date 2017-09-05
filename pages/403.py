@@ -6,7 +6,7 @@ class JigPage(Page):
         super(JigPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Trophy"
-        self.tagline = "GO PUFFS!"
+        self.tagline = "GO NONPUFFS!"
 
     def generate_content(self):
         self.add_block("""
