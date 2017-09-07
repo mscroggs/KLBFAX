@@ -2,6 +2,7 @@ import os
 from page import Page
 from random import choice
 from file_handler import f_read_json
+import config
 
 def award_show(self,award, data, icon):
     self.add_text(award,fg="GREEN")
@@ -28,12 +29,12 @@ def award_show(self,award, data, icon):
     self.add_newline()
 
 awards_on_pages = {
-        "451":["Tea Maker","CelebriTEA"],
-        "452":["Moo Cow"],
-        "453":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
-        "454":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
-        "455":["Boo Cow","Tea Wrecks"],
-        "456":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat","SNORE-lax","Banana Split","Orange Peel"]
+        "141":["Tea Maker","CelebriTEA"],
+        "142":["Moo Cow"],
+        "143":["Towel Bringer","Squeaky Clean","Spongebob Squarepoints","Cleaning the Bloody Fridge"],
+        "144":["Honorary Fire Marshall","Double Noughts and Crosses","Lunchtime Goat Award"],
+        "145":["Boo Cow","Tea Wrecks"],
+        "146":["Towel Flood","Boo Key","Stolen Pen","Worst Sorting Hat","SNORE-lax","Banana Split","Orange Peel"]
     }
 
 def get_page(a):
@@ -65,6 +66,18 @@ class AwardsIndex(Page):
         self.title = "Awards & Unawards"
         self.in_index = True
         self.index_num = "140-146"
+
+    def background(self):
+        if config.NAME == "KLBFAX":
+            from awards import add_award
+            os.system("scp mscroggs:~/.klb/awards /home/pi/.klbtemp/awards > /dev/null 2>&1")
+            with open("/home/pi/.klbtemp/awards") as f:
+                for line in f:
+                    lsp = line.strip("\n").split(",")
+                    add_award(lsp[0],lsp[1])
+            with open("/home/pi/.klbtemp/awards","w") as f:
+                pass
+            os.system("scp /home/pi/.klbtemp/awards mscroggs:~/.klb/awards > /dev/null 2>&1")
 
     def generate_content(self):
         import json
