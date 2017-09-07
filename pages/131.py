@@ -19,6 +19,15 @@ class PointsPage(Page):
         import os
         files = ["points","events","emails"]
         if config.NAME == "KLBFAX":
+            from points import add_points
+            os.system("scp mscroggs:~/.klb/points /home/pi/.klbtemp/points > /dev/null 2>&1")
+            with open("/home/pi/.klbtemp/points") as f:
+                for line in f:
+                    lsp = line.strip("\n").split(",")
+                    add_points(lsp[0],int(lsp[1]),lsp[2])
+            with open("/home/pi/.klbtemp/points","w") as f:
+                pass
+            os.system("scp /home/pi/.klbtemp/points mscroggs:~/.klb/points > /dev/null 2>&1")
             for f in files:
                 os.system("scp /home/pi/.klb/"+f+" mscroggs:~/.klbdump/"+f+" > /dev/null 2>&1")
         else:
