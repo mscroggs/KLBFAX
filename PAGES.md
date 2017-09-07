@@ -23,6 +23,13 @@ The pages in brackets are disabled.
 130 House Points
 131 House Points
 132 Flat Points
+140 Awards & Unawards
+141 Tea Awards
+142 Mart Cow Awards
+143 Kitchen Awards
+144 Other Awards
+145 Tea Unawards
+146 Other Unawards
 160 Horoscopes
 200 Letters
 201 Letters
