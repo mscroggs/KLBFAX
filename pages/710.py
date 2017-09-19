@@ -13,7 +13,7 @@ class OxmasPage(Page):
         self.in_index = False
         self.test = test
         self._name = title
-        if NAME!="602FAX":
+        if NAME!="28JHFAX":
             self.is_enabled = False
 
     def generate_content(self):
@@ -34,7 +34,7 @@ class OxmasMenu(Page):
         super(OxmasMenu, self).__init__(n)
         self.title = "Oxmas Menu"
         self.in_index = False
-        if NAME!="602FAX":
+        if NAME!="28JHFAX":
             self.is_enabled = False
 
     def generate_content(self):
@@ -79,7 +79,8 @@ class OxmasMenu(Page):
 attendees = OxmasPage("710","Attendees",lambda person:person["coming"]=="yes")
 santas = OxmasPage("711","Santas",lambda person:person["santa"]=="yes")
 menu = OxmasMenu("712")
-if NAME=="602FAX":
-    attendees.title="OXMAS!"
-    attendees.index_num="710-712"
-    attendees.in_index=True
+
+if NAME == "28JHFAX":
+    attendees.title = "OXMAS!"
+    attendees.index_num = "710-712"
+    attendees.in_index = True
