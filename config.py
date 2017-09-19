@@ -36,6 +36,8 @@ default_page_duration_sec = int(os.getenv('default_page_duration_sec', 30))
 
 weather_f_name = 'uk_weather_data'
 
+
+
 if os.getenv("SLAVE"):
     NAME = "28JHFAX"
 elif os.getenv("EMF"):
@@ -47,11 +49,22 @@ elif os.getenv("WWW"):
 else:
     NAME = "KLBFAX"
 
-
 from datetime import datetime
+
+if NAME == "28JHFAX":
+    def is_oxmas():
+        return (datetime.now().month==12 and datetime.now().day in [14,15,16,17,18,19,20,21,22])
+    def is_oxmas_day():
+        return (is_oxmas() and datetime.now().weekday()==5)
+else:
+    def is_oxmas():
+        return False
+    def is_oxmas_day():
+        return False
+
 import pytz
 
-timezone = pytz.timezone('Europe/London') 
+timezone = pytz.timezone('Europe/London')
 
 def now():
     return pytz.utc.localize(datetime.now()).astimezone(timezone)

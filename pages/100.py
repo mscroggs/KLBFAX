@@ -2,7 +2,7 @@ import os
 from page import Page
 from ceefax import Ceefax
 from random import shuffle
-from config import NAME
+from config import NAME,is_oxmas
 
 from datetime import datetime
 
@@ -85,7 +85,7 @@ class IndexPage(Page):
         elif NAME=="WWWFAX":
             self.add_block(www_title, "YELLOW", bg="BLUE")
         elif NAME=="28JHFAX":
-            if datetime.now().month==12 and datetime.now().day in [15,16,17,18,19]:
+            if is_oxmas():
                 self.add_block(ox_title,"YELLOW", bg="BLUE")
             else:
                 self.add_block(te_title,"YELLOW", bg="BLUE")
