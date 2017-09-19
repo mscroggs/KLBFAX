@@ -15,7 +15,7 @@ class OxmasPage(Page):
             self.in_index = False
 
     def generate_content(self):
-        self.add_title("OXMAS", foreground="GREEN",background="BLACK")
+        self.add_title("OXMAS", fg="GREEN",bg="BLACK")
         db = f_read_json("db.json")
         i = 0
         for person in db:
