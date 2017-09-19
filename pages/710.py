@@ -82,3 +82,4 @@ menu = OxmasMenu("712")
 if NAME=="602FAX":
     attendees.title="OXMAS!"
     attendees.index_num="710-712"
+    attendees.in_index=True
