@@ -17,9 +17,13 @@ class OxmasPage(Page):
     def generate_content(self):
         self.add_title("OXMAS")
         db = f_read_json("db.json")
+        i = 0
         for person in db:
             if person["coming"] == "yes":
                 self.add_text(person["name"][1] + " (" + person["name"][0] + ")")
-                self.add_newline()
+                if i%2==0:
+                    self.move_cursor(x=35)
+                else:
+                    self.add_newline()
 
 i_p = OxmasPage("710")
