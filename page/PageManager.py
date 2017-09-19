@@ -105,7 +105,7 @@ class PageManager:
             if not page.is_enabled: p += ")"
             ls.append(p)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
-            f.write("\n".join(ls))
+            f.write("  \n".join(ls))
 
     def get_enabled_pages(self, starting="0"):
         if starting == "0":
