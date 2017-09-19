@@ -155,7 +155,7 @@ attendees = OxmasPage("710","Attendees",lambda person:person["coming"]=="yes","c
 santas = OxmasPage("711","Santas",lambda person:person["santa"]=="yes","playing secret santa")
 menu = OxmasMenu("712")
 timetable = OxmasTimetable("713")
-timetable = OxmasNOW("714")
+now = OxmasNOW("714")
 
 if NAME == "28JHFAX":
     attendees.title = "OXMAS!"
