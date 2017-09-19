@@ -19,14 +19,13 @@ class OxmasPage(Page):
 
     def generate_content(self):
         self.add_title("OXMAS "+self._name, fg="GREEN",bg="BLACK")
-        ls = [p for p in db if self.test(p)]
+        ls = [p for p in f_read_json("db.json") if self.test(p)]
         self.add_newline()
         self.start_fg_color("GREEN")
         self.add_text(str(len(ls)))
         self.end_fg_color()
         self.add_text(" people are "+self.verb)
         self.add_newline()
-        db = f_read_json("db.json")
         i = 0
         for person in ls:
             self.add_text(person["name"][1] + " (" + person["name"][0] + ")")
