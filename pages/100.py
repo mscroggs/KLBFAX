@@ -95,8 +95,7 @@ class IndexPage(Page):
         self.add_text("INDEX "*14)
         self.add_newline()
         i = 0
-        _items = Ceefax().page_manager.pages.items()
-        _items.sort()
+        _items = Ceefax().page_manager.sorted_pages()
         for num, page in _items:
             if page.is_enabled and page.in_index:
                 self.start_fg_color("MAGENTA")

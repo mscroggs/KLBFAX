@@ -8,12 +8,17 @@ class MRoomPage(Page):
         self.title = "Muirhead Room"
 
     def background(self):
-        import urllib2
         import json
         import config
         from dateutil import parser
-        response = urllib2.urlopen("http://www.mscroggs.co.uk/room_list.json")
-        self.events = json.load(response)
+        try:
+            import urllib2
+            response = urllib2.urlopen("http://www.mscroggs.co.uk/room_list.json")
+            self.events = json.load(response)
+        except:
+            import urllib.request
+            response = urllib.request.urlopen("http://www.mscroggs.co.uk/room_list.json")
+            self.events = json.loads(response.read().decode(response.info().get_content_charset('utf-8')))
         now = config.now().replace(tzinfo=None)
         for e in self.events:
             e[0] = parser.parse(e[0])

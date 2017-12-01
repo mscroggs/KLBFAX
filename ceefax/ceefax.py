@@ -20,7 +20,26 @@ def get_ceefax(test=None):
     if Ceefax._instance is None:
         Ceefax._instance = Ceefax(test)
     return Ceefax._instance
-    
+
+class CursesScreen:
+    def __enter__(self):
+        self.stdscr = curses.initscr()
+        curses.cbreak()
+        curses.noecho()
+        curses.start_color()
+        curses.use_default_colors()
+        self.stdscr.keypad(1)
+        self.old = curses.curs_set(0)
+        SCREEN_HEIGHT, SCREEN_WIDTH = config.HEIGHT, config.WIDTH
+        return self.stdscr
+
+    def __exit__(self,a,b,c):
+        curses.nocbreak()
+        curses.curs_set(self.old)
+        self.stdscr.keypad(0)
+        curses.echo()
+        curses.endwin()
+
 
 class Ceefax:
     _instance = None
@@ -34,41 +53,17 @@ class Ceefax:
         self.test = test
 
     def begin(self):
-        import locale
-        locale.setlocale(locale.LC_ALL,"")
-        self.scr = curses.initscr()
-        self.page_manager = PageManager(self.scr)
-
-        curses.start_color()
-        curses.use_default_colors()
-        curses.noecho()
-        curses.cbreak()
-        curses.curs_set(0)
-        self.scr.keypad(1)
-        curses.resizeterm(config.HEIGHT,config.WIDTH)
-        self.scr.refresh()
-        self.start_loop()
-
-    def end(self):
-        curses.endwin()
-        self.scr.keypad(0)
-        curses.nocbreak()
-        curses.curs_set(1)
-        curses.echo()
+        with CursesScreen() as self.scr:
+            import locale
+            locale.setlocale(locale.LC_ALL,"")
+            self.page_manager = PageManager(self.scr)
+            self.scr.keypad(1)
+            curses.resizeterm(config.HEIGHT,config.WIDTH)
+            self.scr.refresh()
+            self.start_loop()
 
     def start_loop(self):
-        from time import sleep
-        try:
-            self.page_manager.start_loop(self.test)
-        except Exception as e:
-            import sys
-            import traceback
-            exc_type, exc_obj, tb = sys.exc_info()
-            traceback.print_tb(tb)
-            print(type(e))
-            print(e)
-            sleep(5)
-            self.end()
+        self.page_manager.start_loop(self.test)
 
     def kill(self):
         raise KeyboardInterrupt

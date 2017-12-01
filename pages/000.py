@@ -52,12 +52,12 @@ class TestPage(Page):
         self.add_rainbow_text("IP ADDRESSES")
         self.add_newline()
         try:
-            self.add_text("lo: "+get_ip_address('lo'))
+            self.add_text("lo: "+get_ip_address(b'lo'))
         except IOError:
             self.add_text("lo: ERROR")
         self.add_newline()
         try:
-            self.add_text("eth0: "+get_ip_address('eth0'))
+            self.add_text("eth0: "+get_ip_address(b'eth0'))
         except IOError:
             self.add_text("eth0: ERROR")
 

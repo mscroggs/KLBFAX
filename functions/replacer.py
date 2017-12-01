@@ -1,5 +1,5 @@
 import re
-from sweep import sweepstake_people
+from .sweep import sweepstake_people
 
 def escape(string):
     if string=="?":

@@ -6,6 +6,11 @@ import signal
 import curses
 import points
 
+try:
+    from imp import reload
+except:
+    pass
+
 class TimeUp(BaseException):
     pass
 
@@ -75,9 +80,7 @@ class PageManager:
         return page
 
     def print_all(self):
-        items = self.pages.items()
-        items.sort()
-        for page_num, page in items:
+        for page_num, page in self.sorted_pages():
             p = ""
             if not page.is_enabled: p += "\033[31m"
             p += (page_num+" ")
@@ -85,17 +88,21 @@ class PageManager:
             if not page.is_enabled: p += "\033[0m"
             print(p)
 
+    def sorted_pages(self):
+        items = [(i,j) for i,j in self.pages.items()]
+        items.sort()
+        return items
+
     def export_all_to_html(self):
         from file_handler import open_html
-        for page_num, page in sorted(self.pages.items()):
+        for page_num, page in self.sorted_pages():
             print(page_num+" "+page.title)
             with open_html(page_num+".html","w") as f:
                 f.write(page.as_html())
 
     def export_all(self):
         import os
-        items = self.pages.items()
-        items.sort()
+        items = self.sorted_pages()
         ls = ["# List of pages","The pages in brackets are disabled.",""]
         for page_num, page in items:
             p = ""
