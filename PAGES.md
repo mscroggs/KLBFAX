@@ -106,8 +106,6 @@ The pages in brackets are disabled.
 614 Today's TV: Challenge  
 615 Today's TV: BBC News  
 616 Today's TV: BBC Parliament  
-617 Today's TV: BBC Radio 2  
-618 Today's TV: BBC Radio 4  
 626 Tomorrow's TV: BBC1  
 627 Tomorrow's TV: BBC2  
 628 Tomorrow's TV: ITV  
@@ -124,8 +122,6 @@ The pages in brackets are disabled.
 639 Tomorrow's TV: Challenge  
 640 Tomorrow's TV: BBC News  
 641 Tomorrow's TV: BBC Parliament  
-642 Tomorrow's TV: BBC Radio 2  
-643 Tomorrow's TV: BBC Radio 4  
 650 Tube Index  
 651 Euston Underground Trains  
 652 Euston Square Underground Trains  
