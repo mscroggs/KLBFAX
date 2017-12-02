@@ -1,3 +1,5 @@
+from __future__ import division,print_function
+
 import random
 import config
 import os
@@ -35,11 +37,11 @@ def get_chr(ip):
     return ""
 
 class PageManager:
-    def __init__(self, scr):
+    def __init__(self, screen):
         self.i = 0
         self.loads = 0
         self.pages = {}
-        self.scr = scr
+        self.screen = screen
 
         self.load_all_pages()
 
@@ -56,15 +58,34 @@ class PageManager:
                 for filename in dir(module):
                     obj = getattr(module, filename)
                     if isinstance(obj, Page):
+                        obj.cupt = self.screen.cupt
+                        self.add(obj)
+            except BaseException as e:
+                pass
+
+    def test_all_pages(self):
+        if not os.path.exists(config.pages_dir):
+            raise ConfigError("The pages folder doesn't exist: " + pages_dir)
+        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
+        for page_file in only_page_files:
+            page_file_no_ext = os.path.splitext(page_file)[0]
+            try:
+                module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                                 page_file_no_ext)
+                reload(module)
+                for filename in dir(module):
+                    obj = getattr(module, filename)
+                    if isinstance(obj, Page):
+                        obj.cupt = self.screen.cupt
                         self.add(obj)
             except:
-                pass
+                print(page_file, "failed", e)
 
     def add(self, page):
         self.pages[page.number] = page
 
     def get_loaded_random(self):
-        page = FailPage()
+        page = self.build(FailPage)
         self.loads += 1
         while not page.loaded or not page.background_loaded:
             page = random.choice(self.get_enabled_pages(str(self.i)))
@@ -169,11 +190,12 @@ class PageManager:
             if inp is not None:
                 page = self.handle_input(inp)
             elif config.now().strftime("%H") == "12" and config.now().minute < 20:
-                page = special.LunchPage()
+                page = self.build(special.LunchPage)
             elif config.now().strftime("%H:%M") == "13:37":
-                page = special.LeetPage()
+                page = self.build(special.LeetPage)
+                page.cupt = self.screen.cupt
             elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
-                page = special.PubPage()
+                page = self.build(special.PubPage)
             else:
                 page = self.get_loaded_random()
             self.show(page)
@@ -183,7 +205,7 @@ class PageManager:
                 key = None
                 inp = ""
                 while key != curses.KEY_ENTER and key != 10:
-                    key = self.scr.getch()
+                    key = self.screen.getch()
                     try:
                         if key==263:
                             inp = inp[:-1]
@@ -197,11 +219,16 @@ class PageManager:
             except TimeUp:
                 inp = None
 
+    def build(self, ThePage, *args, **kwargs):
+        page = ThePage(*args, **kwargs)
+        page.cupt = self.screen.cupt
+        return page
+
     def handle_input(self, the_input):
         if the_input == "pub":
-            return special.PubPage()
+            return self.build(special.PubPage)
         if the_input == "lunch":
-            return special.LunchPage()
+            return self.build(special.LunchPage)
         if the_input == "1337" or the_input == "0026360488" or the_input == "0082620488":
             import computer
             computer.git_pull()
@@ -229,9 +256,9 @@ class PageManager:
                     deets = greetings.random_twitter() + " " + _name
                 else:
                     deets = ""
-        
+
                 time = config.now().strftime("%H")
-        
+
                 name_file = points.read_name_file(namefile_path)
                 if points.should_add_morning_points(time, house, name_file,
                                                     the_input):
@@ -239,35 +266,33 @@ class PageManager:
                     extra = str(points_added) + " points to " + house + "!"
                     if points_added < 0:
                         extra += "\nIt's the weekend, go home!"
-        
+
                 name_page = NamePage(_name, extra=extra)
             else:
                 name_page = NamePage(the_input, large=False)
             return name_page
-
-
 
         try:
             while len(the_input)<3:
                 the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return FailPage("Page "+the_input+" does not exist. Try the index in page 100.",False)
+            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False)
 
     def show(self, page):
-        page.cupt.show_loading()
+        self.screen.cupt.show_loading()
         if not isinstance(page, FailPage):
             if page.background_error is not None:
-                page = FailPage("There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
+                page = self.build(FailPage,"There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
             elif page.number != "100" and not page.background_loaded:
-                page = FailPage("Page "+page.number+" currently updating. Please try again in a few minutes",False)
+                page = self.build(FailPage,"Page "+page.number+" currently updating. Please try again in a few minutes",False)
         try:
             page.loaded = False
             page.reload()
             page.loaded = True
             page.show()
         except Exception as e:
-            page = FailPage(e)
+            page = self.build(FailPage,e)
             page.reload()
             page.loaded = True
             page.show()

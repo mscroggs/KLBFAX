@@ -1,7 +1,6 @@
 from math import floor
 import logging
 import config
-from cupt import CuPT
 
 class Page(object):
     def __init__(self, number):
@@ -16,8 +15,7 @@ class Page(object):
         self.title = ""
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
-        from ceefax import Ceefax
-        self.cupt = CuPT(Ceefax().scr)
+        self.cupt = None
 
     def move_cursor(self, x=None, y=None):
         self.cupt.move_cursor(x=x,y=y)

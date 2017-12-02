@@ -1,17 +1,13 @@
-from cupt import CuPT
+
+
 import curses
-from time import sleep
+import locale
+
+locale.setlocale(locale.LC_ALL, '')    # set your locale
+
 scr = curses.initscr()
-curses.start_color()
-curses.use_default_colors()
-
-cupt = CuPT(scr)
-cupt.add_text("HELLO, Does this work??")
-cupt.add_newline()
-cupt.add_text("HELLO, Does this work??")
-cupt.add_newline()
-cupt.add_newline()
-
-cupt.show()
-
-sleep(10)
+scr.clear()
+scr.addstr(0, 0, u'\u3042'.encode('utf-8'))
+scr.refresh()
+# here implement simple code to wait for user input to quit
+scr.endwin()
