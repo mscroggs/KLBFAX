@@ -1,2 +1,2 @@
 from .cupt import CuPT
-from .screen import Screen
+from .screen import Screen, DummyScreen

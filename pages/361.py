@@ -4,6 +4,7 @@ from re import sub
 from page import Page
 import tweepy
 import json
+
 try:
     from html import unescape
 except:
@@ -26,7 +27,6 @@ class WhoPage(Page):
         self.tagline = "@who_is_peter"
 
     def background(self):
-        import urllib2
         from datetime import datetime
         import re
 

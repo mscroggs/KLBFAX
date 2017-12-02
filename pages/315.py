@@ -16,8 +16,10 @@ class TubePage(Page):
         # Get a list of tube lines
         lines = self.current_status.list_lines()
         # Loop through the lines and print the status of each one
-        lines_tube = [lines[i] for i in [1,2,12,4,10,0,3,14,5,7,11]]
-        lines_other = [lines[i] for i in [8,6,13,9]]
+        lines_tube = ['Bakerloo','Central','Circle','District', 'Hammersmith and City', 'Jubilee',
+                      'Metropolitan', 'Northern', 'Piccadilly', 'Victoria', 'Waterloo and City']
+        lines_other = ['DLR', 'Overground', 'TfL Rail', 'Trams']
+
         colours_tube = ["ORANGE","RED","YELLOW","GREEN","PINK","GREY","MAGENTA","DEFAULT","BLUE","LIGHTBLUE","LIGHTCYAN"]
         colours_tube_text = ["WHITE","WHITE","BLACK","BLACK","BLACK","WHITE","WHITE","WHITE","WHITE","WHITE","BLACK"]
 

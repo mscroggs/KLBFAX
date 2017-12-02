@@ -10,7 +10,6 @@ class PiPage(Page):
         self.add_title("Pi",font="size4")
         from file_handler import load_file
         pi = load_file("pi.txt")
-        pi[randrange(len(pi))]="0"
         self.add_wrapped_text(pi)
 
 sub_page = PiPage()

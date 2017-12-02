@@ -30,3 +30,8 @@ class Screen:
         self.scr.keypad(0)
         curses.echo()
         curses.endwin()
+
+class DummyScreen:
+    def __init__(self):
+        self.scr = None
+        self.cupt = CuPT(self.scr)

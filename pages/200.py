@@ -76,7 +76,10 @@ class LetterPage(Page):
     def generate_content(self):
         letters = self.letters[20*(self.n-1):20*self.n]
         letters = "\n".join(letters)
-        letters = unicode(letters,'latin1')
+        try:
+            letters = unicode(letters,'latin1')
+        except:
+            letters = str(letters)
 
 
         self.add_title("Have your say",font="size4")

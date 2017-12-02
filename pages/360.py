@@ -26,7 +26,6 @@ class WhoPage(Page):
         self.tagline = "@who_is_peter"
 
     def background(self):
-        import urllib2
         from datetime import datetime
         import re
 

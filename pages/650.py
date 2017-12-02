@@ -1,6 +1,7 @@
 from __future__ import division
 import json
 from page import Page
+import url_handler
 
 class TubePage(Page):
     def __init__(self, page_num, code, station):
@@ -13,10 +14,7 @@ class TubePage(Page):
         pages.append([page_num,station])
 
     def generate_content(self):
-        import urllib2
-        response = urllib2.urlopen("http://api.tfl.gov.uk/stopPoint/"+self.code+"/arrivals?mode=tube")
-        j = response.read()
-        tube_times = json.loads(j)
+        tube_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+self.code+"/arrivals?mode=tube")
 
         tubes = []
         for b in tube_times:

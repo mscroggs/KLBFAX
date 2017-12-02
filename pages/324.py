@@ -14,7 +14,7 @@ class UKTempPage(Page):
 
 
     def background(self):
-        import urllib2, json
+        import url_handler, json
         from time import sleep
 
 
@@ -24,9 +24,7 @@ class UKTempPage(Page):
         try:
             for j in range(0,len(self.ordered_ids),step):
                 url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(self.ordered_ids[j:j+step]) + "&units=metric&appid=05f6b7c72cd541dd510d7bc08f6a8bb0"
-                #print url
-                response = urllib2.urlopen(url)
-                data = json.load(response)
+                data = url_handler.load_json(url)
                 for city in data['list']:
                     self.temps[i] = float(city['main']['temp'])
                     i+=1

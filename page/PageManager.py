@@ -25,9 +25,9 @@ def pass_f(signum, frame):
 def is_page_file(f):
     if not os.path.isfile(os.path.join(config.pages_dir, f)):
         return False
-    if "_" in f:
+    if f[0] == "_":
         return False
-    if "pyc" in f:
+    if f[-2:] != "py":
         return False
     return True
 
@@ -60,7 +60,7 @@ class PageManager:
                     if isinstance(obj, Page):
                         obj.cupt = self.screen.cupt
                         self.add(obj)
-            except BaseException as e:
+            except:
                 pass
 
     def test_all_pages(self):
@@ -78,8 +78,11 @@ class PageManager:
                     if isinstance(obj, Page):
                         obj.cupt = self.screen.cupt
                         self.add(obj)
-            except:
-                print(page_file, "failed", e)
+                        obj.background()
+                        obj.reload()
+                        obj.generate_content()
+            except BaseException as e:
+                print(page_file, e)
 
     def add(self, page):
         self.pages[page.number] = page

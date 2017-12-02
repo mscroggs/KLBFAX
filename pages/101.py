@@ -1,6 +1,7 @@
 from page import Page
 from datetime import datetime, timedelta
 import pytz
+import url_handler
 
 class MRoomPage(Page):
     def __init__(self,page_num):
@@ -11,14 +12,7 @@ class MRoomPage(Page):
         import json
         import config
         from dateutil import parser
-        try:
-            import urllib2
-            response = urllib2.urlopen("http://www.mscroggs.co.uk/room_list.json")
-            self.events = json.load(response)
-        except:
-            import urllib.request
-            response = urllib.request.urlopen("http://www.mscroggs.co.uk/room_list.json")
-            self.events = json.loads(response.read().decode(response.info().get_content_charset('utf-8')))
+        self.events = url_handler.load_json("http://www.mscroggs.co.uk/room_list.json")
         now = config.now().replace(tzinfo=None)
         for e in self.events:
             e[0] = parser.parse(e[0])

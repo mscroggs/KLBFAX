@@ -1,6 +1,7 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from page import Page
+import url_handler
 
 class CurrencyPage(Page):
     def __init__(self):
@@ -12,8 +13,6 @@ class CurrencyPage(Page):
 
 
     def background(self):
-        import urllib2
-
         ask_for_rates = ['^FTSE', '^GDAXI', '^FCHI', "^NDX", "^N225"]
         self.currency_symbol_before = ['FTSE','DAX ','CAC ','NAS ','NIK ']
         self.currency_symbol_after = ['','','','','']
@@ -22,8 +21,7 @@ class CurrencyPage(Page):
 
         self.currency_rate = []
         self.currency_change = []
-        req = urllib2.urlopen('http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1p2d1t1&s='+','.join(ask_for_rates))
-        results = req.read()
+        results = url_handler.load('http://finance.yahoo.com/d/quotes.csv?e=.csv&f=sl1p2d1t1&s='+','.join(ask_for_rates))
         for i in range(len(ask_for_rates)):
             self.currency_rate.append(float(results.split(",")[4*i+1]))
             self.currency_change.append(float(results.split(",")[4*i+2][1:-2]))

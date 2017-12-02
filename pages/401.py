@@ -9,7 +9,6 @@ class VenusPage(Page):
         self.tagline = "Here, it is a nude Venus who emerges from the shell, floating on waves."
 
     def generate_content(self):
-        import urllib2
         self.add_title("Venus")
         self.add_text("""                                    ,<<CCCCCCC>>,,..,,,<C> ,c' -;;,`C><   ,-
                                 . <CCCCCCCCCCCCCCCCCCCCC> <C ,;, CCC `  ./

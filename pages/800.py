@@ -1,6 +1,6 @@
 from __future__ import division
-import json
 from page import Page
+import url_handler
 
 class BusPage(Page):
     def __init__(self, page_num, bus_num, station, code):
@@ -14,10 +14,7 @@ class BusPage(Page):
         pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
-        import urllib2
-        response = urllib2.urlopen("http://api.tfl.gov.uk/stopPoint/"+self.bus_num+"/arrivals")
-        j = response.read()
-        bus_times = json.loads(j)
+        bus_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+self.bus_num+"/arrivals")
         self.add_title("buses")
         desc = " from "+self.station+" ("+self.code+")"
         self.move_cursor(x=80-len(desc))

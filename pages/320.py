@@ -1,6 +1,6 @@
 from page import Page
 from file_handler import f_read
-
+import url_handler
 
 class WeatherPage(Page):
     def __init__(self):
@@ -9,10 +9,9 @@ class WeatherPage(Page):
         self.index_num = "320-325"
 
     def background(self):
-        import urllib2
         try:
-            response = urllib2.urlopen("http://weather.casa.ucl.ac.uk/realtime.txt")
-            self.weather_data = response.read().split(" ")
+            response = url_handler.load("http://weather.casa.ucl.ac.uk/realtime.txt")
+            self.weather_data = response.split(" ")
         except:
             self.weather_data = ["CLASSIFIED"]*60
         # Field # Example 	Description 	Equivalent Webtags

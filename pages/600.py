@@ -1,5 +1,6 @@
 from page import Page
 from functions import klb_replace
+import url_handler
 
 class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):
@@ -47,7 +48,6 @@ class TVPage(Page):
         from time import strptime, strftime
         import feedparser
         import datetime
-        import urllib2
         rss_dict = {"642": "http://www.iplayerconverter.co.uk/wu/2/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
                     "692": "http://www.iplayerconverter.co.uk/wu/2/date/" + (datetime.date.today() + datetime.timedelta(days=1)).strftime("%Y-%m-%d") + "/rss.aspx",
                     "644": "http://www.iplayerconverter.co.uk/wu/4/date/" + strftime("%Y-%m-%d") + "/rss.aspx",
@@ -55,14 +55,12 @@ class TVPage(Page):
                     }
         if self.page_num in rss_dict.keys():
             rss_url = rss_dict[self.page_num]
-            
             self.feed = feedparser.parse(rss_url)
             self.feed_type = 1
 
         else:
             from xml.etree import ElementTree
-            response = urllib2.urlopen(self.feed)
-            xml = response.read()
+            xml = url_handler.load(self.feed)
             self.e = ElementTree.fromstring(xml)
             self.feed_type = 2
 pages = []
@@ -82,8 +80,6 @@ tv13 = TVPage("613","E4","http://bleb.org/tv/data/listings/0/e4.xml","Today")
 tv14 = TVPage("614","Challenge","http://bleb.org/tv/data/listings/0/challenge.xml","Today")
 tv15 = TVPage("615","BBC News","http://bleb.org/tv/data/listings/0/bbc_news24.xml","Today")
 tv16 = TVPage("616","BBC Parliament","http://bleb.org/tv/data/listings/0/bbc_parliament.xml","Today")
-tv17 = TVPage("617","BBC Radio 2","R2","Today")
-tv18 = TVPage("618","BBC Radio 4","R4","Today")
 
 tv19 = TVPage("626","BBC1","http://bleb.org/tv/data/listings/1/bbc1.xml","Tomorrow")
 tv20 = TVPage("627","BBC2","http://bleb.org/tv/data/listings/1/bbc2.xml","Tomorrow")
@@ -101,8 +97,6 @@ tv31 = TVPage("638","E4","http://bleb.org/tv/data/listings/1/e4.xml","Tomorrow")
 tv32 = TVPage("639","Challenge","http://bleb.org/tv/data/listings/1/challenge.xml","Tomorrow")
 tv33 = TVPage("640","BBC News","http://bleb.org/tv/data/listings/1/bbc_news24.xml","Tomorrow")
 tv34 = TVPage("641","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_parliament.xml","Tomorrow")
-tv35 = TVPage("642","BBC Radio 2","R2","Tomorrow")
-tv36 = TVPage("643","BBC Radio 4","R4","Tomorrow")
 
 
 class TVIPage(Page):

@@ -1,6 +1,6 @@
 from page import Page
 import time
-
+import url_handler
 
 class LotteryPage(Page):
     def __init__(self):
@@ -9,10 +9,8 @@ class LotteryPage(Page):
         self.tagline = "Don't live a little, live a Lotto"
 
     def background(self):
-        import urllib2
-
-        req = urllib2.urlopen('https://www.national-lottery.co.uk/results/lotto/draw-history/csv')
-        self.results = req.read().replace("\n",",").split(",")
+        req = url_handler.load('https://www.national-lottery.co.uk/results/lotto/draw-history/csv')
+        self.results = req.replace("\n",",").split(",")
 
     def generate_content(self):
         self.add_title("lottery")
@@ -25,19 +23,14 @@ class LotteryPage(Page):
 
         self.add_title(draw_date, bg="YELLOW",fg="BLACK",font="size4",fill=False)
 
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[0], bg="YELLOW",fg="BLACK",font="size4",fill=False,pre=0)
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[1], bg="CYAN",fg="BLACK",font="size4",fill=False,pre=10)
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[2], bg="YELLOW",fg="BLACK",font="size4",fill=False,pre=20)
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[3], bg="CYAN",fg="BLACK",font="size4",fill=False,pre=30)
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[4], bg="YELLOW",fg="BLACK",font="size4",fill=False,pre=40)
-        self.move_cursor(x=0,y=12)
-        self.add_title(balls[5], bg="CYAN",fg="BLACK",font="size4",fill=False,pre=50)
-        self.move_cursor(x=0,y=12)
+        bg = "YELLOW"
+        for i,b in enumerate(balls):
+            self.move_cursor(x=0,y=12)
+            self.add_title(b, bg=bg,fg="BLACK",font="size4",fill=False,pre=10*i)
+            if bg == "YELLOW":
+                bg = "CYAN"
+            else:
+                bg = "YELLOW"
         self.add_title(bonus_ball, bg="RED",fg="BLACK",font="size4",fill=False,pre=60)
 
         self.add_title(machine+" Set "+ball_set, bg="CYAN",fg="BLACK",font="size4",fill=False)

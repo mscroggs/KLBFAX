@@ -9,7 +9,6 @@ class JigPage(Page):
         self.tagline = "Do you want to play a game?"
 
     def generate_content(self):
-        import urllib2
         self.add_title("Jigsaw")
         jig = """     ,XX'''''''''''''XX,,
     XXX               XXX

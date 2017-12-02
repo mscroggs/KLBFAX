@@ -2,6 +2,19 @@ from math import floor
 import logging
 import config
 
+WARNING_USED = False
+
+class Dummy(object):
+    def __getattr__(self, *args, **kwargs):
+        global WARNING_USED
+        if not WARNING_USED:
+            print("Warning: using Dummy class in place of CuPT")
+            WARNING_USED = True
+        return self
+
+    def __call__(self, *args, **kwargs):
+        return self
+
 class Page(object):
     def __init__(self, number):
         self.is_enabled = True
@@ -15,7 +28,7 @@ class Page(object):
         self.title = ""
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
-        self.cupt = None
+        self.cupt = Dummy()
 
     def move_cursor(self, x=None, y=None):
         self.cupt.move_cursor(x=x,y=y)

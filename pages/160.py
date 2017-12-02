@@ -1,4 +1,5 @@
 from page import Page
+import url_handler
 
 class Horoscope(Page):
     def __init__(self,page_num):
@@ -6,10 +7,8 @@ class Horoscope(Page):
         self.title = "Horoscopes"
 
     def background(self):
-        import urllib2
         import json
-        response = urllib2.urlopen("http://a.knrz.co/horoscope-api/current")
-        self.horo = json.load(response)
+        self.horo = url_handler.load_json("http://a.knrz.co/horoscope-api/current")
         for i,scope in enumerate(self.horo):
             self.horo[i]["prediction"] = "'".join(scope["prediction"].split(u"\u2019"))
 

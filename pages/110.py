@@ -64,11 +64,12 @@ class JokePage(Page):
         self.add_title("Jokes")
 
         used = []
+        jk = [i for i in jokes.keys()]
         for i in range(10):
             self.start_fg_color("YELLOW")
-            c = choice(jokes.keys())
+            c = choice(jk)
             while c in used:
-                c = choice(jokes.keys())
+                c = choice(jk)
             used.append(c)
             joke,ans = c,jokes[c]
             self.add_wrapped_text(joke+" ")

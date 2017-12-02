@@ -9,7 +9,6 @@ class MonaLisaPage(Page):
         self.tagline = "Are you warm,are you real,Mona Lisa? Or just a cold & lonely lovely work of art?"
 
     def generate_content(self):
-        import urllib2
         content = self.add_title("Mona Lisa")
         self.add_text('''                           _,,ad8888888888bba,_
                       ,88888888I88888888888888888888a,

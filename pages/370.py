@@ -1,5 +1,6 @@
 from page import Page
 import time
+import url_handler
 
 def get_tag(t,text):
     if '<td class="'+t+'"' not in text:
@@ -21,10 +22,8 @@ class RugbyPage(Page):
         self.tagline = "CROUCH! BIND! SET!"
 
     def background(self):
-        import urllib2
-
-        req = urllib2.urlopen('http://www.rbs6nations.com/en/matchcentre/league_table.php')
-        results = req.read().split('<td class="titletxt" colspan="2">RBS 6 Nations Table</td>')[1].split("</table>")[0].split("</tr>")[1:]
+        req = url_handler.load('http://www.rbs6nations.com/en/matchcentre/league_table.php')
+        results = req.split('<td class="titletxt" colspan="2">RBS 6 Nations Table</td>')[1].split("</table>")[0].split("</tr>")[1:]
         self.res = []
         for line in results:
             ls = []
