@@ -12,8 +12,10 @@ class AdventPage(Page):
         self.title = "Advent Calendar"
         if datetime.now().month == 12:
             self.in_index = True
+            self.is_enabled = True
         else:
             self.in_index = False
+            self.is_enabled = False
 
     def generate_content(self):
         self.add_title("Advent calendar", font="size4")
