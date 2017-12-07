@@ -72,10 +72,14 @@ class AdventPage(Page):
                 for j,char in enumerate(line):
                     if open:
                         self.start_bg_color(colmap[char])
+                        if char == "w":
+                            self.start_bg_color("BLACK")
                     else:
                         self.start_bg_color("GREY")
                     self.add_text(text[9*i+j])
                     self.end_bg_color()
+                    if char == "w":
+                        self.end_fg_color()
 
 cal = AdventPage("725")
 
