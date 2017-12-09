@@ -49,6 +49,10 @@ elif os.getenv("WWW"):
 else:
     NAME = "KLBFAX"
 
+MAIN = False
+if os.path.isdir("/home/pi/.klbtemp"):
+    MAIN = True
+
 from datetime import datetime
 
 if NAME == "28JHFAX":

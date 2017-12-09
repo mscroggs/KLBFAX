@@ -23,7 +23,7 @@ class RugbyPage(Page):
 
     def background(self):
         req = url_handler.load('http://www.rbs6nations.com/en/matchcentre/league_table.php')
-        results = req.split('<td class="titletxt" colspan="2">RBS 6 Nations Table</td>')[1].split("</table>")[0].split("</tr>")[1:]
+        results = req.split('<td class="titletxt" colspan="2">')[1].split("</table>")[0].split("</tr>")[1:]
         self.res = []
         for line in results:
             ls = []
@@ -31,7 +31,6 @@ class RugbyPage(Page):
                 ls.append(get_tag("field_"+a,line))
             if "" not in ls:
                 self.res.append(ls)
-            
 
     def generate_content(self):
         self.add_title("six nations",font="size4")

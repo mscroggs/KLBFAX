@@ -39,6 +39,10 @@ class Printer(object):
     @process_printing_options
     def text_to_letterblock(self, text):
         try:
+            from functools import reduce
+        except:
+            pass
+        try:
             return reduce(LetterBlock.__add__, map(self.font.get_letter, text))
         except fonts.exceptions.LetterNotDefined:
             return text

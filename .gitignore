@@ -5,3 +5,4 @@ utils/dummy
 requirements-satisfied.txt
 .DS_Store
 pages/.DS_Store
+*.swp

@@ -7,6 +7,8 @@ from page import Page,special
 import signal
 import curses
 import points
+from error import error_list
+import traceback
 
 try:
     from imp import reload
@@ -82,7 +84,9 @@ class PageManager:
                         obj.reload()
                         obj.generate_content()
             except BaseException as e:
-                print(page_file, e)
+                print(page_file)
+                print(traceback.format_exc())
+                print("")
 
     def add(self, page):
         self.pages[page.number] = page
@@ -163,6 +167,7 @@ class PageManager:
                     page.background()
                     page.background_loaded = True
                 except Exception as e:
+                    error_list.add(e, page.number)
                     page.background_error = e
             sleep(60*30)
 
@@ -179,6 +184,7 @@ class PageManager:
                 page.background()
                 page.background_loaded = True
             except Exception as e:
+                error_list.add(e, page.number)
                 page.background_error = e
         thread.start_new_thread(self.background_loop,())
         self.main_loop()
@@ -280,7 +286,7 @@ class PageManager:
                 the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False)
+            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False,traceback.format_exc())
 
     def show(self, page):
         self.screen.cupt.show_loading()
@@ -295,7 +301,8 @@ class PageManager:
             page.loaded = True
             page.show()
         except Exception as e:
-            page = self.build(FailPage,e)
+            error_list.add(e, page)
+            page = self.build(FailPage,e,traceback.format_exc())
             page.reload()
             page.loaded = True
             page.show()
@@ -309,13 +316,14 @@ class PageManager:
         self.show_input(" "*config.WIDTH)
 
 class FailPage(Page):
-    def __init__(self, e=None, points=True):
+    def __init__(self, e=None, points=True, trace=""):
         super(FailPage, self).__init__("---")
         self.ee = None
         self.set_exception(e)
         self.is_enabled = False
         self.duration_sec = 2
         self.points = points
+        self.trace = trace
 
     def generate_content(self):
         if self.points:
@@ -336,6 +344,8 @@ class FailPage(Page):
             self.add_wrapped_text(self.ee)
         else:
             self.add_wrapped_text(str(self.ee))
+        self.add_newline()
+        self.add_wrapped_text(self.trace)
 
     def set_exception(self, e):
         self.ee = e
