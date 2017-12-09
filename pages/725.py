@@ -73,7 +73,7 @@ class AdventPage(Page):
                     if open:
                         self.start_bg_color(colmap[char])
                         if char == "w":
-                            self.start_bg_color("BLACK")
+                            self.start_fg_color("BLACK")
                     else:
                         self.start_bg_color("GREY")
                     self.add_text(text[9*i+j])
