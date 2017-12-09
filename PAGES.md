@@ -3,6 +3,7 @@ The pages in brackets are disabled.
   
 (000 About KLBFAX)  
 (001 Unicode Test Page)  
+(002 Error log)  
 (007 FF choice)  
 (008 FF choice)  
 100 Index  
@@ -21,7 +22,6 @@ The pages in brackets are disabled.
 125 Countdowns/Ghosts  
 126 Countdowns/Ghosts  
 130 House Points  
-131 House Points  
 132 Flat Points  
 140 Awards & Unawards  
 141 Tea Awards  
@@ -149,6 +149,7 @@ The pages in brackets are disabled.
 (712 Oxmas Menu)  
 (713 Oxmas Timetable)  
 (714 Oxmas Now)  
+725 Advent Calendar  
 777 The Team  
 800 Buses Index  
 801 Gower Street / UCH (N) Buses  
