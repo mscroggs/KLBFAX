@@ -37,6 +37,7 @@ default_page_duration_sec = int(os.getenv('default_page_duration_sec', 30))
 weather_f_name = 'uk_weather_data'
 
 
+MAIN = False
 
 if os.getenv("SLAVE"):
     NAME = "28JHFAX"
@@ -48,10 +49,9 @@ elif os.getenv("WWW"):
     NAME = "WWWFAX"
 else:
     NAME = "KLBFAX"
+    if os.path.isdir("/home/pi/.klbtemp"):
+        MAIN = True
 
-MAIN = False
-if os.path.isdir("/home/pi/.klbtemp"):
-    MAIN = True
 
 from datetime import datetime
 
