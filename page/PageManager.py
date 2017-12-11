@@ -302,7 +302,7 @@ class PageManager:
             page.show()
         except Exception as e:
             error_list.add(e, page)
-            page = self.build(FailPage,e,traceback.format_exc())
+            page = self.build(FailPage,e,trace=traceback.format_exc())
             page.reload()
             page.loaded = True
             page.show()
