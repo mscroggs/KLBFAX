@@ -286,7 +286,7 @@ class PageManager:
                 the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False,traceback.format_exc())
+            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False)
 
     def show(self, page):
         self.screen.cupt.show_loading()

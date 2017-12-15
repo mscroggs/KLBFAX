@@ -7,6 +7,7 @@ class List(object):
 
     def add(self, e, number):
         self.ls.append(Error(e,number))
+        self.ls = self.ls[-10:]
 
     def __iter__(self):
         return iter(self.ls[::-1])
