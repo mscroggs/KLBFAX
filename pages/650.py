@@ -98,6 +98,8 @@ tube09 = TubePage("659","940GZZLUOXC","Oxford Circus")
 tube10 = TubePage("660","940GZZLUALP","Alperton")
 tube11 = TubePage("661","940GZZLUWLO","Waterloo")
 tube12 = TubePage("662","940GZZLUEMB","Embankment")
+tube13 = TubePage("663","940GZZLUSKS","South Kensington")
+tube14 = TubePage("664","940GZZLUGTR","Gloucester Road")
 
 class TVIPage(Page):
     def __init__(self):

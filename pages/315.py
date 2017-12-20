@@ -1,5 +1,6 @@
 from page import Page
 from random import choice
+from textwrap import fill
 
 class TubePage(Page):
     def __init__(self,page_num):
@@ -32,14 +33,14 @@ class TubePage(Page):
                     ('GOOD SERVICE on all other routes.', ''),
                     ('GOOD SERVICE on other London Overground routes.', ''),
                     ('GOOD SERVICE on other London Overground routes', ''),
-                    ('The service will resume again at 0615 on Monday.', ''),
-                    ('The service will resume again at 0615 tomorrow.', ''),
-                    ('The service will resume again at 0615.', ''),
-                    ('Train service will resume at 06:15 tomorrow.', ''),
-                    ('No service between ', ''),
+                    #('The service will resume again at 0615 on Monday.', ''),
+                    #('The service will resume again at 0615 tomorrow.', ''),
+                    #('The service will resume again at 0615.', ''),
+                    #('Train service will resume at 06:15 tomorrow.', ''),
+                    #('No service between ', ''),
                     #('Minor delays ', ''),
-                    (' due to planned engineering work.', ''),
-                    (' due to planned work.', ''),
+                    (' due to planned engineering work.', '.'),
+                    (' due to planned work.', '.'),
                     #('due to ', ''),
                     ('King\'s Cross St. Pancras', 'KX'),
                     ('Kings Cross St. Pancras', 'KX'),
@@ -60,9 +61,10 @@ class TubePage(Page):
                     ('South ','S '),
                     ('East ','E '),
                     ('West ','W '),
-                    (' and ','-'),
-                    ('between ',''),
-                    (' to ','-')]
+                    #(' and ','-'),
+                    #('between ',''),
+                    #(' to ','-'),
+                    ]
 
         content_bad_service = ""
         content_good_service = ""
@@ -85,13 +87,15 @@ class TubePage(Page):
                     self.start_fg_color("LIGHTRED")
 
                 full_description = " "
-                full_description += self.current_status.get_status(line).description
+                #full_description += self.current_status.get_status(line).description
                 description = self.current_status.get_status(line).status_details
                 for k, v in mapping:
                     description = description.replace(k, v)
-                if len(description)>1:
-                    full_description += ": " + description
-                self.add_wrapped_text(full_description,pre=24)
+                #if len(description)>1:
+                #    full_description += ": " + description
+                full_description = description
+                self.move_cursor(x=22)
+                self.add_wrapped_text(fill(full_description,59).replace('\n','\n'+" "*22),pre=22)
                 self.end_fg_color()
                 self.add_newline()
 
