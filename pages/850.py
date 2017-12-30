@@ -45,6 +45,7 @@ rrrrrWWrrrr
         ('Lane', 'Ln'),
         ('Hill', 'Hl'),
         ('Central','Ctl'),
+        ('Garden','Gdn'),
         ('North ','N '),
         ('South ','S '),
         ('East ','E '),
@@ -53,10 +54,15 @@ rrrrrWWrrrr
         (' (London)', ''),
         (' (Kent)', ''),
         (' (Intl)', ''),
+        (' (Hampshire)', ''),
+        (' (Essex)', ''),
+        (' (Dorset)', ''),
         ('Trent Valley', 'T Valley'),
         ('Piccadilly','Picc'),
         ('Thameslink','Thmslk'),
         (' Underground', '')]
+
+        operator_mapping=[('Railway', 'Ry')]        
 
         n = 4
 
@@ -95,14 +101,14 @@ rrrrrWWrrrr
                 self.end_fg_color()
             elif service.etd[0] == "D":
                 self.start_fg_color("RED")
-                etd2 = service.etd
+                self.add_text(service.etd)
                 self.end_fg_color()
             elif service.etd[0] == "C":
                 self.start_fg_color("CYAN")
-                etd2 = service.etd
+                self.add_text(service.etd)
                 self.end_fg_color()
             else:
-                etd2 = service.etd
+                self.add_text(service.etd)
 
             self.move_cursor(x=1+(4-n+i)*20,y=5)
             self.start_fg_color("BRIGHTWHITE")
@@ -126,10 +132,14 @@ rrrrrWWrrrr
             if len(calling_points)>11:
                 self.move_cursor(x=1+(4-n+i)*20,y=17)
                 d = len(calling_points)-10
-                self.add_text("+ " + str(d) + " stations")
+                self.add_text("+ " + str(d) + " stations       ")
             self.move_cursor(x=1+(4-n+i)*20,y=18)
             self.start_fg_color("YELLOW")
-            self.add_text(service.operator)
+            operator = service.operator
+            if len(operator) > 19:
+                for k, v in operator_mapping:
+                    operator = operator.replace(k, v)            
+            self.add_text(operator)
             self.end_fg_color()
 
 

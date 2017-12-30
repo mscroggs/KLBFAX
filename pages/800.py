@@ -14,27 +14,52 @@ class BusPage(Page):
         pages.append([page_num,station+" ("+code+")"])
 
     def generate_content(self):
-        bus_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+self.bus_num+"/arrivals")
-        self.add_title("buses")
+
+        def reg(num):
+            # Format registration plates
+            if num[:3]=="LTZ":
+                return num[:3] + " " + num[3:]
+            else:
+                return num[:4] + " " + num[4:]
+
+        self.add_title(self.station,font='size4',fg="BRIGHTWHITE",bg="RED")
+
+        underground = """
+WWWWWWWWWWW
+WWWrrrrrWWW
+WWrrWWWrrWW
+WrrrrrrrrrW
+WrrrrrrrrrW
+WWrrWWWrrWW
+WWWrrrrrWWW
+WWWWWWWWWWW
+"""
+        self.print_image(underground,0,69)                
+
+        #self.add_title("buses")
         desc = " from "+self.station+" ("+self.code+")"
         self.move_cursor(x=80-len(desc))
         self.add_text(desc, bg="YELLOW", fg="BLUE")
-        self.move_cursor(x=0)
 
+        self.move_cursor(x=0)
         self.start_fg_color("GREEN")
-        pos = (0,7,11)
-        for p,t in zip(pos,("Time","Num","Destination")):
+        pos = (0,7,12,15,71)
+        for p,t in zip(pos,("Time","Num","Pl","Destination","")):
             self.move_cursor(x=p)
             self.add_text(t)
         self.end_fg_color()
         self.add_newline()
+
         buses = []
-        for bus in bus_times:
-            buses.append((int(bus['timeToStation']),str(bus['timeToStation']//60)+" min",bus['lineName'],bus['destinationName']))
+        for bus_stop in self.bus_num:
+            bus_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+bus_stop+"/arrivals")
+            
+            for bus in bus_times:
+                buses.append((int(bus['timeToStation']),str(bus['timeToStation']//60)+" min",bus['lineName'],bus['platformName'],bus['destinationName'],reg(bus['vehicleId'])))
 
         buses.sort()
         for bus in buses:
-            for p,t,c in zip(pos,bus[1:],("GREEN","RED",None)):
+            for p,t,c in zip(pos,bus[1:],("GREEN","RED","BRIGHTWHITE",None,"GREY")):
                 self.move_cursor(x=p)
                 self.start_fg_color(c)
                 self.add_text(t)
@@ -43,18 +68,16 @@ class BusPage(Page):
 
 
 pages=[]
-bus01 = BusPage("801","490013914N","Gower Street / UCH","N")
-bus02 = BusPage("802","490000078P","Euston Square Station","P")
-bus03 = BusPage("803","490000077H","Euston Station","H")
-bus04 = BusPage("804","490000077AZ","Euston Station","AZ")
-bus05 = BusPage("805","490000077C","Euston Station","C")
-bus06 = BusPage("806","490000077AP","Euston Bus Station","AP")
-bus07 = BusPage("807","490000077D","Euston Station","D")
-bus08 = BusPage("808","490000077G","Euston Bus Station","G")
-bus09 = BusPage("809","490000077E","Euston Station","E")
-bus10 = BusPage("810","490012867L","Upper Woburn Place / Euston Road","L")
-bus11 = BusPage("811","490012867M","Upper Woburn Place","M")
-bus12 = BusPage("812","490000078Q","Euston Square Station","Q")
+
+bus01 = BusPage("801",["490000077A","490000077C","490000077D","490000077E","490000077F"],"Euston Station","A/C/D/E/F")
+bus02 = BusPage("802",["490000078P","490000078Q"],"Euston Square Station","P/Q")
+bus03 = BusPage("803",["490012867L","490012867M"],"Upper Woburn Place / Euston Road","L/M")
+bus04 = BusPage("804",["490013914N"],"Gower Street / UCH","N")
+bus05 = BusPage("805",["490003174N","490003174S"],"Aldenham Street","S/T")
+bus06 = BusPage("806",["490000152A","490000152C","490000152D","490000152F","490000152G","490000152K"],"Mornington Crescent","A/C/D/F/G/K")
+#bus14 = BusPage("814",["490003174S"],"Aldenham St (south)","S")
+#bus12 = BusPage("812",["490000078Q"],"Euston Square Station","Q")
+#bus12 = BusPage("812",["490000078Q"],"Euston Square Station","Q")
 
 class TVIPage(Page):
     def __init__(self):
