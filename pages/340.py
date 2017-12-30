@@ -10,7 +10,7 @@ class TimePage(Page):
         super(TimePage, self).__init__("340")
         self.title = "Time"
         self.index_num = "340-341"
-        self.tagline = "KLB Mean Time"
+        self.tagline = "EMF Mean Time"
 
     def generate_content(self):
         from file_handler import load_file

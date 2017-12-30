@@ -1,5 +1,5 @@
 from page import Page
-from functions import klb_replace
+from functions import replace
 import url_handler
 
 class TVPage(Page):
@@ -33,14 +33,14 @@ class TVPage(Page):
             for i in range(len(titles)):
                 if i == len(titles)-1 or (int(strftime("%y%m%d%H%M",start_times[i+1])) > int(self.now().strftime("%y%m%d%H%M"))):
                     self.add_text(start_times_formatted[i],fg="GREEN")
-                    self.add_text(" "+klb_replace(titles[i]))
+                    self.add_text(" "+replace(titles[i]))
                     self.add_newline()
 
         if self.feed_type == 2:
             for prog in self.e.findall('programme'):
                 if int(prog.find('end').text)>int(self.now().strftime("%H%M")) or int(prog.find('start').text)>int(self.now().strftime("%H%M")) or self.day != "Today":
                     self.add_text(prog.find('start').text,fg="GREEN")
-                    self.add_text(" "+klb_replace(prog.find('title').text))
+                    self.add_text(" "+replace(prog.find('title').text))
                     self.add_newline()
 
 

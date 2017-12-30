@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 from page import Page
 import time
-from functions import klb_replace
+from functions import replace
 
 
 class NewsPage(Page):
@@ -25,12 +25,12 @@ class NewsPage(Page):
         feed = feedparser.parse(rss_url)
         if 'entries' in feed and len(feed['entries']) > 0:
             item = feed['entries'][0]
-            self.words = klb_replace(item[self.bit]).split(" ")
+            self.words = replace(item[self.bit]).split(" ")
         else:
             self.words = []
 
         if len(feed) > 1:
-            self.entries = [klb_replace(item[self.bit]) for item in feed['entries'][1:21]]
+            self.entries = [replace(item[self.bit]) for item in feed['entries'][1:21]]
         else:
             self.entries = []
 
