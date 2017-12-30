@@ -4,6 +4,7 @@ The pages in brackets are disabled.
 (000 About KLBFAX)  
 (001 Unicode Test Page)  
 (002 Error log)  
+(003 License)  
 (007 FF choice)  
 (008 FF choice)  
 100 Index  
@@ -30,7 +31,6 @@ The pages in brackets are disabled.
 144 Other Awards  
 145 Tea Unawards  
 146 Other Unawards  
-160 Horoscopes  
 200 Letters  
 201 Letters  
 202 Letters  
@@ -52,6 +52,7 @@ The pages in brackets are disabled.
 218 Letters  
 219 Letters  
 220 Letters  
+271 e  
 300 Marts  
 301 Sportsmart  
 302 mscroggs.co.ukmart  
@@ -70,8 +71,6 @@ The pages in brackets are disabled.
 323 Sunrise & sunset  
 324 UK Temperature  
 325 World Temperature  
-330 Money  
-331 Money  
 340 Time  
 341 Time  
 350 National Lottery  
@@ -135,6 +134,8 @@ The pages in brackets are disabled.
 660 Alperton Underground Trains  
 661 Waterloo Underground Trains  
 662 Embankment Underground Trains  
+663 South Kensington Underground Trains  
+664 Gloucester Road Underground Trains  
 690 Recipes Index  
 691 Bad Tempered Cake  
 692 Huda Friendship Cake  
@@ -152,18 +153,12 @@ The pages in brackets are disabled.
 725 Advent Calendar  
 777 The Team  
 800 Buses Index  
-801 Gower Street / UCH (N) Buses  
-802 Euston Square Station (P) Buses  
-803 Euston Station (H) Buses  
-804 Euston Station (AZ) Buses  
-805 Euston Station (C) Buses  
-806 Euston Bus Station (AP) Buses  
-807 Euston Station (D) Buses  
-808 Euston Bus Station (G) Buses  
-809 Euston Station (E) Buses  
-810 Upper Woburn Place / Euston Road (L) Buses  
-811 Upper Woburn Place (M) Buses  
-812 Euston Square Station (Q) Buses  
+801 Euston Station (A/C/D/E/F) Buses  
+802 Euston Square Station (P/Q) Buses  
+803 Upper Woburn Place / Euston Road (L/M) Buses  
+804 Gower Street / UCH (N) Buses  
+805 Aldenham Street (S/T) Buses  
+806 Mornington Crescent (A/C/D/F/G/K) Buses  
 850 Trains Index  
 851 Blackfriars Trains  
 852 London Bridge Trains  
