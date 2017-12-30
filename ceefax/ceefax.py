@@ -1,13 +1,12 @@
 # width:79
 # height: 30
-import config
-import points
+import autoconfig
 import os
 from page import PageManager
 from cupt import Screen
 
 def is_page_file(f):
-    if not os.path.isfile(os.path.join(config.pages_dir, f)):
+    if not os.path.isfile(os.path.join(autoconfig.pages_dir, f)):
         return False
     if "_" in f:
         return False
@@ -24,11 +23,8 @@ def get_ceefax(test=None):
 class Ceefax:
     _instance = None
     def __init__(self, test=None):
-        self.start_time = config.now()
-        if config.NAME == "KLBFAX":
-            points.add_one_random(printing=True)
-        if not os.path.isdir(config.config_dir):
-            os.mkdir(config.config_dir)
+        self.start_time = autoconfig.now()
+        import file_handler
         self.test = test
 
     def begin(self):

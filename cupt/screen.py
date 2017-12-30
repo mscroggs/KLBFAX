@@ -1,5 +1,5 @@
 import curses
-import config
+import autoconfig
 from .cupt import CuPT
 
 class Screen:
@@ -17,7 +17,7 @@ class Screen:
         self.old = curses.curs_set(0)
 
         self.scr.keypad(1)
-        curses.resizeterm(config.HEIGHT,config.WIDTH)
+        curses.resizeterm(autoconfig.HEIGHT,autoconfig.WIDTH)
         self.scr.refresh()
         return self
 

@@ -2,7 +2,6 @@ from page import Page
 from random import choice
 from datetime import date
 import json
-import config
 import logging
 import sys
 from file_handler import f_read_json
@@ -20,8 +19,9 @@ class BdayPage(Page):
                     "Jesus": (12, 25),
                     "Jigsaw": (1, 3),
                     "The Queen": (4, 21),
-                    "Chalkdust": (1, 27),
-                    "ScroggsBot": (1, 10)
+                    "Richard Gere & Van Morrison & Jeff Hardy & Herman von Helmholtz & Pepe Reina": (8, 31),
+                    "Barry Gibb & Rocky Marciano & Romeo Beckham & Conway Twitty & Engelbert Humperdinck": (9, 1),
+                    "Keanu Reeves & Lennox Lewis & Bill Shankly & Kier Starmer & Eric Allman": (9, 2)
         }
 
         for birth in more_birthdays:

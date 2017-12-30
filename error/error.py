@@ -1,6 +1,6 @@
 from datetime import datetime
 import traceback
-from config import current_dir
+from autoconfig import current_dir
 class List(object):
     def __init__(self):
         self.ls = []

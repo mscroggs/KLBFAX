@@ -1,12 +1,11 @@
 from __future__ import division,print_function
 
 import random
-import config
+import autoconfig
 import os
 from page import Page,special
 import signal
 import curses
-import points
 from error import error_list
 import traceback
 
@@ -25,7 +24,7 @@ def pass_f(signum, frame):
     pass
 
 def is_page_file(f):
-    if not os.path.isfile(os.path.join(config.pages_dir, f)):
+    if not os.path.isfile(os.path.join(autoconfig.pages_dir, f)):
         return False
     if f[0] == "_":
         return False
@@ -48,9 +47,9 @@ class PageManager:
         self.load_all_pages()
 
     def load_all_pages(self):
-        if not os.path.exists(config.pages_dir):
+        if not os.path.exists(autoconfig.pages_dir):
             raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
+        only_page_files = [f for f in os.listdir(autoconfig.pages_dir) if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             try:
@@ -66,9 +65,9 @@ class PageManager:
                 pass
 
     def test_all_pages(self):
-        if not os.path.exists(config.pages_dir):
+        if not os.path.exists(autoconfig.pages_dir):
             raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
+        only_page_files = [f for f in os.listdir(autoconfig.pages_dir) if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             try:
@@ -198,12 +197,12 @@ class PageManager:
             self.clear_input()
             if inp is not None:
                 page = self.handle_input(inp)
-            elif config.now().strftime("%H") == "12" and config.now().minute < 20:
+            elif autoconfig.now().strftime("%H") == "12" and autoconfig.now().minute < 20:
                 page = self.build(special.LunchPage)
-            elif config.now().strftime("%H:%M") == "13:37":
+            elif autoconfig.now().strftime("%H:%M") == "13:37":
                 page = self.build(special.LeetPage)
                 page.cupt = self.screen.cupt
-            elif config.now().strftime("%a%H") == "Fri17" and config.now().minute < 20:
+            elif autoconfig.now().strftime("%a%H") == "Fri17" and autoconfig.now().minute < 20:
                 page = self.build(special.PubPage)
             else:
                 page = self.get_loaded_random()
@@ -234,52 +233,9 @@ class PageManager:
         return page
 
     def handle_input(self, the_input):
-        if the_input == "pub":
-            return self.build(special.PubPage)
-        if the_input == "lunch":
-            return self.build(special.LunchPage)
-        if the_input == "1337" or the_input == "0026360488" or the_input == "0082620488":
+        if the_input == "1337":
             import computer
             computer.git_pull()
-        if the_input == "00488a0488":
-            import computer
-            computer.reboot()
-        if the_input == "....":
-            import computer
-            computer.kill_ceefax()
-        if len(the_input)>6:
-            from page.special import NamePage
-            namefile_path = "/home/pi/cards/" + the_input
-            extra = ""
-            from functions import greetings
-            if os.path.isfile(namefile_path):
-                _name, house, twitter = points.get_name_house(namefile_path)
-            else:
-                _name, house, twitter = None,None,None
-            if _name is not None:
-                if house is None:
-                    extra = "Error finding your house. Please report to Scroggs."
-                if twitter is not None:
-                    deets = greetings.random_twitter() + " @"+twitter+"!"
-                elif _name is not None:
-                    deets = greetings.random_twitter() + " " + _name
-                else:
-                    deets = ""
-
-                time = config.now().strftime("%H")
-
-                name_file = points.read_name_file(namefile_path)
-                if points.should_add_morning_points(time, house, name_file,
-                                                    the_input):
-                    points_added = points.add_morning_points(time, house, the_input, deets)
-                    extra = str(points_added) + " points to " + house + "!"
-                    if points_added < 0:
-                        extra += "\nIt's the weekend, go home!"
-
-                name_page = self.build(NamePage, _name, extra=extra)
-            else:
-                name_page = self.build(NamePage, the_input, large=False)
-            return name_page
 
         try:
             while len(the_input)<3:
@@ -308,12 +264,12 @@ class PageManager:
             page.show()
 
     def show_input(self, i):
-        pad = curses.newpad(1, config.WIDTH)
-        pad.addstr(0,0,i[:config.WIDTH-1])
-        pad.refresh(0,0, config.HEIGHT-1,0, config.HEIGHT-1,config.WIDTH)
+        pad = curses.newpad(1, autoconfig.WIDTH)
+        pad.addstr(0,0,i[:autoconfig.WIDTH-1])
+        pad.refresh(0,0, autoconfig.HEIGHT-1,0, autoconfig.HEIGHT-1,autoconfig.WIDTH)
 
     def clear_input(self):
-        self.show_input(" "*config.WIDTH)
+        self.show_input(" "*autoconfig.WIDTH)
 
 class FailPage(Page):
     def __init__(self, e=None, points=True, trace=""):
@@ -322,14 +278,10 @@ class FailPage(Page):
         self.set_exception(e)
         self.is_enabled = False
         self.duration_sec = 2
-        self.points = points
         self.trace = trace
+        self.points = points
 
     def generate_content(self):
-        if self.points:
-            from points import add_points
-            add_points("Slytherin", 2)
-
         if self.points:
             self.add_text("Page failed to load...")
             self.add_newline()
