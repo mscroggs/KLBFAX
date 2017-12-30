@@ -1,6 +1,6 @@
 from datetime import datetime
 import traceback
-from autoconfig import current_dir
+from autoconfig import ceefax_path
 class List(object):
     def __init__(self):
         self.ls = []
@@ -42,7 +42,7 @@ class Error(object):
         out = tsp[last:last+2]
         last = 0
         for i,line in enumerate(tsp):
-            if current_dir in line:
+            if ceefax_path in line:
                 last = i
         out += tsp[last:last+2]
         return "\n".join(out)

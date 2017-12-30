@@ -12,7 +12,7 @@ class TimePage(Page):
         self.index_num = "340-341"
         self.tagline = "KLB Mean Time"
 
-    def generate_content(self,debug=False):
+    def generate_content(self):
         from file_handler import load_file
         clock = load_file("clock.txt").split("\n")
         clock = [[j=="X" for j in i] for i in clock]

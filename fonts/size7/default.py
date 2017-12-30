@@ -33,6 +33,16 @@ xxxx
 xxxx
 """)
 
+_add("#", """
+xxxxxx
+x x xx
+     x
+x x xx
+     x
+x x xx
+xxxxxx
+""")
+
 _add("|", """
 x
 x

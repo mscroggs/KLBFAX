@@ -197,13 +197,9 @@ class PageManager:
             self.clear_input()
             if inp is not None:
                 page = self.handle_input(inp)
-            elif autoconfig.now().strftime("%H") == "12" and autoconfig.now().minute < 20:
-                page = self.build(special.LunchPage)
             elif autoconfig.now().strftime("%H:%M") == "13:37":
                 page = self.build(special.LeetPage)
                 page.cupt = self.screen.cupt
-            elif autoconfig.now().strftime("%a%H") == "Fri17" and autoconfig.now().minute < 20:
-                page = self.build(special.PubPage)
             else:
                 page = self.get_loaded_random()
             self.show(page)
