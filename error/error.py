@@ -37,9 +37,15 @@ class Error(object):
         last = 0
         tsp = self.traceback.split("\n")
         for i,line in enumerate(tsp):
+            if "/pages/" in line:
+                last = i
+        out = tsp[last:last+2]
+        last = 0
+        for i,line in enumerate(tsp):
             if current_dir in line:
                 last = i
-        return "\n".join(tsp[last:last+2])
+        out += tsp[last:last+2]
+        return "\n".join(out)
 
 
 list = List()
