@@ -16,7 +16,7 @@ def git_pull():
 
 def restart_ceefax():
     from os import path
-    with open(path.join(autoconfig.config_dir,"KLBFAX_status"),"w") as f:
+    with open(path.join(autoconfig.default_path,"KLBFAX_status"),"w") as f:
         f.write("1")
     kill_ceefax()
 
