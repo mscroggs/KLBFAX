@@ -28,6 +28,6 @@ class TwitterPage(Page):
                     text += tsp[1].split(" ",1)[1]
             self.add_wrapped_text(text)
             self.add_newline()
-        return results
+            self.add_newline()
 
 tpage = TwitterPage("210")
