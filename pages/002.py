@@ -16,7 +16,7 @@ class TestPage(Page):
         for e in error_list:
             self.add_text(e.as_string())
             self.add_newline()
-            self.add_text(e.traceback)
+            self.add_text(e.short_traceback())
             self.add_newline()
             self.add_newline()
 

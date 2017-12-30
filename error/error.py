@@ -1,6 +1,6 @@
 from datetime import datetime
 import traceback
-
+from config import current_dir
 class List(object):
     def __init__(self):
         self.ls = []
@@ -24,16 +24,22 @@ class Error(object):
             return self.e
         return self.e.__class__.__name__
 
-
     def as_string(self):
         out = "At " + self.datetime.strftime("%Y-%m-%d %H:%M")
         out += ", page " + self.number + " had a"
         e = self._error_as_string()
         if e.lower()[0] in ["a","e","i","o","u"]:
             out += "n"
-        out += " " + e
-        return out
+        return out + " " + e
 
+
+    def short_traceback(self):
+        last = 0
+        tsp = self.traceback.split("\n")
+        for i,line in enumerate(tsp):
+            if current_dir in line:
+                last = i
+        return "\n".join(tsp[last:last+2])
 
 
 list = List()
