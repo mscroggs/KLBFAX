@@ -1,9 +1,16 @@
-# KLBFAX
+EMFFAX
+======
+This branch contains EMFFAX, which will be displayed in the bar at EMF2018.
 
-If you want to add to KLBFAX, the easiest thing is to add files into the pages folder.
+## Running in production
+```shell
+./run.py
+```
 
-Look at the files in that folder for examples.
-
+Contributing to EMFFAX
+----------------------
+Adding a Page
+- - - - - - -
 For a list of current pages, see `PAGES.md`.
 
 ## Dependencies
@@ -11,12 +18,3 @@ For a list of current pages, see `PAGES.md`.
 pip install -r requirements.txt
 ```
 
-## Running in production
-```shell
-./run.py
-```
-
-## Running in development
-```shell
-DEVELOP=1 ./run.py
-```
