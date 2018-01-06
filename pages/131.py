@@ -18,7 +18,7 @@ class PointsPage(Page):
     def background(self):
         import os
         files = ["points","events","emails"]
-        if config.NAME == "KLBFAX" and config.MAIN = True:
+        if config.NAME == "KLBFAX" and config.MAIN == True:
             from points import add_points
             os.system("scp mscroggs:~/.klb/points /home/pi/.klbtemp/points > /dev/null 2>&1")
             with open("/home/pi/.klbtemp/points") as f:
