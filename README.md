@@ -21,7 +21,6 @@ python3 run.py
 
 ## Contributing to EMFFAX
 ### Adding a Page
-- - - - - - -
 The pages are stored in the `pages/` folder. A page file should have the following structure:
 
 ```python
