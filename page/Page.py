@@ -194,34 +194,48 @@ class Page(object):
         return char,color_codes[m1],color_codes[m2]
 
     def get_char(self, char):
+        """Note: this returns a number when the character won't display on pi"""
         if char == "0001":
-            return u"\u2597"
+            char = "0011"
+            #return u"\u2597"
         if char == "0010":
-            return u"\u2596"
+            char = "0011"
+            #return u"\u2596"
+        if char == "0100":
+            char = "1100"
+            #return u"\u259D"
+        if char == "1000":
+            char = "1100"
+            #return u"\u2598"
+
+        if char == "0110":
+            char = "1100"
+            #return u"\u259E"
+        if char == "1001":
+            char = "0011"
+            #return u"\u259A"
+
+        if char == "0111":
+            char = "1111"
+            #return u"\u259F"
+        if char == "1011":
+            char = "1111"
+            #return u"\u2599"
+        if char == "1101":
+            char = "1111"
+            #return u"\u259C"
+        if char == "1110":
+            char = "1111"
+            #return u"\u259B"
+
         if char == "0011":
             return u"\u2584"
-        if char == "0100":
-            return u"\u259D"
         if char == "0101":
             return u"\u2590"
-        if char == "0110":
-            return u"\u259E"
-        if char == "0111":
-            return u"\u259F"
-        if char == "1000":
-            return u"\u2598"
-        if char == "1001":
-            return u"\u259A"
         if char == "1010":
             return u"\u258C"
-        if char == "1011":
-            return u"\u2599"
         if char == "1100":
             return u"\u2580"
-        if char == "1101":
-            return u"\u259C"
-        if char == "1110":
-            return u"\u259B"
         if char == "1111":
             return u"\u2588"
         return " "
