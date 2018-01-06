@@ -24,16 +24,14 @@ class TubePage(Page):
 
         self.add_title(self.station,font='size4',fg="BRIGHTWHITE",bg="BLUE")
 
-        underground = """
-WWWWWWWWWWW
-WWWrrrrrWWW
-WWrrWWWrrWW
-WbbbbbbbbbW
-WbbbbbbbbbW
-WWrrWWWrrWW
-WWWrrrrrWWW
-WWWWWWWWWWW
-"""
+        underground =("WWWWWWWWWWW\n"
+                      "WWWrrrrrWWW\n"
+                      "WWrrWWWrrWW\n"
+                      "WbbbbbbbbbW\n"
+                      "WbbbbbbbbbW\n"
+                      "WWrrWWWrrWW\n"
+                      "WWWrrrrrWWW\n"
+                      "WWWWWWWWWWW")
         self.print_image(underground,0,69)
 
         pos = (0,7,20,45)

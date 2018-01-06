@@ -24,17 +24,15 @@ class BusPage(Page):
 
         self.add_title(self.station,font='size4',fg="BRIGHTWHITE",bg="RED")
 
-        underground = """
-WWWWWWWWWWW
-WWWrrrrrWWW
-WWrrWWWrrWW
-WrrrrrrrrrW
-WrrrrrrrrrW
-WWrrWWWrrWW
-WWWrrrrrWWW
-WWWWWWWWWWW
-"""
-        self.print_image(underground,0,69)                
+        underground =("WWWWWWWWWWW\n"
+                      "WWWrrrrrWWW\n"
+                      "WWrrWWWrrWW\n"
+                      "WrrrrrrrrrW\n"
+                      "WrrrrrrrrrW\n"
+                      "WWrrWWWrrWW\n"
+                      "WWWrrrrrWWW\n"
+                      "WWWWWWWWWWW")
+        self.print_image(underground,0,69)
 
         #self.add_title("buses")
         desc = " from "+self.station+" ("+self.code+")"
@@ -53,7 +51,7 @@ WWWWWWWWWWW
         buses = []
         for bus_stop in self.bus_num:
             bus_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+bus_stop+"/arrivals")
-            
+
             for bus in bus_times:
                 buses.append((int(bus['timeToStation']),str(bus['timeToStation']//60)+" min",bus['lineName'],bus['platformName'],bus['destinationName'],reg(bus['vehicleId'])))
 

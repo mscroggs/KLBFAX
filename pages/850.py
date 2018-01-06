@@ -21,16 +21,14 @@ class TrainPage(Page):
 
         self.add_title(self.station,font="size4")
 
-        british_rail = """
-rrrrWWrrrrr
-rrrrrWWrrrr
-rWWWWWWWWWr
-rrrrrWWrrrr
-rrrrWWrrrrr
-rWWWWWWWWWr
-rrrrWWrrrrr
-rrrrrWWrrrr
-"""
+        british_rail =("rrrrWWrrrrr\n"
+                       "rrrrrWWrrrr\n"
+                       "rWWWWWWWWWr\n"
+                       "rrrrrWWrrrr\n"
+                       "rrrrWWrrrrr\n"
+                       "rWWWWWWWWWr\n"
+                       "rrrrWWrrrrr\n"
+                       "rrrrrWWrrrr")
         self.print_image(british_rail,0,69)
 
 

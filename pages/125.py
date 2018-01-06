@@ -17,38 +17,34 @@ class OllyPageN(Page):
     def generate_content(self):
 
         self.add_title(self.page_name,fg="BRIGHTWHITE",bg="BLACK")
-        ghost = """
------------
---WWWWWWW--
---WWWWWWW--
--W-------W-
--W-------W-
--W-R---R-W-
--W-------W-
--W-------W-
--W---R---W-
--W--RRR--W-
--W---R---W-
--W-------W-
--WW-W-W-WW-
--W-W-W-W-W-
-"""
-        clock = """
------------
---WWWWWWW--
---WWWWWWW--
--W-------W-
--W---B---W-
--W---B---W-
--W---B---W-
--W---BBB-W-
--W-------W-
--W-------W-
--W-------W-
--W-------W-
--WWWWWWWWW-
---WWWWWWW--
-"""
+        ghost =("-----------\n"
+                "--WWWWWWW--\n"
+                "--WWWWWWW--\n"
+                "-W-------W-\n"
+                "-W-------W-\n"
+                "-W-R---R-W-\n"
+                "-W-------W-\n"
+                "-W-------W-\n"
+                "-W---R---W-\n"
+                "-W--RRR--W-\n"
+                "-W---R---W-\n"
+                "-W-------W-\n"
+                "-WW-W-W-WW-\n"
+                "-W-W-W-W-W-")
+        clock =("-----------\n"
+                "--WWWWWWW--\n"
+                "--WWWWWWW--\n"
+                "-W-------W-\n"
+                "-W---B---W-\n"
+                "-W---B---W-\n"
+                "-W---B---W-\n"
+                "-W---BBB-W-\n"
+                "-W-------W-\n"
+                "-W-------W-\n"
+                "-W-------W-\n"
+                "-W-------W-\n"
+                "-WWWWWWWWW-\n"
+                "--WWWWWWW--")
 
         if self.page_name == "Ghosts":
             self.print_image(ghost,0,69)

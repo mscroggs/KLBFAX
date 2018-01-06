@@ -7,12 +7,12 @@ def get_tag(t,text):
         return ""
     return text.split('<td class="'+t+'"')[1].split(">",1)[1].split("</td>")[0]
 
-flags = {"Italy":   "\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\n",
-         "England": "\nwwwrrrwww\nwwwrrrwww\nrrrrrrrrr\nrrrrrrrrr\nwwwrrrwww\nwwwrrrwww\n",
-         "Scotland":"\nwwbbbbbww\nbwwbbbwwb\nbbwwbwwbb\nbbbwwwbbb\nbbwwbwwbb\nbwwbbbwwb\n",
-         "Wales":   "\nwwwwwwwww\nwrrwwwwrw\nwrrwwwwrw\nwwrrrrrrw\nggrrggrgg\nggggggggg\n",
-         "France":  "\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\n",
-         "Ireland": "\ngggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo\n"
+flags = {"Italy":   "gggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr\ngggwwwrrr",
+         "England": "wwwrrrwww\nwwwrrrwww\nrrrrrrrrr\nrrrrrrrrr\nwwwrrrwww\nwwwrrrwww",
+         "Scotland":"wwbbbbbww\nbwwbbbwwb\nbbwwbwwbb\nbbbwwwbbb\nbbwwbwwbb\nbwwbbbwwb",
+         "Wales":   "wwwwwwwww\nwrrwwwwrw\nwrrwwwwrw\nwwrrrrrrw\nggrrggrgg\nggggggggg",
+         "France":  "bbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr\nbbbwwwrrr",
+         "Ireland": "gggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo\ngggwwwooo"
         }
 
 class RugbyPage(Page):

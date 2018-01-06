@@ -141,7 +141,7 @@ class Page(object):
                        "m": "MAGENTA","p": "PINK",
                        "w": "WHITE",  "W": "BRIGHTWHITE",
                        "d": "DEFAULT","-": "BLACK"}
-        lines = image.split("\n")[1:-1]
+        lines = image.split("\n")
         for l in range(len(lines)//2):
             for c in range(len(lines[2*l])):
                 c1 = lines[2*l][c]
@@ -152,6 +152,99 @@ class Page(object):
                 self.end_bg_color()
                 self.end_fg_color()
             self.move_cursor(y=y_coord + l+1, x=x_coord)
+
+    def four_to_one(self, four):
+        color_codes = {"k": "BLACK",  "K": "GREY",
+                       "r": "RED",    "R": "LIGHTRED",
+                       "o": "ORANGE", "y": "YELLOW",
+                       "g": "GREEN",  "G": "LIGHTGREEN",
+                       "c": "CYAN",   "C": "LIGHTCYAN",
+                       "b": "BLUE",   "B": "LIGHTBLUE",
+                       "m": "MAGENTA","p": "PINK",
+                       "w": "WHITE",  "W": "BRIGHTWHITE",
+                       "d": "DEFAULT","-": "BLACK"}
+        n = {i:0 for i in color_codes}
+        for i in four:
+            if i not in n:
+                i = "-"
+            n[i] += 1
+        m1 = None
+        m2 = None
+        for tot in range(4,0,-1):
+            ls = [i for i in n if n[i] == tot]
+            if len(ls)>0 and m1 is None:
+                m1 = ls[0]
+                ls = ls[1:]
+            if len(ls)>0 and m2 is None:
+                m2 = ls[0]
+                break
+        if m2 is None:
+            m2 = "-"
+        if m1 == "-":
+            m1,m2 = m2,m1
+
+        char = ""
+        for i in four:
+            if i == m1:
+                char += "1"
+            else:
+                char += "0"
+        char = self.get_char(char)
+
+        return char,color_codes[m1],color_codes[m2]
+
+    def get_char(self, char):
+        if char == "0001":
+            return u"\u2597"
+        if char == "0010":
+            return u"\u2596"
+        if char == "0011":
+            return u"\u2584"
+        if char == "0100":
+            return u"\u259D"
+        if char == "0101":
+            return u"\u2590"
+        if char == "0110":
+            return u"\u259E"
+        if char == "0111":
+            return u"\u259F"
+        if char == "1000":
+            return u"\u2598"
+        if char == "1001":
+            return u"\u259A"
+        if char == "1010":
+            return u"\u258C"
+        if char == "1011":
+            return u"\u2599"
+        if char == "1100":
+            return u"\u2580"
+        if char == "1101":
+            return u"\u259C"
+        if char == "1110":
+            return u"\u259B"
+        if char == "1111":
+            return u"\u2588"
+        return " "
+
+    def print_compressed_image(self,image,y_coord=0,x_coord=0):
+        self.move_cursor(y=y_coord,x=x_coord)
+        lines = image.split("\n")
+        for l in range(0,len(lines),2):
+            self.move_cursor(y=y_coord + l//2, x=x_coord)
+            for c in range(0,len(lines[l]),2):
+                four = ""
+                for A in [l,l+1]:
+                    for B in [c,c+1]:
+                        if len(lines)>A and len(lines[A])>B:
+                            four += lines[A][B]
+                        else:
+                            four += "-"
+                char, fg, bg = self.four_to_one(four)
+                self.start_fg_color(fg)
+                self.start_bg_color(bg)
+                self.add_text(char)
+                self.end_bg_color()
+                self.end_fg_color()
 
     def loop(self):
         pass

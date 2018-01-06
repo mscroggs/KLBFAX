@@ -85,16 +85,14 @@ class WhoPage(Page):
     def generate_content(self):
         self.add_title("Who is peter?",font="size4",fg="GREEN",bg="BRIGHTWHITE")
 
-        twitter = """
---G-----G--
--GGGGGGGGG-
--G-------G-
--G-G---G-G-
--G-------G-
--G-GGGGG-G-
--G-------G-
--GGGGGGGGG-
-"""
+        twitter =("--G-----G--\n"
+                  "-GGGGGGGGG-\n"
+                  "-G-------G-\n"
+                  "-G-G---G-G-\n"
+                  "-G-------G-\n"
+                  "-G-GGGGG-G-\n"
+                  "-G-------G-\n"
+                  "-GGGGGGGGG-")
         self.print_image(twitter,0,69)
         self.move_cursor(x=0)
 
