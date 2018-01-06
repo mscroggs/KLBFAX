@@ -604,29 +604,6 @@ mmmmmmmmmmmmmmmm
 
             return image #[weather_pic, weather_colour_foreground, weather_colour_background]
 
-        def print_image(image,y_coord=0,x_coord=0):
-            self.move_cursor(y=y_coord,x=x_coord)
-            color_codes = {"k": "BLACK",  "K": "GREY",
-                           "r": "RED",    "R": "LIGHTRED",
-                           "o": "ORANGE", "y": "YELLOW",
-                           "g": "GREEN",  "G": "LIGHTGREEN",
-                           "c": "CYAN",   "C": "LIGHTCYAN",
-                           "b": "BLUE",   "B": "LIGHTBLUE",
-                           "m": "MAGENTA","p": "PINK",
-                           "w": "WHITE",  "W": "BRIGHTWHITE",
-                           "d": "DEFAULT","-": "BLACK"}
-            lines = image.split("\n")[1:-1]
-            for l in range(len(lines)//2):
-                for c in range(len(lines[2*l])):
-                    c1 = lines[2*l][c]
-                    c2 = lines[2*l+1][c]
-                    self.start_fg_color(color_codes[c1])
-                    self.start_bg_color(color_codes[c2])
-                    self.add_text(u"\u2580")
-                    self.end_bg_color()
-                    self.end_fg_color()
-                self.move_cursor(y=y_coord + l+1, x=x_coord)
-
         self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
 
         day_weather = []
@@ -653,10 +630,10 @@ mmmmmmmmmmmmmmmm
 
 
         # Pictures
-        print_image(day_weather[0],11,1)
-        print_image(day_weather[1],11,21)
-        print_image(day_weather[2],11,41)
-        print_image(day_weather[3],11,61)
+        self.print_image(day_weather[0][1:-1],11,1)
+        self.print_image(day_weather[1][1:-1],11,21)
+        self.print_image(day_weather[2][1:-1],11,41)
+        self.print_image(day_weather[3][1:-1],11,61)
 
         # Max temps
         self.move_cursor(y=18,x=0)

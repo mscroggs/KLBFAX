@@ -7,7 +7,8 @@ def escape(string):
 
 def replace(imput):
     swaps = [
-            ["Trump","Duck"],
+            ["Donald Trump","Jonty"],
+            ["Trump","Jonty"],
             ["Brexit","Eurovision"],
             ["Lord","Darth"],
             ["Lords","Siths"]

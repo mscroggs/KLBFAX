@@ -31,7 +31,7 @@ rWWWWWWWWWr
 rrrrWWrrrrr
 rrrrrWWrrrr
 """
-        self.print_image(british_rail,0,69)
+        self.print_image(british_rail[1:-1],0,69)
 
 
         # Loop over all the train services in that board.
