@@ -1,5 +1,4 @@
-EMFFAX
-======
+# EMFFAX
 This branch contains EMFFAX, which will be displayed in the bar at EMF2018.
 
 Before running EMFFAX, install the dependencies with:
@@ -10,21 +9,18 @@ pip install -r requirements.txt
 
 EMFFAX is launched in a linux or mac terminal with:
 
-## Running in production
 ```shell
 ./run.py
 ```
 
 or
 
-## Running in production
 ```shell
 python3 run.py
 ```
 
-Contributing to EMFFAX
-----------------------
-Adding a Page
+## Contributing to EMFFAX
+### Adding a Page
 - - - - - - -
 The pages are stored in the `pages/` folder. A page file should have the following structure:
 
@@ -50,6 +46,5 @@ and should be used for code that takes a while to run. `generate_content` is run
 
 For a list of current pages, see `PAGES.md`.
 
-`contributors.txt`
-- - - - - - - - - 
+### `contributors.txt`
 Once you have contributed, add your name to `contributors.txt`, and add a pixel avatar to `pages/777.py`.
