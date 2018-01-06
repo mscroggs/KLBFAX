@@ -25,7 +25,7 @@ class PointsPage(Page):
         00000           0   0        1   222   1
          Sam             Tom            Belgin 
 
-Thank you everyone here for contributing to KLBFAX/EMFFAX!
+Thank you everyone here for contributing to KLBFAX!
 
 ""","RED","GREEN","BLUE")
 
