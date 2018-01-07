@@ -60,7 +60,10 @@ class TrainPage(Page):
         ('Thameslink','Thmslk'),
         (' Underground', '')]
 
-        operator_mapping=[('Railway', 'Ry')]        
+        operator_mapping=[
+        ('Railway', 'Rly'),
+        ('Midlands', 'Mids')
+        ]        
 
         n = 4
 
@@ -143,8 +146,8 @@ class TrainPage(Page):
 
         self.move_cursor(x=0,y=20)
         self.start_fg_color("GREEN")
-        pos1 = (0,6,26,30)
-        pos2 = (39,45,65,69)
+        pos1 = (1,7,27,31)
+        pos2 = (41,47,67,71)
         for p1,p2,t in zip(pos1,pos2,("Time","Destination","Plt","Exptd")):
             self.move_cursor(p1)
             self.add_text(t)
