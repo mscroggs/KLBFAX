@@ -21,7 +21,7 @@ class WeatherPage(Page):
         self.tagline = "Live from the Met Office"
 
     def generate_content(self):
-        from font import weather_symbol
+        from fonts import weather_symbol
         self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
 
         day_weather = []
