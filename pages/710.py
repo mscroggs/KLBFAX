@@ -14,7 +14,11 @@ class OxmasPage(Page):
         self.test = test
         self._name = title
         self.verb = verb
-        if NAME!="28JHFAX":
+
+    def background(self):
+        if datetime.now().month == 12 and NAME == "28JHFAX":
+            self.is_enabled = True
+        else:
             self.is_enabled = False
 
     def generate_content(self):

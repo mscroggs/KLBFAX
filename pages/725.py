@@ -10,6 +10,8 @@ class AdventPage(Page):
     def __init__(self, n):
         super(AdventPage, self).__init__(n)
         self.title = "Advent Calendar"
+
+    def background(self):
         if datetime.now().month == 12:
             self.in_index = True
             self.is_enabled = True
