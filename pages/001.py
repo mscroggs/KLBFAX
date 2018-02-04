@@ -39,5 +39,5 @@ class TestPage(Page):
                 self.add_text(" ")
             else:
                 self.add_newline()
-
+        self.add_text(u"HELLO╹┓╵┌")
 instance = TestPage()
