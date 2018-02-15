@@ -17,6 +17,7 @@ class WeatherPage(Page):
             self.weather_data = ["CLASSIFIED"]*60
         ''' 
         If using realtime.txt (no longer working on CASA website):
+
         # Field # Example 	Description 	Equivalent Webtags
         # 1 	19/08/09 	Date as 2 figure day [separator] 2 figure month [separator] 2 figure year - the separator is that set in the windows system short date format (see setup) 	<#date>
         # 2 	16:03:45 	time(always hh:mm:ss as per computer system) 	<#timehhmmss>
@@ -320,6 +321,46 @@ class WeatherPage(Page):
             inside_weather_pic = "}" #moon
             inside_weather_colour_foreground = "ORANGE"
             inside_weather_colour_background = "BLACK"
+
+        ''' Meanings of icon numbers from clientraw.txt (Note not the same as from realtime.txt)
+
+    "day_clear.png",           //  0 imagesunny.visible
+    "night_clear.png",         //  1 imageclearnight.visible
+    "day_partly_cloudy.png",   //  2 imagecloudy.visible
+    "day_mainly_cloudy.png",   //  3 imagecloudy2.visible
+    "night_partly_cloudy.gif", //  4 imagecloudynight.visible
+    "day_clear.png",           //  5 imagedry.visible
+    "fog.png",                 //  6 imagefog.visible
+    "haze.png",                //  7 imagehaze.visible
+    "day_heavy_rain.png",      //  8 imageheavyrain.visible
+    "day_mostly_sunny.png",    //  9 imagemainlyfine.visible
+    "night_mist.png",                // 10 imagemist.visible
+    "night_fog.png",                 // 11 imagenightfog.visible
+    "night_heavy_rain.png",    // 12 imagenightheavyrain.visible
+    "night_overcast.png",        // 13 imagenightovercast.visible
+    "night_rain.png",          // 14 imagenightrain.visible
+    "night_light_rain.png",    // 15 imagenightshowers.visible
+    "night_snow.gif",          // 16 imagenightsnow.visible
+    "night_thunder.png",        // 17 imagenightthunder.visible
+    "day_mainly_cloudy.png",          // 18 imageovercast.visible
+    "day_partly_cloudy.png",   // 19 imagepartlycloudy.visible
+    "day_rain.png",            // 20 imagerain.visible
+    "day_light_rain.png",            // 21 imagerain2.visible
+    "day_light_rain.png",      // 22 imageshowers2.visible
+    "day_sleet.gif",           // 23 imagesleet.visible
+    "day_sleet.gif",           // 24 imagesleetshowers.visible
+    "day_snow.gif",            // 25 imagesnow.visible
+    "day_snow.gif",            // 26 imagesnowmelt.visible
+    "day_snow.gif",            // 27 imagesnowshowers2.visible
+    "day_clear.pngf",           // 28 imagesunny.visible
+    "thunder.png",          // 29 imagethundershowers.visible
+    "thunder.png",          // 30 imagethundershowers2.visible
+    "thunder.png",          // 31 imagethunderstorms.visible
+    "tornado.gif",             // 32 imagetornado.visible
+    "windy.gif",               // 33 imagewindy.visible
+    "day_recent_rain.png",   // 34 stopped rainning
+    "windyrain.gif"            // 35 windy/rain (new with V2.11)
+    '''
 
         if weather_forecast in ["1", "2", "-1"] and weather_daylight == "1":
             weather_pic = "*" #sunny
