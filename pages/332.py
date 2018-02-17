@@ -4,8 +4,8 @@ from page import Page
 #import url_handler
 from forex_python.converter import CurrencyRates
 from forex_python.bitcoin import BtcConverter
-import pandas as pd
-import pickle
+#import pandas as pd
+#import pickle
 import quandl
 from datetime import datetime
 
