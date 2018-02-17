@@ -32,7 +32,7 @@ class BitcoinPage(Page):
                 df.to_pickle(cache_path)
                 #print('Cached {} at {}'.format(quandl_id, cache_path))
             '''
-            #df = quandl.get(quandl_id, returns="pandas")
+            df = quandl.get(quandl_id, returns="pandas")
             return df
         
         b = BtcConverter()   # add "force_decimal=True" parmeter to get Decimal rates
