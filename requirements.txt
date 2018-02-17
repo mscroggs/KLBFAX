@@ -9,3 +9,4 @@ nrewebservices
 feedparser
 forex_python
 quandl
+pandas
