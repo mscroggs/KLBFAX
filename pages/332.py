@@ -5,7 +5,7 @@ from page import Page
 from forex_python.converter import CurrencyRates
 from forex_python.bitcoin import BtcConverter
 import pandas as pd
-import pickle
+#import pickle
 import quandl
 from datetime import datetime
 
@@ -20,7 +20,7 @@ class BitcoinPage(Page):
 
         def get_quandl_data(quandl_id):
             '''Download and cache Quandl dataseries'''
-            
+            '''
             cache_path = '{}.pkl'.format(quandl_id).replace('/','-')
             try:
                 f = open(cache_path, 'rb')
@@ -31,7 +31,7 @@ class BitcoinPage(Page):
                 df = quandl.get(quandl_id, returns="pandas")
                 df.to_pickle(cache_path)
                 #print('Cached {} at {}'.format(quandl_id, cache_path))
-            
+            '''
             #df = quandl.get(quandl_id, returns="pandas")
             return df
         
