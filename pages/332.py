@@ -5,7 +5,7 @@ from page import Page
 from forex_python.converter import CurrencyRates
 from forex_python.bitcoin import BtcConverter
 import pandas as pd
-#import pickle
+import pickle
 import quandl
 from datetime import datetime
 
@@ -20,7 +20,7 @@ class BitcoinPage(Page):
 
         def get_quandl_data(quandl_id):
             '''Download and cache Quandl dataseries'''
-            '''
+            
             cache_path = '{}.pkl'.format(quandl_id).replace('/','-')
             try:
                 f = open(cache_path, 'rb')
@@ -31,8 +31,8 @@ class BitcoinPage(Page):
                 df = quandl.get(quandl_id, returns="pandas")
                 df.to_pickle(cache_path)
                 #print('Cached {} at {}'.format(quandl_id, cache_path))
-            '''
-            df = quandl.get(quandl_id, returns="pandas")
+            
+            #df = quandl.get(quandl_id, returns="pandas")
             return df
         
         b = BtcConverter()   # add "force_decimal=True" parmeter to get Decimal rates
@@ -54,7 +54,7 @@ class BitcoinPage(Page):
         width = 70
         range_x = max(x)-min(x)
         range_y = max(y)-min(y)
-        dx = range_x//width
+        #dx = range_x//width
         self.dy = range_y//height
 
         self.height = height
@@ -68,7 +68,9 @@ class BitcoinPage(Page):
         self.y = y
         #graph = [[" " for j in range(width)] for i in range(height)]
         for i,xx in enumerate(x):
-            x_coord = int((x[i]-min(x))/range_x*(width-1))
+            x_coord = int( (x[i]-min(x)).total_seconds()/(range_x.total_seconds())*(width-1))
+            #from IPython import embed
+            #embed()
             y_coord = int((y[i]-min(y))/range_y*(height-1))
             self.coords[i] = (x_coord,y_coord)
             #graph[y_coord][x_coord] = "x"        
