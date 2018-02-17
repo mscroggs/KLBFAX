@@ -95,7 +95,7 @@ class TubePage(Page):
                 #    full_description += ": " + description
                 full_description = description
                 self.move_cursor(x=22)
-                self.add_wrapped_text(fill(full_description,58).replace('\n','\n'+" "*22),pre=22)
+                self.add_wrapped_text(fill(full_description,57).replace('\n','\n'+" "*22),pre=22)
                 self.end_fg_color()
                 self.add_newline()
 
