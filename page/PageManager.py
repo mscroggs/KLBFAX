@@ -198,6 +198,10 @@ class PageManager:
             self.clear_input()
             if inp is not None:
                 page = self.handle_input(inp)
+            elif config.now().strftime("%Y-%m-%d") in ["2018-02-22","2018-02-23","2018-02-26","2018-02-27","2018-02-28","2018-03-05",
+                                                       "2018-03-06","2018-03-07","2018-03-08","2018-03-12","2018-03-13","2018-03-14",
+                                                       "2018-03-15","2018-03-16"]:
+                page = self.build(special.StrikePage)
             elif config.now().strftime("%H") == "12" and config.now().minute < 20:
                 page = self.build(special.LunchPage)
             elif config.now().strftime("%H:%M") == "13:37":
@@ -236,6 +240,8 @@ class PageManager:
     def handle_input(self, the_input):
         if the_input == "pub":
             return self.build(special.PubPage)
+        if the_input == "strike":
+            return self.build(special.StrikePage)
         if the_input == "lunch":
             return self.build(special.LunchPage)
         if the_input == "1337" or the_input == "0026360488" or the_input == "0082620488":
