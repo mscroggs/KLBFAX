@@ -90,7 +90,7 @@ strike2 += "-------------00--00-----------------------------\n"
 strike2 += "-----------0000--0000---------------------------\n"
 strike2 += "-----------0000--0000---------------------------"
 
-strikers = [strike,strike2]
+strikers = [strike,strike2,"\n".join([i[::-1] for i in strike.split("\n")][::-1])]
 
 class StrikePage(Page):
     def __init__(self):
