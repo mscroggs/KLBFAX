@@ -91,6 +91,12 @@ strike2 += "-----------0000--0000---------------------------\n"
 strike2 += "-----------0000--0000---------------------------"
 
 strikers = [strike,strike2,"\n".join([i[::-1] for i in strike.split("\n")][::-1])]
+for i in range(1,30):
+    strikers.append("\n".join(["--"*i+j for j in strike.split("\n")]))
+    strikers.append("\n".join(["--"*i+j for j in strike2.split("\n")]))
+for i in range(1,15):
+    strikers.append("\n".join([j[2*i:] for j in strike.split("\n")]))
+    strikers.append("\n".join([j[2*i:] for j in strike2.split("\n")]))
 
 class StrikePage(Page):
     def __init__(self):
