@@ -1,6 +1,6 @@
 from page import Page
 import config
-from random import choice
+from random import choice, randint
 strike = ""
 strike += "----wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-\n"
 strike += "----wrrrrrrwrrrrrrwrrrrrwwrrrrrrwrrwwrrwrrrrrrw-\n"
@@ -65,7 +65,7 @@ strike2 += "-----------0000000000----g----------------------\n"
 strike2 += "-----------0000000000----g----------------------\n"
 strike2 += "-----------0000000000----g----------------------\n"
 strike2 += "-------------000000------g----------------------\n"
-strike2 += "---------------0000------g----------------------\n"
+strike2 += "--------------00000------g----------------------\n"
 strike2 += "---------------00--------g----------------------\n"
 strike2 += "---------------00--------g----------------------\n"
 strike2 += "-------------0000000000000----------------------\n"
@@ -89,6 +89,26 @@ strike2 += "-------------00--00-----------------------------\n"
 strike2 += "-------------00--00-----------------------------\n"
 strike2 += "-----------0000--0000---------------------------\n"
 strike2 += "-----------0000--0000---------------------------"
+
+mike  = "----wwwwwwwwwwwwwrrwwwwrrwrrrrrrwrrwwrrwrrrrrrw-\n"
+mike += "----wwwwwwwwwwwwwrrrwwrrrwwwrrwwwrrwrrwwrrwwwww-\n"
+mike += "----wwwwwwwwwwwwwrrwrrwrrwwwrrwwwrrrrwwwrrrrwww-\n"
+mike += "----wwwwwwwwwwwwwrrwwwwrrwwwrrwwwrrwrrwwrrwwwww-\n"
+mike += "----wwwwwwwwwwwwwrrwwwwrrwrrrrrrwrrwwrrwrrrrrrw-\n"
+
+boards  = "----.rrrrr...rrrr...rrrr..rrrrr..rrrrr...rrrrr.-\n"
+boards += "----.rr..rr.rr..rr.rr..rr.rr..rr.rr..rr.rr.....-\n"
+boards += "----.rrrrr..rr..rr.rrrrrr.rrrrrr.rr..rr..rrrr..-\n"
+boards += "----.rr..rr.rr..rr.rr..rr.rr.rr..rr..rr.....rr.-\n"
+boards += "----.rrrrr...rrrr..rr..rr.rr..rr.rrrrr..rrrrr..-\n"
+boards = boards.replace(".","w")
+
+r = randint(0,99)
+
+if r==0:
+    strike[49*1:49*6] = mike
+elif r==1:
+    strike[49*1:49*6] = boards    
 
 strikers = [strike,strike2,"\n".join([i[::-1] for i in strike.split("\n")][::-1])]
 for i in range(1,30):
