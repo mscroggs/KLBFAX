@@ -64,7 +64,7 @@ def klb_replace(imput):
             ["Teenage Mutant Ninja Turtles","Belgin's Pick: Teenage Mutant Ninja Turtles"],
             ["X-Men Origins","X-Men Origins Seminar Room"],
             ["Bruce","Rafael"],
-            ["Rafael","Rafeal"],
+            ["Rafael","Rafail"],
             ["Eleanor","Eleanorovirus"],
             ["Scorpio","Scorpions"],
             ["General Election","Winter Olympics"],
@@ -77,7 +77,10 @@ def klb_replace(imput):
             ["Catalan","Sugar"],
             ["Lord","Darth"],
             ["Lords","Siths"],
-            ["House of Commons","Jedi Council"]
+            ["House of Commons","Jedi Council"],
+            ["Niki","Nikki Heat"],
+            ["Nicki","Nikki Heat"],
+            ["Sean","Sean the Sheep"]
         ]
     for swap in swaps:
         imput = re.sub(r"(^|[^A-Za-z])"+swap[0]+r"($|[^A-Za-z])(?i)",r"\1"+swap[1]+r"\2",imput)
