@@ -1,5 +1,4 @@
 from page import Page
-import url_handler
 
 class TwitterPage(Page):
     def __init__(self, page_num):
@@ -10,7 +9,7 @@ class TwitterPage(Page):
         pass
 
     def generate_content(self):
-        import tweet_handler
+        from helpers import tweet_handler
 
         self.add_title("#emfcamp")
         try:

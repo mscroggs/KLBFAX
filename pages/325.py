@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from page import Page
-import url_handler
+from helpers import url_handler
 
 class WorldTempPage(Page):
     def __init__(self):

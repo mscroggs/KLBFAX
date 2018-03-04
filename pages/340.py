@@ -13,7 +13,7 @@ class TimePage(Page):
         self.tagline = "EMF Mean Time"
 
     def generate_content(self):
-        from file_handler import load_file
+        from helpers.file_handler import load_file
         clock = load_file("clock.txt").split("\n")
         clock = [[j=="X" for j in i] for i in clock]
         minute = [[False]*len(i) for i in clock]

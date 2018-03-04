@@ -1,6 +1,6 @@
 from page import Page
-from file_handler import f_read
-import url_handler
+from helpers.file_handler import f_read
+from helpers import url_handler
 
 class WeatherPage(Page):
     def __init__(self):
@@ -10,7 +10,6 @@ class WeatherPage(Page):
 
     def background(self):
         try:
-            #response = url_handler.load("http://weather.casa.ucl.ac.uk/realtime.txt")
             response = url_handler.load("http://weather.casa.ucl.ac.uk/clientraw.txt")
             self.weather_data = response.split(" ")
         except:

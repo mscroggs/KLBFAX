@@ -121,7 +121,7 @@ class PageManager:
         return items
 
     def export_all_to_html(self):
-        from file_handler import open_html
+        from helpers.file_handler import open_html
         for page_num, page in self.sorted_pages():
             print(page_num+" "+page.title)
             with open_html(page_num+".html","w") as f:
@@ -230,8 +230,8 @@ class PageManager:
 
     def handle_input(self, the_input):
         if the_input == "1337":
-            import computer
-            computer.git_pull()
+            import update
+            update.git_pull()
 
         try:
             while len(the_input)<3:

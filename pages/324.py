@@ -8,13 +8,14 @@ class UKTempPage(Page):
         self.title = "UK Temperature"
         self.tagline = "Why exactly do we live in Britain?"
         self.in_index = False
-        from file_handler import load_file
+        from helpers.file_handler import load_file
         self.ordered_ids = [i.rstrip("\n") for i in load_file("uk_coordinate_ids.txt").split("\n")]
         self.temps = [99 for i in range(len(self.ordered_ids))]
 
 
     def background(self):
-        import url_handler, json
+        from helpers import url_handler
+        import json
         from time import sleep
 
 

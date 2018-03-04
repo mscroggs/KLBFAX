@@ -11,7 +11,7 @@ class LiPage(Page):
     def generate_content(self):
         from random import randrange
         self.add_title("License",font="size4")
-        from file_handler import load_file
+        from helpers.file_handler import load_file
         li = load_file("../LICENSE.txt")
         c = load_file("../contributors.txt").split("\n")
         while "" in c:

@@ -7,7 +7,7 @@ class ePage(Page):
 
     def generate_content(self):
         self.add_title("e",font="size4")
-        from file_handler import load_file
+        from helpers.file_handler import load_file
         pi = load_file("e.txt")
         self.add_wrapped_text(pi)
 

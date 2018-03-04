@@ -8,7 +8,7 @@ class PiPage(Page):
     def generate_content(self):
         from random import randrange
         self.add_title("Pi",font="size4")
-        from file_handler import load_file
+        from helpers.file_handler import load_file
         pi = load_file("pi.txt")
         self.add_wrapped_text(pi)
 

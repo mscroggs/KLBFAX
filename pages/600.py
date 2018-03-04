@@ -1,6 +1,6 @@
 from page import Page
 from functions import replace
-import url_handler
+from helpers import url_handler
 
 class TVPage(Page):
     def __init__(self, page_num, channel, feed, day):

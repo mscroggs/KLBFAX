@@ -1,13 +1,15 @@
-# EMFFAX
-This branch contains EMFFAX, which will be displayed in the bar at EMF2018.
+# FAX
+This repository contains Python code to run a CEEFAX style screen.
 
-Before running EMFFAX, install the dependencies with:
+This branch contains EMFFAX, which will be displayed in the bar at [EMF2018](https://emfcamp.org).
+
+Before running FAX, install the dependencies with:
 
 ```shell
 pip install -r requirements.txt
 ```
 
-EMFFAX is launched in a linux or mac terminal with:
+FAX is launched in a linux or mac terminal with:
 
 ```shell
 ./run.py
@@ -18,6 +20,23 @@ or
 ```shell
 python3 run.py
 ```
+
+## Repository contents
+The files that make up FAX are organised as follows:
+| Directory    | Contents                                   |
+| ------------ | ------------------------------------------ |
+| `/`          | Config, repository info and main run files |
+| `/ceefax`    | The main ceefax class                      |
+| `/cupt`      | CuPT, the **Cu**rses **P**rinting **T**ool |
+| `/error`     | Error logging functionality                |
+| `/files`     | Data files needed by pages                 |
+| `/fonts`     | Terminal block fonts                       |
+| `/functions` | Functions used by multiple pages           |
+| `/helpers`   | Url, tweet and file handling helpers       |
+| `/page`      | The `Page` and `PageManager` classes       |
+| `/pages`     | The actual pages shown on FAX              |
+| `/printer`   | The `Printer` class that print fonts       |
+| `/utils`     | Utility functions                          |
 
 ## Contributing to EMFFAX
 ### Adding a Page

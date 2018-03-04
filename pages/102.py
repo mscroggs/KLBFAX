@@ -4,7 +4,7 @@ import config
 import json
 import logging
 import sys
-from file_handler import f_read_json
+from helpers.file_handler import f_read_json
 
 class BdayPage(Page):
     def __init__(self, page_num):

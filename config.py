@@ -1,5 +1,16 @@
 import os as _os
-from file_handler import default_path,ceefax_path
+
+def test_dir(directory):
+    if not _os.path.isdir(directory):
+        try:
+            _os.mkdir(directory)
+        except:
+            pass
+
+default_path = _os.path.join(_os.path.expanduser("~"), ".fax/")
+ceefax_path = _os.path.dirname(_os.path.realpath(__file__))
+
+test_dir(default_path)
 
 WIDTH = 80
 HEIGHT = 30
