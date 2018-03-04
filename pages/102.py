@@ -1,6 +1,6 @@
 from page import Page
 from random import choice
-from datetime import date
+import config
 import json
 import logging
 import sys
@@ -45,8 +45,8 @@ class BdayPage(Page):
 
     def generate_content(self):
         from random import choice
-        s_day = date.today().day
-        s_mon = date.today().month
+        s_day = config.now().day
+        s_mon = config.now().month
 
         day = s_day
         mon = s_mon

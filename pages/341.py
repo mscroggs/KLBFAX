@@ -1,10 +1,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 from page import Page
-from datetime import datetime
 from pytz import timezone
-import pytz
-
+import config
 
 class WorldClockPage(Page):
     def __init__(self):
@@ -18,14 +16,14 @@ class WorldClockPage(Page):
         self.add_title("World clock")
 
         zones = ["LA","NY|","GB","FR|","ET|","CN|","JP","ML"]
-        times = [datetime.now(pytz.utc).astimezone(timezone('America/Los_Angeles')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('America/New_York')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Europe/London')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Europe/Paris')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Europe/Moscow')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Asia/Shanghai')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Asia/Tokyo')).strftime("%H:%M"),
-                datetime.now(pytz.utc).astimezone(timezone('Australia/Melbourne')).strftime("%H:%M")]
+        times = [config.now().astimezone(timezone('America/Los_Angeles')).strftime("%H:%M"),
+                config.now().astimezone(timezone('America/New_York')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Europe/London')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Europe/Paris')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Europe/Moscow')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Asia/Shanghai')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Asia/Tokyo')).strftime("%H:%M"),
+                config.now().astimezone(timezone('Australia/Melbourne')).strftime("%H:%M")]
 
         for i in range(4):
             color1 = ["YELLOW","LIGHTCYAN"][i%2]

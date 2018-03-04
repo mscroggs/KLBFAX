@@ -9,7 +9,6 @@ class SunrisePage(Page):
         self.tagline = "Here comes the sun"
 
     def generate_content(self):
-        import datetime
         from astral import Astral
         city_name = 'London'
         a = Astral()

@@ -2,19 +2,7 @@ import os
 from page import Page
 from ceefax import Ceefax
 from random import shuffle
-
-from datetime import datetime
-
-emf_title = """
-0000000000000000000             000000000       000000000
-000000000000      0               0     0         0     0
-000000000000  00000 0000000000000 0  0000 0000000 0  0  0 0000000000000000000000
-000000000000    000 0    000    0 0    00 0     0 0     0 0  0  0000000000000000
-000000000000  00000 0  0  0  0  0 0  0000 0  0000 0  0  0 0  0  0000000000000000
-000000000000      0 0  00   00  0 0  0000 0    00 0  0  0 00   00000000000000000
-0000000000000000000 0  0000000  0 0000000 0  0000 0000000 0  0  0000000000000000
-                    0  0000000  0         0  0000         0  0  0000000000000000
-                  000000000000000       000000000       000000000000000000000000"""
+import config
 
 class IndexPage(Page):
     def __init__(self, n):
@@ -22,7 +10,7 @@ class IndexPage(Page):
         self.title = "Index"
 
     def generate_content(self):
-        self.add_block(emf_title, "YELLOW", bg="BLUE")
+        self.add_block(config.title, "YELLOW", bg="BLUE")
         self.start_fg_color("GREEN")
         self.add_text("INDEX "*14)
         self.add_newline()
