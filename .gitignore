@@ -6,4 +6,4 @@ requirements-satisfied.txt
 .DS_Store
 pages/.DS_Store
 *.swp
-config.py
+localconfig.py
