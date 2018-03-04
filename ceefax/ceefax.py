@@ -24,7 +24,7 @@ class Ceefax:
     _instance = None
     def __init__(self, test=None):
         self.start_time = config.now()
-        from helper import file_handler
+        from helpers import file_handler
         self.test = test
 
     def begin(self):
