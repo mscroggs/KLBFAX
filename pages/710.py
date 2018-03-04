@@ -47,6 +47,12 @@ class OxmasMenu(Page):
         if NAME!="28JHFAX":
             self.is_enabled = False
 
+    def background(self):
+        if datetime.now().month == 12 and NAME == "28JHFAX":
+            self.is_enabled = True
+        else:
+            self.is_enabled = False
+
     def generate_content(self):
         self.add_title("OXMAS Menu", fg="GREEN",bg="BLACK")
         self.add_newline()
@@ -93,6 +99,12 @@ class OxmasTimetable(Page):
         if NAME!="28JHFAX":
             self.is_enabled = False
 
+    def background(self):
+        if datetime.now().month == 12 and NAME == "28JHFAX":
+            self.is_enabled = True
+        else:
+            self.is_enabled = False
+
     def generate_content(self):
         self.add_title("OXMAS Timetable", fg="GREEN",bg="BLACK")
         self.add_newline()
@@ -120,6 +132,12 @@ class OxmasNOW(Page):
         self.title = "Oxmas Now"
         self.in_index = False
         self.is_enabled = False
+
+    def background(self):
+        if datetime.now().month == 12 and NAME == "28JHFAX":
+            self.is_enabled = True
+        else:
+            self.is_enabled = False
 
     def generate_content(self):
         if is_oxmas():
