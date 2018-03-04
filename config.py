@@ -32,6 +32,14 @@ title = """
                     0  0000000  0         0  0000         0  0  0000000000000000
                   000000000000000       000000000       000000000000000000000000"""
 
+twitter_access_key = None
+twitter_access_secret = None
+twitter_consumer_key = None
+twitter_consumer_secret = None
 
 
-from localconfig import *
+try:
+    from localconfig import *
+except ImportError:
+    pass
+
