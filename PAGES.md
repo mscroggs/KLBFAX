@@ -9,16 +9,12 @@ The pages in brackets are disabled.
 102 Birthdays  
 210 #emfcamp  
 271 e  
-300 Marts  
-301 Sportsmart  
-302 mscroggs.co.ukmart  
-303 Weatherwarningmart  
-304 Showbizmart  
-305 Martradiomart  
-306 Truthmart  
-308 UCLmart  
-309 Booksmart  
-310 Musicmart  
+300 News Index  
+301 News  
+302 Sport  
+303 emfcamp.org  
+304 Weather warnings  
+305 Showbiz News  
 314 Pi  
 320 Weather  
 321 Weather Forecast Day  
@@ -61,8 +57,7 @@ The pages in brackets are disabled.
 639 Tomorrow's TV: Challenge  
 640 Tomorrow's TV: BBC News  
 641 Tomorrow's TV: BBC Parliament  
-707 Chalkmart  
-777 The Team  
+777 Contributors  
 850 Trains Index  
 851 Milton Keynes Trains  
 852 Bletchley Trains  
