@@ -1,5 +1,6 @@
 from page import Page
 from random import shuffle
+import config
 
 class TeamPage(Page):
     def __init__(self):
@@ -82,5 +83,9 @@ class TeamPage(Page):
             self.print_compressed_image(t[1],8+row*7,col*10)
             self.move_cursor(y=12+row*7,x=col*10)
             self.add_text(t[0])
+
+        self.add_newline()
+        self.add_newline()
+        self.add_text("To contribute to "+config.NAME+", go to github.com/mscroggs/KLBFAX")
 
 ppp = TeamPage()

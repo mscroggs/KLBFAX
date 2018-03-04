@@ -23,6 +23,7 @@ python3 run.py
 
 ## Repository contents
 The files that make up FAX are organised as follows:
+
 | Directory    | Contents                                   |
 | ------------ | ------------------------------------------ |
 | `/`          | Config, repository info and main run files |
