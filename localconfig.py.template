@@ -1,0 +1,8 @@
+# Rename this file to localconfig.py
+# You can override any of the options set in config.py in this file
+
+# Twitter OAuth
+twitter_access_key = ""
+twitter_access_secret = ""
+twitter_consumer_key = ""
+twitter_consumer_secret = ""
