@@ -3,13 +3,13 @@
 from __future__ import division
 
 import curses
-import autoconfig
+import config
 
 class CuPT:
     # CuPT: Curses Printing Tool
     def __init__(self, scr):
-        self.WIDTH = autoconfig.WIDTH
-        self.HEIGHT = autoconfig.HEIGHT-3
+        self.WIDTH = config.WIDTH
+        self.HEIGHT = config.HEIGHT-3
         self.ls = []
         self.scr = scr
 
@@ -77,7 +77,7 @@ class CuPT:
         self.ls = []
 
     def show_page_number(self, n):
-        txt = n + " "+autoconfig.NAME+" " + autoconfig.now().strftime("%a %d %b %H:%M")
+        txt = n + " "+config.NAME+" " + config.now().strftime("%a %d %b %H:%M")
         pad = curses.newpad(1, len(txt)+1)
         pad.addstr(0,0,txt,csty())
         pad.refresh(0,0, 0,self.WIDTH-len(txt)-1, 0,self.WIDTH)
@@ -299,7 +299,7 @@ class Block:
                             cupt.add_char(y,x,j)
                     x+=1
                 if self.bg is not None:
-                    while x<autoconfig.WIDTH:
+                    while x<config.WIDTH:
                         cupt.add_char(y,x," ",csty(bg=self.bg))
                         x += 1
                 y += 1
@@ -325,7 +325,7 @@ class Block:
                             cupt.add_to_grid(y,x,(j,-1,-1))
                     x+=1
                 if self.bg is not None:
-                    while x<autoconfig.WIDTH:
+                    while x<config.WIDTH:
                         cupt.add_to_grid(y,x,(" ",-1,self.bg))
                         x += 1
                 y += 1

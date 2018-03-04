@@ -1,7 +1,7 @@
 from __future__ import division,print_function
 
 import random
-import autoconfig
+import config
 import os
 from page import Page,special
 import signal
@@ -24,7 +24,7 @@ def pass_f(signum, frame):
     pass
 
 def is_page_file(f):
-    if not os.path.isfile(os.path.join(autoconfig.pages_dir, f)):
+    if not os.path.isfile(os.path.join(config.pages_dir, f)):
         return False
     if f[0] == "_":
         return False
@@ -47,9 +47,9 @@ class PageManager:
         self.load_all_pages()
 
     def load_all_pages(self):
-        if not os.path.exists(autoconfig.pages_dir):
+        if not os.path.exists(config.pages_dir):
             raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(autoconfig.pages_dir) if is_page_file(f)]
+        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             try:
@@ -65,9 +65,9 @@ class PageManager:
                 pass
 
     def test_all_pages(self):
-        if not os.path.exists(autoconfig.pages_dir):
+        if not os.path.exists(config.pages_dir):
             raise ConfigError("The pages folder doesn't exist: " + pages_dir)
-        only_page_files = [f for f in os.listdir(autoconfig.pages_dir) if is_page_file(f)]
+        only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
             try:
@@ -109,10 +109,10 @@ class PageManager:
     def print_all(self):
         for page_num, page in self.sorted_pages():
             p = ""
-            if not page.is_enabled: p += "\033[31m"
+            if not page.enabled: p += "\033[31m"
             p += (page_num+" ")
             p += (page.title)
-            if not page.is_enabled: p += "\033[0m"
+            if not page.enabled: p += "\033[0m"
             print(p)
 
     def sorted_pages(self):
@@ -133,10 +133,10 @@ class PageManager:
         ls = ["# List of pages","The pages in brackets are disabled.",""]
         for page_num, page in items:
             p = ""
-            if not page.is_enabled: p += "("
+            if not page.enabled: p += "("
             p += (page_num+" ")
             p += (page.title)
-            if not page.is_enabled: p += ")"
+            if not page.enabled: p += ")"
             ls.append(p)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("  \n".join(ls))
@@ -144,11 +144,11 @@ class PageManager:
     def get_enabled_pages(self, starting="0"):
         if starting == "0":
             return [self.pages["100"]]
-        output = [page for page in self.pages.values() if page.is_enabled and page.number[0]==starting]
+        output = [page for page in self.pages.values() if page.enabled and page.number[0]==starting]
         if len(output) > 0:
             return output
         else:
-            return [page for page in self.pages.values() if page.is_enabled]
+            return [page for page in self.pages.values() if page.enabled]
 
     def page_exists(self, page_num):
         if page_num in self.pages:
@@ -197,7 +197,7 @@ class PageManager:
             self.clear_input()
             if inp is not None:
                 page = self.handle_input(inp)
-            elif autoconfig.now().strftime("%H:%M") == "13:37":
+            elif config.now().strftime("%H:%M") == "13:37":
                 page = self.build(special.LeetPage)
                 page.cupt = self.screen.cupt
             else:
@@ -260,19 +260,19 @@ class PageManager:
             page.show()
 
     def show_input(self, i):
-        pad = curses.newpad(1, autoconfig.WIDTH)
-        pad.addstr(0,0,i[:autoconfig.WIDTH-1])
-        pad.refresh(0,0, autoconfig.HEIGHT-1,0, autoconfig.HEIGHT-1,autoconfig.WIDTH)
+        pad = curses.newpad(1, config.WIDTH)
+        pad.addstr(0,0,i[:config.WIDTH-1])
+        pad.refresh(0,0, config.HEIGHT-1,0, config.HEIGHT-1,config.WIDTH)
 
     def clear_input(self):
-        self.show_input(" "*autoconfig.WIDTH)
+        self.show_input(" "*config.WIDTH)
 
 class FailPage(Page):
     def __init__(self, e=None, points=True, trace=""):
         super(FailPage, self).__init__("---")
         self.ee = None
         self.set_exception(e)
-        self.is_enabled = False
+        self.enabled = False
         self.duration_sec = 2
         self.trace = trace
         self.points = points

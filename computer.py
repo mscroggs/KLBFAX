@@ -1,4 +1,4 @@
-import autoconfig
+import config
 
 def reboot():
     from os import system
@@ -8,15 +8,15 @@ def git_pull():
     from os import system
     print("Pulling newest version.")
     try:
-        system("cd "+autoconfig.current_dir+";git pull")
-        system("cd "+autoconfig.current_dir+";sudo pip install -r requirements.txt")
+        system("cd "+config.current_dir+";git pull")
+        system("cd "+config.current_dir+";sudo pip install -r requirements.txt")
         restart_ceefax()
     except:
         pass
 
 def restart_ceefax():
     from os import path
-    with open(path.join(autoconfig.default_path,"KLBFAX_status"),"w") as f:
+    with open(path.join(config.default_path,"KLBFAX_status"),"w") as f:
         f.write("1")
     kill_ceefax()
 

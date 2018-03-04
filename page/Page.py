@@ -1,6 +1,6 @@
 from math import floor
 import logging
-import autoconfig
+import config
 from error import error_list
 
 WARNING_USED = False
@@ -21,16 +21,16 @@ class Dummy(object):
 
 class Page(object):
     def __init__(self, number):
-        self.is_enabled = True
+        self.enabled = True
         self.in_index = True
         self.index_num = None
-        self.tagline = autoconfig.NAME + ": The World at Your Fingertips"
+        self.tagline = config.NAME + ": The World at Your Fingertips"
         self.number = str(number)
         self.loaded = False
         self.background_loaded = False
         self.background_error = None
         self.title = ""
-        self.duration_sec = autoconfig.default_page_duration_sec
+        self.duration_sec = config.default_page_duration_sec
         self.exception = None
         self.cupt = Dummy(self.number)
 
@@ -267,7 +267,7 @@ class Page(object):
         pass
 
     def now(self):
-        return autoconfig.now()
+        return config.now()
 
     def background(self):
         """This function will be run every so often in the background. Use it for (eg) downloading weather data."""

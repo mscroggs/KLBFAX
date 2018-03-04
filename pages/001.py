@@ -19,7 +19,7 @@ class TestPage(Page):
     def __init__(self):
         super(TestPage, self).__init__("001")
         self.in_index = False
-        self.is_enabled=False
+        self.enabled=False
         self.title = "Unicode Test Page"
 
     def generate_content(self):

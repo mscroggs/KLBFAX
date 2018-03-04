@@ -4,20 +4,32 @@ from page import Page
 import time
 from functions import replace
 
+class NewsIndex(Page):
+    def __init__(self, page_num):
+        super(NewsIndex, self).__init__(page_num)
+        self.title = "News Index"
+        self.in_index = True
+
+    def generate_content(self):
+        global news_list
+        self.add_title("News Index")
+        for n,desc in news_list:
+            self.add_text(str(n)+" ",fg="RED")
+            self.add_text(desc)
+            self.add_newline()
+
+news_list = []
 
 class NewsPage(Page):
     def __init__(self, page_num, url, title, bit="title"):
+        global news_list
+        news_list.append((page_num,title))
         super(NewsPage, self).__init__(page_num)
         self.bit = bit
         self.top_title = title
         self.title = title
         self.url = url
-        if page_num == 300:
-            self.title = "Marts"
-            self.in_index = True
-            self.index_num = "300-310"
-        else:
-            self.in_index = False
+        self.in_index = False
 
     def background(self):
         import feedparser
@@ -69,16 +81,10 @@ class NewsPage(Page):
             self.add_text(" - "+ item)
             self.add_newline()
 
-news_page = NewsPage(300, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Newsmart")
-news_page2 = NewsPage(301, "http://feeds.bbci.co.uk/sport/0/rss.xml?edition=uk", "Sportsmart")
-news_page3 = NewsPage(302, "http://mscroggs.co.uk/blog/rss.xml", "mscroggs.co.ukmart")
-news_page4 = NewsPage(303, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weatherwarningmart")
-news_page5 = NewsPage(304, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbizmart")
-news_page6 = NewsPage(305, "http://radiomart.nl/feed/", "Martradiomart")
-news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslogicbot", "Truthmart")
-news_page8 = NewsPage(308, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart","description")
-news_page9 = NewsPage(309, "https://aliandsomebooks.wordpress.com/feed/","Booksmart","description")
-news_page10 = NewsPage(310, "https://quotesponge.wordpress.com/feed/","Musicmart","description")
+news_page = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "News")
+news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/sport/0/rss.xml?edition=uk", "Sport")
+news_page3 = NewsPage(303, "http://blog.emfcamp.org/rss", "emfcamp.org")
+news_page4 = NewsPage(304, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weather warnings")
+news_page5 = NewsPage(305, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz News")
 
-
-news_pageX = NewsPage(707, "http://chalkdustmagazine.com/feed/", "Chalkmart")
+index = NewsIndex(300)

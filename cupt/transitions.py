@@ -1,10 +1,10 @@
 from __future__ import division
 
-import autoconfig
+import config
 def make_transition(f):
     to_do = {}
-    for x in range(autoconfig.WIDTH):
-        for y in range(autoconfig.HEIGHT-3):
+    for x in range(config.WIDTH):
+        for y in range(config.HEIGHT-3):
             n = f(y,x)
             if n not in to_do:
                 to_do[n] = []

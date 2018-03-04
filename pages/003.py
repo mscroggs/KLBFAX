@@ -4,7 +4,7 @@ class LiPage(Page):
     def __init__(self):
         super(LiPage, self).__init__("003")
         self.in_index = False
-        self.is_enabled = False
+        self.enabled = False
         self.title = "License"
 
 

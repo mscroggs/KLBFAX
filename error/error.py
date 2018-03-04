@@ -1,6 +1,6 @@
 from datetime import datetime
 import traceback
-from autoconfig import ceefax_path
+from config import ceefax_path
 class List(object):
     def __init__(self):
         self.ls = []

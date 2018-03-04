@@ -5,7 +5,7 @@ class TestPage(Page):
     def __init__(self):
         super(TestPage, self).__init__("002")
         self.in_index = False
-        self.is_enabled=False
+        self.enabled=False
         self.title = "Error log"
 
     def generate_content(self):

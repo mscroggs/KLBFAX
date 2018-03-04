@@ -1,18 +1,18 @@
 import os
 from page import Page
 from random import choice
-import autoconfig
+import config
 
 class TestPage(Page):
     def __init__(self):
         super(TestPage, self).__init__("000")
-        self.title = "About "+autoconfig.NAME
-        self.is_enabled = False
+        self.title = "About "+config.NAME
+        self.enabled = False
         self.background_loaded = True # DO NOT COPY THIS LINE INTO A NEW PAGE!
 
     def generate_content(self):
         from cupt.cupt import curses_colors
-        self.add_rainbow_text(autoconfig.NAME + " v" + autoconfig.VERSION)
+        self.add_rainbow_text(config.NAME + " v" + config.VERSION)
         self.add_newline()
         self.add_newline()
         self.add_rainbow_text("FOREGROUNDS")
@@ -66,7 +66,7 @@ class TestPage(Page):
         self.add_newline()
         self.add_newline()
 
-        self.add_text(autoconfig.NAME+" has been running since "+Ceefax().start_time.strftime("%y-%m-%d %H:%M"))
+        self.add_text(config.NAME+" has been running since "+Ceefax().start_time.strftime("%y-%m-%d %H:%M"))
 
 
 test_page = TestPage()

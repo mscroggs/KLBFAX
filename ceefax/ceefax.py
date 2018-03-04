@@ -1,12 +1,12 @@
 # width:79
 # height: 30
-import autoconfig
+import config
 import os
 from page import PageManager
 from cupt import Screen
 
 def is_page_file(f):
-    if not os.path.isfile(os.path.join(autoconfig.pages_dir, f)):
+    if not os.path.isfile(os.path.join(config.pages_dir, f)):
         return False
     if "_" in f:
         return False
@@ -23,7 +23,7 @@ def get_ceefax(test=None):
 class Ceefax:
     _instance = None
     def __init__(self, test=None):
-        self.start_time = autoconfig.now()
+        self.start_time = config.now()
         import file_handler
         self.test = test
 

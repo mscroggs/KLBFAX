@@ -1,7 +1,7 @@
 import os
 from page import Page
 import time
-from autoconfig import now
+from config import now
 from math import cos,sin,floor,pi
 from random import choice
 
