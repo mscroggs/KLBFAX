@@ -216,10 +216,10 @@ xx,,x
 """)
 
 _add(u"฿","""
-xxxxxx' 'xx
-''''xx '',x
- x x x xx x
-,xxx,x, ,xx
+' 'xx
+ '',x
+ xx x
+, ,xx
 """)
 
 _add(u"₺","""

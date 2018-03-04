@@ -21,17 +21,15 @@ class TrainPage(Page):
 
         self.add_title(self.station,font="size4")
 
-        british_rail = """
-rrrrWWrrrrr
-rrrrrWWrrrr
-rWWWWWWWWWr
-rrrrrWWrrrr
-rrrrWWrrrrr
-rWWWWWWWWWr
-rrrrWWrrrrr
-rrrrrWWrrrr
-"""
-        self.print_image(british_rail[1:-1],0,69)
+        british_rail =("rrrrWWrrrrr\n"
+                       "rrrrrWWrrrr\n"
+                       "rWWWWWWWWWr\n"
+                       "rrrrrWWrrrr\n"
+                       "rrrrWWrrrrr\n"
+                       "rWWWWWWWWWr\n"
+                       "rrrrWWrrrrr\n"
+                       "rrrrrWWrrrr")
+        self.print_image(british_rail,0,69)
 
 
         # Loop over all the train services in that board.
@@ -62,7 +60,10 @@ rrrrrWWrrrr
         ('Thameslink','Thmslk'),
         (' Underground', '')]
 
-        operator_mapping=[('Railway', 'Ry')]        
+        operator_mapping=[
+        ('Railway', 'Rly'),
+        ('Midlands', 'Mids')
+        ]
 
         n = 4
 
@@ -145,8 +146,8 @@ rrrrrWWrrrr
 
         self.move_cursor(x=0,y=20)
         self.start_fg_color("GREEN")
-        pos1 = (0,6,26,30)
-        pos2 = (39,45,65,69)
+        pos1 = (1,7,27,31)
+        pos2 = (41,47,67,71)
         for p1,p2,t in zip(pos1,pos2,("Time","Destination","Plt","Exptd")):
             self.move_cursor(p1)
             self.add_text(t)

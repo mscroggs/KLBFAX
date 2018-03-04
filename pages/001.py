@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
 import os
 from page import Page
 
@@ -39,5 +41,5 @@ class TestPage(Page):
                 self.add_text(" ")
             else:
                 self.add_newline()
-
+        #self.add_text(u"HELLO╹┓╵┌")
 instance = TestPage()
