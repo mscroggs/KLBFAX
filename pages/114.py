@@ -29,7 +29,7 @@ class EachWithHisPage(Page):
         "Holland clogs",
         "wagon wheel",
         "trusty squad",
-        "rusty rod",
+        "rusty rhod",
         "epipen",
         "turmeric in the porridge",
         "knave whipsnade",
@@ -73,7 +73,19 @@ class EachWithHisPage(Page):
         "cup of tea",
         "fledgling flint",
         "Swedish broad",
-        "wireless mouse"
+        "wireless mouse",
+        "shitfaced Steve",
+        "Jackson Lamb",
+        "bassless beat",
+        "Camden Lock",
+        "Twilight moon",
+        "Pint of ducks",
+        "Breaking Bad",
+        "Auld Lang Syne",
+        "Steam-ed ham",
+        "ruined roast",
+        "merry lad",
+        "burma sauce"
         ]
         self.add_title("Each with his...")
 
