@@ -14,12 +14,16 @@ class OxmasPage(Page):
         self.test = test
         self._name = title
         self.verb = verb
+        self.title = "OXMAS!"
+        self.index_num = "710-714"
 
     def background(self):
         if datetime.now().month == 12 and NAME == "28JHFAX":
             self.is_enabled = True
+            self.in_index = True
         else:
             self.is_enabled = False
+            self.in_index = False
 
     def generate_content(self):
         self.add_title("OXMAS "+self._name, fg="GREEN",bg="BLACK")
@@ -179,7 +183,3 @@ menu = OxmasMenu("712")
 timetable = OxmasTimetable("713")
 now = OxmasNOW("714")
 
-if NAME == "28JHFAX":
-    attendees.title = "OXMAS!"
-    attendees.index_num = "710-714"
-    attendees.in_index = True
