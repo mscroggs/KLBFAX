@@ -199,6 +199,13 @@ class CuPT:
 
     def reveal(self):
         pad = curses.newpad(1,2)
+        for y in self.unshow_cls:
+            for x in self.unshow_cls[y]:
+                try:
+                    pad.addstr(0,0," ",self.unshow_cls[y][x][1])
+                except:
+                    pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
         for y in self.show_cls:
             for x in self.show_cls[y]:
                 try:
@@ -209,16 +216,16 @@ class CuPT:
                     except:
                         pad.addstr(0,0," ")
                 pad.refresh(0,0,y+1,x,y+1,x)
-        for y in self.unshow_cls:
-            for x in self.unshow_cls[y]:
-                try:
-                    pad.addstr(0,0," ",self.unshow_cls[y][x][1])
-                except:
-                    pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
 
     def unreveal(self):
         pad = curses.newpad(1,2)
+        for y in self.show_cls:
+            for x in self.show_cls[y]:
+                try:
+                    pad.addstr(0,0," ",self.show_cls[y][x][1])
+                except:
+                    pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
         for y in self.unshow_cls:
             for x in self.unshow_cls[y]:
                 try:
@@ -228,13 +235,6 @@ class CuPT:
                         pad.addstr(0,0,self.unshow_cls[y][x][0].encode("utf-8"),self.unshow_cls[y][x][1])
                     except:
                         pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
-        for y in self.show_cls:
-            for x in self.show_cls[y]:
-                try:
-                    pad.addstr(0,0," ",self.show_cls[y][x][1])
-                except:
-                    pad.addstr(0,0," ")
                 pad.refresh(0,0,y+1,x,y+1,x)
 
     def pad(self):
