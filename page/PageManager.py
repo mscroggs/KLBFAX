@@ -41,9 +41,9 @@ class PageManager:
     def __init__(self, screen):
         self.i = 0
         self.loads = 0
+        self.current_page = None
         self.pages = {}
         self.screen = screen
-
         self.load_all_pages()
 
     def load_all_pages(self):
@@ -213,7 +213,9 @@ class PageManager:
                 while key != curses.KEY_ENTER and key != 10:
                     key = self.screen.getch()
                     try:
-                        if key==263:
+                        if key == 103: # 103 is g TODO: change to the right key on mini keypad
+                            self.current_page.toggle_reveal()
+                        elif key == 263:
                             inp = inp[:-1]
                         else:
                             inp += get_chr(key)
@@ -243,6 +245,7 @@ class PageManager:
             return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False)
 
     def show(self, page):
+        self.current_page = page
         self.screen.cupt.show_loading()
         if not isinstance(page, FailPage):
             if page.background_error is not None:
@@ -270,23 +273,18 @@ class PageManager:
         self.show_input(" "*config.WIDTH)
 
 class FailPage(Page):
-    def __init__(self, e=None, points=True, trace=""):
+    def __init__(self, e=None, trace=""):
         super(FailPage, self).__init__("---")
         self.ee = None
         self.set_exception(e)
         self.enabled = False
         self.duration_sec = 2
         self.trace = trace
-        self.points = points
 
     def generate_content(self):
-        if self.points:
-            self.add_text("Page failed to load...")
-            self.add_newline()
-            self.add_newline()
-            self.add_text("2 points to Slytherin!")
-            self.add_newline()
-            self.add_newline()
+        self.add_text("Page failed to load...")
+        self.add_newline()
+        self.add_newline()
 
         if self.ee is None:
             self.add_text("UNKNOWN ERROR")

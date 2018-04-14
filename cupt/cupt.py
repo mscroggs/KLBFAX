@@ -118,6 +118,12 @@ class CuPT:
             self.add_newline()
         self.ls.append(CuPTPart(text.split("\n")[-1], wrapping, pre=pre))
 
+    def add_reveal_text(self, text, show=False, wrapping=False, pre=0):
+        for line in text.split("\n")[:-1]:
+            self.ls.append(CuPTRevealPart(line, wrapping, pre=pre, show=show))
+            self.add_newline()
+        self.ls.append(CuPTRevealPart(text.split("\n")[-1], wrapping, pre=pre, show=show))
+
     def start_fg_color(self, color):
         self.ls.append(FGColor(color))
 
@@ -132,6 +138,8 @@ class CuPT:
 
     def make_curses_list(self):
         self.cls = {}
+        self.show_cls = {}
+        self.unshow_cls = {}
         y, x = 0, 0
         fg, bg = -1, -1
         for bit in self.ls:
@@ -152,13 +160,22 @@ class CuPT:
                 y,x = bit.as_curses(y,x,self)
             elif isinstance(bit, BlockedBlock):
                 y,x = bit.as_curses(y,x,self)
-            else:
+            elif isinstance(bit, CuPTPart):
                 for cha in bit.text:
                     self.add_char(y,x,cha,csty(fg,bg))
                     x += 1
                     if bit.wrapping and x >= self.WIDTH:
                         y += 1
                         x = bit.pre
+            elif isinstance(bit, CuPTRevealPart):
+                for cha in bit.text:
+                    self.add_reveal_char(y,x,cha,csty(fg,bg),bit.show)
+                    x += 1
+                    if bit.wrapping and x >= self.WIDTH:
+                        y += 1
+                        x = bit.pre
+            else:
+                raise TypeError("Unknown block type")
 
 
     def add_char(self, y, x, cha, sty=None):
@@ -167,6 +184,58 @@ class CuPT:
         if y not in self.cls:
             self.cls[y] = {}
         self.cls[y][x] = (cha, sty)
+
+    def add_reveal_char(self, y, x, cha, sty=None, show=False):
+        if sty is None:
+            sty = csty()
+        if show:
+            if y not in self.cls:
+                self.show_cls[y] = {}
+            self.show_cls[y][x] = (cha, sty)
+        else:
+            if y not in self.cls:
+                self.unshow_cls[y] = {}
+            self.unshow_cls[y][x] = (cha, sty)
+
+    def reveal(self):
+        pad = curses.newpad(1,2)
+        for y in self.show_cls:
+            for x in self.show_cls[y]:
+                try:
+                    pad.addstr(0,0,self.show_cls[y][x][0],self.show_cls[y][x][1])
+                except:
+                    try:
+                        pad.addstr(0,0,self.show_cls[y][x][0].encode("utf-8"),self.show_cls[y][x][1])
+                    except:
+                        pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
+        for y in self.unshow_cls:
+            for x in self.unshow_cls[y]:
+                try:
+                    pad.addstr(0,0," ",self.unshow_cls[y][x][1])
+                except:
+                    pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
+
+    def unreveal(self):
+        pad = curses.newpad(1,2)
+        for y in self.unshow_cls:
+            for x in self.unshow_cls[y]:
+                try:
+                    pad.addstr(0,0,self.unshow_cls[y][x][0],self.unshow_cls[y][x][1])
+                except:
+                    try:
+                        pad.addstr(0,0,self.unshow_cls[y][x][0].encode("utf-8"),self.unshow_cls[y][x][1])
+                    except:
+                        pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
+        for y in self.show_cls:
+            for x in self.show_cls[y]:
+                try:
+                    pad.addstr(0,0," ",self.show_cls[y][x][1])
+                except:
+                    pad.addstr(0,0," ")
+                pad.refresh(0,0,y+1,x,y+1,x)
 
     def pad(self):
         return curses.newpad(self.HEIGHT, self.WIDTH)
@@ -207,6 +276,13 @@ class CuPTPart:
         self.text = text
         self.wrapping = wrapping
         self.pre = pre
+
+class CuPTRevealPart:
+    def __init__(self, text, wrapping, pre, show):
+        self.text = text
+        self.wrapping = wrapping
+        self.pre = pre
+        self.show = show
 
 curses_colors = {
         "RED":(curses.COLOR_RED,0),

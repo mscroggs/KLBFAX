@@ -21,6 +21,7 @@ class Dummy(object):
 
 class Page(object):
     def __init__(self, number):
+        self.reveal_status = False
         self.enabled = True
         self.in_index = True
         self.index_num = None
@@ -107,6 +108,26 @@ class Page(object):
             self.end_fg_color()
         if bg is not None:
             self.end_bg_color()
+
+    def add_reveal_text(self, text, fg=None, bg=None, show=False):
+        if fg is not None:
+            self.start_fg_color(fg)
+        if bg is not None:
+            self.start_bg_color(bg)
+        self.cupt.add_reveal_text(text, show)
+        if fg is not None:
+            self.end_fg_color()
+        if bg is not None:
+            self.end_bg_color()
+
+    def toggle_reveal(self):
+        if self.reveal_status:
+            self.reveal_status = False
+            self.cupt.reveal()
+        else:
+            self.reveal_status = True
+            self.cupt.unreveal()
+
 
     def add_rainbow_text(self, text):
         from cupt.cupt import non_dark_colors
