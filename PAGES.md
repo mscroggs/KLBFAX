@@ -17,11 +17,11 @@ The pages in brackets are disabled.
 305 Showbiz News                        pages/news.py  
 314 Pi                                  pages/pi.py  
 320 Weather                             pages/weather.py  
-321 Weather Forecast Day                pages/321.py  
-322 Weather Forecast                    pages/322.py  
-323 Sunrise & sunset                    pages/323.py  
-324 UK Temperature                      pages/324.py  
-325 World Temperature                   pages/325.py  
+321 Weather Forecast Day                pages/weather.py  
+322 Weather Forecast                    pages/weather.py  
+323 Sunrise & sunset                    pages/weather.py  
+324 UK Temperature                      pages/weather.py  
+325 World Temperature                   pages/weather.py  
 340 Time                                pages/time.py  
 341 Time                                pages/time.py  
 600 TV & Radio Index                    pages/tv.py  
