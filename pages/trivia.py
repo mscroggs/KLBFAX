@@ -1,7 +1,7 @@
 import os
 from page import Page
 from ceefax import Ceefax
-from random import choice
+from random import shuffle
 import config
 
 class TriviaPage(Page):
@@ -13,15 +13,19 @@ class TriviaPage(Page):
         questions = [
                     ("What is 1+2?","3"),
                     ("Which is the best village at EMF?","The maths village"),
+                    ("Who starred in the 1967 James Bond spoof film Casino Royale?","David Niven, Peter Sellers, Woody Allen, and Orson Welles as \"Le Chiffre\""),
+                    ("Which programming language is EMFFAX programmed using?","Python"),
                     ]
+        shuffle(questions)
         self.add_title("Trivia")
         for i in range(4):
-            q,a = choice(questions)
+            self.add_newline()
+            q,a = questions[i]
             self.add_text(q)
             self.add_newline()
             self.add_reveal_text("    "+a,fg="YELLOW")
             self.add_newline()
-            self.add_newline()
+        self.add_newline()
         self.add_text("Press G to REVEAL ANSWERS", fg="GREEN") # TODO: replace this with +
 
 trivia = TriviaPage("108")
