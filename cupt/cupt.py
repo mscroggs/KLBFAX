@@ -189,11 +189,11 @@ class CuPT:
         if sty is None:
             sty = csty()
         if show:
-            if y not in self.cls:
+            if y not in self.show_cls:
                 self.show_cls[y] = {}
             self.show_cls[y][x] = (cha, sty)
         else:
-            if y not in self.cls:
+            if y not in self.unshow_cls:
                 self.unshow_cls[y] = {}
             self.unshow_cls[y][x] = (cha, sty)
 
