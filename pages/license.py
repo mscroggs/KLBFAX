@@ -1,4 +1,5 @@
 from page import Page
+import config
 
 class LiPage(Page):
     def __init__(self):
@@ -16,7 +17,7 @@ class LiPage(Page):
         c = load_file("../contributors.txt").split("\n")
         while "" in c:
             c.remove("")
-        li = li.replace("The EMFFAX contributors",", ".join(c))
+        li = li.replace("The " + config.NAME + " contributors",", ".join(c))
         self.add_wrapped_text(li)
 
 sub_page = LiPage()

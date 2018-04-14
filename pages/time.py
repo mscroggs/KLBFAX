@@ -15,7 +15,7 @@ class TimePage(Page):
         super(TimePage, self).__init__("340")
         self.title = "Time"
         self.index_num = "340-341"
-        self.tagline = "EMF Mean Time"
+        self.tagline = config.name[:-3] + " Mean Time"
 
     def generate_content(self):
         from helpers.file_handler import load_file

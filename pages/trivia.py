@@ -14,13 +14,12 @@ class TriviaPage(Page):
                     ("What is 1+2?","3"),
                     ("Which is the best village at EMF?","The maths village"),
                     ("Who starred in the 1967 James Bond spoof film Casino Royale?","David Niven, Peter Sellers, Woody Allen, and Orson Welles as \"Le Chiffre\""),
-                    ("Which programming language is EMFFAX programmed using?","Python"),
+                    ("Which programming language is " + config.NAME + " programmed using?","Python"),
                     ]
         shuffle(questions)
         self.add_title("Trivia")
-        for i in range(4):
+        for q,a in questions[:4]:
             self.add_newline()
-            q,a = questions[i]
             self.add_text(q)
             self.add_newline()
             self.add_reveal_text("    "+a,fg="YELLOW")
