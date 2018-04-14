@@ -16,7 +16,7 @@ class LiPage(Page):
         c = load_file("../contributors.txt").split("\n")
         while "" in c:
             c.remove("")
-        li = li.replace("The KLBFAX contributors",", ".join(c))
+        li = li.replace("The EMFFAX contributors",", ".join(c))
         self.add_wrapped_text(li)
 
 sub_page = LiPage()

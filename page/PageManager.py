@@ -137,6 +137,8 @@ class PageManager:
             p += (page_num+" ")
             p += (page.title)
             if not page.enabled: p += ")"
+            p += " " * (40-len(p))
+            p += page.__class__.__module__.replace(".","/") + ".py"
             ls.append(p)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("  \n".join(ls))

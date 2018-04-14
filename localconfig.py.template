@@ -6,3 +6,12 @@ twitter_access_key = ""
 twitter_access_secret = ""
 twitter_consumer_key = ""
 twitter_consumer_secret = ""
+
+# Met Office API
+metoffer_api_key = ""
+
+# Open Wether API
+open_weather_api_key = ""
+
+# Location
+location = [51.5252257441084, -0.134831964969635]

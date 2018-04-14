@@ -1,6 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from page import Page
 from helpers.file_handler import f_read
 from helpers import url_handler
+import datetime
+import config
 
 class WeatherPage(Page):
     def __init__(self):
@@ -15,70 +20,8 @@ class WeatherPage(Page):
         except:
             self.weather_data = ["CLASSIFIED"]*60
         ''' 
-        If using realtime.txt (no longer working on CASA website):
-
-        # Field # Example 	Description 	Equivalent Webtags
-        # 1 	19/08/09 	Date as 2 figure day [separator] 2 figure month [separator] 2 figure year - the separator is that set in the windows system short date format (see setup) 	<#date>
-        # 2 	16:03:45 	time(always hh:mm:ss as per computer system) 	<#timehhmmss>
-        # 3 	8.4 	outside temperature 	<#temp>
-        # 4 	84 	relative humidity 	<#hum>
-        # 5 	5.8 	dewpoint 	<#dew>
-        # 6 	24.2 	wind speed (average) 	<#wspeed>
-        # 7 	33.0 	latest wind speed reading 	<#wlatest>
-        # 8 	261 	wind bearing (degrees) 	<#bearing>
-        # 9 	0.0 	current rain rate (per hour) 	<#rrate>
-        # 10 	1.0 	rain today 	<#rfall>
-        # 11 	999.7 	barometer (The sea level pressure) 	<#press>
-        # 12 	W 	current wind direction (compass point) 	<#currentwdir>
-        # 13 	6 	wind speed (beaufort) 	<#beaufortnumber>
-        # 14 	km/h 	wind units - m/s, mph, km/h, kts 	<#windunit>
-        # 15 	C 	temperature units - degree C, degree F 	<#tempunitnodeg>
-        # 16 	hPa 	pressure units - mb, hPa, in 	<#pressunit>
-        # 17 	mm 	rain units - mm, in 	<#rainunit>
-        # 18 	146.6 	wind run (today) 	<#windrun>
-        # 19 	+0.1 	pressure trend value (The average rate of pressure change over the last three hours) 	<#presstrendval>
-        # 20 	85.2 	monthly rainfall 	<#rmonth>
-        # 21 	588.4 	yearly rainfall 	<#ryear>
-        # 22 	11.6 	yesterday's rainfall 	<#rfallY>
-        # 23 	20.3 	inside temperature 	<#intemp>
-        # 24 	57 	inside humidity 	<#inhum>
-        # 25 	3.6 	wind chill 	<#wchill>
-        # 26 	-0.7 	temperature trend value (The average rate of change in temperature over the last three hours) 	<#temptrend>
-        # 27 	10.9 	today's high temp 	<#tempTH>
-        # 28 	12:00 	time of today's high temp (hh:mm) 	<#TtempTH>
-        # 29 	7.8 	today's low temp 	<#tempTL>
-        # 30 	14:41 	time of today's low temp (hh:mm) 	<#TtempTL>
-        # 31 	37.4 	today's high wind speed (of average as per choice) 	<#windTM>
-        # 32 	14:38 	time of today's high wind speed (average) (hh:mm) 	<#TwindTM>
-        # 33 	44.0 	today's high wind gust 	<#wgustTM>
-        # 34 	14:28 	time of today's high wind gust (hh:mm) 	<#TwgustTM>
-        # 35 	999.8 	today's high pressure 	<#pressTH>
-        # 36 	16:01 	time of today's high pressure (hh:mm) 	<#TpressTH>
-        # 37 	998.4 	today's low pressure 	<#pressTL>
-        # 38 	12:06 	time of today's low pressure (hh:mm) 	<#TpressTL>
-        # 39 	1.8.7 	Cumulus Versions (the specific version in use) 	<#version>
-        # 40 	819 	Cumulus build number 	<#build>
-        # 41 	36.0 	10-minute high gust 	<#wgust>
-        # 42 	10.3 	Heat index 	<#heatindex>
-        # 43 	10.5 	Humidex 	<#humidex>
-        # 44 	13 	UV Index 	<#UV>
-        # 45 	0.2 	evapotranspiration today 	<#ET>
-        # 46 	14 	solar radiation W/m2 	<#SolarRad>
-        # 47 	260 	10-minute average wind bearing (degrees) 	<#avgbearing>
-        # 48 	2.3 	rainfall last hour 	<#rhour>
-        # 49 	3 	The number of the current (Zambretti) forecast as per Strings.ini. 	<#forecastnumber>
-        # 50 	1 	Flag to indicate that the location of the station is currently in daylight (1 = yes, 0 = No) 	<#isdaylight>
-        # 51 	1 	If the station has lost contact with its remote sensors "Fine Offset only", a Flag number is given (1 = Yes, 0 = No) 	<#SensorContactLost>
-        # 52 	NNW 	Average wind direction 	<#wdir>
-        # 53 	2040 	Cloud base 	<#cloudbasevalue>
-        # 54 	ft 	Cloud base units 	<#cloudbaseunit>
-        # 55 	12.3 	Apparent temperature 	<#apptemp>
-        # 56 	11.1 	Sunshine hours so far today 	<#SunshineHours>
-        # 57 	420.1 	Current theoretical max solar radiation 	<#CurrentSolarMax>
-        # 58 	1 	Is it sunny? 1 if the sun is shining, otherwise 0 (above or below threshold) 	<#IsSunny>
-        
         # If using clientraw.txt:
-        
+
         Field#  Label   Type    Contents
         000     Header  L   12345
         001     Avg Speed   K   7.6kts = 8.75mph = 14.08km/h
@@ -443,10 +386,353 @@ class WeatherPage(Page):
     Cloud Height        """ + round_me(weather_cloud_height,10) + """ ft
     """)
 
-weather_page = WeatherPage()
-
 def round_me(n,i=1):
     try:
         return str(int(round(float(n)/i)*i))
     except:
         return n
+
+class WeatherForePage(Page):
+    def __init__(self):
+        super(WeatherForePage, self).__init__("321")
+        self.title = "Weather Forecast Day"
+        self.in_index=False
+
+    def background(self):
+        import metoffer
+        M = metoffer.MetOffer(config.metoffer_api_key);
+        #x = M.nearest_loc_forecast(51.4033, -0.3375, metoffer.THREE_HOURLY)
+        x = M.nearest_loc_forecast(*config.location, metoffer.THREE_HOURLY)
+        self.y = metoffer.parse_val(x)
+
+        self.tagline = "Live from the Met Office"
+
+    def generate_content(self):
+        from fonts import weather_symbol
+        self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
+
+        day_weather = []
+        day_max = []
+        day_min = []
+        date = []
+        for i in self.y.data:
+            if i["timestamp"][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
+                day_weather.append(weather_symbol(i["Weather Type"][0]))
+                day_max.append(i["Temperature"][0])
+                date.append((i["timestamp"][0].strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
+
+        self.tagline = "Met Office, updated " + datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ').strftime("%a %d %b %H:%M")
+
+        # Day of week
+        self.move_cursor(y=7,x=0)
+        self.add_title(date[0],bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.move_cursor(y=7,x=0)
+        self.add_title(date[1],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.move_cursor(y=7,x=0)
+        self.add_title(date[2],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.move_cursor(y=7,x=0)
+        self.add_title(date[3],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+
+
+        # Pictures
+        self.print_image(day_weather[0],11,1)
+        self.print_image(day_weather[1],11,21)
+        self.print_image(day_weather[2],11,41)
+        self.print_image(day_weather[3],11,61)
+
+        # Max temps
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=25)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=45)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=65)
+
+class WeatherFore2Page(Page):
+    def __init__(self):
+        super(WeatherFore2Page, self).__init__("322")
+        self.title = "Weather Forecast"
+        self.in_index = False
+
+    def background(self):
+        import metoffer
+
+        M = metoffer.MetOffer(config.metoffer_api_key);
+        #x = M.nearest_loc_forecast(51.4033, -0.3375, metoffer.THREE_HOURLY)
+        x = M.nearest_loc_forecast(*config.location, metoffer.DAILY)
+        self.y = metoffer.parse_val(x)
+
+        self.tagline = "Live from the Met Office"
+
+    def generate_content(self):
+        from fonts import weather_symbol
+        self.add_title("4-day Weather",fg="CYAN",bg="BRIGHTWHITE")
+
+        day_weather = []
+        day_max = []
+        day_min = []
+        date = []
+        for i in self.y.data:
+            if i["timestamp"][1] == "Day":
+                day_weather.append(weather_symbol(i["Weather Type"][0]))
+                day_max.append(i["Feels Like Day Maximum Temperature"][0])
+                date.append(i["timestamp"][0].strftime("%a"))
+            if i["timestamp"][1] == "Night":
+                day_min.append(i["Feels Like Night Minimum Temperature"][0])
+
+        #-------------------------
+        # k BLACK   K GREY
+        # r RED     R LIGHTRED
+        # o ORANGE  y YELLOW
+        # g GREEN   G LIGHTGREEN
+        # c CYAN    C LIGHTCYAN
+        # b BLUE    B LIGHTBLUE
+        # m MAGENTA p PINK
+        # w WHITE   W BRIGHTWHITE
+        # d DEFAULT
+        # ------------------------
+
+
+
+
+        #self.move_cursor(y=0,x=0)
+
+
+
+
+
+        # Day of week
+        self.move_cursor(y=7,x=0)
+        self.add_title(str(date[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.move_cursor(y=7,x=0)
+        self.add_title(str(date[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.move_cursor(y=7,x=0)
+        self.add_title(str(date[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.move_cursor(y=7,x=0)
+        self.add_title(str(date[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+
+
+        # Pictures
+        self.print_image(day_weather[0],11,1)
+        self.print_image(day_weather[1],11,21)
+        self.print_image(day_weather[2],11,41)
+        self.print_image(day_weather[3],11,61)
+        # Max temps
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=25)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=45)
+        self.move_cursor(y=18,x=0)
+        self.add_title(str(day_max[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=65)
+
+        # Min temps
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[0]),bg="RED",fg="BLACK",fill=False,font='size4', pre=5)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[1]),bg="RED",fg="BLACK",fill=False,font='size4', pre=25)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[2]),bg="RED",fg="BLACK",fill=False,font='size4', pre=45)
+        self.move_cursor(y=22,x=0)
+        self.add_title(str(day_min[3]),bg="RED",fg="BLACK",fill=False,font='size4', pre=65)
+
+class SunrisePage(Page):
+    def __init__(self):
+        super(SunrisePage, self).__init__("323")
+        self.title = "Sunrise & sunset"
+        self.in_index = False
+        self.tagline = "Here comes the sun"
+
+    def generate_content(self):
+        from astral import Astral
+        city_name = 'London'
+        a = Astral()
+        a.solar_depression = 'civil'
+        city = a[city_name]
+        sun = city.sun(local=True)
+        sunrise = sun['sunrise'].strftime("%H:%M")
+        sunset = sun['sunset'].strftime("%H:%M")
+
+        self.add_title("Sunrise/sunset")
+        self.add_title(" * "+sunrise, bg="YELLOW",fg="BLACK")
+        self.add_title(" } "+sunset, bg="LIGHTRED",fg="BLACK")
+
+class UKTempPage(Page):
+    def __init__(self):
+        super(UKTempPage, self).__init__("324")
+        self.title = "UK Temperature"
+        self.tagline = "Why exactly do we live in Britain?"
+        self.in_index = False
+        from helpers.file_handler import load_file
+        self.ordered_ids = [i.rstrip("\n") for i in load_file("uk_coordinate_ids.txt").split("\n")]
+        self.temps = [99 for i in range(len(self.ordered_ids))]
+
+
+    def background(self):
+        from helpers import url_handler
+        import json
+        from time import sleep
+
+
+        i = 0
+
+        step = 30
+        try:
+            for j in range(0,len(self.ordered_ids),step):
+                url = "http://api.openweathermap.org/data/2.5/group?id=" + ",".join(self.ordered_ids[j:j+step]) + "&units=metric&appid=" + config.open_weather_api_key
+                data = url_handler.load_json(url)
+                for city in data['list']:
+                    self.temps[i] = float(city['main']['temp'])
+                    i+=1
+                #sleep(5)
+        except:
+            pass
+
+    def generate_content(self):
+        self.add_title("UK TEMPERATURE")
+        uk_map = '''                                   F"  4$$$$P"
+                                    r *$$$$$".c...
+                                    %-4$$$$$$$$$$"
+                                     J$*$$$$$$$$P
+                                    ^r4$$$$$$$$"
+                                      *f*$$$$*"
+                                    ".4 *$$$$$$$$.
+                              4eee%.e   .$$$$$$$$$$r
+                            4$$$$$$$$b  P$**)$$$$$$b
+                         e..4$$$$$$$$$"     $$$$$$$$c.
+                         3$$$$$$$$$$*"   "  ^"$$$$$$$$c
+                        *$$$$$$$$$$$.        *$$$$$$$$$.
+                         ..$$$$$$$$$L    c ..J$$$$$$$$$b
+                         d"$$$$$$$$$F   .@$$$$$$$$$$$$$P"..
+                      ..$$$$$$$$$$$$      d$$$$$$$$$$$$$$$$$
+                      =$$$$$$$$P"" "    .e$$$$$$$$$$$$$$$$$$
+                         *""          $**$$$$$$$$$$$$$$$$*
+                                          "".$$$$$$$$$$$C .
+                                       .z$$$$$$$$$$$$$$$$""
+                                      .$$$$*"^**"  "
+        '''
+
+        # Map goes from 58.6725 N to  49.95 and -10.454521 (W) to 1.766667 E
+        height_chars = 20
+        width_chars = 38
+        min_lat = 49.95
+        max_lat = 57.827
+        min_lon = -10.454521
+        max_lon = 1.766667
+
+        lats = [min_lat + i*(max_lat-min_lat)/(height_chars-1) for i in range(height_chars)]
+        lons = [min_lon + i*(max_lon-min_lon)/(width_chars-1) for i in range(width_chars)]
+
+        uk_map = uk_map.replace("$",u"█")
+        uk_map = uk_map.replace("@",u"█")
+        uk_map = uk_map.replace("%",u"█")
+        uk_map = uk_map.replace("3",u"█")
+        uk_map = uk_map.replace("\"",u"▀")
+        uk_map = uk_map.replace("*",u"▀")
+        uk_map = uk_map.replace("F",u"▀")
+        uk_map = uk_map.replace("f",u"█")
+        uk_map = uk_map.replace("^",u"▀")
+        uk_map = uk_map.replace("P",u"▀")
+        uk_map = uk_map.replace("4",u"█")
+        uk_map = uk_map.replace("C",u"█")
+        uk_map = uk_map.replace("b",u"█")
+        uk_map = uk_map.replace("d",u"▄")
+        uk_map = uk_map.replace("r",u"▄")
+        uk_map = uk_map.replace("=",u"▄")
+        uk_map = uk_map.replace("c",u"▄")
+        uk_map = uk_map.replace("e",u"▄")
+        uk_map = uk_map.replace("L",u"▄")
+        uk_map = uk_map.replace("z",u"▄")
+        uk_map = uk_map.replace(".",u"▄")
+        uk_map = uk_map.replace("J","")
+        uk_map = uk_map.replace(")","")
+        uk_map = uk_map.replace("-","")
+
+        boundaries = [-99,0,3,6,9,12,15,18,21,24,98]
+        colours_before = ["BLUE","LIGHTBLUE","LIGHTCYAN","CYAN","GREEN","LIGHTGREEN","YELLOW","ORANGE","LIGHTRED","RED","BRIGHTWHITE"]
+
+        i = 0
+        for char in uk_map:
+            color = None
+            if char != "\n":
+                self.add_newline()
+                continue
+            if char != ' ':
+                j = 0
+                for b in boundaries:
+                    if self.temps[i] >= b:
+                        color = colours_before[j]
+                    j+=1
+                i+=1
+            self.add_text(char,fg=color)
+
+        self.move_cursor(x=0,y=8)
+        self.add_text("Hottest",fg=colours_before[-1])
+
+        bstr = [u"██"]+["0"*(2-len(str(i)))+str(i) for i in boundaries[1:]]+[u"██"]
+        #[-99,0,3,6,9,12,15,18,21,24]
+        for i,r in enumerate(reversed(colours_before)):
+            self.move_cursor(x=0,y=9+i)
+            self.add_text(u"█"+bstr[-i-2]+"-"+bstr[-i-1]+u"█",fg=r)
+        self.move_cursor(x=0,y=9+len(colours_before))
+        self.add_text("Coldest",fg=colours_before[0])
+
+class WorldTempPage(Page):
+    def __init__(self):
+        super(WorldTempPage, self).__init__("325")
+        self.title = "World Temperature"
+        self.in_index = False
+        self.tagline = "Why exactly do we live in Britain?"
+
+    def background(self):
+        self.data = url_handler.load_json("http://api.openweathermap.org/data/2.5/group?id=5368361,5128638,3530597,2643743,2968815,2950158,3169070,344979,1820906,1816670,1850147,7839805&units=metric&appid="+config.open_weather_api_key)
+
+    def generate_content(self):
+        self.add_title("World Temperature", bg="CYAN", fg="MAGENTA")
+
+        zones = ["LA","NY","MX","LO","PA","BE|","RO","AA","BN|","BJ","TK|","ML"]
+        temps = ['50' for i in range(12)]
+
+        i = 0
+        for city in self.data['list']:
+            temps[i] = str(int(round(city['main']['temp'])))
+            i+=1
+
+
+        for i in range(4):
+            color = ['','','']
+            for j in range(3):
+                if int(temps[3*i+j]) <= 0:
+                    color[j] = "CYAN"
+                elif 0 < int(temps[3*i+j]) < 10:
+                    color[j] = "LIGHTGREEN"
+                elif 10 <= int(temps[3*i+j]) < 20:
+                    color[j] = "YELLOW"
+                elif 10 <= int(temps[3*i+j]) < 30:
+                    color[j] = "ORANGE"
+                else:
+                    color[j] = "LIGHTRED"
+
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(zones[3*i],  font="size4", fg="BLACK", bg=color[0], fill=False, pre=1)
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(temps[3*i],  font="size4", bg="BLACK", fg=color[0], fill=False, pre=13)
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(zones[3*i+1],font="size4", fg="BLACK", bg=color[1], fill=False, pre=27)
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(temps[3*i+1],font="size4", bg="BLACK", fg=color[1], fill=False, pre=39)
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(zones[3*i+2],font="size4", fg="BLACK", bg=color[2], fill=False, pre=54)
+            self.move_cursor(x=0,y=8+4*i)
+            self.add_title(temps[3*i+2],font="size4", bg="BLACK", fg=color[2], fill=False, pre=67)
+
+weather_page = WeatherPage()
+weather_page2 = WeatherForePage()
+weather_page3 = WeatherFore2Page()
+sunrise_page = SunrisePage()
+uktemp_page = UKTempPage()
+worldtemp_page = WorldTempPage()
+

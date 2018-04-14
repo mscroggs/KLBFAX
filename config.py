@@ -48,6 +48,10 @@ twitter_access_secret = None
 twitter_consumer_key = None
 twitter_consumer_secret = None
 
+metoffer_api_key = None
+open_weather_api_key = None
+
+location = [51.5252257441084, -0.134831964969635]
 
 try:
     from localconfig import *
