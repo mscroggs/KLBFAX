@@ -7,6 +7,7 @@ The pages in brackets are disabled.
 (003 License)                           pages/license.py  
 100 Index                               pages/index.py  
 102 Birthdays                           pages/birthdays.py  
+108 Trivia                              pages/trivia.py  
 210 #emfcamp                            pages/twitter.py  
 271 e                                   pages/e.py  
 300 News Index                          pages/news.py  
@@ -22,8 +23,6 @@ The pages in brackets are disabled.
 323 Sunrise & sunset                    pages/weather.py  
 324 UK Temperature                      pages/weather.py  
 325 World Temperature                   pages/weather.py  
-340 Time                                pages/time.py  
-341 Time                                pages/time.py  
 600 TV & Radio Index                    pages/tv.py  
 601 Today's TV: BBC1                    pages/tv.py  
 602 Today's TV: BBC2                    pages/tv.py  
@@ -41,22 +40,22 @@ The pages in brackets are disabled.
 614 Today's TV: Challenge               pages/tv.py  
 615 Today's TV: BBC News                pages/tv.py  
 616 Today's TV: BBC Parliament          pages/tv.py  
-626 Tomorrow's TV: BBC1                 pages/tv.py  
-627 Tomorrow's TV: BBC2                 pages/tv.py  
-628 Tomorrow's TV: ITV                  pages/tv.py  
-629 Tomorrow's TV: Channel 4            pages/tv.py  
-630 Tomorrow's TV: Channel 5            pages/tv.py  
-631 Tomorrow's TV: ITV2                 pages/tv.py  
-632 Tomorrow's TV: S4C                  pages/tv.py  
-633 Tomorrow's TV: BBC4                 pages/tv.py  
-634 Tomorrow's TV: Dave                 pages/tv.py  
-635 Tomorrow's TV: More4                pages/tv.py  
-636 Tomorrow's TV: Film 4               pages/tv.py  
-637 Tomorrow's TV: QVC                  pages/tv.py  
-638 Tomorrow's TV: E4                   pages/tv.py  
-639 Tomorrow's TV: Challenge            pages/tv.py  
-640 Tomorrow's TV: BBC News             pages/tv.py  
-641 Tomorrow's TV: BBC Parliament       pages/tv.py  
+617 Tomorrow's TV: BBC1                 pages/tv.py  
+618 Tomorrow's TV: BBC2                 pages/tv.py  
+619 Tomorrow's TV: ITV                  pages/tv.py  
+620 Tomorrow's TV: Channel 4            pages/tv.py  
+621 Tomorrow's TV: Channel 5            pages/tv.py  
+622 Tomorrow's TV: ITV2                 pages/tv.py  
+623 Tomorrow's TV: S4C                  pages/tv.py  
+624 Tomorrow's TV: BBC4                 pages/tv.py  
+625 Tomorrow's TV: Dave                 pages/tv.py  
+626 Tomorrow's TV: More4                pages/tv.py  
+627 Tomorrow's TV: Film 4               pages/tv.py  
+628 Tomorrow's TV: QVC                  pages/tv.py  
+629 Tomorrow's TV: E4                   pages/tv.py  
+630 Tomorrow's TV: Challenge            pages/tv.py  
+631 Tomorrow's TV: BBC News             pages/tv.py  
+632 Tomorrow's TV: BBC Parliament       pages/tv.py  
 777 Contributors                        pages/contributors.py  
 850 Trains Index                        pages/trains.py  
 851 Milton Keynes Trains                pages/trains.py  
