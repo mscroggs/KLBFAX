@@ -7,6 +7,7 @@ class TrainPage(Page):
         self.in_index = False
         self.tagline = "Live trains from "+code+". Data from National Rail API."
         self.station = station
+        self.importance = 2
         self.code = code
         self.to = to
         self.hogwarts = hogwarts

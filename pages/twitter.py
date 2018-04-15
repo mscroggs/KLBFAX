@@ -3,6 +3,7 @@ from page import Page
 class TwitterPage(Page):
     def __init__(self, page_num):
         super(TwitterPage, self).__init__(page_num)
+        self.importance = 5
         self.title = "#emfcamp"
 
     def background(self):

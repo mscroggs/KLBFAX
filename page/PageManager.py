@@ -39,7 +39,6 @@ def get_chr(ip):
 
 class PageManager:
     def __init__(self, screen):
-        self.i = 0
         self.loads = 0
         self.current_page = None
         self.pages = {}
@@ -94,9 +93,7 @@ class PageManager:
         page = self.build(FailPage)
         self.loads += 1
         while not page.loaded or not page.background_loaded:
-            page = random.choice(self.get_enabled_pages(str(self.i)))
-            self.i += 1
-            self.i %= 10
+            page = random.choice(self.get_enabled_pages(random.randrange(1,6)))
             if page.background_loaded:
                 page.loaded = False
                 try:
@@ -143,12 +140,12 @@ class PageManager:
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("  \n".join(ls))
 
-    def get_enabled_pages(self, starting="0"):
-        if starting == "0":
-            return [self.pages["100"]]
-        output = [page for page in self.pages.values() if page.enabled and page.number[0]==starting]
+    def get_enabled_pages(self, importance=1):
+        output = [page for page in self.pages.values() if page.enabled and page.importance >= importance]
         if len(output) > 0:
             return output
+        elif importance > 0:
+            return self.get_enabled_pages(importance-1)
         else:
             return [page for page in self.pages.values() if page.enabled]
 

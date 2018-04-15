@@ -9,6 +9,7 @@ class TVPage(Page):
         self.in_index = False
         self.channel = channel
         self.page_num = page_num
+        self.importance = 1
         self.feed = feed
         self.day = day
         pages.append([page_num,channel+" ("+day+")"])
