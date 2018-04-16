@@ -4,16 +4,16 @@ from page import Page
 import time
 from functions import replace
 
-class NewsIndex(Page):
+class SportIndex(Page):
     def __init__(self, page_num):
-        super(NewsIndex, self).__init__(page_num)
-        self.title = "News Index"
+        super(SportIndex, self).__init__(page_num)
+        self.title = "Sport Index"
         self.importance = 2
         self.in_index = True
 
     def generate_content(self):
         global news_list
-        self.add_title("News Index")
+        self.add_title("Sport Index")
         for n,desc in news_list:
             self.add_text(str(n)+" ",fg="RED")
             self.add_text(desc)
@@ -21,16 +21,16 @@ class NewsIndex(Page):
 
 news_list = []
 
-class NewsPage(Page):
+class SportPage(Page):
     def __init__(self, page_num, url, title, bit="title"):
         global news_list
         news_list.append((page_num,title))
-        super(NewsPage, self).__init__(page_num)
+        super(SportPage, self).__init__(page_num)
         self.bit = bit
-        self.importance = 1
         self.top_title = title
         self.title = title
         self.url = url
+        self.importance = 1
         self.in_index = False
 
     def background(self):
@@ -83,18 +83,21 @@ class NewsPage(Page):
             self.add_text(" - "+ item)
             self.add_newline()
 
-news_page1 = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories")
-news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology")
-news_page3 = NewsPage(303, "http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business")
-news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News")
-news_page5 = NewsPage(305, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science")
-news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics")
-news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education")
-news_page8 = NewsPage(308, "https://www.theguardian.com/uk/rss", "The Guardian")
-news_page9 = NewsPage(309, "http://www.independent.co.uk/news/rss", "The Independent")
-news_page10 = NewsPage(310, "http://www.telegraph.co.uk/newsfeed/rss/news_breaking.xml", "The Telegraph")
-news_page11 = NewsPage(311, "http://blog.emfcamp.org/rss", "emfcamp.org")
-news_page12 = NewsPage(312, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weather warnings")
-news_page13 = NewsPage(313, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz")
+sport_page16 = SportPage(316, "http://feeds.bbci.co.uk/sport/0/rss.xml?edition=uk", "Top Stories")
+sport_page17 = SportPage(317, "http://feeds.bbci.co.uk/sport/football/0/rss.xml?edition=uk", "Football")
+sport_page18 = SportPage(318, "http://feeds.bbci.co.uk/sport/cricket/0/rss.xml?edition=uk", "Cricket")
+sport_page19 = SportPage(319, "http://feeds.bbci.co.uk/sport/rugby-union/0/rss.xml?edition=uk", "Rugby Union")
+sport_page20 = SportPage(320, "http://feeds.bbci.co.uk/sport/formula1/0/rss.xml?edition=uk", "Formula 1")
+sport_page21 = SportPage(321, "http://feeds.bbci.co.uk/sport/golf/0/rss.xml?edition=uk", "Golf")
+sport_page22 = SportPage(322, "http://feeds.bbci.co.uk/sport/tennis/0/rss.xml?edition=uk", "Tennis")
+sport_page23 = SportPage(323, "http://feeds.bbci.co.uk/sport/rugby-league/0/rss.xml?edition=uk", "Rugby League")
+sport_page24 = SportPage(324, "http://feeds.bbci.co.uk/sport/athletics/0/rss.xml?edition=uk", "Athletics")
+sport_page25 = SportPage(325, "http://feeds.bbci.co.uk/sport/snooker/0/rss.xml?edition=uk", "Snooker")
+sport_page26 = SportPage(326, "http://feeds.bbci.co.uk/sport/american-football/0/rss.xml?edition=uk", "American Football")
+sport_page27 = SportPage(327, "http://feeds.bbci.co.uk/sport/curling/0/rss.xml?edition=uk", "Curling")
+sport_page28 = SportPage(328, "http://feeds.bbci.co.uk/sport/northern-ireland/gaelic-games/0/rss.xml?edition=uk", "Gaelic Games")
+sport_page29 = SportPage(329, "http://feeds.bbci.co.uk/sport/table-tennis/0/rss.xml?edition=uk", "Table Tennis")
 
-index = NewsIndex(300)
+
+index = SportIndex(315)
+

@@ -6,6 +6,7 @@ class httpPage(Page):
         super(httpPage, self).__init__(number)
         self.title = error
         self.in_index = False
+        self.importance = 1
         self.error_text = error
 
     def generate_content(self):

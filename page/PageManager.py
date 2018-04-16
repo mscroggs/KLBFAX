@@ -127,7 +127,10 @@ class PageManager:
     def export_all(self):
         import os
         items = self.sorted_pages()
-        ls = ["# List of pages","The pages in brackets are disabled.",""]
+        ls = ["# List of pages",
+              "The pages in brackets are disabled.",
+              "",
+              "Number & Page Name             Importance  File"]
         for page_num, page in items:
             p = ""
             if not page.enabled: p += "("
@@ -135,7 +138,10 @@ class PageManager:
             p += (page.title)
             if not page.enabled: p += ")"
             p += " " * (40-len(p))
+            p += str(page.importance)
+            p += " " * (43-len(p))
             p += page.__class__.__module__.replace(".","/") + ".py"
+
             ls.append(p)
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("  \n".join(ls))
