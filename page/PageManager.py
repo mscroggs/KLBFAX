@@ -239,7 +239,7 @@ class PageManager:
                 the_input = "0"+str(the_input)
             return self.pages[the_input]
         except KeyError:
-            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.",False)
+            return self.build(FailPage,"Page "+the_input+" does not exist. Try the index in page 100.")
 
     def show(self, page):
         self.current_page = page
@@ -248,7 +248,7 @@ class PageManager:
             if page.background_error is not None:
                 page = self.build(FailPage,"There was an error running page "+page.number+"'s background function.\n\n"+str(page.background_error))
             elif page.number != "100" and not page.background_loaded:
-                page = self.build(FailPage,"Page "+page.number+" currently updating. Please try again in a few minutes",False)
+                page = self.build(FailPage,"Page "+page.number+" currently updating. Please try again in a few minutes")
         try:
             page.loaded = False
             page.reload()

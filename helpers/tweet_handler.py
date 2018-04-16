@@ -6,7 +6,7 @@ class NoTwitter(BaseException):
 
 def login():
     try:
-        twitter.Twitter(auth=twitter.OAuth(config.twitter_access_key,
+        return twitter.Twitter(auth=twitter.OAuth(config.twitter_access_key,
             config.twitter_access_secret, config.twitter_consumer_key, config.twitter_consumer_secret))
     except:
         raise NoTwitter
