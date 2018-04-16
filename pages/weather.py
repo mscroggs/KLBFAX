@@ -9,9 +9,9 @@ import config
 
 class WeatherPage(Page):
     def __init__(self):
-        super(WeatherPage, self).__init__("320")
+        super(WeatherPage, self).__init__("330")
         self.title = "Weather"
-        self.index_num = "320-325"
+        self.index_num = "330-335"
 
     def background(self):
         try:
@@ -394,7 +394,7 @@ def round_me(n,i=1):
 
 class WeatherForePage(Page):
     def __init__(self):
-        super(WeatherForePage, self).__init__("321")
+        super(WeatherForePage, self).__init__("331")
         self.title = "Weather Forecast Day"
         self.in_index=False
 
@@ -452,7 +452,7 @@ class WeatherForePage(Page):
 
 class WeatherFore2Page(Page):
     def __init__(self):
-        super(WeatherFore2Page, self).__init__("322")
+        super(WeatherFore2Page, self).__init__("332")
         self.title = "Weather Forecast"
         self.in_index = False
 
@@ -541,7 +541,7 @@ class WeatherFore2Page(Page):
 
 class SunrisePage(Page):
     def __init__(self):
-        super(SunrisePage, self).__init__("323")
+        super(SunrisePage, self).__init__("333")
         self.title = "Sunrise & sunset"
         self.in_index = False
         self.tagline = "Here comes the sun"
@@ -562,7 +562,7 @@ class SunrisePage(Page):
 
 class UKTempPage(Page):
     def __init__(self):
-        super(UKTempPage, self).__init__("324")
+        super(UKTempPage, self).__init__("334")
         self.title = "UK Temperature"
         self.tagline = "Why exactly do we live in Britain?"
         self.in_index = False
@@ -682,7 +682,7 @@ class UKTempPage(Page):
 
 class WorldTempPage(Page):
     def __init__(self):
-        super(WorldTempPage, self).__init__("325")
+        super(WorldTempPage, self).__init__("335")
         self.title = "World Temperature"
         self.in_index = False
         self.tagline = "Why exactly do we live in Britain?"
