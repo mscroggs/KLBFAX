@@ -27,4 +27,4 @@ class TriviaPage(Page):
         self.add_newline()
         self.add_text("Press G to REVEAL ANSWERS", fg="GREEN") # TODO: replace this with +
 
-trivia = TriviaPage("108")
+trivia = TriviaPage("101")
