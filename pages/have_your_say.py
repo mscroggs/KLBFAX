@@ -10,11 +10,12 @@ class TwitterPage(Page):
             self.tpage = tpage
         self.start_n = n
         super(TwitterPage, self).__init__(page_num)
-        self.importance = 5
         self.title = "Have Your Say"
         if n == 0:
+            self.importance = 5
             self.index_num = "200-209"
         else:
+            self.importance = 2
             self.in_index = False
         self.lines = []
         self.tweet = "Tweet @EMFFAX to have your comment appear here"

@@ -7,7 +7,7 @@ import config
 class IndexPage(Page):
     def __init__(self, n):
         super(IndexPage, self).__init__(n)
-        self.importance = 4
+        self.importance = 5
         self.title = "Index"
 
     def generate_content(self):

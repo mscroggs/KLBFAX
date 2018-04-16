@@ -114,8 +114,13 @@ Number & Page Name             Importance  File
 632 Tomorrow's TV: BBC Parliament       1  pages/tv.py  
 777 Contributors                        3  pages/contributors.py  
 850 Trains Index                        3  pages/trains.py  
-851 Milton Keynes Trains                2  pages/trains.py  
-852 Bletchley Trains                    2  pages/trains.py  
-853 Farncombe Trains                    2  pages/trains.py  
-854 Ledbury Trains                      2  pages/trains.py  
+851 Milton Keynes Trains                1  pages/trains.py  
+852 Bletchley Trains                    1  pages/trains.py  
+853 Farncombe Trains                    1  pages/trains.py  
+854 Ledbury Trains                      3  pages/trains.py  
+855 Shippea Hill Trains                 1  pages/trains.py  
+856 Glasgow Central Trains              1  pages/trains.py  
+857 Birmingham New Street Trains        1  pages/trains.py  
+858 London Waterloo Trains              1  pages/trains.py  
+859 London King's Cross Trains          1  pages/trains.py  
 888 Subtitles                           3  pages/subtitles.py

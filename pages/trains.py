@@ -7,7 +7,7 @@ class TrainPage(Page):
         self.in_index = False
         self.tagline = "Live trains from "+code+". Data from National Rail API."
         self.station = station
-        self.importance = 2
+        self.importance = 1
         self.code = code
         self.to = to
         self.hogwarts = hogwarts
@@ -204,6 +204,12 @@ train01 = TrainPage("851","Milton Keynes","MKC")
 train02 = TrainPage("852","Bletchley","BLY")
 train03 = TrainPage("853","Farncombe","FNC")
 train04 = TrainPage("854","Ledbury","LED")
+train04.importance = 3
+train05 = TrainPage("855","Shippea Hill","SPP")
+train06 = TrainPage("856","Glasgow Central","GLC")
+train07 = TrainPage("857","Birmingham New Street","BHM")
+train08 = TrainPage("858","London Waterloo","WAT")
+train09 = TrainPage("859","London King's Cross","KGX")
 
 class TVIPage(Page):
     def __init__(self):
