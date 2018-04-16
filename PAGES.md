@@ -8,6 +8,16 @@ The pages in brackets are disabled.
 100 Index                               pages/index.py  
 102 Birthdays                           pages/birthdays.py  
 108 Trivia                              pages/trivia.py  
+200 Have Your Say                       pages/have_your_say.py  
+201 Have Your Say                       pages/have_your_say.py  
+202 Have Your Say                       pages/have_your_say.py  
+203 Have Your Say                       pages/have_your_say.py  
+204 Have Your Say                       pages/have_your_say.py  
+205 Have Your Say                       pages/have_your_say.py  
+206 Have Your Say                       pages/have_your_say.py  
+207 Have Your Say                       pages/have_your_say.py  
+208 Have Your Say                       pages/have_your_say.py  
+209 Have Your Say                       pages/have_your_say.py  
 210 #emfcamp                            pages/twitter.py  
 271 e                                   pages/e.py  
 300 News Index                          pages/news.py  
@@ -23,6 +33,34 @@ The pages in brackets are disabled.
 323 Sunrise & sunset                    pages/weather.py  
 324 UK Temperature                      pages/weather.py  
 325 World Temperature                   pages/weather.py  
+400 Bad Request                         pages/http.py  
+401 Unauthorised                        pages/http.py  
+402 Payment Required                    pages/http.py  
+403 Forbidden                           pages/http.py  
+404 Not Found                           pages/http.py  
+405 Method Not Allowed                  pages/http.py  
+406 Not Acceptable                      pages/http.py  
+407 Proxy Authentication Required       pages/http.py  
+408 Request Timeout                     pages/http.py  
+409 Conflict                            pages/http.py  
+410 Gone                                pages/http.py  
+411 Length Required                     pages/http.py  
+412 Precondition Failed                 pages/http.py  
+413 Payload Too Large                   pages/http.py  
+414 URI Too Long                        pages/http.py  
+415 Unsupported Media Type              pages/http.py  
+416 Range Not Satisfiable               pages/http.py  
+417 Expectation Failed                  pages/http.py  
+418 I'm a Teapot                        pages/http.py  
+421 Misdirected Request                 pages/http.py  
+422 Unprocessable Entity                pages/http.py  
+423 Locked                              pages/http.py  
+424 Failed Dependency                   pages/http.py  
+426 Upgrade Required                    pages/http.py  
+428 Precondition Required               pages/http.py  
+429 Too Many Requests                   pages/http.py  
+431 Request Header Fields Too Large     pages/http.py  
+451 Unavailable for Legal Reasons       pages/http.py  
 600 TV & Radio Index                    pages/tv.py  
 601 Today's TV: BBC1                    pages/tv.py  
 602 Today's TV: BBC2                    pages/tv.py  
