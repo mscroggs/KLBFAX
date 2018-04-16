@@ -6,19 +6,19 @@ Number & Page Name             Importance  File
 (001 Unicode Test Page)                 3  pages/unicode.py  
 (002 Error log)                         3  pages/errors.py  
 (003 License)                           3  pages/license.py  
-100 Index                               4  pages/index.py  
+100 Index                               5  pages/index.py  
 102 Birthdays                           3  pages/birthdays.py  
 108 Trivia                              3  pages/trivia.py  
 200 Have Your Say                       5  pages/have_your_say.py  
-201 Have Your Say                       5  pages/have_your_say.py  
-202 Have Your Say                       5  pages/have_your_say.py  
-203 Have Your Say                       5  pages/have_your_say.py  
-204 Have Your Say                       5  pages/have_your_say.py  
-205 Have Your Say                       5  pages/have_your_say.py  
-206 Have Your Say                       5  pages/have_your_say.py  
-207 Have Your Say                       5  pages/have_your_say.py  
-208 Have Your Say                       5  pages/have_your_say.py  
-209 Have Your Say                       5  pages/have_your_say.py  
+201 Have Your Say                       2  pages/have_your_say.py  
+202 Have Your Say                       2  pages/have_your_say.py  
+203 Have Your Say                       2  pages/have_your_say.py  
+204 Have Your Say                       2  pages/have_your_say.py  
+205 Have Your Say                       2  pages/have_your_say.py  
+206 Have Your Say                       2  pages/have_your_say.py  
+207 Have Your Say                       2  pages/have_your_say.py  
+208 Have Your Say                       2  pages/have_your_say.py  
+209 Have Your Say                       2  pages/have_your_say.py  
 210 #emfcamp                            5  pages/twitter.py  
 271 e                                   3  pages/e.py  
 300 News Index                          2  pages/news.py  
@@ -51,6 +51,12 @@ Number & Page Name             Importance  File
 327 Curling                             1  pages/sport.py  
 328 Gaelic Games                        1  pages/sport.py  
 329 Table Tennis                        1  pages/sport.py  
+330 Weather                             3  pages/weather.py  
+331 Weather Forecast Day                3  pages/weather.py  
+332 Weather Forecast                    3  pages/weather.py  
+333 Sunrise & sunset                    3  pages/weather.py  
+334 UK Temperature                      3  pages/weather.py  
+335 World Temperature                   3  pages/weather.py  
 400 Bad Request                         1  pages/http.py  
 401 Unauthorised                        1  pages/http.py  
 402 Payment Required                    1  pages/http.py  
