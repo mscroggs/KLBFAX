@@ -52,41 +52,40 @@ Number & Page Name             Importance  File
 328 Gaelic Games                        1  pages/sport.py  
 329 Table Tennis                        1  pages/sport.py  
 330 Weather                             3  pages/weather.py  
-331 Weather Forecast Day                3  pages/weather.py  
-332 Weather Forecast                    3  pages/weather.py  
-333 Sunrise & sunset                    3  pages/weather.py  
-334 UK Temperature                      3  pages/weather.py  
-335 World Temperature                   3  pages/weather.py  
+331                                     3  pages/weather.py  
+332 Sunrise & sunset                    3  pages/weather.py  
+333 UK Temperature                      3  pages/weather.py  
+334 World Temperature                   3  pages/weather.py  
 342 UK Top 40                           2  pages/music_chart.py  
 343 UK Top 40 Albums                    2  pages/music_chart.py  
-400 Bad Request                         1  pages/http.py  
-401 Unauthorised                        1  pages/http.py  
-402 Payment Required                    1  pages/http.py  
-403 Forbidden                           1  pages/http.py  
-404 Not Found                           1  pages/http.py  
-405 Method Not Allowed                  1  pages/http.py  
-406 Not Acceptable                      1  pages/http.py  
-407 Proxy Authentication Required       1  pages/http.py  
-408 Request Timeout                     1  pages/http.py  
-409 Conflict                            1  pages/http.py  
-410 Gone                                1  pages/http.py  
-411 Length Required                     1  pages/http.py  
-412 Precondition Failed                 1  pages/http.py  
-413 Payload Too Large                   1  pages/http.py  
-414 URI Too Long                        1  pages/http.py  
-415 Unsupported Media Type              1  pages/http.py  
-416 Range Not Satisfiable               1  pages/http.py  
-417 Expectation Failed                  1  pages/http.py  
-418 I'm a Teapot                        1  pages/http.py  
-421 Misdirected Request                 1  pages/http.py  
-422 Unprocessable Entity                1  pages/http.py  
-423 Locked                              1  pages/http.py  
-424 Failed Dependency                   1  pages/http.py  
-426 Upgrade Required                    1  pages/http.py  
-428 Precondition Required               1  pages/http.py  
-429 Too Many Requests                   1  pages/http.py  
-431 Request Header Fields Too Large     1  pages/http.py  
-451 Unavailable for Legal Reasons       1  pages/http.py  
+400 Bad Request                         1  pages/http-errors.py  
+401 Unauthorised                        1  pages/http-errors.py  
+402 Payment Required                    1  pages/http-errors.py  
+403 Forbidden                           1  pages/http-errors.py  
+404 Not Found                           1  pages/http-errors.py  
+405 Method Not Allowed                  1  pages/http-errors.py  
+406 Not Acceptable                      1  pages/http-errors.py  
+407 Proxy Authentication Required       1  pages/http-errors.py  
+408 Request Timeout                     1  pages/http-errors.py  
+409 Conflict                            1  pages/http-errors.py  
+410 Gone                                1  pages/http-errors.py  
+411 Length Required                     1  pages/http-errors.py  
+412 Precondition Failed                 1  pages/http-errors.py  
+413 Payload Too Large                   1  pages/http-errors.py  
+414 URI Too Long                        1  pages/http-errors.py  
+415 Unsupported Media Type              1  pages/http-errors.py  
+416 Range Not Satisfiable               1  pages/http-errors.py  
+417 Expectation Failed                  1  pages/http-errors.py  
+418 I'm a Teapot                        1  pages/http-errors.py  
+421 Misdirected Request                 1  pages/http-errors.py  
+422 Unprocessable Entity                1  pages/http-errors.py  
+423 Locked                              1  pages/http-errors.py  
+424 Failed Dependency                   1  pages/http-errors.py  
+426 Upgrade Required                    1  pages/http-errors.py  
+428 Precondition Required               1  pages/http-errors.py  
+429 Too Many Requests                   1  pages/http-errors.py  
+431 Request Header Fields Too Large     1  pages/http-errors.py  
+451 Unavailable for Legal Reasons       1  pages/http-errors.py  
 600 TV & Radio Index                    3  pages/tv.py  
 601 Today's TV: BBC1                    1  pages/tv.py  
 602 Today's TV: BBC2                    1  pages/tv.py  
