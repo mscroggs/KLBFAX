@@ -23,8 +23,8 @@ class WeatherForePage(Page):
     def __init__(self, number, ftype):
         super(WeatherForePage, self).__init__(number)
         self.ftype = ftype
+        self.title = "Weather"
         if number == "330":
-            self.title = "Weather"
             self.index_num = "330-339"
             self.in_index = True
         else:
