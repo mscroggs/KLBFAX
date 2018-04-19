@@ -7,7 +7,6 @@ Number & Page Name             Importance  File
 (002 Error log)                         3  pages/errors.py  
 (003 License)                           3  pages/license.py  
 100 Index                               5  pages/index.py  
-101 Trivia                              3  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
@@ -56,8 +55,11 @@ Number & Page Name             Importance  File
 332 Sunrise & sunset                    3  pages/weather.py  
 333 UK Temperature                      3  pages/weather.py  
 334 World Temperature                   3  pages/weather.py  
-342 UK Top 40                           2  pages/music_chart.py  
-343 UK Top 40 Albums                    2  pages/music_chart.py  
+335 Time                                3  pages/time.py  
+336 Time                                3  pages/time.py  
+337 UK Top 40                           2  pages/music_chart.py  
+338 UK Top 40 Albums                    2  pages/music_chart.py  
+339 Music Trivia                        3  pages/trivia.py  
 400 Bad Request                         1  pages/http-errors.py  
 401 Unauthorised                        1  pages/http-errors.py  
 402 Payment Required                    1  pages/http-errors.py  

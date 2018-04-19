@@ -11,11 +11,11 @@ import config
 
 
 class TimePage(Page):
-    def __init__(self):
-        super(TimePage, self).__init__("340")
+    def __init__(self, num):
+        super(TimePage, self).__init__(num)
         self.title = "Time"
         self.index_num = "340-341"
-        self.tagline = config.name[:-3] + " Mean Time"
+        self.tagline = config.NAME[:-3] + " Mean Time"
 
     def generate_content(self):
         from helpers.file_handler import load_file
@@ -86,13 +86,11 @@ class TimePage(Page):
             if y != 2*screen_radius: output2 = output2 + "\n"
         self.add_text(output2)
 
-currency_page = TimePage()
 
 class WorldClockPage(Page):
-    def __init__(self):
-        super(WorldClockPage, self).__init__("341")
+    def __init__(self, num):
+        super(WorldClockPage, self).__init__(num)
         self.title = "Time"
-        self.index_num = "421"
         self.in_index = False
         self.tagline = "It's 5 o'clock somewhere"
 
@@ -121,4 +119,5 @@ class WorldClockPage(Page):
             self.move_cursor(x=0, y=8+4*i)
             self.add_title(times[2*i+1],font="size4", fg=color2, bg="BLACK", pre=54,fill=False)
 
-clock_page = WorldClockPage()
+currency_page = TimePage("335")
+clock_page = WorldClockPage("336")

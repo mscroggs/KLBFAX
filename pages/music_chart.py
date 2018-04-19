@@ -37,6 +37,6 @@ class ChartPage(Page):
             self.add_text(" " + song, fg="GREEN")
             self.add_newline()
 
-page1 = ChartPage(342, "UK Top 40", "http://www.uktop40.co.uk/official_top_40.rss")
-page2 = ChartPage(343, "UK Top 40 Albums", "http://www.uktop40.co.uk/official_top_40_albums.rss")
+page1 = ChartPage(337, "UK Top 40", "http://www.uktop40.co.uk/official_top_40.rss")
+page2 = ChartPage(338, "UK Top 40 Albums", "http://www.uktop40.co.uk/official_top_40_albums.rss")
 
