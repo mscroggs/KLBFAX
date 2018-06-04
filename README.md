@@ -67,5 +67,3 @@ For a list of current pages, see `PAGES.md`.
 
 ### `contributors.txt`
 Once you have contributed, add your name to `contributors.txt`, and add a pixel avatar to `pages/777.py`.
-
-hello
