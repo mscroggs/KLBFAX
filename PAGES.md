@@ -7,7 +7,12 @@ Number & Page Name             Importance  File
 (002 Error log)                         3  pages/errors.py  
 (003 License)                           3  pages/license.py  
 100 Index                               5  pages/index.py  
+101 Trivia                              3  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  
+103 On this Day...                      1  pages/wiki.py  
+104 Article of the Day                  1  pages/wiki.py  
+105 Did you know...                     1  pages/wiki.py  
+106 New on Wikipedia                    1  pages/wiki.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
@@ -132,4 +137,6 @@ Number & Page Name             Importance  File
 857 Birmingham New Street Trains        1  pages/trains.py  
 858 London Waterloo Trains              1  pages/trains.py  
 859 London King's Cross Trains          1  pages/trains.py  
-888 Subtitles                           3  pages/subtitles.py
+888 Subtitles                           3  pages/subtitles.py  
+900 Choose your own adventure           4  pages/game.py  
+901 Choose your own adventure           0  pages/game.py
