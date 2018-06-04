@@ -72,7 +72,16 @@ class TeamPage(Page):
                             "bbwwwww  wwwwwbb\n"
                             "b              b\n"
                             "b    w    w    b\n"
-                            "b     wwww     b"]
+                            "b     wwww     b"],
+
+                ["TD",      "  bbbbbbbbbbbb  \n"
+                            "bbbbbbbbbbbbbbbb\n"
+                            "bbbb        bbbb\n"
+                            "bbb          bbb\n"
+                            "bb  w     w   bb\n"
+                            "b              g\n"
+                            "g    w    w    g\n"
+                            "g     wwww     g"]
 
             ]
         shuffle(team)
