@@ -29,7 +29,7 @@ trivia = TriviaPage("101", [
                     ("Which programming language is " + config.NAME + " programmed using?","Python"),
                     ], "Trivia")
 
-trivia = TriviaPage("339", [
+trivi2 = TriviaPage("339", [
                     ("Who released the albums Everything Must Go and Generation Terrorists?","Manic Street Preachers"),
                     ("Which band had members John, Paul, George and Ringo?","The Beatles"),
                     ("Which band's hits include Enola Gay, Messages and Souvenir?","Orchestral Manoeuvres in the Dark"),
