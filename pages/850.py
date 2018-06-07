@@ -63,7 +63,7 @@ class TrainPage(Page):
         operator_mapping=[
         ('Railway', 'Rly'),
         ('Midlands', 'Mids')
-        ]        
+        ]
 
         n = 4
 
@@ -97,17 +97,19 @@ class TrainPage(Page):
             self.add_text(service.std+" "+platform+" "*(3-len(platform)))
             self.move_cursor(x=11+(4-n+i)*20,y=4)
             if service.etd[0] in ["0","1","2"]:
-                self.start_fg_color("RED")
+                self.start_fg_color("LIGHTRED")
                 self.add_text("Exp " + service.etd)
                 self.end_fg_color()
             elif service.etd[0] == "D":
-                self.start_fg_color("RED")
+                self.start_fg_color("LIGHTRED")
                 self.add_text(service.etd)
                 self.end_fg_color()
             elif service.etd[0] == "C":
-                self.start_fg_color("CYAN")
+                self.start_bg_color("CYAN")
+                self.start_fg_color("BLACK")
                 self.add_text(service.etd)
                 self.end_fg_color()
+                self.end_bg_color()
             else:
                 self.add_text(service.etd)
 
@@ -139,7 +141,7 @@ class TrainPage(Page):
             operator = service.operator
             if len(operator) > 19:
                 for k, v in operator_mapping:
-                    operator = operator.replace(k, v)            
+                    operator = operator.replace(k, v)
             self.add_text(operator)
             self.end_fg_color()
 
@@ -184,17 +186,19 @@ class TrainPage(Page):
 
             self.move_cursor(x=pos[3],y=y)
             if service.etd[0] in ["0","1","2"]:
-                self.start_fg_color("RED")
+                self.start_fg_color("LIGHTRED")
                 self.add_text(service.etd)
                 self.end_fg_color()
             elif service.etd[0] == "D":
-                self.start_fg_color("RED")
+                self.start_fg_color("LIGHTRED")
                 self.add_text("Delayed")
                 self.end_fg_color()
             elif service.etd[0] == "C":
-                self.start_fg_color("CYAN")
+                self.start_bg_color("CYAN")
+                self.start_fg_color("BLACK")
                 self.add_text("Canceld")
                 self.end_fg_color()
+                self.end_bg_color()
             else:
                 self.add_text(service.etd)
 
@@ -234,6 +238,8 @@ train34 = TrainPage("884","Blaenau Ffest.","BFF")
 train35 = TrainPage("885","Sutton C'field","SUT")
 train36 = TrainPage("886","Cambridge","CBG")
 train37 = TrainPage("887","Lichfield T.V.","LTV")
+train38 = TrainPage("889","Arlesey","ARL")
+train39 = TrainPage("890","Gatwick Airport","GTW")
 
 class TVIPage(Page):
     def __init__(self):
