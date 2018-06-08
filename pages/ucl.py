@@ -25,7 +25,7 @@ class UCLPage(Page):
         for location,spaces in self.data:
             self.add_text(location)
             self.move_cursor(x=50)
-            self.add_text(" "+spaces.split("(")[0],fg="BLUE")
+            self.add_text(" "+spaces.split("(")[0],fg="LIGHTBLUE")
             self.add_newline()
 
 train01 = UCLPage()
