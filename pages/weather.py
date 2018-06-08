@@ -6,7 +6,7 @@ from helpers.file_handler import f_read
 from helpers import url_handler
 import datetime
 import config
-import metoffer
+#import metoffer
 
 class WeatherPage(Page):
     def __init__(self):
