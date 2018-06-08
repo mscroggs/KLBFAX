@@ -3,7 +3,7 @@ from page import Page
 class UCLPage(Page):
     def __init__(self):
         super(UCLPage, self).__init__("211")
-        self.title = " Library Spaces"
+        self.title = "Library Spaces"
         self.tagline = "Does UCL have a space problem?"
         self.importance = 5
 
@@ -18,15 +18,15 @@ class UCLPage(Page):
             self.data.append([location,spaces])
 
     def generate_content(self):
-
-
-
-
         self.add_title("Library Spaces",font="size4")
 
         self.start_fg_color("BRIGHTWHITE")
-        self.add_text("Hello")
         self.end_fg_color()
+        for location,spaces in self.data:
+            self.add_text(location)
+            self.move_cursor(x=50)
+            self.add_text(" "+spaces.split("(")[0],fg="BLUE")
+            self.add_newline()
 
 train01 = UCLPage()
 
