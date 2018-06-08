@@ -215,9 +215,8 @@ class PageManager:
                 inp = ""
                 while key != curses.KEY_ENTER and key != 10:
                     key = self.screen.getch()
-                    print(key)
                     try:
-                        if key == 103: # 103 is g TODO: change to the right key on mini keypad
+                        if key == 43:
                             self.current_page.toggle_reveal()
                         elif key == 263:
                             inp = inp[:-1]

@@ -20,7 +20,7 @@ class TriviaPage(Page):
             self.add_reveal_text("    "+a,fg="YELLOW")
             self.add_newline()
         self.add_newline()
-        self.add_text("Press G to REVEAL ANSWERS", fg="GREEN") # TODO: replace this with +
+        self.add_text("Press + to REVEAL ANSWERS", fg="GREEN")
 
 trivia = TriviaPage("101", [
                     ("What is 1+2?","3"),
