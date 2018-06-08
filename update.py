@@ -8,8 +8,8 @@ def git_pull():
     from os import system
     print("Pulling newest version.")
     try:
-        system("cd "+config.current_dir+";git pull")
-        system("cd "+config.current_dir+";sudo pip install -r requirements.txt")
+        system("cd "+config.ceefax_dir+";git pull")
+        system("cd "+config.ceefax_dir+";sudo pip install -r requirements.txt")
         restart_ceefax()
     except:
         pass

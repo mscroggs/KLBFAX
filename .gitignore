@@ -5,5 +5,6 @@ utils/dummy
 requirements-satisfied.txt
 .DS_Store
 pages/.DS_Store
-*.swp
+.*.swp
 localconfig.py
+list_for_git_issue

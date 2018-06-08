@@ -146,6 +146,20 @@ class PageManager:
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES.md"),"w") as f:
             f.write("  \n".join(ls))
 
+        git_list = {str(i):"" for i in range(100,1000)}
+        for page_num, page in items:
+            git_list[str(page_num)] = page.title
+        out = ""
+        for p in sorted(git_list):
+            q = git_list[p]
+            if q == "":
+                out += "- [ ] "+p+" ???"
+            else:
+                out += "- [x] "+p+" "+q
+            out += "\n"
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../list_for_git_issue"),"w") as f:
+            f.write(out)
+
     def get_enabled_pages(self, importance=1):
         output = [page for page in self.pages.values() if page.enabled and page.importance >= importance]
         if len(output) > 0:
@@ -216,7 +230,7 @@ class PageManager:
                 while key != curses.KEY_ENTER and key != 10:
                     key = self.screen.getch()
                     try:
-                        if key == 103: # 103 is g TODO: change to the right key on mini keypad
+                        if key == 43:
                             self.current_page.toggle_reveal()
                         elif key == 263:
                             inp = inp[:-1]
