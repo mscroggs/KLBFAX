@@ -2,12 +2,17 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About EMFFAX)                      3  pages/about.py  
+(000 About 52JHFAX)                     3  pages/about.py  
 (001 Unicode Test Page)                 3  pages/unicode.py  
 (002 Error log)                         3  pages/errors.py  
 (003 License)                           3  pages/license.py  
 100 Index                               5  pages/index.py  
+101 Trivia                              3  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  
+103 On this Day...                      1  pages/wiki.py  
+104 Article of the Day                  1  pages/wiki.py  
+105 Did you know...                     1  pages/wiki.py  
+106 New on Wikipedia                    1  pages/wiki.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
