@@ -214,7 +214,7 @@ train10 = TrainPage("860","London St Pancras","STP")
 train11 = TrainPage("861","London Euston","EUS")
 train12 = TrainPage("862","London Victoria","VIC")
 train13 = TrainPage("863","Charing Cross","CHX")
-train14 = TrainPage("863","Cambridge","CBG")
+train14 = TrainPage("864","Cambridge","CBG")
 
 
 class TVIPage(Page):
