@@ -78,22 +78,25 @@ class FootballPage2(Page):
                 group = group["group"]
             except:
                 continue
-            self.move_cursor(x=28*(i%3),y=8+(i//3)*6)
+            self.move_cursor(x=1+28*(i%3),y=8+(i//3)*6)
             self.add_text("Group "+group["letter"],fg="YELLOW")
-            self.move_cursor(x=28*(i%3)+14)
+            self.move_cursor(x=1+28*(i%3)+14)
             self.add_text(" ")
             self.add_text("Pts")
             self.add_newline()
-            self.move_cursor(x=28*(i%3))
-            for team in group["teams"]:
+            self.move_cursor(x=1+28*(i%3))
+            for tn,team in enumerate(group["teams"]):
                 team = team["team"]
                 c = team["country"]
-                self.add_text(c)
-                self.move_cursor(x=28*(i%3)+14)
+                if tn <= 1:
+                    self.add_text(c,fg="GREEN")
+                else:
+                    self.add_text(c)
+                self.move_cursor(x=1+28*(i%3)+14)
                 self.add_text("  ")
                 self.add_text(str(team["points"]))
                 self.add_newline()
-                self.move_cursor(x=28*(i%3))
+                self.move_cursor(x=1+28*(i%3))
             i += 1
 
 football_page = FootballPage()
