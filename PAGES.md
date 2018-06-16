@@ -56,11 +56,6 @@ Number & Page Name             Importance  File
 327 Curling                             1  pages/sport.py  
 328 Gaelic Games                        1  pages/sport.py  
 329 Table Tennis                        1  pages/sport.py  
-330 Weather                             3  pages/weather.py  
-331 Weather                             3  pages/weather.py  
-332 Sunrise & sunset                    3  pages/weather.py  
-333 UK Temperature                      3  pages/weather.py  
-334 World Temperature                   3  pages/weather.py  
 335 Time                                3  pages/time.py  
 336 Time                                3  pages/time.py  
 337 UK Top 40                           2  pages/music_chart.py  
@@ -140,4 +135,9 @@ Number & Page Name             Importance  File
 857 Birmingham New Street Trains        1  pages/trains.py  
 858 London Waterloo Trains              1  pages/trains.py  
 859 London King's Cross Trains          1  pages/trains.py  
+860 London St Pancras Trains            1  pages/trains.py  
+861 London Euston Trains                1  pages/trains.py  
+862 London Victoria Trains              1  pages/trains.py  
+863 Cambridge Trains                    1  pages/trains.py  
+864 Cambridge Trains                    1  pages/trains.py  
 888 Subtitles                           3  pages/subtitles.py

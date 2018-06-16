@@ -1,6 +1,5 @@
 pytz
 astral
-metoffer
 nrewebservices
 feedparser
 twitter
