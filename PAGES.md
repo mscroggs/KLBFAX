@@ -24,6 +24,7 @@ Number & Page Name             Importance  File
 208 Have Your Say                       2  pages/have_your_say.py  
 209 Have Your Say                       2  pages/have_your_say.py  
 210 #emfcamp                            5  pages/twitter.py  
+211 Library Spaces                      5  pages/ucl.py  
 271 e                                   3  pages/e.py  
 300 News Index                          2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
@@ -65,6 +66,8 @@ Number & Page Name             Importance  File
 337 UK Top 40                           2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
 339 Music Trivia                        3  pages/trivia.py  
+380 World Cup latest scores             5  pages/world_cup.py  
+381 World Cup groups                    5  pages/world_cup.py  
 400 Bad Request                         1  pages/http-errors.py  
 401 Unauthorised                        1  pages/http-errors.py  
 402 Payment Required                    1  pages/http-errors.py  
