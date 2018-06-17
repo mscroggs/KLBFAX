@@ -58,7 +58,7 @@ Number & Page Name             Importance  File
 330 Weather                             3  pages/weather.py  
 331 Weather                             3  pages/weather.py  
 332 Sunrise & sunset                    3  pages/weather.py  
-333 UK Temperature                      3  pages/weather.py  
+333 UK Temperature                      4  pages/weather.py  
 334 World Temperature                   3  pages/weather.py  
 335 Time                                3  pages/time.py  
 336 Time                                3  pages/time.py  
@@ -71,12 +71,47 @@ Number & Page Name             Importance  File
 343 British Pound vs US Dollar          1  pages/currency.py  
 344 British Pound vs New Zealand Dollar 1  pages/currency.py  
 345 British Pound vs Australian Dollar  1  pages/currency.py  
-346 Euro vs US Dollar                   1  pages/currency.py  
-347 Euro vs New Zealand Dollar          1  pages/currency.py  
-348 Euro vs Australian Dollar           1  pages/currency.py  
-349 US Dollar vs New Zealand Dollar     1  pages/currency.py  
-350 US Dollar vs Australian Dollar      1  pages/currency.py  
-351 New Zealand Dollar vs Australian Dollar1pages/currency.py  
+346 British Pound vs Japanese Yen       1  pages/currency.py  
+347 British Pound vs Norwegian Krone    1  pages/currency.py  
+348 British Pound vs Vietnam Dong       1  pages/currency.py  
+349 British Pound vs Russian Rouble     1  pages/currency.py  
+350 British Pound vs Swiss Franc        1  pages/currency.py  
+351 Euro vs US Dollar                   1  pages/currency.py  
+352 Euro vs New Zealand Dollar          1  pages/currency.py  
+353 Euro vs Australian Dollar           1  pages/currency.py  
+354 Euro vs Japanese Yen                1  pages/currency.py  
+355 Euro vs Norwegian Krone             1  pages/currency.py  
+356 Euro vs Vietnam Dong                1  pages/currency.py  
+357 Euro vs Russian Rouble              1  pages/currency.py  
+358 Euro vs Swiss Franc                 1  pages/currency.py  
+359 US Dollar vs New Zealand Dollar     1  pages/currency.py  
+360 US Dollar vs Australian Dollar      1  pages/currency.py  
+361 US Dollar vs Japanese Yen           1  pages/currency.py  
+362 US Dollar vs Norwegian Krone        1  pages/currency.py  
+363 US Dollar vs Vietnam Dong           1  pages/currency.py  
+364 US Dollar vs Russian Rouble         1  pages/currency.py  
+365 US Dollar vs Swiss Franc            1  pages/currency.py  
+366 New Zealand Dollar vs Australian Dollar1pages/currency.py  
+367 New Zealand Dollar vs Japanese Yen  1  pages/currency.py  
+368 New Zealand Dollar vs Norwegian Krone1 pages/currency.py  
+369 New Zealand Dollar vs Vietnam Dong  1  pages/currency.py  
+370 New Zealand Dollar vs Russian Rouble1  pages/currency.py  
+371 New Zealand Dollar vs Swiss Franc   1  pages/currency.py  
+372 Australian Dollar vs Japanese Yen   1  pages/currency.py  
+373 Australian Dollar vs Norwegian Krone1  pages/currency.py  
+374 Australian Dollar vs Vietnam Dong   1  pages/currency.py  
+375 Australian Dollar vs Russian Rouble 1  pages/currency.py  
+376 Australian Dollar vs Swiss Franc    1  pages/currency.py  
+377 Japanese Yen vs Norwegian Krone     1  pages/currency.py  
+378 Japanese Yen vs Vietnam Dong        1  pages/currency.py  
+379 Japanese Yen vs Russian Rouble      1  pages/currency.py  
+380 Japanese Yen vs Swiss Franc         1  pages/currency.py  
+381 Norwegian Krone vs Vietnam Dong     1  pages/currency.py  
+382 Norwegian Krone vs Russian Rouble   1  pages/currency.py  
+383 Norwegian Krone vs Swiss Franc      1  pages/currency.py  
+384 Vietnam Dong vs Russian Rouble      1  pages/currency.py  
+385 Vietnam Dong vs Swiss Franc         1  pages/currency.py  
+386 Russian Rouble vs Swiss Franc       1  pages/currency.py  
 400 Bad Request                         1  pages/http-errors.py  
 401 Unauthorised                        1  pages/http-errors.py  
 402 Payment Required                    1  pages/http-errors.py  

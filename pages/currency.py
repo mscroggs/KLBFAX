@@ -10,8 +10,8 @@ class CurrencyPage(Page):
         super(CurrencyPage, self).__init__(page_num)
         self.importance = 1
         self.top_title = c1[0]+" vs "+c2[0]
-        self.title = c1[2]+" vs "+c2[2]
-        pagelist[page_num] = self.title
+        self.title = c1[3]+" vs "+c2[3]
+        pagelist[page_num] = (c1,c2)
         self.url = url
         self.in_index = False
         self.tagline = "From fxexchangerate.com"
@@ -34,8 +34,8 @@ class CurrencyPage(Page):
 
     def generate_content(self):
         self.add_title(self.top_title,bg="BLACK",fg="RED",font='size4')
-        self.add_title(self.c1[1]+"1 = "+self.c2[1]+self.a,font='size4',fg="BLACK",bg="YELLOW")
-        self.add_title(self.c2[1]+"1 = "+self.c1[1]+self.b,font='size4',fg="BLACK",bg="BLUE")
+        self.add_title(self.c1[1]+"1"+self.c1[2]+" = "+self.c2[1]+self.a+self.c2[2],font='size4',fg="BLACK",bg="YELLOW")
+        self.add_title(self.c2[1]+"1"+self.c2[2]+" = "+self.c1[1]+self.b+self.c1[2],font='size4',fg="BLACK",bg="BLUE")
 
 class IndexPage(Page):
     def __init__(self, page_num, pagelist):
@@ -46,20 +46,43 @@ class IndexPage(Page):
 
     def generate_content(self):
         self.add_title("Currencies",bg="BLACK",fg="LIGHTRED",font='size4')
-        for i in self.pagelist:
-            self.add_text(str(i)+" ",fg="RED")
-            self.add_text(self.pagelist[i])
-            self.add_newline()
+        c1 = None
+        x = 0
+        y = 4
+        self.add_text("341",fg="RED")
+        self.add_text(" Bitcoin")
+        for i,page in enumerate(self.pagelist):
+            d = self.pagelist[page]
+            if c1 != d[0][3]:
+                c1 = d[0][3]
+                y += 2
+                if y>26:
+                    y = 4
+                    x += 28
+                self.move_cursor(x=x,y=y)
+                self.add_text(c1,fg="YELLOW")
+            y += 1
+            if y>27:
+                y = 4
+                x += 28
+            self.move_cursor(x=x,y=y)
+            self.add_text(str(page),fg="RED")
+            self.add_text(" vs "+d[1][3])
 
 currencies = [
-        ("GBP","£","British Pound"),
-        ("EUR","€","Euro"),
-        ("USD","$","US Dollar"),
-        ("NZD","NZ$","New Zealand Dollar"),
-        ("AUD","AU$","Australian Dollar")
+        ("GBP","£","","British Pound"),
+        ("EUR","€","","Euro"),
+        ("USD","$","","US Dollar"),
+        ("NZD","NZ$","","New Zealand Dollar"),
+        ("AUD","AU$","","Australian Dollar"),
+        ("JPY","¥","","Japanese Yen"),
+        ("NOK","","kr","Norwegian Krone"),
+        ("VND","₫","","Vietnam Dong"),
+        ("RUB","","₽","Russian Rouble"),
+        ("CHF","Fr.","","Swiss Franc")
     ]
 
-pagelist = {"341":"Bitcoin"}
+pagelist = {}
 pages = []
 pn = 342
 for i,a in enumerate(currencies):

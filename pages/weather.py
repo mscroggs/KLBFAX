@@ -128,6 +128,7 @@ class UKTempPage(Page):
         self.title = "UK Temperature"
         self.tagline = "Why exactly do we live in Britain?"
         self.in_index = False
+        self.importance = 4
         self.places = [
                     (51.50433, -0.12316, 48, 21),
                     (51.85762, -4.31213, 35, 21),
