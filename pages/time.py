@@ -14,7 +14,7 @@ class TimePage(Page):
     def __init__(self, num):
         super(TimePage, self).__init__(num)
         self.title = "Time"
-        self.index_num = "340-341"
+        self.index_num = "335-6"
         self.tagline = config.NAME[:-3] + " Mean Time"
 
     def generate_content(self):
@@ -119,5 +119,5 @@ class WorldClockPage(Page):
             self.move_cursor(x=0, y=8+4*i)
             self.add_title(times[2*i+1],font="size4", fg=color2, bg="BLACK", pre=54,fill=False)
 
-currency_page = TimePage("335")
+time_page = TimePage("335")
 clock_page = WorldClockPage("336")

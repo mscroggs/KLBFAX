@@ -17,6 +17,9 @@ except:
 class TimeUp(BaseException):
     pass
 
+class PageError(BaseException):
+    pass
+
 def alarm(signum, frame):
     raise TimeUp
 
@@ -51,17 +54,19 @@ class PageManager:
         only_page_files = [f for f in os.listdir(config.pages_dir) if is_page_file(f)]
         for page_file in only_page_files:
             page_file_no_ext = os.path.splitext(page_file)[0]
-            try:
-                module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
-                                 page_file_no_ext)
-                reload(module)
-                for filename in dir(module):
-                    obj = getattr(module, filename)
-                    if isinstance(obj, Page):
-                        obj.cupt = self.screen.cupt
-                        self.add(obj)
-            except:
-                pass
+            module = getattr(__import__("pages", fromlist=[page_file_no_ext]),
+                             page_file_no_ext)
+            reload(module)
+            for filename in dir(module):
+                obj = getattr(module, filename)
+                if isinstance(obj, Page):
+                    obj.cupt = self.screen.cupt
+                    self.add(obj)
+                elif isinstance(obj, list):
+                    for thing in obj:
+                        if isinstance(thing, Page):
+                            thing.cupt = self.screen.cupt
+                            self.add(thing)
 
     def test_all_pages(self):
         if not os.path.exists(config.pages_dir):
@@ -77,16 +82,24 @@ class PageManager:
                     obj = getattr(module, filename)
                     if isinstance(obj, Page):
                         obj.cupt = self.screen.cupt
-                        self.add(obj)
                         obj.background()
                         obj.reload()
                         obj.generate_content()
+                    elif isinstance(obj, list):
+                        for thing in obj:
+                            if isinstance(thing, Page):
+                                thing.cupt = self.screen.cupt
+                                thing.background()
+                                thing.reload()
+                                thing.generate_content()
             except BaseException as e:
                 print(page_file)
                 print(traceback.format_exc())
                 print("")
 
     def add(self, page):
+        if page.number in self.pages:
+            raise PageError("Page "+page.number+" already exists ("+self.pages[page.number].title+" and "+page.title+")")
         self.pages[page.number] = page
 
     def get_loaded_random(self):
