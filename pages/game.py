@@ -3,7 +3,7 @@ from page import Page
 class GamePage(Page):
     def __init__(self, number, text, options=[]):
         super(GamePage, self).__init__(number)
-        self.title = "Choose your own adventure"
+        self.title = "Choose Your Own Adventure"
         self.in_index = False
         self.text = text
         self.importance = 0

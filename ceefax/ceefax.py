@@ -26,6 +26,7 @@ class Ceefax:
         self.start_time = config.now()
         from helpers import file_handler
         self.test = test
+        self.page_manager = DummyPM()
 
     def begin(self):
         with Screen() as scr:
@@ -38,3 +39,7 @@ class Ceefax:
     def kill(self):
         raise KeyboardInterrupt
 
+
+class DummyPM:
+    def sorted_pages(self):
+        return []
