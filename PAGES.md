@@ -65,6 +65,18 @@ Number & Page Name             Importance  File
 337 UK Top 40                           2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
 339 Music Trivia                        3  pages/trivia.py  
+340 Currency Conversion                 1  pages/currency.py  
+341 Bitcoin                             3  pages/bitcoin.py  
+342 British Pound vs Euro               1  pages/currency.py  
+343 British Pound vs US Dollar          1  pages/currency.py  
+344 British Pound vs New Zealand Dollar 1  pages/currency.py  
+345 British Pound vs Australian Dollar  1  pages/currency.py  
+346 Euro vs US Dollar                   1  pages/currency.py  
+347 Euro vs New Zealand Dollar          1  pages/currency.py  
+348 Euro vs Australian Dollar           1  pages/currency.py  
+349 US Dollar vs New Zealand Dollar     1  pages/currency.py  
+350 US Dollar vs Australian Dollar      1  pages/currency.py  
+351 New Zealand Dollar vs Australian Dollar1pages/currency.py  
 400 Bad Request                         1  pages/http-errors.py  
 401 Unauthorised                        1  pages/http-errors.py  
 402 Payment Required                    1  pages/http-errors.py  

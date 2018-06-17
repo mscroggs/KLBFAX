@@ -7,8 +7,6 @@ from cupt import DummyScreen
 
 page_manager = PageManager(DummyScreen())
 
-page_manager.load_all_pages()
-
 page_manager.print_all()
 page_manager.export_all()
 
