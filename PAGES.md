@@ -93,6 +93,7 @@ Number & Page Name             Importance  File
 429 Too Many Requests                   1  pages/http-errors.py  
 431 Request Header Fields Too Large     1  pages/http-errors.py  
 451 Unavailable for Legal Reasons       1  pages/http-errors.py  
+555 Lotto Results                       2  pages/lotto.py  
 600 TV & Radio Index                    3  pages/tv.py  
 601 Today's TV: BBC1                    1  pages/tv.py  
 602 Today's TV: BBC2                    1  pages/tv.py  

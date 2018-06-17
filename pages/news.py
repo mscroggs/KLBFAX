@@ -22,16 +22,17 @@ class NewsIndex(Page):
 news_list = []
 
 class NewsPage(Page):
-    def __init__(self, page_num, url, title, bit="title"):
+    def __init__(self, page_num, url, title, tagline=None):
         global news_list
         news_list.append((page_num,title))
         super(NewsPage, self).__init__(page_num)
-        self.bit = bit
         self.importance = 1
         self.top_title = title
         self.title = title
         self.url = url
         self.in_index = False
+        if tagline is not None:
+            self.tagline = tagline
 
     def background(self):
         import feedparser
@@ -39,12 +40,12 @@ class NewsPage(Page):
         feed = feedparser.parse(rss_url)
         if 'entries' in feed and len(feed['entries']) > 0:
             item = feed['entries'][0]
-            self.words = replace(item[self.bit]).split(" ")
+            self.words = replace(item["title"]).split(" ")
         else:
             self.words = []
 
         if len(feed) > 1:
-            self.entries = [replace(item[self.bit]) for item in feed['entries'][1:21]]
+            self.entries = [replace(item["title"]) for item in feed['entries'][1:21]]
         else:
             self.entries = []
 
@@ -60,10 +61,6 @@ class NewsPage(Page):
             - sum(map(word.upper().count, u"T"))*1
             + sum(map(word.upper().count, u"MW"))*1
             return width
-
-        import random
-        newsreaders = ['Huw Edwards','Lizo from Newsround','Moira Stuart','Nick Owen','Aiming Homes','Michael Burke','Trevor Martdonald','Sam Brown','Mart Pice','Jon Snow','Jeremy Paxperson']
-        self.tagline = "Presented by " + random.choice(newsreaders)
 
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
         self.add_newline()
@@ -83,18 +80,18 @@ class NewsPage(Page):
             self.add_text(" - "+ item)
             self.add_newline()
 
-news_page1 = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories")
-news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology")
-news_page3 = NewsPage(303, "http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business")
-news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News")
-news_page5 = NewsPage(305, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science")
-news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics")
-news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education")
+news_page1 = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories","From BBC News")
+news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology","From BBC News")
+news_page3 = NewsPage(303, "http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business","From BBC News")
+news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News","From BBC News")
+news_page5 = NewsPage(305, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science","From BBC News")
+news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics","From BBC News")
+news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education","From BBC News")
 news_page8 = NewsPage(308, "https://www.theguardian.com/uk/rss", "The Guardian")
 news_page9 = NewsPage(309, "http://www.independent.co.uk/news/rss", "The Independent")
 news_page10 = NewsPage(310, "http://www.telegraph.co.uk/newsfeed/rss/news_breaking.xml", "The Telegraph")
 news_page11 = NewsPage(311, "http://blog.emfcamp.org/rss", "emfcamp.org")
-news_page12 = NewsPage(312, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weather warnings")
-news_page13 = NewsPage(313, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz")
+news_page12 = NewsPage(312, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weather warnings","From the Met Office")
+news_page13 = NewsPage(313, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz","From The Daily Mail")
 
 index = NewsIndex(300)
