@@ -61,6 +61,7 @@ class TrainPage(Page):
         (' Underground', '')]
 
         operator_mapping=[
+        ('London North Eastern Railway', 'LNER'),
         ('Railway', 'Rly'),
         ('Midlands', 'Mids')
         ]
