@@ -5,10 +5,10 @@ function update {
     cd "$where"
 }
 
-export KLBFILE="/home/pi/.klb/KLBFAX_status"
+export FAXFILE="/home/pi/.fax/FAX_status"
 
 if $(ps aux | grep "./run.py" | grep -v "grep" > /dev/null); then
-    echo "KLBFAX running already."
+    echo "FAX running already."
     run_kl="0"
 else
     run_kl="1"
@@ -17,10 +17,8 @@ fi
 while [ $run_kl = "1" ]
 do
     run_kl="0"
-    echo "0" > $KLBFILE
+    echo "0" > $FAXFILE
     cd /home/pi/ceefax
-    ./run.py            # uncomment this for KLBFAX
-    # SLAVE=1 ./run.py  # uncomment this for 28JHFAX
-    # EMF=1 ./run.py    # uncomment this for EMFFAX
-    run_kl=`cat $KLBFILE`
+    ./run.py
+    run_kl=`cat $FAXFILE`
 done

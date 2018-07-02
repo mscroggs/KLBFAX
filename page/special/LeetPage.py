@@ -1,5 +1,4 @@
 from page import Page
-import config
 
 class LeetPage(Page):
     def __init__(self):

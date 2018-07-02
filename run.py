@@ -1,12 +1,4 @@
-#!/usr/bin/env python
-try:
-    with open("/home/pi/ceefax/temp","w") as f:
-        f.write("NO")
-except:
-    pass
-
-import config
-from points import add_one_random
+#!/usr/bin/env python3
 from ceefax import Ceefax
 from os.path import expanduser, join, isdir
 from os import mkdir
@@ -20,5 +12,4 @@ for i,a in enumerate(sys.argv):
         test = sys.argv[i+1]
 
 c = Ceefax(test)
-#c.disable_curses()
 c.begin()

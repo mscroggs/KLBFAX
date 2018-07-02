@@ -1,12 +1,10 @@
-pyyaml
 pytz
-zope.event
-tubestatus
 astral
 metoffer
-tweepy
 nrewebservices
 feedparser
+twitter
 forex_python
 quandl
 pandas
+pyopenssl

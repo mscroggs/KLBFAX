@@ -1,3 +1,5 @@
-from .replacer import klb_replace
-from .sweep import sweepstake_people
-from .greetings import greetings
+from .replacer import replace
+from .strip_tags import strip_tags
+
+def strip_tags_and_replace(txt):
+    return replace(strip_tags(txt))

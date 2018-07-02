@@ -236,6 +236,20 @@ x' 'x
 xx,xx
 """)
 
+_add(u"₫","""
+x'' x
+x ' x
+x'''x
+xxxxx
+""")
+
+_add(u"₽","""
+x , x
+x ,,x
+, ,,x
+xxxxx
+""")
+
 _add(u"㎎","""
 xxxxxxxxxxx
  , ,'x',, x

@@ -1,7 +1,6 @@
 # width:79
 # height: 30
 import config
-import points
 import os
 from page import PageManager
 from cupt import Screen
@@ -25,11 +24,9 @@ class Ceefax:
     _instance = None
     def __init__(self, test=None):
         self.start_time = config.now()
-        if config.NAME == "KLBFAX":
-            points.add_one_random(printing=True)
-        if not os.path.isdir(config.config_dir):
-            os.mkdir(config.config_dir)
+        from helpers import file_handler
         self.test = test
+        self.page_manager = DummyPM()
 
     def begin(self):
         with Screen() as scr:
@@ -42,3 +39,7 @@ class Ceefax:
     def kill(self):
         raise KeyboardInterrupt
 
+
+class DummyPM:
+    def sorted_pages(self):
+        return []
