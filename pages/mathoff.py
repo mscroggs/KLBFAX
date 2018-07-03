@@ -1,5 +1,6 @@
 import config
 from page import Page
+from helpers.url_handler import load_json
 
 class MathOffPage(Page):
     def __init__(self):
@@ -9,8 +10,8 @@ class MathOffPage(Page):
 
     def background(self):
         self.results = {
-                "11":{"start":"1 July","home":"James Tanton","away":"Nira Chamberlain","score":[123,134],"winner":None},
-                "12":{"start":"2 July","home":"Samuel Hansen","away":"Paul Taylor","score":[43,46],"winner":None},
+                "11":{"start":"1 July","home":"James Tanton","away":"Nira Chamberlain","score":None,"winner":None},
+                "12":{"start":"2 July","home":"Samuel Hansen","away":"Paul Taylor","score":None,"winner":None},
                 "13":{"start":"3 July","home":"Peter Rowlett","away":"Alison Kiddle","score":None,"winner":None},
                 "14":{"start":"4 July","home":"Edmund Harriss","away":"Colin Wright","score":None,"winner":None},
                 "15":{"start":"5 July","home":"Tiago Hirth","away":"Evelyn Lamb","score":None,"winner":None},
@@ -28,6 +29,22 @@ class MathOffPage(Page):
 
                 "final":{"start":"24 July","home":"s1","away":"s2","score":None,"winner":None},
             }
+        for match, id in [("11","3"),("12","4"),("13","5"),("14","6"),("15","7"),("16","8"),("17","9"),("18","10"),
+                          ("q1","11"),("q2","12"),("q3","13"),("q4","14"),
+                          ("s1","15"),("s2","16"),
+                          ("final","17")]:
+            if self.results[match]["winner"] is None or self.results[match]["score"] is None or sum(self.results[match]["score"])==0:
+                try:
+                    data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
+                    if "totalvotes" in data:
+                        self.results[match]["score"] = [data["answers"][0]["votes"],data["answers"][1]["votes"]]
+                        if not data["active"]:
+                            if self.results[match]["score"][0] > self.results[match]["score"][1]:
+                                self.results[match]["winner"] = self.results[match]["home"]
+                            else:
+                                self.results[match]["winner"] = self.results[match]["away"]
+                except:
+                    pass
 
     def get_winner(self, id):
         if id in self.results:
@@ -52,40 +69,49 @@ class MathOffPage(Page):
                          self.results[id]["winner"],
                          self.results[id]["start"])
 
-    def actual_show(self, width, home, away, score, winner, date, retry=True):
-        out = ""
-        out += home
-        out += " "
-        if score is not None:
-            out += str(score[0])
-            out += "-"
-            out += str(score[1])
-        else:
-            out += date
-        out += " "
-        out += away
+    def actual_show(self, width, home, away, score, winner, date):
+        half = width//2 - 4
+        if len(home) > half:
+            if home != "???":
+                self.actual_show(width, "???", away, score, winner, date)
+            return
+        if len(away) > half:
+            if away != "???":
+                self.actual_show(width, home, "???", score, winner, date)
+            return
 
-        if len(out) <= width:
-            self.add_text(" "*((width-len(out))//2))
-            if score is not None and winner is not None and score[0] > score[1]:
-                self.add_text(home,fg="GREEN")
-            else:
-                self.add_text(home)
-            self.add_text(" ")
-            if score is None:
-                self.add_text(date,fg="GREEN")
-            elif winner is not None:
-                self.add_text(str(score[0])+"-"+str(score[1]))
-            else:
-                self.add_text(str(score[0])+"-"+str(score[1]),fg="YELLOW")
-            self.add_text(" ")
-            if score is not None and winner is not None and score[0] < score[1]:
-                self.add_text(away,fg="GREEN")
-            else:
-                self.add_text(away)
-            self.add_text(" "*((width-len(out))//2))
-        elif retry:
-            self.actual_show(width, "???", "???", score, winner, date, True)
+        self.add_text(" "*(half-len(home)-1))
+        if score is not None and winner is not None and score[0] > score[1]:
+            self.add_text(home,fg="GREEN")
+        else:
+            self.add_text(home)
+        self.add_text(" ")
+
+        display_score = ""
+
+
+        if score is None:
+            display_score = date
+        else:
+            display_score = str(score[0])+"-"+str(score[1])
+        extra = 7-len(display_score)
+        extra1 = extra//2
+        extra2 = extra-extra1
+        self.add_text(" "*extra1)
+        if score is None:
+            self.add_text(display_score,fg="GREEN")
+        elif winner is not None:
+            self.add_text(display_score)
+        else:
+            self.add_text(display_score,fg="YELLOW")
+        self.add_text(" "*extra2)
+        self.add_text(" ")
+
+        if score is not None and winner is not None and score[0] < score[1]:
+            self.add_text(away,fg="GREEN")
+        else:
+            self.add_text(away)
+        self.add_text(" "*(half-len(away)))
 
     def generate_content(self):
         self.add_title("Big Internet Math-Off")
@@ -137,3 +163,42 @@ class MathOffPage(Page):
 
 
 page = MathOffPage()
+
+
+from page import Page
+
+class TwitterPage(Page):
+    def __init__(self, page_num):
+        super(TwitterPage, self).__init__(page_num)
+        self.importance = 5
+        self.title = "#bigmathoff"
+
+    def background(self):
+        pass
+
+    def generate_content(self):
+        from helpers import tweet_handler
+
+        self.add_title("#bigmathoff")
+        try:
+            results = tweet_handler.search("#bigmathoff")
+        except tweet_handler.NoTwitter:
+            self.add_text("Twitter login failed...")
+            return
+
+
+        for tweet in results:
+            self.add_text("@" + tweet["user"]["screen_name"] + " ", fg="YELLOW")
+            self.add_text(" ".join(tweet["user"]["created_at"].split(" ")[:4]), fg="BLUE")
+            self.add_newline()
+            text = tweet["text"]
+            while "http" in text:
+                tsp = text.split("http",1)
+                text = tsp[0] + "<url>"
+                if " " in tsp[1]:
+                    text += tsp[1].split(" ",1)[1]
+            self.add_wrapped_text(text)
+            self.add_newline()
+            self.add_newline()
+
+tpage = TwitterPage("161")
