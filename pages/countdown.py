@@ -4,7 +4,7 @@ import datetime
 class OllyPage(Page):
     def __init__(self, page_num,who,when,numb=None):
 
-        self.is_enabled = False
+        self.enabled = False
 
 
         super(OllyPage, self).__init__(page_num)

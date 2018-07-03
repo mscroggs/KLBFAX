@@ -19,10 +19,10 @@ class OxmasPage(Page):
 
     def background(self):
         if datetime.now().month == 12 and NAME == "28JHFAX":
-            self.is_enabled = True
+            self.enabled = True
             self.in_index = True
         else:
-            self.is_enabled = False
+            self.enabled = False
             self.in_index = False
 
     def generate_content(self):
@@ -49,13 +49,13 @@ class OxmasMenu(Page):
         self.title = "Oxmas Menu"
         self.in_index = False
         if NAME!="28JHFAX":
-            self.is_enabled = False
+            self.enabled = False
 
     def background(self):
         if datetime.now().month == 12 and NAME == "28JHFAX":
-            self.is_enabled = True
+            self.enabled = True
         else:
-            self.is_enabled = False
+            self.nabled = False
 
     def generate_content(self):
         self.add_title("OXMAS Menu", fg="GREEN",bg="BLACK")
@@ -101,13 +101,13 @@ class OxmasTimetable(Page):
         self.title = "Oxmas Timetable"
         self.in_index = False
         if NAME!="28JHFAX":
-            self.is_enabled = False
+            self.enabled = False
 
     def background(self):
         if datetime.now().month == 12 and NAME == "28JHFAX":
-            self.is_enabled = True
+            self.enabled = True
         else:
-            self.is_enabled = False
+            self.enabled = False
 
     def generate_content(self):
         self.add_title("OXMAS Timetable", fg="GREEN",bg="BLACK")
@@ -135,19 +135,19 @@ class OxmasNOW(Page):
         super(OxmasNOW, self).__init__(n)
         self.title = "Oxmas Now"
         self.in_index = False
-        self.is_enabled = False
+        self.enabled = False
 
     def background(self):
         if datetime.now().month == 12 and NAME == "28JHFAX":
-            self.is_enabled = True
+            self.enabled = True
         else:
-            self.is_enabled = False
+            self.enabled = False
 
     def generate_content(self):
         if is_oxmas():
-            self.is_enabled = True
+            self.enabled = True
         else:
-            self.is_enabled = False
+            self.enabled = False
         self.add_title("OXMAS NOW", fg="GREEN",bg="BLACK")
         self.add_newline()
         if is_oxmas_day():

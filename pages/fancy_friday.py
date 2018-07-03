@@ -7,7 +7,7 @@ class FoodPage(Page):
         super(FoodPage, self).__init__(page_num)
         self.title = "FF choice"
         self.in_index = False
-        self.is_enabled = False
+        self.enabled = False
 
     def generate_content(self):
         ls = ["Hare and tortoise",
@@ -37,7 +37,7 @@ class OllyPage(Page):
         super(OllyPage, self).__init__(page_num)
         self.title = "FF choice"
         self.in_index = False
-        self.is_enabled = False
+        self.enabled = False
 
     def generate_content(self):
         ls = ["Curry?","Curry!","Indian?","Curry","Indian!",

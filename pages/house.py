@@ -191,7 +191,7 @@ class PointsPage(Page):
         else:
             self.in_index = False
             self.tagline = "Via 28JHFAX"
-        self.is_enabled = True
+        self.enabled = True
 
     def generate_content(self):
         import json
