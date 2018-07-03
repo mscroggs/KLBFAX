@@ -29,7 +29,7 @@ class MathOffPage(Page):
 
                 "final":{"start":"24 July","home":"s1","away":"s2","score":None,"winner":None},
             }
-        for match, id in [("11","3"),("12","4"),("13","5"),("14","6"),("15","7"),("16","8"),("17","9"),("18","10"),
+        for match, id in [("11","3"),("12","5"),("13","4"),("14","6"),("15","7"),("16","8"),("17","9"),("18","10"),
                           ("q1","11"),("q2","12"),("q3","13"),("q4","14"),
                           ("s1","15"),("s2","16"),
                           ("final","17")]:
@@ -37,7 +37,12 @@ class MathOffPage(Page):
                 try:
                     data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
                     if "totalvotes" in data:
-                        self.results[match]["score"] = [data["answers"][0]["votes"],data["answers"][1]["votes"]]
+                        self.results[match]["score"] = [0,0]
+                        for score in data["answers"]:
+                            if self.get_winner(self.results[match]["home"]) in score["text"]:
+                                self.results[match]["score"][0] = score["votes"]
+                            else:
+                                self.results[match]["score"][1] = score["votes"]
                         if not data["active"]:
                             if self.results[match]["score"][0] > self.results[match]["score"][1]:
                                 self.results[match]["winner"] = self.results[match]["home"]
