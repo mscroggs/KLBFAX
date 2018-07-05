@@ -33,23 +33,22 @@ class MathOffPage(Page):
                           ("q1","11"),("q2","12"),("q3","13"),("q4","14"),
                           ("s1","15"),("s2","16"),
                           ("final","17")]:
-            if self.results[match]["winner"] is None or self.results[match]["score"] is None or sum(self.results[match]["score"])==0:
-                try:
-                    data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
-                    if "totalvotes" in data:
-                        self.results[match]["score"] = [0,0]
-                        for score in data["answers"]:
-                            if self.get_winner(self.results[match]["home"]) in score["text"]:
-                                self.results[match]["score"][0] = score["votes"]
-                            else:
-                                self.results[match]["score"][1] = score["votes"]
-                        if not data["active"]:
-                            if self.results[match]["score"][0] > self.results[match]["score"][1]:
-                                self.results[match]["winner"] = self.results[match]["home"]
-                            else:
-                                self.results[match]["winner"] = self.results[match]["away"]
-                except:
-                    pass
+            try:
+                data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
+                if "totalvotes" in data:
+                    self.results[match]["score"] = [0,0]
+                    for score in data["answers"]:
+                        if self.get_winner(self.results[match]["home"]) in score["text"]:
+                            self.results[match]["score"][0] = score["votes"]
+                        else:
+                            self.results[match]["score"][1] = score["votes"]
+                    if not data["active"]:
+                        if self.results[match]["score"][0] > self.results[match]["score"][1]:
+                            self.results[match]["winner"] = self.results[match]["home"]
+                        else:
+                            self.results[match]["winner"] = self.results[match]["away"]
+            except:
+                pass
 
     def get_winner(self, id):
         if id in self.results:
