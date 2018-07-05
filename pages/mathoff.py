@@ -42,6 +42,8 @@ class MathOffPage(Page):
                             self.results[match]["score"][0] = score["votes"]
                         else:
                             self.results[match]["score"][1] = score["votes"]
+                    if sum(self.results[match]["score"])==0:
+                        self.results[match]["score"]=None
                     if not data["active"]:
                         if self.results[match]["score"][0] > self.results[match]["score"][1]:
                             self.results[match]["winner"] = self.results[match]["home"]
