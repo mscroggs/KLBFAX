@@ -33,7 +33,7 @@ class WeatherForePage(Page):
     def background(self):
         M = metoffer.MetOffer(config.metoffer_api_key);
         x = M.nearest_loc_forecast(*config.location, self.ftype)
-        self.y = metoffer.parse_val(x)
+        self.y = metoffer.Weather(x)
 
         self.tagline = "Live from the Met Office"
 
@@ -146,7 +146,7 @@ class UKTempPage(Page):
         for lat,lon,x,y in self.places:
             M = metoffer.MetOffer(config.metoffer_api_key);
             x = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
-            self.temps.append(metoffer.parse_val(x).data[0]["Temperature"][0])
+            self.temps.append(metoffer.Weather(x).data[0]["Temperature"][0])
 
     def generate_content(self):
 
