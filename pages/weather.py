@@ -31,8 +31,10 @@ class WeatherForePage(Page):
             self.in_index = False
 
     def background(self):
+        ##from IPython import embed
+        #embed()
         M = metoffer.MetOffer(config.metoffer_api_key);
-        x = M.nearest_loc_forecast(*config.location, self.ftype)
+        x = M.nearest_loc_forecast(config.location[0],config.location[1], self.ftype)
         self.y = metoffer.Weather(x)
 
         self.tagline = "Live from the Met Office"
@@ -64,13 +66,13 @@ class WeatherForePage(Page):
 
         # Day of week
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.add_title(date[0],bg="YELLOW",fg="BLACK",fill=False,font='size4')
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.add_title(date[1],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.add_title(date[2],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+        self.add_title(date[3],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
 
 
         # Pictures
@@ -260,4 +262,3 @@ page1 = WeatherForePage("331",metoffer.DAILY)
 page2 = SunrisePage("332")
 page3 = UKTempPage("333")
 page4 = WorldTempPage("334")
-
