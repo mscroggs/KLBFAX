@@ -16,7 +16,7 @@ class MathOffPage(Page):
                 "14":{"start":"4 July","home":"Edmund Harriss","away":"Colin Wright","score":None,"winner":None},
                 "15":{"start":"5 July","home":"Tiago Hirth","away":"Evelyn Lamb","score":None,"winner":None},
                 "16":{"start":"6 July","home":"Matt Parker","away":"Matthew Scroggs","score":None,"winner":None},
-                "17":{"start":"7 July","home":"James Propp","away":"Zoe Griffiths","score":None,"winner":None},
+                "17":{"start":"7 July","home":"Jim Propp","away":"Zoe Griffiths","score":None,"winner":None},
                 "18":{"start":"8 July","home":"Jo Morgan","away":"Tony Mann","score":None,"winner":None},
 
                 "q1":{"start":"11 July","home":"11","away":"13","score":None,"winner":None},
