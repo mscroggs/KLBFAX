@@ -132,12 +132,20 @@ class UKTempPage(Page):
         self.in_index = False
         self.importance = 4
         self.places = [
-                    (51.50433, -0.12316, 48, 21),
-                    (51.85762, -4.31213, 35, 21),
-                    (55.86420, -4.25180, 36, 10),
-                    (53.48080, -2.24260, 42, 16),
-                    (54.59730, -5.93010, 30, 14),
-                    (52.03390, -2.42360, 40, 20)
+                    # Y ~= -2.557*LAT + 153.09
+                    # X ~= 3.0543*LAT + 48.316
+                    #
+                    #                     Temp    Weather
+                    # LAT      LON        X   Y   X   Y   Letter
+                    (58.24670, -4.72918, 35,  6,  20,  6, "a"), # North of Scotland
+                    (55.86420, -4.25180, 36, 10,  51,  9, "h"), # Glasgow?
+                    (54.59730, -5.93010, 30, 14,  10, 12, "n"), # Belfast
+                    (53.48080, -2.24260, 42, 16,  50, 13, "i"), # Manchester
+                    (52.03390, -2.42360, 40, 20,  0,   0, "x"), # EMF
+                    (51.50433, -0.12316, 48, 21,  55, 19, "s"), # London
+                    (51.85762, -4.31213, 35, 21,  20, 22, "e"), # Cardiff
+                    (50.38842, -4.18261, 35, 24,  20, 25, "f")  # Plymouth
+
                       ]
 
     def background(self):
@@ -145,12 +153,16 @@ class UKTempPage(Page):
         import json
 
         self.temps = []
-        for lat,lon,x,y in self.places:
+        self.weather = []
+        for lat,lon,x,y,xw,yw,a in self.places:
             M = metoffer.MetOffer(config.metoffer_api_key);
-            x = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
-            self.temps.append(metoffer.Weather(x).data[0]["Temperature"][0])
+            X = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
+            weather_data = metoffer.Weather(X).data[0]
+            self.temps.append(weather_data["Temperature"][0])
+            self.weather.append(metoffer.WEATHER_CODES[weather_data["Weather Type"][0]])
 
     def generate_content(self):
+        import random
 
         def col(t):
             if t >= 25:
@@ -161,52 +173,77 @@ class UKTempPage(Page):
                 return "LIGHTBLUE"
             return "BLUE"
         self.add_title("UK TEMPERATURE",font="size4")
-        uk_map =("-------------ww--wwwwwww--------------\n"
-                 "-----------------wwwww----------------\n"
-                 "----------------wwwwwww---------------\n"
-                 "--------------w--wwwww-wwwww----------\n"
-                 "--------------w-wwwwwwwwwwww----------\n"
-                 "--------------w-wwwwwwwwwww-----------\n"
-                 "----------------wwwwwwwwwww-----------\n"
-                 "----------------w-wwwwwwww------------\n"
-                 "--------------w-wwwwwwwwww------------\n"
-                 "---------------wwwwwwwwww-------------\n"
-                 "----------------wwwwwwwww-------------\n"
-                 "-----------------w-wwww---------------\n"
-                 "--------------w-w-wwwwwwwww-----------\n"
-                 "---------------ww--wwwwwwwww----------\n"
-                 "--------w---w------wwwwwwwwww---------\n"
-                 "--------wwwwwww---wwwwwwwwwwww--------\n"
-                 "------wwwwwwwwww--wwww-wwwwwww--------\n"
-                 "------wwwwwwwwww---w---wwwwwww--------\n"
-                 "------wwwwwwwwwww-----wwwwwwww--------\n"
-                 "---wwwwwwwwwwwww------wwwwwwwwww------\n"
-                 "---wwwwwwwwwwwww---w--wwwwwwwwww------\n"
-                 "---wwwwwwwwwww----------wwwwwwwww-----\n"
-                 "--wwwwwwwwwwww---------wwwwwwwwww-----\n"
-                 "---wwwwwwwwwwww---------wwwwwwwwww----\n"
-                 "-----wwwwwwwww----------wwwwwwwwww----\n"
-                 "---wwwwwwwwwwww----w-ww-wwwwwwwwww----\n"
-                 "----wwwwwwwwwww----wwwwwwwwwwwwwwww---\n"
-                 "---w-wwwwwwwww----wwwwwwwwwwwwwww--ww-\n"
-                 "--wwwwwwwwwwww-------wwwwwwwwwwwwwwwww\n"
-                 "wwwwwwwwwwwwww------wwwwwwwwwwwwwwwwww\n"
-                 "-wwwwwwwwwww-w------wwwwwwwwwwwwwwwwww\n"
-                 "wwwwwwwww---------wwwwwwwwwwwwwwwwwwww\n"
-                 "---www----------wwwwwwwwwwwwwwwwwwww--\n"
-                 "----------------w--wwwwwwwwwwwwwwww---\n"
-                 "--------------------ww-wwwwwwwwwwww---\n"
-                 "----------------------wwwwwwwwwwwww-w-\n"
-                 "-------------------wwwwwwwwwwwwwwwwww-\n"
-                 "-----------------wwwwwwwwwwwwwwwwww---\n"
-                 "-----------------wwwwwwwwww--w--------\n"
-                 "----------------wwwww-----------------")
+        uk_map =("-------------aa--aaaaaaa--------------\n"
+                 "-----------------aaaaa----------------\n"
+                 "----------------aaaaaaa---------------\n"
+                 "--------------a--aaaaa-aaaaa----------\n"
+                 "--------------a-aaaaaaaaaaaa----------\n"
+                 "--------------a-aaaaaaaaaaa-----------\n"
+                 "----------------aaaaaaaaaaa-----------\n"
+                 "----------------a-aaaaaaaa------------\n"
+                 "--------------h-hhhhhhhhhh------------\n"
+                 "---------------hhhhhhhhhh-------------\n"
+                 "----------------hhhhhhhhh-------------\n"
+                 "-----------------h-hhhh---------------\n"
+                 "--------------h-h-hhhhhhhhh-----------\n"
+                 "---------------hh--hhhhhhhhh----------\n"
+                 "--------n---n------hhhhhhhhhh---------\n"
+                 "--------nnnnnnn---hhhhhhhhhhhh--------\n"
+                 "------nnnnnnnnnn--hhhh-hhhhhhh--------\n"
+                 "------nnnnnnnnnn---h---hhhhhhh--------\n"
+                 "------nnnnnnnnnnn-----hhhhiiii--------\n"
+                 "---wwwwnnnnnnnnn------iiiiiiiiii------\n"
+                 "---wwwwwwwnnnnnn---i--iiiiiiiiii------\n"
+                 "---wwwwwwwwwnn----------iiiiiiiii-----\n"
+                 "--wwwwwwwwwwww---------iiiiiiiiii-----\n"
+                 "---wwwwwwwwwwww---------iiiiiiiiii----\n"
+                 "-----wwwwwwwww----------iiiiiiiiii----\n"
+                 "---wwwwwwwwwwww----e-ee-iiiiiiiiii----\n"
+                 "----wwwwwwwwwww----eeeeeeiiiiiiiiii---\n"
+                 "---w-wwwwwwwww----eeeeeeeeiiiiiii--ii-\n"
+                 "--wwwwwwwwwwww-------eeeeeeiiiiiiiiiii\n"
+                 "wwwwwwwwwwwwww------eeeeeeeeiiiiiiiiii\n"
+                 "-wwwwwwwwwww-w------eeeeeeeeesssssssss\n"
+                 "wwwwwwwww---------eeeeeeeeeeesssssssss\n"
+                 "---www----------eeeeeeeeeeeessssssss--\n"
+                 "----------------e--eeeeeeeessssssss---\n"
+                 "--------------------ee-eeesssssssss---\n"
+                 "----------------------fffffssssssss-s-\n"
+                 "-------------------fffffffffsssssssss-\n"
+                 "-----------------ffffffffffffssssss---\n"
+                 "-----------------ffffffffff--f--------\n"
+                 "----------------fffff-----------------")
 
+
+        #for w in self.weather:
+        color_codes = {"k": "BLACK",  "K": "GREY",
+                       "r": "RED",    "R": "LIGHTRED",
+                       "o": "ORANGE", "y": "YELLOW",
+                       "g": "GREEN",  "G": "LIGHTGREEN",
+                       "c": "CYAN",   "C": "LIGHTCYAN",
+                       "b": "BLUE",   "B": "LIGHTBLUE",
+                       "m": "MAGENTA","p": "PINK",
+                       "w": "WHITE",  "W": "BRIGHTWHITE",
+                       "d": "DEFAULT","-": "BLACK"}
+        color_choices = ["r","R","o","y","g","G","c","C","b","B","m","p"]
+        random.shuffle(color_choices)
+        color_dictionary = {}
+        k = 0
+        for w in self.weather:
+            if w not in color_dictionary:
+                color_dictionary[w] = color_choices[k]
+                k = k + 1
+
+        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
+            uk_map = uk_map.replace(a,color_dictionary[w])
         self.print_image(uk_map,y_coord=5,x_coord=18)
 
-        for (lat,lon,x,y),t in zip(self.places,self.temps):
+        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
             self.move_cursor(x=x,y=y)
             self.add_text(" "+str(t)+" ", fg=col(int(t)))
+            if xw!=0 and yw!=0:
+                self.move_cursor(x=xw,y=yw)
+                self.add_text(" "+str(w)+" ", fg=color_codes[color_dictionary[w]])
 
 class WorldTempPage(Page):
     def __init__(self, num):
