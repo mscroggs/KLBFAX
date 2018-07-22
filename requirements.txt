@@ -1,10 +1,5 @@
 pytz
 astral
-metoffer
 nrewebservices
 feedparser
 twitter
-forex_python
-quandl
-pandas
-pyopenssl
