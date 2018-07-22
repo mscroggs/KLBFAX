@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from page import Page
-import time
 from functions import replace
 
 class NewsIndex(Page):

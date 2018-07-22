@@ -1,9 +1,6 @@
 from page import Page
 from random import choice
 import config
-import json
-import logging
-import sys
 from helpers.file_handler import f_read_json
 
 class BdayPage(Page):
@@ -44,7 +41,6 @@ class BdayPage(Page):
 
 
     def generate_content(self):
-        from random import choice
         s_day = config.now().day
         s_mon = config.now().month
 

@@ -1,6 +1,4 @@
-import os
 from page import Page
-from ceefax import Ceefax
 from random import shuffle
 import config
 

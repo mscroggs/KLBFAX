@@ -1,12 +1,7 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from page import Page
-from helpers.file_handler import f_read
 from helpers import url_handler
 import datetime
 import config
-import metoffer
 
 class WeatherPage(Page):
     def __init__(self):
@@ -31,6 +26,7 @@ class WeatherForePage(Page):
             self.in_index = False
 
     def background(self):
+        import metoffer
         M = metoffer.MetOffer(config.metoffer_api_key);
         x = M.nearest_loc_forecast(*config.location, self.ftype)
         self.y = metoffer.parse_val(x)
@@ -38,6 +34,7 @@ class WeatherForePage(Page):
         self.tagline = "Live from the Met Office"
 
     def generate_content(self):
+        import metoffer
         from fonts import weather_symbol
         if self.ftype == metoffer.THREE_HOURLY:
             self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
@@ -139,7 +136,6 @@ class UKTempPage(Page):
                       ]
 
     def background(self):
-        from helpers import url_handler
         import json
 
         self.temps = []
