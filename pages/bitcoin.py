@@ -4,7 +4,7 @@ class BitPage(Page):
     def __init__(self,page_num):
         global pagelist
         super(BitPage, self).__init__(page_num)
-        self.importance = 3
+        self.importance = 4
         self.title = "Bitcoin"
         self.in_index = False
         self.tagline = "From ounce.me"

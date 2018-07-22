@@ -204,7 +204,7 @@ train01 = TrainPage("851","Milton Keynes","MKC")
 train02 = TrainPage("852","Bletchley","BLY")
 train03 = TrainPage("853","Farncombe","FNC")
 train04 = TrainPage("854","Ledbury","LED")
-train04.importance = 3
+train04.importance = 4
 train05 = TrainPage("855","Shippea Hill","SPP")
 train06 = TrainPage("856","Glasgow Central","GLC")
 train07 = TrainPage("857","Birmingham New Street","BHM")
@@ -215,6 +215,7 @@ class TVIPage(Page):
     def __init__(self):
         super(TVIPage, self).__init__("850")
         self.title = "Trains Index"
+        self.importance = 1
 
     def generate_content(self):
         self.add_title("Trains Index")

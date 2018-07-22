@@ -66,7 +66,9 @@ class TVPage(Page):
             self.feed_type = 2
 pages = []
 tv1 = TVPage("601","BBC1","http://bleb.org/tv/data/listings/0/bbc1.xml","Today")
+tv1.importance = 3
 tv2 = TVPage("602","BBC2","http://bleb.org/tv/data/listings/0/bbc2.xml","Today")
+tv2.importance = 3
 tv3 = TVPage("603","ITV","http://bleb.org/tv/data/listings/0/p_itv1.xml","Today")
 tv4 = TVPage("604","Channel 4","http://bleb.org/tv/data/listings/0/ch4.xml","Today")
 tv5 = TVPage("605","Channel 5","http://bleb.org/tv/data/listings/0/five.xml","Today")
@@ -104,6 +106,7 @@ class TVIPage(Page):
     def __init__(self):
         super(TVIPage, self).__init__("600")
         self.title = "TV & Radio Index"
+        self.importance = 1
 
     def generate_content(self):
         self.add_title("TV & Radio")

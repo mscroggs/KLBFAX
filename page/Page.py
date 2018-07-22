@@ -26,7 +26,7 @@ class Page(object):
         self.in_index = True
         self.index_num = None
         self.tagline = config.NAME + ": The World at Your Fingertips"
-        self.importance = 3
+        self.importance = 2
         self.number = str(number)
         self.loaded = False
         self.background_loaded = False

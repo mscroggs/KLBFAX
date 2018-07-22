@@ -2,13 +2,13 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About EMFFAX)                      3  pages/about.py  
-(001 Unicode Test Page)                 3  pages/unicode.py  
-(002 Error log)                         3  pages/errors.py  
-(003 License)                           3  pages/license.py  
+(000 About EMFFAX)                      2  pages/about.py  
+(001 Unicode Test Page)                 2  pages/unicode.py  
+(002 Error log)                         2  pages/errors.py  
+(003 License)                           2  pages/license.py  
 100 Index                               5  pages/index.py  
-101 Trivia                              3  pages/trivia.py  
-102 Birthdays                           3  pages/birthdays.py  
+101 Trivia                              2  pages/trivia.py  
+102 Birthdays                           2  pages/birthdays.py  
 103 On this Day...                      1  pages/wiki.py  
 104 Article of the Day                  1  pages/wiki.py  
 105 Did you know...                     1  pages/wiki.py  
@@ -24,7 +24,7 @@ Number & Page Name             Importance  File
 208 Have Your Say                       2  pages/have_your_say.py  
 209 Have Your Say                       2  pages/have_your_say.py  
 210 #emfcamp                            5  pages/twitter.py  
-271 e                                   3  pages/e.py  
+271 e                                   2  pages/e.py  
 300 News Index                          2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
@@ -39,7 +39,7 @@ Number & Page Name             Importance  File
 311 emfcamp.org                         1  pages/news.py  
 312 Weather warnings                    1  pages/news.py  
 313 Showbiz                             1  pages/news.py  
-314 Pi                                  3  pages/pi.py  
+314 Pi                                  2  pages/pi.py  
 315 Sport Index                         2  pages/sport.py  
 316 Top Stories                         1  pages/sport.py  
 317 Football                            1  pages/sport.py  
@@ -55,18 +55,18 @@ Number & Page Name             Importance  File
 327 Curling                             1  pages/sport.py  
 328 Gaelic Games                        1  pages/sport.py  
 329 Table Tennis                        1  pages/sport.py  
-330 Weather                             3  pages/weather.py  
-331 Weather                             3  pages/weather.py  
-332 Sunrise & sunset                    3  pages/weather.py  
+330 Weather                             2  pages/weather.py  
+331 Weather                             2  pages/weather.py  
+332 Sunrise & sunset                    2  pages/weather.py  
 333 UK Temperature                      4  pages/weather.py  
-334 World Temperature                   3  pages/weather.py  
-335 Time                                3  pages/time.py  
-336 Time                                3  pages/time.py  
+334 World Temperature                   2  pages/weather.py  
+335 Time                                2  pages/time.py  
+336 Time                                2  pages/time.py  
 337 UK Top 40                           2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
-339 Music Trivia                        3  pages/trivia.py  
+339 Music Trivia                        2  pages/trivia.py  
 340 Currency Conversion                 1  pages/currency.py  
-341 Bitcoin                             3  pages/bitcoin.py  
+341 Bitcoin                             4  pages/bitcoin.py  
 342 British Pound vs Euro               1  pages/currency.py  
 343 British Pound vs US Dollar          1  pages/currency.py  
 344 British Pound vs New Zealand Dollar 1  pages/currency.py  
@@ -140,10 +140,10 @@ Number & Page Name             Importance  File
 429 Too Many Requests                   1  pages/http-errors.py  
 431 Request Header Fields Too Large     1  pages/http-errors.py  
 451 Unavailable for Legal Reasons       1  pages/http-errors.py  
-555 Lotto Results                       2  pages/lotto.py  
-600 TV & Radio Index                    3  pages/tv.py  
-601 Today's TV: BBC1                    1  pages/tv.py  
-602 Today's TV: BBC2                    1  pages/tv.py  
+555 Lotto Results                       3  pages/lotto.py  
+600 TV & Radio Index                    1  pages/tv.py  
+601 Today's TV: BBC1                    3  pages/tv.py  
+602 Today's TV: BBC2                    3  pages/tv.py  
 603 Today's TV: ITV                     1  pages/tv.py  
 604 Today's TV: Channel 4               1  pages/tv.py  
 605 Today's TV: Channel 5               1  pages/tv.py  
@@ -174,22 +174,22 @@ Number & Page Name             Importance  File
 630 Tomorrow's TV: Challenge            1  pages/tv.py  
 631 Tomorrow's TV: BBC News             1  pages/tv.py  
 632 Tomorrow's TV: BBC Parliament       1  pages/tv.py  
-670 Tube Line Status                    3  pages/tubestatus.py  
+670 Tube Line Status                    2  pages/tubestatus.py  
 700 EMF Information                     2  pages/emf.py  
 701 List of Villages                    3  pages/emf.py  
 702 List of Teams                       3  pages/emf.py  
-777 Contributors                        3  pages/contributors.py  
-850 Trains Index                        3  pages/trains.py  
+777 Contributors                        2  pages/contributors.py  
+850 Trains Index                        1  pages/trains.py  
 851 Milton Keynes Trains                1  pages/trains.py  
 852 Bletchley Trains                    1  pages/trains.py  
 853 Farncombe Trains                    1  pages/trains.py  
-854 Ledbury Trains                      3  pages/trains.py  
+854 Ledbury Trains                      4  pages/trains.py  
 855 Shippea Hill Trains                 1  pages/trains.py  
 856 Glasgow Central Trains              1  pages/trains.py  
 857 Birmingham New Street Trains        1  pages/trains.py  
 858 London Waterloo Trains              1  pages/trains.py  
 859 London King's Cross Trains          1  pages/trains.py  
-888 Subtitles                           3  pages/subtitles.py  
+888 Subtitles                           2  pages/subtitles.py  
 900 Choose Your Own Adventure           4  pages/game.py  
 901 Choose Your Own Adventure           0  pages/game.py  
 902 Choose Your Own Adventure           0  pages/game.py  

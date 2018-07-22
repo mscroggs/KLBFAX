@@ -3,7 +3,7 @@ from page import Page
 class LottoPage(Page):
     def __init__(self, page_num, url, title):
         super(LottoPage, self).__init__(page_num)
-        self.importance = 2
+        self.importance = 3
         self.top_title = title
         self.title = title
         self.url = url

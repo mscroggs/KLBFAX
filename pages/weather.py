@@ -1,7 +1,12 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from page import Page
+from helpers.file_handler import f_read
 from helpers import url_handler
 import datetime
 import config
+import metoffer
 
 class WeatherPage(Page):
     def __init__(self):
@@ -26,19 +31,15 @@ class WeatherForePage(Page):
             self.in_index = False
 
     def background(self):
-        import metoffer
+        ##from IPython import embed
+        #embed()
         M = metoffer.MetOffer(config.metoffer_api_key);
-        if self.ftype=="A":
-            x = M.nearest_loc_forecast(*config.location, metoffer.THREE_HOURLY)
-        if self.ftype=="B":
-            x = M.nearest_loc_forecast(*config.location, metoffer.DAILY)
-
-        self.y = metoffer.parse_val(x)
+        x = M.nearest_loc_forecast(config.location[0],config.location[1], self.ftype)
+        self.y = metoffer.Weather(x)
 
         self.tagline = "Live from the Met Office"
 
     def generate_content(self):
-        import metoffer
         from fonts import weather_symbol
         if self.ftype == metoffer.THREE_HOURLY:
             self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
@@ -65,13 +66,13 @@ class WeatherForePage(Page):
 
         # Day of week
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4')
+        self.add_title(date[0],bg="YELLOW",fg="BLACK",fill=False,font='size4')
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[1]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
+        self.add_title(date[1],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=20)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[2]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
+        self.add_title(date[2],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=40)
         self.move_cursor(y=7,x=0)
-        self.add_title(str(date[3]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
+        self.add_title(date[3],bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=60)
 
 
         # Pictures
@@ -131,25 +132,37 @@ class UKTempPage(Page):
         self.in_index = False
         self.importance = 4
         self.places = [
-                    (51.50433, -0.12316, 48, 21),
-                    (51.85762, -4.31213, 35, 21),
-                    (55.86420, -4.25180, 36, 10),
-                    (53.48080, -2.24260, 42, 16),
-                    (54.59730, -5.93010, 30, 14),
-                    (52.03390, -2.42360, 40, 20)
+                    # Y ~= -2.557*LAT + 153.09
+                    # X ~= 3.0543*LAT + 48.316
+                    #
+                    #                     Temp    Weather
+                    # LAT      LON        X   Y   X   Y   Letter
+                    (58.24670, -4.72918, 35,  6,  20,  6, "a"), # North of Scotland
+                    (55.86420, -4.25180, 36, 10,  51,  9, "h"), # Glasgow?
+                    (54.59730, -5.93010, 30, 14,  10, 12, "n"), # Belfast
+                    (53.48080, -2.24260, 42, 16,  50, 13, "i"), # Manchester
+                    (52.03390, -2.42360, 40, 20,  0,   0, "x"), # EMF
+                    (51.50433, -0.12316, 48, 21,  55, 19, "s"), # London
+                    (51.85762, -4.31213, 35, 21,  20, 22, "e"), # Cardiff
+                    (50.38842, -4.18261, 35, 24,  20, 25, "f")  # Plymouth
+
                       ]
 
     def background(self):
+        from helpers import url_handler
         import json
-        import metoffer
 
         self.temps = []
-        for lat,lon,x,y in self.places:
+        self.weather = []
+        for lat,lon,x,y,xw,yw,a in self.places:
             M = metoffer.MetOffer(config.metoffer_api_key);
-            x = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
-            self.temps.append(metoffer.parse_val(x).data[0]["Temperature"][0])
+            X = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
+            weather_data = metoffer.Weather(X).data[0]
+            self.temps.append(weather_data["Temperature"][0])
+            self.weather.append(metoffer.WEATHER_CODES[weather_data["Weather Type"][0]])
 
     def generate_content(self):
+        import random
 
         def col(t):
             if t >= 25:
@@ -160,52 +173,77 @@ class UKTempPage(Page):
                 return "LIGHTBLUE"
             return "BLUE"
         self.add_title("UK TEMPERATURE",font="size4")
-        uk_map =("-------------ww--wwwwwww--------------\n"
-                 "-----------------wwwww----------------\n"
-                 "----------------wwwwwww---------------\n"
-                 "--------------w--wwwww-wwwww----------\n"
-                 "--------------w-wwwwwwwwwwww----------\n"
-                 "--------------w-wwwwwwwwwww-----------\n"
-                 "----------------wwwwwwwwwww-----------\n"
-                 "----------------w-wwwwwwww------------\n"
-                 "--------------w-wwwwwwwwww------------\n"
-                 "---------------wwwwwwwwww-------------\n"
-                 "----------------wwwwwwwww-------------\n"
-                 "-----------------w-wwww---------------\n"
-                 "--------------w-w-wwwwwwwww-----------\n"
-                 "---------------ww--wwwwwwwww----------\n"
-                 "--------w---w------wwwwwwwwww---------\n"
-                 "--------wwwwwww---wwwwwwwwwwww--------\n"
-                 "------wwwwwwwwww--wwww-wwwwwww--------\n"
-                 "------wwwwwwwwww---w---wwwwwww--------\n"
-                 "------wwwwwwwwwww-----wwwwwwww--------\n"
-                 "---wwwwwwwwwwwww------wwwwwwwwww------\n"
-                 "---wwwwwwwwwwwww---w--wwwwwwwwww------\n"
-                 "---wwwwwwwwwww----------wwwwwwwww-----\n"
-                 "--wwwwwwwwwwww---------wwwwwwwwww-----\n"
-                 "---wwwwwwwwwwww---------wwwwwwwwww----\n"
-                 "-----wwwwwwwww----------wwwwwwwwww----\n"
-                 "---wwwwwwwwwwww----w-ww-wwwwwwwwww----\n"
-                 "----wwwwwwwwwww----wwwwwwwwwwwwwwww---\n"
-                 "---w-wwwwwwwww----wwwwwwwwwwwwwww--ww-\n"
-                 "--wwwwwwwwwwww-------wwwwwwwwwwwwwwwww\n"
-                 "wwwwwwwwwwwwww------wwwwwwwwwwwwwwwwww\n"
-                 "-wwwwwwwwwww-w------wwwwwwwwwwwwwwwwww\n"
-                 "wwwwwwwww---------wwwwwwwwwwwwwwwwwwww\n"
-                 "---www----------wwwwwwwwwwwwwwwwwwww--\n"
-                 "----------------w--wwwwwwwwwwwwwwww---\n"
-                 "--------------------ww-wwwwwwwwwwww---\n"
-                 "----------------------wwwwwwwwwwwww-w-\n"
-                 "-------------------wwwwwwwwwwwwwwwwww-\n"
-                 "-----------------wwwwwwwwwwwwwwwwww---\n"
-                 "-----------------wwwwwwwwww--w--------\n"
-                 "----------------wwwww-----------------")
+        uk_map =("-------------aa--aaaaaaa--------------\n"
+                 "-----------------aaaaa----------------\n"
+                 "----------------aaaaaaa---------------\n"
+                 "--------------a--aaaaa-aaaaa----------\n"
+                 "--------------a-aaaaaaaaaaaa----------\n"
+                 "--------------a-aaaaaaaaaaa-----------\n"
+                 "----------------aaaaaaaaaaa-----------\n"
+                 "----------------a-aaaaaaaa------------\n"
+                 "--------------h-hhhhhhhhhh------------\n"
+                 "---------------hhhhhhhhhh-------------\n"
+                 "----------------hhhhhhhhh-------------\n"
+                 "-----------------h-hhhh---------------\n"
+                 "--------------h-h-hhhhhhhhh-----------\n"
+                 "---------------hh--hhhhhhhhh----------\n"
+                 "--------n---n------hhhhhhhhhh---------\n"
+                 "--------nnnnnnn---hhhhhhhhhhhh--------\n"
+                 "------nnnnnnnnnn--hhhh-hhhhhhh--------\n"
+                 "------nnnnnnnnnn---h---hhhhhhh--------\n"
+                 "------nnnnnnnnnnn-----hhhhiiii--------\n"
+                 "---wwwwnnnnnnnnn------iiiiiiiiii------\n"
+                 "---wwwwwwwnnnnnn---i--iiiiiiiiii------\n"
+                 "---wwwwwwwwwnn----------iiiiiiiii-----\n"
+                 "--wwwwwwwwwwww---------iiiiiiiiii-----\n"
+                 "---wwwwwwwwwwww---------iiiiiiiiii----\n"
+                 "-----wwwwwwwww----------iiiiiiiiii----\n"
+                 "---wwwwwwwwwwww----e-ee-iiiiiiiiii----\n"
+                 "----wwwwwwwwwww----eeeeeeiiiiiiiiii---\n"
+                 "---w-wwwwwwwww----eeeeeeeeiiiiiii--ii-\n"
+                 "--wwwwwwwwwwww-------eeeeeeiiiiiiiiiii\n"
+                 "wwwwwwwwwwwwww------eeeeeeeeiiiiiiiiii\n"
+                 "-wwwwwwwwwww-w------eeeeeeeeesssssssss\n"
+                 "wwwwwwwww---------eeeeeeeeeeesssssssss\n"
+                 "---www----------eeeeeeeeeeeessssssss--\n"
+                 "----------------e--eeeeeeeessssssss---\n"
+                 "--------------------ee-eeesssssssss---\n"
+                 "----------------------fffffssssssss-s-\n"
+                 "-------------------fffffffffsssssssss-\n"
+                 "-----------------ffffffffffffssssss---\n"
+                 "-----------------ffffffffff--f--------\n"
+                 "----------------fffff-----------------")
 
+
+        #for w in self.weather:
+        color_codes = {"k": "BLACK",  "K": "GREY",
+                       "r": "RED",    "R": "LIGHTRED",
+                       "o": "ORANGE", "y": "YELLOW",
+                       "g": "GREEN",  "G": "LIGHTGREEN",
+                       "c": "CYAN",   "C": "LIGHTCYAN",
+                       "b": "BLUE",   "B": "LIGHTBLUE",
+                       "m": "MAGENTA","p": "PINK",
+                       "w": "WHITE",  "W": "BRIGHTWHITE",
+                       "d": "DEFAULT","-": "BLACK"}
+        color_choices = ["r","R","o","y","g","G","c","C","b","B","m","p"]
+        random.shuffle(color_choices)
+        color_dictionary = {}
+        k = 0
+        for w in self.weather:
+            if w not in color_dictionary:
+                color_dictionary[w] = color_choices[k]
+                k = k + 1
+
+        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
+            uk_map = uk_map.replace(a,color_dictionary[w])
         self.print_image(uk_map,y_coord=5,x_coord=18)
 
-        for (lat,lon,x,y),t in zip(self.places,self.temps):
+        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
             self.move_cursor(x=x,y=y)
             self.add_text(" "+str(t)+" ", fg=col(int(t)))
+            if xw!=0 and yw!=0:
+                self.move_cursor(x=xw,y=yw)
+                self.add_text(" "+str(w)+" ", fg=color_codes[color_dictionary[w]])
 
 class WorldTempPage(Page):
     def __init__(self, num):
@@ -256,9 +294,9 @@ class WorldTempPage(Page):
             self.move_cursor(x=0,y=8+4*i)
             self.add_title(temps[3*i+2],font="size4", bg="BLACK", fg=color[2], fill=False, pre=67)
 
-page0 = WeatherForePage("330","A")
-page1 = WeatherForePage("331","B")
+page0 = WeatherForePage("330",metoffer.THREE_HOURLY)
+page1 = WeatherForePage("331",metoffer.DAILY)
 page2 = SunrisePage("332")
 page3 = UKTempPage("333")
+page3.importance = 4
 page4 = WorldTempPage("334")
-
