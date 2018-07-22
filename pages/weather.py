@@ -28,7 +28,11 @@ class WeatherForePage(Page):
     def background(self):
         import metoffer
         M = metoffer.MetOffer(config.metoffer_api_key);
-        x = M.nearest_loc_forecast(*config.location, self.ftype)
+        if self.ftype=="A":
+            x = M.nearest_loc_forecast(*config.location, metoffer.THREE_HOURLY)
+        if self.ftype=="B":
+            x = M.nearest_loc_forecast(*config.location, metoffer.DAILY)
+
         self.y = metoffer.parse_val(x)
 
         self.tagline = "Live from the Met Office"
@@ -137,6 +141,7 @@ class UKTempPage(Page):
 
     def background(self):
         import json
+        import metoffer
 
         self.temps = []
         for lat,lon,x,y in self.places:
@@ -251,8 +256,8 @@ class WorldTempPage(Page):
             self.move_cursor(x=0,y=8+4*i)
             self.add_title(temps[3*i+2],font="size4", bg="BLACK", fg=color[2], fill=False, pre=67)
 
-page0 = WeatherForePage("330",metoffer.THREE_HOURLY)
-page1 = WeatherForePage("331",metoffer.DAILY)
+page0 = WeatherForePage("330","A")
+page1 = WeatherForePage("331","B")
 page2 = SunrisePage("332")
 page3 = UKTempPage("333")
 page4 = WorldTempPage("334")
