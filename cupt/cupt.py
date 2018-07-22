@@ -68,7 +68,7 @@ class CuPT:
                 if char == " ":
                     out += "&nbsp;"
                 else:
-                    out += char.encode("utf-8")
+                    out += char
                 out += "</span>"
             out += "<br />"
         return out

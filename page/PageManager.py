@@ -133,9 +133,17 @@ class PageManager:
     def export_all_to_html(self):
         from helpers.file_handler import open_html
         for page_num, page in self.sorted_pages():
+            page.cupt.ls = []
             print(page_num+" "+page.title)
             with open_html(page_num+".html","w") as f:
                 f.write(page.as_html())
+        js = "taglines = {"
+        js += ",".join(['"'+str(page_num)+'":"'+page.tagline+'"' for page_num,page in self.sorted_pages()])
+        js += "}\npages_on=Array("
+        js += ",".join(['"'+str(page_num)+'"' for page_num,page in self.sorted_pages() if page.enabled])
+        js += ")"
+        with open_html("info.js","w") as f:
+            f.write(js)
 
     def export_all(self):
         import os
