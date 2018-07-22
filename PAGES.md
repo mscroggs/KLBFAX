@@ -2,12 +2,12 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About EMFFAX)                      3  pages/about.py  
+(000 About 28JHFAX)                     3  pages/about.py  
 (001 Unicode Test Page)                 3  pages/unicode.py  
 (002 Error log)                         3  pages/errors.py  
 (003 License)                           3  pages/license.py  
-007 FF choice                           3  pages/fancy_friday.py  
-008 FF choice                           3  pages/fancy_friday.py  
+(007 FF choice)                         3  pages/fancy_friday.py  
+(008 FF choice)                         3  pages/fancy_friday.py  
 100 Index                               5  pages/index.py  
 101 Trivia                              3  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  
@@ -38,6 +38,8 @@ Number & Page Name             Importance  File
 146 Other Unawards                      3  pages/awards.py  
 150 World Cup latest scores             3  pages/world_cup.py  
 151 World Cup groups                    3  pages/world_cup.py  
+160 Big Internet Math-Off               5  pages/mathoff.py  
+161 #bigmathoff                         5  pages/mathoff.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
@@ -212,6 +214,7 @@ Number & Page Name             Importance  File
 662 Embankment Underground Trains       3  pages/tube.py  
 663 South Kensington Underground Trains 3  pages/tube.py  
 664 Gloucester Road Underground Trains  3  pages/tube.py  
+670 Tube Line Status                    3  pages/tubestatus.py  
 690 Recipes Index                       3  pages/recipes.py  
 691 Bad Tempered Cake                   3  pages/recipes.py  
 692 Huda Friendship Cake                3  pages/recipes.py  
@@ -228,7 +231,7 @@ Number & Page Name             Importance  File
 711 OXMAS!                              3  pages/oxmas.py  
 712 Oxmas Menu                          3  pages/oxmas.py  
 713 Oxmas Timetable                     3  pages/oxmas.py  
-714 Oxmas Now                           3  pages/oxmas.py  
+(714 Oxmas Now)                         3  pages/oxmas.py  
 725 Advent Calendar                     3  pages/advent.py  
 777 Contributors                        3  pages/contributors.py  
 800 Buses Index                         3  pages/bus.py  

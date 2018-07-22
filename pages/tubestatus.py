@@ -1,5 +1,4 @@
 from page import Page
-from random import choice
 from textwrap import fill
 
 class TubePage(Page):
@@ -113,4 +112,4 @@ class TubePage(Page):
             self.end_fg_color()
             self.add_newline()
 
-page = TubePage("315")
+page = TubePage("670")
