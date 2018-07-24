@@ -10,29 +10,26 @@ class MathOffPage(Page):
 
     def background(self):
         self.results = {
-                "11":{"start":"1 July","home":"James Tanton","away":"Nira Chamberlain","score":None,"winner":None},
-                "12":{"start":"2 July","home":"Samuel Hansen","away":"Paul Taylor","score":None,"winner":None},
-                "13":{"start":"3 July","home":"Peter Rowlett","away":"Alison Kiddle","score":None,"winner":None},
-                "14":{"start":"4 July","home":"Edmund Harriss","away":"Colin Wright","score":None,"winner":None},
-                "15":{"start":"5 July","home":"Tiago Hirth","away":"Evelyn Lamb","score":None,"winner":None},
-                "16":{"start":"6 July","home":"Matt Parker","away":"Matthew Scroggs","score":None,"winner":None},
-                "17":{"start":"7 July","home":"Jim Propp","away":"Zoe Griffiths","score":None,"winner":None},
-                "18":{"start":"8 July","home":"Jo Morgan","away":"Tony Mann","score":None,"winner":None},
+                "11":{"start":"1 July","home":"James Tanton","away":"Nira Chamberlain","score":[144,203],"winner":"Nira Chamberlain"},
+                "12":{"start":"2 July","home":"Samuel Hansen","away":"Paul Taylor","score":[99,112],"winner":"Paul Taylor"},
+                "13":{"start":"3 July","home":"Peter Rowlett","away":"Alison Kiddle","score":[85,104],"winner":"Alison Kiddle"},
+                "14":{"start":"4 July","home":"Edmund Harriss","away":"Colin Wright","score":[544,334],"winner":"Edmund Harriss"},
+                "15":{"start":"5 July","home":"Tiago Hirth","away":"Evelyn Lamb","score":[77,112],"winner":"Evelyn Lamb"},
+                "16":{"start":"6 July","home":"Matt Parker","away":"Matthew Scroggs","score":[364,208],"winner":"Matt Parker"},
+                "17":{"start":"7 July","home":"Jim Propp","away":"Zoe Griffiths","score":[47,119],"winner":"Zoe Griffiths"},
+                "18":{"start":"8 July","home":"Jo Morgan","away":"Tony Mann","score":[214,132],"winner":"Jo Morgan"},
 
-                "q1":{"start":"11 July","home":"11","away":"13","score":None,"winner":None},
-                "q2":{"start":"12 July","home":"12","away":"14","score":None,"winner":None},
-                "q3":{"start":"13 July","home":"15","away":"17","score":None,"winner":None},
-                "q4":{"start":"14 July","home":"16","away":"18","score":None,"winner":None},
+                "q1":{"start":"11 July","home":"11","away":"13","score":[193,173],"winner":"11"},
+                "q2":{"start":"12 July","home":"12","away":"14","score":[86,237],"winner":"14"},
+                "q3":{"start":"13 July","home":"15","away":"17","score":[80,124],"winner":"17"},
+                "q4":{"start":"14 July","home":"16","away":"18","score":[248,177],"winner":"16"},
 
-                "s1":{"start":"17 July","home":"q1","away":"q3","score":None,"winner":None},
-                "s2":{"start":"19 July","home":"q2","away":"q4","score":None,"winner":None},
+                "s1":{"start":"17 July","home":"q1","away":"q3","score":[513,504],"winner":"q1"},
+                "s2":{"start":"19 July","home":"q2","away":"q4","score":[1128,1254],"winner":"q4"},
 
                 "final":{"start":"24 July","home":"s1","away":"s2","score":None,"winner":None},
             }
-        for match, id in [("11","3"),("12","5"),("13","4"),("14","6"),("15","7"),("16","8"),("17","9"),("18","10"),
-                          ("q1","11"),("q2","12"),("q3","13"),("q4","14"),
-                          ("s1","15"),("s2","16"),
-                          ("final","17")]:
+        for match, id in [("final","17")]:
             try:
                 data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
                 if "totalvotes" in data:
