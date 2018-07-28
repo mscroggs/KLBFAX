@@ -80,7 +80,8 @@ class NewsPage(Page):
 news_page1 = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories","From BBC News")
 news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology","From BBC News")
 news_page3 = NewsPage(303, "http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business","From BBC News")
-news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News","From BBC News")
+news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News","From Ledbury Reporter")
+news_page4.importance = 4
 news_page5 = NewsPage(305, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science","From BBC News")
 news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics","From BBC News")
 news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education","From BBC News")
