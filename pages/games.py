@@ -5,12 +5,17 @@ import config
 class CountdownLettersPage(Page):
     def __init__(self):
         super(CountdownLettersPage, self).__init__("251")
-        words = url_handler.load("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt")
         self.words = {i:[] for i in range(1,10)}
-        for word in words.split():
-            if len(word) in self.words:
-                self.words[len(word)].append(word.upper())
+        try:
+            words = url_handler.load("https://raw.githubusercontent.com/dwyl/english-words/master/words_alpha.txt")
+            for word in words.split():
+                if len(word) in self.words:
+                    self.words[len(word)].append(word.upper())
+        except:
+            pass
         self.title = "Countdown Letters Game"
+
+        self.importance = 4
 
         self.in_index = False
 
@@ -63,6 +68,8 @@ class CountdownNumbersPage(Page):
         super(CountdownNumbersPage, self).__init__("252")
         self.title = "Countdown Numbers Game"
 
+        self.importance = 4
+
         self.in_index = False
 
     def background(self):
@@ -78,42 +85,37 @@ class CountdownNumbersPage(Page):
         self.best = [1000,"",0]
 
         for i in range(1,7):
-            for order in permutations(self.numbers[:i]):
-                for operations in product(["+","-","*","/"],repeat=i-1):
-                    #for comp_order in permutations(range(i-1)):
-                        result, desc = self.calculate(order, operations) #, comp_order)
-                        if abs(result-self.target) < self.best[0]:
-                           self.best = [abs(result-self.target),desc, result]
+            for operations in product(["+","-","*","/"],repeat=i-1):
+                for comp_order in permutations(range(i-1)):
+                    result, desc = self.calculate(self.numbers[:i], operations, comp_order)
+                    if abs(result-self.target) < self.best[0]:
+                       self.best = [abs(result-self.target),desc, result]
 
-    def calculate(self, order, operations, comp_order=None):
-        result = order[0]
+    def calculate(self, numbers, operations, comp_order):
         desc = ""
-        for n,o in zip(order[1:],operations):
+        while len(operations)>0:
+            i = comp_order[0]
+            a,b = numbers[i],numbers[i+1]
+            o = operations[i]
             if o == "+":
-                result += n
-                if desc == "":
-                    desc = "ADD "+str(order[0])+" TO "+str(n)+"."
-                else:
-                    desc += " THEN ADD "+str(n)+"."
+                result = a+b
+                desc += "    ADD "+str(a)+" TO "+str(b)+" TO MAKE "+str(result)+".\n"
             if o == "-":
-                result -= n
-                if desc == "":
-                    desc = "TAKE "+str(n)+" FROM "+str(order[0])+"."
-                else:
-                    desc += " THEN SUBTRACT "+str(n)+"."
+                result = a-b
+                desc += "    SUBTRACT "+str(b)+" FROM "+str(a)+" TO MAKE "+str(result)+".\n"
             if o == "*":
-                result *= n
-                if desc == "":
-                    desc = "MULTIPLY "+str(order[0])+" BY "+str(n)+"."
-                else:
-                    desc += " THEN MULTIPLY BY "+str(n)+"."
+                result = a*b
+                desc += "    MULTIPLY "+str(a)+" BY "+str(b)+" TO MAKE "+str(result)+".\n"
             if o == "/":
-                result /= n
-                if desc == "":
-                    desc = "DIVIDE "+str(order[0])+" BY "+str(n)+"."
-                else:
-                    desc += " THEN DIVIDE BY "+str(n)+"."
-        return result, desc
+                if b == 0:
+                    return (1000,"ERROR")
+                result = a/b
+                desc += "    DIVIDE "+str(a)+" BY "+str(b)+" TO MAKE "+str(result)+".\n"
+            comp_order = [j if j<i else j-1 for j in comp_order[1:]]
+            numbers = numbers[:i] + [result] + numbers[i+2:]
+            operations = operations[:i] + operations[i+1:]
+
+        return numbers[0], desc
 
 
     def generate_content(self):
@@ -128,9 +130,9 @@ class CountdownNumbersPage(Page):
         self.add_text("Press + to reveal answers",fg="GREEN")
         self.add_newline()
         if self.best[2] != self.target:
-            self.add_reveal_text("It is impossible to make "+str(self.target)+".")
+            self.add_reveal_text("It is impossible to make "+str(self.target)+", the best you can make is "+str(self.best[2])+":", wrapping=True)
             self.add_newline()
-        self.add_reveal_text("To make "+str(self.best[2])+": "+self.best[1], wrapping=True)
+        self.add_reveal_text(self.best[1], wrapping=True)
         self.add_newline()
 
 
