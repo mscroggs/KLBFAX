@@ -29,8 +29,8 @@ class TubePage(Page):
         num_platforms = len(platforms);
         max_tubes_per_platform = 23//num_platforms-1;
 
-        tubes_per_platform = [[] for i in xrange(len(platforms))]
-        lines_per_platform = [[] for i in xrange(len(platforms))]
+        tubes_per_platform = [[] for i in range(len(platforms))]
+        lines_per_platform = [[] for i in range(len(platforms))]
 
         for pnum, platform in enumerate(platforms):
             for tube in tubes:
