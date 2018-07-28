@@ -17,10 +17,81 @@ class TubePage(Page):
         tube_times = url_handler.load_json("http://api.tfl.gov.uk/stopPoint/"+self.code+"/arrivals?mode=tube")
 
         tubes = []
+        platforms = []
+        for b in tube_times:
+            p = b['platformName'];
+            if p not in platforms:
+                platforms.append(p)
+            tubes.append((b['platformName'],int(b['timeToStation']),str(b['timeToStation']//60).rjust(2,' ')+" min",b['lineName'].replace('Hammersmith','Ham').replace('Waterloo','Wloo'),b['towards'],b['currentLocation']))
+        tubes.sort()
+
+        #platforms = sorted(platforms, key=lambda x: int(x[-2:]));
+        num_platforms = len(platforms);
+        max_tubes_per_platform = 23//num_platforms-1;
+
+        tubes_per_platform = [[] for i in xrange(len(platforms))]
+        lines_per_platform = [[] for i in xrange(len(platforms))]
+
+        for pnum, platform in enumerate(platforms):
+            for tube in tubes:
+                if tube[0] == platform:
+                    tubes_per_platform[pnum].append(tube)
+                    line = tube[3]
+                    if line not in lines_per_platform[pnum]:
+                        lines_per_platform[pnum].append(line)
+
+        #for platform in lines_per_platform:
+        #    platform.sort()
+
+        platform_order = sorted(range(len(platforms)), key=lambda k: lines_per_platform[k][0] + " " + platforms[k])
+
+        def set_colours(self,line_on_this_platform):
+            if line_on_this_platform=="Bakerloo":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("ORANGE")
+            elif line_on_this_platform=="Central":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("RED")
+            elif line_on_this_platform=="Circle":
+                self.start_fg_color("BLACK")
+                self.start_bg_color("YELLOW")
+            elif line_on_this_platform=="District":
+                self.start_fg_color("BLACK")
+                self.start_bg_color("GREEN")
+            elif line_on_this_platform=="Ham & City":
+                self.start_fg_color("BLACK")
+                self.start_bg_color("PINK")
+            elif line_on_this_platform=="Jubilee":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("GREY")
+            elif line_on_this_platform=="Metropolitan":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("MAGENTA")
+            elif line_on_this_platform=="Northern":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("BLACK")
+            elif line_on_this_platform=="Piccadilly":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("BLUE")
+            elif line_on_this_platform=="Victoria":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("LIGHTBLUE")
+            elif line_on_this_platform=="Wloo & City":
+                self.start_fg_color("WHITE")
+                self.start_bg_color("LIGHTCYAN")
+            else:
+                self.start_fg_color("WHITE")
+                self.start_bg_color("BLACK")
+
+
+        '''
+        tubes = []
         for b in tube_times:
             tubes.append((int(b['timeToStation']),str(b['timeToStation']//60)+" min",b['lineName'].replace('Hammersmith','Ham').replace('Waterloo','Wloo'),b['towards'],b['currentLocation']))
 
         tubes.sort()
+
+        '''
 
         self.add_title(self.station,font='size4',fg="BRIGHTWHITE",bg="BLUE")
 
@@ -33,7 +104,38 @@ class TubePage(Page):
                       "WWWrrrrrWWW\n"
                       "WWWWWWWWWWW")
         self.print_image(underground,0,69)
+        '''
+        for pnum in platform_order:
+            platform = platforms[pnum]
+            print " ".join(sorted(lines_per_platform[pnum])) + " " + platform
+            for t in tubes_per_platform[pnum][:max_tubes_per_platform]:
+                print t[2] + ' ' + t[3] + ' ' + t[4] + ' ' + t[5].replace("Platform ","P")
+        '''
+        self.add_newline()
+        pos = (0,7,20,45)
+        for pnum in platform_order:
+            platform = platforms[pnum]
 
+            num_lines_on_this_platform = len(lines_per_platform[pnum])
+            Nx = 80//num_lines_on_this_platform;
+            platform_title = " " + "/".join(sorted(lines_per_platform[pnum])) + " " + platform
+            for i, line_on_this_platform in enumerate(sorted(lines_per_platform[pnum])):
+                set_colours(self,line_on_this_platform);
+                self.move_cursor(x=Nx*i)
+                self.add_text(" "*80)
+                self.move_cursor(x=Nx*i)
+                self.add_text(platform_title[Nx*i:Nx*(i+1)])
+                self.end_fg_color()
+                self.end_bg_color()
+            self.add_newline()
+            for tube in tubes_per_platform[pnum][:max_tubes_per_platform]:
+                #print t[2] + ' ' + t[3] + ' ' + t[4] + ' ' + t[5].replace("Platform ","P")
+                for p,t in zip(pos,tube[2:]):
+                    self.move_cursor(x=p)
+                    self.add_text(t)
+                self.add_newline()
+            #self.add_newline()
+        '''
         pos = (0,7,20,45)
         for p,t in zip(pos,("Time","Line","Destination","Current Location")):
             self.move_cursor(x=p)
@@ -81,7 +183,7 @@ class TubePage(Page):
             self.end_fg_color()
             self.end_bg_color()
             self.add_newline()
-
+        '''
 
 pages=[]
 tube01 = TubePage("651","940GZZLUEUS","Euston")
@@ -98,6 +200,8 @@ tube11 = TubePage("661","940GZZLUWLO","Waterloo")
 tube12 = TubePage("662","940GZZLUEMB","Embankment")
 tube13 = TubePage("663","940GZZLUSKS","South Kensington")
 tube14 = TubePage("664","940GZZLUGTR","Gloucester Road")
+tube15 = TubePage("665","940GZZLUBNK","Bank")
+tube16 = TubePage("666","940GZZLUBST","Baker Street")
 
 class TVIPage(Page):
     def __init__(self):
