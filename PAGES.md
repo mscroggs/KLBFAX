@@ -40,7 +40,7 @@ Number & Page Name             Importance  File
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
 303 Business                            1  pages/news.py  
-304 Local News                          1  pages/news.py  
+304 Local News                          4  pages/news.py  
 305 Science                             1  pages/news.py  
 306 Politics                            1  pages/news.py  
 307 Education                           1  pages/news.py  

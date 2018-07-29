@@ -209,7 +209,7 @@ train05 = TrainPage("855","Shippea Hill","SPP")
 train06 = TrainPage("856","Glasgow Central","GLC")
 train07 = TrainPage("857","Birmingham New Street","BHM")
 train08 = TrainPage("858","London Waterloo","WAT")
-train09 = TrainPage("859","London King's Cross","KGX")
+train09 = TrainPage("859","London King's Cross","KGX", True)
 
 class TVIPage(Page):
     def __init__(self):
