@@ -35,7 +35,7 @@ class CBBCPage(Page):
         self.add_text("143 ",fg="MAGENTA")
         self.add_text("Playdays")
         self.add_newline()
-        self.add_text("134 ",fg="MAGENTA")
+        self.add_text("144 ",fg="MAGENTA")
         self.add_text("Crackerjack")
         self.add_newline()
         self.add_text("145 ",fg="MAGENTA")
