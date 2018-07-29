@@ -36,6 +36,13 @@ Number & Page Name             Importance  File
 251 Countdown Letters Game              4  pages/games.py  
 252 Countdown Numbers Game              4  pages/games.py  
 271 e                                   2  pages/e.py  
+272 Art                                 2  pages/art.py  
+273 Venus                               2  pages/art.py  
+274 Jigsaw                              2  pages/art.py  
+275 Soup                                2  pages/art.py  
+276 Python                              2  pages/art.py  
+277 SCORPIONS                           2  pages/art.py  
+278 Squirrel                            2  pages/art.py  
 300 News Index                          2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
