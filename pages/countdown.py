@@ -32,14 +32,8 @@ class OllyPage(Page):
             self.add_title(left,fg="PINK",bg="BLACK")
             self.add_title(left2,fg="BRIGHTWHITE",bg="BLACK")
         else:
-            delta = datetime.datetime.now() - self.when
-            hs = delta.seconds/3600
-            ds = delta.days
-
-            left = str(ds) + " day"
-            left2 = str(hs) + " hour"
-            if ds!=1: left += "s"
-            if hs!=1: left2 += "s"
+            delta = config.now() - self.when
+            hs = delta.seconds//3600
             self.add_title(self.who+" Left",fg="LIGHTGREEN",bg="BLACK")
             self.add_title(left,fg="PINK",bg="BLACK")
             self.add_title(left2,fg="BRIGHTWHITE",bg="BLACK")

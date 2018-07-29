@@ -3,8 +3,4 @@ astral
 nrewebservices
 feedparser
 twitter
-forex_python
-quandl
-pandas
-pyopenssl
 tubestatus

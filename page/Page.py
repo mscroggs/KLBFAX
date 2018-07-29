@@ -29,7 +29,7 @@ class Page(object):
         self.in_index = True
         self.index_num = None
         self.tagline = config.NAME + ": The World at Your Fingertips"
-        self.importance = 3
+        self.importance = 2
         self.number = str(number)
         self.loaded = False
         self.background_loaded = False
@@ -113,12 +113,12 @@ class Page(object):
         if bg is not None:
             self.end_bg_color()
 
-    def add_reveal_text(self, text, fg=None, bg=None, show=False):
+    def add_reveal_text(self, text, fg=None, bg=None, show=False, wrapping=False):
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
             self.start_bg_color(bg)
-        self.cupt.add_reveal_text(text, show)
+        self.cupt.add_reveal_text(text, show, wrapping=wrapping)
         if fg is not None:
             self.end_fg_color()
         if bg is not None:

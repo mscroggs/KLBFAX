@@ -2,10 +2,10 @@ from page import Page
 
 
 class MonaLisaPage(Page):
-    def __init__(self,page_num):
+    def __init__(self,page_num,index_num):
         super(MonaLisaPage, self).__init__(page_num)
         self.title = "Art"
-        self.index_num = "450-459"
+        self.index_num = index_num
         self.tagline = "Are you warm,are you real,Mona Lisa? Or just a cold & lonely lovely work of art?"
 
     def generate_content(self):
@@ -39,11 +39,6 @@ d888888888888888,                                ,ZZZZZZZZZZZZZZZZZZZZZZZZZZZ
 88888888888888888888888888888888888ZZZZZZZZZZZZZZ8888888888888888888888888888
 88888888888888888888888888888888ZZZZZZZZZZZZZZ8888888888888888888 Veilleux 88
 ''')
-
-page = MonaLisaPage("430")
-
-from page import Page
-
 
 class VenusPage(Page):
     def __init__(self,page_num):
@@ -84,11 +79,6 @@ class VenusPage(Page):
           .$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ `<CCCCC>  -<CC;,<C> ``<<CCC>,`CCCC
 
 """)
-
-page = VenusPage("451")
-
-from page import Page
-
 
 class JigPage(Page):
     def __init__(self,page_num):
@@ -156,14 +146,9 @@ XXXXGG   XXXXXXXXXXX   GGXXXX
                     self.add_text(" ")
             self.add_newline()
 
-page = JigPage("452")
-
-from page import Page
-
-
-class JigPage(Page):
+class TrophyPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(TrophyPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Trophy"
         self.tagline = "GO NONPUFFS!"
@@ -191,14 +176,9 @@ class JigPage(Page):
                     3333333333333333
 """, "WHITE", "RED", "WHITE", "GREY", "BLUE")
 
-page = JigPage("453")
-
-from page import Page
-
-
-class JigPage(Page):
+class SoupPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(SoupPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Soup"
         self.tagline = "Soup!"
@@ -229,14 +209,9 @@ class JigPage(Page):
          '==============================='
 ''')
 
-page = JigPage("454")
-
-from page import Page
-
-
-class JigPage(Page):
+class PyPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(PyPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Python"
         self.tagline = "Python"
@@ -264,13 +239,9 @@ class JigPage(Page):
             111111111111111
 ""","BLUE","YELLOW")
 
-page = JigPage("455")
-
-from page import Page
-
-class JigPage(Page):
+class ScorPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(ScorPage, self).__init__(page_num)
         self.in_index = False
         self.title = "SCORPIONS"
         self.tagline = "SCORPIONS"
@@ -305,13 +276,9 @@ class JigPage(Page):
 
 """)
 
-page = JigPage("456")
-
-from page import Page
-
-class JigPage(Page):
+class OllyPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(OllyPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Olly"
         self.tagline = "Olly"
@@ -350,13 +317,10 @@ class JigPage(Page):
 ,,,,,,,,,,,,,,,,:;;;;;;;;;::::::::::::::,,,,,,,:::;;;;;::,....`,,,,,,,,,,
 ,,,,,,,,,,,,,,,,,:;;;;'';;;;;;;;;;;:::::::;;;;;;;;;;;;::,.....`.,,,,,,,,,
 """)
-page = JigPage("457")
 
-from page import Page
-
-class JigPage(Page):
+class SqPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(SqPage, self).__init__(page_num)
         self.in_index = False
         self.title = "Squirrel"
         self.tagline = "As found in Belgin's garden"
@@ -403,14 +367,9 @@ class JigPage(Page):
         self.add_title(a[0])
         self.add_block(a[1],a[2])
 
-page = JigPage("458")
-
-from page import Page
-
-
-class JigPage(Page):
+class TDPage(Page):
     def __init__(self,page_num):
-        super(JigPage, self).__init__(page_num)
+        super(TDPage, self).__init__(page_num)
         self.in_index = False
         self.title = "TD Slang"
         self.tagline = "TD Slang is the worst"
@@ -450,5 +409,13 @@ class JigPage(Page):
 
         self.add_text(td)
 
-page = JigPage("459")
-
+page1 = MonaLisaPage("272","272-281")
+page2 = VenusPage("273")
+page3 = JigPage("274")
+page4 = SoupPage("275")
+page5 = PyPage("276")
+page6 = ScorPage("277")
+page7 = SqPage("278")
+page8 = OllyPage("279")
+page9 = TrophyPage("280")
+page10 = TDPage("281")

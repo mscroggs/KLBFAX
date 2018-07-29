@@ -1,7 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
 from page import Page
-import time
 from functions import replace
 
 
@@ -79,6 +76,5 @@ news_page7 = NewsPage(306, "https://twitrss.me/twitter_user_to_rss/?user=mathslo
 news_page8 = NewsPage(308, "https://www.ucl.ac.uk/maths/news/rss.xml","UCLmart","description")
 news_page9 = NewsPage(309, "https://aliandsomebooks.wordpress.com/feed/","Booksmart","description")
 news_page10 = NewsPage(310, "https://quotesponge.wordpress.com/feed/","Musicmart","description")
-
 
 news_pageX = NewsPage(707, "http://chalkdustmagazine.com/feed/", "Chalkmart")

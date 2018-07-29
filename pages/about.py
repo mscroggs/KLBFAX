@@ -1,6 +1,4 @@
-import os
 from page import Page
-from random import choice
 import config
 
 class TestPage(Page):

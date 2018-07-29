@@ -68,7 +68,7 @@ class CuPT:
                 if char == " ":
                     out += "&nbsp;"
                 else:
-                    out += char.encode("utf-8")
+                    out += char
                 out += "</span>"
             out += "<br />"
         return out
@@ -205,7 +205,11 @@ class CuPT:
                     pad.addstr(0,0," ",self.unshow_cls[y][x][1])
                 except:
                     pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
+                try:
+                    if y < self.HEIGHT:
+                        pad.refresh(0,0,y+1,x,y+1,x)
+                except:
+                    pass
         for y in self.show_cls:
             for x in self.show_cls[y]:
                 try:
@@ -215,7 +219,11 @@ class CuPT:
                         pad.addstr(0,0,self.show_cls[y][x][0].encode("utf-8"),self.show_cls[y][x][1])
                     except:
                         pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
+                try:
+                    if y < self.HEIGHT:
+                        pad.refresh(0,0,y+1,x,y+1,x)
+                except:
+                    pass
 
     def unreveal(self):
         pad = curses.newpad(1,2)
@@ -225,7 +233,11 @@ class CuPT:
                     pad.addstr(0,0," ",self.show_cls[y][x][1])
                 except:
                     pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
+                try:
+                    if y < self.HEIGHT:
+                        pad.refresh(0,0,y+1,x,y+1,x)
+                except:
+                    pass
         for y in self.unshow_cls:
             for x in self.unshow_cls[y]:
                 try:
@@ -235,7 +247,11 @@ class CuPT:
                         pad.addstr(0,0,self.unshow_cls[y][x][0].encode("utf-8"),self.unshow_cls[y][x][1])
                     except:
                         pad.addstr(0,0," ")
-                pad.refresh(0,0,y+1,x,y+1,x)
+                try:
+                    if y < self.HEIGHT:
+                        pad.refresh(0,0,y+1,x,y+1,x)
+                except:
+                    pass
 
     def pad(self):
         return curses.newpad(self.HEIGHT, self.WIDTH)

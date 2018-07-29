@@ -1,11 +1,6 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import os
 from page import Page
-import time
 from config import now
 from math import cos,sin,floor,pi
-from random import choice
 from pytz import timezone
 import config
 

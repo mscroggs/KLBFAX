@@ -298,4 +298,5 @@ page0 = WeatherForePage("330",metoffer.THREE_HOURLY)
 page1 = WeatherForePage("331",metoffer.DAILY)
 page2 = SunrisePage("332")
 page3 = UKTempPage("333")
+page3.importance = 4
 page4 = WorldTempPage("334")

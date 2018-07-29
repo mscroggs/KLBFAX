@@ -1,9 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-import os
 from page import Page
-
-from random import choice
 
 def listrange(*args):
     return list(range(*args))

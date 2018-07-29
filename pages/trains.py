@@ -243,10 +243,21 @@ train37 = TrainPage("887","Lichfield T.V.","LTV")
 train38 = TrainPage("889","Arlesey","ARL")
 train39 = TrainPage("890","Gatwick Airport","GTW")
 
-class TVIPage(Page):
+train40 = TrainPage("891","Heathrow Airport (T1-3)","HXX")
+train41 = TrainPage("892","Luton Airport Parkway","LTN")
+train42 = TrainPage("893","Manchester Airport","MIA")
+train43 = TrainPage("894","Prestwick International Airport","PRA")
+train44 = TrainPage("895","Rhoose Cardiff International Airport","RIA")
+train45 = TrainPage("896","Southampton Airport Parkway","SOA")
+train46 = TrainPage("897","Southend Airport","SIA")
+train47 = TrainPage("898","Stanstead Airport","SSD")
+train48 = TrainPage("899","Tees-side Airport","TEA")
+
+class TrainIPage(Page):
     def __init__(self):
-        super(TVIPage, self).__init__("850")
+        super(TrainIPage, self).__init__("850")
         self.title = "Trains Index"
+        self.importance = 1
 
     def generate_content(self):
         self.add_title("Trains Index")
@@ -259,4 +270,4 @@ class TVIPage(Page):
             else:
                 self.move_cursor(x=38)
 
-tp = TVIPage()
+tp = TrainIPage()

@@ -4,7 +4,7 @@ from helpers.url_handler import load_json
 
 class MathOffPage(Page):
     def __init__(self):
-        super(MathOffPage, self).__init__("160")
+        super(MathOffPage, self).__init__("161")
         self.title = "Big Internet Math-Off"
         self.importance = 5
 
@@ -27,27 +27,8 @@ class MathOffPage(Page):
                 "s1":{"start":"17 July","home":"q1","away":"q3","score":[513,504],"winner":"q1"},
                 "s2":{"start":"19 July","home":"q2","away":"q4","score":[1128,1254],"winner":"q4"},
 
-                "final":{"start":"24 July","home":"s1","away":"s2","score":None,"winner":None},
+                "final":{"start":"24 July","home":"s1","away":"s2","score":[1207,960],"winner":"s1"},
             }
-        for match, id in [("final","17")]:
-            try:
-                data = load_json("http://aperiodical.com/wp-json/wp-polls/v2/results/"+id)
-                if "totalvotes" in data:
-                    self.results[match]["score"] = [0,0]
-                    for score in data["answers"]:
-                        if self.get_winner(self.results[match]["home"]) in score["text"]:
-                            self.results[match]["score"][0] = score["votes"]
-                        else:
-                            self.results[match]["score"][1] = score["votes"]
-                    if sum(self.results[match]["score"])==0:
-                        self.results[match]["score"]=None
-                    if not data["active"]:
-                        if self.results[match]["score"][0] > self.results[match]["score"][1]:
-                            self.results[match]["winner"] = self.results[match]["home"]
-                        else:
-                            self.results[match]["winner"] = self.results[match]["away"]
-            except:
-                pass
 
     def get_winner(self, id):
         if id in self.results:
@@ -168,8 +149,6 @@ class MathOffPage(Page):
 page = MathOffPage()
 
 
-from page import Page
-
 class TwitterPage(Page):
     def __init__(self, page_num):
         super(TwitterPage, self).__init__(page_num)
@@ -204,4 +183,4 @@ class TwitterPage(Page):
             self.add_newline()
             self.add_newline()
 
-tpage = TwitterPage("161")
+tpage = TwitterPage("162")

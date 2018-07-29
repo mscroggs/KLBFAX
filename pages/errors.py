@@ -1,4 +1,3 @@
-import os
 from page import Page
 
 class TestPage(Page):
