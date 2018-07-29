@@ -13,6 +13,8 @@ Number & Page Name             Importance  File
 104 Article of the Day                  1  pages/wiki.py  
 105 Did you know...                     1  pages/wiki.py  
 106 New on Wikipedia                    1  pages/wiki.py  
+107 Big Internet Math-Off               3  pages/mathoff.py  
+108 #bigmathoff                         2  pages/mathoff.py  
 120 Countdowns                          2  pages/countdown.py  
 121 Countdowns                          2  pages/countdown.py  
 122 Countdowns                          2  pages/countdown.py  
