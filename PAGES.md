@@ -197,6 +197,7 @@ Number & Page Name             Importance  File
 700 EMF Information                     2  pages/emf.py  
 701 List of Villages                    3  pages/emf.py  
 702 List of Teams                       3  pages/emf.py  
+703 EMF site map                        5  pages/emf_map.py  
 777 Contributors                        2  pages/contributors.py  
 850 Trains Index                        1  pages/trains.py  
 851 Milton Keynes Trains                3  pages/trains.py  
