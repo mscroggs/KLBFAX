@@ -7,3 +7,4 @@ forex_python
 quandl
 pandas
 pyopenssl
+tubestatus
