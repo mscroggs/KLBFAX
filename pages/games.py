@@ -2,6 +2,13 @@ from page import Page
 from helpers import url_handler
 import config
 
+def cleanstr(n):
+    if type(n) is int:
+        return str(n)
+    if n.is_integer():
+        return str(int(n))
+    return str(n)
+
 class CountdownLettersPage(Page):
     def __init__(self):
         super(CountdownLettersPage, self).__init__("251")
@@ -100,13 +107,13 @@ class CountdownNumbersPage(Page):
             o = operations[i]
             if o == "+":
                 result = a+b
-                desc += "    ADD "+str(a)+" TO "+str(b)+" TO MAKE "+str(result)+".\n"
+                desc += "    ADD "+cleanstr(a)+" TO "+cleanstr(b)+" TO MAKE "+cleanstr(result)+".\n"
             if o == "-":
                 result = a-b
-                desc += "    SUBTRACT "+str(b)+" FROM "+str(a)+" TO MAKE "+str(result)+".\n"
+                desc += "    SUBTRACT "+cleanstr(b)+" FROM "+cleanstr(a)+" TO MAKE "+cleanstr(result)+".\n"
             if o == "*":
                 result = a*b
-                desc += "    MULTIPLY "+str(a)+" BY "+str(b)+" TO MAKE "+str(result)+".\n"
+                desc += "    MULTIPLY "+cleanstr(a)+" BY "+cleanstr(b)+" TO MAKE "+cleanstr(result)+".\n"
             if o == "/":
                 if b == 0:
                     return (1000,"ERROR")
@@ -124,8 +131,8 @@ class CountdownNumbersPage(Page):
         self.add_title("     numbers game", font="size4")
 
         self.add_newline()
-        self.add_title(" ".join(str(i) for i in self.numbers),font="size4",fg="BLACK", bg="BRIGHTWHITE")
-        self.add_title("      TARGET: "+str(self.target),font="size4",fg="BLACK", bg="BRIGHTWHITE")
+        self.add_title(" TARGET: "+str(self.target),font="size4",fg="BLACK", bg="BRIGHTWHITE")
+        self.add_title(" ".join(str(i) for i in self.numbers),font="size4",fg="BLUE", bg="BRIGHTWHITE")
 
         self.add_newline()
         self.add_text("Press + to reveal answers",fg="GREEN")
