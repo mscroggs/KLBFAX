@@ -105,7 +105,7 @@ tv34 = TVPage("632","BBC Parliament","http://bleb.org/tv/data/listings/1/bbc_par
 class TVIPage(Page):
     def __init__(self):
         super(TVIPage, self).__init__("600")
-        self.title = "TV & Radio Index"
+        self.title = "TV Listings"
         self.importance = 1
 
     def generate_content(self):
@@ -120,3 +120,4 @@ class TVIPage(Page):
                 self.move_cursor(x=38)
 
 tp = TVIPage()
+tp.index_num = "600-632"

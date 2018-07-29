@@ -7,6 +7,7 @@ class TriviaPage(Page):
         super(TriviaPage, self).__init__(n)
         self.title = title
         self.questions = questions
+        self.in_index = False
 
     def generate_content(self):
         shuffle(self.questions)

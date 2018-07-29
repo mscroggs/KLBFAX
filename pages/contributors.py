@@ -6,6 +6,8 @@ class TeamPage(Page):
     def __init__(self):
         super(TeamPage, self).__init__("777")
         self.title = "Contributors"
+        self.importance = 3
+        self.in_index = False
 
     def generate_content(self):
         self.add_title("Contributors")

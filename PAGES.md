@@ -8,7 +8,7 @@ Number & Page Name             Importance  File
 (003 License)                           2  pages/license.py  
 100 Index                               5  pages/index.py  
 101 Trivia                              2  pages/trivia.py  
-102 Birthdays                           2  pages/birthdays.py  
+102 Birthdays                           3  pages/birthdays.py  
 103 On this Day...                      1  pages/wiki.py  
 104 Article of the Day                  1  pages/wiki.py  
 105 Did you know...                     1  pages/wiki.py  
@@ -21,6 +21,24 @@ Number & Page Name             Importance  File
 125 Countdowns                          2  pages/countdown.py  
 126 Countdowns                          2  pages/countdown.py  
 127 Countdowns                          2  pages/countdown.py  
+128 Countdowns                          2  pages/countdown.py  
+129 Countdowns                          2  pages/countdown.py  
+130 CBBC                                3  pages/kids.py  
+131 Newsround                           2  pages/kids.py  
+132 Blue Peter                          2  pages/kids.py  
+133 Blue Peter                          2  pages/kids.py  
+134 Blue Peter                          2  pages/kids.py  
+135 Blue Peter                          2  pages/kids.py  
+136 Blue Peter                          2  pages/kids.py  
+137 Blue Peter                          2  pages/kids.py  
+138 Blue Peter                          2  pages/kids.py  
+139 Blue Peter                          2  pages/kids.py  
+140 Blue Peter                          2  pages/kids.py  
+141 The Demon Headmaster                2  pages/kids.py  
+142 ChuckleVision                       2  pages/kids.py  
+143 Playdays                            2  pages/kids.py  
+144 Crackerjack                         2  pages/kids.py  
+145 Paddington Bear                     2  pages/kids.py  
 160 Polybius Biotech                    5  pages/polybius_biotech.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
@@ -44,7 +62,7 @@ Number & Page Name             Importance  File
 276 Python                              2  pages/art.py  
 277 SCORPIONS                           2  pages/art.py  
 278 Squirrel                            2  pages/art.py  
-300 News Index                          2  pages/news.py  
+300 News                                2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
 303 Business                            1  pages/news.py  
@@ -59,7 +77,7 @@ Number & Page Name             Importance  File
 312 Weather warnings                    1  pages/news.py  
 313 Showbiz                             1  pages/news.py  
 314 Pi                                  2  pages/pi.py  
-315 Sport Index                         2  pages/sport.py  
+315 Sport                               2  pages/sport.py  
 316 Top Stories                         1  pages/sport.py  
 317 Football                            1  pages/sport.py  
 318 Cricket                             1  pages/sport.py  
@@ -81,7 +99,7 @@ Number & Page Name             Importance  File
 334 World Temperature                   2  pages/weather.py  
 335 Time                                2  pages/time.py  
 336 Time                                2  pages/time.py  
-337 UK Top 40                           2  pages/music_chart.py  
+337 Music                               2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
 339 Music Trivia                        2  pages/trivia.py  
 340 Currency Conversion                 1  pages/currency.py  
@@ -160,7 +178,7 @@ Number & Page Name             Importance  File
 431 Request Header Fields Too Large     1  pages/http-errors.py  
 451 Unavailable for Legal Reasons       1  pages/http-errors.py  
 555 Lotto Results                       3  pages/lotto.py  
-600 TV & Radio Index                    1  pages/tv.py  
+600 TV Listings                         1  pages/tv.py  
 601 Today's TV: BBC1                    3  pages/tv.py  
 602 Today's TV: BBC2                    3  pages/tv.py  
 603 Today's TV: ITV                     1  pages/tv.py  
@@ -198,8 +216,8 @@ Number & Page Name             Importance  File
 701 List of Villages                    3  pages/emf.py  
 702 List of Teams                       3  pages/emf.py  
 703 EMF site map                        5  pages/emf_map.py  
-777 Contributors                        2  pages/contributors.py  
-850 Trains Index                        1  pages/trains.py  
+777 Contributors                        3  pages/contributors.py  
+850 Trains                              1  pages/trains.py  
 851 Milton Keynes Trains                3  pages/trains.py  
 852 Bletchley Trains                    3  pages/trains.py  
 853 Farncombe Trains                    3  pages/trains.py  

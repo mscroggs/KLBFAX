@@ -4,7 +4,7 @@ from functions import replace
 class NewsIndex(Page):
     def __init__(self, page_num):
         super(NewsIndex, self).__init__(page_num)
-        self.title = "News Index"
+        self.title = "News"
         self.importance = 2
         self.in_index = True
 
@@ -93,3 +93,4 @@ news_page12 = NewsPage(312, "http://www.metoffice.gov.uk/public/data/PWSCache/Wa
 news_page13 = NewsPage(313, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz","From The Daily Mail")
 
 index = NewsIndex(300)
+index.index_num = "300-313"

@@ -35,6 +35,7 @@ class IndexPage(Page):
         self.pagelist = pagelist
         self.importance = 2
         self.title = "EMF Information"
+        self.in_index = False
 
     def generate_content(self):
         self.add_title("EMF Information",bg="BLACK",fg="LIGHTRED",font='size4')

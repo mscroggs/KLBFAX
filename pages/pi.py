@@ -4,6 +4,7 @@ class PiPage(Page):
     def __init__(self):
         super(PiPage, self).__init__("314")
         self.title = "Pi"
+        self.in_index = False
 
     def generate_content(self):
         from random import randrange

@@ -9,7 +9,7 @@ class TimePage(Page):
     def __init__(self, num):
         super(TimePage, self).__init__(num)
         self.title = "Time"
-        self.index_num = "335-6"
+        self.index_num = "335-336"
         self.tagline = config.NAME[:-3] + " Mean Time"
 
     def generate_content(self):

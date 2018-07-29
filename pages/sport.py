@@ -4,7 +4,7 @@ from functions import replace
 class SportIndex(Page):
     def __init__(self, page_num):
         super(SportIndex, self).__init__(page_num)
-        self.title = "Sport Index"
+        self.title = "Sport"
         self.importance = 2
         self.in_index = True
 
@@ -94,4 +94,4 @@ sport_page29 = SportPage(329, "http://feeds.bbci.co.uk/sport/table-tennis/rss.xm
 
 
 index = SportIndex(315)
-
+index.index_num = "315-329"

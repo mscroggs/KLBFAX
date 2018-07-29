@@ -258,7 +258,8 @@ train48 = TrainPage("899","Tees-side Airport","TEA")
 class TrainIPage(Page):
     def __init__(self):
         super(TrainIPage, self).__init__("850")
-        self.title = "Trains Index"
+        self.title = "Trains"
+        self.index_num = "850-899"
         self.importance = 1
 
     def generate_content(self):

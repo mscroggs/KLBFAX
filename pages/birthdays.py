@@ -7,6 +7,7 @@ class BdayPage(Page):
     def __init__(self, page_num):
         super(BdayPage, self).__init__(page_num)
         self.title = "Birthdays"
+        self.importance = 3
 
     def background(self):
         birthdays = f_read_json("birthdays.json")

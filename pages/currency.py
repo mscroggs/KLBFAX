@@ -87,3 +87,4 @@ for i,a in enumerate(currencies):
         pn += 1
 
 index = IndexPage(340, pagelist)
+index.index_num = "340-386"

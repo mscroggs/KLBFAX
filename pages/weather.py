@@ -21,7 +21,7 @@ class WeatherForePage(Page):
         self.ftype = ftype
         self.title = "Weather"
         if number == "330":
-            self.index_num = "330-339"
+            self.index_num = "330-334"
             self.in_index = True
         else:
             self.in_index = False
