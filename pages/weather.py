@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
-
 from page import Page
-from helpers.file_handler import f_read
 from helpers import url_handler
 import datetime
 import config
@@ -31,8 +27,6 @@ class WeatherForePage(Page):
             self.in_index = False
 
     def background(self):
-        ##from IPython import embed
-        #embed()
         M = metoffer.MetOffer(config.metoffer_api_key);
         x = M.nearest_loc_forecast(config.location[0],config.location[1], self.ftype)
         self.y = metoffer.Weather(x)
@@ -149,9 +143,6 @@ class UKTempPage(Page):
                       ]
 
     def background(self):
-        from helpers import url_handler
-        import json
-
         self.temps = []
         self.weather = []
         for lat,lon,x,y,xw,yw,a in self.places:
