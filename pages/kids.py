@@ -394,8 +394,11 @@ class ChucklePage(Page):
 
     def paul(self):
         self.add_title("Paul Chuckle",fg="BLACK",bg="ORANGE",font="size4")
-        likes = ["Annoying Barry","Doughnuts & Sweets","Being the boss or leader","Inventing","Relaxing with a cup of tea","Standing up for himself","Barry (sometimes)","Having a rest while Barry works"]
-        dislikes = ["When Barry get's what he wants","Spiders","Work","Getting blamed","Getting told what to do","Barry's stupid side","People berating Barry","Mr No Slacking"]
+        likes = ["Annoying Barry","Doughnuts & Sweets","Being the boss or leader",
+                 "Inventing","Relaxing with a cup of tea","Standing up for himself",
+                 "Barry (sometimes)","Having a rest while Barry works"]
+        dislikes = ["When Barry gets what he wants","Spiders","Work","Getting blamed",
+                    "Getting told what to do","Barry's stupid side","People berating Barry","Mr No Slacking"]
 
         shuffle(likes)
         shuffle(dislikes)
