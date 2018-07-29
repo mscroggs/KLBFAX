@@ -204,16 +204,60 @@ train01 = TrainPage("851","Milton Keynes","MKC")
 train02 = TrainPage("852","Bletchley","BLY")
 train03 = TrainPage("853","Farncombe","FNC")
 train04 = TrainPage("854","Ledbury","LED")
-train04.importance = 4
+train01.importance = 3
+train02.importance = 3
+train03.importance = 3
+train04.importance = 5
 train05 = TrainPage("855","Shippea Hill","SPP")
 train06 = TrainPage("856","Glasgow Central","GLC")
 train07 = TrainPage("857","Birmingham New Street","BHM")
 train08 = TrainPage("858","London Waterloo","WAT")
 train09 = TrainPage("859","London King's Cross","KGX", True)
+train10 = TrainPage("860","Banbury","BAN")
+train11 = TrainPage("861","Moreton-in-Marsh","MIM")
+train12 = TrainPage("862","Manchester Piccadilly","MAN")
 
-class TVIPage(Page):
+train13 = TrainPage("863","Ashford International","AFK")
+train14 = TrainPage("864","Basingstoke","BSK")
+train15 = TrainPage("865","Coventry","COV")
+train16 = TrainPage("866","Davenport","DVN")
+train17 = TrainPage("867","Egham","EGH")
+train18 = TrainPage("868","Fort William","FTW")
+train19 = TrainPage("869","Gloucester","GCR")
+train20 = TrainPage("870","Halifax","HFX")
+train21 = TrainPage("871","Ipswich","IPS")
+train22 = TrainPage("872","Jewellery Quarter","JEQ")
+train23 = TrainPage("873","Knighton","KNI")
+train24 = TrainPage("874","Liverpool Lime Street","LIV")
+train25 = TrainPage("875","Malvern Link","MVL")
+train26 = TrainPage("876","Nottingham","NOT")
+train27 = TrainPage("877","Oxford","OXF")
+train28 = TrainPage("878","Pembroke","PMB")
+train29 = TrainPage("879","Quakers Yard","QYD")
+train30 = TrainPage("880","Rainham (Kent)","RAI")
+train31 = TrainPage("881","Stratford-upon-Avon","SAV")
+train32 = TrainPage("882","Thurso","THS")
+train33 = TrainPage("883","University (Birmingham)","UNI")
+train34 = TrainPage("884","Valley","VAL")
+train35 = TrainPage("885","Warwick","WRW")
+train36 = TrainPage("886","York","YRK")
+
+train37 = TrainPage("887","Gatwick Airport","GTW")
+train38 = TrainPage("889","Heathrow Airport (T4)","HAF")
+train39 = TrainPage("890","Heathrow Airport (T5)","HWV")
+train40 = TrainPage("891","Heathrow Airport (T1-3)","HXX")
+train41 = TrainPage("892","Luton Airport Parkway","LTN")
+train42 = TrainPage("893","Manchester Airport","MIA")
+train43 = TrainPage("894","Prestwick International Airport","PRA")
+train44 = TrainPage("895","Rhoose Cardiff International Airport","RIA")
+train45 = TrainPage("896","Southampton Airport Parkway","SOA")
+train46 = TrainPage("897","Southend Airport","SIA")
+train47 = TrainPage("898","Stanstead Airport","SSD")
+train48 = TrainPage("899","Tees-side Airport","TEA")
+
+class TrainIPage(Page):
     def __init__(self):
-        super(TVIPage, self).__init__("850")
+        super(TrainIPage, self).__init__("850")
         self.title = "Trains Index"
         self.importance = 1
 
@@ -228,4 +272,4 @@ class TVIPage(Page):
             else:
                 self.move_cursor(x=38)
 
-tp = TVIPage()
+tp = TrainIPage()
