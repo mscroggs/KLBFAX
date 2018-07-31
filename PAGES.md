@@ -41,7 +41,16 @@ Number & Page Name             Importance  File
 143 Playdays                            2  pages/kids.py  
 144 Crackerjack                         2  pages/kids.py  
 145 Paddington Bear                     2  pages/kids.py  
-160 Polybius Biotech                    5  pages/polybius_biotech.py  
+160 Jobs                                5  pages/polybius_biotech.py  
+161 Arcade helpers                      4  pages/emf_jobs.py  
+162                                     4  pages/emf_jobs.py  
+163                                     4  pages/emf_jobs.py  
+164                                     4  pages/emf_jobs.py  
+165                                     4  pages/emf_jobs.py  
+166                                     4  pages/emf_jobs.py  
+167                                     4  pages/emf_jobs.py  
+168                                     4  pages/emf_jobs.py  
+169                                     4  pages/emf_jobs.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
