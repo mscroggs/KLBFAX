@@ -78,6 +78,8 @@ class Page(object):
             from printer import size4_instance as prinstance
         elif font=="size4bold":
             from printer import size4bold_instance as prinstance
+        elif font=="size4mono":
+            from printer import size4mono_instance as prinstance
         else:
             raise ValueError("Undefined font.")
         title_block = prinstance.text_to_ascii(title,fill=fill)
@@ -94,6 +96,8 @@ class Page(object):
             from printer import size4_instance as prinstance
         elif font=="size4bold":
             from printer import size4bold_instance as prinstance
+        elif font=="size4mono":
+            from printer import size4mono_instance as prinstance
         else:
             raise ValueError("Undefined font.")
         title_block = prinstance.text_to_ascii(title, fill=fill)

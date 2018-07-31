@@ -3,6 +3,7 @@ import fonts.size7condensed.default
 import fonts.size7extracondensed.default
 import fonts.size4.default
 import fonts.size4bold.default
+import fonts.size4mono.default
 import fonts.exceptions
 import config
 from fonts.LetterBlock import LetterBlock
@@ -113,3 +114,6 @@ size4_instance.set_font(fonts.size4.default)
 
 size4bold_instance = Printer(size4_instance)
 size4bold_instance.set_font(fonts.size4bold.default)
+
+size4mono_instance = Printer()
+size4mono_instance.set_font(fonts.size4mono.default)

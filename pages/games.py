@@ -56,7 +56,9 @@ class CountdownLettersPage(Page):
         self.add_title("     letters game", font="size4")
 
         self.add_newline()
-        self.add_title(" ".join(self.letters),font="size4",fg="BLACK", bg="BRIGHTWHITE")
+        for i,l in enumerate(self.letters):
+            self.move_cursor(y=9,x=0)
+            self.add_title(l,font="size4mono",fg="BLUE", bg="BRIGHTWHITE",fill=False, pre=9*i)
 
         self.add_newline()
         self.add_text("Press + to reveal answers",fg="GREEN")
@@ -132,7 +134,12 @@ class CountdownNumbersPage(Page):
 
         self.add_newline()
         self.add_title(" TARGET: "+str(self.target),font="size4",fg="BLACK", bg="BRIGHTWHITE")
-        self.add_title(" ".join(str(i) for i in self.numbers),font="size4",fg="BLUE", bg="BRIGHTWHITE")
+        pre = 2
+        for i,n in enumerate(self.numbers):
+            self.move_cursor(x=0,y=14)
+            self.add_title("|"+str(n)+"|",font="size4",fg="BLUE", bg="BRIGHTWHITE",fill=False, pre=pre)
+            pre += width(n)+3
+            # self.add_title(" ".join(str(i) for i in self.numbers),font="size4",fg="BLUE", bg="BRIGHTWHITE")
 
         self.add_newline()
         self.add_text("Press + to reveal answers",fg="GREEN")
@@ -143,6 +150,14 @@ class CountdownNumbersPage(Page):
         self.add_reveal_text(self.best[1], wrapping=True)
         self.add_newline()
 
+def width(n):
+    out = 1
+    for digit in str(n):
+        if digit == "1":
+            out += 3
+        else:
+            out += 5
+    return out
 
 class IndexPage(Page):
     def __init__(self, *args):
