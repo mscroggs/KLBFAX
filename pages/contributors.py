@@ -84,14 +84,15 @@ class TeamPage(Page):
                             "b              g\n"
                             "g    w    w    g\n"
                             "g     wwww     g"],
-                ["Alan","  mmmmmmmmmmmm  \n"
-                        "mmmmmmmmmmmmmmmm\n"
-                        "mmmm        mmmm\n"
-                        "mmm          mmm\n"
-                        "mm   m    m   mm\n"
-                        "m              m\n"
-                        "m              m\n"
-                        "m     rrrrrr   m"]
+
+                ["Alan",    "  mmmmmmmmmmmm  \n"
+                            "mmmmmmmmmmmmmmmm\n"
+                            "mmmm        mmmm\n"
+                            "mmm          mmm\n"
+                            "mm   m    m   mm\n"
+                            "m              m\n"
+                            "m              m\n"
+                            "m     rrrrrr   m"]
 
             ]
         shuffle(team)
