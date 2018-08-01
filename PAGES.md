@@ -41,6 +41,8 @@ Number & Page Name             Importance  File
 143 Playdays                            2  pages/kids.py  
 144 Crackerjack                         2  pages/kids.py  
 145 Paddington Bear                     2  pages/kids.py  
+150 Puzzle                              3  pages/puzzles.py  
+151 Crossnumber                         3  pages/puzzles.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
 162                                     4  pages/emf_jobs.py  
