@@ -76,7 +76,10 @@ class CrosswordPage(Page):
             self.move_cursor(x=x)
             self.add_text(str(n)+" ",fg="GREEN")
             self.add_wrapped_text(clue,pre=x+2)
-
+        self.add_newline()
+        self.add_newline()
+        self.move_cursor(x=x)
+        self.add_text("Press + to reveal answer",fg="GREEN")
 
 
 page1 = CrosswordPage("150", "Crossword",
@@ -89,9 +92,17 @@ page1 = CrosswordPage("150", "Crossword",
     ["Pokemon rival.","Didn't do the murder because you were doing this instead.","Eat with this, or do it to a GitHub repository."])
 page1.in_index = True
 page1.index_num = "150-159"
-page1.title = "Puzzle"
+page1.title = "Puzzles"
 
-page2 = CrosswordPage("151", "Crossnumber",
+page2 = CrosswordPage("151", "Crossword",
+    "BASH\n"
+    "R  O\n"
+    "A  R\n"
+    "NOON",
+    ["Robot Wars sargeant.","Lunchtime."],
+    ["___ flakes, but not corn flakes.","French orchestra instrument."])
+
+page3 = CrosswordPage("152", "Crossnumber",
     "94749\n"
     "9 789\n"
     "95 49\n"
@@ -100,3 +111,11 @@ page2 = CrosswordPage("151", "Crossnumber",
     ["Palindrome.","Why is 6 afraid of 7?","","Square.","EMFFAX page that this puzzle is on.","Palindrome."],
     ["The sum of this number's digits is 37.","Multiple of 11.","Square.","Palindrome.","Start of made up phone number.","Factor of 2D."])
 
+
+page4 = CrosswordPage("153", "Regex crossword",
+    "DUCK\n"
+    "ANON\n"
+    "TILE\n"
+    "AXLE",
+    ["D.*U.*","[AEIOU][ON]*",".[ILP]*E*","[AD][XO][LI][ES]"],
+    ["[ADT]*","(UN|UK)(IX|VI)","C+O+L+","[^U]N+E+"])
