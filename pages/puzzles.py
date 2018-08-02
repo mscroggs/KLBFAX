@@ -1,8 +1,5 @@
 from page import Page
 
-
-
-
 class CrosswordPage(Page):
     def __init__(self, num, title, solution, aclues, dclues):
         super(CrosswordPage, self).__init__(num)
@@ -39,12 +36,12 @@ class CrosswordPage(Page):
                         numbers.append((2+7*j,6+4*i,n))
                         n += 1
                         done = True
-                        a_n.append(n-1)
+                        d_n.append(n-1)
                     if j < len(solution[0])-1 and (j==0 or solution[i][j-1]==" ") and solution[i][j+1]!=" ":
                         if not done:
                             numbers.append((2+7*j,6+4*i,n))
                             n += 1
-                        d_n.append(n-1)
+                        a_n.append(n-1)
                     newline += "kkkkk"
                 newline += "ww"
             out += (newline+"\n")*6
@@ -108,7 +105,7 @@ page3 = CrosswordPage("152", "Crossnumber",
     "95 49\n"
     "151 9\n"
     "95159",
-    ["Palindrome.","Why is 6 afraid of 7?","","Square.","EMFFAX page that this puzzle is on.","Palindrome."],
+    ["Palindrome.","Why is 6 afraid of 7?","5 less than a multiple of 10.","Square.","EMFFAX page that this puzzle is on.","Palindrome."],
     ["The sum of this number's digits is 37.","Multiple of 11.","Square.","Palindrome.","Start of made up phone number.","Factor of 2D."])
 
 
