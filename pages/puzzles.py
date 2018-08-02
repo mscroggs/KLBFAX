@@ -1,4 +1,5 @@
 from page import Page
+from random import choice
 
 class CrosswordPage(Page):
     def __init__(self, num, title, solution, aclues, dclues):
@@ -6,7 +7,6 @@ class CrosswordPage(Page):
         self.title = title
         self.display_title = title
         self.importance = 3
-        #self.index_num = "150-159"
         self.solution = solution
         self.aclues = aclues
         self.dclues = dclues
@@ -78,6 +78,100 @@ class CrosswordPage(Page):
         self.move_cursor(x=x)
         self.add_text("Press + to reveal answer",fg="GREEN")
 
+class SudokuPage(Page):
+    def __init__(self, num):
+        super(SudokuPage, self).__init__(num)
+        self.title = "Sudoku"
+        self.importance = 3
+
+    def background(self):
+        solution = [[0 for j in range(9)] for i in range(9)]
+        for i in range(9):
+            for j in range(9):
+                used = [solution[a][j] for a in range(i)]
+                used+= [solution[i][b] for b in range(j)]
+                used+= [solution[a][b] for a in range(i//3 * 3, i//3 * 3 + 3) for b in range(j//3 * 3,j//3 * 3 + 3)]
+                options = [a for a in range(1,10) if a not in used]
+                if len(options) == 0:
+                    self.background()
+                    return
+                solution[i][j] = choice(options)
+        self.solution = solution
+        self.given = [[False for j in range(9)] for i in range(9)]
+        calculated = [[None for j in range(9)] for i in range(9)]
+        while True:
+            possible = [(i,j) for i in range(9) for j in range(9) if calculated[i][j] is None]
+            if len(possible) == 0:
+                return
+            i,j = choice(possible)
+            self.given[i][j] = True
+            calculated[i][j] = solution[i][j]
+            for i in range(9):
+                for j in range(9):
+                    if calculated[i][j] is None:
+                        used = [calculated[a][j] for a in range(9)]
+                        used+= [calculated[i][b] for b in range(9)]
+                        used+= [calculated[a][b] for a in range(i//3 * 3, i//3 * 3 + 3) for b in range(j//3 * 3,j//3 * 3 + 3)]
+                        possible = [a for a in range(1,10) if a not in used]
+                        if len(possible) == 1:
+                            calculated[i][j] = possible[0]
+
+
+    def generate_content(self):
+        self.add_title("Sudoku", font="size4")
+        self.print_image(
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "w---w---w---ww---w---w---ww---w---w---w\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+                "wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww",5,2
+            )
+
+        for i in range(9):
+            for j in range(9):
+                self.move_cursor(x=4+4*i+i//3,y=6+j*2+j//3)
+                if self.given[i][j]:
+                    self.add_text(str(self.solution[i][j]))
+                else:
+                    self.add_reveal_text(str(self.solution[i][j]))
+
 
 page1 = CrosswordPage("150", "Crossword",
     "GOAT \n"
@@ -116,3 +210,5 @@ page4 = CrosswordPage("153", "Regex crossword",
     "AXLE",
     ["D.*U.*","[AEIOU][ON]*",".[ILP]*E*","[AD][XO][LI][ES]"],
     ["[ADT]*","(UN|UK)(IX|VI)","C+O+L+","[^U]N+E+"])
+
+page5 = SudokuPage("154")

@@ -45,6 +45,7 @@ Number & Page Name             Importance  File
 151 Crossword                           3  pages/puzzles.py  
 152 Crossnumber                         3  pages/puzzles.py  
 153 Regex crossword                     3  pages/puzzles.py  
+154 Sudoku                              3  pages/puzzles.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
 162                                     4  pages/emf_jobs.py  
