@@ -173,8 +173,8 @@ class PageManager:
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES_WANTED.md")) as f:
             for line in f:
                 if " " in line:
-                    n = line.split(" ",2)[0]
-                    desc = line.split(" ",2)[1].strip("\n")
+                    n = line.split(" ",1)[0]
+                    desc = line.split(" ",1)[1].strip("\n")
                     if "-" in n:
                         ls = range(int(n.split("-")[0]),int(n.split("-")[1])+1)
                     else:
