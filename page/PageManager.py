@@ -168,15 +168,36 @@ class PageManager:
             f.write("  \n".join(ls))
 
         git_list = {str(i):"" for i in range(100,1000)}
+        git_done = {str(i):False for i in range(100,1000)}
+
+        with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../PAGES_WANTED.md")) as f:
+            for line in f:
+                if " " in line:
+                    n = line.split(" ",2)[0]
+                    desc = line.split(" ",2)[1].strip("\n")
+                    if "-" in n:
+                        ls = range(int(n.split("-")[0]),int(n.split("-")[1])+1)
+                    else:
+                        ls = [int(n)]
+                    for i in ls:
+                        git_list[str(i)] = desc
+
         for page_num, page in items:
             git_list[str(page_num)] = page.title
+            git_done[str(page_num)] = True
         out = ""
         for p in sorted(git_list):
             q = git_list[p]
-            if q == "":
-                out += "- [ ] "+p+" ???"
+            out += "- "
+            if git_done[p]:
+                out += "[x]"
             else:
-                out += "- [x] "+p+" "+q
+                out += "[ ]"
+            out += " "+p+" "
+            if q == "":
+                out += "???"
+            else:
+                out += q
             out += "\n"
         with open(os.path.join(os.path.dirname(os.path.realpath(__file__)), "../list_for_git_issue"),"w") as f:
             f.write(out)

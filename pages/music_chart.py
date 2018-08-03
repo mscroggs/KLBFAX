@@ -38,4 +38,5 @@ class ChartPage(Page):
 page1 = ChartPage(337, "UK Top 40", "http://www.uktop40.co.uk/official_top_40.rss")
 page2 = ChartPage(338, "UK Top 40 Albums", "http://www.uktop40.co.uk/official_top_40_albums.rss")
 page1.title = "Music"
+page1.in_index = True
 page1.index_num = "337-339"

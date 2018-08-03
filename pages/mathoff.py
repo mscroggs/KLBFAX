@@ -4,7 +4,7 @@ from helpers.url_handler import load_json
 
 class MathOffPage(Page):
     def __init__(self):
-        super(MathOffPage, self).__init__("107")
+        super(MathOffPage, self).__init__("148")
         self.title = "Big Internet Math-Off"
         self.in_index=False
         self.importance = 3
@@ -184,5 +184,5 @@ class TwitterPage(Page):
             self.add_newline()
             self.add_newline()
 
-tpage = TwitterPage("108")
+tpage = TwitterPage("149")
 

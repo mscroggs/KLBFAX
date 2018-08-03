@@ -6,6 +6,7 @@ class CrosswordPage(Page):
         super(CrosswordPage, self).__init__(num)
         self.title = title
         self.display_title = title
+        self.in_index = False
         self.importance = 3
         self.solution = solution
         self.aclues = aclues

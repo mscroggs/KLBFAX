@@ -13,8 +13,6 @@ Number & Page Name             Importance  File
 104 Article of the Day                  1  pages/wiki.py  
 105 Did you know...                     1  pages/wiki.py  
 106 New on Wikipedia                    1  pages/wiki.py  
-107 Big Internet Math-Off               3  pages/mathoff.py  
-108 #bigmathoff                         2  pages/mathoff.py  
 120 Countdowns                          2  pages/countdown.py  
 121 Countdowns                          2  pages/countdown.py  
 122 Countdowns                          2  pages/countdown.py  
@@ -41,6 +39,8 @@ Number & Page Name             Importance  File
 143 Playdays                            2  pages/kids.py  
 144 Crackerjack                         2  pages/kids.py  
 145 Paddington Bear                     2  pages/kids.py  
+148 Big Internet Math-Off               3  pages/mathoff.py  
+149 #bigmathoff                         2  pages/mathoff.py  
 150 Puzzles                             3  pages/puzzles.py  
 151 Crossword                           3  pages/puzzles.py  
 152 Crossnumber                         3  pages/puzzles.py  
@@ -48,14 +48,14 @@ Number & Page Name             Importance  File
 154 Sudoku                              3  pages/puzzles.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
-162                                     4  pages/emf_jobs.py  
-163                                     4  pages/emf_jobs.py  
-164                                     4  pages/emf_jobs.py  
-165                                     4  pages/emf_jobs.py  
-166                                     4  pages/emf_jobs.py  
-167                                     4  pages/emf_jobs.py  
-168                                     4  pages/emf_jobs.py  
-169                                     4  pages/emf_jobs.py  
+162 EMF Job 2                           4  pages/emf_jobs.py  
+163 EMF Job 3                           4  pages/emf_jobs.py  
+164 EMF Job 4                           4  pages/emf_jobs.py  
+165 EMF Job 5                           4  pages/emf_jobs.py  
+166 EMF Job 6                           4  pages/emf_jobs.py  
+167 EMF Job 7                           4  pages/emf_jobs.py  
+168 EMF Job 8                           4  pages/emf_jobs.py  
+169 EMF Job 9                           4  pages/emf_jobs.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
