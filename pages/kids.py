@@ -11,13 +11,13 @@ class CBBCPage(Page):
         self.importance = 3
 
     def generate_content(self):
-        self.add_title("|C|",fill=False,bg="YELLOW",fg="BLACK")
+        self.add_title("|C|",fill=False,bg="YELLOW",fg="BLACK",pre=1)
         self.move_cursor(y=0)
-        self.add_title("|B|",fill=False,fg="YELLOW",bg="BLACK", pre=13)
+        self.add_title("|B|",fill=False,fg="YELLOW",bg="BLACK", pre=12)
         self.move_cursor(y=0)
-        self.add_title("|B|",fill=False,fg="YELLOW",bg="BLACK", pre=26)
+        self.add_title("|B|",fill=False,fg="YELLOW",bg="BLACK", pre=24)
         self.move_cursor(y=0)
-        self.add_title("|C|",fill=False,fg="YELLOW",bg="BLACK", pre=40)
+        self.add_title("|C|",fill=False,fg="YELLOW",bg="BLACK", pre=36)
 
         self.add_newline()
         self.add_text("131 ",fg="MAGENTA")

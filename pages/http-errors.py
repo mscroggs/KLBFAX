@@ -40,7 +40,9 @@ class httpPage(Page):
                          "bbbb----------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb--------\n"
                          "bbbb------------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb----------\n"
                          "bbbbb-------------bbbbbbbbbbbbbbbbbbbbbbbbbbbb-------------\n"
-                         "--bbbbbbb--bbbbbb------bbbbbbbbbbbbbbbbbbb-----------------",random.randrange(5,15),random.randrange(0,20))
+                         "--bbbbbbb--bbbbbb------bbbbbbbbbbbbbbbbbbb-----------------\n"
+                         "----bbbbbbbbbbb----------------bbbbb-----------------------\n"
+                         "--------bbbb-----------------------------------------------",random.randrange(5,15),random.randrange(0,20))
 
 
 p1 = httpPage("400","Bad Request")

@@ -17,6 +17,8 @@ class PolybPage(Page):
                        "----oooo----oooo--oo\n"
                        "------oooooooo----oo\n"
                        "--------oooo------oo\n"
+                       "------------------oo\n"
+                       "------------------oo\n"
                        "----------------oooo\n"
                        "--------------oooooo\n"
                        "oo----------oooo----\n"
