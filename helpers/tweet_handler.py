@@ -14,5 +14,5 @@ def login():
 def search(q):
     twapi = login()
 
-    results = twapi.search.tweets(q=q, result_type="recent")
+    results = twapi.search.tweets(q=q, result_type="recent", tweet_mode="extended")
     return results["statuses"]

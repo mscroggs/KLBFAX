@@ -35,20 +35,21 @@ class TwitterPage(Page):
             self.lines = []
 
             for tweet in results:
-                col = choice(non_dark_colors)
-                text = tweet["text"]
-                while "http" in text:
-                    tsp = text.split("http",1)
-                    text = tsp[0] + "<url>"
-                    if " " in tsp[1]:
-                        text += tsp[1].split(" ",1)[1]
-                if text[:8] == "@EMFFAX ":
-                    text = text[8:]
-                text = text.replace("@EMFFAX","EMFFAX")
-                for i in range(0,len(text),80):
-                    self.lines.append((text[i:i+80],col,False))
-                self.lines.append(("@" + tweet["user"]["screen_name"] + " " + " ".join(tweet["user"]["created_at"].split(" ")[:4]),col,True))
-                self.lines.append(("",col,True))
+                if "retweeted_status" not in tweet:
+                    col = choice(non_dark_colors)
+                    text = tweet["text"]
+                    while "http" in text:
+                        tsp = text.split("http",1)
+                        text = tsp[0] + "<url>"
+                        if " " in tsp[1]:
+                            text += tsp[1].split(" ",1)[1]
+                    if text[:8] == "@EMFFAX ":
+                        text = text[8:]
+                    text = text.replace("@EMFFAX","EMFFAX")
+                    for i in range(0,len(text),80):
+                        self.lines.append((text[i:i+80],col,False))
+                    self.lines.append(("@" + tweet["user"]["screen_name"] + " " + " ".join(tweet["user"]["created_at"].split(" ")[:4]),col,True))
+                    self.lines.append(("",col,True))
 
     def generate_content(self):
         self.add_title("Have your say",font="size4")

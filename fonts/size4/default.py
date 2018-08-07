@@ -48,6 +48,13 @@ xx',x
 xxxxx
 """)
 
+_add("#", """
+x'x'xx
+, , ,x
+, , ,x
+xxxxxx
+""")
+
 _add(":", """
 xx
 'x
