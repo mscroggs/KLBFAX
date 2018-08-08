@@ -57,7 +57,7 @@ class NewsroundPage(Page):
             self.entries = []
 
     def generate_content(self):
-        self.add_title("Newsround",bg="MAGENTA",fg="YELLOW",font="size4")
+        self.add_title("Newsround",bg="MAGENTA",fg="YELLOW",font="size4bold")
         self.add_newline()
         for title,desc in self.entries:
             self.add_text(title,fg="YELLOW")

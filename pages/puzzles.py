@@ -379,6 +379,82 @@ def width(n):
             out += 5
     return out
 
+class GridPuzzlePage(Page):
+    def __init__(self, num, solution, totals, across, down):
+        super(GridPuzzlePage, self).__init__(num)
+        self.title = "Grid Puzzle"
+        self.solution = solution
+        self.across = across
+        self.down = down
+        self.totals = totals
+
+    def generate_content(self):
+        self.add_title("Grid Puzzle",font="size4")
+        self.print_image(
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "-----------------\n"
+                        "-----------------\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "-----------------\n"
+                        "-----------------\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "ww-ww-ww-ww-ww-ww\n"
+                        "wwwww-wwwww-wwwww\n"
+                        "wwwww-wwwww-wwwww",5,3)
+
+        for i,s in enumerate(self.solution):
+            self.move_cursor(y=6+4*(i//3),x=5+6*(i%3))
+            self.add_reveal_text(str(s))
+
+        for i,s in enumerate(self.across):
+            self.move_cursor(y=6+4*(i//2),x=8+6*(i%2))
+            if s == "*":
+                self.add_text("×")
+            elif s == "/":
+                self.add_text("÷")
+            else:
+                self.add_text(s)
+
+        for i,s in enumerate(self.down):
+            self.move_cursor(y=8+4*(i%2),x=5+6*(i//2))
+            if s == "*":
+                self.add_text("×")
+            elif s == "/":
+                self.add_text("÷")
+            else:
+                self.add_text(s)
+
+        for i,s in enumerate(self.totals[:3]):
+            self.move_cursor(y=6+4*i,x=20)
+            self.add_text("= "+str(s))
+
+        for i,s in enumerate(self.totals[3:]):
+            self.move_cursor(y=16,x=5+6*i)
+            self.add_text("=")
+            self.move_cursor(y=17,x=5+6*i)
+            self.add_text(str(s))
+
+        self.move_cursor(y=5,x=27)
+        self.add_wrapped_text("Put the digits 1 to 9 (using each digit exactly once)"
+                              "in the boxes so that the sums are correct. The sums  "
+                              "should be read left to right and top to bottom       "
+                              "ignoring the usual order of operations. For example, "
+                              "4+3×2 is 14, not 10.", pre=27)
+
+        self.move_cursor(y=10,x=27)
+        self.add_wrapped_text("Press + to reveal the solution.", fg="GREEN")
 
 class IndexPage(Page):
     def __init__(self, num):
@@ -396,8 +472,8 @@ class IndexPage(Page):
             ("155","Sudoku"),
             ("156","Countdown Letters Game"),
             ("157","Countdown Numbers Game"),
-            ("158","???"),
-            ("159","???"),
+            ("158","Grid puzzle 1"),
+            ("159","Grid puzzle 2"),
                 ]:
             self.add_text(n,fg="GREEN")
             self.add_text(" "+title)
@@ -443,6 +519,5 @@ page4 = CrosswordPage("154", "Regex crossword",
 page5 = SudokuPage("155")
 page6 = CountdownLettersPage("156")
 page7 = CountdownNumbersPage("157")
-
-
-
+page8 = GridPuzzlePage("158",[2,5,9, 4,3,7, 8,6,1],[90,84,48,64,90,63],["*","*", "*","*" ,"*","*"],["*","*", "*","*" ,"*","*"])
+page9 = GridPuzzlePage("159",[5,3,9, 7,1,6, 8,4,2],[17,1,0,4,12,27],["+","+", "/","-" ,"/","-"],["+","-", "/","*" ,"*","/"])
