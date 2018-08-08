@@ -109,7 +109,7 @@ class TVIPage(Page):
         self.importance = 1
 
     def generate_content(self):
-        self.add_title("TV & Radio")
+        self.add_title("TV")
 
         for i,page in enumerate(pages):
             self.add_text(page[0], fg="RED")
