@@ -32,16 +32,20 @@ timezone = _pytz.timezone('Europe/London')
 def now():
     return _pytz.utc.localize(_dt.now()).astimezone(timezone)
 
-title = """
-0000000000000000000             000000000       000000000
-000000000000      0               0     0         0     0
-000000000000  00000 0000000000000 0  0000 0000000 0  0  0 0000000000000000000000
-000000000000    000 0    000    0 0    00 0     0 0     0 0  0  0000000000000000
-000000000000  00000 0  0  0  0  0 0  0000 0  0000 0  0  0 0  0  0000000000000000
-000000000000      0 0  00   00  0 0  0000 0    00 0  0  0 00   00000000000000000
-0000000000000000000 0  0000000  0 0000000 0  0000 0000000 0  0  0000000000000000
-                    0  0000000  0         0  0000         0  0  0000000000000000
-                  000000000000000       000000000       000000000000000000000000"""
+title =("yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
+        "yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
+        "yyyyyyyyyyyyyy      y          y     y         y     y                          \n"
+        "yyyyyyyyyyyyyy  yyyyy yyyyyyyy y  yyyy yyyyyyy y  yy y yyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyy    yyy yyyyyyyy y    yy yyyyyyy y     y yyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyy  yyyyy y   y  y y  yyyy y     y y  yy y y  y  yyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyy      y y      y y  yyyy y  yyyy y  yy y y  y  yyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyyyyyyyyy y  y y y yyyyyyy y    yy yyyyyyy yy   yyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyyyyyyyyy y  yyy y yyyyyyy y  yyyy yyyyyyy y  y  yyyyyyyyyyyyyyyyyyy\n"
+        "                      y  yyy y         y  yyyy         y  y  yyyyyyyyyyyyyyyyyyy\n"
+        "                   yyyyyyyyyyy      yyyyyyyyyy      yyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "                   yyyyyyyyyyy      yyyyyyyyyy      yyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+
+title = "b".join(title.split(" "))
 
 twitter_access_key = None
 twitter_access_secret = None

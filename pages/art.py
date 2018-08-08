@@ -296,7 +296,7 @@ class SqPage(Page):
         self.add_title(a[0])
         self.add_block(a[1],a[2])
 
-page1 = MonaLisaPage("272","272-278")
+page1 = MonaLisaPage("272","272-299")
 page2 = VenusPage("273")
 page3 = JigPage("274")
 page4 = SoupPage("275")

@@ -7,7 +7,7 @@ class CBBCPage(Page):
     def __init__(self):
         super(CBBCPage, self).__init__("130")
         self.title = "CBBC"
-        self.index_num = "130-145"
+        self.index_num = "130-147"
         self.importance = 3
 
     def generate_content(self):

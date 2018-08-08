@@ -13,6 +13,19 @@ Number & Page Name             Importance  File
 104 Article of the Day                  1  pages/wiki.py  
 105 Did you know...                     1  pages/wiki.py  
 106 New on Wikipedia                    1  pages/wiki.py  
+107 Horoscope                           2  pages/horoscore.py  
+108 Aries                               2  pages/horoscore.py  
+109 Taurus                              2  pages/horoscore.py  
+110 Gemini                              2  pages/horoscore.py  
+111 Cancer                              2  pages/horoscore.py  
+112 Leo                                 2  pages/horoscore.py  
+113 Virgo                               2  pages/horoscore.py  
+114 Libra                               2  pages/horoscore.py  
+115 Scorpio                             2  pages/horoscore.py  
+116 Sagittarius                         2  pages/horoscore.py  
+117 Capricorn                           2  pages/horoscore.py  
+118 Aquarius                            2  pages/horoscore.py  
+119 Pisces                              2  pages/horoscore.py  
 120 Countdowns                          2  pages/countdown.py  
 121 Countdowns                          2  pages/countdown.py  
 122 Countdowns                          2  pages/countdown.py  
@@ -49,16 +62,10 @@ Number & Page Name             Importance  File
 155 Sudoku                              3  pages/puzzles.py  
 156 Countdown Letters Game              4  pages/puzzles.py  
 157 Countdown Numbers Game              4  pages/puzzles.py  
+158 Grid Puzzle                         2  pages/puzzles.py  
+159 Grid Puzzle                         2  pages/puzzles.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
-162 EMF Job 2                           4  pages/emf_jobs.py  
-163 EMF Job 3                           4  pages/emf_jobs.py  
-164 EMF Job 4                           4  pages/emf_jobs.py  
-165 EMF Job 5                           4  pages/emf_jobs.py  
-166 EMF Job 6                           4  pages/emf_jobs.py  
-167 EMF Job 7                           4  pages/emf_jobs.py  
-168 EMF Job 8                           4  pages/emf_jobs.py  
-169 EMF Job 9                           4  pages/emf_jobs.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
@@ -227,12 +234,12 @@ Number & Page Name             Importance  File
 630 Tomorrow's TV: Challenge            1  pages/tv.py  
 631 Tomorrow's TV: BBC News             1  pages/tv.py  
 632 Tomorrow's TV: BBC Parliament       1  pages/tv.py  
-670 Tube Line Status                    2  pages/tubestatus.py  
 700 EMF Information                     2  pages/emf.py  
 701 List of Villages                    3  pages/emf.py  
 702 List of Teams                       3  pages/emf.py  
 703 EMF site map                        5  pages/emf_map.py  
 777 Contributors                        3  pages/contributors.py  
+849 Tube Line Status                    2  pages/tubestatus.py  
 850 Trains                              1  pages/trains.py  
 851 Milton Keynes Trains                3  pages/trains.py  
 852 Bletchley Trains                    3  pages/trains.py  

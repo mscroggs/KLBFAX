@@ -383,6 +383,7 @@ class GridPuzzlePage(Page):
     def __init__(self, num, solution, totals, across, down):
         super(GridPuzzlePage, self).__init__(num)
         self.title = "Grid Puzzle"
+        self.in_index = False
         self.solution = solution
         self.across = across
         self.down = down

@@ -9,7 +9,7 @@ class IndexPage(Page):
         self.title = "Index"
 
     def generate_content(self):
-        self.add_block(config.title, "YELLOW", bg="BLUE")
+        self.print_image(config.title)
         self.start_fg_color("GREEN")
         self.add_text("INDEX "*14)
         self.add_newline()
