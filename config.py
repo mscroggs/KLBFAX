@@ -25,12 +25,9 @@ default_page_duration_sec = int(_os.getenv('default_page_duration_sec', 30))
 NAME = "EMFFAX"
 
 from datetime import datetime as _dt
-import pytz as _pytz
-
-timezone = _pytz.timezone('Europe/London')
 
 def now():
-    return _pytz.utc.localize(_dt.now()).astimezone(timezone)
+    return _dt.now()
 
 title =("yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
         "yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
