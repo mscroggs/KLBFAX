@@ -5,6 +5,16 @@ from error import error_list
 
 WARNING_USED = False
 
+color_codes = {"k": "BLACK",  "K": "GREY",
+               "r": "RED",    "R": "LIGHTRED",
+               "o": "ORANGE", "y": "YELLOW",
+               "g": "GREEN",  "G": "LIGHTGREEN",
+               "c": "CYAN",   "C": "LIGHTCYAN",
+               "b": "BLUE",   "B": "LIGHTBLUE",
+               "m": "MAGENTA","p": "PINK",
+               "w": "WHITE",  "W": "BRIGHTWHITE",
+               "d": "DEFAULT","-": "BLACK"}
+
 class Dummy(object):
     def __init__(self, number="???"):
         self.number = number
@@ -35,6 +45,10 @@ class Page(object):
         self.duration_sec = config.default_page_duration_sec
         self.exception = None
         self.cupt = Dummy(self.number)
+
+    def plot(self, *args, **kwargs):
+        from ceegraph import plot as ceeplot
+        ceeplot(self, *args, **kwargs)
 
     def move_cursor(self, x=None, y=None):
         self.cupt.move_cursor(x=x,y=y)
@@ -68,6 +82,8 @@ class Page(object):
         self.cupt.add_block(block, *args, bg=bg)
 
     def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0, fill=True):
+        if fg in color_codes: fg = color_codes[fg]
+        if bg in color_codes: bg = color_codes[bg]
         if font=="size7":
             from printer import instance as prinstance
         elif font=="size7condensed":
@@ -104,6 +120,8 @@ class Page(object):
         self.cupt.add_blocked_block(title_block, rainbow=True,pre=pre)
 
     def add_text(self, text, fg=None, bg=None):
+        if fg in color_codes: fg = color_codes[fg]
+        if bg in color_codes: bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -115,6 +133,8 @@ class Page(object):
             self.end_bg_color()
 
     def add_reveal_text(self, text, fg=None, bg=None, show=False, wrapping=False):
+        if fg in color_codes: fg = color_codes[fg]
+        if bg in color_codes: bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -146,6 +166,8 @@ class Page(object):
         self.cupt.add_newline()
 
     def add_wrapped_text(self, text, pre=0, fg=None, bg=None):
+        if fg in color_codes: fg = color_codes[fg]
+        if bg in color_codes: bg = color_codes[bg]
         if fg is not None:
             self.start_fg_color(fg)
         if bg is not None:
@@ -158,15 +180,6 @@ class Page(object):
 
     def print_image(self,image,y_coord=0,x_coord=0):
         self.move_cursor(y=y_coord,x=x_coord)
-        color_codes = {"k": "BLACK",  "K": "GREY",
-                       "r": "RED",    "R": "LIGHTRED",
-                       "o": "ORANGE", "y": "YELLOW",
-                       "g": "GREEN",  "G": "LIGHTGREEN",
-                       "c": "CYAN",   "C": "LIGHTCYAN",
-                       "b": "BLUE",   "B": "LIGHTBLUE",
-                       "m": "MAGENTA","p": "PINK",
-                       "w": "WHITE",  "W": "BRIGHTWHITE",
-                       "d": "DEFAULT","-": "BLACK"}
         lines = image.split("\n")
         for l in range(len(lines)//2):
             for c in range(len(lines[2*l])):
@@ -180,15 +193,6 @@ class Page(object):
             self.move_cursor(y=y_coord + l+1, x=x_coord)
 
     def four_to_one(self, four):
-        color_codes = {"k": "BLACK",  "K": "GREY",
-                       "r": "RED",    "R": "LIGHTRED",
-                       "o": "ORANGE", "y": "YELLOW",
-                       "g": "GREEN",  "G": "LIGHTGREEN",
-                       "c": "CYAN",   "C": "LIGHTCYAN",
-                       "b": "BLUE",   "B": "LIGHTBLUE",
-                       "m": "MAGENTA","p": "PINK",
-                       "w": "WHITE",  "W": "BRIGHTWHITE",
-                       "d": "DEFAULT","-": "BLACK"}
         n = {i:0 for i in color_codes}
         for i in four:
             if i not in n:
