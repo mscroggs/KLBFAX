@@ -6,6 +6,7 @@ Number & Page Name             Importance  File
 (001 Unicode Test Page)                 2  pages/unicode.py  
 (002 Error log)                         2  pages/errors.py  
 (003 License)                           2  pages/license.py  
+004 GRAPH TEST                          2  pages/graph_test.py  
 100 Index                               5  pages/index.py  
 101 Trivia                              2  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  

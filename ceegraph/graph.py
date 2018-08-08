@@ -5,8 +5,8 @@ def intf(n):
     return int(floor(n))
 
 
-def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="y", width=config.WIDTH, height=config.HEIGHT,
-         xtitle="", ytitle="", xmin=None, xmax=None, ymin=None, ymax=None, drawline=True):
+def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=config.WIDTH, height=config.HEIGHT,
+         xtitle="", ytitle="", xmin=None, xmax=None, ymin=None, ymax=None):
     if xmin is None:
         xmin = min(xs)
     if xmax is None:
@@ -31,17 +31,28 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="y", width=co
     for i in range(2,width):
         canvas[-3][i] = axis
 
-    ticks = max(width,height*2)
-    for x1,x2,y1,y2 in zip(xs[:-1],xs[1:],ys[:-1],ys[1:]):
-        for i in range(ticks+1):
-            px = x1+(x2-x1)*i/ticks
-            py = y1+(y2-y1)*i/ticks
-            canx,cany = get_canvas_pos(px,py)
-            canvas[cany][canx] = line
+    if line is not None:
+        ticks = max(width,height*2)
+        for x1,x2,y1,y2 in zip(xs[:-1],xs[1:],ys[:-1],ys[1:]):
+            for i in range(ticks+1):
+                px = x1+(x2-x1)*i/ticks
+                py = y1+(y2-y1)*i/ticks
+                canx,cany = get_canvas_pos(px,py)
+                canvas[cany][canx] = line
 
-    for px, py in zip(xs,ys):
-        canx,cany = get_canvas_pos(px,py)
-        canvas[cany][canx] = point
+    if point is not None:
+        for px, py in zip(xs,ys):
+            canx,cany = get_canvas_pos(px,py)
+            try:    canvas[cany][canx] = point
+            except: pass
+            try:    canvas[cany+1][canx+1] = point
+            except: pass
+            try:    canvas[cany+1][canx-1] = point
+            except: pass
+            try:    canvas[cany-1][canx+1] = point
+            except: pass
+            try:    canvas[cany-1][canx-1] = point
+            except: pass
 
     self.print_image("\n".join("".join(i for i in j) for j in canvas),y,x)
 

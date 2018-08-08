@@ -29,20 +29,19 @@ from datetime import datetime as _dt
 def now():
     return _dt.now()
 
-title =("yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
-        "yyyyyyyyyyyyyyyyyyyyy       yyyyyyyyyy      yyyyyyyyyy                          \n"
-        "yyyyyyyyyyyyyy      y          y     y         y     y                          \n"
-        "yyyyyyyyyyyyyy  yyyyy yyyyyyyy y  yyyy yyyyyyy y  yy y yyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyy    yyy yyyyyyyy y    yy yyyyyyy y     y yyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyy  yyyyy y   y  y y  yyyy y     y y  yy y y  y  yyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyy      y y      y y  yyyy y  yyyy y  yy y y  y  yyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyyyyyyyyy y  y y y yyyyyyy y    yy yyyyyyy yy   yyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyyyyyyyyy y  yyy y yyyyyyy y  yyyy yyyyyyy y  y  yyyyyyyyyyyyyyyyyyy\n"
-        "                      y  yyy y         y  yyyy         y  y  yyyyyyyyyyyyyyyyyyy\n"
-        "                   yyyyyyyyyyy      yyyyyyyyyy      yyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "                   yyyyyyyyyyy      yyyyyyyyyy      yyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+title =("yyyyyyyyyyyyyyyyyyyyy-------yyyyyyyyyy------yyyyyyyyyy--------------------------\n"
+        "yyyyyyyyyyyyyyyyyyyyy-------yyyyyyyyyy------yyyyyyyyyy--------------------------\n"
+        "yyyyyyyyyyyyyybbbbbby----------ybbbbby---------ybbbbby--------------------------\n"
+        "yyyyyyyyyyyyyybbyyyyy-yyyyyyyy-ybbyyyy-yyyyyyy-ybbyyby-yyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyybbbbyyy-yyyyyyyy-ybbbbyy-yyyyyyy-ybbbbby-yyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyybbyyyyy-ybbbybby-ybbyyyy-ybbbbby-ybbyyby-ybbybbyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyybbbbbby-ybbbbbby-ybbyyyy-ybbyyyy-ybbyyby-ybbybbyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyyyyyyyyy-ybbybyby-yyyyyyy-ybbbbyy-yyyyyyy-yybbbyyyyyyyyyyyyyyyyyyyy\n"
+        "yyyyyyyyyyyyyyyyyyyyy-ybbyyyby-yyyyyyy-ybbyyyy-yyyyyyy-ybbybbyyyyyyyyyyyyyyyyyyy\n"
+        "----------------------ybbyyyby---------ybbyyyy---------ybbybbyyyyyyyyyyyyyyyyyyy\n"
+        "-------------------yyyyyyyyyyy------yyyyyyyyyy------yyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+        "-------------------yyyyyyyyyyy------yyyyyyyyyy------yyyyyyyyyyyyyyyyyyyyyyyyyyyy")
 
-title = "b".join(title.split(" "))
 
 twitter_access_key = None
 twitter_access_secret = None
