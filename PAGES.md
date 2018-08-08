@@ -41,13 +41,14 @@ Number & Page Name             Importance  File
 145 Paddington Bear                     2  pages/kids.py  
 148 Big Internet Math-Off               3  pages/mathoff.py  
 149 #bigmathoff                         2  pages/mathoff.py  
-150 Puzzles                             3  pages/puzzles.py  
+150 Puzzles                             2  pages/puzzles.py  
 151 Crossword                           3  pages/puzzles.py  
-152 Crossnumber                         3  pages/puzzles.py  
-153 Regex crossword                     3  pages/puzzles.py  
-154 Sudoku                              3  pages/puzzles.py  
-155 Countdown Letters Game              4  pages/games.py  
-156 Countdown Numbers Game              4  pages/games.py  
+152 Crossword                           3  pages/puzzles.py  
+153 Crossnumber                         3  pages/puzzles.py  
+154 Regex crossword                     3  pages/puzzles.py  
+155 Sudoku                              3  pages/puzzles.py  
+156 Countdown Letters Game              4  pages/puzzles.py  
+157 Countdown Numbers Game              4  pages/puzzles.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
 162 EMF Job 2                           4  pages/emf_jobs.py  

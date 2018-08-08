@@ -165,10 +165,10 @@ xx,,xxx
 """)
 
 _add("V", """
-'xxxx'x
- xxxx x
-,'xx',x
-xx,,xxx
+x'xxx'x
+x xxx x
+x x',xx
+xx,xxxx
 """)
 
 _add("W", """
