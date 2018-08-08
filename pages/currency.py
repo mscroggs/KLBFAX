@@ -15,23 +15,27 @@ class CurrencyPage(Page):
         self.c2 = c2
 
     def background(self):
-        import feedparser
-        rss_url = self.url
-        feed = feedparser.parse(rss_url)
-        s = feed["entries"][0]["summary"]
-        self.a = s.split("<br")[0].split("=")[1]
-        while self.a[0] == " ":
-            self.a = self.a[1:]
-        self.a = self.a.split(" ")[0]
-        self.b = s.split("<br")[1].split("=")[1]
-        while self.b[0] == " ":
-            self.b = self.b[1:]
-        self.b = self.b.split(" ")[0]
+        if self.c1[0] != self.c2[0]:
+            import feedparser
+            rss_url = self.url
+            feed = feedparser.parse(rss_url)
+            s = feed["entries"][0]["summary"]
+            self.a = s.split("<br")[0].split("=")[1]
+            while self.a[0] == " ":
+                self.a = self.a[1:]
+            self.a = self.a.split(" ")[0]
+            self.b = s.split("<br")[1].split("=")[1]
+            while self.b[0] == " ":
+                self.b = self.b[1:]
+            self.b = self.b.split(" ")[0]
+        else:
+            self.a = "1"
+            self.b = "1"
 
     def generate_content(self):
         self.add_title(self.top_title,bg="BLACK",fg="RED",font='size4')
         self.add_title(self.c1[1]+"1"+self.c1[2]+" = "+self.c2[1]+self.a+self.c2[2],font='size4',fg="BLACK",bg="YELLOW")
-        self.add_title(self.c2[1]+"1"+self.c2[2]+" = "+self.c1[1]+self.b+self.c1[2],font='size4',fg="BLACK",bg="BLUE")
+        self.add_title(self.c2[1]+"1"+self.c2[2]+" = "+self.c1[1]+self.b+self.c1[2],font='size4',fg="BLACK",bg="LIGHTBLUE")
 
 class IndexPage(Page):
     def __init__(self, page_num, pagelist):
@@ -41,7 +45,7 @@ class IndexPage(Page):
         self.title = "Currency Conversion"
 
     def generate_content(self):
-        self.add_title("Currencies",bg="BLACK",fg="LIGHTRED",font='size4')
+        self.add_title("Currencies",bg="BLACK",fg="LIGHTRED",font='size4bold')
         c1 = None
         x = 0
         y = 4
@@ -51,14 +55,14 @@ class IndexPage(Page):
             d = self.pagelist[page]
             if c1 != d[0][3]:
                 c1 = d[0][3]
-                y += 2
-                if y>26:
+                y += 1
+                if y>25:
                     y = 4
                     x += 28
                 self.move_cursor(x=x,y=y)
                 self.add_text(c1,fg="YELLOW")
             y += 1
-            if y>27:
+            if y>26:
                 y = 4
                 x += 28
             self.move_cursor(x=x,y=y)
@@ -75,7 +79,8 @@ currencies = [
         ("NOK","","kr","Norwegian Krone"),
         ("VND","₫","","Vietnam Dong"),
         ("RUB","","₽","Russian Rouble"),
-        ("CHF","Fr.","","Swiss Franc")
+        ("CHF","Fr.","","Swiss Franc"),
+        ("GBP","SCOT£","","Scottish Pound")
     ]
 
 pagelist = {}
@@ -87,4 +92,4 @@ for i,a in enumerate(currencies):
         pn += 1
 
 index = IndexPage(340, pagelist)
-index.index_num = "340-386"
+index.index_num = "340-396"
