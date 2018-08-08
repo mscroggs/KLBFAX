@@ -11,7 +11,7 @@ def cleanstr(n):
 
 class CountdownLettersPage(Page):
     def __init__(self):
-        super(CountdownLettersPage, self).__init__("251")
+        super(CountdownLettersPage, self).__init__("155")
         self.words = {i:[] for i in range(1,10)}
         self.title = "Countdown Letters Game"
         self.importance = 4
@@ -75,7 +75,7 @@ class CountdownLettersPage(Page):
 
 class CountdownNumbersPage(Page):
     def __init__(self):
-        super(CountdownNumbersPage, self).__init__("252")
+        super(CountdownNumbersPage, self).__init__("156")
         self.title = "Countdown Numbers Game"
 
         self.importance = 4
@@ -95,11 +95,13 @@ class CountdownNumbersPage(Page):
         self.best = [1000,"",0]
 
         for i in range(1,7):
-            for operations in product(["+","-","*","/"],repeat=i-1):
+            for operations in product(["+","-","*","/",";"],repeat=i-1):
                 for comp_order in permutations(range(i-1)):
                     result, desc = self.calculate(self.numbers[:i], operations, comp_order)
                     if abs(result-self.target) < self.best[0]:
-                       self.best = [abs(result-self.target),desc, result]
+                        self.best = [abs(result-self.target),desc, result]
+                        if self.best[0] == 0:
+                            return
 
     def calculate(self, numbers, operations, comp_order):
         desc = ""
@@ -120,7 +122,9 @@ class CountdownNumbersPage(Page):
                 if b == 0:
                     return (1000,"ERROR")
                 result = a/b
-                desc += "    DIVIDE "+str(a)+" BY "+str(b)+" TO MAKE "+str(result)+".\n"
+                desc += "    DIVIDE "+cleanstr(a)+" BY "+cleanstr(b)+" TO MAKE "+cleanstr(result)+".\n"
+            if o == ";":
+                result = a
             comp_order = [j if j<i else j-1 for j in comp_order[1:]]
             numbers = numbers[:i] + [result] + numbers[i+2:]
             operations = operations[:i] + operations[i+1:]
@@ -145,7 +149,7 @@ class CountdownNumbersPage(Page):
         self.add_text("Press + to reveal answers",fg="GREEN")
         self.add_newline()
         if self.best[2] != self.target:
-            self.add_reveal_text("It is impossible to make "+str(self.target)+", the best you can make is "+str(self.best[2])+":", wrapping=True)
+            self.add_reveal_text("It is impossible to make "+cleanstr(self.target)+", the best you can make is "+cleanstr(self.best[2])+":", wrapping=True)
             self.add_newline()
         self.add_reveal_text(self.best[1], wrapping=True)
         self.add_newline()
@@ -159,29 +163,6 @@ def width(n):
             out += 5
     return out
 
-class IndexPage(Page):
-    def __init__(self, *args):
-        super(IndexPage, self).__init__("250")
-        self.title = "Games"
-
-        maximum = 250
-        self.ls = {}
-        for page in args:
-            maximum = max(maximum, int(page.number))
-            self.ls[page.number] = page.title
-
-        self.index_num = "250-"+str(maximum)
-
-    def generate_content(self):
-        self.add_title("Games")
-        for n, title in self.ls.items():
-            self.add_text(n+" ",fg="YELLOW")
-            self.add_text(title)
-            self.add_newline()
-
-
 page1 = CountdownLettersPage()
 page2 = CountdownNumbersPage()
 
-index = IndexPage(page1, page2)
-index.ls["900"] = "Choose your own adventure"

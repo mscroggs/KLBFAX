@@ -46,6 +46,8 @@ Number & Page Name             Importance  File
 152 Crossnumber                         3  pages/puzzles.py  
 153 Regex crossword                     3  pages/puzzles.py  
 154 Sudoku                              3  pages/puzzles.py  
+155 Countdown Letters Game              4  pages/games.py  
+156 Countdown Numbers Game              4  pages/games.py  
 160 Jobs                                5  pages/polybius_biotech.py  
 161 Arcade helpers                      4  pages/emf_jobs.py  
 162 EMF Job 2                           4  pages/emf_jobs.py  
@@ -67,9 +69,6 @@ Number & Page Name             Importance  File
 208 Have Your Say                       2  pages/have_your_say.py  
 209 Have Your Say                       2  pages/have_your_say.py  
 210 #emfcamp                            5  pages/twitter.py  
-250 Games                               2  pages/games.py  
-251 Countdown Letters Game              4  pages/games.py  
-252 Countdown Numbers Game              4  pages/games.py  
 271 e                                   2  pages/e.py  
 272 Art                                 2  pages/art.py  
 273 Venus                               2  pages/art.py  
