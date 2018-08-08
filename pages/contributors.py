@@ -13,95 +13,95 @@ class TeamPage(Page):
         self.add_title("Contributors")
 
         team = [
-                ["Scroggs", "  rrrrrrrrrrrr  \n"
-                            " rrrrrrrr   rrr \n"
-                            "rrrrrr       rrr\n"
-                            "rrrr          rr\n"
-                            "rrr  gg  gg    r\n"
-                            "rr             r\n"
-                            "r      gg      r\n"
-                            "r              r\n"],
+                ["Scroggs", "  rrrrrr \n"
+                            " rrrrrrrr\n"
+                            "rrrrrr rr\n"
+                            "rrrr    r\n"
+                            "rr    g r\n"
+                            "r g     r\n"
+                            "r   g   r\n"
+                            "r       r\n"],
 
-                ["Gin",     "  ggggg  ggggg  \n"
-                            "ggg rrggggrr ggg\n"
-                            "b ggggg  ggggg b\n"
-                            "b              b\n"
-                            "bb            bb\n"
-                            " bb  bbbbbb  bb \n"
-                            "  bbbb    bbbb  \n"
-                            "   bbbbbbbbbb   "],
+                ["Gin",     " ggg ggg \n"
+                            "gg rgr gg\n"
+                            "bggg gggb\n"
+                            "b       b\n"
+                            "b       b\n"
+                            " b bbb b \n"
+                            " bbb bbb \n"
+                            "  bbbbb  "],
 
-                ["Adam",    "  ggggg  ggggg  \n"
-                            "ggg wwggggww ggg\n"
-                            "  ggggg  ggggg  \n"
-                            "                \n"
-                            "                \n"
-                            "         rr     \n"
-                            "      rrrr      \n"
-                            "                "],
+                ["Adam",    "gggg gggg\n"
+                            "g wgggw g\n"
+                            "gggg gggg\n"
+                            "         \n"
+                            "         \n"
+                            "     rr  \n"
+                            "   rrr   \n"
+                            "         "],
 
-                ["Huda",    "  rgrgrgrgrgrg  \n"
-                            " rgrgrgrgrgrgrg \n"
-                            "rgr          grg\n"
-                            "gr    b  b    gr\n"
-                            "rg            rg\n"
-                            "gr   b    b   gr\n"
-                            "rg    bbbb    rg\n"
-                            "gr            gr"],
+                ["Huda",    " grgrgrg \n"
+                            " rgrgrgr \n"
+                            "rg     gr\n"
+                            "g  b b  g\n"
+                            "r       r\n"
+                            "g  b b  g\n"
+                            "r   b   r\n"
+                            "g       g"],
 
-                ["Sam",     "   bbbbbbbbbb   \n"
-                            " bbb        bbb \n"
-                            " b            b \n"
-                            "     W    W     \n"
-                            "                \n"
-                            "                \n"
-                            "     WWWWWW     \n"
-                            "                "],
+                ["Sam",     "  bbbbb  \n"
+                            "bb     bb\n"
+                            "b       b\n"
+                            "  W   W  \n"
+                            "         \n"
+                            "         \n"
+                            "  WWWWW  \n"
+                            "         "],
 
-                ["Tom",     "                \n"
-                            "                \n"
-                            "     g    g     \n"
-                            "                \n"
-                            "      rrrr      \n"
-                            "     r    r     \n"
-                            "                \n"
-                            "                "],
+                ["Tom",     "         \n"
+                            "         \n"
+                            "  g   g  \n"
+                            "         \n"
+                            "   rrr   \n"
+                            "  r   r  \n"
+                            "         \n"
+                            "         "],
 
-                ["Belgin",  "  bbbbbbbbbbbb  \n"
-                            "bbbbbbbbbbbbbbbb\n"
-                            "bbwwwww  wwwwwbb\n"
-                            "www ggwwwwgg www\n"
-                            "bbwwwww  wwwwwbb\n"
-                            "b              b\n"
-                            "b    w    w    b\n"
-                            "b     wwww     b"],
+                ["Belgin",  "  bbbbb  \n"
+                            "bbbbbbbbb\n"
+                            "bbww wwbb\n"
+                            "wwgwwwgww\n"
+                            "bbww wwbb\n"
+                            "b       b\n"
+                            "b w   w b\n"
+                            "b  www  b"],
 
-                ["TD",      "  bbbbbbbbbbbb  \n"
-                            "bbbbbbbbbbbbbbbb\n"
-                            "bbbb        bbbb\n"
-                            "bbb          bbb\n"
-                            "bb  w     w   bb\n"
-                            "b              g\n"
-                            "g    w    w    g\n"
-                            "g     wwww     g"],
+                ["TD",      " bbbbbbb \n"
+                            "bbbbbbbbb\n"
+                            "bbb   bbb\n"
+                            "bb     bb\n"
+                            "b W   W b\n"
+                            "b       g\n"
+                            "g w   w g\n"
+                            "g  www  g"],
 
-                ["Alan",    "  mmmmmmmmmmmm  \n"
-                            "mmmmmmmmmmmmmmmm\n"
-                            "mmmm        mmmm\n"
-                            "mmm          mmm\n"
-                            "mm   m    m   mm\n"
-                            "m              m\n"
-                            "m              m\n"
-                            "m     rrrrrr   m"]
+                ["Alan",    " mmmmmmm \n"
+                            "mmmmmmmmm\n"
+                            "mmm   mmm\n"
+                            "mm     mm\n"
+                            "m  c c  m\n"
+                            "m       m\n"
+                            "m       m\n"
+                            "m   rr  m"]
 
             ]
         shuffle(team)
 
         for i,t in enumerate(team[:24]):
-            row = i // 8
-            col = i % 8
-            self.print_compressed_image(t[1],8+row*7,col*10)
-            self.move_cursor(y=12+row*7,x=col*10)
+            row = i // 6
+            col = i % 6
+            self.print_image(t[1].replace(" ","-"),8+row*6,col*14)
+            self.move_cursor(y=12+row*6,x=1+col*14)
             self.add_text(t[0])
 
         self.add_newline()
