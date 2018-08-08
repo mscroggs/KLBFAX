@@ -122,7 +122,10 @@ class TrainPage(Page):
             self.add_text("Calling at:        ")
             self.end_fg_color()
 
-            calling_points = service.subsequent_calling_points[0]
+            if len(service.subsequent_calling_points) > 0:
+                calling_points = service.subsequent_calling_points[0]
+            else:
+                calling_points = ""
             calling_at = []
             for j,point in enumerate(calling_points[:11]):
                 lname = point.location_name

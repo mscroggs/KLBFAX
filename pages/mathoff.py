@@ -175,7 +175,7 @@ class TwitterPage(Page):
                 self.add_text("@" + tweet["user"]["screen_name"] + " ", fg="YELLOW")
                 self.add_text(" ".join(tweet["user"]["created_at"].split(" ")[:4]), fg="BLUE")
                 self.add_newline()
-                text = tweet["text"]
+                text = tweet["full_text"]
                 while "http" in text:
                     tsp = text.split("http",1)
                     text = tsp[0] + "<url>"
