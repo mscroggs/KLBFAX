@@ -6,7 +6,7 @@ Number & Page Name             Importance  File
 (001 Unicode Test Page)                 2  pages/unicode.py  
 (002 Error log)                         2  pages/errors.py  
 (003 License)                           2  pages/license.py  
-004 GRAPH TEST                          2  pages/graph_test.py  
+(004 Graph Test)                        2  pages/graph_test.py  
 100 Index                               5  pages/index.py  
 101 Trivia                              2  pages/trivia.py  
 102 Birthdays                           3  pages/birthdays.py  
@@ -65,8 +65,9 @@ Number & Page Name             Importance  File
 157 Countdown Numbers Game              4  pages/puzzles.py  
 158 Grid Puzzle                         2  pages/puzzles.py  
 159 Grid Puzzle                         2  pages/puzzles.py  
-160 Jobs                                5  pages/polybius_biotech.py  
-161 Arcade helpers                      4  pages/emf_jobs.py  
+160 Where's Olly                        2  pages/puzzles.py  
+170 Jobs                                5  pages/polybius_biotech.py  
+171 Arcade helpers                      4  pages/emf_jobs.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  

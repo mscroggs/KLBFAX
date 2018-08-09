@@ -5,7 +5,7 @@ class PolybPage(Page):
     def __init__(self, page_num):
         super(PolybPage, self).__init__(page_num)
         self.title = "Jobs"
-        self.index_num = "160-169"
+        self.index_num = "170-184"
         self.importance = 5
 
     def generate_content(self):
@@ -68,4 +68,4 @@ class PolybPage(Page):
                 c = "WHITE"
 
 
-page = PolybPage("160")
+page = PolybPage("170")

@@ -1,5 +1,5 @@
 from page import Page
-from random import choice
+from random import choice, randrange
 
 class CrosswordPage(Page):
     def __init__(self, num, title, solution, aclues, dclues):
@@ -83,6 +83,7 @@ class SudokuPage(Page):
     def __init__(self, num):
         super(SudokuPage, self).__init__(num)
         self.title = "Sudoku"
+        self.in_index = False
         self.importance = 3
 
     def background(self):
@@ -212,6 +213,8 @@ class SudokuPage(Page):
                     self.add_text(str(self.solution[i][j]))
                 else:
                     self.add_reveal_text(str(self.solution[i][j]))
+        self.move_cursor(y=10,x=47)
+        self.add_wrapped_text("Press + to reveal answer", fg="GREEN")
 
 
 from page import Page
@@ -362,7 +365,7 @@ class CountdownNumbersPage(Page):
             # self.add_title(" ".join(str(i) for i in self.numbers),font="size4",fg="BLUE", bg="BRIGHTWHITE")
 
         self.add_newline()
-        self.add_text("Press + to reveal answers",fg="GREEN")
+        self.add_text("Press + to reveal answer",fg="GREEN")
         self.add_newline()
         if self.best[2] != self.target:
             self.add_reveal_text("It is impossible to make "+cleanstr(self.target)+", the best you can make is "+cleanstr(self.best[2])+":", wrapping=True)
@@ -455,13 +458,38 @@ class GridPuzzlePage(Page):
                               "4+3×2 is 14, not 10.", pre=27)
 
         self.move_cursor(y=10,x=27)
-        self.add_wrapped_text("Press + to reveal the solution.", fg="GREEN")
+        self.add_wrapped_text("Press + to reveal answer", fg="GREEN")
+
+class OllyPage(Page):
+    def __init__(self, num):
+        super(OllyPage, self).__init__(num)
+        self.title = "Where's Olly"
+
+    def generate_content(self):
+        self.add_title("Where's Olly", font="size4bold")
+        r,c = 22,20
+        olly = (randrange(r),randrange(c))
+        for j in range(r):
+            for i in range(c):
+                if i==olly[1] and j==olly[0]:
+                    self.add_unreveal_text("OLLY")
+                    self.move_cursor(x=4*i)
+                    self.add_reveal_text("OLLY",fg="BRIGHTWHITE")
+                else:
+                    word = choice(["YLLO","YOLO"])
+                    self.add_unreveal_text(word)
+                    self.move_cursor(x=4*i)
+                    self.add_reveal_text(word,fg="K")
+            self.add_newline()
+        self.add_wrapped_text("Press + to reveal answer", fg="GREEN")
+
+
 
 class IndexPage(Page):
     def __init__(self, num):
         super(IndexPage, self).__init__(num)
         self.title = "Puzzles"
-        self.index_num = "150-159"
+        self.index_num = "150-169"
 
     def generate_content(self):
         self.add_title("Puzzles")
@@ -522,3 +550,4 @@ page6 = CountdownLettersPage("156")
 page7 = CountdownNumbersPage("157")
 page8 = GridPuzzlePage("158",[2,5,9, 4,3,7, 8,6,1],[90,84,48,64,90,63],["*","*", "*","*" ,"*","*"],["*","*", "*","*" ,"*","*"])
 page9 = GridPuzzlePage("159",[5,3,9, 7,1,6, 8,4,2],[17,1,0,4,12,27],["+","+", "/","-" ,"/","-"],["+","-", "/","*" ,"*","/"])
+page10 = OllyPage("160")

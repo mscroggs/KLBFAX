@@ -192,6 +192,7 @@ class CuPT:
             if y not in self.show_cls:
                 self.show_cls[y] = {}
             self.show_cls[y][x] = (cha, sty)
+            self.add_char(y, x, cha, sty)
         else:
             if y not in self.unshow_cls:
                 self.unshow_cls[y] = {}

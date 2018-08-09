@@ -145,6 +145,9 @@ class Page(object):
         if bg is not None:
             self.end_bg_color()
 
+    def add_unreveal_text(self, *args, **kwargs):
+        self.add_reveal_text(*args, show=True, **kwargs)
+
     def toggle_reveal(self):
         if self.reveal_status:
             self.reveal_status = False
