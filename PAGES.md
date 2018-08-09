@@ -53,6 +53,8 @@ Number & Page Name             Importance  File
 143 Playdays                            2  pages/kids.py  
 144 Crackerjack                         2  pages/kids.py  
 145 Paddington Bear                     2  pages/kids.py  
+146 Wacky Races                         2  pages/kids.py  
+147 Otis's Joke Page                    2  pages/kids.py  
 148 Big Internet Math-Off               3  pages/mathoff.py  
 149 #bigmathoff                         2  pages/mathoff.py  
 150 Puzzles                             2  pages/puzzles.py  

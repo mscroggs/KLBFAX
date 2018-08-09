@@ -1,6 +1,6 @@
 from page import Page
 from functions import replace
-from random import shuffle,randrange
+from random import shuffle,randrange,choice
 import config
 
 class CBBCPage(Page):
@@ -40,6 +40,12 @@ class CBBCPage(Page):
         self.add_newline()
         self.add_text("145 ",fg="MAGENTA")
         self.add_text("Paddington Bear")
+        self.add_newline()
+        self.add_text("146 ",fg="MAGENTA")
+        self.add_text("Wacky Races")
+        self.add_newline()
+        self.add_text("147 ",fg="MAGENTA")
+        self.add_text("Otis's Joke Page")
 
 class NewsroundPage(Page):
     def __init__(self):
@@ -688,7 +694,121 @@ class PaddingtonPage(Page):
                 "------bbbbb-bbbbbbbbbobbbbbbbbb-bbbbb---")
         self.print_image(img,13,40)
 
+class WackyRacesPage(Page):
+    def __init__(self):
+        super(WackyRacesPage, self).__init__("146")
+        self.title = "Wacky Races"
+        self.in_index = False
 
+    def generate_content(self):
+        self.add_title("Wacky Races")
+        racers = [
+            ("The Slag Brothers","The Boulder Mobile"," 1"),
+            ("The Gruesome Twosome","The Creepy Coupe"," 2"),
+            ("Professor Pat Pending","The Convert-a-Car"," 3"),
+            ("Red Max","The Crimson Haybailer"," 4"),
+            ("Penelope Pitstop","The Compact Pussycat"," 5"),
+            ("Sergeant Blast and Private Meekly","The Army Surplus Special"," 6"),
+            ("The Ant Hill Mob","The Bulletproof Bomb"," 7"),
+            ("Lazy Luke","The Arkansas Chugabug"," 8"),
+            ("Peter Perfect","The Turbo Terrific"," 9"),
+            ("Rufus Ruffcut","The Buzz Wagon","10")
+          ]
+        dast = ("Dick Dastardly and Mutley","The Mean Machine","00")
+        shuffle(racers)
+        winner = racers[0]
+        racers = racers[1:] + [dast]
+        shuffle(racers)
+        racers = [("Driver","Car","No"),winner] + racers
+        self.add_title("Result",font="size4bold",fg="BLACK",bg="BRIGHTWHITE")
+        dnf = randrange(6,20)
+        for i,(driver,car,no) in enumerate(racers):
+            color = "WHITE"
+            if i==0:
+                color = "CYAN"
+                i = "Pos"
+            elif i > dnf:
+                i = "DNF"
+            self.move_cursor(x=0)
+            self.add_text(str(i),fg=color)
+            self.move_cursor(x=4)
+            self.add_text(driver,fg=color)
+            self.move_cursor(x=40)
+            self.add_text(car,fg=color)
+            self.move_cursor(x=70)
+            self.add_text(no,fg=color)
+            self.add_newline()
+
+class OtisPage(Page):
+    def __init__(self):
+        super(OtisPage, self).__init__("147")
+        self.title = "Otis's Joke Page"
+        self.in_index = False
+
+    def generate_content(self):
+        self.add_title(" Otis's Joke page",fg="BLACK",bg="GREEN",font='size4bold')
+        self.print_image(
+            #0    5   10   15   20   25   30   35   40
+            "-----ooooo--------------------oooooooo---\n" #0
+            "-oooooooooooooo-------------oooooooooooo-\n"
+            "ooooooooooooooooo----------oooooooooooooo\n"
+            "ooooooooooooooooo---------ooooooooooooooo\n"
+            "ooooooooooooooooo---------ooooooooooooooo\n"
+            "oooooooooooooooooo------ooooooooooooooooo\n" #5
+            "oooooooooooooooooo------ooooooooooooooooo\n"
+            "-oooooooooooooooooo-----ooooooooooooooooo\n"
+            "-oooooooooooooooooo-----ooooooooooooooooo\n"
+            "-ooooooooooooooooooo----oooooooooooooooo-\n"
+            "--oooooooooooooooooo---ooooooooooooooooo-\n" #10
+            "---ooooooooooooooooo---oooooooooooooooo--\n"
+            "-----oooooooooooooooo--oooooooooooooooo--\n"
+            "------oooooooooooooooo-ooooooooooooooo---\n"
+            "------oooooooooooooooo-oooooooooooooo----\n"
+            "-------ooooooooooooooorrroooooooooooo----\n" #15
+            "-------oooooooooorrrrrrrrrrrroooooooo----\n"
+            "--------ooooooorrrrrrrrrrrrrrrooooooo----\n"
+            "----------ooooorrrrrrrrrrrrrrrroooooo-------------------------------------------\n"
+            "----------ooooorrrrrrrrrrrrrrrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "-----------ooooroowwoooooowwrrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"  #20
+            "-------------oooowkkwoooowkkwrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "-------------oooowkkwoooowkkworroooo--------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "---------------ooooooooooooooooroo----------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "---------------oooooooooooooooor-----------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "--------------ooooooooooooooooooo--------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n" #25
+            "--------------ooooooooooooooooooo------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "--------------ooooooookookooooooo----wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "--------------ooooooookookooooooo--wwwwww---------------------------------------\n"
+            "--------------oookoooooooooookooo-www-------------------------------------------\n"
+            "--------------oookkoooooooookkkoo----yyyyy--------------------------------------\n" # 30
+            "--------------ooookkkkkkkkkkkoooo------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "--------------ooooookkpppkkoooooo--------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "--------------oooooookkppkooooooo-----------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "--------------ooooooookppkooooooo-----------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "--------------ooooooookppkooooooo-----------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n" #35
+            "---------------oooooookppkoooooo------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "----------------oooooooppoooooo-------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "-----------------ooooookkooooo--------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "------------------ooooooooooo---------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "---------------------ooooo------------------------------------------------------\n"
+            "--------------------------------------------------------------------------------",5,0
+          )
+        joke = choice([
+            ("What's brown and sticky?",                                    "A stick!"),
+            ("What did the the drummer call his  twin daughters?",          "Anna one, Anna two!"),
+            ("What do you call a bear without    any teeth?",               "A gummy bear!"),
+            ("Why did the golfer change his      socks?",                   "Because he got a hole in one!"),
+            ("What do you get when you cross a   snowman with a vampire?",  "Frostbite"),
+            ("Why did Cinderella get kicked off  the football team?",       "Because she kept running from the  ball!"),
+            ("What time did the man go to the    dentist?",                 "Tooth hurt-y!"),
+            ("What do you call someone with no   body and no nose?",        "Nobody knows!"),
+            ("What is the loudest pet?",                                    "A trumpet!"),
+            ("What do you call a fish with no    eye?",                     "A fsh!")
+          ])
+        self.move_cursor(y=15,x=45)
+        self.add_wrapped_text(joke[0],pre=45,fg="BLACK",bg="WHITE")
+
+        self.move_cursor(y=21,x=45)
+        self.add_wrapped_text(joke[1],pre=45,fg="BLACK",bg="YELLOW")
 
 page01 = CBBCPage()
 page02 = NewsroundPage()
@@ -706,3 +826,5 @@ page13 = ChucklePage()
 page14 = PlaydaysPage()
 page15 = CrackerjackPage()
 page16 = PaddingtonPage()
+page17 = WackyRacesPage()
+page18 = OtisPage()

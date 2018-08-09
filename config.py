@@ -29,18 +29,18 @@ from datetime import datetime as _dt
 def now():
     return _dt.now()
 
-title =("yyyyyyyyyyyyyyyyyyyyy-------yyyyyyyyyy------yyyyyyyyyy--------------------------\n"
-        "yyyyyyyyyyyyyyyyyyyyy-------yyyyyyyyyy------yyyyyyyyyy--------------------------\n"
-        "yyyyyyyyyyyyyybbbbbby----------ybbbbby---------ybbbbby--------------------------\n"
-        "yyyyyyyyyyyyyybbyyyyy-yyyyyyyy-ybbyyyy-yyyyyyy-ybbyyby-yyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyybbbbyyy-yyyyyyyy-ybbbbyy-yyyyyyy-ybbbbby-yyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyybbyyyyy-ybbbybby-ybbyyyy-ybbbbby-ybbyyby-ybbybbyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyybbbbbby-ybbbbbby-ybbyyyy-ybbyyyy-ybbyyby-ybbybbyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyyyyyyyyy-ybbybyby-yyyyyyy-ybbbbyy-yyyyyyy-yybbbyyyyyyyyyyyyyyyyyyyy\n"
-        "yyyyyyyyyyyyyyyyyyyyy-ybbyyyby-yyyyyyy-ybbyyyy-yyyyyyy-ybbybbyyyyyyyyyyyyyyyyyyy\n"
-        "----------------------ybbyyyby---------ybbyyyy---------ybbybbyyyyyyyyyyyyyyyyyyy\n"
-        "-------------------yyyyyyyyyyy------yyyyyyyyyy------yyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
-        "-------------------yyyyyyyyyyy------yyyyyyyyyy------yyyyyyyyyyyyyyyyyyyyyyyyyyyy")
+title =("-----------yyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
+        "-----------yyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
+        "-----------yybbbbbbyy-----------ybbbbbyy----------ybbbbbyy---------\n"
+        "-----------yybbyyyyyy-yyyyyyyyy-ybbyyyyy-yyyyyyyy-ybbyybyy-yyyyyyyy\n"
+        "-----------yybbbbyyyy-yyyyyyyyy-ybbbbyyy-yyyyyyyy-ybbbbbyy-yyyyyyyy\n"
+        "-----------yybbyyyyyy-ybbbybbyy-ybbyyyyy-ybbbbbyy-ybbyybyy-ybbybbyy\n"
+        "-----------yybbbbbbyy-ybbbbbbyy-ybbyyyyy-ybbyyyyy-ybbyybyy-ybbybbyy\n"
+        "-----------yyyyyyyyyy-ybbybybyy-yyyyyyyy-ybbbbyyy-yyyyyyyy-yybbbyyy\n"
+        "-----------yyyyyyyyyy-ybbyyybyy-yyyyyyyy-ybbyyyyy-yyyyyyyy-ybbybbyy\n"
+        "----------------------ybbyyybyy----------ybbyyyyy----------ybbybbyy\n"
+        "--------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy\n"
+        "--------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy")
 
 
 twitter_access_key = None

@@ -464,6 +464,7 @@ class OllyPage(Page):
     def __init__(self, num):
         super(OllyPage, self).__init__(num)
         self.title = "Where's Olly"
+        self.in_index = False
 
     def generate_content(self):
         self.add_title("Where's Olly", font="size4bold")
@@ -551,3 +552,12 @@ page7 = CountdownNumbersPage("157")
 page8 = GridPuzzlePage("158",[2,5,9, 4,3,7, 8,6,1],[90,84,48,64,90,63],["*","*", "*","*" ,"*","*"],["*","*", "*","*" ,"*","*"])
 page9 = GridPuzzlePage("159",[5,3,9, 7,1,6, 8,4,2],[17,1,0,4,12,27],["+","+", "/","-" ,"/","-"],["+","-", "/","*" ,"*","/"])
 page10 = OllyPage("160")
+#161
+#162
+#163
+#164
+#165
+#166
+#167
+#168
+#169
