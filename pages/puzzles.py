@@ -484,6 +484,18 @@ class OllyPage(Page):
             self.add_newline()
         self.add_wrapped_text("Press + to reveal answer", fg="GREEN")
 
+class PuzzlePage(Page):
+    def __init__(self, num, title, text):
+        super(PuzzlePage, self).__init__(num)
+        self.title = title
+        self.text = text
+        self.in_index = False
+
+    def generate_content(self):
+        self.add_title(self.title, font="size4bold")
+        self.add_newline()
+        self.add_wrapped_text(self.text)
+
 
 
 class IndexPage(Page):
@@ -504,7 +516,17 @@ class IndexPage(Page):
             ("157","Countdown Numbers Game"),
             ("158","Grid puzzle 1"),
             ("159","Grid puzzle 2"),
-                ]:
+            ("160","Where's Olly"),
+            ("161","Ten digit number"),
+            ("162","The Mutilated Chessboard"),
+            ("163","8! Minutes"),
+            ("164","One Two Three"),
+            ("165","Let The Passenger Train Through!"),
+            ("166","Polya Strikes Out"),
+            ("167","Combining Multiples"),
+            ("168","Rotating Round Table"),
+            ("169","Reverse Bases"),
+          ]:
             self.add_text(n,fg="GREEN")
             self.add_text(" "+title)
             self.add_newline()
@@ -552,12 +574,12 @@ page7 = CountdownNumbersPage("157")
 page8 = GridPuzzlePage("158",[2,5,9, 4,3,7, 8,6,1],[90,84,48,64,90,63],["*","*", "*","*" ,"*","*"],["*","*", "*","*" ,"*","*"])
 page9 = GridPuzzlePage("159",[5,3,9, 7,1,6, 8,4,2],[17,1,0,4,12,27],["+","+", "/","-" ,"/","-"],["+","-", "/","*" ,"*","/"])
 page10 = OllyPage("160")
-#161
-#162
-#163
-#164
-#165
-#166
-#167
-#168
-#169
+page11 = PuzzlePage("161","Ten Digit Number","Can you create a 10-digit number, where the first digit is how many zeros in the number, the second digit is how many 1s in the number etc. until the tenth digit which is how many 9s in the number?")
+page12 = PuzzlePage("162","The Mutilated Chessboard","You are given a chessboard where two diagonally opposite corners have been removed and a large bag of dominoes of such size that they exactly cover two adjacent squares on the chessboard.\n\nIs it possible to place 31 dominoes on the chessboard so that all the squares are covered?")
+page13 = PuzzlePage("163","8! Minutes","How many days are there in 8! minutes?")
+page14 = PuzzlePage("164","One Two Three","Each point on a straight line is either red or blue. Show that it's always possible to find three points of the same color in which one is the midpoint of the other two.")
+page15 = PuzzlePage("165","Let The Passenger Train Through!","A goods train, made up of a locomotive and 5 trucks, stops at a small station. The small station has a siding which the goods train can reverse into. The siding can hold an engine and two trucks or three trucks.\n\nA passenger train arrives travelling in the opposite direction. How can they let it through? (The passenger train is too long to fit in the siding.)")
+page16 = PuzzlePage("166","Polya Strikes Out","Write the numbers 1, 2, 3, ... in a row. Strike out every third number beginning with the third. Write down the cumulative sums of what remains:\n\n1, 2, 3, 4, 5, 6, 7, ...\n1, 2, X, 4, 5, X, 7, ...\n1, 2, 4, 5, 7, ...\n1=1; 1+2=3; 1+2+4=7; 1+2+4+5=12; 1+2+4+5+7=19; ...\n1, 3, 7, 12, 19, ...\n\nNow strike out every second number beginning with the second. Write down the cumulative sums of what remains. What is the final sequence?")
+page17 = PuzzlePage("167","Combining Multiples","What is the largest number that cannot be written in the form 3a+5b, where a and b are (strictly) positive integers?")
+page18 = PuzzlePage("168","Rotating Round Table","At a large dinner, 24 people are to sit evenly spaced around a round table. Place cards are laid to show where everyone should sit. Unfortunately nobody notices the name cards and the guests sit down with nobody in the correct seat.\n\nShow that it is possible to rotate the table so that at least two people will be in the correct seats.")
+page19 = PuzzlePage("169","Reverse Bases","Find three digits a, b and c such that abc in base 10 is equal to cba in base 9?")

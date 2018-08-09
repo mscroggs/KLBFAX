@@ -8,7 +8,6 @@ class CBBCPage(Page):
         super(CBBCPage, self).__init__("130")
         self.title = "CBBC"
         self.index_num = "130-147"
-        self.importance = 3
 
     def generate_content(self):
         self.add_title("|C|",fill=False,bg="YELLOW",fg="BLACK",pre=1)
@@ -423,6 +422,7 @@ class ChucklePage(Page):
 class PlaydaysPage(Page):
     def __init__(self):
         super(PlaydaysPage, self).__init__("143")
+        self.importance = 3
         self.title = "Playdays"
         self.in_index = False
 
@@ -743,6 +743,7 @@ class OtisPage(Page):
     def __init__(self):
         super(OtisPage, self).__init__("147")
         self.title = "Otis's Joke Page"
+        self.importance = 3
         self.in_index = False
 
     def generate_content(self):
@@ -768,7 +769,7 @@ class OtisPage(Page):
             "-------oooooooooorrrrrrrrrrrroooooooo----\n"
             "--------ooooooorrrrrrrrrrrrrrrooooooo----\n"
             "----------ooooorrrrrrrrrrrrrrrroooooo-------------------------------------------\n"
-            "----------ooooorrrrrrrrrrrrrrrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "----------ooooorrrrrrrrrrrrrrrroooooo--------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-\n"
             "-----------ooooroowwoooooowwrrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"  #20
             "-------------oooowkkwoooowkkwrroooooo-------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
             "-------------oooowkkwoooowkkworroooo--------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
@@ -776,11 +777,11 @@ class OtisPage(Page):
             "---------------oooooooooooooooor-----------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
             "--------------ooooooooooooooooooo--------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n" #25
             "--------------ooooooooooooooooooo------wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
-            "--------------ooooooookookooooooo----wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww\n"
+            "--------------ooooooookookooooooo----wwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwwww-\n"
             "--------------ooooooookookooooooo--wwwwww---------------------------------------\n"
             "--------------oookoooooooooookooo-www-------------------------------------------\n"
             "--------------oookkoooooooookkkoo----yyyyy--------------------------------------\n" # 30
-            "--------------ooookkkkkkkkkkkoooo------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "--------------ooookkkkkkkkkkkoooo------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy-\n"
             "--------------ooooookkpppkkoooooo--------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
             "--------------oooooookkppkooooooo-----------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
             "--------------ooooooookppkooooooo-----------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
@@ -788,7 +789,7 @@ class OtisPage(Page):
             "---------------oooooookppkoooooo------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
             "----------------oooooooppoooooo-------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
             "-----------------ooooookkooooo--------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
-            "------------------ooooooooooo---------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy\n"
+            "------------------ooooooooooo----------------yyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy-\n"
             "---------------------ooooo------------------------------------------------------\n"
             "--------------------------------------------------------------------------------",5,0
           )

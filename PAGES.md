@@ -37,7 +37,7 @@ Number & Page Name             Importance  File
 127 Countdowns                          2  pages/countdown.py  
 128 Countdowns                          2  pages/countdown.py  
 129 Countdowns                          2  pages/countdown.py  
-130 CBBC                                3  pages/kids.py  
+130 CBBC                                2  pages/kids.py  
 131 Newsround                           2  pages/kids.py  
 132 Blue Peter                          2  pages/kids.py  
 133 Blue Peter                          2  pages/kids.py  
@@ -50,11 +50,11 @@ Number & Page Name             Importance  File
 140 Blue Peter                          2  pages/kids.py  
 141 The Demon Headmaster                2  pages/kids.py  
 142 ChuckleVision                       2  pages/kids.py  
-143 Playdays                            2  pages/kids.py  
+143 Playdays                            3  pages/kids.py  
 144 Crackerjack                         2  pages/kids.py  
 145 Paddington Bear                     2  pages/kids.py  
 146 Wacky Races                         2  pages/kids.py  
-147 Otis's Joke Page                    2  pages/kids.py  
+147 Otis's Joke Page                    3  pages/kids.py  
 148 Big Internet Math-Off               3  pages/mathoff.py  
 149 #bigmathoff                         2  pages/mathoff.py  
 150 Puzzles                             2  pages/puzzles.py  
@@ -68,6 +68,15 @@ Number & Page Name             Importance  File
 158 Grid Puzzle                         2  pages/puzzles.py  
 159 Grid Puzzle                         2  pages/puzzles.py  
 160 Where's Olly                        2  pages/puzzles.py  
+161 Ten Digit Number                    2  pages/puzzles.py  
+162 The Mutilated Chessboard            2  pages/puzzles.py  
+163 8! Minutes                          2  pages/puzzles.py  
+164 One Two Three                       2  pages/puzzles.py  
+165 Let The Passenger Train Through!    2  pages/puzzles.py  
+166 Polya Strikes Out                   2  pages/puzzles.py  
+167 Combining Multiples                 2  pages/puzzles.py  
+168 Rotating Round Table                2  pages/puzzles.py  
+169 Reverse Bases                       2  pages/puzzles.py  
 170 Jobs                                5  pages/polybius_biotech.py  
 171 Arcade helpers                      4  pages/emf_jobs.py  
 200 Have Your Say                       5  pages/have_your_say.py  
