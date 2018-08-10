@@ -296,6 +296,135 @@ class SqPage(Page):
         self.add_title(a[0])
         self.add_block(a[1],a[2])
 
+class EMFPage(Page):
+    def __init__(self, num):
+        super(EMFPage, self).__init__(num)
+        self.in_index = False
+        self.title = "EMF Logo"
+
+    def generate_content(self):
+        self.print_image(
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyyyyyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbyybbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbybbybbbbybbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbybbbbybbybbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbyybbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbybbbbbbbbbbybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyyyyyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\n"
+                        "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbyybbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+            )
+
+class MatePage(Page):
+    def __init__(self, num):
+        super(MatePage, self).__init__(num)
+        self.in_index = False
+        self.title = "EMF Logo"
+
+    def generate_content(self):
+        self.print_image(
+                        "-----------------bbbbbbbbbbbbbbbbb---------------------------------------------\n"
+                        "---------------bbbbbbbbbbbbbbbbbbbbb--------------------bbbbbbb----------------\n"
+                        "-------------bbbbbbccbbbbbbbbbccbbbbbb------------------byyyyyb----------------\n"
+                        "-----------bbbbwwwwwcbbbbbbbbbwwwwwwbbbb----------------bybbbbb----------------\n"
+                        "---------bbbbwwwwwwwbbbbbbbbbbcwwwwwwwbbbb--------------byb--------------------\n"
+                        "--------bbbwwwwwwwwwbbbbbbbbbbcwwwwwwwwwbbb-------------bybbbbb----------------\n"
+                        "-------bbbwwwwwwwwwwbbbbbbbbbbbwwwwwwwwwwbbb------------byyyyyb----------------\n"
+                        "------bbbwwwwwwwwwwcbbbbbbbbbbbcwwwwwwwwwwbbb-----------bbbbbbb----------------\n"
+                        "-----bbbwwwwwwwwwwwcbbbbbbbbbbbcwwwwwwwwwwwbbb---------------------------------\n"
+                        "----bbbwwwwwwwwwwwwcbbbbbbbbbbbbwwwwwwwwwwwwbbb---------bbb--------------------\n"
+                        "---bbbwwwwwwwwwwwwwcbbbbbbbbbbbbwwwwwwwwwwwwwbbb--------byb--------------------\n"
+                        "---bbbwwwwwwwwwwwwwcbbbbbbbbbbbbcwwwwwwwwwwwwbbb--------byb--------------------\n"
+                        "--bbbwwwwwwwwwwwwwwcbbbbbbbbbbbbcwwwwwwwwwwwwwbbb-------byb--------------------\n"
+                        "--bbwwwwwwwwwwwwwwwcbbbbbbbbbbbbcwwwwwwwwwwwwwwbb-------bybbbbb----------------\n"
+                        "-bbbwwwwwwwwwwwwwwwcbbbbbbbbbbbbbbbbccwwwwwcccwbbb------byyyyyb----------------\n"
+                        "-bbwwwwwwwwwwwwwwwwbbbbbbbbbbbbbbcccwwcccbbbbbwwbb------bbbbbbb----------------\n"
+                        "bbbwwwwwwwwwwcccbbbbbbbbbbcccccwwccbbbbbbbbbbcwwbbb----------------------------\n"
+                        "bbwwwwwwwwccbbbbbbcwwwwwwwwwwwwccbbbbbbbbbbcwwwwwbb-----bbb-bbb----------------\n"
+                        "bbwwwwccbbbbbbbbcccccccccccccbbbbbbbbbbbbccwwwwwwbb-----byb-byb----------------\n"
+                        "bbwwwwcbbbbbbbbbbbbbbbbbbbcbbbbcbbbbbbcccwwwwwwwwbb-----byb-byb----------------\n"
+                        "bbwwwwwcccbbbbbbbbbbbbcbbbcwccwwcbbbccwwwwwwwwwwwbb-----byb-byb----------------\n"
+                        "bbwwwwwwwwwwwwwwccccbbwwbbcwwwwwcbbbwwwwwwwwwwwwwbb-----bybbbyb----------------\n"
+                        "bbwwwwwwwwwwwwwwwwwcbbccbbcwwwwwcbcbwwwwwwwwwwwwwbb-----byyyyyb-------bbbbb----\n"
+                        "bbwwwwwwwwwwwwwwwwcccbbbbbbccccwcccbwwwwwwwwwwwwwbb-----bbbbbbb------bbybybb---\n"
+                        "bbwwwwwwwwwwwwwwwwcccbbbbbccbbcwcbbcwwwwwwcwwwwwwbb------------------bybybyb---\n"
+                        "bbwwwwwwwwwwwwwwwwccbccbbbccwwcwwccwwwwwcwwwwwwwwbb-----bbbbbb-------bybybyb---\n"
+                        "bbwwwwwwwwwwwwwwwwwccwcbbwccwwcwwwwwwwcwwwwbwcwwwbb-----byyyybb------bybbbyb---\n"
+                        "bbwwwwwwwwwwwwwwwwwccwcbbcwwwccwwwwwwwcwcwbwwcwwwbb-----bybbyyb------byb-byb---\n"
+                        "bbwwwwwwwwwwwwwwwwcbbbbbbbccwbcwwwwwwwcwwwwwccwwwbb-----bybbyyb------bbb-bbb---\n"
+                        "bbwwwwwwwwwwwwwwcbbbbbbbbbbcwbcwwwwwwwcwwwbwccwwwbb-----byyyybb----------------\n"
+                        "bbwwwwwwwwwwwwwcbbbbbbbbbbbbwbbwwwwwwwcwcwwwcwwwwbb-----bybbyyb-------bbbbb----\n"
+                        "bbwwwwwwwwwwwcbbbbbbbbbbbbbbbbbwwwwwwwcwwwwwcwwwwbb-----bybbyyb------bbyyybb---\n"
+                        "bbwwwwwwwwwwcbbbbbbbbbbbbbbbbbbbwwwwwwcwwcccbwwwwbb-----byyyybb------bybbbyb---\n"
+                        "bbbwwwwwwwwcbbbbbbbbbbbbbbbbbbbbcwwwwccwcccccwwwbbb-----bbbbbb-------bybbbyb---\n"
+                        "bbbwwwwwwwwbbbbbbbbbbbbbbbbbbbbbbwwwcccccwwcwwwwbbb------------------byyyyyb---\n"
+                        "-bbwwwwwwwbbbbbbbbbbbbbbbbbbbbbbbwcccccwwwccwwwwbb-------------------bybbbyb---\n"
+                        "-bbbwwwwwbbbbbbbbbbbbbbbbbbbbbbbbbbcwccwwcbcwwwbbb-------------------bbb-bbb---\n"
+                        "--bbwwwwcbbbbbbbbbbbbbbbbbbbbbbbbcwwwwwwcbbcwwwbb------------------------------\n"
+                        "--bbbwwcbbbbbbbbbbbbbbbbbbbbbbbbbwwwwwwwwbbwwwbbb--------------------bbbbbbb---\n"
+                        "---bbccbbbbbbbbbbbbbbbbbbbbbbbbbcwwwwwwwwccwwwbb---------------------byyyyyb---\n"
+                        "---bbbbbbbbbbbbbbbbbbbbbbbbbbbbcwwwwwwwwccwwwbbb---------------------bbbybbb---\n"
+                        "----bbbbbbbbbbbbbbbbbbbbbbbbbbbcwwwwwwcbcwwwwbb------------------------byb-----\n"
+                        "----bbbbbbbbbbbbbbbbbbbbbbbbbbbcwwccbbbwwwwwbbb------------------------byb-----\n"
+                        "-----bbbbbbbbbbbbbbbbbbbbbbbbbbcwwbbbbbwwwwbbb-------------------------byb-----\n"
+                        "------bbbbbbbbbbbbbbbbbbbbbbbbbcwcbbbbbcwcbbb--------------------------bbb-----\n"
+                        "-------bbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbcbbb-----------------------------------\n"
+                        "--------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb--------------------------bbbbbbb---\n"
+                        "---------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb---------------------------byyyyyb---\n"
+                        "----------bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb----------------------------bybbbbb---\n"
+                        "------------bbbbbbbbbbbbbbbbbbbbbbbbbbb------------------------------byyyb-----\n"
+                        "--------------bbbbbbbbbbbbbbbbbbbbbbb--------------------------------bybbbbb---\n"
+                        "----------------bbbbbbbbbbbbbbbbbbb----------------------------------byyyyyb---\n"
+                        "---------------------bbbbbbbbb---------------------------------------bbbbbbb---\n"
+                        "-------------------------------------------------------------------------------\n"
+
+            )
+
 page1 = MonaLisaPage("272","272-299")
 page2 = VenusPage("273")
 page3 = JigPage("274")
@@ -303,3 +432,5 @@ page4 = SoupPage("275")
 page5 = PyPage("276")
 page6 = ScorPage("277")
 page7 = SqPage("278")
+page8 = EMFPage("279")
+page9 = MatePage("280")

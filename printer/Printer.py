@@ -39,20 +39,15 @@ class Printer(object):
 
     @process_printing_options
     def text_to_letterblock(self, text):
-        try:
-            from functools import reduce
-        except:
-            pass
-        try:
-            return reduce(LetterBlock.__add__, map(self.font.get_letter, text))
-        except fonts.exceptions.LetterNotDefined:
-            return text
+        try: from functools import reduce
+        except: pass
+        return str(reduce(LetterBlock.__add__, map(self.font.get_letter, text)))
 
     def text_to_ascii(self, text, fill=True, vertical_condense=False, **options):
-        try:
-            text_to_print = str(self.text_to_letterblock("|"+text, **options))
-        except:
-            text_to_print = text
+        #try:
+        text_to_print = str(self.text_to_letterblock("|"+text, **options))
+        #except:
+        #    text_to_print = text
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):

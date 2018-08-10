@@ -494,4 +494,9 @@ def get_letter(char):
     try:
         return alphabet[char.upper()]
     except KeyError as e:
-        raise LetterNotDefined(e)
+        return LetterBlock("""
+xxxxx
+ ,, x
+ '' x
+xxxxx
+""".strip())

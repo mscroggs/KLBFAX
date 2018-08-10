@@ -34,6 +34,13 @@ xxx
 xxx
 """)
 
+_add("–", """
+xxx
+''x
+xxx
+xxx
+""")
+
 _add("!", """
 'x
  x
@@ -543,4 +550,9 @@ def get_letter(char):
     try:
         return alphabet[char.upper()]
     except KeyError as e:
-        raise LetterNotDefined(e)
+        return LetterBlock("""
+xxxxx
+ ,, x
+ '' x
+xxxxx
+""".strip())
