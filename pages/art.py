@@ -364,7 +364,7 @@ class MatePage(Page):
     def __init__(self, num):
         super(MatePage, self).__init__(num)
         self.in_index = False
-        self.title = "EMF Logo"
+        self.title = "Club Mate"
 
     def generate_content(self):
         self.print_image(
@@ -422,7 +422,6 @@ class MatePage(Page):
                         "----------------bbbbbbbbbbbbbbbbbbb----------------------------------byyyyyb---\n"
                         "---------------------bbbbbbbbb---------------------------------------bbbbbbb---\n"
                         "-------------------------------------------------------------------------------\n"
-
             )
 
 page1 = MonaLisaPage("272","272-299")

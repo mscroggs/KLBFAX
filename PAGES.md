@@ -79,6 +79,21 @@ Number & Page Name             Importance  File
 169 Reverse Bases                       2  pages/puzzles.py  
 170 Jobs                                5  pages/polybius_biotech.py  
 171 Arcade helpers                      4  pages/emf_jobs.py  
+185 Holidays                            2  pages/travel.py  
+186 Paris                               2  pages/travel.py  
+187 New York                            2  pages/travel.py  
+188 Venice                              2  pages/travel.py  
+189 Rome                                2  pages/travel.py  
+190 Berlin                              2  pages/travel.py  
+191 Rio de Janeiro                      2  pages/travel.py  
+192 Tokyo                               2  pages/travel.py  
+193 Brighton                            2  pages/travel.py  
+194 Ibiza                               2  pages/travel.py  
+195 Sydney                              2  pages/travel.py  
+196 Toronto                             2  pages/travel.py  
+197 London                              2  pages/travel.py  
+198 Los Angeles                         2  pages/travel.py  
+199 Ledbury                             2  pages/travel.py  
 200 Have Your Say                       5  pages/have_your_say.py  
 201 Have Your Say                       2  pages/have_your_say.py  
 202 Have Your Say                       2  pages/have_your_say.py  
@@ -98,6 +113,8 @@ Number & Page Name             Importance  File
 276 Python                              2  pages/art.py  
 277 SCORPIONS                           2  pages/art.py  
 278 Squirrel                            2  pages/art.py  
+279 EMF Logo                            2  pages/art.py  
+280 Club Mate                           2  pages/art.py  
 300 News                                2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
