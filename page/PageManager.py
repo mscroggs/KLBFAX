@@ -247,14 +247,7 @@ class PageManager:
                 error_list.add(e, page.number)
                 page.background_error = e
         thread.start_new_thread(self.background_loop,())
-        thread.start_new_thread(self.time_loop,())
         self.main_loop()
-
-    def time_loop(self):
-        from time import sleep
-        while True:
-            self.screen.cupt.show_time()
-            sleep(1)
 
     def main_loop(self):
         from time import sleep

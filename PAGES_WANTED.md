@@ -1,7 +1,6 @@
 170-184 Jobs
 200-219 Twitter
 220-270 ???
-272-299 Art
 300-399 News, weather, sport, money
 419-499 ???
 500-599 ???
