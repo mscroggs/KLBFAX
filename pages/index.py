@@ -11,19 +11,16 @@ class IndexPage(Page):
 
     def generate_content(self):
         self.print_image(config.title)
-        self.start_fg_color("GREEN")
-        self.add_text("INDEX "*14)
+        self.add_text("INDEX   "*10,fg="GREEN")
         self.add_newline()
         i = 0
         _items = Ceefax().page_manager.sorted_pages()
         for num, page in _items:
             if page.enabled and page.in_index:
-                self.start_fg_color("MAGENTA")
                 if page.index_num is None:
-                    self.add_text(num)
+                    self.add_text(num,fg="MAGENTA")
                 else:
-                    self.add_text(page.index_num)
-                self.end_fg_color()
+                    self.add_text(page.index_num,fg="MAGENTA")
                 self.add_text(" "+page.title)
                 if i == 0:
                     self.move_cursor(x=36)
