@@ -7,6 +7,7 @@ class IndexPage(Page):
         super(IndexPage, self).__init__(n)
         self.importance = 5
         self.title = "Index"
+        self.in_index = False
 
     def generate_content(self):
         self.print_image(config.title)
