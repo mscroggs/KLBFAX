@@ -107,14 +107,33 @@ Number & Page Name             Importance  File
 210 #emfcamp                            5  pages/twitter.py  
 271 e                                   2  pages/e.py  
 272 Art                                 2  pages/art.py  
-273 Venus                               2  pages/art.py  
-274 Jigsaw                              2  pages/art.py  
-275 Soup                                2  pages/art.py  
-276 Python                              2  pages/art.py  
-277 SCORPIONS                           2  pages/art.py  
-278 Squirrel                            2  pages/art.py  
-279 EMF Logo                            2  pages/art.py  
-280 Club Mate                           2  pages/art.py  
+273 Mona Lisa                           2  pages/art.py  
+274 Venus                               2  pages/art.py  
+275 Jigsaw                              2  pages/art.py  
+276 Soup                                2  pages/art.py  
+277 Python                              2  pages/art.py  
+278 SCORPIONS                           2  pages/art.py  
+279 Squirrel                            2  pages/art.py  
+280 EMF Logo                            3  pages/art.py  
+281 Club Mate                           3  pages/art.py  
+282 The Scream                          2  pages/art.py  
+283 Guernica                            2  pages/art.py  
+284 The Eiffel Tower                    2  pages/art.py  
+285 The Statue of Liberty               2  pages/art.py  
+286 Cafe Terrace by Night               2  pages/art.py  
+287 The Persistence of Memory           2  pages/art.py  
+288 The Girl with a Pearl Earring       2  pages/art.py  
+289 The Picnic                          2  pages/art.py  
+290 Four Dancers                        2  pages/art.py  
+291 Einstein                            2  pages/art.py  
+292 Troll Face                          2  pages/art.py  
+293 Smaller Troll Face                  2  pages/art.py  
+294 Pikachu                             2  pages/art.py  
+295 The Batman                          2  pages/art.py  
+296 Linux                               2  pages/art.py  
+297 Banksy                              2  pages/art.py  
+298 Felix The Cat                       2  pages/art.py  
+299 Homer Simpson                       2  pages/art.py  
 300 News                                2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
