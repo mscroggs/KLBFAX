@@ -46,6 +46,9 @@ class httpPage(Page):
 
 
 p1 = httpPage("400","Bad Request")
+p1.title = "HTTP Errors"
+p1.in_index = True
+p1.index_num = "400-418"
 p2 = httpPage("401","Unauthorised")
 p3 = httpPage("402","Payment Required")
 p4 = httpPage("403","Forbidden")
