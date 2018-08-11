@@ -10,7 +10,8 @@ class IndexPage(Page):
         self.in_index = False
 
     def generate_content(self):
-        self.print_image(config.title)
+        self.print_image(config.title,1)
+        self.add_newline()
         self.add_text("INDEX   "*10,fg="GREEN")
         self.add_newline()
         i = 0
