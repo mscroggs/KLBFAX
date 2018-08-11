@@ -9,8 +9,7 @@ class GraphTestPage(Page):
         self.enabled = False
 
     def generate_content(self):
-        self.add_title("Graph",font='size4bold')
-        self.plot(sorted([randint(1,100) for i in range(4)]),[randint(1,100) for i in range(4)],4,0,height=23,
+        self.plot(sorted([randint(1,100) for i in range(4)]),[randint(1,100) for i in range(4)],
                 xtitle="Random numbers",ytitle="Different random numbers",
                 xmin=0,xmax=100,ymin=0,ymax=100)
 

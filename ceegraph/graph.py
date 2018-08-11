@@ -5,7 +5,7 @@ def intf(n):
     return int(floor(n))
 
 
-def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=config.WIDTH, height=config.HEIGHT,
+def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=config.WIDTH, height=config.HEIGHT-3,
          xtitle="", ytitle="", xmin=None, xmax=None, ymin=None, ymax=None, xlabels=None, ylabels=None):
     if xmin is None:
         xmin = min(xs)

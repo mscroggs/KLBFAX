@@ -42,7 +42,7 @@ class IndexPage(Page):
         super(IndexPage, self).__init__(page_num)
         self.pagelist = pagelist
         self.importance = 1
-        self.title = "Currency Conversion"
+        self.title = "Money"
 
     def generate_content(self):
         self.add_title("Currencies",bg="BLACK",fg="LIGHTRED",font='size4bold')
