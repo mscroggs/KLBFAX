@@ -44,9 +44,6 @@ class FilmSubPage(Page):
         self.n = int(page_num) - 672
         self.parent = parent
 
-    def background(self):
-        self.parent.background()
-
     def generate_content(self):
         self.add_title("What's on at",font='size4')
         self.add_title(" Market Theatre",font='size4')
