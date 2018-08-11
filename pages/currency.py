@@ -48,9 +48,18 @@ class IndexPage(Page):
         self.add_title("Currencies",bg="BLACK",fg="LIGHTRED",font='size4bold')
         c1 = None
         x = 0
-        y = 4
+        y = 7
         self.add_text("341",fg="RED")
         self.add_text(" Bitcoin")
+        self.add_newline()
+        self.add_text("342",fg="RED")
+        self.add_text(" Bitcoin vs USD")
+        self.add_newline()
+        self.add_text("343",fg="RED")
+        self.add_text(" Bitcoin vs GBP")
+        self.add_newline()
+        self.add_text("344",fg="RED")
+        self.add_text(" Bitcoin vs EUR")
         for i,page in enumerate(self.pagelist):
             d = self.pagelist[page]
             if c1 != d[0][3]:
@@ -85,11 +94,11 @@ currencies = [
 
 pagelist = {}
 pages = []
-pn = 342
+pn = 345
 for i,a in enumerate(currencies):
     for b in currencies[i+1:]:
         pages.append(CurrencyPage(pn, "http://"+a[0].lower()+".fxexchangerate.com/"+b[0].lower()+".xml",a,b))
         pn += 1
 
 index = IndexPage(340, pagelist)
-index.index_num = "340-396"
+index.index_num = "340-399"
