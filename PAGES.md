@@ -234,7 +234,7 @@ Number & Page Name             Importance  File
 397 Russian Rouble vs Swiss Franc       1  pages/currency.py  
 398 Russian Rouble vs Scottish Pound    1  pages/currency.py  
 399 Swiss Franc vs Scottish Pound       1  pages/currency.py  
-400 Bad Request                         1  pages/http-errors.py  
+400 HTTP Errors                         1  pages/http-errors.py  
 401 Unauthorised                        1  pages/http-errors.py  
 402 Payment Required                    1  pages/http-errors.py  
 403 Forbidden                           1  pages/http-errors.py  
@@ -347,6 +347,17 @@ Number & Page Name             Importance  File
 701 List of Villages                    3  pages/emf.py  
 702 List of Teams                       3  pages/emf.py  
 703 EMF site map                        5  pages/emf_map.py  
+704 EMF Schedule                        3  pages/emf_schedule.py  
+705 Now and Next                        5  pages/emf_schedule.py  
+706 EMF Schedule Day 1                  4  pages/emf_schedule.py  
+707 EMF Schedule Day 2                  4  pages/emf_schedule.py  
+708 EMF Schedule Day 3                  4  pages/emf_schedule.py  
+709 EMF Schedule (Stage A)              2  pages/emf_schedule.py  
+710 EMF Schedule (Stage B)              2  pages/emf_schedule.py  
+711 EMF Schedule (Stage C)              2  pages/emf_schedule.py  
+712 EMF Schedule (Workshop 1)           2  pages/emf_schedule.py  
+713 EMF Schedule (Workshop 2)           2  pages/emf_schedule.py  
+714 EMF Schedule (Workshop 3)           2  pages/emf_schedule.py  
 777 Contributors                        3  pages/contributors.py  
 849 Tube Line Status                    2  pages/tubestatus.py  
 850 Trains                              1  pages/trains.py  

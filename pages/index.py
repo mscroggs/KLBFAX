@@ -19,7 +19,7 @@ class IndexPage(Page):
         for num, page in _items:
             if page.enabled and page.in_index:
                 if page.index_num is None:
-                    self.add_text("    "+num,fg="MAGENTA")
+                    self.add_text(num+"    ",fg="MAGENTA")
                 else:
                     self.add_text(page.index_num,fg="MAGENTA")
                 self.add_text(" "+page.title)
