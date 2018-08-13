@@ -28,6 +28,7 @@ The files that make up FAX are organised as follows:
 | ------------ | ------------------------------------------ |
 | `/`          | Config, repository info and main run files |
 | `/ceefax`    | The main ceefax class                      |
+| `/ceegraph`  | Terminal graph plotting functions          |
 | `/cupt`      | CuPT, the **Cu**rses **P**rinting **T**ool |
 | `/error`     | Error logging functionality                |
 | `/files`     | Data files needed by pages                 |
