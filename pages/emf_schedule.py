@@ -56,8 +56,6 @@ class EMFPage(Page):
         if n == 1:
             self.day = "2018-08-31"
             self.endday = datetime(year=2018, month=9, day=1, hour=0, minute=0)
-            self.day = "2016-08-07"
-            self.endday = datetime(year=2016, month=8, day=8, hour=0, minute=0)
         if n == 2:
             self.day = "2018-09-01"
             self.endday = datetime(year=2018, month=9, day=2, hour=0, minute=0)

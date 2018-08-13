@@ -12,7 +12,8 @@ class IndexPage(Page):
     def generate_content(self):
         self.print_image(config.title,1)
         self.add_newline()
-        self.add_text("INDEX   "*10,fg="GREEN")
+        self.add_text(" INDEX  "*10,fg="GREEN")
+        self.add_newline()
         self.add_newline()
         i = 0
         _items = Ceefax().page_manager.sorted_pages()
