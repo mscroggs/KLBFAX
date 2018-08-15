@@ -6,7 +6,7 @@ predictions = {
     "Gemini":       "Given there is a full moon this month, you would be wise to assume that anything you say in confidence to some people could well be gossip by the end of the hour. Bearing that in mind, tread carefully past open doors that do not lead where you want to go. Also bear in mind that where you want to go could be behind a closed door. Feel free to fling it open but don't pause for too long when you feel the sun on your face. You must keep moving or they will get you.",
     "Cancer":       "It's tempting to think that because things are looking up for you, that they will continue this way. However, the wheel of fortune is always turning and oh wait that's tarot. Ok, the rotation of Mars means that just because you have freedom from oppressive things in your life it doesn't mean that trees aren't armed guards and birds aren't bullets. We have to get over the wall, never mind about the barbed wire. Your lucky colour is blood red this month anyhow.",
     "Leo":          "After a trying few months for you, Mercury is finally in retrograde and that means you can rest easy. Fluffy pillows, a heavy duvet, and your first real bed since you escaped. Even the walls are soft, padded, even and whenever you move there is a pleasant twinkling sound that sounds like starlight, or chains. Why can't I move my hands below my head?",
-    "Virgo":        "Due to the influence of Venus in the fourth portal, you will feel more inclined to make impulsive decisions. Try to resist, or if you can't, at least leave some beer for the rest of us.  You are also going to in receipt of money this month. This could be due to Andromeda passing through Jupiter, meaning monetary fortune is on your horizon, or it could be because it's your birthday this month.",
+    "Virgo":        "Due to the influence of Venus in the fourth portal, you will feel more inclined to make impulsive decisions. Try to resist, or if you can't, at least leave some beer for the rest of us.  You are also going to be in receipt of money this month. This could be due to Andromeda passing through Jupiter, meaning monetary fortune is on your horizon, or it could be because it's your birthday this month.",
     "Libra":        "Neptune is entering Uranus this month but you don't have to tell everyone about it. Remember, discretion is the better part of valour. Having said that, valour is the worst part of EMF, and who am I to deny everyone your goss? Beware though, the Milky Way is entering its fourth cycle later this month and you will have to decide who is a friend and who is just giving you advice that makes no sense.",
     "Scorpio":     ("         (        )           ___ __              \n"
                     "         O        O         _{___{__}\                \n"
@@ -183,7 +183,10 @@ class HoroPage(Page):
         self.in_index = False
 
     def generate_content(self):
-        self.add_title(self.title,font="size4bold",fg="BLACK",bg="MAGENTA")
+        if self.title == "Scorpio":
+            self.add_title("Scorpions",font="size4bold",fg="BLACK",bg="MAGENTA")
+        else:
+            self.add_title(self.title,font="size4bold",fg="BLACK",bg="MAGENTA")
         self.print_image(logos[self.title],0,68)
         self.move_cursor(y=5,x=0)
         self.add_text(self.dates,fg="RED")
