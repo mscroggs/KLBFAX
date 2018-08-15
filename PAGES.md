@@ -15,18 +15,18 @@ Number & Page Name             Importance  File
 105 Did you know...                     1  pages/wiki.py  
 106 New on Wikipedia                    1  pages/wiki.py  
 107 Horoscope                           2  pages/horoscore.py  
-108 Aries                               2  pages/horoscore.py  
-109 Taurus                              2  pages/horoscore.py  
-110 Gemini                              2  pages/horoscore.py  
-111 Cancer                              2  pages/horoscore.py  
-112 Leo                                 2  pages/horoscore.py  
-113 Virgo                               2  pages/horoscore.py  
-114 Libra                               2  pages/horoscore.py  
-115 Scorpio                             2  pages/horoscore.py  
-116 Sagittarius                         2  pages/horoscore.py  
-117 Capricorn                           2  pages/horoscore.py  
-118 Aquarius                            2  pages/horoscore.py  
-119 Pisces                              2  pages/horoscore.py  
+108 Virgo                               2  pages/horoscore.py  
+109 Libra                               2  pages/horoscore.py  
+110 Scorpio                             2  pages/horoscore.py  
+111 Sagittarius                         2  pages/horoscore.py  
+112 Capricorn                           2  pages/horoscore.py  
+113 Aquarius                            2  pages/horoscore.py  
+114 Pisces                              2  pages/horoscore.py  
+115 Aries                               2  pages/horoscore.py  
+116 Taurus                              2  pages/horoscore.py  
+117 Gemini                              2  pages/horoscore.py  
+118 Cancer                              2  pages/horoscore.py  
+119 Leo                                 2  pages/horoscore.py  
 120 Countdowns                          2  pages/countdown.py  
 121 Countdowns                          2  pages/countdown.py  
 122 Countdowns                          2  pages/countdown.py  
@@ -358,30 +358,6 @@ Number & Page Name             Importance  File
 712 EMF Schedule (Workshop 1)           2  pages/emf_schedule.py  
 713 EMF Schedule (Workshop 2)           2  pages/emf_schedule.py  
 714 EMF Schedule (Workshop 3)           2  pages/emf_schedule.py  
-715 EMF Schedule (Algorave Village)     2  pages/emf_schedule.py  
-716 EMF Schedule (Badge Operations Center)2pages/emf_schedule.py  
-717 EMF Schedule (Blacksmiths)          2  pages/emf_schedule.py  
-718 EMF Schedule (Contact @saizai)      2  pages/emf_schedule.py  
-719 EMF Schedule (Empty Epsilon Village)2  pages/emf_schedule.py  
-720 EMF Schedule (Fablab Truck)         2  pages/emf_schedule.py  
-721 EMF Schedule (HABville Village)     2  pages/emf_schedule.py  
-722 EMF Schedule (Hack Center)          2  pages/emf_schedule.py  
-723 EMF Schedule (Hacking Hamlet)       2  pages/emf_schedule.py  
-724 EMF Schedule (Haxors of the Roses Village)2pages/emf_schedule.py  
-725 EMF Schedule (Make. Invent. Do. Village)2pages/emf_schedule.py  
-726 EMF Schedule (Makespace Village)    2  pages/emf_schedule.py  
-727 EMF Schedule (Maths Village)        2  pages/emf_schedule.py  
-728 EMF Schedule (Millers Hollow Village)2 pages/emf_schedule.py  
-729 EMF Schedule (Minecraft Village)    2  pages/emf_schedule.py  
-730 EMF Schedule (Never Too Much Bunting Village)2pages/emf_schedule.py  
-731 EMF Schedule (Nottinghack Village)  2  pages/emf_schedule.py  
-732 EMF Schedule (Portcullis Village)   2  pages/emf_schedule.py  
-733 EMF Schedule (Radio Village)        2  pages/emf_schedule.py  
-734 EMF Schedule (SawuGo, The One Ring Workshop)2pages/emf_schedule.py  
-735 EMF Schedule (Scottish Consulate Village)2pages/emf_schedule.py  
-736 EMF Schedule (The Lounge)           2  pages/emf_schedule.py  
-737 EMF Schedule (The Sky)              2  pages/emf_schedule.py  
-738 EMF Schedule (UAV Flying Field)     2  pages/emf_schedule.py  
 777 Contributors                        3  pages/contributors.py  
 849 Tube Line Status                    2  pages/tubestatus.py  
 850 Trains                              1  pages/trains.py  
