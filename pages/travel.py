@@ -125,7 +125,7 @@ pagels.append(HolidayPage("195","Sydney",["Sydney Harbour Bridge Climb","Carriag
 pagels.append(HolidayPage("196","Toronto",["Toronto Islands","Distillery District","St. Lawrence Market","Harbourfront Centre","Kensington Market","Hockey Hall of Fame","Toronto Zoo","Casa Loma","CN Tower","Royal Ontario Museum","Ontario Science Centre","Fort York"]))
 pagels.append(HolidayPage("197","London",["The London Eye","Hampstead Heath","Big Ben","The Docklands Light Railway","London Hackspace","The Houses of Parliament","Trafalgar Square","Leicester Square","King's Cross Platform 9 3/4","The Thames","Oxford Street","Regents Park","Hyde Park","Victoria Park","Buckingham Palace","Luton Airport"]))
 pagels.append(HolidayPage("198","Los Angeles",["Venice Beach","Stroll along the stars in Hollywood","Shop in style on Rodeo Drive","Museum of Jurassic Technology","Los Angeles County Museum of Art (LACMA)","Griffith Observatory","Disneyland","The Broad Museum","Watts Towers Arts Center","Walt Disney Concert Hall","Amoeba Music","Cruise along Mulholland","Japanese American National Museum","Huntington Library"]))
-pagels.append(HolidayPage("199","Ledbury",["Electromagnetic Feild 2018"]))
+pagels.append(HolidayPage("199","Ledbury",["Electromagnetic Field 2018"]))
 
 
 page1 = TravelIndex("185",pagels)
