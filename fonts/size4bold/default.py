@@ -41,6 +41,13 @@ _add("!", """
 ,x
 """)
 
+_add("#", """
+x'x'xx
+, , ,x
+, , ,x
+xxxxxx
+""")
+
 _add("/", """
 xxxxx
 xx',x
