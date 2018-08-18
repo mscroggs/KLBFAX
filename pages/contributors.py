@@ -31,7 +31,7 @@ class TeamPage(Page):
                             " bbb bbb \n"
                             "  bbbbb  "],
 
-                ["Adam",    "gggg gggg\n"
+                ["Adam T",  "gggg gggg\n"
                             "g wgggw g\n"
                             "gggg gggg\n"
                             "         \n"
@@ -92,7 +92,16 @@ class TeamPage(Page):
                             "m  c c  m\n"
                             "m       m\n"
                             "m       m\n"
-                            "m   rr  m"]
+                            "m   rr  m"],
+
+                ["Adam J",  " ggggggg \n"
+                            "gg     gg\n"
+                            "g       g\n"
+                            "g W   W g\n"
+                            "         \n"
+                            "         \n"
+                            "  w   w  \n"
+                            "   WWW   "]
 
             ]
         shuffle(team)
@@ -106,6 +115,6 @@ class TeamPage(Page):
 
         self.add_newline()
         self.add_newline()
-        self.add_text("To contribute to "+config.NAME+", go to github.com/mscroggs/KLBFAX")
+        self.add_text("To contribute to "+config.NAME+", go to github.com/mscroggs/KLBFAX/tree/EMFFAX")
 
 ppp = TeamPage()
