@@ -50,7 +50,8 @@ class WildlifePage(Page):
         self.seen = ""
         self.title = "Wildlife"
         self.today = config.now().strftime("%Y-%m-%d")
-        self.index_num = "220-221"
+        self.hour = config.now().strftime("%Y-%m-%d %H")
+        self.index_num = "220-222"
 
     def background(self):
         if len(self.counts) == 0:
@@ -65,8 +66,11 @@ class WildlifePage(Page):
         results = tweet_handler.search(hashtag)
 
         today = config.now().strftime("%Y-%m-%d")
+        hour = config.now().strftime("%Y-%m-%d %H")
         if today != self.today:
             self.counts_todaystart = {i:self.counts[i] for i in self.animals}
+        if hour != self.hour:
+            self.counts_hourstart = {i:self.counts[i] for i in self.animals}
 
         for result in results:
             if result["id_str"] == self.seen:
@@ -81,9 +85,11 @@ class WildlifePage(Page):
 
         self.ordered = list(self.counts.items())
         self.ordered_today = [(i,j-self.counts_todaystart[i]) for i,j in self.counts.items()]
+        self.ordered_hour = [(i,j-self.counts_hourstart[i]) for i,j in self.counts.items()]
 
         self.ordered.sort(key=lambda x:-x[1])
         self.ordered_today.sort(key=lambda x:-x[1])
+        self.ordered_hour.sort(key=lambda x:-x[1])
 
     def generate_content(self):
         wildlife_content(self, self.ordered)
@@ -94,9 +100,22 @@ class WildlifeTodayPage(Page):
         self.importance = 5
         self.title = "Wildlife Today"
         self.mainpage = mainpage
+        self.in_index = False
 
     def generate_content(self):
         wildlife_content(self, self.mainpage.ordered_today, "today")
 
+class WildlifeHourPage(Page):
+    def __init__(self, num, mainpage):
+        super(WildlifeHourPage, self).__init__(num)
+        self.importance = 5
+        self.title = "Wildlife in the last hour"
+        self.mainpage = mainpage
+        self.in_index = False
+
+    def generate_content(self):
+        wildlife_content(self, self.mainpage.ordered_hour, "this hour")
+
 page1 = WildlifePage("220")
 page2 = WildlifeTodayPage("221",page1)
+page3 = WildlifeHourPage("222",page1)
