@@ -116,7 +116,8 @@ Number & Page Name             Importance  File
 219 #emfcamp                            2  pages/twitter.py  
 220 Wildlife                            5  pages/wildlife.py  
 221 Wildlife Today                      5  pages/wildlife.py  
-222 Wildlife in the last hour           5  pages/wildlife.py  
+222 Wildlife This Hour                  5  pages/wildlife.py  
+260 Obituaries                          4  pages/obituaries.py  
 271 e                                   2  pages/e.py  
 272 Art                                 2  pages/art.py  
 273 Mona Lisa                           2  pages/art.py  

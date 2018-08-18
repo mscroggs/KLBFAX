@@ -23,9 +23,9 @@ def split_az(text):
             next = ""
     return out
 
-def wildlife_content(self, ls, titlebit=""):
+def wildlife_content(self, ls, titlebit="Most seen"):
     self.add_title(hashtag, font="size4bold")
-    self.add_title("Most seen "+titlebit, font="size4bold", fg="BLACK", bg="YELLOW")
+    self.add_title("  "+titlebit, font="size4", fg="BLACK", bg="YELLOW")
 
     for animal,number in ls:
         self.add_text(animal)
@@ -46,12 +46,17 @@ class WildlifePage(Page):
         self.importance = 5
         self.counts = {}
         self.counts_todaystart = {}
+        self.counts_hourstart = {}
         self.animals = []
         self.seen = ""
         self.title = "Wildlife"
         self.today = config.now().strftime("%Y-%m-%d")
         self.hour = config.now().strftime("%Y-%m-%d %H")
         self.index_num = "220-222"
+
+        self.ordered = []
+        self.ordered_today = []
+        self.ordered_hour = []
 
     def background(self):
         if len(self.counts) == 0:
@@ -61,6 +66,7 @@ class WildlifePage(Page):
                 if animal != "":
                     self.counts[animal] = 0
                     self.counts_todaystart[animal] = 0
+                    self.counts_hourstart[animal] = 0
 
         from helpers import tweet_handler
         results = tweet_handler.search(hashtag)
@@ -109,7 +115,7 @@ class WildlifeHourPage(Page):
     def __init__(self, num, mainpage):
         super(WildlifeHourPage, self).__init__(num)
         self.importance = 5
-        self.title = "Wildlife in the last hour"
+        self.title = "Wildlife This Hour"
         self.mainpage = mainpage
         self.in_index = False
 
