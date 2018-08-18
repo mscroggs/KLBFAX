@@ -48,11 +48,14 @@ class TwitterPage(Page):
                     text = text.replace("@EMFFAX","EMFFAX")
                     for i in range(0,len(text),80):
                         self.lines.append((text[i:i+80],col,False))
-                    self.lines.append(("@" + tweet["user"]["screen_name"] + " " + " ".join(tweet["user"]["created_at"].split(" ")[:4]),col,True))
+                    self.lines.append(("@" + tweet["user"]["screen_name"] + " " + " ".join(tweet["created_at"].split(" ")[:4]),col,True))
                     self.lines.append(("",col,True))
 
     def generate_content(self):
         self.add_title("Have your say",font="size4")
+        self.move_cursor(y=3,x=70)
+        self.add_text("Page "+str(self.start_n+1)+"/10",fg="BLUE",bg="YELLOW")
+        self.add_newline()
         self.add_newline()
         for line, col, fg in self.tpage.lines[21*self.start_n:21*(self.start_n+1)]:
             if fg:

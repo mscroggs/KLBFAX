@@ -11,8 +11,8 @@ def login():
     except:
         raise NoTwitter
 
-def search(q):
+def search(q, count=100):
     twapi = login()
 
-    results = twapi.search.tweets(q=q, result_type="recent", tweet_mode="extended")
+    results = twapi.search.tweets(q=q, result_type="recent", tweet_mode="extended", count=count)
     return results["statuses"]
