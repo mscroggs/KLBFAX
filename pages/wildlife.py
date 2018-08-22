@@ -81,8 +81,12 @@ class WildlifePage(Page):
         for result in results:
             if result["id_str"] == self.seen:
                 break
-            tweet = split_az(result["full_text"])
-            az_tweet = only_az(result["full_text"])
+            text = result["full_text"].lower()
+            text = text.replace("geese","goose")
+            text = text.replace("mallard","duck")
+            text = text.replace("mice","mouse")
+            tweet = split_az(text)
+            az_tweet = only_az(text)
             for animal in self.animals:
                 if animal.lower() in tweet or (len(animal)>4 and only_az(animal) in az_tweet):
                     self.counts[animal] += 1
