@@ -2,7 +2,7 @@ from page import Page
 from random import choice
 import config
 
-hashtag = "#EMFwildlife"
+hashtag = "#EMFwild"
 
 def only_az(text):
     out = ""
@@ -24,7 +24,7 @@ def split_az(text):
     return out
 
 def wildlife_content(self, ls, titlebit="Most seen"):
-    self.add_title(hashtag, font="size4bold")
+    self.add_title("Wildlife at EMF", font="size4bold")
     self.add_title("  "+titlebit, font="size4", fg="BLACK", bg="YELLOW")
 
     for animal,number in ls:
