@@ -251,17 +251,17 @@ xx,xx
 """)
 
 _add(u"₫","""
-x'' x
-x ' x
-x'''x
-xxxxx
+xxx'x
+x , x
+x,,,x
+x,,,x
 """)
 
 _add(u"₽","""
-x , x
-x ,,x
-, ,,x
-xxxxx
+x'''x
+x ' x
+' 'xx
+x,xxx
 """)
 
 _add(u"㎎","""

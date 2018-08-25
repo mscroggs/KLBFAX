@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from page import Page
 
 class CurrencyPage(Page):
@@ -60,8 +63,11 @@ class IndexPage(Page):
         self.add_newline()
         self.add_text("344",fg="RED")
         self.add_text(" Bitcoin vs EUR")
-        for i,page in enumerate(self.pagelist):
-            d = self.pagelist[page]
+        for i,page in enumerate(sorted(self.pagelist.items())):
+            #from IPython import embed
+            #embed()
+            d = self.pagelist[page[0]]
+
             if c1 != d[0][3]:
                 c1 = d[0][3]
                 y += 1
@@ -75,21 +81,21 @@ class IndexPage(Page):
                 y = 4
                 x += 28
             self.move_cursor(x=x,y=y)
-            self.add_text(str(page),fg="RED")
+            self.add_text(str(page[0]),fg="RED")
             self.add_text(" vs "+d[1][3])
 
 currencies = [
-        ("GBP","£","","British Pound"),
-        ("EUR","€","","Euro"),
-        ("USD","$","","US Dollar"),
-        ("NZD","NZ$","","New Zealand Dollar"),
-        ("AUD","AU$","","Australian Dollar"),
-        ("JPY","¥","","Japanese Yen"),
-        ("NOK","","kr","Norwegian Krone"),
-        ("VND","₫","","Vietnam Dong"),
-        ("RUB","","₽","Russian Rouble"),
-        ("CHF","Fr.","","Swiss Franc"),
-        ("GBP","SCOT£","","Scottish Pound")
+        ("GBP",u"£","","British Pound"),
+        ("EUR",u"€","","Euro"),
+        ("USD",u"$","","US Dollar"),
+        ("NZD",u"NZ$","","New Zealand Dollar"),
+        ("AUD",u"AU$","","Australian Dollar"),
+        ("JPY",u"¥","","Japanese Yen"),
+        ("NOK",u"",u"kr","Norwegian Krone"),
+        ("VND",u"₫","","Vietnam Dong"),
+        ("RUB",u"",u"₽","Russian Rouble"),
+        ("CHF",u"Fr","","Swiss Franc"),
+        ("GBP",u"SCOT£","","Scottish Pound")
     ]
 
 pagelist = {}

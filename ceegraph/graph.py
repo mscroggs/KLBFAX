@@ -1,3 +1,5 @@
+from __future__ import division
+
 import config
 from math import floor
 
