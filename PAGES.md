@@ -2,7 +2,7 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About EMFFAX)                      2  pages/about.py  
+(000 About 28JHFAX)                     2  pages/about.py  
 (001 Unicode Test Page)                 2  pages/unicode.py  
 (002 Error log)                         2  pages/errors.py  
 (003 License)                           2  pages/license.py  
@@ -117,7 +117,16 @@ Number & Page Name             Importance  File
 220 Wildlife                            5  pages/wildlife.py  
 221 Wildlife Today                      5  pages/wildlife.py  
 222 Wildlife This Hour                  5  pages/wildlife.py  
-260 Obituaries                          4  pages/obituaries.py  
+260 Obituaries                          2  pages/obituaries.py  
+261 Obituaries                          2  pages/obituaries.py  
+262 Obituaries                          2  pages/obituaries.py  
+263 Obituaries                          2  pages/obituaries.py  
+264 Obituaries                          2  pages/obituaries.py  
+265 Obituaries                          2  pages/obituaries.py  
+266 Obituaries                          2  pages/obituaries.py  
+267 Obituaries                          2  pages/obituaries.py  
+268 Obituaries                          2  pages/obituaries.py  
+269 Obituaries                          2  pages/obituaries.py  
 271 e                                   2  pages/e.py  
 272 Art                                 2  pages/art.py  
 273 Mona Lisa                           2  pages/art.py  
@@ -190,8 +199,6 @@ Number & Page Name             Importance  File
 340 Money                               1  pages/currency.py  
 341 Bitcoin                             4  pages/bitcoin.py  
 342 Bitcoin vs US Dollar                4  pages/bitcoin.py  
-343 Bitcoin vs Pound                    4  pages/bitcoin.py  
-344 Bitcoin vs Euro                     4  pages/bitcoin.py  
 345 British Pound vs Euro               1  pages/currency.py  
 346 British Pound vs US Dollar          1  pages/currency.py  
 347 British Pound vs New Zealand Dollar 1  pages/currency.py  

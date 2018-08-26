@@ -5,9 +5,13 @@ import config
 class ObitPage(Page):
     def __init__(self, n, which_number):
         super(ObitPage, self).__init__(n)
-        self.importance = 4
         self.title = "Obituaries"
-        self.index_num = "260-269"
+        if n == 260:
+            self.importance = 4
+            self.index_num = "260-269"
+        else:
+            self.in_index = False
+            self.importance = 2
         self.which_number = which_number
 
     def background(self):
