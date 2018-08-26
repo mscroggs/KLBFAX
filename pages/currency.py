@@ -2,11 +2,13 @@
 # -*- coding: utf-8 -*-
 
 from page import Page
+import config
 
 class CurrencyPage(Page):
-    def __init__(self, page_num, url, c1, c2):
+    def __init__(self, page_num, c1, c2):
         global pagelist
         super(CurrencyPage, self).__init__(page_num)
+        url = "http://"+c1[0].lower()+".fxexchangerate.com/"+c2[0].lower()+".xml"
         self.importance = 1
         self.top_title = c1[0]+" vs "+c2[0]
         self.title = c1[3]+" vs "+c2[3]
@@ -31,14 +33,36 @@ class CurrencyPage(Page):
             while self.b[0] == " ":
                 self.b = self.b[1:]
             self.b = self.b.split(" ")[0]
+
+            import fix_yahoo_finance as yf
+            from dateutil.relativedelta import relativedelta
+            this_time_last_year = (config.now() - relativedelta(years=1,days=1)).strftime("%Y-%m-%d")
+            yesterday = (config.now() - relativedelta(days=1)).strftime("%Y-%m-%d")
+            data = yf.download(self.c1[0].upper() + self.c2[0].upper() + "=X", start=this_time_last_year, end=yesterday,progress=False)
+            data_as_list = data.to_records()
+            self.xs = []
+            self.ys = []
+            for d in data_as_list:
+                self.xs.append(d[0])
+                self.ys.append(d[1])
+            from IPython import embed
+            embed()
+
         else:
+            from dateutil.relativedelta import relativedelta
+            this_time_last_year = (config.now() - relativedelta(years=1,days=1)).strftime("%Y-%m-%d")
+            yesterday = (config.now() - relativedelta(days=1)).strftime("%Y-%m-%d")
             self.a = "1"
             self.b = "1"
+            self.xs = [this_time_last_year,yesterday]
+            self.ys = [1,1]
 
     def generate_content(self):
         self.add_title(self.top_title,bg="BLACK",fg="RED",font='size4')
         self.add_title(self.c1[1]+"1"+self.c1[2]+" = "+self.c2[1]+self.a+self.c2[2],font='size4',fg="BLACK",bg="YELLOW")
         self.add_title(self.c2[1]+"1"+self.c2[2]+" = "+self.c1[1]+self.b+self.c1[2],font='size4',fg="BLACK",bg="LIGHTBLUE")
+        self.plot(range(len(self.ys)),self.ys,14,0,width=80,height=13,ytitle=self.c2[0],xtitle="Date",xlabels=[(i,self.xs[i].strftime('%-d-%b-%y')) for i in range(0,len(self.ys),53)],point=None,line="y")
+
 
 class IndexPage(Page):
     def __init__(self, page_num, pagelist):
@@ -103,7 +127,7 @@ pages = []
 pn = 345
 for i,a in enumerate(currencies):
     for b in currencies[i+1:]:
-        pages.append(CurrencyPage(pn, "http://"+a[0].lower()+".fxexchangerate.com/"+b[0].lower()+".xml",a,b))
+        pages.append(CurrencyPage(pn,a,b))
         pn += 1
 
 index = IndexPage(340, pagelist)

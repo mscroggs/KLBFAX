@@ -4,3 +4,4 @@ nrewebservices
 feedparser
 twitter
 tubestatus
+fix_yahoo_finance
