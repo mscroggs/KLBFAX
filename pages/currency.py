@@ -45,8 +45,8 @@ class CurrencyPage(Page):
             for d in data_as_list:
                 self.xs.append(d[0])
                 self.ys.append(d[1])
-            from IPython import embed
-            embed()
+            #from IPython import embed
+            #embed()
 
         else:
             from dateutil.relativedelta import relativedelta
