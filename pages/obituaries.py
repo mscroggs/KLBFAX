@@ -6,7 +6,8 @@ class ObitPage(Page):
     def __init__(self, n, which_number):
         super(ObitPage, self).__init__(n)
         self.title = "Obituaries"
-        if n == 260:
+        if n == "260":
+            self.in_index = True
             self.importance = 4
             self.index_num = "260-269"
         else:
