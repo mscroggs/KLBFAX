@@ -23,24 +23,62 @@ class ObitPage(Page):
             "----------ybbbbbyy------yyybbyyy---------ybbybby---------ybby---------ybbbbbyy-\n"
             "--------yyyyyyyyyy----yyyyyyyyyy-------yyyyyyyyy-------yyyyyy-------yyyyyyyyyy-\n"
             "--------yyyyyyyyyy----yyyyyyyyyy-------yyyyyyyyy-------yyyyyy-------yyyyyyyyyy-",1)
-        self.print_image(
-            "-wwwwwww-wwwwwwwwwwwwwwwwwwwww-wwwwww-wwwwwww\n"
-            "ww-----www-----ww-----ww-----www----www--w--w\n"
-            "w--www--ww--wwwww--wwwww--wwwww--ww--ww--w--w\n"
-            "w--wwwwwww----www----www----www------www---ww\n"
-            "w--www--ww--wwwww--wwwww--www-w--ww--ww--w--w\n"
-            "ww-----www-----ww-----ww--w---w--ww--ww--w--w\n"
-            "-wwwwwww-wwwwwwwwwwwwwwwwww---wwwwwwwwwwwwwww\n"
-            "---------------------------------------------",9,16)
-        self.print_image(
-            "--www-wwww-wwwwwwwww-----------wwwwwwwwwwww-wwwwwwwww-\n"
-            "-ww-www---ww-----w-w-----------w----ww----www-ww----ww\n"
-            "-w--ww--w--wwww--w-www--wwwwww-w-ww--w-ww--w--ww-ww--w\n"
-            "-ww-www----www--ww-w-ww-w----w-www--ww-w-w-ww-wwww--ww\n"
-            "-ww-wwww--www--www----w-wwwwww-ww--www--ww-ww-www--www\n"
-            "-w---ww--www--ww-www-ww--------w-----ww----w---w-----w\n"
-            "-wwwwwwwwwwwwww----www---------wwwwwwwwwwwwwwwwwwwwwww\n"
-            "------------------------------------------------------",14,11)
-        self.add_newline()
+
+        import requests
+        from bs4 import BeautifulSoup
+        import random
+        html = requests.get('https://en.wikipedia.org/wiki/Wikipedia%3ADatabase_reports%2FRecent_deaths')
+        b = BeautifulSoup(html.text, 'lxml')
+        all_people = b.find_all(name = 'tr')
+        person_data = [0 for i in range(10)]
+        name = [0 for i in range(10)]
+        birth = [0 for i in range(10)]
+        death = [0 for i in range(10)]
+        description = [0 for i in range(10)]
+        for i,person in enumerate(all_people[1:11]):
+            person_data[i] = person.find_all(name='td')
+            name[i] = person_data[i][1].text.replace("\n","")
+            birth[i] = person_data[i][2].text[0:4]
+            death[i] = person_data[i][3].text[0:4]
+            description[i] = person_data[i][4].text.replace("\n","")
+
+        i = random.randint(0,10)
+        if i == 10:
+            self.print_image(
+                "-wwwwwww-wwwwwwwwwwwwwwwwwwwww-wwwwww-wwwwwww\n"
+                "ww-----www-----ww-----ww-----www----www--w--w\n"
+                "w--www--ww--wwwww--wwwww--wwwww--ww--ww--w--w\n"
+                "w--wwwwwww----www----www----www------www---ww\n"
+                "w--www--ww--wwwww--wwwww--www-w--ww--ww--w--w\n"
+                "ww-----www-----ww-----ww--w---w--ww--ww--w--w\n"
+                "-wwwwwww-wwwwwwwwwwwwwwwwww---wwwwwwwwwwwwwww\n"
+                "---------------------------------------------",9,16)
+            self.print_image(
+                "--www-wwww-wwwwwwwww-----------wwwwwwwwwwww-wwwwwwwww-\n"
+                "-ww-www---ww-----w-w-----------w----ww----www-ww----ww\n"
+                "-w--ww--w--wwww--w-www--wwwwww-w-ww--w-ww--w--ww-ww--w\n"
+                "-ww-www----www--ww-w-ww-w----w-www--ww-w-w-ww-wwww--ww\n"
+                "-ww-wwww--www--www----w-wwwwww-ww--www--ww-ww-www--www\n"
+                "-w---ww--www--ww-www-ww--------w-----ww----w---w-----w\n"
+                "-wwwwwwwwwwwwww----www---------wwwwwwwwwwwwwwwwwwwwwww\n"
+                "------------------------------------------------------",14,11)
+            self.add_newline()
+        else:
+            self.move_cursor(y=10,x=2)
+            self.add_title(name[i],bg="BRIGHTWHITE",fg="BLACK",font="size4")
+            self.move_cursor(y=15,x=1)
+            self.add_text(description[i])
+            self.move_cursor(y=16,x=20)
+            self.add_title("          "+birth[i]+" - "+death[i],bg="YELLOW",fg="BLACK",font="size4")
+            self.print_image(
+                "-wwwwwww-\n"
+                "ww-----ww\n"
+                "w--w-w--w\n"
+                "w-------w\n"
+                "w---r---w\n"
+                "w-------w\n"
+                "ww-w-w-ww\n"
+                "w-w-w-w-w",17,1)
+
 
 i_p = ObitPage("260")
