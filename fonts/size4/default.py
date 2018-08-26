@@ -474,6 +474,188 @@ xx',x
 ,,,,x
 """)
 
+_add("a", """
+xxxx
+,,'x
+', x
+,,,x
+""")
+
+_add("b", """
+'xxx
+ ,'x
+ x x
+,,xx
+""")
+
+_add("c", """
+xxxx
+',,x
+ xxx
+x,,x
+""")
+
+_add("d", """
+xx'x
+', x
+ x x
+x,,x
+""")
+
+_add("e", """
+xxxx
+','x
+ ,,x
+x,,x
+""")
+
+_add("f", """
+x'x
+ 'x
+ xx
+,xx
+""")
+
+_add("g", """
+xxxx
+', x
+x, x
+,,xx
+""")
+
+_add("h", """
+'xxx
+ ,'x
+ x x
+,x,x
+""")
+
+_add("i", """
+'x
+'x
+ x
+,x
+""")
+
+_add("j", """
+x'x
+x'x
+x x
+,xx
+""")
+
+_add("k", """
+'xxx
+ x x
+ ,'x
+,x,x
+""")
+
+_add("l", """
+'x
+ x
+ x
+,x
+""")
+
+_add("m", """
+xxxxxx
+ ,','x
+ x x x
+,xxx,x
+""")
+
+_add("n", """
+xxxx
+ ,'x
+ x x
+,x,x
+""")
+
+_add("o", """
+xxxx
+','x
+ x x
+x,xx
+""")
+
+_add("p", """
+xxxx
+ ,'x
+ ',x
+,xxx
+""")
+
+_add("q", """
+xxxx
+', x
+,' x
+xx,x
+""")
+
+_add("r", """
+xxxx
+ ,'x
+ xxx
+,xxx
+""")
+
+_add("s", """
+xxxx
+',,x
+x,'x
+,,xx
+""")
+
+_add("t", """
+'xx
+ ,x
+ xx
+x,x
+""")
+
+_add("u", """
+xxxx
+ x x
+ x x
+x,,x
+""")
+
+_add("v", """
+xxxx
+ x x
+ x x
+,,xx
+""")
+
+_add("w", """
+xxxxxx
+ x x x
+ x x x
+,,,,xx
+""")
+
+_add("x", """
+xxxx
+,',x
+x xx
+,x,x
+""")
+
+_add("y", """
+xxxx
+ x x
+x, x
+,,xx
+""")
+
+_add("z", """
+xxxx
+,, x
+',xx
+,,,x
+""")
+
 _add("1", """
 x'x
 , x
@@ -548,7 +730,7 @@ x,,xx
 
 def get_letter(char):
     try:
-        return alphabet[char.upper()]
+        return alphabet[char]
     except KeyError as e:
         return LetterBlock("""
 xxxxx

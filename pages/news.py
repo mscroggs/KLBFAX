@@ -56,10 +56,14 @@ class NewsPage(Page):
 
         def width_of_word(word):
             width = len(word)*5 \
-            - sum(map(word.upper().count, u"!:,‘’.'I’"))*3
-            - sum(map(word.upper().count, u"-()1"))*2
-            - sum(map(word.upper().count, u"T"))*1
-            + sum(map(word.upper().count, u"MW"))*1
+            - sum(map(word.count, u"!:,‘’.'I’"))*3 \
+            - sum(map(word.count, u"-()1"))*2 \
+            - sum(map(word.count, u"T"))*1 \
+            + sum(map(word.count, u"MW"))*1 \
+            - sum(map(word.count, u"il"))*3 \
+            - sum(map(word.count, u"fjt"))*2 \
+            - sum(map(word.count, u"abcdeghknopqrsuvxyz"))*1 \
+            + sum(map(word.count, u"mw"))*1  
             return width
 
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
@@ -68,6 +72,8 @@ class NewsPage(Page):
         line = ""
         self.move_cursor(y=7,x=0)
         for word in self.words:
+            #from IPython import embed
+            #embed()
             if chars_left - width_of_word(word) <= 0:
                 chars_left = 80
                 self.add_title(line,bg="YELLOW",fg="BLACK",font="size4")
