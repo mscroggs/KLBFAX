@@ -14,7 +14,7 @@ class TwitterPage(Page):
 
         if n == 0:
             self.importance = 5
-            self.index_num = "210-233"
+            self.index_num = "210-259"
             self.title = "Twitter"
             self.lines = []
         else:
