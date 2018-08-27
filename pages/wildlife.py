@@ -55,7 +55,7 @@ class WildlifePage(Page):
         self.title = "Wildlife"
         self.today = config.now().strftime("%Y-%m-%d")
         self.hour = config.now().strftime("%Y-%m-%d %H")
-        self.index_num = "220-222"
+        self.index_num = "460-462"
 
         self.ordered = []
         self.ordered_today = []
@@ -129,6 +129,6 @@ class WildlifeHourPage(Page):
     def generate_content(self):
         wildlife_content(self, self.mainpage.ordered_hour, "this hour")
 
-page1 = WildlifePage("220")
-page2 = WildlifeTodayPage("221",page1)
-page3 = WildlifeHourPage("222",page1)
+page1 = WildlifePage("460")
+page2 = WildlifeTodayPage("461",page1)
+page3 = WildlifeHourPage("462",page1)

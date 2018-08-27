@@ -5,3 +5,6 @@ feedparser
 twitter
 tubestatus
 fix_yahoo_finance
+bs4
+parser
+lxml

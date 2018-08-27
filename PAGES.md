@@ -2,7 +2,7 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About 28JHFAX)                     2  pages/about.py  
+(000 About EMFFAX)                      2  pages/about.py  
 (001 Unicode Test Page)                 2  pages/unicode.py  
 (002 Error log)                         2  pages/errors.py  
 (003 License)                           2  pages/license.py  
@@ -78,7 +78,20 @@ Number & Page Name             Importance  File
 168 Rotating Round Table                2  pages/puzzles.py  
 169 Reverse Bases                       2  pages/puzzles.py  
 170 Jobs                                5  pages/polybius_biotech.py  
-171 Arcade helpers                      4  pages/emf_jobs.py  
+171 Badge Helper                        4  pages/emf_jobs.py  
+172 Bar                                 4  pages/emf_jobs.py  
+173 Car Parking                         4  pages/emf_jobs.py  
+174 Catering                            4  pages/emf_jobs.py  
+175 Entrance Steward                    4  pages/emf_jobs.py  
+176 Green Room                          4  pages/emf_jobs.py  
+177 Herald                              4  pages/emf_jobs.py  
+178 Info Desk                           4  pages/emf_jobs.py  
+179 NOC                                 4  pages/emf_jobs.py  
+180 Stage: Audio/Visual                 4  pages/emf_jobs.py  
+181 Stage: Camera Operator              4  pages/emf_jobs.py  
+182 Stage: Vision Mixer                 4  pages/emf_jobs.py  
+183 Tent Steward                        4  pages/emf_jobs.py  
+184 Youth Workshop Helper               4  pages/emf_jobs.py  
 185 Holidays                            2  pages/travel.py  
 186 Paris                               2  pages/travel.py  
 187 New York                            2  pages/travel.py  
@@ -104,7 +117,7 @@ Number & Page Name             Importance  File
 207 Have Your Say                       2  pages/have_your_say.py  
 208 Have Your Say                       2  pages/have_your_say.py  
 209 Have Your Say                       2  pages/have_your_say.py  
-210 #emfcamp                            5  pages/twitter.py  
+210 Twitter                             5  pages/twitter.py  
 211 #emfcamp                            2  pages/twitter.py  
 212 #emfcamp                            2  pages/twitter.py  
 213 #emfcamp                            2  pages/twitter.py  
@@ -114,10 +127,47 @@ Number & Page Name             Importance  File
 217 #emfcamp                            2  pages/twitter.py  
 218 #emfcamp                            2  pages/twitter.py  
 219 #emfcamp                            2  pages/twitter.py  
-220 Wildlife                            5  pages/wildlife.py  
-221 Wildlife Today                      5  pages/wildlife.py  
-222 Wildlife This Hour                  5  pages/wildlife.py  
-260 Obituaries                          2  pages/obituaries.py  
+220 @PolybiusBiotech                    2  pages/twitter.py  
+221 @emffax                             2  pages/twitter.py  
+222 @emfwebcam                          2  pages/twitter.py  
+223 @EMFCampMusic                       2  pages/twitter.py  
+224 @EMFDeliveries                      2  pages/twitter.py  
+225 @emfcountdown                       2  pages/twitter.py  
+226 @emfbeeb                            2  pages/twitter.py  
+227 @emffilmfest                        2  pages/twitter.py  
+228 @therobotarms                       2  pages/twitter.py  
+229 @EMFMedical                         2  pages/twitter.py  
+230 @emfcamp                            2  pages/twitter.py  
+231 @EMFInfoDesk                        5  pages/twitter.py  
+232 @emfnoc                             2  pages/twitter.py  
+233 @emfctf                             2  pages/twitter.py  
+234 @emfhams                            2  pages/twitter.py  
+235 @scotconsulate                      2  pages/twitter.py  
+236 @emfweather                         2  pages/twitter.py  
+237 @emf_weather                        2  pages/twitter.py  
+238 @emfcoffee                          2  pages/twitter.py  
+239 @jonty                              2  pages/twitter.py  
+240 @russss                             2  pages/twitter.py  
+241 @marksteward                        2  pages/twitter.py  
+242 @dpslwk                             2  pages/twitter.py  
+243 @btscroggs                          2  pages/twitter.py  
+244 @flangey                            2  pages/twitter.py  
+245 @milliways2342                      2  pages/twitter.py  
+246 @timrterrible                       2  pages/twitter.py  
+247 @sde1000                            2  pages/twitter.py  
+248 @benjamincpu                        2  pages/twitter.py  
+249 @dominicgs                          2  pages/twitter.py  
+250 @MatBurnham                         2  pages/twitter.py  
+251 @londonhackspace                    2  pages/twitter.py  
+252 @HSNOTTS                            2  pages/twitter.py  
+253 @ClubMate_UK                        2  pages/twitter.py  
+254 @tomscott                           2  pages/twitter.py  
+255 @DrLucyRogers                       2  pages/twitter.py  
+256 @mscroggs                           2  pages/twitter.py  
+257 @mathslogicbot                      2  pages/twitter.py  
+258 @I_AM_A_CAT_BOT                     2  pages/twitter.py  
+259 @AnnoyingCliche                     2  pages/twitter.py  
+260 Obituaries                          4  pages/obituaries.py  
 261 Obituaries                          2  pages/obituaries.py  
 262 Obituaries                          2  pages/obituaries.py  
 263 Obituaries                          2  pages/obituaries.py  
@@ -127,6 +177,7 @@ Number & Page Name             Importance  File
 267 Obituaries                          2  pages/obituaries.py  
 268 Obituaries                          2  pages/obituaries.py  
 269 Obituaries                          2  pages/obituaries.py  
+270 Obituaries                          2  pages/obituaries.py  
 271 e                                   2  pages/e.py  
 272 Art                                 2  pages/art.py  
 273 Mona Lisa                           2  pages/art.py  
@@ -199,6 +250,8 @@ Number & Page Name             Importance  File
 340 Money                               1  pages/currency.py  
 341 Bitcoin                             4  pages/bitcoin.py  
 342 Bitcoin vs US Dollar                4  pages/bitcoin.py  
+343 Bitcoin vs Pound                    4  pages/bitcoin.py  
+344 Bitcoin vs Euro                     4  pages/bitcoin.py  
 345 British Pound vs Euro               1  pages/currency.py  
 346 British Pound vs US Dollar          1  pages/currency.py  
 347 British Pound vs New Zealand Dollar 1  pages/currency.py  
@@ -282,6 +335,9 @@ Number & Page Name             Importance  File
 429 Too Many Requests                   1  pages/http-errors.py  
 431 Request Header Fields Too Large     1  pages/http-errors.py  
 451 Unavailable for Legal Reasons       1  pages/http-errors.py  
+460 Wildlife                            5  pages/wildlife.py  
+461 Wildlife Today                      5  pages/wildlife.py  
+462 Wildlife This Hour                  5  pages/wildlife.py  
 555 Lotto Results                       3  pages/lotto.py  
 600 TV Listings                         1  pages/tv.py  
 601 Today's TV: BBC1                    3  pages/tv.py  

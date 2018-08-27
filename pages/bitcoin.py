@@ -39,16 +39,10 @@ class BitGraphPage(Page):
     def background(self):
         self.xs = []
         self.ys = []
-        #from IPython import embed
-        #embed()
-        #from datetime import datetime
         from dateutil.relativedelta import relativedelta
-        #year = config.now().year-1
-        #month = config.now().month
-        #day = config.now().day
         this_time_last_year = (config.now() - relativedelta(years=1,days=1)).strftime("%Y-%m-%d")
         yesterday = (config.now() - relativedelta(days=1)).strftime("%Y-%m-%d")
-        data = url_handler.load_json("https://api.coindesk.com/v1/bpi/historical/close.json?start="+this_time_last_year+"&end="+yesterday)
+        data = url_handler.load_json("https://api.coindesk.com/v1/bpi/historical/close.json?start="+this_time_last_year+"&end="+yesterday+"&currency="+self.c)
         values_data = sorted(data["bpi"].items())
         for value in values_data:
             self.xs.append(value[0])
@@ -57,18 +51,6 @@ class BitGraphPage(Page):
         self.xs = self.xs[::1]
         self.ys = self.ys[::1]
 
-        '''for i in range(12):
-            strm = str(month)
-            if len(strm) == 1:
-                strm = "0"+strm
-            date = str(year)+"-"+strm+"-01"
-            self.xs.append(date)
-            self.ys.append(data["bpi"][date])
-            month += 1
-            if month == 13:
-                month = 1
-                year += 1'''
-
     def generate_content(self):
         import datetime
         self.add_title("Bitcoin vs "+self.cname,font='size4bold')
@@ -76,5 +58,5 @@ class BitGraphPage(Page):
 
 p1 = BitPage("341")
 p2 = BitGraphPage("342","USD","US Dollar")
-#p3 = BitGraphPage("343","GBP","Pound")
-#p4 = BitGraphPage("344","EUR","Euro")
+p3 = BitGraphPage("343","GBP","Pound")
+p4 = BitGraphPage("344","EUR","Euro")

@@ -82,6 +82,13 @@ xx,xx
 xx,xx
 """)
 
+_add("@","""
+',,,,, x
+ x , x x
+ x '   x
+,''''''x
+""")
+
 _add(u"▲","""
 xxxxxx
 xx'xxx
