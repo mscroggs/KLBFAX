@@ -242,8 +242,8 @@ Number & Page Name             Importance  File
 332 Sunrise & sunset                    2  pages/weather.py  
 333 UK Temperature                      4  pages/weather.py  
 334 World Temperature                   2  pages/weather.py  
-335                                     2  pages/weather.py  
-336                                     2  pages/weather.py  
+335 Shipping Forecast                   2  pages/weather.py  
+336 Shipping Forecast                   2  pages/weather.py  
 337 Music                               2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
 339 Music Trivia                        2  pages/trivia.py  

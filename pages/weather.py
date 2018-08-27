@@ -24,7 +24,7 @@ class WeatherForePage(Page):
         self.ftype = ftype
         self.title = "Weather"
         if number == "330":
-            self.index_num = "330-334"
+            self.index_num = "330-336"
             self.in_index = True
         else:
             self.in_index = False
@@ -293,6 +293,8 @@ class ShippingFPage(Page):
         super(ShippingFPage, self).__init__(n)
         self.pn = pn
         self.parent = parent
+        self.title = "Shipping Forecast"
+        self.in_index = False
 
     def background(self):
         import feedparser
