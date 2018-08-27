@@ -437,6 +437,55 @@ Number & Page Name             Importance  File
 713 EMF Schedule (Workshop 2)           2  pages/emf_schedule.py  
 714 EMF Schedule (Workshop 3)           2  pages/emf_schedule.py  
 777 Contributors                        3  pages/contributors.py  
+800 London Buses                        1  pages/bus.py  
+801 Euston Station (A/C/D/E/F) Buses    1  pages/bus.py  
+802 Euston Square Station (P/Q) Buses   1  pages/bus.py  
+803 Upper Woburn Place / Euston Road (L/M) Buses1pages/bus.py  
+804 Gower Street / UCH (N) Buses        1  pages/bus.py  
+805 Aldenham Street (S/T) Buses         1  pages/bus.py  
+806 Mornington Crescent (A/C/D/F/G/K) Buses1pages/bus.py  
+807 Putney Common (D) Buses             1  pages/bus.py  
+808 Portman Street / Selfridges (M) Buses1 pages/bus.py  
+809 George Street (K) Buses             1  pages/bus.py  
+810 Dorset Street (R) Buses             1  pages/bus.py  
+811 Old Marylebone Town Hall (W) Buses  1  pages/bus.py  
+812 Baker Street Station (D) Buses      1  pages/bus.py  
+813 Harley Street (M) Buses             1  pages/bus.py  
+814 Regent's Park Station (A) Buses     1  pages/bus.py  
+815 Great Portland St Stn / Euston Rd (H) Buses1pages/bus.py  
+816 Warren Street Station (KA) Buses    1  pages/bus.py  
+817 Euston Square Station (Q) Buses     1  pages/bus.py  
+818 British Library (C) Buses           1  pages/bus.py  
+819 King's Cross Station (E) Buses      1  pages/bus.py  
+820 King's Cross Road (K) Buses         1  pages/bus.py  
+821 Penton Rise (PG) Buses              1  pages/bus.py  
+822 Penton Street (PK) Buses            1  pages/bus.py  
+823 Baron Street / Chapel Market (T) Buses1pages/bus.py  
+824 White Lion Street (U) Buses         1  pages/bus.py  
+825 London Underground                  2  pages/tube.py  
+826 Euston Underground Trains           1  pages/tube.py  
+827 Euston Square Underground Trains    1  pages/tube.py  
+828 Warren Street Underground Trains    1  pages/tube.py  
+829 Russell Square Underground Trains   1  pages/tube.py  
+830 Mornington Crescent Underground Trains1pages/tube.py  
+831 Perivale Underground Trains         1  pages/tube.py  
+832 Kings Cross St Pancras Underground Trains1pages/tube.py  
+833 Tottenham Court Road Underground Trains1pages/tube.py  
+834 Oxford Circus Underground Trains    1  pages/tube.py  
+835 Alperton Underground Trains         1  pages/tube.py  
+836 Waterloo Underground Trains         1  pages/tube.py  
+837 Embankment Underground Trains       1  pages/tube.py  
+838 South Kensington Underground Trains 1  pages/tube.py  
+839 Gloucester Road Underground Trains  1  pages/tube.py  
+840 Bank Underground Trains             1  pages/tube.py  
+841 Baker Street Underground Trains     1  pages/tube.py  
+842 Liverpool Street Underground Trains 1  pages/tube.py  
+843 Paddington Underground Trains       1  pages/tube.py  
+844 Marylebone Underground Trains       1  pages/tube.py  
+845 Tooting Broadway Underground Trains 1  pages/tube.py  
+846 London Bridge Underground Trains    1  pages/tube.py  
+847 Earl's Court Underground Trains     1  pages/tube.py  
+848 Bond Street Underground Trains      1  pages/tube.py  
 849 Tube Line Status                    2  pages/tubestatus.py  
 850 Trains                              1  pages/trains.py  
 851 Milton Keynes Trains                3  pages/trains.py  
