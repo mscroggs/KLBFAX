@@ -288,9 +288,65 @@ class WorldTempPage(Page):
             self.move_cursor(x=0,y=8+4*i)
             self.add_title(temps[3*i+2],font="size4", bg="BLACK", fg=color[2], fill=False, pre=67)
 
+class ShippingFPage(Page):
+    def __init__(self, n, pn, parent=None):
+        super(ShippingFPage, self).__init__(n)
+        self.pn = pn
+        self.parent = parent
+
+    def background(self):
+        import feedparser
+        if self.parent is None:
+            self.data = url_handler.load("https://www.metoffice.gov.uk/public/data/CoreProductCache/ShippingForecast/Latest")
+        else:
+            self.parent.background()
+
+    def get_data(self):
+        if self.parent is None:
+            return self.data
+        return self.parent.data
+
+    def first_between_tags(self, tag, text=None):
+        if text is None:
+            text = self.get_data()
+        return text.split("<"+tag+">")[1].split("</"+tag+">")[0]
+
+    def between_tags(self, tag, text=None):
+        if text is None:
+            text = self.get_data()
+        return [i.split("</"+tag+">")[0] for i in text.split("<"+tag+">")[1:]]
+
+    def generate_content(self):
+        self.add_title("Shipping Forecast",font="size4bold")
+        if self.pn == 1:
+            self.add_text("Gales",fg="YELLOW")
+            self.add_newline()
+            for i in self.between_tags("shipping-area",self.first_between_tags("gales")):
+                self.add_text(i)
+                self.add_newline()
+            self.add_newline()
+
+            self.add_text("General Synopsis",fg="YELLOW")
+            self.add_newline()
+            self.add_text(self.first_between_tags("gs-text",self.first_between_tags("general-synopsis")))
+
+        if self.pn == 2:
+            for i in self.between_tags("area-forecast"):
+                self.add_wrapped_text(self.first_between_tags("all",i)+". ",fg="YELLOW")
+                self.add_newline()
+                self.add_wrapped_text(self.first_between_tags("wind",i)+" ")
+                self.add_wrapped_text(self.first_between_tags("weather",i)+" ")
+                self.add_wrapped_text(self.first_between_tags("visibility",i)+" ")
+                #self.add_wrapped_text(i)
+                self.add_newline()
+                self.add_newline()
+#            self.add_wrapped_text(str(self.get_data()))
+
 page0 = WeatherForePage("330",metoffer.THREE_HOURLY)
 page1 = WeatherForePage("331",metoffer.DAILY)
 page2 = SunrisePage("332")
 page3 = UKTempPage("333")
 page3.importance = 4
 page4 = WorldTempPage("334")
+page5 = ShippingFPage("335",1)
+page6 = ShippingFPage("336",2,page5)

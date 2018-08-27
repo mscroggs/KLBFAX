@@ -242,8 +242,8 @@ Number & Page Name             Importance  File
 332 Sunrise & sunset                    2  pages/weather.py  
 333 UK Temperature                      4  pages/weather.py  
 334 World Temperature                   2  pages/weather.py  
-335 Time                                2  pages/time.py  
-336 Time                                2  pages/time.py  
+335                                     2  pages/weather.py  
+336                                     2  pages/weather.py  
 337 Music                               2  pages/music_chart.py  
 338 UK Top 40 Albums                    2  pages/music_chart.py  
 339 Music Trivia                        2  pages/trivia.py  
@@ -326,6 +326,8 @@ Number & Page Name             Importance  File
 416 Range Not Satisfiable               1  pages/http-errors.py  
 417 Expectation Failed                  1  pages/http-errors.py  
 418 I'm a Teapot                        1  pages/http-errors.py  
+419 Time                                2  pages/time.py  
+420 Time                                2  pages/time.py  
 421 Misdirected Request                 1  pages/http-errors.py  
 422 Unprocessable Entity                1  pages/http-errors.py  
 423 Locked                              1  pages/http-errors.py  
