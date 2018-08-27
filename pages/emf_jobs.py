@@ -12,10 +12,10 @@ class JobPage(Page):
     def generate_content(self):
         self.add_title("Jobs: "+self.title,fg="BLACK",bg="ORANGE",font="size4")
         self.add_newline()
-        self.add_text(self.desc)
+        self.add_wrapped_text(self.desc)
         self.add_newline()
         self.add_newline()
-        self.add_text("Sign up for this role now at the volunteering desk or online at emfcamp.org/volunteer",fg="BRIGHTWHITE")
+        self.add_text("Sign up for this role now at the volunteering desk\n  or online at emfcamp.org/volunteer",fg="BRIGHTWHITE")
 
 page1 = JobPage("171","Badge Helper","Fix, replace and troubleshoot badges and their software.")
 page2 = JobPage("172","Bar","Help run the bar. Serve drinks, take payment, keep it clean.")
