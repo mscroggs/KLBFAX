@@ -1,3 +1,6 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 from page import Page
 from helpers import url_handler
 import datetime

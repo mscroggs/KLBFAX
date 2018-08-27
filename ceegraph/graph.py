@@ -1,3 +1,5 @@
+from __future__ import division
+
 import config
 from math import floor
 
@@ -7,6 +9,7 @@ def intf(n):
 
 def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=config.WIDTH, height=config.HEIGHT-3,
          xtitle="", ytitle="", xmin=None, xmax=None, ymin=None, ymax=None, xlabels=None, ylabels=None):
+    import numpy as np
     if xmin is None:
         xmin = min(xs)
     if xmax is None:
@@ -15,10 +18,10 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=co
         ymin = min(ys)
     if ymax is None:
         ymax = max(ys)
-    xmin = intf(xmin)
-    xmax = intf(xmax)+1
-    ymin = intf(ymin)
-    ymax = intf(ymax)+1
+    #xmin = intf(xmin)
+    #xmax = intf(xmax)+1
+    #ymin = intf(ymin)
+    #ymax = intf(ymax)+1
 
     xtick = (xmax-xmin)/(width-3)
     ytick = (ymax-ymin)/(height*2-4)
@@ -61,7 +64,11 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=co
     self.print_image("\n".join("".join(i for i in j) for j in canvas),y,x)
 
     if xlabels is None:
-        for xlabel in range(xmin,xmax,intf((xmax-xmin)/4)):
+        if xmax-xmin >= 2:
+            step = intf((xmax-xmin)/4)
+        else:
+            step = (xmax-xmin)/4
+        for xlabel in list(np.arange(xmin,xmax,step)):
             canx,_ = get_canvas_pos(xlabel,0)
             self.move_cursor(x=x+canx,y=y+height-1)
             self.add_text(str(xlabel))
@@ -72,11 +79,15 @@ def plot(self, xs, ys, y=0, x=0, axis="w", bg="-", line="y", point="W", width=co
             self.add_text(str(label))
 
     if ylabels is None:
-        for ylabel in range(ymin,ymax,intf((ymax-ymin)/4)):
+        if ymax-ymin >= 2:
+            step = intf((ymax-ymin)/4)
+        else:
+            step = (ymax-ymin)/4
+        for ylabel in list(np.arange(ymin,ymax,step)):
             _,cany = get_canvas_pos(0,ylabel)
             cany //= 2
             self.move_cursor(x=0,y=y+cany)
-            self.add_text(str(ylabel))
+            self.add_text("{:.2f}".format(ylabel))
     else:
         for yval,label in ylabels:
             _,cany = get_canvas_pos(yval,0)
