@@ -59,6 +59,11 @@ class TestPage(Page):
         except IOError:
             self.add_text("eth0: ERROR")
 
+        try:
+            self.add_text("wlan0: "+get_ip_address(b'wlan0'))
+        except IOError:
+            self.add_text("wlan0: ERROR")
+
         from ceefax import Ceefax
 
         self.add_newline()
