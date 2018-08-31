@@ -58,6 +58,7 @@ class TestPage(Page):
             self.add_text("eth0: "+get_ip_address(b'eth0'))
         except IOError:
             self.add_text("eth0: ERROR")
+        self.add_newline()
 
         try:
             self.add_text("wlan0: "+get_ip_address(b'wlan0'))
