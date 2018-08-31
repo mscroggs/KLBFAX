@@ -7,3 +7,4 @@ tubestatus
 fix_yahoo_finance
 bs4
 lxml
+numpy
