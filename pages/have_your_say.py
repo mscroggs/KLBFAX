@@ -37,7 +37,7 @@ class TwitterPage(Page):
             for tweet in results:
                 if "retweeted_status" not in tweet:
                     col = choice(non_dark_colors)
-                    text = tweet["text"]
+                    text = tweet["full_text"]
                     while "http" in text:
                         tsp = text.split("http",1)
                         text = tsp[0] + "<url>"
