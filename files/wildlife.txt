@@ -146,3 +146,7 @@ Human
 Dog
 Cat
 Wolf
+Benny
+Jonty
+Unicorn
+Russ
