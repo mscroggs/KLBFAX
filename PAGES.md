@@ -436,6 +436,20 @@ Number & Page Name             Importance  File
 712 EMF Schedule (Workshop 1)           2  pages/emf_schedule.py  
 713 EMF Schedule (Workshop 2)           2  pages/emf_schedule.py  
 714 EMF Schedule (Workshop 3)           2  pages/emf_schedule.py  
+715 EMF Schedule (Amateur Radio)        2  pages/emf_schedule.py  
+716 EMF Schedule (Board Gamers)         2  pages/emf_schedule.py  
+717 EMF Schedule (Embassy of Nowhere)   2  pages/emf_schedule.py  
+718 EMF Schedule (Foodhackingbase)      2  pages/emf_schedule.py  
+719 EMF Schedule (Hardware Hacking Area)2  pages/emf_schedule.py  
+720 EMF Schedule (Holistic Howlers)     2  pages/emf_schedule.py  
+721 EMF Schedule (Maths Village)        2  pages/emf_schedule.py  
+722 EMF Schedule (Null Sector)          2  pages/emf_schedule.py  
+723 EMF Schedule (Owl City )            2  pages/emf_schedule.py  
+724 EMF Schedule (Sai's Tent)           2  pages/emf_schedule.py  
+725 EMF Schedule (Swan'); DROP TABLE Villages; --)2pages/emf_schedule.py  
+726 EMF Schedule (Workshop 4)           2  pages/emf_schedule.py  
+727 EMF Schedule (Yorkshire And Friends (Leeds Hackspace et al) )2pages/emf_schedule.py  
+728 EMF Schedule (Youth Workshop)       2  pages/emf_schedule.py  
 777 Contributors                        3  pages/contributors.py  
 800 London Buses                        1  pages/bus.py  
 801 Euston Station (A/C/D/E/F) Buses    1  pages/bus.py  
