@@ -73,6 +73,7 @@ bus02 = BusPage("802",["490000078P","490000078Q"],"Euston Square Station","P/Q")
 bus03 = BusPage("803",["490012867L","490012867M"],"Upper Woburn Place / Euston Road","L/M")
 bus04 = BusPage("804",["490013914N"],"Gower Street / UCH","N")
 bus05 = BusPage("805",["490003174N","490003174S"],"Aldenham Street","S/T")
+bus05.importance = 5
 bus06 = BusPage("806",["490000152A","490000152C","490000152D","490000152F","490000152G","490000152K"],"Mornington Crescent","A/C/D/F/G/K")
 bus07 = BusPage("807",["490011281N"],"Putney Common","D")
 bus08 = BusPage("808",["490011133M"],"Portman Street / Selfridges","M")

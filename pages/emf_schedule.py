@@ -17,7 +17,7 @@ class NowAndNextPage(Page):
         self.title = "Now and Next"
         self.subtitle = self.title
         self.in_index = False
-        self.importance = 5
+        self.importance = 1
 
     def generate_content(self):
         self.add_title("Now & Next",fg="BLACK",bg="PINK",font="size4bold")
@@ -51,7 +51,7 @@ class EMFPage(Page):
         self.title = "EMF Schedule Day "+str(n)
         self.subtitle = "Day "+str(n)
         self.in_index = False
-        self.importance = 4
+        self.importance = 1
         self.n = n
         if n == 1:
             self.day = "2018-08-31"
@@ -141,7 +141,7 @@ class IndexPage(Page):
         super(IndexPage, self).__init__(num)
         self.title = "EMF Schedule"
         self.list = []
-        self.importance = 3
+        self.importance = 1
 
     def generate_content(self):
         self.add_title("EMF Schedule",font="size4bold")

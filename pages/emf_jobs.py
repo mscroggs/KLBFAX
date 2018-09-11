@@ -7,7 +7,7 @@ class JobPage(Page):
         self.title = title
         self.desc = desc
         self.in_index = False
-        self.importance = 4
+        self.importance = 0
 
     def generate_content(self):
         self.add_title("Jobs: "+self.title,fg="BLACK",bg="ORANGE",font="size4")

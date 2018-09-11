@@ -6,6 +6,7 @@ class TubePage(Page):
         super(TubePage, self).__init__(page_num)
         self.title = "Tube Line Status"
         self.in_index = False
+        self.importance = 5
 
     def background(self):
         import tubestatus

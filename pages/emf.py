@@ -6,7 +6,7 @@ class WikiListPage(Page):
         global pagelist
         pagelist[page_num] = title
         super(WikiListPage, self).__init__(page_num)
-        self.importance = 3
+        self.importance = 1
         self.top_title = title
         self.title = title
         self.url = url
