@@ -29,18 +29,18 @@ from datetime import datetime as _dt
 def now():
     return _dt.now()
 
-title =("-----------yyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
-        "-----------yyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
-        "-----------yybbbbbbyy-----------ybbbbbyy----------ybbbbbyy---------\n"
-        "-----------yybbyyyyyy-yyyyyyyyy-ybbyyyyy-yyyyyyyy-ybbyybyy-yyyyyyyy\n"
-        "-----------yybbbbyyyy-yyyyyyyyy-ybbbbyyy-yyyyyyyy-ybbbbbyy-yyyyyyyy\n"
-        "-----------yybbyyyyyy-ybbbybbyy-ybbyyyyy-ybbbbbyy-ybbyybyy-ybbybbyy\n"
-        "-----------yybbbbbbyy-ybbbbbbyy-ybbyyyyy-ybbyyyyy-ybbyybyy-ybbybbyy\n"
-        "-----------yyyyyyyyyy-ybbybybyy-yyyyyyyy-ybbbbyyy-yyyyyyyy-yybbbyyy\n"
-        "-----------yyyyyyyyyy-ybbyyybyy-yyyyyyyy-ybbyyyyy-yyyyyyyy-ybbybbyy\n"
-        "----------------------ybbyyybyy----------ybbyyyyy----------ybbybbyy\n"
-        "--------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy\n"
-        "--------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy")
+title =("-------yyyyyyyyyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
+        "-------yyyyyyyyyyyyyyyyy---------yyyyyyyyyy--------yyyyyyyyyy---------\n"
+        "-------yy......y......yy-----------y..yy.yy----------y.....yy---------\n"
+        "-------yyyyyyy.y..yyy.yy-yyyyyyyyy-y..yy.yy-yyyyyyyy-y..yy.yy-yyyyyyyy\n"
+        "-------yy......y......yy-yyyyyyyyy-y.....yy-yyyyyyyy-y.....yy-yyyyyyyy\n"
+        "-------yy..yyyyy..yyy.yy-yyyyy..yy-y..yy.yy-y.....yy-y..yy.yy-y..y..yy\n"
+        "-------yy......y......yy-yyyyy..yy-y..yy.yy-y..yyyyy-y..yy.yy-y..y..yy\n"
+        "-------yyyyyyyyyyyyyyyyy-yyyyy..yy-yyyyyyyy-y....yyy-yyyyyyyy-yy...yyy\n"
+        "-------yyyyyyyyyyyyyyyyy-y..yy..yy-yyyyyyyy-y..yyyyy-yyyyyyyy-y..y..yy\n"
+        "-------------------------y......yy----------y..yyyyy----------y..y..yy\n"
+        "-----------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy\n"
+        "-----------------------yyyyyyyyyyy--------yyyyyyyyyy--------yyyyyyyyyy").replace(".","b")
 
 
 twitter_access_key = None
@@ -57,4 +57,3 @@ try:
     from localconfig import *
 except ImportError:
     pass
-

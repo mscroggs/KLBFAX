@@ -41,3 +41,9 @@ def f_write_json(data, f_name):
 def load_file(f_name):
     with open(_join(ceefax_path,'files',f_name)) as f:
         return f.read()
+
+def load_csv_file(f_name):
+    import csv
+    with open(_join(ceefax_path,'files',f_name)) as f:
+        reader = csv.reader(f, delimiter=',')
+        return list(reader)

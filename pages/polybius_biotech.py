@@ -6,7 +6,7 @@ class PolybPage(Page):
         super(PolybPage, self).__init__(page_num)
         self.title = "Jobs"
         self.index_num = "170-184"
-        self.importance = 5
+        #self.importance = 5
 
     def generate_content(self):
         self.add_title("Polybius",fg="BLACK",bg="ORANGE")

@@ -63,7 +63,7 @@ class NewsPage(Page):
             - sum(map(word.count, u"il"))*3 \
             - sum(map(word.count, u"fjt"))*2 \
             - sum(map(word.count, u"abcdeghknopqrsuvxyz"))*1 \
-            + sum(map(word.count, u"mw"))*1  
+            + sum(map(word.count, u"mw"))*1
             return width
 
         self.add_title(self.top_title,bg="BLACK",fg="LIGHTRED")
@@ -89,15 +89,16 @@ class NewsPage(Page):
 news_page1 = NewsPage(301, "http://feeds.bbci.co.uk/news/rss.xml?edition=uk", "Top Stories","From BBC News")
 news_page2 = NewsPage(302, "http://feeds.bbci.co.uk/news/technology/rss.xml?edition=uk", "Technology","From BBC News")
 news_page3 = NewsPage(303, "http://feeds.bbci.co.uk/news/business/rss.xml?edition=uk", "Business","From BBC News")
-news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Local News","From Ledbury Reporter")
-news_page4.importance = 4
-news_page5 = NewsPage(305, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science","From BBC News")
-news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics","From BBC News")
-news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education","From BBC News")
-news_page8 = NewsPage(308, "https://www.theguardian.com/uk/rss", "The Guardian")
-news_page9 = NewsPage(309, "http://www.independent.co.uk/news/rss", "The Independent")
-news_page10 = NewsPage(310, "http://www.telegraph.co.uk/newsfeed/rss/news_breaking.xml", "The Telegraph")
-news_page11 = NewsPage(311, "http://blog.emfcamp.org/rss", "emfcamp.org")
+news_page4 = NewsPage(304, "http://www.ledburyreporter.co.uk/news/rss/", "Ledbury Reporter","From the Ledbury Reporter")
+news_page5 = NewsPage(305, "http://www.birminghammail.co.uk/all-about/sutton-coldfield?service=rss", "Sutton Observer","From the Royal Sutton Coldfield Observer")
+#ews_page4.importance = 4
+news_page6 = NewsPage(306, "http://feeds.bbci.co.uk/news/science_and_environment/rss.xml?edition=uk", "Science","From BBC News")
+news_page7 = NewsPage(307, "http://feeds.bbci.co.uk/news/politics/rss.xml?edition=uk", "Politics","From BBC News")
+news_page8 = NewsPage(308, "http://feeds.bbci.co.uk/news/education/rss.xml?edition=uk", "Education","From BBC News")
+news_page9 = NewsPage(309, "https://www.theguardian.com/uk/rss", "The Guardian")
+news_page10 = NewsPage(310, "http://www.independent.co.uk/news/rss", "The Independent")
+news_page11 = NewsPage(311, "http://www.telegraph.co.uk/newsfeed/rss/news_breaking.xml", "The Telegraph")
+#news_page11 = NewsPage(311, "http://blog.emfcamp.org/rss", "emfcamp.org")
 news_page12 = NewsPage(312, "http://www.metoffice.gov.uk/public/data/PWSCache/WarningsRSS/Region/UK", "Weather warnings","From the Met Office")
 news_page13 = NewsPage(313, "http://www.dailymail.co.uk/tvshowbiz/index.rss", "Showbiz","From The Daily Mail")
 

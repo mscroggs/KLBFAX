@@ -4,7 +4,7 @@ from random import shuffle
 class EMFMapPage(Page):
     def __init__(self):
         super(EMFMapPage, self).__init__("703")
-        self.importance = 2
+        #self.importance = 2
         self.title = "EMF site map"
 
     def generate_content(self):

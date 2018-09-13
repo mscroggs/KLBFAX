@@ -18,6 +18,15 @@ class TrainPage(Page):
 
         session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
 
+        if self.code == "XXX":
+            # Pick randomly
+            from helpers.file_handler import load_csv_file
+            import random
+            station_codes = load_csv_file("station_codes.csv")
+            choose = random.choice(list(station_codes))
+            self.code = choose[1]
+            self.station = choose[0]
+
         board = session.get_station_board_with_details(self.code, rows=14, include_departures=True, include_arrivals=False)
 
         self.add_title(self.station,font="size4")
@@ -143,7 +152,7 @@ class TrainPage(Page):
             operator = service.operator
             if len(operator) > 19:
                 for k, v in operator_mapping:
-                    operator = operator.replace(k, v)            
+                    operator = operator.replace(k, v)
             self.add_text(operator)
             self.end_fg_color()
 
@@ -203,60 +212,62 @@ class TrainPage(Page):
                 self.add_text(service.etd)
 
 pages = []
-train01 = TrainPage("851","Milton Keynes","MKC")
-train02 = TrainPage("852","Bletchley","BLY")
-train03 = TrainPage("853","Farncombe","FNC")
-train04 = TrainPage("854","Ledbury","LED")
-train01.importance = 3
-train02.importance = 3
-train03.importance = 3
-train04.importance = 5
-train05 = TrainPage("855","Shippea Hill","SPP")
-train06 = TrainPage("856","Glasgow Central","GLC")
-train07 = TrainPage("857","Birmingham New Street","BHM")
-train08 = TrainPage("858","London Waterloo","WAT")
-train09 = TrainPage("859","London King's Cross","KGX", True)
-train10 = TrainPage("860","Banbury","BAN")
-train11 = TrainPage("861","Moreton-in-Marsh","MIM")
-train12 = TrainPage("862","Manchester Piccadilly","MAN")
 
-train13 = TrainPage("863","Ashford International","AFK")
-train14 = TrainPage("864","Basingstoke","BSK")
-train15 = TrainPage("865","Coventry","COV")
-train16 = TrainPage("866","Davenport","DVN")
-train17 = TrainPage("867","Egham","EGH")
-train18 = TrainPage("868","Fort William","FTW")
-train19 = TrainPage("869","Gloucester","GCR")
-train20 = TrainPage("870","Halifax","HFX")
-train21 = TrainPage("871","Ipswich","IPS")
-train22 = TrainPage("872","Jewellery Quarter","JEQ")
-train23 = TrainPage("873","Knighton","KNI")
-train24 = TrainPage("874","Liverpool Lime Street","LIV")
-train25 = TrainPage("875","Malvern Link","MVL")
-train26 = TrainPage("876","Nottingham","NOT")
-train27 = TrainPage("877","Oxford","OXF")
-train28 = TrainPage("878","Pembroke","PMB")
-train29 = TrainPage("879","Quakers Yard","QYD")
-train30 = TrainPage("880","Rainham (Kent)","RAI")
-train31 = TrainPage("881","Stratford-upon-Avon","SAV")
-train32 = TrainPage("882","Thurso","THS")
-train33 = TrainPage("883","University (Birmingham)","UNI")
-train34 = TrainPage("884","Valley","VAL")
-train35 = TrainPage("885","Warwick","WRW")
-train36 = TrainPage("886","York","YRK")
+# London stations
+train01 = TrainPage("851","Euston","EUS")
+#train01.importance = 3
+train02 = TrainPage("852","King's Cross","KGX", True)
+train03 = TrainPage("853","St Pancras","STP")
+train04 = TrainPage("854","Liverpool St","LST")
+train05 = TrainPage("855","Marylebone","MYB")
+train06 = TrainPage("856","Paddington","PAD")
+train07 = TrainPage("857","Victoria","VIC")
+train08 = TrainPage("858","Waterloo","WAT")
+train09 = TrainPage("859","Blackfriars","BFR")
+train10 = TrainPage("860","London Bridge","LBG")
+train11 = TrainPage("861","Charing Cross","CHX")
+train12 = TrainPage("862","Cannon Street","CST")
+train13 = TrainPage("863","Fenchurch St","FST")
 
-train37 = TrainPage("887","Gatwick Airport","GTW")
-train38 = TrainPage("889","Heathrow Airport (T4)","HAF")
-train39 = TrainPage("890","Heathrow Airport (T5)","HWV")
-train40 = TrainPage("891","Heathrow Airport (T1-3)","HXX")
-train41 = TrainPage("892","Luton Airport Parkway","LTN")
-train42 = TrainPage("893","Manchester Airport","MIA")
-train43 = TrainPage("894","Prestwick International Airport","PRA")
-train44 = TrainPage("895","Rhoose Cardiff International Airport","RIA")
-train45 = TrainPage("896","Southampton Airport Parkway","SOA")
+# Elsewhere
+train14 = TrainPage("864","Banbury","BAN")
+train15 = TrainPage("865","Barry Links","BYL")
+train16 = TrainPage("866","Basingstoke","BSK")
+train17 = TrainPage("867","Birmingham New St","BHM")
+train18 = TrainPage("868","Blaenau Ffestiniog","BFF")
+train19 = TrainPage("869","Bristol TM","BRI")
+train20 = TrainPage("870","Cambridge","CBG")
+train21 = TrainPage("871","Cardiff Ctl","CDF")
+train22 = TrainPage("872","Edinburgh","EDB")
+train23 = TrainPage("873","Glasgow Central","GLC")
+train24 = TrainPage("874","Glasgow Queen St","GLQ")
+train25 = TrainPage("875","Leeds","LDS")
+train26 = TrainPage("876","Lichfield TV","LTV")
+train27 = TrainPage("877","Liverpool Ctl","LVC")
+train28 = TrainPage("878","Liverpool Lime St","LIV")
+train29 = TrainPage("879","Manchester Picc","MAN")
+train30 = TrainPage("880","Newcastle","NCL")
+train31 = TrainPage("881","Nottingham","NOT")
+train32 = TrainPage("882","Oxford","OXF")
+train33 = TrainPage("883","Rainham","RAI")
+train34 = TrainPage("884","Reading","RDG")
+train35 = TrainPage("885","Sevenoaks","SEV")
+train36 = TrainPage("886","Stratford-upon-Avon","SAV")
+train37 = TrainPage("887","Sutton Coldfield","SUT")
+train38 = TrainPage("889","Thurso","THS")
+train39 = TrainPage("890","University","UNI")
+train40 = TrainPage("891","Valley","VAL")
+train41 = TrainPage("892","Warwick","WRW")
+train42 = TrainPage("893","York","YRK")
+
+# Airports
+train43 = TrainPage("894","Gatwick Airport","GTW")
+train44 = TrainPage("895","Heathrow T2-3","HXX")
+train45 = TrainPage("896","Luton Airport Parkway","LTN")
 train46 = TrainPage("897","Southend Airport","SIA")
-train47 = TrainPage("898","Stanstead Airport","SSD")
-train48 = TrainPage("899","Tees-side Airport","TEA")
+train47 = TrainPage("898","Stansted Airport","SSD")
+
+train48 = TrainPage("899","Random!","XXX")
 
 class TrainIPage(Page):
     def __init__(self):
@@ -269,11 +280,16 @@ class TrainIPage(Page):
         self.add_title("Trains Index")
 
         for i,page in enumerate(pages):
+            if i//16==0:
+                self.move_cursor(x=0)
+            elif i//16==1:
+                self.move_cursor(x=25)
+            else:
+                self.move_cursor(x=50)
+            if i % 16 == 0:
+                self.move_cursor(y=8)            
             self.add_text(page[0], fg="RED")
             self.add_text(" "+page[1])
-            if i%2==1:
-                self.add_newline()
-            else:
-                self.move_cursor(x=38)
+            self.add_newline()
 
 tp = TrainIPage()
