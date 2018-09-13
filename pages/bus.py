@@ -92,7 +92,7 @@ bus20 = BusPage("820",["490001172K"],"King's Cross Road","K")
 bus21 = BusPage("821",["490005904E"],"Penton Rise","PG")
 bus22 = BusPage("822",["490010928E"],"Penton Street","PK")
 bus23 = BusPage("823",["490003650T"],"Baron Street / Chapel Market","T")
-bus24 = BusPage("824",["490014603U"],"White Lion Street","U")
+#bus24 = BusPage("824",["490014603U"],"White Lion Street","U")
 
 
 
@@ -100,7 +100,7 @@ class TVIPage(Page):
     def __init__(self):
         super(TVIPage, self).__init__("800")
         self.title = "London Buses"
-        self.index_num = "800-824"
+        self.index_num = "800-823"
         self.importance = 1
 
     def generate_content(self):
