@@ -31,33 +31,40 @@ class BikePage(Page):
 
         self.move_cursor(x=0)
         self.start_fg_color("GREEN")
-        pos = (0,45,51, 73)
-        for p,t in zip(pos,("Name","Bikes","Spaces","Updated")):
+        pos = (0,45,51, 67)
+        for p,t in zip(pos,("Name","Bikes","Spaces","Last updated")):
             self.move_cursor(x=p)
             self.add_text(t)
         self.end_fg_color()
         self.add_newline()
 
 
-        docks_set1 = [127,86,395]
-        docks_set2 = [371,332,254,354]
+        docks_set1 = ['BikePoints_131','BikePoints_90','BikePoints_425']
+        docks_set2 = ['BikePoints_392','BikePoints_350','BikePoints_266','BikePoints_373']
 
         bike_data = url_handler.load_json("https://api.tfl.gov.uk/bikepoint")
+
+        docks_dict = dict()
+        for dock in bike_data:
+            docks_dict[dock['id']] = [dock['commonName'],int(dock['additionalProperties'][6]['value']), int(dock['additionalProperties'][7]['value']), int(dock['additionalProperties'][8]['value']), dock['additionalProperties'][4]['modified']  ]
+
         docks_data = []
 
-        for dock in docks_set1 + [-1] + docks_set2:
-            if dock == -1:
+        for dock_id in docks_set1 + [-1] + docks_set2:
+            if dock_id == -1:
                 docks_data.append(("", "", "", "",""))
             else:
-                dock_data = bike_data[dock]
-                dock_name = dock_data['commonName'].replace(" ,",",")
-                docked_bikes = "{:5d}".format(int(dock_data['additionalProperties'][6]['value']))
-                empty_docks = "{:6d}".format(int(dock_data['additionalProperties'][7]['value']))
-                broken_bikes = "{:6d}".format(int(dock_data['additionalProperties'][8]['value']) - int(empty_docks) - int(docked_bikes));
-                data_date = dock_data['additionalProperties'][4]['modified'];
+                dock_data = docks_dict[dock_id]
+                dock_name = dock_data[0].replace(" ,",",")
+                docked_bikes = "{:5d}".format(dock_data[1])
+                empty_docks = "{:6d}".format(dock_data[2])
+                broken_bikes = "{:6d}".format((dock_data[3]) - int(empty_docks) - int(docked_bikes));
+                data_date = dock_data[4];
                 update_time = datetime.datetime.strftime(dateutil.parser.parse(data_date).astimezone(pytz.timezone('Europe/London')),"  %H:%M")
+                mins_ago = (datetime.datetime.now(pytz.utc) - dateutil.parser.parse(data_date)).seconds//60
+                ago = "  " + "{:2d}".format(mins_ago) + " min ago"
 
-                docks_data.append((dock_name, docked_bikes, empty_docks, update_time))
+                docks_data.append((dock_name, docked_bikes, empty_docks, ago))
 
         for dock in docks_data:
             for p,t,c in zip(pos,dock[:],(None,"GREEN","LIGHTRED",None)):
