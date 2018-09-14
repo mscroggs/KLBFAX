@@ -12,7 +12,7 @@ class TrainPage(Page):
         self.to = to
         self.hogwarts = hogwarts
         pages.append([page_num,station+" ("+code+")"])
-        self.is_random=True
+        self.is_random = is_random
 
     def generate_content(self):
         from nrewebservices.ldbws import Session
@@ -269,6 +269,8 @@ train46 = TrainPage("897","Southend Airport","SIA")
 train47 = TrainPage("898","Stansted Airport","SSD")
 
 train48 = TrainPage("899","Random!","XXX",is_random=True)
+
+train48.importance = 5
 
 class TrainIPage(Page):
     def __init__(self):
