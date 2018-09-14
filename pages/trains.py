@@ -1,7 +1,7 @@
 from page import Page
 
 class TrainPage(Page):
-    def __init__(self, page_num, station, code, hogwarts=False, to=None):
+    def __init__(self, page_num, station, code, hogwarts=False, to=None, is_random=False):
         super(TrainPage, self).__init__(page_num)
         self.title = station+" Trains"
         self.in_index = False
@@ -12,18 +12,19 @@ class TrainPage(Page):
         self.to = to
         self.hogwarts = hogwarts
         pages.append([page_num,station+" ("+code+")"])
+        self.is_random = is_random
 
     def generate_content(self):
         from nrewebservices.ldbws import Session
 
         session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
 
-        if self.code == "XXX":
+        if self.is_random:
             # Pick randomly
             from helpers.file_handler import load_csv_file
             import random
             station_codes = load_csv_file("station_codes.csv")
-            choose = random.choice(list(station_codes))
+            choose = random.choice(station_codes)
             self.code = choose[1]
             self.station = choose[0]
 
@@ -267,7 +268,9 @@ train45 = TrainPage("896","Luton Airport Parkway","LTN")
 train46 = TrainPage("897","Southend Airport","SIA")
 train47 = TrainPage("898","Stansted Airport","SSD")
 
-train48 = TrainPage("899","Random!","XXX")
+train48 = TrainPage("899","Random!","XXX",is_random=True)
+
+train48.importance = 5
 
 class TrainIPage(Page):
     def __init__(self):
