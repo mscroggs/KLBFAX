@@ -77,6 +77,9 @@ class CuPT:
         self.ls = []
 
     def show_page_number(self, n):
+        pad = curses.newpad(2, self.WIDTH)
+        pad.addstr(0,0," "*self.WIDTH,csty())
+        pad.refresh(0,0, 0,0, 0,self.WIDTH)
         txt = n + " "+config.NAME + " " + config.now().strftime("%a %d %b %H:%M")
         pad = curses.newpad(1, len(txt)+1)
         pad.addstr(0,0,txt,csty())
