@@ -32,8 +32,10 @@ class WeatherForePage(Page):
     def background(self):
         M = metoffer.MetOffer(config.metoffer_api_key);
         x = M.nearest_loc_forecast(config.location[0],config.location[1], self.ftype)
-        #self.y = metoffer.parse_val(x)
-        self.y = metoffer.Weather(x) # for MetOffer v2
+        if int(metoffer.__version__[0]) < 2:
+            self.y = metoffer.parse_val(x)
+        else:
+            self.y = metoffer.Weather(x) # for MetOffer v2
 
         self.tagline = "Live from the Met Office"
 
@@ -72,7 +74,9 @@ class WeatherForePage(Page):
             ii = ii + 1
         #from IPython import embed
         #embed()
-        self.tagline = "Met Office, updated " + datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ').strftime("%a %d %b %H:%M")
+        data_date_gmt = pytz.utc.localize(datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ'))
+        timestamp_local = data_date_gmt.astimezone(pytz.timezone('Europe/London'))
+        self.tagline = "Met Office, updated " + timestamp_local.strftime("%a %d %b %H:%M")
 
         # Day of week
         self.move_cursor(y=7,x=0)
@@ -179,7 +183,7 @@ class UKTempPage(Page):
             if t >= 5:
                 return "LIGHTBLUE"
             return "BLUE"
-        self.add_title("UK TEMPERATURE",font="size4")
+        self.add_title("UK Temperature",font="size4")
         uk_map =("-------------aa--aaaaaaa--------------\n"
                  "-----------------aaaaa----------------\n"
                  "----------------aaaaaaa---------------\n"
