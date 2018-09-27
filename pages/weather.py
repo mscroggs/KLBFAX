@@ -32,11 +32,13 @@ class WeatherForePage(Page):
     def background(self):
         M = metoffer.MetOffer(config.metoffer_api_key);
         x = M.nearest_loc_forecast(config.location[0],config.location[1], self.ftype)
-        self.y = metoffer.Weather(x)
+        #self.y = metoffer.parse_val(x)
+        self.y = metoffer.Weather(x) # for MetOffer v2
 
         self.tagline = "Live from the Met Office"
 
     def generate_content(self):
+        import datetime, pytz
         from fonts import weather_symbol
         if self.ftype == metoffer.THREE_HOURLY:
             self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
@@ -47,18 +49,29 @@ class WeatherForePage(Page):
         day_max = []
         day_min = []
         date = []
+
+        ii = 0
         for i in self.y.data:
-            day_weather.append(weather_symbol(i["Weather Type"][0]))
-            if self.ftype == metoffer.THREE_HOURLY and i["timestamp"][0] > datetime.datetime.now() - datetime.timedelta(hours=1.9):
+            timestamp_gmt = pytz.utc.localize(i["timestamp"][0])
+            timestamp_local = timestamp_gmt.astimezone(pytz.timezone('Europe/London'))
+            if self.ftype == metoffer.THREE_HOURLY and timestamp_gmt > datetime.datetime.now(pytz.utc) - datetime.timedelta(hours=1.9):
+                day_weather.append(weather_symbol(i["Weather Type"][0]))
                 day_max.append(i["Temperature"][0])
-                date.append((i["timestamp"][0].strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
+                date.append((timestamp_local.strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
             if self.ftype == metoffer.DAILY:
                 if i["timestamp"][1] == "Day":
-                    day_max.append(i["Feels Like Day Maximum Temperature"][0])
+                    day_weather.append(weather_symbol(i["Weather Type"][0]))
+                    day_max.append(i["Day Maximum Temperature"][0])
                     date.append(i["timestamp"][0].strftime("%a"))
                 if i["timestamp"][1] == "Night":
-                    day_min.append(i["Feels Like Night Minimum Temperature"][0])
-
+                    day_min.append(i["Night Minimum Temperature"][0])
+                if ii == 0 and i["timestamp"][1] == "Night": # If we're starting off at night
+                    day_weather.append(weather_symbol(i["Weather Type"][0]))
+                    day_max.append('')
+                    date.append(i["timestamp"][0].strftime("%a"))
+            ii = ii + 1
+        #from IPython import embed
+        #embed()
         self.tagline = "Met Office, updated " + datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ').strftime("%a %d %b %H:%M")
 
         # Day of week
