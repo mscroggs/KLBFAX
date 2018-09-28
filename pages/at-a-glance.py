@@ -57,39 +57,69 @@ class AtAGlancePage(Page):
         # Grid
 
         self.move_cursor(y=3,x=0)
-        grid = '''
-+----------------------------+-------------------------------------+----------+
-| TODAY 330-331              |        TODAY FATE SMILES ON         | TUBE 849 |
-|                            |                                     |          |
-|                            |                                     |          |
-|                            |                                     |          |
-|                            |                                     |          |
-|                            |                                     |          |
-|                            |                                     |          |
-|                            +-------------------------------------+          |
-|                            |                                 SUN |          |
-|                            |                                     |          |
-| NOW                        |                                     |          |
-|                            |                                 332 |          |
-+----------------------------+-------------------------------------+          |
-|                                                                  |          |
-|                                                                  |          |
-|                                                                  |          |
-|                                                                  +----------+
-|                                                                  | BIKE 824 |
-|                                                                  | Ev XX/YY |
-|                                                                  | IC XX/YY |
-|                                                          ... 301 | QG XX/YY |
-+------------------------------------------------------------------+----------+
+        grid = u'''
+┌────────────────────────────┬─────────────────────────────────────┬──────────┐
+│ TODAY 330-331              │        TODAY FATE SMILES ON         │ TUBE 849 │
+│                            │                                     │          │
+│                            │                                     │          │
+│                            │                                     │          │
+│                            │                                     │          │
+│                            │                                     │          │
+│                            │                                     │          │
+│                            ├─────────────────────────────────────┤          │
+│                            │                                 SUN │          │
+│                            │                                     │          │
+│ NOW                        │                                     │          │
+│                            │                                 332 │          │
+├────────────────────────────┴─────────────────────────────────────┤          │
+│                                                                  │          │
+│                                                                  │          │
+│                                                                  │          │
+│                                                                  ├──────────┤
+│                                                                  │ BIKE 824 │
+│                                                                  │ Ev XX/YY │
+│                                                                  │ IC XX/YY │
+│                                                          ... 301 │ QG XX/YY │
+└──────────────────────────────────────────────────────────────────┴──────────┘
 '''
         self.add_text(grid)
+
+        # Sunrise
+        from astral import Astral
+        city_name = 'London'
+        a = Astral()
+        a.solar_depression = 'civil'
+        city = a[city_name]
+        sun = city.sun(local=True)
+        sunrise = sun['sunrise'].strftime("%H:%M")
+        sunset = sun['sunset'].strftime("%H:%M")
+
+        self.move_cursor(y=13,x=0)
+        now = datetime.datetime.now(pytz.timezone('Europe/London'))
+        if now < sun['sunrise'] or now > sun['sunset']:
+            self.add_title(u"▲ " + str(sunrise),bg="YELLOW",fg="BLACK",fill=False,font='size4',pre=31)
+        else:
+            self.add_title(u"▼ " + str(sunset),bg="LIGHTRED",fg="BLACK",fill=False,font='size4',pre=31)
+
 
         # Weather
         weather_data = self.y.data[0]
         weather_data2 = self.y.data[1]
-        weather_data_now = self.y2.data[0]
+
+        s = -1
+        for i in self.y2.data:
+            if s == -1:
+                timestamp_gmt = pytz.utc.localize(i["timestamp"][0])
+                timestamp_local = timestamp_gmt.astimezone(pytz.timezone('Europe/London'))
+                if timestamp_gmt > datetime.datetime.now(pytz.utc) - datetime.timedelta(hours=1.5):
+                    weather_data_now = i
+
+        #weather_data_now = self.y2.data[s]
         if weather_data["timestamp"][1] == "Day":
-            weather_symbol = weather_symbol(weather_data["Weather Type"][0])
+            if now < sun['sunset']:
+                weather_symbol = weather_symbol(weather_data["Weather Type"][0])
+            else:
+                weather_symbol = weather_symbol(weather_data2["Weather Type"][0])
             day_max = weather_data["Day Maximum Temperature"][0]
             day_min = weather_data2["Night Minimum Temperature"][0]
         else:
@@ -98,6 +128,8 @@ class AtAGlancePage(Page):
             day_min = weather_data["Night Minimum Temperature"][0]
         #precip_chance = weather_data["Precipitation Probability Day"][0]
 
+        #from IPython import embed
+        #embed()
         temp_now = weather_data_now["Temperature"][0]
         wind_speed = weather_data_now["Wind Speed"][0]
         wind_direction = weather_data_now["Wind Direction"][0]
@@ -133,22 +165,6 @@ class AtAGlancePage(Page):
         self.end_fg_color()
         #self.add_title(,bg="CYAN",fg="BLACK",fill=False,font='size4',pre=32)
         '''
-        # Sunrise
-        from astral import Astral
-        city_name = 'London'
-        a = Astral()
-        a.solar_depression = 'civil'
-        city = a[city_name]
-        sun = city.sun(local=True)
-        sunrise = sun['sunrise'].strftime("%H:%M")
-        sunset = sun['sunset'].strftime("%H:%M")
-
-        self.move_cursor(y=13,x=0)
-        now = datetime.datetime.now(pytz.timezone('Europe/London'))
-        if now < sun['sunrise'] or now > sun['sunset']:
-            self.add_title(u"▲ " + str(sunrise),bg="YELLOW",fg="BLACK",fill=False,font='size4',pre=31)
-        else:
-            self.add_title(u"▼ " + str(sunset),bg="LIGHTRED",fg="BLACK",fill=False,font='size4',pre=31)
 
         #self.move_cursor(y=5,x=0)
         #self.add_title(u"▲ " + str(sunrise),bg="YELLOW",fg="BLACK",fill=False,font='size4',pre=31)
@@ -301,4 +317,4 @@ class AtAGlancePage(Page):
 
 
 page0 = AtAGlancePage("699")
-page0.importance = 1
+page0.importance = 4
