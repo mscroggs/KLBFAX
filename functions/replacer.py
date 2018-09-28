@@ -7,8 +7,8 @@ def escape(string):
 
 def replace(txt):
     swaps = [
-            ["Donald Trump","Jonty"],
-            ["Trump","Jonty"],
+            ["Donald Trump","Donald Duck"],
+            ["Trump","Duck"],
             ["Brexit","Eurovision"],
             ["Lord","Darth"],
             ["Lords","Siths"],
@@ -17,4 +17,3 @@ def replace(txt):
     for swap in swaps:
         txt = re.sub(r"(^|[^A-Za-z])"+swap[0]+r"($|[^A-Za-z])(?i)",r"\1"+swap[1]+r"\2",txt)
     return txt
-

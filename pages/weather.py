@@ -42,6 +42,7 @@ class WeatherForePage(Page):
     def generate_content(self):
         import datetime, pytz
         from fonts import weather_symbol
+        from fonts.weather_symbols import weather_arrow
         if self.ftype == metoffer.THREE_HOURLY:
             self.add_title("24-hr Weather",fg="CYAN",bg="BRIGHTWHITE")
         if self.ftype == metoffer.DAILY:
@@ -51,6 +52,8 @@ class WeatherForePage(Page):
         day_max = []
         day_min = []
         date = []
+        wind_speed = []
+        wind_direction = []
 
         ii = 0
         for i in self.y.data:
@@ -60,6 +63,8 @@ class WeatherForePage(Page):
                 day_weather.append(weather_symbol(i["Weather Type"][0]))
                 day_max.append(i["Temperature"][0])
                 date.append((timestamp_local.strftime("%-I%p")).replace("am",u"㏂").replace("pm",u"㏘"))
+                wind_speed.append(i["Wind Speed"][0])
+                wind_direction.append(i["Wind Direction"][0])
             if self.ftype == metoffer.DAILY:
                 if i["timestamp"][1] == "Day":
                     day_weather.append(weather_symbol(i["Weather Type"][0]))
@@ -95,6 +100,9 @@ class WeatherForePage(Page):
         self.print_image(day_weather[2],11,41)
         self.print_image(day_weather[3],11,61)
 
+        # wind
+
+
         # Max temps
         self.move_cursor(y=18,x=0)
         self.add_title(str(day_max[0]),bg="YELLOW",fg="BLACK",fill=False,font='size4', pre=5)
@@ -116,6 +124,26 @@ class WeatherForePage(Page):
             self.move_cursor(y=22,x=0)
             self.add_title(str(day_min[3]),bg="RED",fg="BLACK",fill=False,font='size4', pre=65)
 
+        if self.ftype == metoffer.THREE_HOURLY:
+            # wind
+            #self.move_cursor(y=22,x=0)
+            #self.add_title(str(day_min[0]),bg="RED",fg="BLACK",fill=False,font='size4', pre=5)
+            self.start_fg_color('CYAN')
+
+            self.print_image(weather_arrow(wind_direction[0]),22,5)
+            self.move_cursor(y=23,x=8)
+            self.add_text(str(wind_speed[0]))
+            self.print_image(weather_arrow(wind_direction[1]),22,25)
+            self.move_cursor(y=23,x=28)
+            self.add_text(str(wind_speed[1]))
+            self.print_image(weather_arrow(wind_direction[2]),22,45)
+            self.move_cursor(y=23,x=48)
+            self.add_text(str(wind_speed[2]))
+            self.print_image(weather_arrow(wind_direction[3]),22,65)
+            self.move_cursor(y=23,x=68)
+            self.add_text(str(wind_speed[3]))
+
+            self.end_fg_color()
 
 class SunrisePage(Page):
     def __init__(self, num):
@@ -126,7 +154,7 @@ class SunrisePage(Page):
 
     def generate_content(self):
         from astral import Astral
-        city_name = 'Birmingham'
+        city_name = 'London'
         a = Astral()
         a.solar_depression = 'civil'
         city = a[city_name]

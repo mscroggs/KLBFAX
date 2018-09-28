@@ -73,7 +73,9 @@ class TrainPage(Page):
 
         operator_mapping=[
         ('Railway', 'Rly'),
-        ('Midlands', 'Mids')
+        ('Midlands', 'Mids'),
+        ('London North Eastern Railway', 'LNER'),
+        ('TransPennine Express', 'TPE')
         ]
 
         n = 4
@@ -290,7 +292,7 @@ class TrainIPage(Page):
             else:
                 self.move_cursor(x=50)
             if i % 16 == 0:
-                self.move_cursor(y=8)            
+                self.move_cursor(y=8)
             self.add_text(page[0], fg="RED")
             self.add_text(" "+page[1])
             self.add_newline()

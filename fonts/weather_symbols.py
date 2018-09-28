@@ -480,3 +480,65 @@ def weather_symbol(weather_forecast):
                 "mmmmmmmmmmmmmmmm")
 
     return image
+
+def weather_arrow(direction):
+    if direction in ["N","NNE"]:
+        arrow = ("---C---\n"
+                 "--CCC--\n"
+                 "-C-C-C-\n"
+                 "C--C--C\n"
+                 "---C---\n"
+                 "---C---")
+    elif direction in ["NE","ENE"]:
+        arrow = ("--CCCCC\n"
+                 "-----CC\n"
+                 "----C-C\n"
+                 "---C--C\n"
+                 "--C----\n"
+                 "-C-----")
+    elif direction in ["E","ESE"]:
+        arrow = ("----C--\n"
+                 "-----C-\n"
+                 "-CCCCCC\n"
+                 "------C\n"
+                 "-----C-\n"
+                 "----C--")
+    elif direction in ["SE","SSE"]:
+        arrow = ("-C-----\n"
+                 "--C----\n"
+                 "---C--C\n"
+                 "----C-C\n"
+                 "-----CC\n"
+                 "--CCCCC")
+    elif direction in ["S","SSW"]:
+        arrow = ("---C---\n"
+                 "---C---\n"
+                 "C--C--C\n"
+                 "-C-C-C-\n"
+                 "--CCC--\n"
+                 "---C---")
+    elif direction in ["SW","WSW"]:
+        arrow = ("------C\n"
+                 "-----C-\n"
+                 "C---C--\n"
+                 "C--C---\n"
+                 "C-C----\n"
+                 "CCCCC--")
+    elif direction in ["W","WNW"]:
+        arrow = ("--C----\n"
+                 "-C-----\n"
+                 "CCCCCC-\n"
+                 "C------\n"
+                 "-C-----\n"
+                 "--C----")
+    elif direction in ["NW","NNW"]:
+        arrow = ("CCCCC--\n"
+                 "C-C----\n"
+                 "C--C---\n"
+                 "C---C--\n"
+                 "-----C-\n"
+                 "------C")
+    else:
+        arrow = ("")
+
+    return arrow
