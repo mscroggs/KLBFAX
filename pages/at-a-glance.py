@@ -16,6 +16,7 @@ class AtAGlancePage(Page):
         self.title = "Dashboard"
         self.index_num = "699"
         self.in_index = True
+        self.importance = 5
 
     def background(self):
 
@@ -317,4 +318,3 @@ class AtAGlancePage(Page):
 
 
 page0 = AtAGlancePage("699")
-page0.importance = 5
