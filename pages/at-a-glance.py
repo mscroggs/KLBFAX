@@ -317,4 +317,4 @@ class AtAGlancePage(Page):
 
 
 page0 = AtAGlancePage("699")
-page0.importance = 4
+page0.importance = 5
