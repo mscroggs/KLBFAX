@@ -3,6 +3,7 @@
 
 from page import Page
 from helpers import url_handler
+from localconfig import twitch_client_id
 import datetime
 import config
 import metoffer
@@ -59,15 +60,15 @@ class AtAGlancePage(Page):
 
         self.move_cursor(y=3,x=0)
         grid = u'''
-┌────────────────────────────┬─────────────────────────────────────┬──────────┐
-│ TODAY 330-331              │        TODAY FATE SMILES ON         │ TUBE 849 │
-│                            │                                     │          │
-│                            │                                     │          │
-│                            │                                     │          │
-│                            │                                     │          │
-│                            │                                     │          │
-│                            │                                     │          │
-│                            ├─────────────────────────────────────┤          │
+┌────────────────────────────┬──────────────────┬──────────────────┬──────────┐
+│ TODAY 330-331              │                  │  FATE SMILES ON  │ TUBE 849 │
+│                            │                  │                  │          │
+│                            │                  │                  │          │
+│                            │                  │                  │          │
+│                            │                  │                  │          │
+│                            │                  │                  │          │
+│                            │                  │                  │          │
+│                            ├──────────────────┴──────────────────┤          │
 │                            │                                 SUN │          │
 │                            │                                     │          │
 │ NOW                        │                                     │          │
@@ -246,34 +247,84 @@ class AtAGlancePage(Page):
         self.move_cursor(y=25,x=63)
         self.add_text("301")
 
+        # Aurateur online ?
+        import requests
+        import json
+        def is_live_stream(streamer_name, client_id):
+
+            twitch_api_stream_url = "https://api.twitch.tv/kraken/streams/" \
+                            + streamer_name + "?client_id=" + client_id
+
+            streamer_html = requests.get(twitch_api_stream_url)
+            streamer = json.loads(streamer_html.content)
+
+            return streamer["stream"] is not None
+
+        aura_on_logo = """kkkkkbbbbbbkkkkk
+kkkbbwbbbbbbbkkk
+kkbwbkkkkkkbbbkk
+kkwbkkwwwwkkbbkk
+kbwbkwwkkwwkbbbk
+kbwbkwwkkwwkbbbk
+kbwbkwwwwwwkbbbk
+kbbbkwwkkwwkbbbk
+kbbbkwwkkwwkbbbk
+kbbbkkkkkkkkbbbk
+kbbbbbbbbbbbbbbk
+kkkkkkkkkkkkkkkk
+kwwwwwwwwwwwwwwk
+kwwwwwwwwwwwwwwk
+"""
+        aura_off_logo = """kkkkkKKKKKKkkkkk
+kkkKKwKKKKKKKkkk
+kkKwKkkkkkkKKKkk
+kkwKkkwwwwkkKKkk
+kKwKkwwkkwwkKKKk
+kKwKkwwkkwwkKKKk
+kKwKkwwwwwwkKKKk
+kKKKkwwkkwwkKKKk
+kKKKkwwkkwwkKKKk
+kKKKkkkkkkkkKKKk
+kKKKKKKKKKKKKKKk
+kkkkkkkkkkkkkkkk
+kwwwwwwwwwwwwwwk
+kwwwwwwwwwwwwwwk
+"""
+
+        if is_live_stream("aurateur",twitch_client_id):
+            aura_logo = aura_on_logo
+        else:
+            aura_logo = aura_off_logo
+        self.print_image(aura_logo,5,31)
+
         # Nonsense of the day stuff
 
         person_of_the_day = random.choice(["Pichael", "Scroggs", "Alan", "Adam", "Weiguan", "Chunxin", "Honest Bob", "Aurateur"])
         tube_line_of_the_day = random.choice(lines_tube)
-        food_of_the_day = random.choice(["Katsu curry", "Tofe", "Risotto", "Fish pie", "Pizza", "Curry", "Wedges", "Sweet potato curry"])
+        food_of_the_day = random.choice(["Katsu curry", "Tofe", "Risotto", "Fish pie", "Pizza", "Curry", "Wedges", "Sweet pot curry"])
         hour_of_the_day = random.choice(["Midnight", "1 am", "2 am", "3 am", "4 am", "5 am", "6 am", "7 am", "8 am", "9 am", "10 am", "11 am", "Noon", "1 pm", "2 pm", "3 pm", "4 pm", "5 pm", "6 pm", "7 pm", "8 pm", "9 pm", "10 pm", "11 pm", "The witching hour"])
 
+        self.move_cursor(y=7,x=50)
 
-        self.move_cursor(y=7,x=31)
-        self.add_text("Person:    ")
+        #self.add_text("Person:    ")
         self.start_fg_color("YELLOW")
         self.add_text(person_of_the_day.upper())
         self.end_fg_color()
 
-        self.move_cursor(y=8,x=31)
-        self.add_text("Tube line: ")
+        self.move_cursor(y=8,x=50)
+        #self.add_text("Tube line: ")
         self.start_fg_color("YELLOW")
         self.add_text(tube_line_of_the_day.upper())
         self.end_fg_color()
 
-        self.move_cursor(y=9,x=31)
-        self.add_text("Food:      ")
+        self.move_cursor(y=9,x=50)
+        #self.add_text("Food:      ")
         self.start_fg_color("YELLOW")
         self.add_text(food_of_the_day.upper())
         self.end_fg_color()
 
-        self.move_cursor(y=10,x=31)
-        self.add_text("Hour:      ")
+        self.move_cursor(y=10,x=50)
+        #self.add_text("Hour:      ")
         self.start_fg_color("YELLOW")
         self.add_text(hour_of_the_day.upper())
         self.end_fg_color()
