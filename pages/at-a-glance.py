@@ -255,8 +255,7 @@ class AtAGlancePage(Page):
             twitch_api_stream_url = "https://api.twitch.tv/kraken/streams/" \
                             + streamer_name + "?client_id=" + client_id
 
-            streamer_html = requests.get(twitch_api_stream_url)
-            streamer = json.loads(streamer_html.content)
+            streamer = url_handler.load_json(twitch_api_stream_url)
 
             return streamer["stream"] is not None
 
