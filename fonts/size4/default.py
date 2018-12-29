@@ -48,6 +48,13 @@ xxx
 xxx
 """)
 
+_add("_", """
+xxx
+xxx
+xxx
+,,x
+""")
+
 _add("!", """
 'x
  x
@@ -731,6 +738,41 @@ x''xx
  xx x
  xx x
 x,,xx
+""")
+
+_add(u"ł", """
+x'xx
+' ,x
+x xx
+x,xx
+""")
+
+_add(u"ø", """
+xxxx'x
+x','xx
+x x xx
+,x,xxx
+""")
+
+_add(u"ö", """
+'x'x
+x'xx
+ x x
+x,xx
+""")
+
+_add(u"Ü", """
+'xx'x
+'xx'x
+ xx x
+x,,xx
+""")
+
+_add(u"ü", """
+'x'x
+'x'x
+ x x
+x,,x
 """)
 
 

@@ -24,6 +24,8 @@ default_page_duration_sec = int(_os.getenv('default_page_duration_sec', 30))
 
 NAME = "EMFFAX"
 
+flight_api = "http://example.com/{}{}{}"
+
 from datetime import datetime as _dt
 
 def now():
