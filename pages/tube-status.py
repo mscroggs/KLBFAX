@@ -77,9 +77,6 @@ class TubePage(Page):
         good = []
         for line,fg,bg in zip(lines_tube + lines_other,colours_tube_text+colours_other_text,colours_tube+colours_other):
             desc = self.current_status.get_status(line).description
-            if line == "Overground":
-                from IPython import embed
-                embed()
             if desc == "Good Service":
                 good.append((line,fg,bg))
             else:
