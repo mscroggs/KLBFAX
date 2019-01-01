@@ -28,31 +28,36 @@ class TubePage(Page):
         colours_other = ["CYAN","ORANGE","BLUE","LIGHTGREEN"]
         colours_other_text = ["BLACK","BLACK","WHITE","BLACK"]
 
-        mapping = [ ('There is a GOOD SERVICE on the rest of the line.', ''),
-                    ('GOOD SERVICE on the rest of the line.', ''),
-                    ('There is a GOOD SERVICE on all other routes.', ''),
-                    ('GOOD SERVICE on all other routes.', ''),
-                    ('GOOD SERVICE on other London Overground routes.', ''),
-                    ('GOOD SERVICE on other London Overground routes', ''),
+        mapping = [ #('There is a GOOD SERVICE on the rest of the line.', ''),
+                    ('London Overground', 'LO'),
+                    ('London Buses', 'Buses'),
+                    ('London Underground', 'LU'),
+                    #('GOOD SERVICE on the rest of the line.', ''),
+                    #('There is a GOOD SERVICE on all other routes.', ''),
+                    #('GOOD SERVICE on all other routes.', ''),
+                    #('GOOD SERVICE on other London Overground routes.', ''),
+                    #('GOOD SERVICE on other London Overground routes', ''),
                     #('The service will resume again at 0615 on Monday.', ''),
                     #('The service will resume again at 0615 tomorrow.', ''),
                     #('The service will resume again at 0615.', ''),
                     #('Train service will resume at 06:15 tomorrow.', ''),
                     #('No service between ', ''),
                     #('Minor delays ', ''),
-                    (' due to planned engineering work.', '.'),
-                    (' due to planned work.', '.'),
+                    #(' due to planned engineering work.', '.'),
+                    #(' due to planned work.', '.'),
                     #('due to ', ''),
                     ('King\'s Cross St. Pancras', 'KX'),
                     ('Kings Cross St. Pancras', 'KX'),
                     ('Tottenham Court Road', 'TCR'),
                     ('Highbury & Islington', 'H&I'),
                     ('Harrow & Wealdstone', 'H&W'),
+                    ('Kensington (Olympia)', 'Olympia'),
                     ('Cross', 'X'),
                     ('Road', 'Rd'),
                     ('Square', 'Sq'),
                     ('Street', 'St'),
                     ('Junction', 'Jn'),
+                    ('Airport', 'Apt'),
                     ('Town', 'Tn'),
                     ('Park', 'Pk'),
                     ('Lane', 'Ln'),
@@ -72,6 +77,9 @@ class TubePage(Page):
         good = []
         for line,fg,bg in zip(lines_tube + lines_other,colours_tube_text+colours_other_text,colours_tube+colours_other):
             desc = self.current_status.get_status(line).description
+            if line == "Overground":
+                from IPython import embed
+                embed()
             if desc == "Good Service":
                 good.append((line,fg,bg))
             else:
@@ -87,14 +95,14 @@ class TubePage(Page):
                 else:
                     self.start_fg_color("LIGHTRED")
 
-                full_description = " "
-                #full_description += self.current_status.get_status(line).description
+                full_description = ""
+                full_description += self.current_status.get_status(line).description
                 description = self.current_status.get_status(line).status_details
                 for k, v in mapping:
                     description = description.replace(k, v)
-                #if len(description)>1:
-                #    full_description += ": " + description
-                full_description = description
+                if len(description)>1:
+                    full_description += ": " + description
+                #full_description = description
                 self.move_cursor(x=22)
                 self.add_wrapped_text(fill(full_description,57).replace('\n','\n'+" "*22),pre=22)
                 self.end_fg_color()

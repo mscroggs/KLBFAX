@@ -24,7 +24,7 @@ class FlightPage(Page):
 
 
     def generate_content(self):
-        import urllib2, time, json, datetime, pytz
+        import time, datetime, pytz
         from helpers.url_handler import load_json
 
         if self.is_random:
