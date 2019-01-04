@@ -53,9 +53,9 @@ class TestPage(Page):
 
         curses.wrapper(main)
         '''
-        import subprocess
-        col = subprocess.check_output('echo $COLORTERM', shell=True)
-        self.add_wrapped_text("Colour system: " + col)
+        import curses
+        self.add_wrapped_text("Colour system: " + str(curses.COLORS))
+        self.add_newline
         self.add_newline
 
         import socket
