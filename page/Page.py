@@ -187,7 +187,10 @@ class Page(object):
         for l in range(len(lines)//2):
             for c in range(len(lines[2*l])):
                 c1 = lines[2*l][c]
-                c2 = lines[2*l+1][c]
+                try:
+                    c2 = lines[2*l+1][c]
+                except:
+                    c2 = "k"
                 self.start_fg_color(color_codes[c1])
                 self.start_bg_color(color_codes[c2])
                 self.add_text(u"\u2580")

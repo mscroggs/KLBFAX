@@ -280,28 +280,28 @@ class SqPage(Page):
     def generate_content(self):
         from random import choice
         squ = """
-          00000000000                                 
-      00000000       0000000           0              
-        000000             0000      0000  00         
-              00            00       00 0 0           
-             000          000     0000    00          
-            000          000  000000       0000       
-          000          000000000              00      
-        000           000000               00 00      
-      000            0000                 000 00      
-     000            0000             000      00      
-    00             000             0000000    00      
-   00             000                 000000000  00   
-  00              00                     00    0000   
-  00             000               000     00000  0   
-  00             00            000000000000    00  0  
-  00             00              0000     0000 000 0  
-  0             00                 00      000000 00  
-  00            00                  00      00   00   
-  00            00                  00      00000     
-    0        00000                0000000             
-     00000000    00                   00              
-                 0000000000000000  000                
+          00000000000
+      00000000       0000000           0
+        000000             0000      0000  00
+              00            00       00 0 0
+             000          000     0000    00
+            000          000  000000       0000
+          000          000000000              00
+        000           000000               00 00
+      000            0000                 000 00
+     000            0000             000      00
+    00             000             0000000    00
+   00             000                 000000000  00
+  00              00                     00    0000
+  00             000               000     00000  0
+  00             00            000000000000    00  0
+  00             00              0000     0000 000 0
+  0             00                 00      000000 00
+  00            00                  00      00   00
+  00            00                  00      00000
+    0        00000                0000000
+     00000000    00                   00
+                 0000000000000000  000
 """
         a = choice([
                            ("Waspy",squ,"ORANGE"),
@@ -536,7 +536,7 @@ liberty = """        9+-,KY7)
          'W-,.-,++W.   WWHP    ,,-/  .9CP3)
           W  --':-9:7=9W-T ,-=FT''=++,(TFYW=====---,
           W    .-='/.  7W-,WE=--,,=-:9H=9W\"\"~~~~~~'
-          ()   ':'/Y,  (L-9PXWWW,YWWX,(U3C        
+          ()   ':'/Y,  (L-9PXWWW,YWWX,(U3C
           9' ,,::/Y,/,  7LW+'-'7)()-'(MWW)
        ,,-/:',T,'-:',) ,3WWW, .Y=W'.(+WPW)
       ,F=T:9/:':C' /W),WMW9PO),m-+--9+WYW)
@@ -800,10 +800,10 @@ einstein = """           !MMMMMM$M! !MR$$$RMM8$8MXM8$$$$$$$$$$$$NMMM!MMM!!!?MRR$
                              ``~~"""
 
 troll = """d.         .:;'..         ..,'             .;,.               ...,,'';;'. ...
-.         .;.              ;'              ';                      .'...'.    
-.         .                 ,.              .     ..',::ccc:;,..     ..        
-               ......       ;.                'cxOKK0OXWWWWWWWNX0kc.             
-            ;d0KKKKKXK0ko:...              .l0X0xc,...lXWWWWWWWWKO0Kx'             
+.         .;.              ;'              ';                      .'...'.
+.         .                 ,.              .     ..',::ccc:;,..     ..
+               ......       ;.                'cxOKK0OXWWWWWWWNX0kc.
+            ;d0KKKKKXK0ko:...              .l0X0xc,...lXWWWWWWWWKO0Kx'
 '......'. .dXWN0kkk0NWWWWWN0o.            :KN0;.  .,cokXWWNNNNWNKkxONK: .,:c:.      .'
 '.         .,:lodxxkO00KXNWWWX000k.       oXNx;:okKX0kdl:::;'',;coxkkd, ...'. ...'''....
 .                      ...;xNNOc,.         ,d0X0xc,.     .dOd,           ..;dOKXK00000Ox:
@@ -814,25 +814,25 @@ troll = """d.         .:;'..         ..,'             .;,.               ...,,''
    .dNK,            .;xXWKc.                .;:coOXO,,'.......       .,lx0XXOo;...oNWNXKk:.'K
   .dNWXl        .';l0NXNKl.          ,lxkkkxo' .cK0.          ..;lx0XNX0xc.     ,0Nx'.','.kX
  .oXWNNKo'    .'..  .'.'dKk;        .cooollox;.xXXl     ..,cdOKXXX00NXc.      'oKWK'     ;k
- ,KWX0NNNXOl'.           .o0Ooldk;            .:c;.':lxOKKK0xo:,.. ;XX:   .,lOXWWXd.      
- cXWWWXooNWNXKko;'..       .lk0x;       ...,:ldk0KXNNOo:,..       ,OWNOxO0KXXNWNO,      
- oNWWNo.cXK;;oOXNNXK0kxdolllllooooddxk00KKKK0kdoc:c0No        .'ckXWWWNXkc,;kNKl.     
-.dNWWX;.xNk.  .kNO::lodxkOXWN0OkxdlcxNKl,..        oN0'..,:ox0XNWWNNWXo.  ,ONO'     
-  oNWWN0xXWK, .oNKc       .ONx.      ;X0.          .:XNKKNNWWWWNKkl;kNk. .cKXo.    
- cNWWWWWWWWKOkKNXxl:,'...;0Xo'.....'lXK;...',:lxk0KNWWWWNNKOd:..   lXKclON0:     
- ;XWWWWWWWWWWWWWWWWWWNNNNNWWNNNNNNNNNWWNNNNNNWWWWWNXKNNk;..        .dNWWXd.     
- .ONWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNK0ko:'..OXo          'l0NXx,      
-  :XNk0NWXKNWWWWWWWWWWWWWWWWWWWWWNNNX00NNx:'..       lXKc.     'lONN0l.       
-  .dNKoON0;lXNkcld0NXo::cd0NNO:;,,'.. .0Xc            lXXo..'l0NNKd,.        
-   .xNX0NKc.cXXl  ;KXl    .dN0.       .0No            .xNXOKNXOo,.          
+ ,KWX0NNNXOl'.           .o0Ooldk;            .:c;.':lxOKKK0xo:,.. ;XX:   .,lOXWWXd.
+ cXWWWXooNWNXKko;'..       .lk0x;       ...,:ldk0KXNNOo:,..       ,OWNOxO0KXXNWNO,
+ oNWWNo.cXK;;oOXNNXK0kxdolllllooooddxk00KKKK0kdoc:c0No        .'ckXWWWNXkc,;kNKl.
+.dNWWX;.xNk.  .kNO::lodxkOXWN0OkxdlcxNKl,..        oN0'..,:ox0XNWWNNWXo.  ,ONO'
+  oNWWN0xXWK, .oNKc       .ONx.      ;X0.          .:XNKKNNWWWWNKkl;kNk. .cKXo.
+ cNWWWWWWWWKOkKNXxl:,'...;0Xo'.....'lXK;...',:lxk0KNWWWWNNKOd:..   lXKclON0:
+ ;XWWWWWWWWWWWWWWWWWWNNNNNWWNNNNNNNNNWWNNNNNNWWWWWNXKNNk;..        .dNWWXd.
+ .ONWNWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWWNNK0ko:'..OXo          'l0NXx,
+  :XNk0NWXKNWWWWWWWWWWWWWWWWWWWWWNNNX00NNx:'..       lXKc.     'lONN0l.
+  .dNKoON0;lXNkcld0NXo::cd0NNO:;,,'.. .0Xc            lXXo..'l0NNKd,.
+   .xNX0NKc.cXXl  ;KXl    .dN0.       .0No            .xNXOKNXOo,.
     .lKWN0d::OWK;  lXXc    .OX:       .ONx.     . .,cdk0XNXOd;.   .'''....
       .:dOKNNNWNKOxkXWXo:,,;ONk;,,,,,;c0NXOxxkO0XXNXKOdc,.  ..;::,...;l
           ..';cldxkOO0KKKXXXXXXXXXXKKKKK00Okxdol:;'..   .';::,..':ll
  .     ''            ..................             .,;:;,',;ccc;
 .;      ,lc,.         ................        ..,,;;;;;;:::,.
- .'.      .;ccc;,'....              ....'',;;;;;;;;;;'.. 
-   .;;,..       ....                ..''''''''....   
-      ..,;::;;,'.........................         
+ .'.      .;ccc;,'....              ....'',;;;;;;;;;;'..
+   .;;,..       ....                ..''''''''....
+      ..,;::;;,'.........................
 """
 
 stroll = """                    ..',;:cllllllcc::;,'..',.
@@ -922,31 +922,31 @@ batman = """                    ,.ood888888888888boo.,
                `^Y888bo.,            ,.od888P^'
                     \"`^^Y888888888888P^^'\"         LS"""
 
-penguin = """                 .88888888:. 
-                88888888.88888. 
-              .8888888888888888. 
-              888888888888888888 
-              88' _`88'_  `88888 
-              88 88 88 88  88888 
-              88_88_::_88_:88888 
-              88:::,::,:::::8888 
-              88`:::::::::'`8888 
-             .88  `::::'    8:88. 
-            8888            `8:888. 
-          .8888'             `888888. 
-         .8888:..  .::.  ...:'8888888:. 
-        .8888.'     :'     `'::`88:88888 
-       .8888        '         `.888:8888. 
-      888:8         .           888:88888 
-    .888:88        .:           888:88888: 
-    8888888.       ::           88:888888 
-    `.::.888.      ::          .88888888 
-   .::::::.888.    ::         :::`8888'.:. 
-  ::::::::::.888   '         .:::::::::::: 
-  ::::::::::::.8    '      .:8::::::::::::. 
- .::::::::::::::.        .:888::::::::::::: 
- :::::::::::::::88:.__..:88888:::::::::::' 
-  `'.:::::::::::88888888888.88:::::::::' 
+penguin = """                 .88888888:.
+                88888888.88888.
+              .8888888888888888.
+              888888888888888888
+              88' _`88'_  `88888
+              88 88 88 88  88888
+              88_88_::_88_:88888
+              88:::,::,:::::8888
+              88`:::::::::'`8888
+             .88  `::::'    8:88.
+            8888            `8:888.
+          .8888'             `888888.
+         .8888:..  .::.  ...:'8888888:.
+        .8888.'     :'     `'::`88:88888
+       .8888        '         `.888:8888.
+      888:8         .           888:88888
+    .888:88        .:           888:88888:
+    8888888.       ::           88:888888
+    `.::.888.      ::          .88888888
+   .::::::.888.    ::         :::`8888'.:.
+  ::::::::::.888   '         .::::::::::::
+  ::::::::::::.8    '      .:8::::::::::::.
+ .::::::::::::::.        .:888:::::::::::::
+ :::::::::::::::88:.__..:88888:::::::::::'
+  `'.:::::::::::88888888888.88:::::::::'
         `':::_:' -- '' -'-' `':_::::'` """
 
 banksy = """                        .s$$$Ss.
@@ -988,59 +988,106 @@ banksy = """                        .s$$$Ss.
          `\"\"'           `     ```\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"         `\"\"   ``
                                                            [banksy]dp """
 
-felix = """                        b                         .$                    
-                        4r                       .$$                    
-                        4$r                     z$$$                    
-                        $$$c                   d. $$                    
-                        $$d$$c.eeeeePeee..   z\"4-'P$                    
-                       J$$$$$dP3\"\"\"*$*$$ee$$$$$ \" $$F                   
-                      z$*.P*$ \"- .=\"         '\  $$$$                   
-                    .P    'F\" *e\"               \/$$$                   
-                    \"      4  ^                  ^ $$b                  
-                           4$%                    ^$$$r                 
-                            F                      4$$$                 
-                           4                        $$$b                
-                .    4$b   P           .ec          $$$$b               
-                     $\"               4$P\"\"         $$$$$$c             
-               ^    4$$$r 4\"          4$eec        4$$$$P\"*$e           
-     \         .     $$$   4          ^$$$F        $$$$$E.zd$$$\"        
-      ^\       F            r                     d$$P\"  *$$$P .^       
-         -.    .        %   ^.                   J$P      $$F.      /   
-              \"$\    .z.      -                 $P\" ^    .P      .^     
-                  \"\"3$$$$$$e    \".           .d\"     ^   $F  -\"         
-                ^   $$$$$$$$L       ^\"\"==\"\"\"\"\"      /   ^               
-                 -  3$ee= \"$\"                      /  .\"                
-                  ^. ^****\"                      z\"  ^                  
-                                               z\"  /                    
-                      -.                   .e$\"  =                      
-                        ^ ec..... ....ee$$*\"  .^                        
-                         \".  \"\"\"**\"\"\"     .=^                           
+felix = """                        b                         .$
+                        4r                       .$$
+                        4$r                     z$$$
+                        $$$c                   d. $$
+                        $$d$$c.eeeeePeee..   z\"4-'P$
+                       J$$$$$dP3\"\"\"*$*$$ee$$$$$ \" $$F
+                      z$*.P*$ \"- .=\"         '\  $$$$
+                    .P    'F\" *e\"               \/$$$
+                    \"      4  ^                  ^ $$b
+                           4$%                    ^$$$r
+                            F                      4$$$
+                           4                        $$$b
+                .    4$b   P           .ec          $$$$b
+                     $\"               4$P\"\"         $$$$$$c
+               ^    4$$$r 4\"          4$eec        4$$$$P\"*$e
+     \         .     $$$   4          ^$$$F        $$$$$E.zd$$$\"
+      ^\       F            r                     d$$P\"  *$$$P .^
+         -.    .        %   ^.                   J$P      $$F.      /
+              \"$\    .z.      -                 $P\" ^    .P      .^
+                  \"\"3$$$$$$e    \".           .d\"     ^   $F  -\"
+                ^   $$$$$$$$L       ^\"\"==\"\"\"\"\"      /   ^
+                 -  3$ee= \"$\"                      /  .\"
+                  ^. ^****\"                      z\"  ^
+                                               z\"  /
+                      -.                   .e$\"  =
+                        ^ ec..... ....ee$$*\"  .^
+                         \".  \"\"\"**\"\"\"     .=^
                               \"  === \"\"\"                                 """
 
-homer = """          _ _,---._ 
-       ,-','       `-.___ 
-      /-;'               `._ 
-     /\/          ._   _,'o \ 
-    ( /\       _,--'\,','\"`. ) 
-     |\      ,'o     \'    //\ 
-     |      \        /   ,--'\"\"`-. 
-     :       \_    _/ ,-'         `-._ 
-      \        `--'  /                ) 
-       `.  \`._    ,'     ________,',' 
-         .--`     ,'  ,--` __\___,;' 
-          \`.,-- ,' ,`_)--'  /`.,' 
-           \( ;  | | )      (`-/ 
-             `--'| |)       |-/ 
-               | | |        | | 
-               | | |,.,-.   | |_ 
-               | `./ /   )---`  ) 
-              _|  /    ,',   ,-' 
-     -hrr-   ,'|_(    /-<._,' |--, 
-             |    `--'---.     \/ \ 
-             |          / \    /\  \ 
-           ,-^---._     |  \  /  \  \ 
-        ,-'        \----'   \/    \--`. 
+homer = """          _ _,---._
+       ,-','       `-.___
+      /-;'               `._
+     /\/          ._   _,'o \
+    ( /\       _,--'\,','\"`. )
+     |\      ,'o     \'    //\
+     |      \        /   ,--'\"\"`-.
+     :       \_    _/ ,-'         `-._
+      \        `--'  /                )
+       `.  \`._    ,'     ________,','
+         .--`     ,'  ,--` __\___,;'
+          \`.,-- ,' ,`_)--'  /`.,'
+           \( ;  | | )      (`-/
+             `--'| |)       |-/
+               | | |        | |
+               | | |,.,-.   | |_
+               | `./ /   )---`  )
+              _|  /    ,',   ,-'
+     -hrr-   ,'|_(    /-<._,' |--,
+             |    `--'---.     \/ \
+             |          / \    /\  \
+           ,-^---._     |  \  /  \  \
+        ,-'        \----'   \/    \--`.
        /            \              \   \ """
+
+tubemap = """  m       m         o                                     o      c
+   m      m         o                      n       p  o  o       c            e
+ mmmmmmmmmm         o                      n       p  o o        c           e
+          m         o                    n n       p  oo    o    c          e
+      c    m        o           n         nn       p  o     o    ccccc     e
+      c     m       o   j        n         n       p  o     o    c   c    eo
+  mpmpmpmpm  m      b   j         n        n    oopoooooo   o    c   c   e  o
+      c    pmmmmmmmmmmmm j         n       n   o pvvvvvvvvvvvv   c   c  e    o
+      c     p       o   m j         n   ooonooo pv    o   o o    ccccc e      d
+      c     p       b    m joooo     n o   n   p v    o    oooooocoooee      d
+       c    p       o     mojjjjoooooonoo n   p  v     o  o      c  eo      d
+        c   p      oboooooommmmmj      n nooopooovooooo oo      c ee  o    d
+         c  p     o b           mj      n   p    voooo oooooooocojr   o   d
+          c p    o  b           mj     n nvpvvvvvv    o       c ejr   oo d
+           cp   oo   bbbbbbbbbbbmj    n vnpnnnnn      o      c e jr     h
+            c   o oeeeeihihihihihmhimhimhimh   n   cccccccccc e  jr    d
+            pc  oe o  h   idid   b   vn  p  i  n  ceeeedhdhdhdhdhdhdhdh
+            p ceo   oi    d      jb v n  p   mhimhimh heeeeeer   jr
+      eeeeeepeeco    h    i    cccccccccpccc   nc   ido      r   jr
+     e     cpcccccccccccccdcccc  jv b np    ccccrrrrm o      r   jr
+    e       p   o    i  o i     ppppppp       didididrrrrrrrrrrrrjrrrrrrr
+    e       p   o    h  o d    p  vj  b      iwn      o      r   j    r  r
+    e      pppppppppppppppipppp   v j nb    dw n      o      r   j     r  r
+    e     p  ddddddddddddddididididididididiw jnjjjjjjjjjjjjjjjjjj      r  r
+    e    p     o        od        v   nbwwww jn       o      r           r  r
+    e   p      d         do       v   nbjjjjjn        o      r            r  r
+    e  p       o         d o      v   nb    n         o      r            r
+   pppp        d         d  o     v   nb nnn         ooo     r            r
+  p e p                  d  o     v   nbn           o o o    r
+  p e p                  d  o      v  nb           o  o  o   r
+   ppp                   d   oooooo v n           o   o      r
+                          t        oonoooooooooooo    o
+                          t         n v               o             ttttttttttt
+                          t        n   v           oooo            t
+                          t       n                   o           tttttt
+                          t      n                 tttttttt      t
+                           t    n                  t      t     t
+                            tttntttttttttttttttttttttttttttttttt
+                              n                                 ttttttttttttt    """
+tubelines = ["b","c","i","d","h","j","m","n","p","v","w","r","o","e","t"," "]
+tubelines2 = ["[" + i + "]" for i in tubelines]
+tubecolors = ["o","r","y","g","p","K","m","W","b","B","C","c","R","p","G","-"]
+for i in range(len(tubelines)):
+    tubemap = tubemap.replace(tubelines[i],tubelines2[i])
+for i in range(len(tubelines)):
+    tubemap = tubemap.replace(tubelines2[i],tubecolors[i])
 
 pagels = []
 pagels.append(ArtPage("273","Mona Lisa",lisa,"The Mona Lisa  by  Leonardo da Vinci",True))
@@ -1071,6 +1118,7 @@ pagels.append(ArtPage("295","The Batman",batman))
 pagels.append(ArtPage("296","Linux",penguin))
 pagels.append(ArtPage("297","Banksy",banksy))
 pagels.append(ArtPage("298","Felix The Cat",felix))
-pagels.append(ArtPage("299","Homer Simpson",homer,color="YELLOW"))
+#pagels.append(ArtPage("299","Homer Simpson",homer,color="YELLOW"))
+pagels.append(ArtImagePage("299","Tube map",tubemap))
 
 page0 = ArtIndex("272","272-299",pagels)
