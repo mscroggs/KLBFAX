@@ -35,7 +35,7 @@ class TestPage(Page):
         self.end_bg_color()
         self.add_newline()
         self.add_newline()
-
+        '''
         import curses
 
         def main(stdscr):
@@ -52,6 +52,11 @@ class TestPage(Page):
             stdscr.getch()
 
         curses.wrapper(main)
+        '''
+        import subprocess
+        col = subprocess.check_output('echo $COLORTERM', shell=True)
+        self.add_wrapped_text("Colour system: " + col)
+        self.add_newline
 
         import socket
         import fcntl
