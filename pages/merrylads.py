@@ -92,7 +92,7 @@ class MerryLadsPage(Page):
         "charing cross"]
         on_his_list = random.choice(checklist)
 
-        self.add_title(self.title,font="size4",fg="LIGHTGREEN",bg="WHITE")
+        self.add_title("Each with his...",font="size4",fg="GREEN",bg="WHITE")
 
         lad=(
 '''      ooooo
@@ -133,7 +133,7 @@ xx  ggggggggg  xx
             self.print_image(lad.replace('g',color),5,17*i-2)
 
         self.move_cursor(x=0,y=22)
-        self.add_title(on_his_list.upper() + "!",font="size4bold",fg="LIGHTGREEN",bg="WHITE")
+        self.add_title(on_his_list.upper() + "!",font="size4bold",fg="GREEN",bg="WHITE")
 pages = []
 
 # Departures
