@@ -68,4 +68,4 @@ class PolybPage(Page):
                 c = "WHITE"
 
 
-page = PolybPage("170")
+#page = PolybPage("170")
