@@ -92,48 +92,48 @@ class MerryLadsPage(Page):
         "charing cross"]
         on_his_list = random.choice(checklist)
 
-        self.add_title("Each with his...",font="size4",fg="GREEN",bg="WHITE")
+        self.add_title("Each with his...",font="size4",fg="GREEN",bg="BRIGHTWHITE")
 
         lad=(
-'''      ooooo
-     ooooooo
-     oxkxkxo
-     oxxxxxo
-     xxkxkxx
-      xxkxx
-    ggxxxxxgg
-   ggggxxxgggg
-   ggggggggggg
-  ggggggggggggg
-  ggggggggggggg
-  ggggggggggggg
- xx ggggggggg xx
- xx ggggggggg xx
- xx ggggggggg xx
-xx  ggggggggg  xx
-xx  ggggggggg  xx
-xx  ggggggggg  xx
-    WWWWWWWWW
-    yyyyyyyyy
-    yyyy yyyy
-    yyyy yyyy
-    yyyy yyyy
-    yyyy yyyy
-    yyyy yyyy
-     xx   xx
-     xx   xx
-     xx   xx
-     xx   xx
-     xx   xx
-     xx   xx
-    xxx   xxx    ''').replace(" ","-").replace("x","W")
+'''------ooooo------
+-----ooooooo-----
+-----oxkxkxo-----
+-----oxxxxxo-----
+-----xxkxkxx-----
+------xxkxx------
+----ggxxxxxgg----
+---ggggxxxgggg---
+---ggggggggggg---
+--ggggggggggggg--
+--ggggggggggggg--
+--ggggggggggggg--
+-xx-ggggggggg-xx-
+-xx-ggggggggg-xx-
+-xx-ggggggggg-xx-
+xx--ggggggggg--xx
+xx--ggggggggg--xx
+xx--ggggggggg--xx
+----WWWWWWWWW----
+----yyyyyyyyy----
+----yyyy-yyyy----
+----yyyy-yyyy----
+----yyyy-yyyy----
+----yyyy-yyyy----
+----yyyy-yyyy----
+-----xx---xx-----
+-----xx---xx-----
+-----xx---xx-----
+-----xx---xx-----
+-----xx---xx-----
+-----xx---xx-----
+----xxx---xxx----''').replace(" ","-").replace("x","W")
 
         for i in range(5):
             color = random.choice(['g','r','o','c','b','m','R','y','G','C','B','p'])
             self.print_image(lad.replace('g',color),5,17*i-2)
 
         self.move_cursor(x=0,y=22)
-        self.add_title(on_his_list.upper() + "!",font="size4bold",fg="GREEN",bg="WHITE")
+        self.add_title(on_his_list.upper() + "!",font="size4bold",fg="GREEN",bg="BRIGHTWHITE")
 pages = []
 
 # Departures
