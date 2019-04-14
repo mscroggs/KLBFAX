@@ -10,7 +10,7 @@ class CBBCPage(Page):
     def __init__(self):
         super(CBBCPage, self).__init__("130")
         self.title = "CBBC"
-        self.index_num = "130-147"
+        self.index_num = "130-148"
 
     def generate_content(self):
         self.add_title("|C|",fill=False,bg="YELLOW",fg="BLACK",pre=1)
