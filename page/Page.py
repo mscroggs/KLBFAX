@@ -81,7 +81,7 @@ class Page(object):
             bg = kwargs["bg"]
         self.cupt.add_block(block, *args, bg=bg)
 
-    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0, fill=True):
+    def add_title(self, title, bg="BLUE", fg="YELLOW", font="size7", pre=0, fill=True, max_width=config.WIDTH):
         if fg in color_codes: fg = color_codes[fg]
         if bg in color_codes: bg = color_codes[bg]
         if font=="size7":
@@ -98,7 +98,7 @@ class Page(object):
             from printer import size4mono_instance as prinstance
         else:
             raise ValueError("Undefined font.")
-        title_block = prinstance.text_to_ascii(title,fill=fill)
+        title_block = prinstance.text_to_ascii(title,fill=fill,max_width=max_width)
         self.cupt.add_blocked_block(title_block, fg=fg, bg=bg, pre=pre)
 
     def add_rainbow_title(self, title, font="size7", pre=0, fill=True):

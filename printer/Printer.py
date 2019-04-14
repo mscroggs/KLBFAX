@@ -43,7 +43,7 @@ class Printer(object):
         except: pass
         return str(reduce(LetterBlock.__add__, map(self.font.get_letter, text)))
 
-    def text_to_ascii(self, text, fill=True, vertical_condense=False, **options):
+    def text_to_ascii(self, text, fill=True, vertical_condense=False, max_width=config.WIDTH, **options):
         #try:
         text_to_print = str(self.text_to_letterblock("|"+text, **options))
         #except:
@@ -51,11 +51,11 @@ class Printer(object):
         output = []
         hit_sides = False
         for line in text_to_print.split("\n"):
-            if len(line) > config.WIDTH:
-                output.append(line[:config.WIDTH])
+            if len(line) > max_width:
+                output.append(line[:max_width])
                 hit_sides = True
             elif fill:
-                output.append(line+"x"*(config.WIDTH-len(line)))
+                output.append(line+"x"*(max_width-len(line)))
             else:
                 output.append(line)
         if vertical_condense:
