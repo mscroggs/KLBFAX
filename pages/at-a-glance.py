@@ -3,7 +3,7 @@
 
 from page import Page
 from helpers import url_handler
-from localconfig import twitch_client_id
+from config import twitch_client_id
 import datetime
 import config
 import metoffer
