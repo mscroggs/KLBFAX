@@ -2,7 +2,7 @@
 The pages in brackets are disabled.  
   
 Number & Page Name             Importance  File  
-(000 About EMFFAX)                      2  pages/about.py  
+(000 About 28JHFAX)                     2  pages/about.py  
 (001 Unicode Test Page)                 2  pages/unicode.py  
 (002 Error log)                         2  pages/errors.py  
 (003 License)                           2  pages/license.py  
@@ -55,8 +55,7 @@ Number & Page Name             Importance  File
 145 Paddington Bear                     2  pages/kids.py  
 146 Wacky Races                         2  pages/kids.py  
 147 Otis's Joke Page                    3  pages/kids.py  
-148 Big Internet Math-Off               3  pages/mathoff.py  
-149 #bigmathoff                         2  pages/mathoff.py  
+148 Torchy the Battery Boy              5  pages/kids.py  
 150 Puzzles                             2  pages/puzzles.py  
 151 Crossword                           3  pages/puzzles.py  
 152 Crossword                           3  pages/puzzles.py  
@@ -77,21 +76,9 @@ Number & Page Name             Importance  File
 167 Combining Multiples                 2  pages/puzzles.py  
 168 Rotating Round Table                2  pages/puzzles.py  
 169 Reverse Bases                       2  pages/puzzles.py  
-170 Jobs                                5  pages/polybius_biotech.py  
-171 Badge Helper                        4  pages/emf_jobs.py  
-172 Bar                                 4  pages/emf_jobs.py  
-173 Car Parking                         4  pages/emf_jobs.py  
-174 Catering                            4  pages/emf_jobs.py  
-175 Entrance Steward                    4  pages/emf_jobs.py  
-176 Green Room                          4  pages/emf_jobs.py  
-177 Herald                              4  pages/emf_jobs.py  
-178 Info Desk                           4  pages/emf_jobs.py  
-179 NOC                                 4  pages/emf_jobs.py  
-180 Stage: Audio/Visual                 4  pages/emf_jobs.py  
-181 Stage: Camera Operator              4  pages/emf_jobs.py  
-182 Stage: Vision Mixer                 4  pages/emf_jobs.py  
-183 Tent Steward                        4  pages/emf_jobs.py  
-184 Youth Workshop Helper               4  pages/emf_jobs.py  
+180 Merry lads' checklist               4  pages/merrylads.py  
+182 Big Internet Math-Off               3  pages/mathoff.py  
+183 #bigmathoff                         2  pages/mathoff.py  
 185 Holidays                            2  pages/travel.py  
 186 Paris                               2  pages/travel.py  
 187 New York                            2  pages/travel.py  
@@ -138,32 +125,32 @@ Number & Page Name             Importance  File
 228 @therobotarms                       2  pages/twitter.py  
 229 @EMFMedical                         2  pages/twitter.py  
 230 @emfcamp                            2  pages/twitter.py  
-231 @EMFInfoDesk                        5  pages/twitter.py  
+231 @EMFInfoDesk                        2  pages/twitter.py  
 232 @emfnoc                             2  pages/twitter.py  
 233 @emfctf                             2  pages/twitter.py  
 234 @emfhams                            2  pages/twitter.py  
 235 @scotconsulate                      2  pages/twitter.py  
 236 @emfweather                         2  pages/twitter.py  
-237 @emf_weather                        2  pages/twitter.py  
+237 @BBCRadio2                          2  pages/twitter.py  
 238 @emfcoffee                          2  pages/twitter.py  
 239 @jonty                              2  pages/twitter.py  
 240 @russss                             2  pages/twitter.py  
 241 @marksteward                        2  pages/twitter.py  
 242 @dpslwk                             2  pages/twitter.py  
 243 @btscroggs                          2  pages/twitter.py  
-244 @flangey                            2  pages/twitter.py  
-245 @milliways2342                      2  pages/twitter.py  
-246 @timrterrible                       2  pages/twitter.py  
-247 @sde1000                            2  pages/twitter.py  
-248 @benjamincpu                        2  pages/twitter.py  
-249 @dominicgs                          2  pages/twitter.py  
-250 @MatBurnham                         2  pages/twitter.py  
-251 @londonhackspace                    2  pages/twitter.py  
-252 @HSNOTTS                            2  pages/twitter.py  
-253 @ClubMate_UK                        2  pages/twitter.py  
-254 @tomscott                           2  pages/twitter.py  
-255 @DrLucyRogers                       2  pages/twitter.py  
-256 @mscroggs                           2  pages/twitter.py  
+244 @bbcalba                            2  pages/twitter.py  
+245 @bbcthisweek                        2  pages/twitter.py  
+246 @Keir_Starmer                       2  pages/twitter.py  
+247 @2piruben                           2  pages/twitter.py  
+248 @twatbottwat                        2  pages/twitter.py  
+249 @AlexDBolton                        2  pages/twitter.py  
+250 @AnnoyingCliche                     2  pages/twitter.py  
+251 @SmokyFurby                         4  pages/twitter.py  
+252 @televisionduck                     4  pages/twitter.py  
+253 @aaclarke4                          5  pages/twitter.py  
+254 @pecnut                             5  pages/twitter.py  
+255 @Michael92Perry                     5  pages/twitter.py  
+256 @mscroggs                           5  pages/twitter.py  
 257 @mathslogicbot                      2  pages/twitter.py  
 258 @I_AM_A_CAT_BOT                     2  pages/twitter.py  
 259 @AnnoyingCliche                     2  pages/twitter.py  
@@ -206,19 +193,19 @@ Number & Page Name             Importance  File
 296 Linux                               2  pages/art.py  
 297 Banksy                              2  pages/art.py  
 298 Felix The Cat                       2  pages/art.py  
-299 Homer Simpson                       2  pages/art.py  
+299 Tube map                            2  pages/art.py  
 300 News                                2  pages/news.py  
 301 Top Stories                         1  pages/news.py  
 302 Technology                          1  pages/news.py  
 303 Business                            1  pages/news.py  
-304 Local News                          4  pages/news.py  
-305 Science                             1  pages/news.py  
-306 Politics                            1  pages/news.py  
-307 Education                           1  pages/news.py  
-308 The Guardian                        1  pages/news.py  
-309 The Independent                     1  pages/news.py  
-310 The Telegraph                       1  pages/news.py  
-311 emfcamp.org                         1  pages/news.py  
+304 Ledbury Reporter                    1  pages/news.py  
+305 Sutton Observer                     1  pages/news.py  
+306 Science                             1  pages/news.py  
+307 Politics                            1  pages/news.py  
+308 Education                           1  pages/news.py  
+309 The Guardian                        1  pages/news.py  
+310 The Independent                     1  pages/news.py  
+311 The Telegraph                       1  pages/news.py  
 312 Weather warnings                    1  pages/news.py  
 313 Showbiz                             1  pages/news.py  
 314 Pi                                  2  pages/pi.py  
@@ -326,8 +313,8 @@ Number & Page Name             Importance  File
 416 Range Not Satisfiable               1  pages/http-errors.py  
 417 Expectation Failed                  1  pages/http-errors.py  
 418 I'm a Teapot                        1  pages/http-errors.py  
-419 Time                                2  pages/time.py  
-420 Time                                2  pages/time.py  
+419 Time                                2  pages/time_page.py  
+420 Time                                2  pages/time_page.py  
 421 Misdirected Request                 1  pages/http-errors.py  
 422 Unprocessable Entity                1  pages/http-errors.py  
 423 Locked                              1  pages/http-errors.py  
@@ -421,15 +408,16 @@ Number & Page Name             Importance  File
 677 What's On At The Market Theatre Ledbury2pages/market_theatre_ledbury.py  
 678 What's On At The Market Theatre Ledbury2pages/market_theatre_ledbury.py  
 679 What's On At The Market Theatre Ledbury2pages/market_theatre_ledbury.py  
+699 Dashboard                           5  pages/at-a-glance.py  
 700 EMF Information                     2  pages/emf.py  
-701 List of Villages                    3  pages/emf.py  
-702 List of Teams                       3  pages/emf.py  
-703 EMF site map                        5  pages/emf_map.py  
-704 EMF Schedule                        3  pages/emf_schedule.py  
-705 Now and Next                        5  pages/emf_schedule.py  
-706 EMF Schedule Day 1                  4  pages/emf_schedule.py  
-707 EMF Schedule Day 2                  4  pages/emf_schedule.py  
-708 EMF Schedule Day 3                  4  pages/emf_schedule.py  
+701 List of Villages                    1  pages/emf.py  
+702 List of Teams                       1  pages/emf.py  
+703 EMF site map                        2  pages/emf_map.py  
+704 EMF Schedule                        1  pages/emf_schedule.py  
+705 Now and Next                        1  pages/emf_schedule.py  
+706 EMF Schedule Day 1                  1  pages/emf_schedule.py  
+707 EMF Schedule Day 2                  1  pages/emf_schedule.py  
+708 EMF Schedule Day 3                  1  pages/emf_schedule.py  
 709 EMF Schedule (Stage A)              2  pages/emf_schedule.py  
 710 EMF Schedule (Stage B)              2  pages/emf_schedule.py  
 711 EMF Schedule (Stage C)              2  pages/emf_schedule.py  
@@ -440,23 +428,47 @@ Number & Page Name             Importance  File
 716 EMF Schedule (Board Gamers)         2  pages/emf_schedule.py  
 717 EMF Schedule (Embassy of Nowhere)   2  pages/emf_schedule.py  
 718 EMF Schedule (Foodhackingbase)      2  pages/emf_schedule.py  
-719 EMF Schedule (Hardware Hacking Area)2  pages/emf_schedule.py  
-720 EMF Schedule (Holistic Howlers)     2  pages/emf_schedule.py  
-721 EMF Schedule (Maths Village)        2  pages/emf_schedule.py  
-722 EMF Schedule (Null Sector)          2  pages/emf_schedule.py  
-723 EMF Schedule (Owl City )            2  pages/emf_schedule.py  
-724 EMF Schedule (Sai's Tent)           2  pages/emf_schedule.py  
-725 EMF Schedule (Swan'); DROP TABLE Villages; --)2pages/emf_schedule.py  
-726 EMF Schedule (Workshop 4)           2  pages/emf_schedule.py  
-727 EMF Schedule (Yorkshire And Friends (Leeds Hackspace et al) )2pages/emf_schedule.py  
-728 EMF Schedule (Youth Workshop)       2  pages/emf_schedule.py  
+719 EMF Schedule (Guild of Makers)      2  pages/emf_schedule.py  
+720 EMF Schedule (HABville 🎈)           2  pages/emf_schedule.py  
+721 EMF Schedule (Hacky Racers Track)   2  pages/emf_schedule.py  
+722 EMF Schedule (Hardware Hacking Area)2  pages/emf_schedule.py  
+723 EMF Schedule (Hardware Swap Shop)   2  pages/emf_schedule.py  
+724 EMF Schedule (HeboCon)              2  pages/emf_schedule.py  
+725 EMF Schedule (Holistic Howlers)     2  pages/emf_schedule.py  
+726 EMF Schedule (James Capper)         2  pages/emf_schedule.py  
+727 EMF Schedule (Maths Village)        2  pages/emf_schedule.py  
+728 EMF Schedule (Null Sector)          2  pages/emf_schedule.py  
+729 EMF Schedule (Owl City )            2  pages/emf_schedule.py  
+730 EMF Schedule (Sai's Tent)           2  pages/emf_schedule.py  
+731 EMF Schedule (Swan'); DROP TABLE Villages; --)2pages/emf_schedule.py  
+732 EMF Schedule (Workshop 4)           2  pages/emf_schedule.py  
+733 EMF Schedule (Yorkshire And Friends (Leeds Hackspace et al) )2pages/emf_schedule.py  
+734 EMF Schedule (Youth Workshop)       2  pages/emf_schedule.py  
+750 Flights                             1  pages/flights.py  
+751 Heathrow T2 flights                 1  pages/flights.py  
+752 Heathrow T3 flights                 1  pages/flights.py  
+753 Heathrow T4 flights                 1  pages/flights.py  
+754 Heathrow T5 flights                 1  pages/flights.py  
+755 Gatwick flights                     1  pages/flights.py  
+756 Luton flights                       1  pages/flights.py  
+758 City Airport flights                1  pages/flights.py  
+759 Birmingham flights                  1  pages/flights.py  
+771 Heathrow T2 flights                 1  pages/flights.py  
+772 Heathrow T3 flights                 1  pages/flights.py  
+773 Heathrow T4 flights                 1  pages/flights.py  
+774 Heathrow T5 flights                 1  pages/flights.py  
+775 Gatwick flights                     1  pages/flights.py  
+776 Luton flights                       1  pages/flights.py  
 777 Contributors                        3  pages/contributors.py  
+778 City Airport flights                1  pages/flights.py  
+779 Birmingham flights                  1  pages/flights.py  
+799 Random flights                      4  pages/flights.py  
 800 London Buses                        1  pages/bus.py  
 801 Euston Station (A/C/D/E/F) Buses    1  pages/bus.py  
 802 Euston Square Station (P/Q) Buses   1  pages/bus.py  
 803 Upper Woburn Place / Euston Road (L/M) Buses1pages/bus.py  
 804 Gower Street / UCH (N) Buses        1  pages/bus.py  
-805 Aldenham Street (S/T) Buses         1  pages/bus.py  
+805 Aldenham Street (S/T) Buses         5  pages/bus.py  
 806 Mornington Crescent (A/C/D/F/G/K) Buses1pages/bus.py  
 807 Putney Common (D) Buses             1  pages/bus.py  
 808 Portman Street / Selfridges (M) Buses1 pages/bus.py  
@@ -475,7 +487,7 @@ Number & Page Name             Importance  File
 821 Penton Rise (PG) Buses              1  pages/bus.py  
 822 Penton Street (PK) Buses            1  pages/bus.py  
 823 Baron Street / Chapel Market (T) Buses1pages/bus.py  
-824 White Lion Street (U) Buses         1  pages/bus.py  
+824 Boris Bikes                         1  pages/bikes.py  
 825 London Underground                  2  pages/tube.py  
 826 Euston Underground Trains           1  pages/tube.py  
 827 Euston Square Underground Trains    1  pages/tube.py  
@@ -500,57 +512,57 @@ Number & Page Name             Importance  File
 846 London Bridge Underground Trains    1  pages/tube.py  
 847 Earl's Court Underground Trains     1  pages/tube.py  
 848 Bond Street Underground Trains      1  pages/tube.py  
-849 Tube Line Status                    2  pages/tubestatus.py  
+849 Tube Line Status                    5  pages/tube-status.py  
 850 Trains                              1  pages/trains.py  
-851 Milton Keynes Trains                3  pages/trains.py  
-852 Bletchley Trains                    3  pages/trains.py  
-853 Farncombe Trains                    3  pages/trains.py  
-854 Ledbury Trains                      5  pages/trains.py  
-855 Shippea Hill Trains                 1  pages/trains.py  
-856 Glasgow Central Trains              1  pages/trains.py  
-857 Birmingham New Street Trains        1  pages/trains.py  
-858 London Waterloo Trains              1  pages/trains.py  
-859 London King's Cross Trains          1  pages/trains.py  
-860 Banbury Trains                      1  pages/trains.py  
-861 Moreton-in-Marsh Trains             1  pages/trains.py  
-862 Manchester Piccadilly Trains        1  pages/trains.py  
-863 Ashford International Trains        1  pages/trains.py  
-864 Basingstoke Trains                  1  pages/trains.py  
-865 Coventry Trains                     1  pages/trains.py  
-866 Davenport Trains                    1  pages/trains.py  
-867 Egham Trains                        1  pages/trains.py  
-868 Fort William Trains                 1  pages/trains.py  
-869 Gloucester Trains                   1  pages/trains.py  
-870 Halifax Trains                      1  pages/trains.py  
-871 Ipswich Trains                      1  pages/trains.py  
-872 Jewellery Quarter Trains            1  pages/trains.py  
-873 Knighton Trains                     1  pages/trains.py  
-874 Liverpool Lime Street Trains        1  pages/trains.py  
-875 Malvern Link Trains                 1  pages/trains.py  
-876 Nottingham Trains                   1  pages/trains.py  
-877 Oxford Trains                       1  pages/trains.py  
-878 Pembroke Trains                     1  pages/trains.py  
-879 Quakers Yard Trains                 1  pages/trains.py  
-880 Rainham (Kent) Trains               1  pages/trains.py  
-881 Stratford-upon-Avon Trains          1  pages/trains.py  
-882 Thurso Trains                       1  pages/trains.py  
-883 University (Birmingham) Trains      1  pages/trains.py  
-884 Valley Trains                       1  pages/trains.py  
-885 Warwick Trains                      1  pages/trains.py  
-886 York Trains                         1  pages/trains.py  
-887 Gatwick Airport Trains              1  pages/trains.py  
+851 Euston Trains                       1  pages/trains.py  
+852 King's Cross Trains                 1  pages/trains.py  
+853 St Pancras Trains                   1  pages/trains.py  
+854 Liverpool St Trains                 1  pages/trains.py  
+855 Marylebone Trains                   1  pages/trains.py  
+856 Paddington Trains                   1  pages/trains.py  
+857 Victoria Trains                     1  pages/trains.py  
+858 Waterloo Trains                     1  pages/trains.py  
+859 Blackfriars Trains                  1  pages/trains.py  
+860 London Bridge Trains                1  pages/trains.py  
+861 Charing Cross Trains                1  pages/trains.py  
+862 Cannon Street Trains                1  pages/trains.py  
+863 Fenchurch St Trains                 1  pages/trains.py  
+864 Banbury Trains                      1  pages/trains.py  
+865 Barry Links Trains                  1  pages/trains.py  
+866 Basingstoke Trains                  1  pages/trains.py  
+867 Birmingham New St Trains            1  pages/trains.py  
+868 Blaenau Ffestiniog Trains           1  pages/trains.py  
+869 Bristol TM Trains                   1  pages/trains.py  
+870 Cambridge Trains                    1  pages/trains.py  
+871 Cardiff Ctl Trains                  1  pages/trains.py  
+872 Edinburgh Trains                    1  pages/trains.py  
+873 Glasgow Central Trains              1  pages/trains.py  
+874 Glasgow Queen St Trains             1  pages/trains.py  
+875 Leeds Trains                        1  pages/trains.py  
+876 Lichfield TV Trains                 1  pages/trains.py  
+877 Liverpool Ctl Trains                1  pages/trains.py  
+878 Liverpool Lime St Trains            1  pages/trains.py  
+879 Manchester Picc Trains              1  pages/trains.py  
+880 Newcastle Trains                    1  pages/trains.py  
+881 Nottingham Trains                   1  pages/trains.py  
+882 Oxford Trains                       1  pages/trains.py  
+883 Rainham Trains                      1  pages/trains.py  
+884 Reading Trains                      1  pages/trains.py  
+885 Sevenoaks Trains                    1  pages/trains.py  
+886 Stratford-upon-Avon Trains          1  pages/trains.py  
+887 Sutton Coldfield Trains             1  pages/trains.py  
 888 Subtitles                           2  pages/subtitles.py  
-889 Heathrow Airport (T4) Trains        1  pages/trains.py  
-890 Heathrow Airport (T5) Trains        1  pages/trains.py  
-891 Heathrow Airport (T1-3) Trains      1  pages/trains.py  
-892 Luton Airport Parkway Trains        1  pages/trains.py  
-893 Manchester Airport Trains           1  pages/trains.py  
-894 Prestwick International Airport Trains1pages/trains.py  
-895 Rhoose Cardiff International Airport Trains1pages/trains.py  
-896 Southampton Airport Parkway Trains  1  pages/trains.py  
+889 Thurso Trains                       1  pages/trains.py  
+890 University Trains                   1  pages/trains.py  
+891 Valley Trains                       1  pages/trains.py  
+892 Warwick Trains                      1  pages/trains.py  
+893 York Trains                         1  pages/trains.py  
+894 Gatwick Airport Trains              1  pages/trains.py  
+895 Heathrow T2-3 Trains                1  pages/trains.py  
+896 Luton Airport Parkway Trains        1  pages/trains.py  
 897 Southend Airport Trains             1  pages/trains.py  
-898 Stanstead Airport Trains            1  pages/trains.py  
-899 Tees-side Airport Trains            1  pages/trains.py  
+898 Stansted Airport Trains             1  pages/trains.py  
+899 Random! Trains                      5  pages/trains.py  
 900 Choose Your Own Adventure           4  pages/text_game.py  
 901 Choose Your Own Adventure           0  pages/text_game.py  
 902 Choose Your Own Adventure           0  pages/text_game.py  
