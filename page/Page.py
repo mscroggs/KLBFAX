@@ -305,9 +305,8 @@ class Page(object):
     def now(self):
         return config.now()
 
-    def background(self):
-        """This function will be run every so often in the background. Use it for (eg) downloading weather data."""
-        pass
+    background = None
+    # Define this function to run something every so often in the background. Use it for (eg) downloading weather data.
 
     def generate_content(self):
         """This function will be run every time the page is loaded."""

@@ -82,14 +82,16 @@ class PageManager:
                     obj = getattr(module, filename)
                     if isinstance(obj, Page):
                         obj.cupt = self.screen.cupt
-                        obj.background()
+                        if obj.background is not None:
+                            obj.background()
                         obj.reload()
                         obj.generate_content()
                     elif isinstance(obj, list):
                         for thing in obj:
                             if isinstance(thing, Page):
                                 thing.cupt = self.screen.cupt
-                                thing.background()
+                                if thing.background is not None:
+                                    thing.background()
                                 thing.reload()
                                 thing.generate_content()
             except BaseException as e:
@@ -223,8 +225,9 @@ class PageManager:
             for page in self.pages.values():
                 try:
                     page.background_error = None
-                    page.background_loaded = False
-                    page.background()
+                    if page.background is not None:
+                        page.background_loaded = False
+                        page.background()
                     page.background_loaded = True
                 except Exception as e:
                     error_list.add(e, page.number)
@@ -236,12 +239,16 @@ class PageManager:
             import thread
         except ImportError:
             import _thread as thread
+        for page in self.pages.values():
+            if page.background is None:
+                page.background_loaded = True
         if test is not None:
             page = self.pages[test]
             try:
                 page.background_error = None
-                page.background_loaded = False
-                page.background()
+                if page.background is not None:
+                    page.background_loaded = False
+                    page.background()
                 page.background_loaded = True
             except Exception as e:
                 error_list.add(e, page.number)
