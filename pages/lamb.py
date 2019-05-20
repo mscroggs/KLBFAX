@@ -78,7 +78,22 @@ class LambPage(Page):
         'Return of Lamb',
         'Lamb\'s Ressurection',
         'Baa-baa braLamb',
-        'Grand\'s Lamb'
+        'Grand\'s Lamb',
+        'Lamb and Pineapple',
+        'The Look of Lamb',
+        'Casino RoyLamb',
+        'Money Penny Goes for Lamb',
+        'Le Chiffre\'s Torture of the Lamb',
+        'Home James, Don\'t Spare the Lamb',
+        'Sir James\' Trip to Find Lamb',
+        'The Look of Lamb (Instrumental)',
+        'Hi There Miss GoodLamb',
+        'Little French Lamb',
+        'Flying Lamb - First Stop Berlin',
+        'The Venereable Sir Jackson Lamb',
+        'Dream on Lamb, You\'re Lamb',
+        'The Big Cowboys and Lamb Fight at Casino RoyLamb',
+        'Casino RoyLamb (Reprise)'
         ]
         chosen_book = random.choice(titles)
 
