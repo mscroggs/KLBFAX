@@ -90,7 +90,7 @@ class LambPage(Page):
         'Hi There Miss GoodLamb',
         'Little French Lamb',
         'Flying Lamb - First Stop Berlin',
-        'The Venereable Sir Jackson Lamb',
+        'The Venerable Sir Jackson Lamb',
         'Dream on Lamb, You\'re Lamb',
         'The Big Cowboys and Lamb Fight at Casino RoyLamb',
         'Casino RoyLamb (Reprise)'
