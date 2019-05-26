@@ -6,6 +6,7 @@ from helpers import url_handler
 import datetime
 import config
 import metoffer
+import pytz
 
 class WeatherPage(Page):
     def __init__(self):
@@ -81,7 +82,7 @@ class WeatherForePage(Page):
         #embed()
         data_date_gmt = pytz.utc.localize(datetime.datetime.strptime(self.y.data_date,'%Y-%m-%dT%H:%M:%SZ'))
         timestamp_local = data_date_gmt.astimezone(pytz.timezone('Europe/London'))
-        self.tagline = "Met Office, updated " + timestamp_local.strftime("%a %d %b %H:%M")
+        self.tagline = "Met Office, data for " + timestamp_local.strftime("%a %d %b %H:%M")
 
         # Day of week
         self.move_cursor(y=7,x=0)
@@ -169,8 +170,8 @@ class SunrisePage(Page):
 class UKTempPage(Page):
     def __init__(self, num):
         super(UKTempPage, self).__init__(num)
-        self.title = "UK Temperature"
-        self.tagline = "Why exactly do we live in Britain?"
+        self.title = "UK Weather Map"
+        self.tagline = "Latest weather data from the Met Office"
         self.in_index = False
         self.importance = 4
         self.places = [
@@ -179,12 +180,12 @@ class UKTempPage(Page):
                     #
                     #                     Temp    Weather
                     # LAT      LON        X   Y   X   Y   Letter
-                    (58.24670, -4.72918, 35,  6,  20,  6, "a"), # North of Scotland
-                    (55.86420, -4.25180, 36, 10,  51,  9, "h"), # Glasgow?
-                    (54.59730, -5.93010, 30, 14,  10, 12, "n"), # Belfast
-                    (53.48080, -2.24260, 42, 16,  50, 13, "i"), # Manchester
-                    (52.03390, -2.42360, 40, 20,  0,   0, "x"), # EMF
-                    (51.50433, -0.12316, 48, 21,  55, 19, "s"), # London
+                    (58.24670, -4.72918, 36,  6,  20,  6, "a"), # North of Scotland
+                    (55.86420, -4.25180, 36, 10,  48, 10, "h"), # Glasgow?
+                    (54.59730, -5.93010, 29, 14,  10, 12, "n"), # Belfast
+                    (53.48080, -2.24260, 43, 16,  51, 15, "i"), # Manchester
+                    #(52.03390, -2.42360, 40, 20,  0,   0, "x"), # EMF
+                    (51.50433, -0.12316, 48, 21,  57, 21, "s"), # London
                     (51.85762, -4.31213, 35, 21,  20, 22, "e"), # Cardiff
                     (50.38842, -4.18261, 35, 24,  20, 25, "f")  # Plymouth
 
@@ -193,25 +194,41 @@ class UKTempPage(Page):
     def background(self):
         self.temps = []
         self.weather = []
+        self.weather_code = []
         for lat,lon,x,y,xw,yw,a in self.places:
             M = metoffer.MetOffer(config.metoffer_api_key);
             X = M.nearest_loc_forecast(lat,lon, metoffer.THREE_HOURLY)
-            weather_data = metoffer.Weather(X).data[0]
-            self.temps.append(weather_data["Temperature"][0])
-            self.weather.append(metoffer.WEATHER_CODES[weather_data["Weather Type"][0]])
+            if int(metoffer.__version__[0]) < 2:
+                #self.y = metoffer.parse_val(x)
+                weather_data = metoffer.parse_val(X).data
+            else:
+                weather_data = metoffer.Weather(X).data
+            weather_found = False
+            for i in weather_data:
+                if not weather_found:
+                    timestamp_gmt = pytz.utc.localize(i["timestamp"][0])
+                    timestamp_local = timestamp_gmt.astimezone(pytz.timezone('Europe/London'))
+                    if timestamp_gmt > datetime.datetime.now(pytz.utc) - datetime.timedelta(hours=1.9):
+                        self.temps.append(i["Temperature"][0])
+                        wc = i["Weather Type"][0]
+                        self.weather_code.append(wc)
+                        self.weather.append(metoffer.WEATHER_CODES[wc])
+                        self.timestamp = timestamp_local
+                        weather_found = True
 
     def generate_content(self):
         import random
 
         def col(t):
-            if t >= 25:
-                return "RED"
-            if t >= 15:
-                return "YELLOW"
-            if t >= 5:
-                return "LIGHTBLUE"
-            return "BLUE"
-        self.add_title("UK Temperature",font="size4")
+            return "BRIGHTWHITE"
+            #if t >= 25:
+            #    return "RED"
+            #if t >= 15:
+            #    return "YELLOW"
+            #if t >= 5:
+            #    return "LIGHTBLUE"
+            #return "BLUE"
+        self.add_title("UK Weather Map",font="size4",fg="CYAN",bg="BRIGHTWHITE")
         uk_map =("-------------aa--aaaaaaa--------------\n"
                  "-----------------aaaaa----------------\n"
                  "----------------aaaaaaa---------------\n"
@@ -264,25 +281,69 @@ class UKTempPage(Page):
                        "m": "MAGENTA","p": "PINK",
                        "w": "WHITE",  "W": "BRIGHTWHITE",
                        "d": "DEFAULT","-": "BLACK"}
+
+        preferred_colors = [[] for i in range(31)]
+        preferred_colors[0] = ["y","r","R","o","m"]
+        preferred_colors[1] = preferred_colors[0]
+        preferred_colors[2] = ["o","r","R","y","m"]
+        preferred_colors[3] = preferred_colors[2]
+        preferred_colors[4] = []
+        preferred_colors[5] = ["m","p","B","c","W"]
+        preferred_colors[6] = ["m","p","B","c","W"]
+        preferred_colors[7] = ["G","g","C","c","y"]
+        preferred_colors[8] = ["g","G","C","c","y"]
+        preferred_colors[9] = ["B","C","b","c","p"]
+        preferred_colors[10] = preferred_colors[9]
+        preferred_colors[11] = preferred_colors[9]
+        preferred_colors[12] = preferred_colors[9]
+        preferred_colors[13] = ["b","c","B","C","p"]
+        preferred_colors[14] = preferred_colors[13]
+        preferred_colors[15] = preferred_colors[13]
+        preferred_colors[16] = ["p","m","b","c","B"]
+        preferred_colors[17] = preferred_colors[16]
+        preferred_colors[18] = preferred_colors[16]
+        preferred_colors[19] = ["p","m","b","c","B"]
+        preferred_colors[20] = preferred_colors[19]
+        preferred_colors[21] = preferred_colors[19]
+        preferred_colors[22] = ["p","m","R","b","c"]
+        preferred_colors[23] = preferred_colors[22]
+        preferred_colors[24] = preferred_colors[22]
+        preferred_colors[25] = ["W","p","m","R","b"]
+        preferred_colors[26] = preferred_colors[25]
+        preferred_colors[27] = preferred_colors[26]
+        preferred_colors[28] = ["r","R","p","m","C"]
+        preferred_colors[29] = preferred_colors[28]
+        preferred_colors[30] = preferred_colors[28]
+
         color_choices = ["r","R","o","y","g","G","c","C","b","B","m","p"]
         random.shuffle(color_choices)
         color_dictionary = {}
-        k = 0
-        for w in self.weather:
-            if w not in color_dictionary:
-                color_dictionary[w] = color_choices[k]
-                k = k + 1
+        #self.weather_code.sort()
+        for wc in self.weather_code:
+            if wc not in color_dictionary:
+                # Add unpreferred colours randomly to the end of the choices
+                for color in color_choices:
+                    if color not in preferred_colors[wc]:
+                        preferred_colors[wc].append(color)
+                for pc in preferred_colors[wc]:
+                    if pc not in color_dictionary:
+                        color_dictionary[wc] = pc
+                        break
 
-        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
-            uk_map = uk_map.replace(a,color_dictionary[w])
+        for (lat,lon,x,y,xw,yw,a),t,w,wc in zip(self.places,self.temps,self.weather,self.weather_code):
+            uk_map = uk_map.replace(a,color_dictionary[wc])
         self.print_image(uk_map,y_coord=5,x_coord=18)
 
-        for (lat,lon,x,y,xw,yw,a),t,w in zip(self.places,self.temps,self.weather):
+        for (lat,lon,x,y,xw,yw,a),t,w,wc in zip(self.places,self.temps,self.weather,self.weather_code):
             self.move_cursor(x=x,y=y)
             self.add_text(" "+str(t)+" ", fg=col(int(t)))
             if xw!=0 and yw!=0:
                 self.move_cursor(x=xw,y=yw)
-                self.add_text(" "+str(w)+" ", fg=color_codes[color_dictionary[w]])
+                self.add_text(" "+w.replace(" (night)","").replace(" (day)", "")+" ", fg=color_codes[color_dictionary[wc]])
+
+        self.move_cursor(x=64,y=26)
+        #self.add_text()
+        self.tagline = "Met Office, data for " + self.timestamp.strftime("%a %d %b %H:%M")
 
 class WorldTempPage(Page):
     def __init__(self, num):
