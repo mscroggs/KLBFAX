@@ -57,6 +57,7 @@ class LambPage(Page):
         'Slow Horses',
         'Dead Lions',
         'Real Tigers',
+        'Stoned Pigeons',
         'Spooky Street',
         'London Rules',
         'Joe Country',
@@ -93,7 +94,20 @@ class LambPage(Page):
         'The Venerable Sir Jackson Lamb',
         'Dream on Lamb, You\'re Lamb',
         'The Big Cowboys and Lamb Fight at Casino RoyLamb',
-        'Casino RoyLamb (Reprise)'
+        'Casino RoyLamb (Reprise)',
+        'Lamb Korma',
+        'Lamb Passanda',
+        'Lamb Tikka Masala',
+        'Lamb Dhansak',
+        'Lamb Jalfrezi',
+        'Lamb Madras',
+        'Lamb Vindaloo',
+        'Lamb Phall',
+        'Fireman Lamb',
+        'Green Eggs and Lamb',
+        'Lambda',
+        'Lady Di Another Day',
+        'Lambourine'
         ]
         chosen_book = random.choice(titles)
 
