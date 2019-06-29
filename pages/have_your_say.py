@@ -14,7 +14,7 @@ class TwitterPage(Page):
         super(TwitterPage, self).__init__(page_num)
         self.title = "Have Your Say"
         if n == 0:
-            self.importance = 5
+            self.importance = 2
             self.index_num = "200-209"
         else:
             self.importance = 2
@@ -74,4 +74,3 @@ tpage6 = TwitterPage("206",6,tpage)
 tpage7 = TwitterPage("207",7,tpage)
 tpage8 = TwitterPage("208",8,tpage)
 tpage9 = TwitterPage("209",9,tpage)
-

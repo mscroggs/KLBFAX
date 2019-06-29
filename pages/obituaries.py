@@ -8,7 +8,7 @@ class ObitPage(Page):
         self.title = "Obituaries"
         if n == "260":
             self.in_index = True
-            self.importance = 4
+            self.importance = 3
             self.index_num = "260-269"
         else:
             self.in_index = False

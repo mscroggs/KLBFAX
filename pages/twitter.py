@@ -1,4 +1,5 @@
 from page import Page
+import config
 
 class TwitterPage(Page):
     def __init__(self, page_num, n, tpage=None):
@@ -13,7 +14,7 @@ class TwitterPage(Page):
         self.title = "#emfcamp"
 
         if n == 0:
-            self.importance = 5
+            self.importance = 2
             self.index_num = "210-259"
             self.title = "Twitter"
             self.lines = []
@@ -38,8 +39,10 @@ class TwitterPage(Page):
             self.lines = []
             for tweet in results:
                 if "retweeted_status" not in tweet:
-                    self.lines.append([("@" + tweet["user"]["screen_name"] + " ", "YELLOW"),
-                                       (" ".join(tweet["created_at"].split(" ")[:4]), "BLUE")])
+                    username = "@" + tweet["user"]["screen_name"]
+                    date = " ".join(tweet["created_at"].split(" ")[:4])
+                    self.lines.append([(username + " "*(config.WIDTH-len(date)-len(username)), "YELLOW"),
+                                       (date, "LIGHTCYAN")])
                     text = tweet["full_text"]
                     while "http" in text:
                         tsp = text.split("http",1)
@@ -81,8 +84,10 @@ class TwitterSinglePage(Page):
                          "cccccc-----")
         for tweet in self.results:
             if "retweeted_status" not in tweet:
-                self.add_text("@" + tweet["user"]["screen_name"] + " ", fg="YELLOW")
-                self.add_text(" ".join(tweet["created_at"].split(" ")[:4]), fg="BLUE")
+                username = "@" + tweet["user"]["screen_name"]
+                date = " ".join(tweet["created_at"].split(" ")[:4])
+                self.lines.append([(username + " "*(config.WIDTH-len(date)-len(username)), "YELLOW"),
+                                   (date, "LIGHTCYAN")])
                 text = tweet["full_text"]
                 while "http" in text:
                     tsp = text.split("http",1)

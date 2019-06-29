@@ -46,7 +46,7 @@ def wildlife_content(self, ls, titlebit="Most seen"):
 class WildlifePage(Page):
     def __init__(self, num):
         super(WildlifePage, self).__init__(num)
-        self.importance = 5
+        self.importance = 2
         self.counts = {}
         self.counts_todaystart = {}
         self.counts_hourstart = {}
@@ -110,7 +110,7 @@ class WildlifePage(Page):
 class WildlifeTodayPage(Page):
     def __init__(self, num, mainpage):
         super(WildlifeTodayPage, self).__init__(num)
-        self.importance = 5
+        self.importance = 2
         self.title = "Wildlife Today"
         self.mainpage = mainpage
         self.in_index = False
@@ -121,7 +121,7 @@ class WildlifeTodayPage(Page):
 class WildlifeHourPage(Page):
     def __init__(self, num, mainpage):
         super(WildlifeHourPage, self).__init__(num)
-        self.importance = 5
+        self.importance = 2
         self.title = "Wildlife This Hour"
         self.mainpage = mainpage
         self.in_index = False
