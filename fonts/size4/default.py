@@ -609,7 +609,7 @@ xx,x
 
 _add("r", """
 xxxx
- ,'x
+ ',x
  xxx
 ,xxx
 """)
