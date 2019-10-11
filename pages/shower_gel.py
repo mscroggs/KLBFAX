@@ -67,7 +67,9 @@ class ShowerGelPage(Page):
         ['gentle','love'],
         ['water','splash'],
         ['fizzy','party'],
-        ['wild','magic']
+        ['wild','magic'],
+        ['slow','horses'],
+        ['crazy','horses']
         ]
         inner = [
         'raspberry',
