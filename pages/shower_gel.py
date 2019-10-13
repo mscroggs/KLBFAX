@@ -93,6 +93,10 @@ class ShowerGelPage(Page):
         chosen_outer = random.choice(outer)
         chosen_inner = random.choice(inner)
 
+        if random.randint(0, 99) == 0:
+            chosen_outer = ['pink', 'everywhere']
+            chosen_inner = 'shit'
+
         self.add_title("Shower gel",font="size4",fg="ORANGE",bg="BRIGHTWHITE")
 
         book_width = 41

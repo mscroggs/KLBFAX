@@ -1042,41 +1042,43 @@ homer = """          _ _,---._
         ,-'        \----'   \/    \--`.
        /            \              \   \ """
 
-tubemap = """  m       m         o                                     o      c
-   m      m         o                      n       p  o  o       c            e
- mmmmmmmmmm         o                      n       p  o o        c           e
-          m         o                    n n       p  oo    o    c          e
-      c    m        o           n         nn       p  o     o    cccc      e
-      c     m       o   j        n         n       p  o     o    c   c    eo----
-  mpmpmpmpm  m      b   j         n        n    oopoooooo   o    c   c   e  o---
-      c    pmmmmmmmmmmmm j         n       n   o pvvvvvvvvvvvv   c   c  e    o--
-      c     p       o   m j         n   ooonooo pv    o   o o    cccc  e      d-
-      c     p       b    m joooo     n o   n   p v    o    oooooocoooee      d
-       c    p       o     mojjjjoooooonoo n   p  v     o  o      c  eo      d
+tubemap = """  m       m        o                                      o      c
+   m      m        o                       n       p  o  o       c            e
+ mmmmmmmmmm        o                       n       p  o o        c           e
+           m       o                     n n       p  oo    o    c          e
+      c     m      o            n         nn       p  o     o    cccc      e
+      c      m     o    j        n         n       p  o     o    c   c    eo----
+  mmmmmmmmmm  m    o    j         n        n    oopoooooo   o    c   c   e  o---
+  ppppppppppmmmmmmmmmmmm j         n       n   o pvvvvvvvvvvvv   c   c  e    o--
+      c     p      o    m j         n   ooonooo pv    o   o o    cccc  e      d-
+      c     p      ob    m joooo     n o   n   p v    o    oooooocoooee      d
+       c    p      ob     mojjjjoooooonoo n   p  v     o  o      c  eo      d
         c   p      oboooooommmmmj      n nooopooovooooo oo      c ee  o    d
          c  p     o b           mj      n   p    voooo oooooooocojr   o   d
-          c p    o  b           mj     n nvpvvvvvv    o       c ejr   oo d
-           cp   oo   bbbbbbbbbbbmj    n vnpnnnnn      o      c e jr     h
-            c   o o eee          mmmmmmmmmmm   n      o     c e  jr    d
-            c   o oe  hhhhhhhhhhhhhhhhhhhhhm   n      o     c e  jr    d
-            c   o e   hiiiiiiiiiiiiiiiiiiiiihm n   cccccccccc e  jr    d
-            pc  oe o hi    ddd   b   vn  p  ihmn  c eeehhhhhhhhhhhhhhhh
-            pc  oe o hi   diii   b   vn  p   ihmn ce   dddddddddddddddd
-            p ceo   ohi  di      jb v n  p    ihmhimh heeeeeer   jr
-      eeeeeepeeco   hio  di    cccccccccpccc   nc   ido      r   jr
-     e     cpccccccccccocdicccc  jv b np    ccccrrrrm o      r   jr
-    e       p   o   hi  odi     ppppppp       didididrrrrrrrrrrrrjrrrrrrr-----
-    e       p   o   hi  odi    p  vj  b      iwn      o      r   j    r  r----
-    e       ppppppppppppppipppp   v j nb    dw n      o      r   j     r  r---
-    e      p dddddddddddddiddddddddddddddddiw jn      o      r  j       r  r--
-    e     p    d         d iiiiiiiiiiiiiiiiiw jnjjjjjjjjjjjjjjjj         r  r-
-    e    p     o        od        v   nbwwww jn       o      r            r  r
-    e   p      d         do       v   nbjjjjjn        o      r            r  r
-    e  p       o         d o      v   nb    n         o      r            r
-   pppp        d         d  o     v   nb nnn         ooo     r            r
-  p e p                  d  o     v   nbn           o o o    r
-  p e p                  d  o      v  nb           o  o  o   r
-   ppp                   d   oooooo v n           o   o      r
+          c p    o  b           mj     n nvpvvvvvv    o       c ejr    o d
+           cp   oo   bbbbbbbbbbbmj    n vnpnnnnn      o      c e jr    hd
+            c   o o eee          mmmmmmmmmmm   n      o     c e  jr   hd
+            c   o oe  hhhhhhhhhhhhhhhhhhhhhm   n      o     c e  jr   hd
+            c   o e   hiiiiiiiiiiiiiiiiiiiiihm n   cccccccccc e  jr   hd
+            pc  oe o hi    ddd  j b  vn  p  ihmn  c eeehhhhhhhhhhhhhhhhd
+            pc  oe o hi   diii  j b  vn  p   ihmn ce   dddddddddddddddd
+            p ceo   ohi  di     j b v n  p    ihmmmmm heeeeeer   jr
+            p ceo   ohi  di     j b v n  p      ihihihi      r   jr
+       eeeeepeeco   hio  di    ccccccccccpcc   nc   ido      r   jr
+      e     p   o   hio  di   c   v b   p   c  c   id o      r   jr-----------
+     e    ccpccccccccccocdiccc   jv b np     ccrrrrr  o      r   jr-----------
+    e     d p   o   hi  odi     ppppppp       didid rrrrrrrrrrrrrjrrrrrrr-----
+    e      dp   o   hi  odi    p  vj  b      iwn      o      r   j    r  r----
+    e      dppppppppppppppipppp   v j nb    dw n      o      r   j     r  r---
+    e      pddddddddddddddiddddddddddddddddiw jn      o      r  j       r  r--
+    e     p    do       od iiiiiiiiiiiiiiiiiw jnjjjjjjjjjjjjjjjj         r  r-
+    e    p     do       od        v   nbwwww jn       o      r            r  r
+    e   p      do        do       v   nbjjjjjn        o      r            r  r
+    e  p       do        d o      v   nb    n         o      r            r
+-pppppp        do        d  o     v   nb nnn         ooo     r            r
+p p e p                  d  o     v   nbn           o o o    r
+p p e p                  d  o      v  nb           o  o  o   r
+p  ppp                   d   oooooo v n           o   o      r
                           t        oonoooooooooooo    o
                           t         n v               o             ttttttttttt
                           t        n   v           oooo            t
