@@ -111,7 +111,9 @@ class LambPage(Page):
         'Lambalaya',
         'Lambagotchi',
         'Lamb.de',
-        'Lambp post'
+        'Lambp post',
+        'Finlamd',
+        'Irelamb'
         ]
         chosen_book = random.choice(titles)
 
