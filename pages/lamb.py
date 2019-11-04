@@ -113,7 +113,31 @@ class LambPage(Page):
         'Lamb.de',
         'Lambp post',
         'Finlamd',
-        'Irelamb'
+        'Irelamb',
+        'Jurrassic Lamb (sic)',
+        'Teaches of Lamb',
+        'JC2: Loop of Jade',
+        'Tied Up In Nottz',
+        'Golf Bravo Zero Lamb',
+        'Sparkling Lamb',
+        'Mango Lamb',
+        'The Great Lamb',
+        'Bric-a-brac Lamb',
+        'Battery Lamb',
+        'Fat Lamb',
+        'Vegan Lamb',
+        'Joe County',
+        'Joe 90',
+        'Silence of Lamb',
+        'Lamb\'s Bum',
+        'Astral Lamb',
+        'Slough Sandwiches',
+        'The Tuna Melt',
+        'Jackson Five',
+        'Rogue Passander',
+        'Surely Ewe Jest?',
+        'Uncle Wilburforce',
+        'Jo, My Slippers?'
         ]
         chosen_book = random.choice(titles)
 
