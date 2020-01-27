@@ -137,7 +137,10 @@ class LambPage(Page):
         'Rogue Passander',
         'Surely Ewe Jest?',
         'Uncle Wilburforce',
-        'Jo, My Slippers?'
+        'Jo, My Slippers?',
+        'Catch the Pigeon',
+        'Another Lamb',
+        'God Lamb It'
         ]
         chosen_book = random.choice(titles)
 
