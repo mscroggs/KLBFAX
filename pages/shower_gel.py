@@ -70,7 +70,8 @@ class ShowerGelPage(Page):
         ['wild','magic'],
         ['slow','horses'],
         ['neutral','hotel'],
-        ['crazy','horses']
+        ['crazy','horses'],
+        ['see it','sorted']
         ]
         inner = [
         'raspberry',
