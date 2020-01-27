@@ -71,6 +71,10 @@ class ShowerGelPage(Page):
         ['slow','horses'],
         ['neutral','hotel'],
         ['crazy','horses'],
+        ['deus','machina'],
+        ['last','christmas'],
+        ['torchy','boy'],
+        ['university','london'],
         ['see it','sorted']
         ]
         inner = [
@@ -88,7 +92,10 @@ class ShowerGelPage(Page):
         'melon',
         'prosecco',
         'cherry',
-        'milk'
+        'milk',
+        'ex',
+        'battery',
+        'college'
         ]
 
         chosen_outer = random.choice(outer)
