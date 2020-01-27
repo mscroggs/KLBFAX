@@ -137,11 +137,16 @@ class LambPage(Page):
         'Rogue Passander',
         'Surely Ewe Jest?',
         'Uncle Wilburforce',
-        'Jo, My Slippers?'
+        'Jo, My Slippers?',
+        'Maggot Lamb',
+        'Lamb\'s Wife',
+        'Lamb Shank',
+        'Back to Bedlamb',
+        'Fulhamb Broadway'
         ]
         chosen_book = random.choice(titles)
 
-        self.add_title("Slice of Lamb",font="size4",fg="ORANGE",bg="BRIGHTWHITE")
+        self.add_title("Book of the week",font="size4",fg="ORANGE",bg="BRIGHTWHITE")
 
         book_width = 41
         book_height = 42
