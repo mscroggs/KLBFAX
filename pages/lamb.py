@@ -147,7 +147,12 @@ class LambPage(Page):
         'Lamb\'s Wife',
         'Lamb Shank',
         'Back to Bedlamb',
-        'Fulhamb Broadway'
+        'Fulhamb Broadway',
+        'Shepherd\'s Pie',
+        'Shepherd\'s Delight',
+        'Shepherd\'s Warning',
+        'Mackerel Man',
+        'Cheeky Lambdo\'s'
         ]
         chosen_book = random.choice(titles)
 
