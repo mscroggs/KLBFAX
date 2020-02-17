@@ -1,5 +1,53 @@
 from page import Page
 
+british_rail =("rrrrWWrrrrr\n"
+               "rrrrrWWrrrr\n"
+               "rWWWWWWWWWr\n"
+               "rrrrrWWrrrr\n"
+               "rrrrWWrrrrr\n"
+               "rWWWWWWWWWr\n"
+               "rrrrWWrrrrr\n"
+               "rrrrrWWrrrr")
+
+# Loop over all the train services in that board.
+mapping=[('Cross', 'X'),
+('Road', 'Rd'),
+('Square', 'Sq'),
+('Street', 'St'),
+('Junction', 'Jn'),
+('Town', 'Tn'),
+('Park', 'Pk'),
+('Lane', 'Ln'),
+('Hill', 'Hl'),
+('Central','Ctl'),
+('Garden','Gdn'),
+('North ','N '),
+('South ','S '),
+('East ','E '),
+('West ','W '),
+('International', 'Intl'),
+(' (London)', ''),
+(' (Kent)', ''),
+(' (Intl)', ''),
+(' (Hampshire)', ''),
+(' (Essex)', ''),
+(' (Dorset)', ''),
+('Trent Valley', 'T Valley'),
+('Piccadilly','Picc'),
+('Thameslink','Thmslk'),
+(' Underground', '')]
+
+mapping_always = [('London Kings Cross', 'King\'s Cross'),
+('London St Pancras (Intl)','St Pancras')]
+
+operator_mapping=[
+('London North Eastern Railway', 'LNER'),
+('Railway', 'Rly'),
+('Midlands', 'Mids'),
+('TransPennine Express', 'TPE')
+]
+
+
 class TrainPage(Page):
     def __init__(self, page_num, station, code, hogwarts=False, to=None, is_random=False):
         super(TrainPage, self).__init__(page_num)
@@ -32,51 +80,7 @@ class TrainPage(Page):
 
         self.add_title(self.station,font="size4")
 
-        british_rail =("rrrrWWrrrrr\n"
-                       "rrrrrWWrrrr\n"
-                       "rWWWWWWWWWr\n"
-                       "rrrrrWWrrrr\n"
-                       "rrrrWWrrrrr\n"
-                       "rWWWWWWWWWr\n"
-                       "rrrrWWrrrrr\n"
-                       "rrrrrWWrrrr")
         self.print_image(british_rail,0,69)
-
-
-        # Loop over all the train services in that board.
-        mapping=[('Cross', 'X'),
-        ('Road', 'Rd'),
-        ('Square', 'Sq'),
-        ('Street', 'St'),
-        ('Junction', 'Jn'),
-        ('Town', 'Tn'),
-        ('Park', 'Pk'),
-        ('Lane', 'Ln'),
-        ('Hill', 'Hl'),
-        ('Central','Ctl'),
-        ('Garden','Gdn'),
-        ('North ','N '),
-        ('South ','S '),
-        ('East ','E '),
-        ('West ','W '),
-        ('International', 'Intl'),
-        (' (London)', ''),
-        (' (Kent)', ''),
-        (' (Intl)', ''),
-        (' (Hampshire)', ''),
-        (' (Essex)', ''),
-        (' (Dorset)', ''),
-        ('Trent Valley', 'T Valley'),
-        ('Piccadilly','Picc'),
-        ('Thameslink','Thmslk'),
-        (' Underground', '')]
-
-        operator_mapping=[
-        ('London North Eastern Railway', 'LNER'),
-        ('Railway', 'Rly'),
-        ('Midlands', 'Mids'),
-        ('TransPennine Express', 'TPE')
-        ]
 
         n = 4
 
@@ -214,6 +218,136 @@ class TrainPage(Page):
             else:
                 self.add_text(service.etd)
 
+# ==============================================================================
+
+class TrainNextDepPage(Page):
+    def __init__(self, page_num, station, from_codes, to_codes):
+        super(TrainNextDepPage, self).__init__(page_num)
+        self.title = "Trains " + station
+        self.in_index = False
+        self.tagline = "Live trains from " + ",".join(from_codes) + " to " + ",".join(to_codes) + ". Data from National Rail API."
+        self.station = station
+        self.importance = 1
+        self.from_codes = from_codes
+        self.to_codes = to_codes
+        pages.append([page_num,",".join(from_codes) + "-" + ",".join(to_codes)])
+
+    def generate_content(self):
+        from nrewebservices.ldbws import Session
+
+        session = Session("https://lite.realtime.nationalrail.co.uk/OpenLDBWS/wsdl.aspx?ver=2016-02-16", "875a552e-9e5b-42d8-843d-b046ae121532")
+
+
+        self.add_title(self.station,font="size4")
+
+        self.print_image(british_rail,0,69)
+
+        for f,from_to in enumerate([[self.from_codes,self.to_codes],[self.to_codes,self.from_codes]]):
+
+            start_y = 5 + f*11
+            self.move_cursor(x=0,y=start_y)
+            self.start_fg_color("GREEN")
+            pos1 = (1,8,32,57,62,67)
+            for p1,t in zip(pos1,("Time","From","Destination","Op","Plt","Expected")):
+                self.move_cursor(p1)
+                self.add_text(t)
+            self.end_fg_color()
+            self.add_newline()
+
+            stds = []
+            froms = []
+            tos = []
+            tocs = []
+            platforms = []
+            etds = []
+
+            for from_code in from_to[0]:
+                for to_code in from_to[1]:
+
+                    board = session.get_station_board(from_code, rows=10, to_filter_crs=to_code, include_departures=True, include_arrivals=False)
+
+                    for i,service in enumerate(board.train_services[0:0+10]):
+                        stds.append(service.std)
+
+                        name = board.location_name
+                        for kk, v in mapping_always:
+                            name = name.replace(kk, v)
+                        if len(name) > 19:
+                            for kk, v in mapping:
+                                name = name.replace(kk, v)
+                        froms.append(name)
+
+                        name = service.destination
+                        for kk, v in mapping_always:
+                            name = name.replace(kk, v)
+                        if len(name) > 19:
+                            for kk, v in mapping:
+                                name = name.replace(kk, v)
+                        tos.append(name[0:19])
+
+                        tocs.append(service.operator_code)
+
+                        platform = service.platform
+                        if platform == None:
+                            platform = "-"
+                        platforms.append(platform)
+
+                        etds.append(service.etd)
+
+            trains = zip(stds,froms,tos,tocs,platforms,etds)
+            trains.sort()
+
+            for i,train in enumerate(trains[0:7]):
+                t_std = train[0]
+                t_from = train[1]
+                t_to = train[2]
+                t_toc = train[3]
+                t_platform = train[4]
+                t_etd = train[5]
+
+                pos = pos1
+                y=start_y+1+i
+                # Build a list of destinations for each train service.
+                self.move_cursor(x=pos[0],y=y)
+                self.add_text(t_std)
+
+                self.move_cursor(x=pos[1],y=y)
+                self.add_text(t_from)
+
+                self.move_cursor(x=pos[2],y=y)
+                self.add_text(t_to)
+
+                self.move_cursor(x=pos[3],y=y)
+                self.add_text(t_toc)
+
+                self.move_cursor(x=pos[4],y=y)
+                self.add_text(t_platform)
+
+                self.move_cursor(x=pos[5],y=y)
+                if t_etd[0] in ["0","1","2"]:
+                    self.start_bg_color("YELLOW")
+                    self.start_fg_color("BLACK")
+                    self.add_text("   " + t_etd + "   ")
+                    self.end_fg_color()
+                    self.end_bg_color()
+                elif t_etd[0] == "D":
+                    self.start_bg_color("ORANGE")
+                    self.start_fg_color("BLACK")
+                    self.add_text("  Delayed  ")
+                    self.end_fg_color()
+                    self.end_bg_color()
+                elif t_etd[0] == "C":
+                    self.start_bg_color("RED")
+                    self.add_text(" Cancelled ")
+                    self.end_bg_color()
+                else:
+                    self.start_bg_color("GREEN")
+                    self.add_text("  " + t_etd + "  ")
+                    self.end_bg_color()
+
+
+# ==============================================================================
+
 pages = []
 
 # London stations
@@ -234,13 +368,14 @@ train13 = TrainPage("863","Fenchurch St","FST")
 
 # Elsewhere
 train14 = TrainPage("864","Banbury","BAN")
-train15 = TrainPage("865","Barry Links","BYL")
-train16 = TrainPage("866","Basingstoke","BSK")
-train17 = TrainPage("867","Birmingham New St","BHM")
-train18 = TrainPage("868","Blaenau Ffestiniog","BFF")
-train19 = TrainPage("869","Bristol TM","BRI")
-train20 = TrainPage("870","Cambridge","CBG")
-train21 = TrainPage("871","Cardiff Ctl","CDF")
+#train15 = TrainPage("865","Barry Links","BYL")
+train16 = TrainPage("865","Basingstoke","BSK")
+train17 = TrainPage("866","Birmingham New St","BHM")
+train18 = TrainPage("867","Blaenau Ffestiniog","BFF")
+train19 = TrainPage("868","Bristol TM","BRI")
+train20 = TrainPage("869","Cambridge","CBG")
+train21 = TrainPage("870","Cardiff Ctl","CDF")
+train40 = TrainPage("871","Durham","DHM")
 train22 = TrainPage("872","Edinburgh","EDB")
 train23 = TrainPage("873","Glasgow Central","GLC")
 train24 = TrainPage("874","Glasgow Queen St","GLQ")
@@ -259,16 +394,18 @@ train36 = TrainPage("886","Stratford-upon-Avon","SAV")
 train37 = TrainPage("887","Sutton Coldfield","SUT")
 train38 = TrainPage("889","Thurso","THS")
 train39 = TrainPage("890","University","UNI")
-train40 = TrainPage("891","Valley","VAL")
-train41 = TrainPage("892","Warwick","WRW")
-train42 = TrainPage("893","York","YRK")
+#train40 = TrainPage("891","Valley","VAL")
+train41 = TrainPage("891","Warwick","WRW")
+train42 = TrainPage("892","York","YRK")
 
 # Airports
-train43 = TrainPage("894","Gatwick Airport","GTW")
-train44 = TrainPage("895","Heathrow T2-3","HXX")
-train45 = TrainPage("896","Luton Airport Parkway","LTN")
-train46 = TrainPage("897","Southend Airport","SIA")
-train47 = TrainPage("898","Stansted Airport","SSD")
+train43 = TrainPage("893","Gatwick Airport","GTW")
+train44 = TrainPage("894","Heathrow T2-3","HXX")
+train45 = TrainPage("895","Luton Airport Parkway","LTN")
+train46 = TrainPage("896","Southend Airport","SIA")
+train47 = TrainPage("897","Stansted Airport","SSD")
+
+train80 = TrainNextDepPage("898","London-Cambridge",["KGX","STP"],["CBG"])
 
 train48 = TrainPage("899","Random!","XXX",is_random=True)
 
