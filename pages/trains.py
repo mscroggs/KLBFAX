@@ -294,8 +294,8 @@ class TrainNextDepPage(Page):
 
                         etds.append(service.etd)
 
-            trains = zip(stds,froms,tos,tocs,platforms,etds)
-            list(trains).sort()
+            trains = list(zip(stds,froms,tos,tocs,platforms,etds))
+            trains.sort()
 
             for i,train in enumerate(trains[0:7]):
                 t_std = train[0]
