@@ -185,7 +185,25 @@ xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxx
 xxxxxxxxxxxxxxxxx''').replace(" ","-").replace("x","W")
-        self.print_image(spy.replace('g',color),top_margin+2,left_margin+12) #y,x)
+        mackerel=(
+'''------------------
+------------------
+--------xxxxxx----
+--------xxxxxx----
+------xxxxxxxxxx--
+xx----------------
+x-x-----xxxxxx---
+x--x---xxxxxxxxx--
+-x--x-xxxxxxxggggg
+-x---xxxxxxxxggxgg
+-x--x-xxxxxxxxxxx-
+x--x---xxxxxxxxx--
+x-x------xxxxx----
+xx----------------''').replace(" ","-").replace("x","W")
+        if chosen_book in ["Mackerel Lamb","Mackerel Man"]:
+            self.print_image(mackerel.replace('g',color),top_margin+2,left_margin+12) #y,x)
+        else:
+            self.print_image(spy.replace('g',color),top_margin+2,left_margin+12) #y,x)
 
         author = "M I C K   H E R R O N"
         self.move_cursor(x=left_margin+book_width//2-len(author)//2,y=top_margin+book_height//2 - 10)
