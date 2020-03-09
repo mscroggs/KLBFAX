@@ -152,7 +152,10 @@ class LambPage(Page):
         'Shepherd\'s Delight',
         'Shepherd\'s Warning',
         'Mackerel Man',
-        'Cheeky Lambdo\'s'
+        'Cheeky Lambdo\'s',
+        'Lamb Tagine',
+        'Lambateur Radio',
+        'Lambazon Prime'
         ]
         chosen_book = random.choice(titles)
 

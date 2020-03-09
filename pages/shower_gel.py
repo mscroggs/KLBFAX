@@ -101,9 +101,12 @@ class ShowerGelPage(Page):
         chosen_outer = random.choice(outer)
         chosen_inner = random.choice(inner)
 
-        if random.randint(0, 99) == 0:
+        if random.randint(0, 99) in [0,1]:
             chosen_outer = ['pink', 'everywhere']
             chosen_inner = 'shit'
+        elif random.randint(0, 99) in [2]:
+            chosen_outer = ['nivea', 'men']
+            chosen_inner = 'for'            
 
         self.add_title("Shower gel",font="size4",fg="ORANGE",bg="BRIGHTWHITE")
 
