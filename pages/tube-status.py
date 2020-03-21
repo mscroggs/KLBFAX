@@ -89,6 +89,8 @@ class TubePage(Page):
                     self.start_fg_color("YELLOW")
                 elif desc == "Part Closure":
                     self.start_fg_color("ORANGE")
+                elif desc == "Special Service":
+                    self.start_fg_color("LIGHTCYAN")
                 else:
                     self.start_fg_color("LIGHTRED")
 

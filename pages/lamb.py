@@ -155,7 +155,16 @@ class LambPage(Page):
         'Cheeky Lambdo\'s',
         'Lamb Tagine',
         'Lambateur Radio',
-        'Lambazon Prime'
+        'Lambazon Prime',
+        'Hodgkins Lamb',
+        'Mallard Lamb',
+        'Cod Lamb It',
+        'Corona Lamb',
+        'Jonti Lamb',
+        'The Roman Baths',
+        'Clockwork Lamb',
+        'Tyre Iron',
+        'Lockdown Lamb'
         ]
         chosen_book = random.choice(titles)
 
@@ -203,7 +212,7 @@ x--x---xxxxxxxxx--
 x--x---xxxxxxxxx--
 x-x------xxxxx----
 xx----------------''').replace(" ","-").replace("x","W")
-        if chosen_book in ["Mackerel Lamb","Mackerel Man"]:
+        if chosen_book in ["Mackerel Lamb","Mackerel Man","Cod Lamb It"]:
             self.print_image(mackerel.replace('g',color),top_margin+2,left_margin+12) #y,x)
         else:
             self.print_image(spy.replace('g',color),top_margin+2,left_margin+12) #y,x)
