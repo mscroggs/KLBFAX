@@ -129,7 +129,7 @@ def next(month, day, hour, min):
     return out
 
 page1 = CountdownPage("120","Christmas",next(12, 25, 0, 0),"120-129")
-page2 = CountdownPage("121","EMF2018",datetime(2018, 8, 31, 11, 0))
+page2 = CountdownPage("121","Lockdown",datetime(2020, 3, 23, 20, 30))
 page3 = CountdownPage("122","EMF2020",datetime(2020, 8, 21, 11, 0))
 page4 = CountdownPage("123","Pi Day",next(3, 14, 0, 0))
 page5 = CountdownPage("124","May Day",next(5, 1, 0, 0))

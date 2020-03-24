@@ -164,7 +164,9 @@ class LambPage(Page):
         'The Roman Baths',
         'Clockwork Lamb',
         'Tyre Iron',
-        'Lockdown Lamb'
+        'Lockdown Lamb',
+        'Hustings Lamb',
+        'Newborn Lamb'
         ]
         chosen_book = random.choice(titles)
 
